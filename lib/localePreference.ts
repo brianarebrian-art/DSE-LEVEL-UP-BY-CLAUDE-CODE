@@ -60,6 +60,18 @@ export function paperText(
   return zh
 }
 
+/** 練習頁依學生選擇顯示翻譯；英文卷在中文介面下仍保留英文原題。 */
+export function practiceText(
+  subjectId: string | null | undefined,
+  source: string | null | undefined,
+  english: string | null | undefined,
+  locale: Locale,
+): string {
+  const en = english ?? ''
+  if (locale === 'en' && en.trim() !== '') return en
+  return paperText(subjectId, source, english)
+}
+
 function isUnder(pathname: string, root: string): boolean {
   return pathname === root || pathname.startsWith(`${root}/`)
 }

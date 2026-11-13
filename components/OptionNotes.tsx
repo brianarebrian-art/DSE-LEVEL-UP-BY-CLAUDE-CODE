@@ -2,7 +2,7 @@
 
 import MathText from '@/components/MathText'
 import { useLocale } from '@/lib/i18n'
-import { paperText } from '@/lib/localePreference'
+import { practiceText } from '@/lib/localePreference'
 import { notesInDisplayOrder, type DisplayOption } from '@/lib/optionNotes'
 import type { OptionNote } from '@/data/questions/types'
 
@@ -47,13 +47,13 @@ export default function OptionNotes({
             >
               <div className="mb-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span className="font-medium text-ink">
-                  <MathText>{paperText(subjectId, option.zh, option.en)}</MathText>
+                  <MathText>{practiceText(subjectId, option.zh, option.en, locale)}</MathText>
                 </span>
                 {correct && <span className="text-xs font-medium text-accent-strong">{en ? 'Correct answer' : '正確答案'}</span>}
                 {picked && !correct && <span className="text-xs font-medium text-ink-muted">{en ? 'Your choice' : '你揀咗呢個'}</span>}
               </div>
               <p className="leading-relaxed text-ink-soft">
-                <MathText>{paperText(subjectId, note.zh, note.en)}</MathText>
+                <MathText>{practiceText(subjectId, note.zh, note.en, locale)}</MathText>
               </p>
             </li>
           )

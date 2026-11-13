@@ -8,7 +8,7 @@ import { isGenericMarkingScale, isGenericWritingGuide } from '@/lib/genericWriti
 // 第 3 週 · 引擎五之三：分步提示（只俾方向，唔收學生嘅字，結構上做唔到自動評分）
 import StepHints from '@/components/StepHints'
 import { useLocale } from '@/lib/i18n'
-import { paperText } from '@/lib/localePreference'
+import { practiceText } from '@/lib/localePreference'
 import type { LongQuestion, SelfAssessment } from '@/data/questions/types'
 
 // 長題目 — multi-line structured working with optional live KaTeX preview. Same HONESTY
@@ -82,7 +82,7 @@ export default function LongQuestionCard({
  </div>
 
  <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
- <MathText>{paperText(q.subject, q.content, q.contentEn)}</MathText>
+ <MathText>{practiceText(q.subject, q.content, q.contentEn, locale)}</MathText>
  </div>
 
       {!submitted ? (
@@ -134,7 +134,7 @@ export default function LongQuestionCard({
  </button>
           {showAnswer && (
             <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <MathText>{paperText(q.subject, q.referenceAnswer, q.referenceAnswerEn)}</MathText>
+ <MathText>{practiceText(q.subject, q.referenceAnswer, q.referenceAnswerEn, locale)}</MathText>
  </div>
           )}
 
@@ -146,7 +146,7 @@ export default function LongQuestionCard({
  className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
  >
  <span className="text-xs text-ink-soft font-bold">
-                  {isGenericMarkingScale(paperText(q.subject, q.markingScheme, q.markingSchemeEn))
+                  {isGenericMarkingScale(practiceText(q.subject, q.markingScheme, q.markingSchemeEn, locale))
                     ? (en ? 'Shared practice scale (not a mark scheme for this question)' : '各題共用嘅練習尺度（唔係呢題嘅評卷參考）')
                     : (en ? 'Marking scheme / step marks' : '評分準則 / 步驟分')}
                 </span>
@@ -154,7 +154,7 @@ export default function LongQuestionCard({
  </button>
               {showScheme && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <MathText>{paperText(q.subject, q.markingScheme, q.markingSchemeEn)}</MathText>
+ <MathText>{practiceText(q.subject, q.markingScheme, q.markingSchemeEn, locale)}</MathText>
  </div>
  )}
  </>
@@ -168,7 +168,7 @@ export default function LongQuestionCard({
  className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
  >
  <span className="text-xs text-ink-soft font-bold">
-                  {isGenericWritingGuide(paperText(q.subject, q.explanation, q.explanationEn))
+                  {isGenericWritingGuide(practiceText(q.subject, q.explanation, q.explanationEn, locale))
                     ? (en ? 'Shared self-check note' : '通用自評方向')
                     : (en ? 'How to think about it' : '解題思路')}
                 </span>
@@ -176,7 +176,7 @@ export default function LongQuestionCard({
  </button>
               {showWhy && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <ExplanationBody text={paperText(q.subject, q.explanation, q.explanationEn)} />
+ <ExplanationBody text={practiceText(q.subject, q.explanation, q.explanationEn, locale)} />
  </div>
  )}
  </>
