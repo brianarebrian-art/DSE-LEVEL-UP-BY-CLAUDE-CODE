@@ -1,24 +1,29 @@
 'use client'
 
+import { Languages } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 
-// 按鈕文字是「將要切換去」的語言，不是目前語言。
-// 固定最小寬度，避免「English」與「中文」換字時把導覽列撐開。
+// 固定按鈕同時標示「語言」及切換目標，學生毋須靠猜測或進入選單尋找。
 export default function LanguageToggle({ className = '' }: { className?: string }) {
   const { locale, toggle } = useLocale()
   const label = locale === 'zh' ? 'English' : '中文'
+  const controlLabel = locale === 'zh' ? '語言 / Language' : 'Language / 語言'
   return (
     <button
       type="button"
       onClick={toggle}
       aria-label={
         locale === 'zh'
-          ? 'Switch interface language to English（將介面語言切換至英文）'
-          : '將介面語言切換至中文（Switch interface language to Chinese）'
+          ? '語言 / Language：切換介面至 English（英文）'
+          : 'Language / 語言: switch interface to 中文（Chinese）'
       }
-      className={`inline-flex h-11 min-h-11 min-w-20 shrink-0 touch-manipulation select-none items-center justify-center whitespace-nowrap rounded-lg border border-line bg-surface-raised px-3 text-sm font-medium text-ink shadow-sm hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:bg-surface-sunken ${className}`}
+      title={controlLabel}
+      className={`inline-flex h-11 min-h-11 shrink-0 touch-manipulation select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-line bg-surface-raised px-3 text-sm font-medium text-ink shadow-sm hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:bg-surface-sunken ${className}`}
     >
-      {label}
+      <Languages aria-hidden="true" className="size-4 shrink-0" />
+      <span>{controlLabel}</span>
+      <span aria-hidden="true" className="text-ink-muted">·</span>
+      <span className="font-semibold">{label}</span>
     </button>
   )
 }
