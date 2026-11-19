@@ -36,15 +36,15 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "$V = IR = 2\\times5 = 10\\,\\text{V}$.",
     "mustKnowZh": [
       "$V = IR = 2\\times5 = 10\\,\\text{V}$。",
-      "$V = IR = 0.",
+      "$V = IR = 0.5\\times10 = 5\\,\\text{V}$。",
       "$P = VI = 12\\times2 = 24\\,\\text{W}$。",
-      "$P = VI = 240\\times0."
+      "$P = VI = 240\\times0.5 = 120\\,\\text{W}$。"
     ],
     "mustKnowEn": [
       "$V = IR = 2\\times5 = 10\\,\\text{V}$.",
-      "$V = IR = 0.",
+      "$V = IR = 0.5\\times10 = 5\\,\\text{V}$.",
       "$P = VI = 12\\times2 = 24\\,\\text{W}$.",
-      "$P = VI = 240\\times0."
+      "$P = VI = 240\\times0.5 = 120\\,\\text{W}$."
     ],
     "examTipZh": "DSE 作答「電學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Electricity”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -61,13 +61,13 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "$Q = mc\\Delta T = 1\\times4200\\times10 = 42000\\,\\text{J}$.",
     "mustKnowZh": [
       "$Q = mc\\Delta T = 1\\times4200\\times10 = 42000\\,\\text{J}$。",
-      "$Q = mc\\Delta T = 0.",
+      "$Q = mc\\Delta T = 0.5\\times4200\\times20 = 42000\\,\\text{J}$。",
       "輻射以電磁波傳播，可在真空中進行；傳導與對流均需介質。",
       "$Q = mc\\Delta T = 2\\times400\\times10 = 8000$ J。"
     ],
     "mustKnowEn": [
       "$Q = mc\\Delta T = 1\\times4200\\times10 = 42000\\,\\text{J}$.",
-      "$Q = mc\\Delta T = 0.",
+      "$Q = mc\\Delta T = 0.5\\times4200\\times20 = 42000\\,\\text{J}$.",
       "Radiation travels as electromagnetic waves and works in a vacuum; conduction and convection need a medium.",
       "$Q = mc\\Delta T = 8000$ J."
     ],
@@ -86,14 +86,14 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "$v = f\\lambda = 2\\times3 = 6\\,\\text{m/s}$.",
     "mustKnowZh": [
       "$v = f\\lambda = 2\\times3 = 6\\,\\text{m/s}$。",
-      "$v = f\\lambda = 4\\times0.",
-      "$T = \\frac{1}{f} = \\frac{1}{2} = 0.",
+      "$v = f\\lambda = 4\\times0.5 = 2\\,\\text{m/s}$。",
+      "$T = \\frac{1}{f} = \\frac{1}{2} = 0.5\\,\\text{s}$。",
       "$f = \\frac{v}{\\lambda} = \\frac{340}{2} = 170\\,\\text{Hz}$。"
     ],
     "mustKnowEn": [
       "$v = f\\lambda = 2\\times3 = 6\\,\\text{m/s}$.",
-      "$v = f\\lambda = 4\\times0.",
-      "$T = \\frac{1}{f} = \\frac{1}{2} = 0.",
+      "$v = f\\lambda = 4\\times0.5 = 2\\,\\text{m/s}$.",
+      "$T = \\frac{1}{f} = \\frac{1}{2} = 0.5\\,\\text{s}$.",
       "$f = \\frac{v}{\\lambda} = \\frac{340}{2} = 170\\,\\text{Hz}$."
     ],
     "examTipZh": "DSE 作答「波動」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -157,16 +157,16 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "phys_hell_mechanics",
     "titleZh": "多步計算・力學",
     "titleEn": "Multi-step — Mechanics",
-    "conceptZh": "用 $v^2 = u^2 + 2as$：$0 = 30^2 + 2a(60) \\Rightarrow a = -900/120 = -7.",
-    "conceptEn": "Use $v^2 = u^2 + 2as$: $0 = 30^2 + 2a(60) \\Rightarrow a = -7.",
+    "conceptZh": "用 $v^2 = u^2 + 2as$：$0 = 30^2 + 2a(60) \\Rightarrow a = -900/120 = -7.5\\,\\text{m/s}^2$，大小 $7.5\\,\\text{m/s}^2$。",
+    "conceptEn": "Use $v^2 = u^2 + 2as$: $0 = 30^2 + 2a(60) \\Rightarrow a = -7.5\\,\\text{m/s}^2$, magnitude $7.5\\,\\text{m/s}^2$.",
     "mustKnowZh": [
-      "用 $v^2 = u^2 + 2as$：$0 = 30^2 + 2a(60) \\Rightarrow a = -900/120 = -7.",
+      "用 $v^2 = u^2 + 2as$：$0 = 30^2 + 2a(60) \\Rightarrow a = -900/120 = -7.5\\,\\text{m/s}^2$，大小 $7.5\\,\\text{m/s}^2$。",
       "動量守恆求共速：$v = (2\\times3)/(2+4) = 1\\,\\text{m/s}$。",
       "能量守恆：$mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{2(10)(5)} = \\sqrt{100} = 10\\,\\text{m/s}$。",
       "第一步求落地速率：$v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s。"
     ],
     "mustKnowEn": [
-      "Use $v^2 = u^2 + 2as$: $0 = 30^2 + 2a(60) \\Rightarrow a = -7.",
+      "Use $v^2 = u^2 + 2as$: $0 = 30^2 + 2a(60) \\Rightarrow a = -7.5\\,\\text{m/s}^2$, magnitude $7.5\\,\\text{m/s}^2$.",
       "Momentum conservation: $v = (2\\times3)/6 = 1\\,\\text{m/s}$.",
       "Energy conservation: $mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{100} = 10\\,\\text{m/s}$.",
       "Step one gives the landing speed: $v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s."
@@ -187,13 +187,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowZh": [
       "電流 $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{5+1} = 2\\,\\text{A}$。",
       "並聯等效電阻 $= \\dfrac{6}{2} = 3\\,\\Omega$。",
-      "熱平衡：熱水放熱 = 冷水吸熱（$c$ 相同可消去）：$0.",
+      "熱平衡：熱水放熱 = 冷水吸熱（$c$ 相同可消去）：$0.2(80-T) = 0.3(T-30)$。",
       "第一步由歐姆定律求電流：$I = \\dfrac{V}{R} = \\dfrac{12}{2} = 6$ A。"
     ],
     "mustKnowEn": [
       "Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$.",
       "Parallel resistance $= 3\\,\\Omega$.",
-      "Heat balance: heat lost by hot = heat gained by cold (equal $c$ cancels): $0.",
+      "Heat balance: heat lost by hot = heat gained by cold (equal $c$ cancels): $0.2(80-T) = 0.3(T-30)$.",
       "Step one uses Ohm's law for the current: $I = \\frac{V}{R} = \\frac{12}{2} = 6$ A."
     ],
     "examTipZh": "DSE 作答「多步計算・電與熱」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -207,18 +207,18 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "phys_hell_wave_optics",
     "titleZh": "多步計算・波動光學放射",
     "titleEn": "Multi-step — Waves, Optics & Radioactivity",
-    "conceptZh": "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.",
-    "conceptEn": "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.",
+    "conceptZh": "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。",
+    "conceptEn": "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$.",
     "mustKnowZh": [
-      "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.",
+      "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。",
       "$12$ 天 $= 4$ 個半衰期，活度 $= 800 \\div 2^4 = 800 \\div 16 = 50\\,\\text{Bq}$。",
-      "臨界角 $\\theta_c$ 滿足 $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.",
+      "臨界角 $\\theta_c$ 滿足 $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$，故 $\\theta_c \\approx 41.8°$。",
       "第一步求波速：$v = f\\lambda = 4 \\times 3 = 12$ m/s。"
     ],
     "mustKnowEn": [
-      "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.",
+      "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$.",
       "$12$ days $= 4$ half-lives, so activity $= 800 \\div 2^4 = 50\\,\\text{Bq}$.",
-      "The critical angle $\\theta_c$ satisfies $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.",
+      "The critical angle $\\theta_c$ satisfies $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$, so $\\theta_c \\approx 41.8°$.",
       "Step one gives the wave speed: $v = f\\lambda = 4 \\times 3 = 12$ m/s."
     ],
     "examTipZh": "DSE 作答「多步計算・波動光學放射」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",

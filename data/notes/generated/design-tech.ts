@@ -167,7 +167,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Ergonomics studies the interaction of people with products and environments for comfort, safety and efficiency.",
-      "Anthropometric data (heights, reach, etc.",
+      "Anthropometric data (heights, reach, etc.) help designs fit the size range of most users.",
       "Spanning the 5th–95th percentile covers about 90% of users, fitting both small and large bodies.",
       "Usability means a product is easy to learn, efficient, error-resistant and satisfying to use."
     ],
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "結構與機械・計算",
     "titleEn": "Structures & mechanisms — calculation",
     "conceptZh": "齒輪比 = 從動 ÷ 主動 = 60/20 = 3。",
-    "conceptEn": "Gear ratio = driven ÷ driver = 60/20 = 3.",
+    "conceptEn": "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque). 【Trap】 “3× fa…",
     "mustKnowZh": [
       "齒輪比 = 從動 ÷ 主動 = 60/20 = 3。",
       "動滑輪以兩段繩共同承托負載，故施力 ≈ 負載 ÷ 2，理想 MA = 2；但「功」守恆，省一半力就要多拉一倍距離。",
@@ -216,7 +216,7 @@ export const notes: Record<string, StudyNote> = {
       "齒輪嚙合時，兩輪在單位時間內走過的齒數相同，故轉速與齒數成【反】比：$N_1 T_1 = N_2 T_2$。"
     ],
     "mustKnowEn": [
-      "Gear ratio = driven ÷ driver = 60/20 = 3.",
+      "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque). 【Trap】 “3× fa…",
       "A movable pulley has two rope sections sharing the load, so effort ≈ load ÷ 2 and ideal MA = 2; work is conserved, so halving the force doubles the distance pulled.",
       "A lever balances when the moments are equal: $F_1 d_1 = F_2 d_2$, so 20 × 2 = F × 5 and F = 40 ÷ 5 = 8 N.",
       "Meshing gears pass the same number of teeth per unit time, so speed varies INVERSELY with tooth count: $N_1 T_1 = N_2 T_2$."

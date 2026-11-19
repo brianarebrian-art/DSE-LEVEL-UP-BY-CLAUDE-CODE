@@ -261,7 +261,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "寫「排隊」時，寫出隊伍很長是現象；指出人願意排隊是因為相信秩序帶來公平，才進入原因。後者可以延伸，前者寫完就完。",
       "高階思辨貴在「分層」：把「知足」與「知不足」繫於不同對象——對物質名利知足，可免貪欲而得自在；對學問品德知不足，方能持續精進。",
-      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 論說思辨."
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 論說思辨. 題目已表明立場（「不是唯一」），故不可寫成全面否定效率。"
     ],
     "examTipZh": "定好題材後，追問自己三次「所以呢」。第一次多數仍是現象，第二次觸及原因，第三次才逼出可以支撐全篇的觀點。",
     "examTipEn": "定好題材後，追問自己三次「所以呢」。第一次多數仍是現象，第二次觸及原因，第三次才逼出可以支撐全篇的觀點。",
@@ -275,7 +275,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "命題寫作・記敘抒情",
     "titleEn": "Set-Topic Writing — Narrative & Reflective",
     "conceptZh": "本題屬中國語文卷二乙部（命題寫作，佔全卷 70%）之記敘抒情類。",
-    "conceptEn": "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情.",
+    "conceptEn": "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情. 本題的重心不在事件本身，而在「沒有說出口」四字。",
     "mustKnowZh": [
       "本題屬中國語文卷二乙部（命題寫作，佔全卷 70%）之記敘抒情類。",
       "本題判斷的是【手法與效果是否對得上】，不涉及任何文章的評分。",
@@ -283,8 +283,10 @@ export const notes: Record<string, StudyNote> = {
       "本題屬【以物繫情】的傳統題型。"
     ],
     "mustKnowEn": [
-      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情.",
-      "本題判斷的是【手法與效果是否對得上】，不涉及任何文章的評分。"
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情. 本題的重心不在事件本身，而在「沒有說出口」四字。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情. 此題屬「指定主旨、自訂題目」，難處有二：一是自訂的題目必須本身已承載主旨，不可隨便安一個名詞；二是「失去之後才看見」要求時間結構 —— 全篇至少要有「當時看不見」與「此刻看見了」兩個時間點，缺一則主旨落空。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情. 單字題目最考審題。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 記敘抒情. 限定首句或末句，是要求全篇與該句形成呼應關係。"
     ],
     "examTipZh": "DSE 作答「命題寫作・記敘抒情」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Set-Topic Writing — Narrative & Reflective”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -306,8 +308,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "「他很緊張」是結論；「他把准考證翻來覆去看了三次，才發現一直拿在手上」是細節。讀者看到後者，自然會得出前者。",
-      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 描寫.",
-      "本題判斷的是【手法與效果是否對得上】，不涉及任何文章的評分。"
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 描寫. 描寫類命題的判別點在於：能否讓讀者「看見」。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 描寫. 以身體局部為題，要求由小見大：全篇焦點必須始終落在手上，而透過手去寫人、寫生活、寫時間。"
     ],
     "examTipZh": "重讀初稿時圈出所有形容情緒的詞語，逐個嘗試改寫成一個動作或一件物件。改不到的保留，改到的多數會更好。",
     "examTipEn": "重讀初稿時圈出所有形容情緒的詞語，逐個嘗試改寫成一個動作或一件物件。改不到的保留，改到的多數會更好。",
@@ -321,14 +323,16 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "命題寫作・綜合",
     "titleEn": "Set-Topic Writing — Mixed Modes",
     "conceptZh": "本題屬中國語文卷二乙部（命題寫作，佔全卷 70%）之綜合類。",
-    "conceptEn": "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合.",
+    "conceptEn": "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合. 兩篇短文，第二篇必須承接第一篇。",
     "mustKnowZh": [
       "本題屬中國語文卷二乙部（命題寫作，佔全卷 70%）之綜合類。",
       "本題判斷的是【手法與效果是否對得上】，不涉及任何文章的評分。"
     ],
     "mustKnowEn": [
-      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合.",
-      "本題判斷的是【手法與效果是否對得上】，不涉及任何文章的評分。"
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合. 兩篇短文，第二篇必須承接第一篇。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合. 「開始之前」把焦點放在事情發生前的那一段時間 —— 準備、等待、猶豫、預想。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合. 三篇同題而不同文體，考的是文體意識。",
+      "Chinese Language Paper 2 Part B (essay writing, 70% of the paper) — 綜合. 「文體不拘」不等於「文體不明」。"
     ],
     "examTipZh": "DSE 作答「命題寫作・綜合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Set-Topic Writing — Mixed Modes”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -342,7 +346,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "實用寫作",
     "titleEn": "Practical Writing",
     "conceptZh": "本題屬中國語文卷二甲部（實用寫作，佔全卷 30%）之建議書類。",
-    "conceptEn": "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 建議書.",
+    "conceptEn": "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 建議書. 甲部的評分重心不在文采，而在【是否真的用了材料】。",
     "mustKnowZh": [
       "本題屬中國語文卷二甲部（實用寫作，佔全卷 30%）之建議書類。",
       "本題屬中國語文卷二甲部（實用寫作，佔全卷 30%）之演講辭類。",
@@ -350,10 +354,10 @@ export const notes: Record<string, StudyNote> = {
       "本題屬中國語文卷二甲部（實用寫作，佔全卷 30%）之投稿類。"
     ],
     "mustKnowEn": [
-      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 建議書.",
-      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 演講辭.",
-      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 書信.",
-      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 投稿."
+      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 建議書. 甲部的評分重心不在文采，而在【是否真的用了材料】。",
+      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 演講辭. 演講辭的判別點在於【聽感】—— 它是要說出來的，不是給人讀的。",
+      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 書信. 本題最難的地方，在材料一第三句 —— 對方明確表示「唔好叫我加油」。",
+      "Chinese Language Paper 2 Part A (practical writing, 30% of the paper) — 投稿. 回應類投稿最容易寫成全盤反駁。"
     ],
     "examTipZh": "DSE 作答「實用寫作」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Practical Writing”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

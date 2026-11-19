@@ -8,7 +8,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "音樂元素",
     "titleEn": "Elements of Music",
     "conceptZh": "力度指聲音的強弱（如 p 弱、f 強），與音高、速度、音色不同。",
-    "conceptEn": "Dynamics is loudness (e.",
+    "conceptEn": "Dynamics is loudness (e.g.",
     "mustKnowZh": [
       "力度指聲音的強弱（如 p 弱、f 強），與音高、速度、音色不同。",
       "Allegro 指快速；Adagio 慢、Largo 極慢、Andante 行板（中速）。",
@@ -16,7 +16,7 @@ export const notes: Record<string, StudyNote> = {
       "單音音樂只有一條旋律線；複音（polyphony）多線並行，主音（homophony）為旋律加伴奏。"
     ],
     "mustKnowEn": [
-      "Dynamics is loudness (e.",
+      "Dynamics is loudness (e.g.",
       "Allegro means fast; Adagio is slow, Largo very slow, Andante a walking pace.",
       "Timbre is tone colour — it makes a violin and flute on the same pitch sound different.",
       "Monophony is one melodic line; polyphony has several independent lines, homophony melody plus accompaniment."
@@ -68,7 +68,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Binary form is AB; ternary form is ABA.",
       "Ternary form is ABA — the opening returns after a contrasting middle.",
-      "A rondo brings back theme A repeatedly between contrasting episodes, e.",
+      "A rondo brings back theme A repeatedly between contrasting episodes, e.g.",
       "Sonata form has exposition (themes stated), development (transformed) and recapitulation (themes return)."
     ],
     "examTipZh": "DSE 作答「曲式與結構」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -217,7 +217,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "D→E→F spans 3 letter names = a 3rd; D to F is 3 semitones (D–D♯–E–F), so a minor 3rd.",
-      "Three sharps is A major; its relative minor lies a minor 3rd below, i.",
+      "Three sharps is A major; its relative minor lies a minor 3rd below, i.e.",
       "An interval is defined by BOTH the number of letter names it spans and the number of semitones.",
       "Each step clockwise round the circle of fifths adds one sharp: C → G → D → A → E → B → F♯ → C♯."
     ],

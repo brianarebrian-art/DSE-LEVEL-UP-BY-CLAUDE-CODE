@@ -213,13 +213,13 @@ export const notes: Record<string, StudyNote> = {
       "20×4 + 30×4 + 10×9 = 80 + 120 + 90 = 290 kcal。",
       "維他命 C 與 B 群為水溶性，既溶於煮食水又怕熱，長時間水煮流失最多；A、D、E、K 為脂溶性，相對耐存。",
       "能量值 = 碳水化合物 20 × 4 ＋ 蛋白質 5 × 4 ＋ 脂肪 10 × 9 = 80 ＋ 20 ＋ 90 = 190 千卡。",
-      "脂肪提供的能量 = 10 × 9 = 90 千卡，佔比 = 90 ÷ 400 × 100% = 22."
+      "脂肪提供的能量 = 10 × 9 = 90 千卡，佔比 = 90 ÷ 400 × 100% = 22.5%。"
     ],
     "mustKnowEn": [
       "20×4 + 30×4 + 10×9 = 80 + 120 + 90 = 290 kcal.",
       "Vitamins C and B are water-soluble — they leach into cooking water and degrade with heat, so long boiling loses the most; A, D, E, K are fat-soluble and more stable.",
       "Energy = carbohydrate 20 × 4 + protein 5 × 4 + fat 10 × 9 = 80 + 20 + 90 = 190 kcal.",
-      "Energy from fat = 10 × 9 = 90 kcal, so the share is 90 ÷ 400 × 100% = 22."
+      "Energy from fat = 10 × 9 = 90 kcal, so the share is 90 ÷ 400 × 100% = 22.5%."
     ],
     "examTipZh": "DSE 作答「營養計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Nutrition — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

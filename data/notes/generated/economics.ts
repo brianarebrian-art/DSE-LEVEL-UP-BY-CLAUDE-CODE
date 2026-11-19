@@ -83,12 +83,12 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowZh": [
       "香煙需求彈性低，稅項大部分由消費者承擔；某項有大量替代品的商品，需求彈性高，稅項則主要由生產者承擔。",
       "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{20}{10} = 2$。",
-      "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{10}{20} = 0."
+      "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{10}{20} = 0.5$。"
     ],
     "mustKnowEn": [
       "香煙需求彈性低，稅項大部分由消費者承擔；某項有大量替代品的商品，需求彈性高，稅項則主要由生產者承擔。",
       "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{20}{10} = 2$.",
-      "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{10}{20} = 0."
+      "$|PED| = \\frac{\\%\\Delta Q}{\\%\\Delta P} = \\frac{10}{20} = 0.5$."
     ],
     "examTipZh": "答題先比較雙方彈性，再推出承擔比例，最後才在圖上標示。先比較後推論，論述才有依據。",
     "examTipEn": "答題先比較雙方彈性，再推出承擔比例，最後才在圖上標示。先比較後推論，論述才有依據。",
@@ -113,7 +113,7 @@ export const notes: Record<string, StudyNote> = {
       "Profit $= TR - TC = 10\\times50 - 350 = 150$.",
       "$AC = \\frac{TC}{Q} = \\frac{600}{50} = 12$.",
       "In the short run a fixed input limits the variable input’s extra output, so marginal product eventually falls.",
-      "A fixed cost (e."
+      "A fixed cost (e.g."
     ],
     "examTipZh": "DSE 作答「廠商與生產」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Firms & Production”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -172,19 +172,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "macroeconomics",
     "titleZh": "宏觀經濟",
     "titleEn": "Macroeconomics",
-    "conceptZh": "乘數 $= \\frac{1}{1-MPC} = \\frac{1}{1-0.",
-    "conceptEn": "Multiplier $= \\frac{1}{1-MPC} = \\frac{1}{1-0.",
+    "conceptZh": "乘數 $= \\frac{1}{1-MPC} = \\frac{1}{1-0.8} = 5$。",
+    "conceptEn": "Multiplier $= \\frac{1}{1-MPC} = \\frac{1}{1-0.8} = 5$.",
     "mustKnowZh": [
-      "乘數 $= \\frac{1}{1-MPC} = \\frac{1}{1-0.",
+      "乘數 $= \\frac{1}{1-MPC} = \\frac{1}{1-0.8} = 5$。",
+      "乘數 $= \\frac{1}{1-MPC} = \\frac{1}{1-0.6} = 2.5$。",
       "實質 GDP 以固定基期價格計算，剔除通脹，反映真正產量變化。",
-      "需求拉動通脹源於總需求過旺，「太多錢追逐太少貨品」。",
-      "成本推動通脹源於生產成本上升（如油價、工資），推高總體物價。"
+      "需求拉動通脹源於總需求過旺，「太多錢追逐太少貨品」。"
     ],
     "mustKnowEn": [
-      "Multiplier $= \\frac{1}{1-MPC} = \\frac{1}{1-0.",
+      "Multiplier $= \\frac{1}{1-MPC} = \\frac{1}{1-0.8} = 5$.",
+      "Multiplier $= \\frac{1}{1-MPC} = \\frac{1}{1-0.6} = 2.5$.",
       "Real GDP uses base-year prices to strip out inflation, showing true output change.",
-      "Demand-pull inflation comes from excess aggregate demand — too much spending chasing too few goods.",
-      "Cost-push inflation stems from higher production costs (oil, wages) raising the price level."
+      "Demand-pull inflation comes from excess aggregate demand — too much spending chasing too few goods."
     ],
     "examTipZh": "DSE 作答「宏觀經濟」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Macroeconomics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -222,16 +222,16 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "econ_micro_calc",
     "titleZh": "微觀計算（高階）",
     "titleEn": "Microeconomics — calculation",
-    "conceptZh": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.",
-    "conceptEn": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.",
+    "conceptZh": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。",
+    "conceptEn": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%.",
     "mustKnowZh": [
-      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.",
+      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。",
       "短期停產法則：當 P < AVC，繼續生產的虧損比停產（只蝕固定成本）更大，故應停產。",
       "%ΔP = (60 − 50) ÷ 50 = +20%；%ΔQ = (85 − 100) ÷ 100 = −15%。",
       "上限 \\$30 低於均衡 \\$50，屬有約束力的價格上限。"
     ],
     "mustKnowEn": [
-      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.",
+      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%.",
       "Short-run shut-down rule: shut down when P < AVC, because the loss from producing then exceeds the fixed-cost-only loss from stopping.",
       "%ΔP = (60 − 50) ÷ 50 = +20%; %ΔQ = (85 − 100) ÷ 100 = −15%.",
       "The \\$30 ceiling is below the \\$50 equilibrium, so it binds."
@@ -247,18 +247,18 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "econ_macro_calc",
     "titleZh": "宏觀計算（高階）",
     "titleEn": "Macroeconomics — calculation",
-    "conceptZh": "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.",
-    "conceptEn": "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.",
+    "conceptZh": "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5。",
+    "conceptEn": "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M. 【Trap】 \\$50M ignores the multiplier; \\$40M = 50×0.8 (only the first round of spending);…",
     "mustKnowZh": [
-      "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.",
+      "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5。",
       "實質 GDP = 名義 GDP ÷ 平減指數 × 100 = 660 ÷ 110 × 100 = \\$600M。",
       "實質工資變動 ≈ 名義工資變動 − 物價變動 = 5% − 8% = −3%，即購買力下降約 3%。",
       "支出法：GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$ 億元。"
     ],
     "mustKnowEn": [
-      "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.",
+      "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M. 【Trap】 \\$50M ignores the multiplier; \\$40M = 50×0.8 (only the first round of spending);…",
       "Real GDP = nominal ÷ deflator × 100 = 660 ÷ 110 × 100 = \\$600M.",
-      "Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.",
+      "Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.e.",
       "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$."
     ],
     "examTipZh": "DSE 作答「宏觀計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -276,7 +276,7 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "市場失靈指市場自行運作無法達致資源有效配置，主要成因包括外部性、共用品、壟斷力量與資訊不對稱。四者的機制各不相同。",
     "mustKnowZh": [
       "工廠排污屬外部成本；街燈屬共用品；獨市經營屬壟斷力量；二手車買賣中賣方比買方更清楚車況，屬資訊不對稱。",
-      "機會成本：造 1 匹布——甲 = 12/6 = 2 桶酒，乙 = 4/1 = 4 桶酒 ⇒ 甲布的機會成本較低，甲有比較優勢；造 1 桶酒——甲 = 6/12 = 0.",
+      "機會成本：造 1 匹布——甲 = 12/6 = 2 桶酒，乙 = 4/1 = 4 桶酒 ⇒ 甲布的機會成本較低，甲有比較優勢；造 1 桶酒——甲 = 6/12 = 0.5 匹布，乙 = 1/4 = 0.25 匹布 ⇒ 乙酒的機會成本較低。",
       "稅項歸宿取決於相對彈性：彈性愈低（愈難轉移行為）的一方承擔愈重。"
     ],
     "mustKnowEn": [
@@ -304,7 +304,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "把農地逐步改為工業用地，最初調用的是產出最低的農地，其後被迫調用肥沃農地，每多一單位工業品放棄的糧食愈來愈多。",
-      "CS = ½ × Q × (Pmax − P) = 90.",
+      "CS = ½ × Q × (Pmax − P) = 90. Trap: 180 drops the ½ (treats it as a rectangle).",
       "Equilibrium requires $Q_d = Q_s$: 100 − 2P = −20 + 2P, so 120 = 4P and $P = 20$."
     ],
     "examTipZh": "見到曲線形狀題，先答形狀反映甚麼，再答為何如此。只描述「向外凸」而不解釋資源適用性，答案缺了因由。",

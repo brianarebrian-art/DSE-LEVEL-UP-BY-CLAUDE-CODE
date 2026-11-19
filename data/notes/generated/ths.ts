@@ -118,7 +118,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "A buffet lets guests help themselves to many dishes, emphasising variety and replenishment.",
       "Food safety focuses on preventing contamination, cross-contamination and temperature abuse.",
-      "HACCP monitors critical points (e.",
+      "HACCP monitors critical points (e.g.",
       "À la carte lets guests order dishes individually, each priced on its own."
     ],
     "examTipZh": "DSE 作答「餐飲服務」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -218,8 +218,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%.",
       "Occupancy rate = rooms sold ÷ rooms available for sale × 100% = 120 ÷ 200 × 100% = 60%.",
-      "ADR = room revenue ÷ rooms sold = \\$70,000 ÷ 100 = \\$700.",
-      "ADR = room revenue ÷ rooms sold = \\$110,000 ÷ 100 = \\$1,100."
+      "ADR = room revenue ÷ rooms sold = \\$70,000 ÷ 100 = \\$700. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a differe…",
+      "ADR = room revenue ÷ rooms sold = \\$110,000 ÷ 100 = \\$1,100. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a diff…"
     ],
     "examTipZh": "DSE 作答「酒店營運計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Hotel operations — metrics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

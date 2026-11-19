@@ -236,13 +236,13 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling a…",
     "mustKnowZh": [
       "城市熱島是多因疊加：深色硬地（混凝土、瀝青）吸熱儲熱強、夜間緩慢釋放；綠地水體少，蒸散冷卻不足；加上交通、工業、冷氣等大量人為廢熱，使市區明顯較郊區溫暖。",
+      "指數由 6.2 降至 4.1 只顯示【結果】，並未提供任何關於成因的資訊。",
       "判讀氣候圖要同時看兩條線索：溫度水平與雨量的【季節分配】。",
-      "污染屬於典型的負外部性：排污者承擔的私人成本低於社會實際承受的成本，因此排污量高於社會最適水平。",
-      "總排放 = 人均排放 × 人口。"
+      "污染屬於典型的負外部性：排污者承擔的私人成本低於社會實際承受的成本，因此排污量高於社會最適水平。"
     ],
     "mustKnowEn": [
       "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling a…",
-      "A fall from 6.",
+      "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause.",
       "Reading a climate graph means using two clues together: the temperature level and the SEASONAL DISTRIBUTION of rainfall.",
       "Pollution is a textbook negative externality: the private cost borne by the polluter is below the cost actually borne by society, so more pollution is produced than is socially op…"
     ],

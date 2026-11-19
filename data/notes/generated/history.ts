@@ -42,7 +42,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Germany’s September 1939 invasion of Poland brought British and French declarations of war.",
-      "Anglo-French concessions (e.",
+      "Anglo-French concessions (e.g.",
       "At Munich Britain and France let Germany take the Sudetenland for \"peace\" — classic appeasement.",
       "After Pearl Harbor in 1941 the USA declared war on Japan and Germany."
     ],

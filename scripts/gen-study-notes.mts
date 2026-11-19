@@ -71,8 +71,21 @@ function firstSentence(text: string, max = 180): string {
     .replace(/\s+/g, ' ')
     .trim()
   if (!t) return ''
-  const cut = t.split(/(?<=[。．.!?？])\s*/)[0] ?? t
-  return cut.length > max ? `${cut.slice(0, max - 1)}…` : cut
+  // 優先中文句號／問嘆號。英文句點只喺「. + 空白」先切，避免 37.5%／0.5／LaTeX 被腰斬。
+  const zh = t.match(/^[\s\S]*?[。！？]/)
+  if (zh) {
+    const cut = zh[0].trim()
+    return cut.length > max ? `${cut.slice(0, max - 1)}…` : cut
+  }
+  const en = t.match(/^[\s\S]*?\.(?=\s|$)/)
+  if (en) {
+    const cut = en[0].trim()
+    // 拒絕「數字.」結尾（小數被截）
+    if (!/\d\.$/.test(cut)) {
+      return cut.length > max ? `${cut.slice(0, max - 1)}…` : cut
+    }
+  }
+  return t.length > max ? `${t.slice(0, max - 1)}…` : t
 }
 
 function uniqueKeep(items: string[], limit: number): string[] {

@@ -61,7 +61,7 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "An IP address locates and addresses a device on a network.",
     "mustKnowZh": [
       "IP 位址用以在網絡上定位與尋址裝置。",
-      "DNS 把人類可讀的域名（如 example.",
+      "DNS 把人類可讀的域名（如 example.com）解析成 IP 位址。",
       "LAN 覆蓋小範圍（如一棟樓），WAN 跨城市或國家。",
       "HTTPS 以 TLS 加密通訊，防止竊聽與竄改。"
     ],
@@ -183,7 +183,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "資料表示計算",
     "titleEn": "Data representation — calculation",
     "conceptZh": "+20 = 00010100。",
-    "conceptEn": "+20 = 00010100.",
+    "conceptEn": "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.) 【Trap】 11101011 omits t…",
     "mustKnowZh": [
       "+20 = 00010100。",
       "像素數 = 1024 × 768 = 786,432。",
@@ -191,9 +191,9 @@ export const notes: Record<string, StudyNote> = {
       "以權值分解：26 = 16 + 8 + 2，對應的權值位置為 16、8、2，其餘為 0，寫成 8 位元即 00011010。"
     ],
     "mustKnowEn": [
-      "+20 = 00010100.",
-      "Pixels = 1024 × 768 = 786,432.",
-      "Reading from the right, the place values are 1, 2, 4 and 8.",
+      "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.) 【Trap】 11101011 omits t…",
+      "Pixels = 1024 × 768 = 786,432. 24 bits per pixel = 3 bytes. Size = 786,432 × 3 = 2,359,296 bytes = 2,359,296 ÷ 1,048,576 ≈ 2.25 MiB. 【Trap】 786,432 uses 1 byte/pixel (drops ×3); 1…",
+      "Reading from the right, the place values are 1, 2, 4 and 8. The digits of 1011 are 1, 1, 0 and 1, so the value is 8 + 0 + 2 + 1 = 11. The answer 13 swaps the place values 2 and 4;…",
       "Decompose by place value: 26 = 16 + 8 + 2, so the 16, 8 and 2 positions hold a 1 and the rest hold 0, giving 00011010 in eight bits."
     ],
     "examTipZh": "DSE 作答「資料表示計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -218,8 +218,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Expand: A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B (A·Ā = 0 by complement).",
       "Each comparison halves the search range, so the worst case ≈ ⌈log₂ 1000⌉.",
-      "AND outputs 1 only when every input is 1; the other three combinations all give 0.",
-      "Following the order of operations, evaluate NOT first: NOT 1 = 0."
+      "AND outputs 1 only when every input is 1; the other three combinations all give 0. The description \"at least one input is 1\" belongs to OR; \"the two inputs differ\" belongs to XOR …",
+      "Following the order of operations, evaluate NOT first: NOT 1 = 0. Then the OR: 0 OR 0 = 0, so the answer is 0. Reading the expression as NOT (1 OR 0) would give 1 OR 0 = 1 and the…"
     ],
     "examTipZh": "DSE 作答「邏輯與算法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Logic & algorithms”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

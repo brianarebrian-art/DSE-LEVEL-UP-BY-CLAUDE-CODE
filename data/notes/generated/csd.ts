@@ -167,7 +167,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Climate change, pandemics and terrorism cross borders and need international cooperation to address.",
-      "Emissions and warming affect all, so coordinated cuts (e.",
+      "Emissions and warming affect all, so coordinated cuts (e.g.",
       "The UN coordinates cooperation on peace, security, development and humanitarian issues, without overriding sovereignty.",
       "Differing development levels, interests and positions make burden-sharing and coordination difficult."
     ],

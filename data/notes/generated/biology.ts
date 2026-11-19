@@ -43,8 +43,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "A gene is a segment of DNA carrying hereditary information.",
       "AA × aa: each offspring gets one A and one a, so all are Aa.",
-      "Aa × Aa → 1 AA : 2 Aa : 1 aa, i.",
-      "Aa × aa → 1 Aa : 1 aa, i."
+      "Aa × Aa → 1 AA : 2 Aa : 1 aa, i.e.",
+      "Aa × aa → 1 Aa : 1 aa, i.e."
     ],
     "examTipZh": "DSE 作答「遺傳」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Genetics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -219,7 +219,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Mother Iᴬ Iᴮ × father ii.",
       "A son’s X comes from the mother.",
-      "Tall × tall yielding 1/4 dwarf (recessive) means both parents carry a hidden recessive allele, i.",
+      "Tall × tall yielding 1/4 dwarf (recessive) means both parents carry a hidden recessive allele, i.e.",
       "The affected child must be aa, receiving one recessive allele from each parent, so each parent carries at least one a."
     ],
     "examTipZh": "DSE 作答「遺傳推理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -258,16 +258,16 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "bio_data_ecology",
     "titleZh": "數據與生態",
     "titleEn": "Data & ecology",
-    "conceptZh": "由生產者到次級消費者要經「兩次」10% 傳遞：10 000 × 0.",
-    "conceptEn": "From producer to secondary consumer is TWO 10% transfers: 10 000 × 0.",
+    "conceptZh": "由生產者到次級消費者要經「兩次」10% 傳遞：10 000 × 0.1 × 0.1 = 100 kJ。",
+    "conceptEn": "From producer to secondary consumer is TWO 10% transfers: 10 000 × 0.1 × 0.1 = 100 kJ.",
     "mustKnowZh": [
-      "由生產者到次級消費者要經「兩次」10% 傳遞：10 000 × 0.",
+      "由生產者到次級消費者要經「兩次」10% 傳遞：10 000 × 0.1 × 0.1 = 100 kJ。",
       "上升段表示光是限制因素；到平台期，再加光也不升，代表光已充足，瓶頸轉為另一因素（CO₂ 或溫度）。",
       "種群密度 = 個體數 ÷ 面積 = 60 ÷ 20 = 3 株／平方米。",
       "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{40 \\times 40}{8} = 200$ 條。"
     ],
     "mustKnowEn": [
-      "From producer to secondary consumer is TWO 10% transfers: 10 000 × 0.",
+      "From producer to secondary consumer is TWO 10% transfers: 10 000 × 0.1 × 0.1 = 100 kJ.",
       "The rising part shows light limiting; at the plateau, more light gives no increase, so light is now sufficient and the bottleneck shifts to another factor (CO₂ or temperature).",
       "Population density = number of individuals ÷ area = 60 ÷ 20 = 3 per m².",
       "Mark-and-recapture assumes marked individuals mix evenly, so the marked proportion in the second sample equals the marked proportion of the population: $\\frac{R}{C} = \\frac{M}{N}$…"

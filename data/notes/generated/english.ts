@@ -57,12 +57,12 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "片語動詞多屬口語層次，正式文體通常改用單字動詞。兩者意思相近，差別在於場合，而非哪一個較「好」。",
     "mustKnowZh": [
       "put off / postpone、find out / discover、look into / investigate、cut down on / reduce。左邊適合對話，右邊適合正式書信。",
-      "\"Meticulous\" means showing great attention to detail, i.",
+      "\"Meticulous\" means showing great attention to detail, i.e.",
       "Evidence leaving no doubt is \"conclusive\" (decisive)."
     ],
     "mustKnowEn": [
       "put off / postpone、find out / discover、look into / investigate、cut down on / reduce。左邊適合對話，右邊適合正式書信。",
-      "\"Meticulous\" means showing great attention to detail, i.",
+      "\"Meticulous\" means showing great attention to detail, i.e.",
       "Evidence leaving no doubt is \"conclusive\" (decisive)."
     ],
     "examTipZh": "先按內容寫完初稿，再挑三至五個關鍵動詞按場合替換。全篇硬換反而生硬，關鍵位置換掉已足夠。",

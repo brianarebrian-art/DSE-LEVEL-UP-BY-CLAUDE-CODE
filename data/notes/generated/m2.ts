@@ -158,16 +158,16 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "binomial_theorem",
     "titleZh": "二項式定理",
     "titleEn": "Binomial Theorem",
-    "conceptZh": "$\\binom{5}{2}=\\frac{5!",
-    "conceptEn": "$\\binom{5}{2}=\\frac{5!",
+    "conceptZh": "$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$。",
+    "conceptEn": "$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$.",
     "mustKnowZh": [
-      "$\\binom{5}{2}=\\frac{5!",
+      "$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$。",
       "$x^2$ 項係數為 $\\binom{5}{2}=10$。",
       "$x^3$ 項係數為 $\\binom{6}{3}=\\frac{6\\times5\\times4}{3\\times2}=20$。",
       "$x^2$ 項 $=\\binom{4}{2}\\,2^{2}x^{2}=6\\times4\\,x^2=24x^2$，故係數為 $24$。"
     ],
     "mustKnowEn": [
-      "$\\binom{5}{2}=\\frac{5!",
+      "$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$.",
       "The coefficient of $x^2$ is $\\binom{5}{2}=10$.",
       "The coefficient of $x^3$ is $\\binom{6}{3}=\\frac{6\\times5\\times4}{3\\times2}=20$.",
       "The $x^2$ term is $\\binom{4}{2}\\,2^{2}x^{2}=6\\times4\\,x^2=24x^2$, so the coefficient is $24$."

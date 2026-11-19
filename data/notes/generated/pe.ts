@@ -17,7 +17,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The quadriceps lie at the front of the thigh and extend the knee; the hamstrings flex it.",
-      "The agonist contracts while the antagonist relaxes and controls; e.",
+      "The agonist contracts while the antagonist relaxes and controls; e.g.",
       "Knee and elbow are hinge joints (flexion-extension); shoulder and hip are ball-and-socket with wider movement.",
       "Tendons join muscle to bone, transmitting force; ligaments join bone to bone."
     ],
@@ -211,15 +211,15 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Max HR = 220 − 16 = 204 bpm.",
     "mustKnowZh": [
       "最大心率 = 220 − 16 = 204 bpm。",
-      "BMI = 60 ÷ (1.",
-      "心輸出量 = 心率 × 每搏輸出量 = 70 × 70 = 4900 mL/min = 4.",
-      "BMI = 體重（公斤）÷ 身高（米）的平方 = 40."
+      "BMI = 60 ÷ (1.6)² = 60 ÷ 2.56 ≈ 23.4 kg/m²。",
+      "心輸出量 = 心率 × 每搏輸出量 = 70 × 70 = 4900 mL/min = 4.9 L/min。",
+      "BMI = 體重（公斤）÷ 身高（米）的平方 = 40.5 ÷ 1.5² = 40.5 ÷ 2.25 = 18。"
     ],
     "mustKnowEn": [
       "Max HR = 220 − 16 = 204 bpm.",
-      "BMI = 60 ÷ (1.",
-      "Cardiac output = heart rate × stroke volume = 70 × 70 = 4900 mL/min = 4.",
-      "BMI = mass in kg ÷ (height in m)² = 40."
+      "BMI = 60 ÷ (1.6)² = 60 ÷ 2.56 ≈ 23.4 kg/m².",
+      "Cardiac output = heart rate × stroke volume = 70 × 70 = 4900 mL/min = 4.9 L/min.",
+      "BMI = mass in kg ÷ (height in m)² = 40.5 ÷ 1.5² = 40.5 ÷ 2.25 = 18. Height must be in metres, which is where marks are most often lost. BMI compares mass with height only and does…"
     ],
     "examTipZh": "DSE 作答「運動生理計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Exercise physiology — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

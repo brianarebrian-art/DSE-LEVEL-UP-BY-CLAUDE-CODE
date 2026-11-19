@@ -61,13 +61,13 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Gross profit $=1000-600=400$; margin $=\\frac{400}{1000}\\times100\\%=40\\%$.",
     "mustKnowZh": [
       "毛利 $=1000-600=400$；毛利率 $=\\frac{400}{1000}\\times100\\%=40\\%$。",
-      "毛利 $=800-500=300$；毛利率 $=\\frac{300}{800}\\times100\\%=37.",
+      "毛利 $=800-500=300$；毛利率 $=\\frac{300}{800}\\times100\\%=37.5\\%$。",
       "淨利率 $=\\frac{150}{1000}\\times100\\%=15\\%$。",
       "流動比率 $=\\frac{8000}{4000}=2:1$。"
     ],
     "mustKnowEn": [
       "Gross profit $=1000-600=400$; margin $=\\frac{400}{1000}\\times100\\%=40\\%$.",
-      "Gross profit $=800-500=300$; margin $=\\frac{300}{800}\\times100\\%=37.",
+      "Gross profit $=800-500=300$; margin $=\\frac{300}{800}\\times100\\%=37.5\\%$.",
       "Net margin $=\\frac{150}{1000}\\times100\\%=15\\%$.",
       "Current ratio $=\\frac{8000}{4000}=2:1$."
     ],
@@ -132,19 +132,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "bafs_ratio_analysis",
     "titleZh": "比率分析（高階）",
     "titleEn": "Ratio analysis",
-    "conceptZh": "流動比率 = 流動資產 ÷ 流動負債 = 600,000 ÷ 240,000 = 2.",
-    "conceptEn": "Current ratio = current assets ÷ current liabilities = 600,000 ÷ 240,000 = 2.",
+    "conceptZh": "流動比率 = 流動資產 ÷ 流動負債 = 600,000 ÷ 240,000 = 2.5，即 2.5 : 1。",
+    "conceptEn": "Current ratio = current assets ÷ current liabilities = 600,000 ÷ 240,000 = 2.5, i.e.",
     "mustKnowZh": [
-      "流動比率 = 流動資產 ÷ 流動負債 = 600,000 ÷ 240,000 = 2.",
+      "流動比率 = 流動資產 ÷ 流動負債 = 600,000 ÷ 240,000 = 2.5，即 2.5 : 1。",
       "毛利 = 800,000 − 600,000 = 200,000。",
       "營運資金 = 流動資產 − 流動負債 = 600,000 − 240,000 = \\$360,000。",
       "流動比率 = 流動資產 ÷ 流動負債 = 40,000 ÷ 20,000 = 2，即 2 : 1。"
     ],
     "mustKnowEn": [
-      "Current ratio = current assets ÷ current liabilities = 600,000 ÷ 240,000 = 2.",
-      "Gross profit = 800,000 − 600,000 = 200,000.",
-      "Working capital = current assets − current liabilities = 600,000 − 240,000 = \\$360,000.",
-      "Current ratio = current assets ÷ current liabilities = \\$30,000 ÷ \\$20,000 = 1."
+      "Current ratio = current assets ÷ current liabilities = 600,000 ÷ 240,000 = 2.5, i.e.",
+      "Gross profit = 800,000 − 600,000 = 200,000. Margin (on sales) = 200,000 ÷ 800,000 = 25%. 【Trap】 33.3% is the MARK-UP (on cost: 200,000 ÷ 600,000) — the classic margin-vs-markup co…",
+      "Working capital = current assets − current liabilities = 600,000 − 240,000 = \\$360,000. 【Trap】 840,000 adds them; 2.5:1 is the current ratio (not an amount); 240,000 just copies c…",
+      "Current ratio = current assets ÷ current liabilities = \\$30,000 ÷ \\$20,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Tra…"
     ],
     "examTipZh": "DSE 作答「比率分析（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Ratio analysis”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -158,18 +158,18 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "成本・定價・回本",
     "titleEn": "Costing, pricing & payback",
     "conceptZh": "單位貢獻 = 售價 − 單位變動成本 = 20 − 12 = \\$8。",
-    "conceptEn": "Unit contribution = price − unit variable cost = 20 − 12 = \\$8.",
+    "conceptEn": "Unit contribution = price − unit variable cost = 20 − 12 = \\$8. Break-even units = fixed costs ÷ contribution = 60,000 ÷ 8 = 7,500. 【Trap】 3,000 = 60,000 ÷ 20 (uses price, not con…",
     "mustKnowZh": [
       "單位貢獻 = 售價 − 單位變動成本 = 20 − 12 = \\$8。",
       "回本期 = 投資額 ÷ 每年淨現金流入 = 100,000 ÷ 25,000 = 4 年。",
-      "成本加成 25%：售價 = 成本 × (1 + 25%) = 80 × 1.",
+      "成本加成 25%：售價 = 成本 × (1 + 25%) = 80 × 1.25 = \\$100。",
       "單位邊際貢獻 = 售價 − 單位變動成本 = 50 − 20 = 30 元，總邊際貢獻 = 30 × 2,000 = 60,000 元。"
     ],
     "mustKnowEn": [
-      "Unit contribution = price − unit variable cost = 20 − 12 = \\$8.",
+      "Unit contribution = price − unit variable cost = 20 − 12 = \\$8. Break-even units = fixed costs ÷ contribution = 60,000 ÷ 8 = 7,500. 【Trap】 3,000 = 60,000 ÷ 20 (uses price, not con…",
       "Payback = investment ÷ annual net cash inflow = 100,000 ÷ 25,000 = 4 years.",
-      "25% mark-up on cost: price = cost × (1 + 25%) = 80 × 1.",
-      "Unit contribution margin = price − variable cost = \\$50 − \\$20 = \\$30, so the total is \\$30 × 2,000 = \\$60,000."
+      "25% mark-up on cost: price = cost × (1 + 25%) = 80 × 1.25 = \\$100. 【Trap】 \\$106.67 = 80 ÷ (1 − 25%), which is a 25% MARGIN on sales — margin and mark-up use different bases, the c…",
+      "Unit contribution margin = price − variable cost = \\$50 − \\$20 = \\$30, so the total is \\$30 × 2,000 = \\$60,000. Contribution first covers fixed costs; only the remainder is profit…"
     ],
     "examTipZh": "DSE 作答「成本・定價・回本」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Costing, pricing & payback”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -192,9 +192,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Straight-line depreciation = (cost − residual) ÷ life = (100,000 − 10,000) ÷ 5 = \\$18,000 per year.",
-      "Year 1 depreciation = 100,000 × 20% = 20,000, leaving a net book value of 80,000.",
+      "Year 1 depreciation = 100,000 × 20% = 20,000, leaving a net book value of 80,000. Year 2 = 80,000 × 20% = \\$16,000 (the rate applies to the REDUCING balance, not the original cost…",
       "Straight-line depreciation = (cost − residual) ÷ useful life.",
-      "The annual charge is (\\$60,000 − \\$6,000) ÷ 5 = \\$10,800, so accumulated depreciation after 2 years is \\$10,800 × 2 = \\$21,600."
+      "The annual charge is (\\$60,000 − \\$6,000) ÷ 5 = \\$10,800, so accumulated depreciation after 2 years is \\$10,800 × 2 = \\$21,600. Net book value = cost − accumulated depreciation = …"
     ],
     "examTipZh": "DSE 作答「折舊計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Depreciation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "財務報表",
     "titleEn": "Financial Statements",
     "conceptZh": "毛利 = 銷貨 − 銷貨成本 = 100 − 60 = 40 元。",
-    "conceptEn": "Gross profit = sales − COGS = 40.",
+    "conceptEn": "Gross profit = sales − COGS = 40. Trap: 160 adds instead.",
     "mustKnowZh": [
       "毛利 = 銷貨 − 銷貨成本 = 100 − 60 = 40 元。",
       "毛利 = 銷貨 − 銷貨成本 = 100 − 120 = -20 元。",
@@ -216,9 +216,9 @@ export const notes: Record<string, StudyNote> = {
       "損益表由上而下：銷貨收入 − 銷貨成本 = 毛利 100,000 元；毛利 − 營業費用 = 淨利 100,000 − 20,000 = 80,000 元。"
     ],
     "mustKnowEn": [
-      "Gross profit = sales − COGS = 40.",
-      "Gross profit = sales − COGS = -20.",
-      "Net profit = gross profit − expenses = 70.",
+      "Gross profit = sales − COGS = 40. Trap: 160 adds instead.",
+      "Gross profit = sales − COGS = -20. Trap: 220 adds instead.",
+      "Net profit = gross profit − expenses = 70. Trap: 130 adds expenses.",
       "An income statement runs downwards: sales minus cost of goods sold gives a gross profit of \\$100,000; gross profit minus operating expenses gives net profit, \\$100,000 − \\$20,000 …"
     ],
     "examTipZh": "DSE 作答「財務報表」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "財務比率",
     "titleEn": "Financial Ratios",
     "conceptZh": "營運資金 = 流動資產 − 流動負債 = 80 − 40 = 40 元。",
-    "conceptEn": "Working capital = CA − CL = 40.",
+    "conceptEn": "Working capital = CA − CL = 40. Trap: 2 is the current ratio, not working capital.",
     "mustKnowZh": [
       "營運資金 = 流動資產 − 流動負債 = 80 − 40 = 40 元。",
       "營運資金 = 流動資產 − 流動負債 = 80 − 100 = -20 元。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "淨利 = 500 − 300 − 100 = 100 元；淨利率 = 100/500 × 100% = 20%。"
     ],
     "mustKnowEn": [
-      "Working capital = CA − CL = 40.",
-      "Working capital = CA − CL = -20.",
-      "Margin = GP/sales × 100% = 25%.",
-      "Net margin = (sales−COGS−expenses)/sales × 100% = 20%."
+      "Working capital = CA − CL = 40. Trap: 2 is the current ratio, not working capital.",
+      "Working capital = CA − CL = 20. Trap: 1.33 is the current ratio, not working capital.",
+      "Working capital = CA − CL = -20. Trap: 0.8 is the current ratio, not working capital.",
+      "Margin = GP/sales × 100% = 25%."
     ],
     "examTipZh": "DSE 作答「財務比率」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Financial Ratios”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -258,7 +258,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "折舊",
     "titleEn": "Depreciation",
     "conceptZh": "直線折舊 = (成本 − 殘值) / 年限 = (10000 − 1000) / 3 = 3000 元。",
-    "conceptEn": "Depreciation = (cost − residual)/life = 3000.",
+    "conceptEn": "Depreciation = (cost − residual)/life = 3000. Trap: 3333.3 forgets to deduct the residual.",
     "mustKnowZh": [
       "直線折舊 = (成本 − 殘值) / 年限 = (10000 − 1000) / 3 = 3000 元。",
       "全年折舊 = 60,000 ÷ 4 = 15,000 元。",
@@ -266,10 +266,10 @@ export const notes: Record<string, StudyNote> = {
       "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。"
     ],
     "mustKnowEn": [
-      "Depreciation = (cost − residual)/life = 3000.",
-      "The full-year charge is \\$60,000 ÷ 4 = \\$15,000.",
-      "Straight-line annual depreciation = (cost − residual) ÷ useful life = (120,000 − 20,000) ÷ 5 = 20,000.",
-      "Part (d) carries the question and targets one of the most misunderstood ideas in the subject."
+      "Depreciation = (cost − residual)/life = 3000. Trap: 3333.3 forgets to deduct the residual.",
+      "Depreciation = (cost − residual)/life = 2000. Trap: 2400 forgets to deduct the residual.",
+      "The full-year charge is \\$60,000 ÷ 4 = \\$15,000. With only 6 months of use, the charge is apportioned: \\$15,000 × 6/12 = \\$7,500. Depreciation measures the economic benefit consum…",
+      "The full-year charge is \\$60,000 ÷ 4 = \\$15,000. With only 8 months of use, the charge is apportioned: \\$15,000 × 8/12 = \\$10,000. Depreciation measures the economic benefit consu…"
     ],
     "examTipZh": "DSE 作答「折舊」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Depreciation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -283,18 +283,18 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "利息",
     "titleEn": "Interest",
     "conceptZh": "單利 = 本金 × 利率 × 年期 / 100 = 1000 × 5 × 2 / 100 = 100 元。",
-    "conceptEn": "SI = Prt/100 = 100.",
+    "conceptEn": "SI = Prt/100 = 100. Trap: 50 drops the time t.",
     "mustKnowZh": [
       "單利 = 本金 × 利率 × 年期 / 100 = 1000 × 5 × 2 / 100 = 100 元。",
       "本利和 = 本金 × (1 + 利率)^年期 = 1000 × (1 + 10%)^2 = 1210 元。",
-      "本利和 = 本金 × (1 + 利率)^年期 = 1000 × (1 + 5%)^3 = 1157.",
+      "本利和 = 本金 × (1 + 利率)^年期 = 1000 × (1 + 5%)^3 = 1157.625 元。",
       "先求利息：12,000 × 4% × 1 年 = 480 元。"
     ],
     "mustKnowEn": [
-      "SI = Prt/100 = 100.",
-      "Amount = P(1 + r)^t = 1210.",
-      "First the interest: \\$12,000 × 4% × 1 years = \\$480.",
-      "First the interest: \\$12,000 × 10% × 1 years = \\$1,200."
+      "SI = Prt/100 = 100. Trap: 50 drops the time t.",
+      "Amount = P(1 + r)^t = 1210. Trap: 1200 uses simple interest (no compounding).",
+      "Amount = P(1 + r)^t = 1157.625. Trap: 1150 uses simple interest (no compounding).",
+      "First the interest: \\$12,000 × 4% × 1 years = \\$480. Total repayable = principal + interest = \\$12,480, and dividing by 12 instalments gives \\$1,040 a month. Note the effective an…"
     ],
     "examTipZh": "DSE 作答「利息」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Interest”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -308,18 +308,18 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "成本與定價",
     "titleEn": "Costing & Pricing",
     "conceptZh": "售價 = 成本 × (1 + 加成%) = 200 × (1 + 25%) = 250 元。",
-    "conceptEn": "Price = cost × (1 + markup%) = 250.",
+    "conceptEn": "Price = cost × (1 + markup%) = 250. Trap: 225 adds 25 directly, not 25%.",
     "mustKnowZh": [
       "售價 = 成本 × (1 + 加成%) = 200 × (1 + 25%) = 250 元。",
       "每件貢獻 = 售價 − 變動成本 = 15 − 9 = 6 元；收支平衡 = 固定成本 / 貢獻 = 1200 / 6 = 200 件。",
-      "每件貢獻 = 售價 − 變動成本 = 30 − 12 = 18 元；收支平衡 = 固定成本 / 貢獻 = 3000 / 18 = 166.",
+      "每件貢獻 = 售價 − 變動成本 = 30 − 12 = 18 元；收支平衡 = 固定成本 / 貢獻 = 3000 / 18 = 166.7 件。",
       "毛利率以【售價】為基數，故成本佔售價的 $100\\% - 20\\% = 80\\%$。"
     ],
     "mustKnowEn": [
-      "Price = cost × (1 + markup%) = 250.",
-      "Contribution = 15−9 = 6; break-even = FC/contribution = 200.",
-      "A gross margin is measured on the SELLING PRICE, so cost is $100\\% - 20\\% = 80\\%$ of price.",
-      "The contribution margin ratio is 1 − 25% = 75%."
+      "Price = cost × (1 + markup%) = 250. Trap: 225 adds 25 directly, not 25%.",
+      "Contribution = 15−9 = 6; break-even = FC/contribution = 200. Trap: using price gives 80.",
+      "Contribution = 30−12 = 18; break-even = FC/contribution = 166.7. Trap: using price gives 100.",
+      "A gross margin is measured on the SELLING PRICE, so cost is $100\\% - 20\\% = 80\\%$ of price."
     ],
     "examTipZh": "DSE 作答「成本與定價」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Costing & Pricing”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

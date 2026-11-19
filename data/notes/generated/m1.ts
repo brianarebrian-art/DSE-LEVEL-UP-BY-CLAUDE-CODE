@@ -7,19 +7,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "permutation_combination",
     "titleZh": "排列與組合",
     "titleEn": "Permutations & Combinations",
-    "conceptZh": "$C^{5}_{2} = \\frac{5!",
-    "conceptEn": "$C^{5}_{2} = \\frac{5!",
+    "conceptZh": "$C^{5}_{2} = \\frac{5!}{2!(5-2)!} = 10$。",
+    "conceptEn": "$C^{5}_{2} = \\frac{5!}{2!(5-2)!} = 10$.",
     "mustKnowZh": [
-      "$C^{5}_{2} = \\frac{5!",
-      "$P^{5}_{2} = \\frac{5!",
-      "用補集：總數 $C^9_3$ 減去「全男」$C^5_3$，即至少 1 女。",
-      "圓排列固定一人作參考，其餘 $(n-1)!"
+      "$C^{5}_{2} = \\frac{5!}{2!(5-2)!} = 10$。",
+      "$P^{5}_{2} = \\frac{5!}{(5-2)!} = 20$。",
+      "$4! = 24$ 種排列。",
+      "用補集：總數 $C^9_3$ 減去「全男」$C^5_3$，即至少 1 女。"
     ],
     "mustKnowEn": [
-      "$C^{5}_{2} = \\frac{5!",
-      "$P^{5}_{2} = \\frac{5!",
-      "By complement: total $C^9_3$ minus all-male $C^5_3$ gives “at least 1 woman”.",
-      "Fixing one seat as reference, the rest give $(n-1)!"
+      "$C^{5}_{2} = \\frac{5!}{2!(5-2)!} = 10$.",
+      "$P^{5}_{2} = \\frac{5!}{(5-2)!} = 20$.",
+      "$4! = 24$ arrangements.",
+      "By complement: total $C^9_3$ minus all-male $C^5_3$ gives “at least 1 woman”."
     ],
     "examTipZh": "DSE 作答「排列與組合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Permutations & Combinations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -107,19 +107,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "probability_dist",
     "titleZh": "概率分佈",
     "titleEn": "Probability Distributions",
-    "conceptZh": "$E(X) = np = 10\\times0.",
-    "conceptEn": "$E(X) = np = 10\\times0.",
+    "conceptZh": "$E(X) = np = 10\\times0.5 = 5$。",
+    "conceptEn": "$E(X) = np = 10\\times0.5 = 5$.",
     "mustKnowZh": [
-      "$E(X) = np = 10\\times0.",
-      "$\\text{Var}(X) = np(1-p) = 10\\times0.",
-      "二項分佈：固定 $n$ 次獨立試驗、每次成功概率 $p$ 相同、結果二分。",
-      "泊松分佈描述固定區間內隨機罕見事件發生的次數（如每小時來電數）。"
+      "$E(X) = np = 10\\times0.5 = 5$。",
+      "$\\text{Var}(X) = np(1-p) = 10\\times0.5\\times0.5 = 2.5$。",
+      "$\\text{Var}(X) = np(1-p) = 8\\times0.5\\times0.5 = 2$。",
+      "二項分佈：固定 $n$ 次獨立試驗、每次成功概率 $p$ 相同、結果二分。"
     ],
     "mustKnowEn": [
-      "$E(X) = np = 10\\times0.",
-      "$\\text{Var}(X) = np(1-p) = 10\\times0.",
-      "Binomial: a fixed number $n$ of independent trials, constant success probability $p$, two outcomes each.",
-      "Poisson models the number of rare random events in a fixed interval (e."
+      "$E(X) = np = 10\\times0.5 = 5$.",
+      "$\\text{Var}(X) = np(1-p) = 10\\times0.5\\times0.5 = 2.5$.",
+      "$\\text{Var}(X) = np(1-p) = 8\\times0.5\\times0.5 = 2$.",
+      "Binomial: a fixed number $n$ of independent trials, constant success probability $p$, two outcomes each."
     ],
     "examTipZh": "DSE 作答「概率分佈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Probability Distributions”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -138,13 +138,13 @@ export const notes: Record<string, StudyNote> = {
       "標準正態分佈 $N(0, 1)$：平均數 0、標準差 1。",
       "正態分佈呈對稱鐘形，平均數=中位數=眾數。",
       "標準化：$Z = \\frac{X - \\mu}{\\sigma}$。",
-      "經驗法則：±1σ ≈ 68%、±2σ ≈ 95%、±3σ ≈ 99."
+      "經驗法則：±1σ ≈ 68%、±2σ ≈ 95%、±3σ ≈ 99.7%。"
     ],
     "mustKnowEn": [
       "The standard normal $N(0, 1)$ has mean 0 and standard deviation 1.",
       "The normal curve is a symmetric bell, with mean = median = mode.",
       "Standardise with $Z = \\frac{X - \\mu}{\\sigma}$.",
-      "Empirical rule: ±1σ ≈ 68%, ±2σ ≈ 95%, ±3σ ≈ 99."
+      "Empirical rule: ±1σ ≈ 68%, ±2σ ≈ 95%, ±3σ ≈ 99.7%."
     ],
     "examTipZh": "DSE 作答「正態分佈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Normal Distribution”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -182,19 +182,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "m1_distributions",
     "titleZh": "概率分佈（高階）",
     "titleEn": "Probability distributions",
-    "conceptZh": "$P(X=2)=\\binom{5}{2}(0.",
-    "conceptEn": "$P(X=2)=\\binom{5}{2}(0.",
+    "conceptZh": "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$。",
+    "conceptEn": "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$.",
     "mustKnowZh": [
-      "$P(X=2)=\\binom{5}{2}(0.",
-      "泊松：$P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!",
-      "二項分佈：平均數 $=np=20\\times 0.",
-      "二項分佈的方差 $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0."
+      "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$。",
+      "泊松：$P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$。",
+      "二項分佈：平均數 $=np=20\\times 0.3=6$；方差 $=np(1-p)=20\\times 0.3\\times 0.7=4.2$。",
+      "二項分佈的方差 $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$。"
     ],
     "mustKnowEn": [
-      "$P(X=2)=\\binom{5}{2}(0.",
-      "Poisson: $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!",
-      "Binomial: mean $=np=20\\times 0.",
-      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0."
+      "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$.",
+      "Poisson: $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$.",
+      "Binomial: mean $=np=20\\times 0.3=6$; variance $=np(1-p)=20\\times 0.3\\times 0.7=4.2$.",
+      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$."
     ],
     "examTipZh": "DSE 作答「概率分佈（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Probability distributions”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -207,16 +207,16 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "m1_normal_calc",
     "titleZh": "正態分佈計算",
     "titleEn": "Normal distribution — calculation",
-    "conceptZh": "標準化：$Z=\\dfrac{65-50}{10}=1.",
-    "conceptEn": "Standardise: $Z=\\dfrac{65-50}{10}=1.",
+    "conceptZh": "標準化：$Z=\\dfrac{65-50}{10}=1.5$，故 $P(X>65)=P(Z>1.5)=0.0668$。",
+    "conceptEn": "Standardise: $Z=\\dfrac{65-50}{10}=1.5$, so $P(X>65)=P(Z>1.5)=0.0668$.",
     "mustKnowZh": [
-      "標準化：$Z=\\dfrac{65-50}{10}=1.",
+      "標準化：$Z=\\dfrac{65-50}{10}=1.5$，故 $P(X>65)=P(Z>1.5)=0.0668$。",
       "標準分數 $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{58 - 50}{4} = 2$。",
       "標準分數 $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{42 - 50}{4} = -2$。",
       "標準分數 $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{54 - 50}{4} = \\dfrac{4}{4} = 1$。"
     ],
     "mustKnowEn": [
-      "Standardise: $Z=\\dfrac{65-50}{10}=1.",
+      "Standardise: $Z=\\dfrac{65-50}{10}=1.5$, so $P(X>65)=P(Z>1.5)=0.0668$.",
       "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{58 - 50}{4} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
       "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{42 - 50}{4} = -2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
       "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{54 - 50}{4} = \\frac{4}{4} = 1$."

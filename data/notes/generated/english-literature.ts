@@ -136,13 +136,13 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Theme is the central insight or underlying message a work explores about life or human nature, such as love, justice or loss.",
     "mustKnowZh": [
       "Theme is the central insight or underlying message a work explores about life or human nature, such as love, justice or loss.",
-      "The subject is the topic (e.",
+      "The subject is the topic (e.g.",
       "A theme emerges from the work as a whole — its events, characters, conflicts and imagery taken together — so it is found by reflecting on what the entire text implies, not from an…",
       "A motif is a recurring element — an image, phrase, object or idea — that appears throughout a work and, through repetition, reinforces and develops its themes, such as recurring d…"
     ],
     "mustKnowEn": [
       "Theme is the central insight or underlying message a work explores about life or human nature, such as love, justice or loss.",
-      "The subject is the topic (e.",
+      "The subject is the topic (e.g.",
       "A theme emerges from the work as a whole — its events, characters, conflicts and imagery taken together — so it is found by reflecting on what the entire text implies, not from an…",
       "A motif is a recurring element — an image, phrase, object or idea — that appears throughout a work and, through repetition, reinforces and develops its themes, such as recurring d…"
     ],
@@ -232,18 +232,18 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "elit_theme_irony",
     "titleZh": "Theme & irony",
     "titleEn": "Theme & irony",
-    "conceptZh": "“Look on my works… and despair!",
-    "conceptEn": "“Look on my works… and despair!",
+    "conceptZh": "“Look on my works… and despair!” was meant to humble rivals before his greatness; the irony is that “nothing beside remains” — only wreckage — so the words now mock the very power…",
+    "conceptEn": "“Look on my works… and despair!” was meant to humble rivals before his greatness; the irony is that “nothing beside remains” — only wreckage — so the words now mock the very power…",
     "mustKnowZh": [
-      "“Look on my works… and despair!",
+      "“Look on my works… and despair!” was meant to humble rivals before his greatness; the irony is that “nothing beside remains” — only wreckage — so the words now mock the very power…",
       "The piled metaphors — a guttering “brief candle,” a “walking shadow,” a ranting “poor player,” a tale “signifying nothing” — all reduce life to something fleeting and empty: Macbe…",
-      "“Ozymandias” shows a “king of kings” reduced to desert rubble; Macbeth’s speech reduces life to “a tale… signifying nothing.",
+      "“Ozymandias” shows a “king of kings” reduced to desert rubble; Macbeth’s speech reduces life to “a tale… signifying nothing.” Both confront the vanity and transience of earthly po…",
       "戲劇性反諷源於觀眾與角色之間的【認知落差】：觀眾看得見即將發生的事，說話者卻看不見，同一句話因而帶有說話者自己並未察覺的第二層意思。"
     ],
     "mustKnowEn": [
-      "“Look on my works… and despair!",
+      "“Look on my works… and despair!” was meant to humble rivals before his greatness; the irony is that “nothing beside remains” — only wreckage — so the words now mock the very power…",
       "The piled metaphors — a guttering “brief candle,” a “walking shadow,” a ranting “poor player,” a tale “signifying nothing” — all reduce life to something fleeting and empty: Macbe…",
-      "“Ozymandias” shows a “king of kings” reduced to desert rubble; Macbeth’s speech reduces life to “a tale… signifying nothing.",
+      "“Ozymandias” shows a “king of kings” reduced to desert rubble; Macbeth’s speech reduces life to “a tale… signifying nothing.” Both confront the vanity and transience of earthly po…",
       "Dramatic irony arises from a GAP IN KNOWLEDGE between audience and character: we can see what is coming while the speaker cannot, and the line acquires a second meaning it does no…"
     ],
     "examTipZh": "DSE 作答「Theme & irony」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",

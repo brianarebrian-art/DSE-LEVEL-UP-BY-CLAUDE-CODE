@@ -176,12 +176,12 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "累積頻數曲線的縱軸是累積至該點的數據數目。要讀中位數便在總數一半的位置橫向切入，再向下讀出對應數值。",
     "mustKnowZh": [
       "四十個數據的累積頻數曲線，中位數在縱軸二十處讀出；下四分位數在十處，上四分位數在三十處。",
-      "售價 $= 200 \\times (1 + 20\\%) = 200 \\times 1.",
+      "售價 $= 200 \\times (1 + 20\\%) = 200 \\times 1.20 = 240$。",
       "單利 $I = \\frac{P\\,r\\,t}{100} = \\frac{1000\\times5\\times3}{100} = 150$。"
     ],
     "mustKnowEn": [
       "四十個數據的累積頻數曲線，中位數在縱軸二十處讀出；下四分位數在十處，上四分位數在三十處。",
-      "Selling price $= 200 \\times (1 + 20\\%) = 200 \\times 1.",
+      "Selling price $= 200 \\times (1 + 20\\%) = 200 \\times 1.20 = 240$.",
       "Simple interest $I = \\frac{P\\,r\\,t}{100} = \\frac{1000\\times5\\times3}{100} = 150$."
     ],
     "examTipZh": "先在縱軸算好要用的位置並標記，再一次過讀出三個四分位數，比逐個重新計算省時而且不易出錯。",
@@ -273,13 +273,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowZh": [
       "【標準證明 Marking Scheme】$G$ 在底面的投影為 $C$，故 $AG$ 與底面的夾角即 $\\angle GAC$。",
       "【標準證明 Marking Scheme】設 $M$ 為一底邊的中點。",
-      "底面對角線一半 $= \\dfrac{6\\sqrt2}{2} = 4.",
+      "底面對角線一半 $= \\dfrac{6\\sqrt2}{2} = 4.24$。",
       "空間對角線須把畢氏定理用兩次：先求底面對角線 $\\sqrt{1^2 + 2^2}$，再與高組成第二個直角三角形，得 $\\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$。"
     ],
     "mustKnowEn": [
       "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$.",
       "【Marking Scheme】Let $M$ be the midpoint of a base edge.",
-      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.",
+      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.24$.",
       "A space diagonal needs Pythagoras twice: first the base diagonal $\\sqrt{1^2 + 2^2}$, then that together with the height in a second right-angled triangle, giving $\\sqrt{1^2 + 2^2 …"
     ],
     "examTipZh": "DSE 作答「三維三角學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -294,18 +294,18 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "permutation_combination",
     "titleZh": "排列與組合",
     "titleEn": "Permutations & Combinations",
-    "conceptZh": "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!",
-    "conceptEn": "【Marking Scheme】Arrange the $4$ boys: $4!",
+    "conceptZh": "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!=24$ 種。",
+    "conceptEn": "【Marking Scheme】Arrange the $4$ boys: $4!=24$.",
     "mustKnowZh": [
-      "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!",
+      "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!=24$ 種。",
       "【標準證明 Marking Scheme】用「補集」最快。",
-      "【標準證明 Marking Scheme】把 $3$ 名女生「綑綁」成一個整體，與 $4$ 名男生合共 $5$ 個單位排列：$$5!",
+      "【標準證明 Marking Scheme】把 $3$ 名女生「綑綁」成一個整體，與 $4$ 名男生合共 $5$ 個單位排列：$$5!=120.$$ 整體內部 $3$ 名女生可互換：$$3!=6.$$ 由乘法原理：$$120\\times6 = 720.$$",
       "三數之和為奇 ⇔ 奇數個數為奇 ⇒ 「3 奇」或「1 奇 2 偶」。"
     ],
     "mustKnowEn": [
-      "【Marking Scheme】Arrange the $4$ boys: $4!",
+      "【Marking Scheme】Arrange the $4$ boys: $4!=24$.",
       "【Marking Scheme】Use the complement.",
-      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!",
+      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\\times6=720.$$ Traps: …",
       "Sum odd ⇔ an odd number of odds ⇒ 3-odd or 1-odd-2-even."
     ],
     "examTipZh": "DSE 作答「排列與組合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -420,16 +420,16 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "近似與誤差",
     "titleEn": "Approximation & Error",
     "conceptZh": "有效數字由左邊第一個非零數字起計，即由 5 起：5、0、6 為頭三位。",
-    "conceptEn": "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6.",
+    "conceptEn": "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6. The next digit is 7 ($\\ge 5$), so round up and 6 becomes…",
     "mustKnowZh": [
       "有效數字由左邊第一個非零數字起計，即由 5 起：5、0、6 為頭三位。",
-      "準確至最接近 $1$ cm，表示真值與量得值相差不超過半個單位，即 $1 \\div 2 = 0.",
+      "準確至最接近 $1$ cm，表示真值與量得值相差不超過半個單位，即 $1 \\div 2 = 0.5$ cm。",
       "準確至最接近 $2$ cm，表示真值與量得值相差不超過半個單位，即 $2 \\div 2 = 1$ cm。",
       "百分誤差 $=$ 絕對誤差 $\\div$ 真值 $\\times 100\\%$。"
     ],
     "mustKnowEn": [
-      "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6.",
-      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.",
+      "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6. The next digit is 7 ($\\ge 5$), so round up and 6 becomes…",
+      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.5$ cm.",
       "Correct to the nearest $2$ cm means the true value differs by at most half a unit, that is $2 \\div 2 = 1$ cm.",
       "Percentage error is absolute error ÷ true value × 100%."
     ],
@@ -444,19 +444,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "number_systems",
     "titleZh": "數系",
     "titleEn": "Number Systems",
-    "conceptZh": "$\\frac{22}{7}$ 是分數（有理數）；$1.",
-    "conceptEn": "$\\frac{22}{7}$ is a fraction (rational); $1.",
+    "conceptZh": "$\\frac{22}{7}$ 是分數（有理數）；$1.\\dot{4}\\dot{5}$ 是循環小數（有理數）；$\\sqrt{16}=4$ 是整數。",
+    "conceptEn": "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer.",
     "mustKnowZh": [
-      "$\\frac{22}{7}$ 是分數（有理數）；$1.",
+      "$\\frac{22}{7}$ 是分數（有理數）；$1.\\dot{4}\\dot{5}$ 是循環小數（有理數）；$\\sqrt{16}=4$ 是整數。",
       "把根號內的數分解出完全平方因子：$12 = 4 \\times 3$，而 $\\sqrt{4} = 2$，故 $\\sqrt{12} = 2\\sqrt{3}$。",
       "$\\sqrt{16} = 4$，可寫成兩個整數之比，故為有理數。",
-      "$50 = 25 \\times 2$，而 $25$ 為完全平方數，故 $\\sqrt{50} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}$。"
+      "設 $x = 0.272727\\ldots$，則 $100x = 27.272727\\ldots$。"
     ],
     "mustKnowEn": [
-      "$\\frac{22}{7}$ is a fraction (rational); $1.",
+      "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer.",
       "Extract the perfect-square factor: $12 = 4 \\times 3$ and $\\sqrt{4} = 2$, so $\\sqrt{12} = 2\\sqrt{3}$.",
       "$\\sqrt{16} = 4$, which can be written as a ratio of two integers, so it is rational.",
-      "Since $50 = 25 \\times 2$ and $25$ is a perfect square, $\\sqrt{50} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}$."
+      "Let $x = 0.272727\\ldots$, so $100x = 27.272727\\ldots$."
     ],
     "examTipZh": "DSE 作答「數系」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Number Systems”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -549,7 +549,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$T_{10}=S_{10}-S_{9}=(100+40)-(81+36)=140-117=23$.",
       "$T_n = a+(n-1)d = 11$.",
-      "Part (c) is the familiar \"find the least $n$\" type in Paper 1."
+      "Part (c) is the familiar \"find the least $n$\" type in Paper 1. The quadratic inequality may be solved, or values may be tried as above; but whichever method is used, both $n=21$ f…"
     ],
     "examTipZh": "DSE 作答「等差數列」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Arithmetic Sequences”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

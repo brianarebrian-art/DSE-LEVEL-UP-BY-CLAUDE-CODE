@@ -11,15 +11,15 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "$n = \\frac{m}{M} = \\frac{36}{18} = 2\\,\\text{mol}$.",
     "mustKnowZh": [
       "$n = \\frac{m}{M} = \\frac{36}{18} = 2\\,\\text{mol}$。",
-      "$n = \\frac{m}{M} = \\frac{117}{58.",
+      "$n = \\frac{m}{M} = \\frac{117}{58.5} = 2\\,\\text{mol}$。",
       "$m = nM = 2\\times18 = 36\\,\\text{g}$。",
-      "$m = nM = 0."
+      "$m = nM = 0.5\\times40 = 20\\,\\text{g}$。"
     ],
     "mustKnowEn": [
       "$n = \\frac{m}{M} = \\frac{36}{18} = 2\\,\\text{mol}$.",
-      "$n = \\frac{m}{M} = \\frac{117}{58.",
+      "$n = \\frac{m}{M} = \\frac{117}{58.5} = 2\\,\\text{mol}$.",
       "$m = nM = 2\\times18 = 36\\,\\text{g}$.",
-      "$m = nM = 0."
+      "$m = nM = 0.5\\times40 = 20\\,\\text{g}$."
     ],
     "examTipZh": "DSE 作答「摩爾概念」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “The Mole Concept”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -186,15 +186,15 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Ratio $H_2:O_2 = 2:1$.",
     "mustKnowZh": [
       "比例 $H_2:O_2 = 2:1$。",
-      "mol HCl $= 0.",
-      "mol CaCO₃ $= 5.",
-      "摩爾比：C $40/12=3."
+      "mol HCl $= 0.0200\\times0.10 = 0.0020\\,\\text{mol}$ $=$ mol NaOH（1:1）。",
+      "mol CaCO₃ $= 5.0/100 = 0.05\\,\\text{mol}$ ⇒ mol CO₂ $= 0.05$（1:1）。",
+      "摩爾比：C $40/12=3.33$、H $6.7/1=6.7$、O $53.3/16=3.33$。"
     ],
     "mustKnowEn": [
       "Ratio $H_2:O_2 = 2:1$.",
-      "mol HCl $= 0.",
-      "mol CaCO₃ $= 5.",
-      "Mole ratio: C $40/12=3."
+      "mol HCl $= 0.0200\\times0.10 = 0.0020\\,\\text{mol}$ $=$ mol NaOH (1:1).",
+      "mol CaCO₃ $= 5.0/100 = 0.05\\,\\text{mol}$ ⇒ mol CO₂ $= 0.05$ (1:1).",
+      "Mole ratio: C $40/12=3.33$, H $6.7/1=6.7$, O $53.3/16=3.33$."
     ],
     "examTipZh": "DSE 作答「定量計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Quantitative killers”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -257,19 +257,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "formula_mass",
     "titleZh": "化學式與式量",
     "titleEn": "Formulae & Formula Mass",
-    "conceptZh": "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.",
-    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.",
+    "conceptZh": "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
+    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
     "mustKnowZh": [
-      "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.",
+      "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
       "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{12}{16} \\times 100\\% = 75\\%$。",
       "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$23 \\times 2 + 16 \\times 1 = 46 + 16 = 62$。",
-      "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$56 \\times 1 + 35."
+      "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$56 \\times 1 + 35.5 \\times 3 = 56 + 106.5 = 162.5$。"
     ],
     "mustKnowEn": [
-      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.",
+      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
       "% by mass $= \\frac{12}{16} \\times 100\\% = 75\\%$.",
       "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $23 \\times 2 + 16 \\…",
-      "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $56 \\times 1 + 35."
+      "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $56 \\times 1 + 35.5…"
     ],
     "examTipZh": "DSE 作答「化學式與式量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Formulae & Formula Mass”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -282,18 +282,18 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "concentration",
     "titleZh": "濃度",
     "titleEn": "Concentration",
-    "conceptZh": "$c = \\dfrac{n}{V} = \\dfrac{2}{4} = 0.",
-    "conceptEn": "$c = \\frac{n}{V} = 0.",
+    "conceptZh": "$c = \\dfrac{n}{V} = \\dfrac{2}{4} = 0.5$ mol/dm³。",
+    "conceptEn": "$c = \\frac{n}{V} = 0.5$ mol/dm³.",
     "mustKnowZh": [
-      "$c = \\dfrac{n}{V} = \\dfrac{2}{4} = 0.",
+      "$c = \\dfrac{n}{V} = \\dfrac{2}{4} = 0.5$ mol/dm³。",
       "$c = \\dfrac{n}{V} = \\dfrac{4}{2} = 2$ mol/dm³。",
-      "先求摩爾：$n = \\dfrac{40}{40} = 1$ mol，再 $c = \\dfrac{n}{V} = \\dfrac{1}{2} = 0.",
+      "先求摩爾：$n = \\dfrac{40}{40} = 1$ mol，再 $c = \\dfrac{n}{V} = \\dfrac{1}{2} = 0.5$ mol/dm³。",
       "先求摩爾：$n = \\dfrac{80}{40} = 2$ mol，再 $c = \\dfrac{n}{V} = \\dfrac{2}{2} = 1$ mol/dm³。"
     ],
     "mustKnowEn": [
-      "$c = \\frac{n}{V} = 0.",
+      "$c = \\frac{n}{V} = 0.5$ mol/dm³.",
       "$c = \\frac{n}{V} = 2$ mol/dm³.",
-      "$n = \\frac{40}{40} = 1$ mol, then $c = \\frac{n}{V} = 0.",
+      "$n = \\frac{40}{40} = 1$ mol, then $c = \\frac{n}{V} = 0.5$ mol/dm³.",
       "$n = \\frac{80}{40} = 2$ mol, then $c = \\frac{n}{V} = 1$ mol/dm³."
     ],
     "examTipZh": "DSE 作答「濃度」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -307,19 +307,19 @@ export const notes: Record<string, StudyNote> = {
     "topicId": "gas_volume",
     "titleZh": "氣體體積",
     "titleEn": "Gas Volume",
-    "conceptZh": "先求摩爾 $n = \\dfrac{16}{32} = 0.",
-    "conceptEn": "$n = \\frac{16}{32} = 0.",
+    "conceptZh": "先求摩爾 $n = \\dfrac{16}{32} = 0.5$ mol，再 $V = n \\times 24 = 0.5 \\times 24 = 12$ dm³。",
+    "conceptEn": "$n = \\frac{16}{32} = 0.5$ mol, then $V = 24n = 12$ dm³.",
     "mustKnowZh": [
-      "先求摩爾 $n = \\dfrac{16}{32} = 0.",
+      "先求摩爾 $n = \\dfrac{16}{32} = 0.5$ mol，再 $V = n \\times 24 = 0.5 \\times 24 = 12$ dm³。",
       "先求摩爾 $n = \\dfrac{64}{32} = 2$ mol，再 $V = n \\times 24 = 2 \\times 24 = 48$ dm³。",
       "由亞佛加德羅定律，同溫同壓下氣體的體積比等於摩爾比，故可直接用係數比換算，毋須先求摩爾數：$10 \\times \\dfrac{2}{1} = 20$ cm³。",
-      "體積 = 摩爾數 × 氣體摩爾體積 = 0."
+      "體積 = 摩爾數 × 氣體摩爾體積 = 0.5 × 24 = 12 dm³。"
     ],
     "mustKnowEn": [
-      "$n = \\frac{16}{32} = 0.",
+      "$n = \\frac{16}{32} = 0.5$ mol, then $V = 24n = 12$ dm³.",
       "$n = \\frac{64}{32} = 2$ mol, then $V = 24n = 48$ dm³.",
       "By Avogadro's law, gas volumes at the same temperature and pressure are in the same ratio as the moles, so the coefficients can be applied directly without converting to moles: $1…",
-      "Volume = amount in moles × molar volume = 0."
+      "Volume = amount in moles × molar volume = 0.5 × 24 = 12 dm³."
     ],
     "examTipZh": "DSE 作答「氣體體積」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Gas Volume”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -337,14 +337,14 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowZh": [
       "酸鹼摩爾比 $1:1$：$c_aV_a = c_bV_b$ ⇒ $V_b = \\dfrac{c_aV_a}{c_b} = \\dfrac{2\\times24}{3} = 16$ cm³。",
       "判斷限量反應物不能只比較摩爾數，必須按方程式的【係數比】換算。",
-      "物質的量由 $n = \\dfrac{m}{M}$ 求得，即 $\\dfrac{11.",
-      "物質的量由 $n = \\dfrac{m}{M}$ 求得，即 $\\dfrac{25}{100} = 0."
+      "物質的量由 $n = \\dfrac{m}{M}$ 求得，即 $\\dfrac{11.7}{58.5} = 0.2$ mol。",
+      "物質的量由 $n = \\dfrac{m}{M}$ 求得，即 $\\dfrac{25}{100} = 0.25$ mol。"
     ],
     "mustKnowEn": [
       "1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = 16$ cm³.",
       "1:1 ratio ⇒ $m(\\mathrm{CaO}) = \\frac{25\\times56}{100} = 14$ g.",
       "A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied.",
-      "Use $n = \\dfrac{m}{M} = \\dfrac{11."
+      "Use $n = \\dfrac{m}{M} = \\dfrac{11.7}{58.5} = 0.2$ mol."
     ],
     "examTipZh": "DSE 作答「化學計量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Stoichiometry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
