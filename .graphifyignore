@@ -1,0 +1,27 @@
+# Graphify-only ignores (gitignore syntax). Built-ins already skip
+# node_modules, .next, .git, graphify-out, .graphify, lockfiles, secrets.
+
+# Tool / agent scratch (not app source)
+graphify-out/
+.graphify/
+.agents/
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules/
+
+# Desktop-only NVD monitor (never part of website graph)
+ops/vuln-tsunami/
+
+# Large / generated / ephemeral
+scripts/qbank/review-console.html
+.grok-investigations/_audit/
+drafts/error-replacements/
+Analysis/
+
+# Coverage and build leftovers
+coverage/
+out/
+build/
+.next/
