@@ -584,7 +584,7 @@ body {
    ─────────────────────────────────────────────────────────────────────────── */
 @media print {
   /* 1 — hide site chrome & all interactive controls
-     ⚠️ `footer` 必須寫 `:not(.print-keep)`。原本淨係寫 `footer`，一併殺埋紙筆戰士
+  ⚠️ `footer` 必須寫 `:not(.print-keep)`。原本淨係寫 `footer`，一併殺埋紙筆戰士
      卷面【自己嗰個】頁腳 —— 而卷號、對答案指示、HKEAA 免責聲明全部喺入面。
      即係印出嚟嘅試卷一直冇卷號（「打返卷號重開同一份卷」喺實體紙上根本行唔通）
      亦冇免責聲明（憲章 §4 要求每頁顯示）。2026-08-14 加 QR 時用瀏覽器實測揭發。
@@ -595,6 +595,12 @@ body {
   .no-print,
   nextjs-portal {
     display: none !important;
+  }
+
+  /* 筆記 PDF 末頁 QR：只用 print media，唔好用 sm:break-before-auto（A4 闊過 sm 會清走分頁） */
+  .print-qr-break {
+    break-before: page;
+    page-break-before: always;
   }
 
   /* 2 — white A4 surface, black ink */

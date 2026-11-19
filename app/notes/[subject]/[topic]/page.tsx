@@ -89,35 +89,13 @@ export default async function NotesTopicPage({
     <>
       <JsonLd data={jsonLd} />
       <div className="min-h-screen bg-surface text-ink-soft">
-        <header className="mx-auto max-w-4xl px-4 pt-8">
+        {/* SEO／AEO 可見正文：列印同螢幕互動版交俾 client（MathText＋QR），避免雙份。 */}
+        <header className="no-print mx-auto max-w-4xl px-4 pt-8">
           <h1>{h1}</h1>
           <p className="mt-2 text-sm leading-relaxed">{note.conceptZh}</p>
           <p className="mt-2 text-sm leading-relaxed" lang="en">{note.conceptEn}</p>
-          <section aria-labelledby="must-know-h" className="mt-4">
-            <h2 id="must-know-h">必記要點 · Must-know</h2>
-            <ul>
-              {note.mustKnowZh.map((line, i) => (
-                <li key={line}>
-                  {line}
-                  {note.mustKnowEn[i] ? ` · ${note.mustKnowEn[i]}` : ''}
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section aria-labelledby="exam-tip-h" className="mt-4">
-            <h2 id="exam-tip-h">考試技巧 · Exam tip</h2>
-            <p>{note.examTipZh}</p>
-            <p lang="en">{note.examTipEn}</p>
-          </section>
-          <section aria-labelledby="trap-h" className="mt-4">
-            <h2 id="trap-h">常見陷阱 · Common trap</h2>
-            <p>{note.commonTrapZh}</p>
-            <p lang="en">{note.commonTrapEn}</p>
-          </section>
-          <p className="mt-4">
+          <p className="mt-4 text-sm">
             <Link href={practice}>開始「{note.titleZh}」練習 · Start practice</Link>
-            {' · '}
-            <Link href={`/notes/${subject}?topic=${topic}`}>互動筆記（列印／PDF）</Link>
           </p>
         </header>
 

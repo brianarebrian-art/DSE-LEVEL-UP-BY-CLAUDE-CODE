@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ArrowLeft, Lightbulb, Target, BookOpen, Printer, Download } from 'lucide-react'
 import SubjectMark from '@/components/marks/SubjectMark'
 import CauseMark from '@/components/marks/CauseMark'
@@ -32,6 +32,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
   const params = useSearchParams()
+  const pathname = usePathname()
   const router = useRouter()
 
   const meta = getSubject(subjectId)
@@ -62,10 +63,14 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
   }, [subjectId])
 
   useEffect(() => {
+    // 優先 path `/notes/{subject}/{topic}`，其次 ?topic=，最後 initialTopic／首個課題。
+    // 唔好淨靠 initialTopic：click 後 router.replace 期間舊 prop 會令選項彈返。
+    const pathTopic = pathname?.match(new RegExp(`^/notes/${subjectId}/([^/]+)`))?.[1] ?? ''
     const fromQuery = params.get('topic')
-    const candidate = fromQuery || initialTopic || ''
-    setSelected(candidate && topics.some((x) => x.id === candidate) ? candidate : (topics[0]?.id ?? ''))
-  }, [params, topics, initialTopic])
+    const candidate = pathTopic || fromQuery || initialTopic || ''
+    const next = candidate && topics.some((x) => x.id === candidate) ? candidate : (topics[0]?.id ?? '')
+    setSelected((prev) => (prev === next ? prev : next))
+  }, [params, topics, initialTopic, pathname, subjectId])
 
   const note: TopicNote | null = useMemo(() => {
     const t = topics.find((x) => x.id === selected)
@@ -279,7 +284,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
           )}
 
           {/* 列印末頁：QR → 練習 */}
-          <footer className="print-keep mt-6 break-before-page rounded-2xl border border-line bg-white p-5 text-black sm:break-before-auto">
+          <footer className="print-keep print-qr-break mt-6 rounded-2xl border border-line bg-white p-5 text-black">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
               <QRCode value={practiceUrl} size={128} className="shrink-0" />
               <div className="text-center sm:text-left">
