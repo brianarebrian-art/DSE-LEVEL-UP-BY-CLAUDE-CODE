@@ -42,7 +42,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Germany’s September 1939 invasion of Poland brought British and French declarations of war.",
-      "Anglo-French concessions (e.g.",
+      "Anglo-French concessions (e.g. Munich) only encouraged Hitler to demand more.",
       "At Munich Britain and France let Germany take the Sudetenland for \"peace\" — classic appeasement.",
       "After Pearl Harbor in 1941 the USA declared war on Japan and Germany."
     ],
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "香港的現代化與蛻變",
     "titleEn": "Modernisation and Transformation of Hong Kong",
     "conceptZh": "【卷二論述題・辨識類】官方提問用語：Trace / Describe。",
-    "conceptEn": "[Paper 2 essay · Identifying] Official question word: Trace / Describe.",
+    "conceptEn": "[Paper 2 essay · Identifying] Official question word: Trace / Describe. “Trace … and explain” is a two-part instruction: the first half asks for trends in chronological order, the…",
     "mustKnowZh": [
       "【卷二論述題・辨識類】官方提問用語：Trace / Describe。",
       "【卷二論述題・解釋類】官方提問用語：Account for。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "【卷二論述題・評鑑類】官方提問用語：To what extent do you agree。"
     ],
     "mustKnowEn": [
-      "[Paper 2 essay · Identifying] Official question word: Trace / Describe.",
-      "[Paper 2 essay · Explaining] Official question word: Account for.",
-      "[Paper 2 essay · Comparing] Official question word: Compare and contrast.",
-      "[Paper 2 essay · Assessing] Official question word: To what extent do you agree."
+      "[Paper 2 essay · Identifying] Official question word: Trace / Describe. “Trace … and explain” is a two-part instruction: the first half asks for trends in chronological order, the…",
+      "[Paper 2 essay · Explaining] Official question word: Account for. “Account for” asks for causes, not a narrative of the process. The distinction that separates strong answers is…",
+      "[Paper 2 essay · Comparing] Official question word: Compare and contrast. A comparison must be organised point by point; two self-contained blocks leaving the reader to do the…",
+      "[Paper 2 essay · Assessing] Official question word: To what extent do you agree. “To what extent” asks for a judgement of degree, not a binary choice. The answer should land…"
     ],
     "examTipZh": "DSE 作答「香港的現代化與蛻變」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Modernisation and Transformation of Hong Kong”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "東南亞：由殖民地到獨立國家",
     "titleEn": "Southeast Asia: From Colonies to Independent Countries",
     "conceptZh": "【卷二論述題・解釋類】官方提問用語：Account for。",
-    "conceptEn": "[Paper 2 essay · Explaining] Official question word: Account for.",
+    "conceptEn": "[Paper 2 essay · Explaining] Official question word: Account for. Explaining causes requires levels: changed conditions in the metropolitan powers, the growth of forces within the…",
     "mustKnowZh": [
       "【卷二論述題・解釋類】官方提問用語：Account for。",
       "【卷二論述題・比較類】官方提問用語：Compare and contrast。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "【卷二論述題・評鑑類】官方提問用語：How effective。"
     ],
     "mustKnowEn": [
-      "[Paper 2 essay · Explaining] Official question word: Account for.",
-      "[Paper 2 essay · Comparing] Official question word: Compare and contrast.",
-      "[Paper 2 essay · Assessing] Official question word: Is it fair to say.",
-      "[Paper 2 essay · Assessing] Official question word: How effective."
+      "[Paper 2 essay · Explaining] Official question word: Account for. Explaining causes requires levels: changed conditions in the metropolitan powers, the growth of forces within the…",
+      "[Paper 2 essay · Comparing] Official question word: Compare and contrast. The question sets a limit of TWO countries — writing about one, or generalising across the region, fails…",
+      "[Paper 2 essay · Assessing] Official question word: Is it fair to say. “Is it fair” asks whether the statement itself holds, including whether it over-generalises. The key is that…",
+      "[Paper 2 essay · Assessing] Official question word: How effective. “How effective” requires criteria of effectiveness first — preventing armed conflict between members,…"
     ],
     "examTipZh": "DSE 作答「東南亞：由殖民地到獨立國家」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Southeast Asia: From Colonies to Independent Countries”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -258,7 +258,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "戰後衝突與聯合國",
     "titleEn": "Post-war Conflicts and the United Nations",
     "conceptZh": "【卷二論述題・比較類】官方提問用語：Compare。",
-    "conceptEn": "[Paper 2 essay · Comparing] Official question word: Compare.",
+    "conceptEn": "[Paper 2 essay · Comparing] Official question word: Compare. Both cases look like “ethnic conflict” on the surface, but the structure of their causes differs. Useful axes:…",
     "mustKnowZh": [
       "【卷二論述題・比較類】官方提問用語：Compare。",
       "【卷二論述題・評鑑類】官方提問用語：How effective。",
@@ -266,10 +266,10 @@ export const notes: Record<string, StudyNote> = {
       "否決權是常任理事國的核心特權：任何一國反對，實質議案即無法通過。"
     ],
     "mustKnowEn": [
-      "[Paper 2 essay · Comparing] Official question word: Compare.",
-      "[Paper 2 essay · Assessing] Official question word: How effective.",
-      "[Paper 2 essay · Explaining] Official question word: Account for.",
-      "The veto is the core privilege: a single negative vote blocks any substantive resolution."
+      "[Paper 2 essay · Comparing] Official question word: Compare. Both cases look like “ethnic conflict” on the surface, but the structure of their causes differs. Useful axes:…",
+      "[Paper 2 essay · Assessing] Official question word: How effective. “How effective” requires first defining what the UN can do — it is not a government above sovereign states.…",
+      "[Paper 2 essay · Explaining] Official question word: Account for. The question has two parts: why it persisted and why it ended. Both should be explained with one set of factors —…",
+      "The veto is the core privilege: a single negative vote blocks any substantive resolution. The design was intended to keep the major powers inside the system, since the failure of…"
     ],
     "examTipZh": "DSE 作答「戰後衝突與聯合國」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Post-war Conflicts and the United Nations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -292,9 +292,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "A trigger is not a root cause: the assassination was the flashpoint, but without the pre-existing rival alliances, arms race, colonial rivalry and nationalist tensions, one murder…",
-      "Versailles pinned full war-guilt on Germany, imposed heavy reparations, and stripped land and arms, breeding humiliation and economic turmoil; the Nazis exploited exactly this res…",
-      "Appeasement bet that concessions would buy peace, but to an expansionist dictator concessions only signalled weakness and encouraged bolder aggression (the Sudetenland was followe…",
-      "The distinction is one of time-scale and mode of operation, not of importance."
+      "Versailles pinned full war-guilt on Germany, imposed heavy reparations, and stripped land and arms, breeding humiliation and economic turmoil; the Nazis exploited exactly this…",
+      "Appeasement bet that concessions would buy peace, but to an expansionist dictator concessions only signalled weakness and encouraged bolder aggression (the Sudetenland was…",
+      "The distinction is one of time-scale and mode of operation, not of importance. A root cause is the long-accumulating structural condition that makes an event possible; a trigger…"
     ],
     "examTipZh": "DSE 作答「因果分析・導火線與根源」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Causation — trigger vs root cause”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -308,7 +308,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "影響與意義評價",
     "titleEn": "Significance & evaluation",
     "conceptZh": "冷戰起源是多因交織：根本的意識形態對立，加上二戰後互不信任、對歐洲與其他地區權力真空的爭奪。",
-    "conceptEn": "Cold War origins were multi-causal: a fundamental ideological clash, plus post-war distrust and competition over power vacuums in Europe and beyond.",
+    "conceptEn": "Cold War origins were multi-causal: a fundamental ideological clash, plus post-war distrust and competition over power vacuums in Europe and beyond. Blaming one side wholly, or…",
     "mustKnowZh": [
       "冷戰起源是多因交織：根本的意識形態對立，加上二戰後互不信任、對歐洲與其他地區權力真空的爭奪。",
       "明治維新「脫亞入歐」式地推行全方位現代化，短期內由封建落後躍升為工業與軍事強國，並於甲午、日俄戰爭中取勝，成為首個躋身列強的非西方國家，影響深遠。",
@@ -316,9 +316,9 @@ export const notes: Record<string, StudyNote> = {
       "聯合國的意義在於制度層面：它提供了一個常設的、大國均參與其中的協商與集體安全機制，此點正是國際聯盟所欠缺的。"
     ],
     "mustKnowEn": [
-      "Cold War origins were multi-causal: a fundamental ideological clash, plus post-war distrust and competition over power vacuums in Europe and beyond.",
+      "Cold War origins were multi-causal: a fundamental ideological clash, plus post-war distrust and competition over power vacuums in Europe and beyond. Blaming one side wholly, or…",
       "The Meiji Restoration drove all-round modernisation, vaulting Japan from feudal backwardness to an industrial and military power that won the Sino-Japanese and Russo-Japanese wars…",
-      "Significance is a concept about consequences: whether an event matters depends on what it changed, how long the change lasted, and how widely it reached.",
+      "Significance is a concept about consequences: whether an event matters depends on what it changed, how long the change lasted, and how widely it reached. An event large at the…",
       "The significance of the UN is institutional: it provided a permanent forum and collective-security mechanism in which the major powers all took part — precisely what the League of…"
     ],
     "examTipZh": "DSE 作答「影響與意義評價」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -333,7 +333,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "史料判讀",
     "titleEn": "Source analysis",
     "conceptZh": "史料的「可靠性」與「用途」要分開：宣傳海報作為事實記錄並不可靠，但作為研究「宣傳策略、官方立場與民眾情緒」的證據卻極有價值。",
-    "conceptEn": "Reliability and utility must be separated: a propaganda poster is unreliable as a factual record, yet highly valuable as evidence of propaganda strategy, official stance and publi…",
+    "conceptEn": "Reliability and utility must be separated: a propaganda poster is unreliable as a factual record, yet highly valuable as evidence of propaganda strategy, official stance and…",
     "mustKnowZh": [
       "史料的「可靠性」與「用途」要分開：宣傳海報作為事實記錄並不可靠，但作為研究「宣傳策略、官方立場與民眾情緒」的證據卻極有價值。",
       "第一手史料指在事件發生的當時或由當事人所產生的材料。",
@@ -341,10 +341,10 @@ export const notes: Record<string, StudyNote> = {
       "立場並非史料的缺陷，而是它所承載的資訊之一。"
     ],
     "mustKnowEn": [
-      "Reliability and utility must be separated: a propaganda poster is unreliable as a factual record, yet highly valuable as evidence of propaganda strategy, official stance and publi…",
-      "A primary source is material produced at the time of the event or by those involved in it.",
-      "Establishing provenance — who wrote it, when, and why — is the starting point, because these three things determine what questions the source can answer and where its limits lie.",
-      "Bias is not a defect in a source but part of the information it carries."
+      "Reliability and utility must be separated: a propaganda poster is unreliable as a factual record, yet highly valuable as evidence of propaganda strategy, official stance and…",
+      "A primary source is material produced at the time of the event or by those involved in it. The 1935 official census was produced in that very period, so it is primary. The other…",
+      "Establishing provenance — who wrote it, when, and why — is the starting point, because these three things determine what questions the source can answer and where its limits lie.…",
+      "Bias is not a defect in a source but part of the information it carries. A biased account may not reflect what happened, yet it reliably shows how a particular group at the time…"
     ],
     "examTipZh": "DSE 作答「史料判讀」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Source analysis”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

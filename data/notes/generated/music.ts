@@ -8,7 +8,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "音樂元素",
     "titleEn": "Elements of Music",
     "conceptZh": "力度指聲音的強弱（如 p 弱、f 強），與音高、速度、音色不同。",
-    "conceptEn": "Dynamics is loudness (e.g.",
+    "conceptEn": "Dynamics is loudness (e.g. p soft, f loud), distinct from pitch, tempo and timbre.",
     "mustKnowZh": [
       "力度指聲音的強弱（如 p 弱、f 強），與音高、速度、音色不同。",
       "Allegro 指快速；Adagio 慢、Largo 極慢、Andante 行板（中速）。",
@@ -16,7 +16,7 @@ export const notes: Record<string, StudyNote> = {
       "單音音樂只有一條旋律線；複音（polyphony）多線並行，主音（homophony）為旋律加伴奏。"
     ],
     "mustKnowEn": [
-      "Dynamics is loudness (e.g.",
+      "Dynamics is loudness (e.g. p soft, f loud), distinct from pitch, tempo and timbre.",
       "Allegro means fast; Adagio is slow, Largo very slow, Andante a walking pace.",
       "Timbre is tone colour — it makes a violin and flute on the same pitch sound different.",
       "Monophony is one melodic line; polyphony has several independent lines, homophony melody plus accompaniment."
@@ -68,7 +68,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Binary form is AB; ternary form is ABA.",
       "Ternary form is ABA — the opening returns after a contrasting middle.",
-      "A rondo brings back theme A repeatedly between contrasting episodes, e.g.",
+      "A rondo brings back theme A repeatedly between contrasting episodes, e.g. ABACA.",
       "Sonata form has exposition (themes stated), development (transformed) and recapitulation (themes return)."
     ],
     "examTipZh": "DSE 作答「曲式與結構」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -83,7 +83,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "西方音樂史",
     "titleEn": "Western Music History",
     "conceptZh": "巴洛克約 1600–1750（巴赫、韓德爾）；古典約 1750–1820；浪漫約 1820–1900。",
-    "conceptEn": "Baroque is c.",
+    "conceptEn": "Baroque is c. 1600–1750 (Bach, Handel); Classical c. 1750–1820; Romantic c. 1820–1900.",
     "mustKnowZh": [
       "巴洛克約 1600–1750（巴赫、韓德爾）；古典約 1750–1820；浪漫約 1820–1900。",
       "古典時期以莫扎特、海頓、貝多芬為代表；巴赫屬巴洛克。",
@@ -91,7 +91,7 @@ export const notes: Record<string, StudyNote> = {
       "浪漫樂派追求個人情感、戲劇張力、豐富和聲與標題音樂（描繪故事或景象）。"
     ],
     "mustKnowEn": [
-      "Baroque is c.",
+      "Baroque is c. 1600–1750 (Bach, Handel); Classical c. 1750–1820; Romantic c. 1820–1900.",
       "The Classical period features Mozart, Haydn and Beethoven; Bach is Baroque.",
       "Baroque music often uses continuo, counterpoint, ornamentation and strong contrast.",
       "Romantic music sought personal emotion, drama, rich harmony and programme music."
@@ -217,9 +217,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "D→E→F spans 3 letter names = a 3rd; D to F is 3 semitones (D–D♯–E–F), so a minor 3rd.",
-      "Three sharps is A major; its relative minor lies a minor 3rd below, i.e.",
-      "An interval is defined by BOTH the number of letter names it spans and the number of semitones.",
-      "Each step clockwise round the circle of fifths adds one sharp: C → G → D → A → E → B → F♯ → C♯."
+      "Three sharps is A major; its relative minor lies a minor 3rd below, i.e. F♯ minor (sharing the key signature).",
+      "An interval is defined by BOTH the number of letter names it spans and the number of semitones. A major 2nd spans 2 letters (C up to D) and contains 2 semitones. The pitch 2…",
+      "An interval is defined by BOTH the number of letter names it spans and the number of semitones. A minor 3rd spans 3 letters (C up to E) and contains 3 semitones. The pitch 3…"
     ],
     "examTipZh": "DSE 作答「樂理・音程與調號」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Theory — intervals & keys”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -242,9 +242,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "C to E♭ is a minor 3rd and C to G♭ is a diminished 5th; a root with a minor 3rd and diminished 5th is a diminished triad.",
-      "V→I is a perfect (authentic) cadence, giving full closure.",
-      "A triad stacks two thirds above the root.",
-      "The essence of ternary form is RETURN: A presents the main material, B contrasts in key, texture or mood, and A comes back, so the piece rounds on itself and feels complete."
+      "V→I is a perfect (authentic) cadence, giving full closure. 6/8 has two dotted-crotchet beats per bar, each divided into three — compound duple.",
+      "A triad stacks two thirds above the root. In a major triad the lower third is MAJOR (four semitones) and the upper third minor (three semitones), making seven semitones from root…",
+      "The essence of ternary form is RETURN: A presents the main material, B contrasts in key, texture or mood, and A comes back, so the piece rounds on itself and feels complete. This…"
     ],
     "examTipZh": "DSE 作答「和聲・和弦與曲式」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Harmony — chords & form”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

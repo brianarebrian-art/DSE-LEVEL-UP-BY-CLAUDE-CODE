@@ -192,9 +192,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$.",
-      "Poisson: $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$.",
+      "Poisson: $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$. $P(X=0)=\\dfrac{e^{-2}\\cdot 2^0}{0!}=e^{-2}\\approx 0.135$.",
       "Binomial: mean $=np=20\\times 0.3=6$; variance $=np(1-p)=20\\times 0.3\\times 0.7=4.2$.",
-      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$."
+      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$. Traps: $1$ is the mean $np$; $0.1$ uses $np^2$; $0.949$ is the standard deviation,…"
     ],
     "examTipZh": "DSE 作答「概率分佈（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Probability distributions”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -217,9 +217,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Standardise: $Z=\\dfrac{65-50}{10}=1.5$, so $P(X>65)=P(Z>1.5)=0.0668$.",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{58 - 50}{4} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{42 - 50}{4} = -2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{54 - 50}{4} = \\frac{4}{4} = 1$."
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{58 - 50}{4} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.…",
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{42 - 50}{4} = -2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.…",
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{120 - 100}{10} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the…"
     ],
     "examTipZh": "DSE 作答「正態分佈計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Normal distribution — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "微分",
     "titleEn": "Differentiation",
     "conceptZh": "用冪法則 $\\frac{d}{dx}x^n = n x^{n-1}$，逐項求導得 $3x^2 - 6x + 4$。",
-    "conceptEn": "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 6x + 4$.",
+    "conceptEn": "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 6x + 4$. The constant term differentiates to 0.",
     "mustKnowZh": [
       "用冪法則 $\\frac{d}{dx}x^n = n x^{n-1}$，逐項求導得 $3x^2 - 6x + 4$。",
       "用冪法則 $\\frac{d}{dx}x^n = n x^{n-1}$，逐項求導得 $3x^2 + 4x - 5$。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "用冪法則 $\\frac{d}{dx}x^n = n x^{n-1}$，逐項求導得 $12x^2 + 6x + 6$。"
     ],
     "mustKnowEn": [
-      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 6x + 4$.",
-      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 + 4x - 5$.",
-      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 8x - 7$.",
-      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $12x^2 + 6x + 6$."
+      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 6x + 4$. The constant term differentiates to 0.",
+      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 + 4x - 5$. The constant term differentiates to 0.",
+      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $3x^2 - 8x - 7$. The constant term differentiates to 0.",
+      "By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $12x^2 + 6x + 6$. The constant term differentiates to 0."
     ],
     "examTipZh": "DSE 作答「微分」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Differentiation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -269,7 +269,7 @@ export const notes: Record<string, StudyNote> = {
       "$\\int ax^n\\,dx = \\frac{a}{n+1}x^{n+1}+C = x^{2}+C$.",
       "$\\int_0^{3} 2x\\,dx = 9$.",
       "$\\int_0^{2} 3x^{2}\\,dx = 8$.",
-      "The antiderivative of $\\frac{1}{x}$ is $\\ln|x|$, not $\\frac{x^{0}}{0}$ — the power rule fails at exponent $-1$, and that exception is exactly what this item tests."
+      "The antiderivative of $\\frac{1}{x}$ is $\\ln|x|$, not $\\frac{x^{0}}{0}$ — the power rule fails at exponent $-1$, and that exception is exactly what this item tests. So…"
     ],
     "examTipZh": "DSE 作答「積分」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Integration”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -294,7 +294,7 @@ export const notes: Record<string, StudyNote> = {
       "Binomial $E(X)=np=1$.",
       "$P(X=r) = \\frac{\\binom{4}{2}}{2^{4}} = \\frac{3}{8}$.",
       "Complement: $P(X\\ge1)=1-\\left(\\tfrac12\\right)^{3}=\\frac{7}{8}$.",
-      "For a binomial distribution $\\operatorname{Var}(X) = npq$ with $q = 1 - p = \\frac{4}{5}$, giving $25 \\times \\frac{1}{5} \\times \\frac{4}{5} = 4$."
+      "For a binomial distribution $\\operatorname{Var}(X) = npq$ with $q = 1 - p = \\frac{4}{5}$, giving $25 \\times \\frac{1}{5} \\times \\frac{4}{5} = 4$. Traps: $5$ is the mean $np$; $1$…"
     ],
     "examTipZh": "DSE 作答「二項分佈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Binomial Distribution”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

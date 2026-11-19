@@ -244,7 +244,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "圓的幾何特性",
     "titleEn": "Properties of Circles",
     "conceptZh": "【標準證明 Marking Scheme】切線垂直於過切點的半徑，故 $\\angle OAP=\\angle OBP=90^\\circ$。",
-    "conceptEn": "【Marking Scheme】Tangent $\\perp$ radius at contact, so $\\angle OAP=\\angle OBP=90^\\circ$.",
+    "conceptEn": "【Marking Scheme】Tangent $\\perp$ radius at contact, so $\\angle OAP=\\angle OBP=90^\\circ$. Angle sum of quadrilateral $PAOB=360^\\circ$: $$\\angle AOB =…",
     "mustKnowZh": [
       "【標準證明 Marking Scheme】切線垂直於過切點的半徑，故 $\\angle OAP=\\angle OBP=90^\\circ$。",
       "【標準證明 Marking Scheme】由圓心向弦作垂線，垂足平分該弦（垂直於弦的直徑平分弦），故半弦長 $=\\tfrac{16}{2}=8$。",
@@ -252,10 +252,10 @@ export const notes: Record<string, StudyNote> = {
       "配方求圓心半徑：$C$ 的圓心 $(2,-1)$、半徑 $3$。"
     ],
     "mustKnowEn": [
-      "【Marking Scheme】Tangent $\\perp$ radius at contact, so $\\angle OAP=\\angle OBP=90^\\circ$.",
-      "【Marking Scheme】The perpendicular from the centre bisects the chord, so the half-chord $=\\tfrac{16}{2}=8$.",
-      "【Marking Scheme】In $\\triangle ABD$, $AB=AD$ so base angles are equal: $\\angle ADB=\\angle ABD=50^\\circ$.",
-      "Complete the square: centre $(2,-1)$, radius $3$."
+      "【Marking Scheme】Tangent $\\perp$ radius at contact, so $\\angle OAP=\\angle OBP=90^\\circ$. Angle sum of quadrilateral $PAOB=360^\\circ$: $$\\angle AOB =…",
+      "【Marking Scheme】The perpendicular from the centre bisects the chord, so the half-chord $=\\tfrac{16}{2}=8$. Half-chord, centre-distance and radius form a right triangle: $$r^2 =…",
+      "【Marking Scheme】In $\\triangle ABD$, $AB=AD$ so base angles are equal: $\\angle ADB=\\angle ABD=50^\\circ$. Angle sum: $$\\angle BAD = 180^\\circ-100^\\circ = 80^\\circ.$$ Opposite angles…",
+      "Complete the square: centre $(2,-1)$, radius $3$. Tangent ⇔ distance from centre to $2x - y + c = 0$ equals $3$: $\\dfrac{|c + 5|}{\\sqrt{5}} = 3$ ⇒ $c = -5 \\pm 3\\sqrt{5}$."
     ],
     "examTipZh": "DSE 作答「圓的幾何特性」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Properties of Circles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -269,7 +269,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "三維三角學",
     "titleEn": "3D Trigonometry",
     "conceptZh": "【標準證明 Marking Scheme】$G$ 在底面的投影為 $C$，故 $AG$ 與底面的夾角即 $\\angle GAC$。",
-    "conceptEn": "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$.",
+    "conceptEn": "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$. Base diagonal: $$AC=\\sqrt{8^2+6^2}=10.$$ In $\\triangle GAC$, $GC\\perp$ base and…",
     "mustKnowZh": [
       "【標準證明 Marking Scheme】$G$ 在底面的投影為 $C$，故 $AG$ 與底面的夾角即 $\\angle GAC$。",
       "【標準證明 Marking Scheme】設 $M$ 為一底邊的中點。",
@@ -277,10 +277,10 @@ export const notes: Record<string, StudyNote> = {
       "空間對角線須把畢氏定理用兩次：先求底面對角線 $\\sqrt{1^2 + 2^2}$，再與高組成第二個直角三角形，得 $\\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$。"
     ],
     "mustKnowEn": [
-      "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$.",
-      "【Marking Scheme】Let $M$ be the midpoint of a base edge.",
-      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.24$.",
-      "A space diagonal needs Pythagoras twice: first the base diagonal $\\sqrt{1^2 + 2^2}$, then that together with the height in a second right-angled triangle, giving $\\sqrt{1^2 + 2^2 …"
+      "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$. Base diagonal: $$AC=\\sqrt{8^2+6^2}=10.$$ In $\\triangle GAC$, $GC\\perp$ base and…",
+      "【Marking Scheme】Let $M$ be the midpoint of a base edge. The dihedral angle is $\\angle VMO$. The apothem is $$OM=\\tfrac{6}{2}=3.$$ In $\\triangle VOM$, $VO\\perp OM$ with $VO=4$:…",
+      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.24$. With the slant edge $9$, $\\cos\\theta = \\dfrac{4.24}{9}$ ⇒ $\\theta \\approx 62^\\circ$. Traps: $69^\\circ$ is the face dihedral;…",
+      "A space diagonal needs Pythagoras twice: first the base diagonal $\\sqrt{1^2 + 2^2}$, then that together with the height in a second right-angled triangle, giving $\\sqrt{1^2 + 2^2…"
     ],
     "examTipZh": "DSE 作答「三維三角學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “3D Trigonometry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -295,7 +295,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "排列與組合",
     "titleEn": "Permutations & Combinations",
     "conceptZh": "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!=24$ 種。",
-    "conceptEn": "【Marking Scheme】Arrange the $4$ boys: $4!=24$.",
+    "conceptEn": "【Marking Scheme】Arrange the $4$ boys: $4!=24$. This creates $5$ gaps $\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_$. Place the $3$ girls into distinct gaps (so none are adjacent), an ordered…",
     "mustKnowZh": [
       "【標準證明 Marking Scheme】先排 $4$ 名男生：$4!=24$ 種。",
       "【標準證明 Marking Scheme】用「補集」最快。",
@@ -303,10 +303,10 @@ export const notes: Record<string, StudyNote> = {
       "三數之和為奇 ⇔ 奇數個數為奇 ⇒ 「3 奇」或「1 奇 2 偶」。"
     ],
     "mustKnowEn": [
-      "【Marking Scheme】Arrange the $4$ boys: $4!=24$.",
-      "【Marking Scheme】Use the complement.",
-      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\\times6=720.$$ Traps: …",
-      "Sum odd ⇔ an odd number of odds ⇒ 3-odd or 1-odd-2-even."
+      "【Marking Scheme】Arrange the $4$ boys: $4!=24$. This creates $5$ gaps $\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_$. Place the $3$ girls into distinct gaps (so none are adjacent), an ordered…",
+      "【Marking Scheme】Use the complement. Total $$\\binom{9}{3}=84.$$ All-boys (no girl) $$\\binom{5}{3}=10,$$ so $$P(\\text{no girl})=\\frac{10}{84}=\\frac{5}{42}, \\quad P(\\ge 1\\text{…",
+      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\\times6=720.$$ Traps:…",
+      "Sum odd ⇔ an odd number of odds ⇒ 3-odd or 1-odd-2-even. 3-odd $=10$; 1-odd-2-even $=30$. $P=\\dfrac{10}{40}=\\frac{1}{4}$."
     ],
     "examTipZh": "DSE 作答「排列與組合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Permutations & Combinations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -320,7 +320,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "軌跡與坐標",
     "titleEn": "Locus & Coordinates",
     "conceptZh": "【標準證明 Marking Scheme】與兩定點等距的軌跡是線段 $AB$ 的垂直平分線。",
-    "conceptEn": "【Marking Scheme】The locus equidistant from two points is the perpendicular bisector of $AB$.",
+    "conceptEn": "【Marking Scheme】The locus equidistant from two points is the perpendicular bisector of $AB$. Midpoint $$M=(3,4).$$ Slope $$m_{AB}=\\frac{6-2}{5-1}=1,$$ so the bisector has slope…",
     "mustKnowZh": [
       "【標準證明 Marking Scheme】與兩定點等距的軌跡是線段 $AB$ 的垂直平分線。",
       "【標準證明 Marking Scheme】設 $P=(x,y)$。",
@@ -328,10 +328,10 @@ export const notes: Record<string, StudyNote> = {
       "$PA=2PB ⇒ PA^2=4PB^2$：$x^2+y^2 = 4[x^2+(y - 6)^2]$。"
     ],
     "mustKnowEn": [
-      "【Marking Scheme】The locus equidistant from two points is the perpendicular bisector of $AB$.",
-      "【Marking Scheme】Let $P=(x,y)$.",
-      "$PA=2PB ⇒ PA^2=4PB^2$.",
-      "The midpoint is the average of the two points: $\\left(\\frac{1 + 5}{2},\\ \\frac{1 + 7}{2}\\right) = (3,\\ 4)$."
+      "【Marking Scheme】The locus equidistant from two points is the perpendicular bisector of $AB$. Midpoint $$M=(3,4).$$ Slope $$m_{AB}=\\frac{6-2}{5-1}=1,$$ so the bisector has slope…",
+      "【Marking Scheme】Let $P=(x,y)$. Distance to $F=\\sqrt{x^2+(y-2)^2}$; distance to $y=-2$ is $|y+2|$. Equate and square: $$x^2+(y-2)^2=(y+2)^2.$$ Expand: $$x^2+y^2-4y+4=y^2+4y+4…",
+      "$PA=2PB ⇒ PA^2=4PB^2$. Expanding $x^2+y^2=4[(x - 6)^2+y^2]$ and simplifying gives $x^2 + y^2 - 16x + 48 = 0$ — a circle (Apollonius).",
+      "$PA=2PB ⇒ PA^2=4PB^2$. Expanding $x^2+y^2=4[x^2+(y - 6)^2]$ and simplifying gives $x^2 + y^2 - 16y + 48 = 0$ — a circle (Apollonius)."
     ],
     "examTipZh": "DSE 作答「軌跡與坐標」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Locus & Coordinates”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -354,9 +354,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The exterior angles of a polygon always sum to $360^\\circ$, so each exterior angle $=\\frac{360^\\circ}{10}=36^\\circ$.",
-      "The interior angle sum is $(n-2) \\times 180^\\circ$.",
-      "Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - 120 = 60^\\circ$; equivalently $(n-2)\\times 180 \\div n = 180 \\div 3 = 60^\\circ$, and the two routes must agree.",
-      "A regular polygon has equal exterior angles summing to $360^\\circ$, so each is $360 \\div 5 = 72^\\circ$."
+      "The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = 5$: $(5-2) \\times 180 = 540^\\circ$. Traps: $900^\\circ$ omits the $-2$; $720^\\circ$ subtracts only 1; $360^\\circ$ is…",
+      "The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = 8$: $(8-2) \\times 180 = 1080^\\circ$. Traps: $1440^\\circ$ omits the $-2$; $1260^\\circ$ subtracts only 1; $360^\\circ$…",
+      "Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - 120 = 60^\\circ$; equivalently $(n-2)\\times 180 \\div n = 180 \\div 3 = 60^\\circ$, and the two routes must…"
     ],
     "examTipZh": "DSE 作答「多邊形與角」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Polygons & Angles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -379,9 +379,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The ratio of lengths $=\\sqrt{16}:\\sqrt{25}=4:5$, and the ratio of volumes is the cube of the ratio of lengths $=4^3:5^3=64:125$.",
-      "Areas of similar solids are in the square of the length ratio: $1^2 : 2^2 = 1 : 4$.",
-      "Volumes of similar solids are in the cube of the length ratio: $1^3 : 2^3 = 1 : 8$.",
-      "Similar solids involve only three ratios: length $k$, area $k^{2}$ and volume $k^{3}$."
+      "Areas of similar solids are in the square of the length ratio: $1^2 : 2^2 = 1 : 4$. Traps: $1 : 2$ uses the length ratio itself; $1 : 8$ cubes it (that is the volume ratio); $2 :…",
+      "Volumes of similar solids are in the cube of the length ratio: $1^3 : 2^3 = 1 : 8$. Traps: $1 : 4$ is the area ratio; $1 : 2$ is the length ratio; $3 : 6$ trebles instead of…",
+      "Areas of similar solids are in the square of the length ratio: $1^2 : 4^2 = 1 : 16$. Traps: $1 : 4$ uses the length ratio itself; $1 : 64$ cubes it (that is the volume ratio); $2…"
     ],
     "examTipZh": "DSE 作答「相似形與相似立體」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Similar Figures & Solids”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -395,7 +395,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "變分",
     "titleEn": "Variation",
     "conceptZh": "正比即 $y = kx$。",
-    "conceptEn": "Direct variation means $y = kx$.",
+    "conceptEn": "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$. Traps: $6$ treats the relation as additive; $16$ skips…",
     "mustKnowZh": [
       "正比即 $y = kx$。",
       "反比即 $xy = k$（乘積不變）。",
@@ -403,10 +403,10 @@ export const notes: Record<string, StudyNote> = {
       "設 $z = \\dfrac{k}{w}$。"
     ],
     "mustKnowEn": [
-      "Direct variation means $y = kx$.",
-      "Inverse variation means $xy = k$, a constant product.",
-      "Part (c) separates the candidates.",
-      "Let $y = kx$."
+      "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$. Traps: $6$ treats the relation as additive; $16$ skips…",
+      "Inverse variation means $xy = k$, a constant product. From $x = 2$, $y = 12$ we get $k = 2 \\times 12 = 24$, so at $x = 6$, $y = 24 \\div 6 = 4$. Traps: $36$ uses direct variation;…",
+      "Inverse variation means $xy = k$, a constant product. From $x = 2$, $y = 18$ we get $k = 2 \\times 18 = 36$, so at $x = 12$, $y = 36 \\div 12 = 3$. Traps: $108$ uses direct…",
+      "Inverse variation means $xy = k$, a constant product. From $x = 4$, $y = 9$ we get $k = 4 \\times 9 = 36$, so at $x = 6$, $y = 36 \\div 6 = 6$. Traps: $13.5$ uses direct variation;…"
     ],
     "examTipZh": "DSE 作答「變分」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Variation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -429,9 +429,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6. The next digit is 7 ($\\ge 5$), so round up and 6 becomes…",
-      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.5$ cm.",
-      "Correct to the nearest $2$ cm means the true value differs by at most half a unit, that is $2 \\div 2 = 1$ cm.",
-      "Percentage error is absolute error ÷ true value × 100%."
+      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.5$ cm. The upper limit is $20 + 0.5 = 20.5$ cm. Traps: $21$ cm adds a…",
+      "Correct to the nearest $2$ cm means the true value differs by at most half a unit, that is $2 \\div 2 = 1$ cm. The upper limit is $20 + 1 = 21$ cm. Traps: $22$ cm adds a whole…",
+      "Percentage error is absolute error ÷ true value × 100%. The absolute error is $51 - 50 = 1$ g, so the percentage error is $1 \\div 50 \\times 100\\% = 2\\%$. Traps: $1.96\\%$ divides…"
     ],
     "examTipZh": "DSE 作答「近似與誤差」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Approximation & Error”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -445,7 +445,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "數系",
     "titleEn": "Number Systems",
     "conceptZh": "$\\frac{22}{7}$ 是分數（有理數）；$1.\\dot{4}\\dot{5}$ 是循環小數（有理數）；$\\sqrt{16}=4$ 是整數。",
-    "conceptEn": "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer.",
+    "conceptEn": "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer. $\\pi$ is irrational, and subtracting the rational…",
     "mustKnowZh": [
       "$\\frac{22}{7}$ 是分數（有理數）；$1.\\dot{4}\\dot{5}$ 是循環小數（有理數）；$\\sqrt{16}=4$ 是整數。",
       "把根號內的數分解出完全平方因子：$12 = 4 \\times 3$，而 $\\sqrt{4} = 2$，故 $\\sqrt{12} = 2\\sqrt{3}$。",
@@ -453,10 +453,10 @@ export const notes: Record<string, StudyNote> = {
       "設 $x = 0.272727\\ldots$，則 $100x = 27.272727\\ldots$。"
     ],
     "mustKnowEn": [
-      "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer.",
-      "Extract the perfect-square factor: $12 = 4 \\times 3$ and $\\sqrt{4} = 2$, so $\\sqrt{12} = 2\\sqrt{3}$.",
-      "$\\sqrt{16} = 4$, which can be written as a ratio of two integers, so it is rational.",
-      "Let $x = 0.272727\\ldots$, so $100x = 27.272727\\ldots$."
+      "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer. $\\pi$ is irrational, and subtracting the rational…",
+      "Extract the perfect-square factor: $12 = 4 \\times 3$ and $\\sqrt{4} = 2$, so $\\sqrt{12} = 2\\sqrt{3}$. Traps: $4\\sqrt{3}$ moves $4$ out without taking its root; $2\\sqrt{6}$ extracts…",
+      "Extract the perfect-square factor: $20 = 4 \\times 5$ and $\\sqrt{4} = 2$, so $\\sqrt{20} = 2\\sqrt{5}$. Traps: $4\\sqrt{5}$ moves $4$ out without taking its root; $2\\sqrt{10}$…",
+      "Extract the perfect-square factor: $160 = 16 \\times 10$ and $\\sqrt{16} = 4$, so $\\sqrt{160} = 4\\sqrt{10}$. Traps: $16\\sqrt{10}$ moves $16$ out without taking its root;…"
     ],
     "examTipZh": "DSE 作答「數系」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Number Systems”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -523,9 +523,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "$12$ and $18$ share the largest factor $6$.",
-      "Factorise both numbers into primes and multiply the COMMON primes taken to the LOWER power: the highest common factor of $16$ and $40$ is $8$.",
-      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{4 \\times 6}{\\text{HCF}} = \\frac{24}{2} = 12$.",
-      "The number of positive factors is the product of (each exponent + 1): $(2+1)(3+1) = 12$."
+      "Factorise both numbers into primes and multiply the COMMON primes taken to the LOWER power: the highest common factor of $16$ and $40$ is $8$. Traps: $80$ is the lowest common…",
+      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{4 \\times 6}{\\text{HCF}} = \\frac{24}{2} = 12$. Traps: $2$ is the highest common…",
+      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{10 \\times 15}{\\text{HCF}} = \\frac{150}{5} = 30$. Traps: $5$ is the highest…"
     ],
     "examTipZh": "DSE 作答「因數與倍數」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Factors & Multiples”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -549,7 +549,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$T_{10}=S_{10}-S_{9}=(100+40)-(81+36)=140-117=23$.",
       "$T_n = a+(n-1)d = 11$.",
-      "Part (c) is the familiar \"find the least $n$\" type in Paper 1. The quadratic inequality may be solved, or values may be tried as above; but whichever method is used, both $n=21$ f…"
+      "Part (c) is the familiar \"find the least $n$\" type in Paper 1. The quadratic inequality may be solved, or values may be tried as above; but whichever method is used, both $n=21$…"
     ],
     "examTipZh": "DSE 作答「等差數列」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Arithmetic Sequences”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -574,7 +574,7 @@ export const notes: Record<string, StudyNote> = {
       "$T_n = a r^{n-1} = 16$.",
       "$S_\\infty = \\frac{a}{1-r} = 3$.",
       "$S_\\infty = \\frac{a}{1-r} = \\frac{8}{3}$.",
-      "Part (c) belongs to the same \"least $n$\" family as question 10, and again both ends must be verified: $n=10$ fails and $n=11$ succeeds."
+      "Part (c) belongs to the same \"least $n$\" family as question 10, and again both ends must be verified: $n=10$ fails and $n=11$ succeeds. The difference is that $S_{n}$ for a…"
     ],
     "examTipZh": "DSE 作答「等比數列」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Geometric Sequences”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

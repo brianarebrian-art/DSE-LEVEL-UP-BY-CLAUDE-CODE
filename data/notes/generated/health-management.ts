@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "整全健康・概念應用",
     "titleEn": "Holistic health — application",
     "conceptZh": "整全（holistic）健康觀涵蓋身、心、社三方面：此長者雖無生理疾病，但情緒低落（心理）與社會脫節（社會）已損及其安寧，故按 WHO 定義並非健康。",
-    "conceptEn": "The holistic view spans physical, mental and social dimensions: though free of physical disease, his low mood (mental) and isolation (social) impair his well-being, so by the WHO …",
+    "conceptEn": "The holistic view spans physical, mental and social dimensions: though free of physical disease, his low mood (mental) and isolation (social) impair his well-being, so by the WHO…",
     "mustKnowZh": [
       "整全（holistic）健康觀涵蓋身、心、社三方面：此長者雖無生理疾病，但情緒低落（心理）與社會脫節（社會）已損及其安寧，故按 WHO 定義並非健康。",
       "興趣小組重建人際連結與社會參與，針對的是「社會維度」的健康；整全照顧要求兼顧身、心、社（甚至靈性）各方面，而非只處理疾病。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "社交健康指一個人與他人建立及維持關係、在群體中擔當角色的能力。"
     ],
     "mustKnowEn": [
-      "The holistic view spans physical, mental and social dimensions: though free of physical disease, his low mood (mental) and isolation (social) impair his well-being, so by the WHO …",
-      "Interest groups rebuild connection and participation, addressing the social dimension of health; holistic care attends to physical, mental and social (even spiritual) needs, not j…",
-      "Low mood and stress-related insomnia chiefly reflect the state of mental health.",
-      "Social health refers to a person's capacity to form and maintain relationships and to hold a role within a group."
+      "The holistic view spans physical, mental and social dimensions: though free of physical disease, his low mood (mental) and isolation (social) impair his well-being, so by the WHO…",
+      "Interest groups rebuild connection and participation, addressing the social dimension of health; holistic care attends to physical, mental and social (even spiritual) needs, not…",
+      "Low mood and stress-related insomnia chiefly reflect the state of mental health. It should be added that the three dimensions interact rather than standing apart: prolonged…",
+      "Social health refers to a person's capacity to form and maintain relationships and to hold a role within a group. Joining a volunteer team gives this retiree steady human contact…"
     ],
     "examTipZh": "DSE 作答「整全健康・概念應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Holistic health — application”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "三級預防分類",
     "titleEn": "Levels of prevention",
     "conceptZh": "一級預防在「疾病發生前」阻止其出現（疫苗、健康教育）；二級在「早期」偵測並治療（篩查）；三級在「已患病後」減少併發與失能（復康）。",
-    "conceptEn": "Primary prevention stops disease before it occurs (vaccines, health education); secondary detects and treats it early (screening); tertiary limits complications and disability aft…",
+    "conceptEn": "Primary prevention stops disease before it occurs (vaccines, health education); secondary detects and treats it early (screening); tertiary limits complications and disability…",
     "mustKnowZh": [
       "一級預防在「疾病發生前」阻止其出現（疫苗、健康教育）；二級在「早期」偵測並治療（篩查）；三級在「已患病後」減少併發與失能（復康）。",
       "三級預防按「疾病進程的哪一個階段」劃分。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "病人已經確診並且長期臥床，介入的目的是減少因臥床而引致的併發症與進一步失能，因此屬三級預防。"
     ],
     "mustKnowEn": [
-      "Primary prevention stops disease before it occurs (vaccines, health education); secondary detects and treats it early (screening); tertiary limits complications and disability aft…",
-      "The three levels are defined by the stage of the disease process at which they act.",
+      "Primary prevention stops disease before it occurs (vaccines, health education); secondary detects and treats it early (screening); tertiary limits complications and disability…",
+      "The three levels are defined by the stage of the disease process at which they act. Primary prevention intervenes before disease occurs and aims to reduce risk, as with…",
       "Secondary prevention is about earliness: the disease has in fact begun but the person is unaware of it, and screening finds it before symptoms appear, when treatment usually works…",
-      "The patient is already diagnosed and bedridden, and the intervention aims to reduce complications and further disability arising from that condition, so it is tertiary prevention."
+      "The patient is already diagnosed and bedridden, and the intervention aims to reduce complications and further disability arising from that condition, so it is tertiary prevention.…"
     ],
     "examTipZh": "DSE 作答「三級預防分類」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Levels of prevention”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -258,7 +258,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "照顧倫理與健康決定因素",
     "titleEn": "Care ethics & determinants",
     "conceptZh": "把健康不平等全歸於個人選擇，忽略了「社會決定因素」：低收入、低教育、惡劣居住與醫療可及性差等結構條件，本身就限制了人的健康與其能作的選擇。",
-    "conceptEn": "Blaming health inequality wholly on individual choice ignores the social determinants of health: low income, low education, poor housing and weak access to care are structural con…",
+    "conceptEn": "Blaming health inequality wholly on individual choice ignores the social determinants of health: low income, low education, poor housing and weak access to care are structural…",
     "mustKnowZh": [
       "把健康不平等全歸於個人選擇，忽略了「社會決定因素」：低收入、低教育、惡劣居住與醫療可及性差等結構條件，本身就限制了人的健康與其能作的選擇。",
       "未經同意披露服務使用者的病歷與私事，直接違反「保密原則」，亦不尊重其自主與私隱。",
@@ -266,10 +266,10 @@ export const notes: Record<string, StudyNote> = {
       "健康的社會決定因素，指影響健康而本身屬社會條件的因素，例如收入、教育程度、就業狀況、居住環境與能否獲得醫療服務。"
     ],
     "mustKnowEn": [
-      "Blaming health inequality wholly on individual choice ignores the social determinants of health: low income, low education, poor housing and weak access to care are structural con…",
-      "Disclosing a user’s medical history and private matters without consent directly violates confidentiality and disrespects their autonomy and privacy.",
+      "Blaming health inequality wholly on individual choice ignores the social determinants of health: low income, low education, poor housing and weak access to care are structural…",
+      "Disclosing a user’s medical history and private matters without consent directly violates confidentiality and disrespects their autonomy and privacy. Care relationships rest on…",
       "Respect for autonomy means that a service user has the right, once adequately informed, to make decisions about their own body and care arrangements, including the right to refuse…",
-      "The social determinants of health are the social conditions that influence health, such as income, education, employment, housing and access to medical services."
+      "The social determinants of health are the social conditions that influence health, such as income, education, employment, housing and access to medical services. Overcrowding and…"
     ],
     "examTipZh": "DSE 作答「照顧倫理與健康決定因素」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Care ethics & determinants”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

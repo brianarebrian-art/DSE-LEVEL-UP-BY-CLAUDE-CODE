@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "地理過程・因果鏈",
     "titleEn": "Geographical process chains",
     "conceptZh": "海洋板塊密度較大，在聚合邊界隱沒（subduction）到大陸板塊之下：隱沒處成海溝，下沉板塊受熱熔融上湧成火山，板塊磨擦引發地震，受擠壓的陸緣則隆起成褶皺山脈（如安第斯山）。",
-    "conceptEn": "The denser oceanic plate subducts beneath the continental plate at a convergent margin: the subduction line forms a trench, the sinking plate melts and feeds volcanoes, friction t…",
+    "conceptEn": "The denser oceanic plate subducts beneath the continental plate at a convergent margin: the subduction line forms a trench, the sinking plate melts and feeds volcanoes, friction…",
     "mustKnowZh": [
       "海洋板塊密度較大，在聚合邊界隱沒（subduction）到大陸板塊之下：隱沒處成海溝，下沉板塊受熱熔融上湧成火山，板塊磨擦引發地震，受擠壓的陸緣則隆起成褶皺山脈（如安第斯山）。",
       "曲流外側（凹岸）水深流急，侵蝕最強，形成陡峭河崖；內側（凸岸）水淺流緩，泥沙堆積形成平緩的滑走坡。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "日間岩石受熱膨脹、夜間冷卻收縮，礦物顆粒的膨脹係數不同，反覆數千次後產生內部應力，岩石表層剝落崩解。"
     ],
     "mustKnowEn": [
-      "The denser oceanic plate subducts beneath the continental plate at a convergent margin: the subduction line forms a trench, the sinking plate melts and feeds volcanoes, friction t…",
-      "On a meander the outer (concave) bank is deep and fast, eroding most strongly to form a steep river cliff; the inner (convex) bank is shallow and slow, depositing sediment as a ge…",
-      "The rainforest nutrient cycle is fast and closed: nutrients are locked in biomass; litter decomposes quickly and is immediately re-absorbed by roots, so the soil store is low.",
-      "Rock heats and expands by day and cools and contracts by night, and because the mineral grains have different expansion coefficients, thousands of such cycles set up internal stre…"
+      "The denser oceanic plate subducts beneath the continental plate at a convergent margin: the subduction line forms a trench, the sinking plate melts and feeds volcanoes, friction…",
+      "On a meander the outer (concave) bank is deep and fast, eroding most strongly to form a steep river cliff; the inner (convex) bank is shallow and slow, depositing sediment as a…",
+      "The rainforest nutrient cycle is fast and closed: nutrients are locked in biomass; litter decomposes quickly and is immediately re-absorbed by roots, so the soil store is low.…",
+      "Rock heats and expands by day and cools and contracts by night, and because the mineral grains have different expansion coefficients, thousands of such cycles set up internal…"
     ],
     "examTipZh": "DSE 作答「地理過程・因果鏈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Geographical process chains”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "數據與環境管理",
     "titleEn": "Data & environmental management",
     "conceptZh": "城市熱島是多因疊加：深色硬地（混凝土、瀝青）吸熱儲熱強、夜間緩慢釋放；綠地水體少，蒸散冷卻不足；加上交通、工業、冷氣等大量人為廢熱，使市區明顯較郊區溫暖。",
-    "conceptEn": "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling a…",
+    "conceptEn": "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling…",
     "mustKnowZh": [
       "城市熱島是多因疊加：深色硬地（混凝土、瀝青）吸熱儲熱強、夜間緩慢釋放；綠地水體少，蒸散冷卻不足；加上交通、工業、冷氣等大量人為廢熱，使市區明顯較郊區溫暖。",
       "指數由 6.2 降至 4.1 只顯示【結果】，並未提供任何關於成因的資訊。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "污染屬於典型的負外部性：排污者承擔的私人成本低於社會實際承受的成本，因此排污量高於社會最適水平。"
     ],
     "mustKnowEn": [
-      "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling a…",
-      "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause.",
-      "Reading a climate graph means using two clues together: the temperature level and the SEASONAL DISTRIBUTION of rainfall.",
-      "Pollution is a textbook negative externality: the private cost borne by the polluter is below the cost actually borne by society, so more pollution is produced than is socially op…"
+      "The urban heat island is multi-causal: dark hard surfaces (concrete, asphalt) absorb and store heat and release it slowly at night; green space and water for evaporative cooling…",
+      "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause. The improvement could stem from emission controls, from a shift in industrial structure, from lower…",
+      "Reading a climate graph means using two clues together: the temperature level and the SEASONAL DISTRIBUTION of rainfall. Year-round high temperatures rule out the temperate types;…",
+      "Pollution is a textbook negative externality: the private cost borne by the polluter is below the cost actually borne by society, so more pollution is produced than is socially…"
     ],
     "examTipZh": "DSE 作答「數據與環境管理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data & environmental management”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

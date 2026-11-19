@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "形式分析・元素與原則",
     "titleEn": "Formal analysis — elements & principles",
     "conceptZh": "「元素」是構成作品的基本視覺材料（線條、形狀、色彩、明暗、質感、空間）；「原則」是組織這些元素的方法（平衡、對比、節奏、比例、統一、強調）。",
-    "conceptEn": "Elements are the basic visual materials of a work (line, shape, colour, value, texture, space); principles are how those elements are organised (balance, contrast, rhythm, proport…",
+    "conceptEn": "Elements are the basic visual materials of a work (line, shape, colour, value, texture, space); principles are how those elements are organised (balance, contrast, rhythm,…",
     "mustKnowZh": [
       "「元素」是構成作品的基本視覺材料（線條、形狀、色彩、明暗、質感、空間）；「原則」是組織這些元素的方法（平衡、對比、節奏、比例、統一、強調）。",
       "互補色並置時相互強化，對比最強烈，令彩度與視覺張力大增（如梵高常用），是製造焦點與活力的常用手法。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "平衡分對稱與不對稱兩種。"
     ],
     "mustKnowEn": [
-      "Elements are the basic visual materials of a work (line, shape, colour, value, texture, space); principles are how those elements are organised (balance, contrast, rhythm, proport…",
-      "Placed side by side, complementary colours reinforce each other, giving the strongest contrast and heightened vividness and tension (as van Gogh often used) — a common way to crea…",
-      "Formal analysis works on two levels: the VISUAL ELEMENTS are the basic materials of a work — line, shape, colour, tone, texture, space — while the PRINCIPLES of composition are th…",
-      "Balance comes in two kinds."
+      "Elements are the basic visual materials of a work (line, shape, colour, value, texture, space); principles are how those elements are organised (balance, contrast, rhythm,…",
+      "Placed side by side, complementary colours reinforce each other, giving the strongest contrast and heightened vividness and tension (as van Gogh often used) — a common way to…",
+      "Formal analysis works on two levels: the VISUAL ELEMENTS are the basic materials of a work — line, shape, colour, tone, texture, space — while the PRINCIPLES of composition are…",
+      "Balance comes in two kinds. Symmetrical balance repeats identical elements on either side of an axis: stable but easily static. Asymmetrical balance instead offsets VISUAL WEIGHT…"
     ],
     "examTipZh": "DSE 作答「形式分析・元素與原則」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Formal analysis — elements & principles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "藝術史・技法與風格",
     "titleEn": "Art history — technique & style",
     "conceptZh": "線性透視以一個或多個消失點，使平行線在畫面中向遠處會聚，從而在平面上營造合乎視覺經驗的縱深感，是文藝復興再現空間的重大突破。",
-    "conceptEn": "Linear perspective uses one or more vanishing points so that parallel lines converge into the distance, producing a believable sense of depth on a flat surface — a major Renaissan…",
+    "conceptEn": "Linear perspective uses one or more vanishing points so that parallel lines converge into the distance, producing a believable sense of depth on a flat surface — a major…",
     "mustKnowZh": [
       "線性透視以一個或多個消失點，使平行線在畫面中向遠處會聚，從而在平面上營造合乎視覺經驗的縱深感，是文藝復興再現空間的重大突破。",
       "中國山水以散點透視讓視點隨卷軸移動，並以留白營造虛實與意境；西方文藝復興則以固定視點的線性透視追求逼真景深。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "線性透視自文藝復興確立以來，預設了一個固定的觀看位置：整幅畫的所有形狀都按同一視點推導。"
     ],
     "mustKnowEn": [
-      "Linear perspective uses one or more vanishing points so that parallel lines converge into the distance, producing a believable sense of depth on a flat surface — a major Renaissan…",
-      "Chinese landscape uses shifting perspective so the viewpoint roves across the scroll, and uses empty space (liubai) to balance solid and void and evoke mood; Western Renaissance p…",
-      "Before collapsible metal tubes appeared in the mid-nineteenth century, painters ground their own colours and stored them in pig bladders: hard to carry and quick to dry, which mad…",
-      "Linear perspective, established in the Renaissance, presupposes one fixed position from which every shape in the picture is derived."
+      "Linear perspective uses one or more vanishing points so that parallel lines converge into the distance, producing a believable sense of depth on a flat surface — a major…",
+      "Chinese landscape uses shifting perspective so the viewpoint roves across the scroll, and uses empty space (liubai) to balance solid and void and evoke mood; Western Renaissance…",
+      "Before collapsible metal tubes appeared in the mid-nineteenth century, painters ground their own colours and stored them in pig bladders: hard to carry and quick to dry, which…",
+      "Linear perspective, established in the Renaissance, presupposes one fixed position from which every shape in the picture is derived. Cubism takes an object apart and reassembles…"
     ],
     "examTipZh": "DSE 作答「藝術史・技法與風格」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Art history — technique & style”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

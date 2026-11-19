@@ -42,7 +42,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Proponents stress patient autonomy and relief from unbearable terminal suffering; opponents invoke the sanctity of life — this is the core tension.",
-      "The \"potential\" argument is challenged because a potential X need not have the full rights of an actual X (a potential president lacks presidential powers), so inferring a full ri…",
+      "The \"potential\" argument is challenged because a potential X need not have the full rights of an actual X (a potential president lacks presidential powers), so inferring a full…",
       "Anthropocentrism centres value on humans, treating nature as instrumental, in contrast to ecocentric/biocentric views that grant nature intrinsic value.",
       "Social justice concerns fair access to basic needs; pricing a survival drug beyond the vulnerable’s means lets ability-to-pay decide life and death, breaching healthcare equity."
     ],
@@ -67,7 +67,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Ascribing responsibility generally requires freedom (not coerced) and knowledge (understanding the act); lacking either mitigates responsibility, as with ignorance or duress.",
-      "Responsibility often presupposes the ability to have done otherwise; if determinism fixes everything, that alternative seems removed, threatening responsibility.",
+      "Responsibility often presupposes the ability to have done otherwise; if determinism fixes everything, that alternative seems removed, threatening responsibility. Compatibilism…",
       "Conscience is understood as the inner capacity to judge and approve or reproach one’s own conduct, guiding and evaluating action rather than external coercion or mere physiology.",
       "Moral freedom (autonomy) means self-legislating by reason and bearing responsibility; mere licence is whim driven by desire — the two are not the same."
     ],
@@ -94,7 +94,7 @@ export const notes: Record<string, StudyNote> = {
       "The despised Samaritan helps a wounded Jew; Jesus thereby extends \"neighbour\" to anyone in need, beyond ethnic and religious lines.",
       "The Euthyphro dilemma asks whether goodness is good merely because commanded (making morality arbitrary) or commanded because already good (making goodness independent of God) — a…",
       "The latter half of the Decalogue (no killing, adultery, theft, false witness) governs interpersonal ethics, while the former governs the human–God relationship.",
-      "Bearing \"God’s image\" confers inherent dignity on every person, grounding the Christian affirmation of human rights and opposition to slavery and discrimination, regardless of fai…"
+      "Bearing \"God’s image\" confers inherent dignity on every person, grounding the Christian affirmation of human rights and opposition to slavery and discrimination, regardless of…"
     ],
     "examTipZh": "DSE 作答「基督宗教」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Christianity”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -118,8 +118,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "The truth of origin locates suffering in craving and attachment; only by extinguishing craving (cessation) and following the Eightfold Path can one be freed.",
       "Non-self does not abolish morality but dissolves ego-clinging; loosening attachment to \"self\" weakens greed and hatred and fosters compassion and altruism toward all beings.",
-      "The first precept is non-killing, expressing reverence for all living beings and the spirit of non-harm (ahimsa); the others forbid stealing, sexual misconduct, false speech and i…",
-      "Karma is intentional action of body, speech and mind with corresponding results; wholesome and unwholesome deeds bear fruit, so Buddhist ethics urges careful conduct — it is not f…"
+      "The first precept is non-killing, expressing reverence for all living beings and the spirit of non-harm (ahimsa); the others forbid stealing, sexual misconduct, false speech and…",
+      "Karma is intentional action of body, speech and mind with corresponding results; wholesome and unwholesome deeds bear fruit, so Buddhist ethics urges careful conduct — it is not…"
     ],
     "examTipZh": "DSE 作答「佛教」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Buddhism”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -133,7 +133,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "宗教倫理",
     "titleEn": "Religious Ethics",
     "conceptZh": "自然法主張道德秩序內在於受造的人性，人可藉理性辨識「行善避惡」等基本傾向與目的，故道德並非全憑啟示或喜好。",
-    "conceptEn": "Natural law holds that moral order is built into created human nature, knowable by reason through basic inclinations and purposes like \"do good, avoid evil\", so morality is not ba…",
+    "conceptEn": "Natural law holds that moral order is built into created human nature, knowable by reason through basic inclinations and purposes like \"do good, avoid evil\", so morality is not…",
     "mustKnowZh": [
       "自然法主張道德秩序內在於受造的人性，人可藉理性辨識「行善避惡」等基本傾向與目的，故道德並非全憑啟示或喜好。",
       "宗教倫理常以神、天道等超越根源為道德權威；世俗倫理則訴諸理性、人性、效益或契約。",
@@ -141,10 +141,10 @@ export const notes: Record<string, StudyNote> = {
       "成熟的宗教倫理會區分核心信仰與歷史文化包袱，透過經典詮釋與對話，尋求既忠於傳統又尊重人性尊嚴的理解，而非僵化或全盤否定。"
     ],
     "mustKnowEn": [
-      "Natural law holds that moral order is built into created human nature, knowable by reason through basic inclinations and purposes like \"do good, avoid evil\", so morality is not ba…",
-      "Religious ethics often grounds moral authority in a transcendent source like God or the Way, whereas secular ethics appeals to reason, human nature, utility or contract, though th…",
-      "Confucian, Buddhist, Christian and Islamic traditions all teach reciprocity, revealing a shared ethical core for dialogue, though this does not make their doctrines wholly identic…",
-      "Mature religious ethics distinguishes core faith from historical-cultural baggage, using interpretation and dialogue to honour both tradition and human dignity, rather than rigidi…"
+      "Natural law holds that moral order is built into created human nature, knowable by reason through basic inclinations and purposes like \"do good, avoid evil\", so morality is not…",
+      "Religious ethics often grounds moral authority in a transcendent source like God or the Way, whereas secular ethics appeals to reason, human nature, utility or contract, though…",
+      "Confucian, Buddhist, Christian and Islamic traditions all teach reciprocity, revealing a shared ethical core for dialogue, though this does not make their doctrines wholly…",
+      "Mature religious ethics distinguishes core faith from historical-cultural baggage, using interpretation and dialogue to honour both tradition and human dignity, rather than…"
     ],
     "examTipZh": "DSE 作答「宗教倫理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Religious Ethics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -158,7 +158,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "規範倫理・理論應用",
     "titleEn": "Normative theory — application",
     "conceptZh": "結果論的判準在於「結果」：效益主義主張正確的行為是能極大化整體福祉者。",
-    "conceptEn": "Consequentialism judges by outcomes: utilitarianism holds the right act is the one that maximises overall well-being.",
+    "conceptEn": "Consequentialism judges by outcomes: utilitarianism holds the right act is the one that maximises overall well-being. It looks to actual consequences, not duty, character or…",
     "mustKnowZh": [
       "結果論的判準在於「結果」：效益主義主張正確的行為是能極大化整體福祉者。",
       "義務論主張某些行為（如說謊）本身違反道德義務，其對錯不取決於後果；康德更以「可普遍化的格律」與「把人當作目的而非僅手段」為據，故反對為好結果而說謊。",
@@ -166,10 +166,10 @@ export const notes: Record<string, StudyNote> = {
       "效益主義屬【後果論】：行為本身無所謂對錯，判準在於它實際造成甚麼後果，而衡量的尺度是受影響者整體的福祉。"
     ],
     "mustKnowEn": [
-      "Consequentialism judges by outcomes: utilitarianism holds the right act is the one that maximises overall well-being.",
-      "Deontology holds that some acts (such as lying) violate a moral duty in themselves, and their rightness does not depend on consequences; Kant further appeals to a universalisable …",
-      "Virtue ethics shifts the focus from the act to the agent: the key is not the consequences of an act or its conformity to a rule, but cultivating good character (the virtues) so on…",
-      "Utilitarianism is a CONSEQUENTIALIST theory: an act is not right or wrong in itself, and the test is what it actually brings about, measured by the overall welfare of those affect…"
+      "Consequentialism judges by outcomes: utilitarianism holds the right act is the one that maximises overall well-being. It looks to actual consequences, not duty, character or…",
+      "Deontology holds that some acts (such as lying) violate a moral duty in themselves, and their rightness does not depend on consequences; Kant further appeals to a universalisable…",
+      "Virtue ethics shifts the focus from the act to the agent: the key is not the consequences of an act or its conformity to a rule, but cultivating good character (the virtues) so…",
+      "Utilitarianism is a CONSEQUENTIALIST theory: an act is not right or wrong in itself, and the test is what it actually brings about, measured by the overall welfare of those…"
     ],
     "examTipZh": "DSE 作答「規範倫理・理論應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Normative theory — application”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -183,7 +183,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "道德推理・後設反思",
     "titleEn": "Moral reasoning — reflection",
     "conceptZh": "「多數人這樣做」是一項事實陳述（is），但「應該這樣做／這樣做是對的」是規範判斷（ought）；由事實直接跳到價值，未提供道德理由，犯了「是–應」斷裂（兼訴諸群眾）的謬誤——歷史上不乏多數人接受卻不道德的做法。",
-    "conceptEn": "“Most people do this” is a factual claim (an is), but “one ought to / it is right” is a normative judgement (an ought); jumping from fact to value without a moral reason commits t…",
+    "conceptEn": "“Most people do this” is a factual claim (an is), but “one ought to / it is right” is a normative judgement (an ought); jumping from fact to value without a moral reason commits…",
     "mustKnowZh": [
       "「多數人這樣做」是一項事實陳述（is），但「應該這樣做／這樣做是對的」是規範判斷（ought）；由事實直接跳到價值，未提供道德理由，犯了「是–應」斷裂（兼訴諸群眾）的謬誤——歷史上不乏多數人接受卻不道德的做法。",
       "高階的倫理反思要準確掌握對立原則各自的理據：「生命神聖」訴諸生命的內在不可侵犯性，「個人自主」訴諸自決權；二者體現不同的價值優先，恰當的討論在於說明理據並權衡，而非武斷地取消一方。",
@@ -191,10 +191,10 @@ export const notes: Record<string, StudyNote> = {
       "這是道德相對主義最常被指出的困難：若道德判斷純屬個人喜好，那麼「種族滅絕是錯的」與「我不喜歡芫荽」在邏輯地位上並無分別，前者便失去了譴責的力量。"
     ],
     "mustKnowEn": [
-      "“Most people do this” is a factual claim (an is), but “one ought to / it is right” is a normative judgement (an ought); jumping from fact to value without a moral reason commits t…",
+      "“Most people do this” is a factual claim (an is), but “one ought to / it is right” is a normative judgement (an ought); jumping from fact to value without a moral reason commits…",
       "Higher-order ethical reflection accurately grasps the rationale of each opposing principle: sanctity of life appeals to the inviolable intrinsic worth of life; autonomy appeals to…",
-      "That many people do something is a statement of FACT, while \"so it is right\" is a judgement of VALUE.",
-      "This is the standard difficulty raised against moral relativism: if moral judgements are only preferences, then \"genocide is wrong\" and \"I dislike coriander\" occupy the same logic…"
+      "That many people do something is a statement of FACT, while \"so it is right\" is a judgement of VALUE. Moving straight from one to the other omits the normative premise that would…",
+      "This is the standard difficulty raised against moral relativism: if moral judgements are only preferences, then \"genocide is wrong\" and \"I dislike coriander\" occupy the same…"
     ],
     "examTipZh": "DSE 作答「道德推理・後設反思」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Moral reasoning — reflection”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

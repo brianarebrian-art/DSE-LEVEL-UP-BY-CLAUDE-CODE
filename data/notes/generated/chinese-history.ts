@@ -219,7 +219,7 @@ export const notes: Record<string, StudyNote> = {
       "商鞅變法以法家思想富國強兵：廢井田確立土地私有、獎勵耕戰提升國力、推行縣制強化中央集權，使秦由弱轉強，為統一奠基，影響深遠。",
       "科舉以才取人、相對公平，動搖了魏晉以來「上品無寒門」的門閥政治，使寒門士子有晉身之階，既擴大政權基礎，亦增強社會流動，影響中國一千多年。",
       "宋鑑於唐末五代武人亂政，刻意收兵權、抑武將、以文制武，並養大量冗官冗兵，軍費財政負擔沉重；中央雖穩固，卻造成軍力孱弱（積弱）與財用匱乏（積貧）。",
-      "Under enfeoffment, lords received land and people with hereditary rank, so their territories were in effect small states that the centre could not govern directly; over time they …"
+      "Under enfeoffment, lords received land and people with hereditary rank, so their territories were in effect small states that the centre could not govern directly; over time they…"
     ],
     "examTipZh": "DSE 作答「古代制度・因果」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Ancient Institutions — Cause & Effect”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

@@ -183,7 +183,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "資料表示計算",
     "titleEn": "Data representation — calculation",
     "conceptZh": "+20 = 00010100。",
-    "conceptEn": "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.) 【Trap】 11101011 omits t…",
+    "conceptEn": "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.)",
     "mustKnowZh": [
       "+20 = 00010100。",
       "像素數 = 1024 × 768 = 786,432。",
@@ -191,10 +191,10 @@ export const notes: Record<string, StudyNote> = {
       "以權值分解：26 = 16 + 8 + 2，對應的權值位置為 16、8、2，其餘為 0，寫成 8 位元即 00011010。"
     ],
     "mustKnowEn": [
-      "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.) 【Trap】 11101011 omits t…",
-      "Pixels = 1024 × 768 = 786,432. 24 bits per pixel = 3 bytes. Size = 786,432 × 3 = 2,359,296 bytes = 2,359,296 ÷ 1,048,576 ≈ 2.25 MiB. 【Trap】 786,432 uses 1 byte/pixel (drops ×3); 1…",
+      "+20 = 00010100. Two’s complement: invert all bits → 11101011, then add 1 → 11101100. (Check: invert 11101100 → 00010011, +1 = 00010100 = 20, so it is −20.)",
+      "Pixels = 1024 × 768 = 786,432. 24 bits per pixel = 3 bytes. Size = 786,432 × 3 = 2,359,296 bytes = 2,359,296 ÷ 1,048,576 ≈ 2.25 MiB.",
       "Reading from the right, the place values are 1, 2, 4 and 8. The digits of 1011 are 1, 1, 0 and 1, so the value is 8 + 0 + 2 + 1 = 11. The answer 13 swaps the place values 2 and 4;…",
-      "Decompose by place value: 26 = 16 + 8 + 2, so the 16, 8 and 2 positions hold a 1 and the rest hold 0, giving 00011010 in eight bits."
+      "Decompose by place value: 26 = 16 + 8 + 2, so the 16, 8 and 2 positions hold a 1 and the rest hold 0, giving 00011010 in eight bits. The answer 00011011 adds the place value 1 as…"
     ],
     "examTipZh": "DSE 作答「資料表示計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data representation — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "邏輯與算法",
     "titleEn": "Logic & algorithms",
     "conceptZh": "展開：A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B（A·Ā = 0 是互補律）。",
-    "conceptEn": "Expand: A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B (A·Ā = 0 by complement).",
+    "conceptEn": "Expand: A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B (A·Ā = 0 by complement). A truth table confirms: true only when A=1 and B=1.",
     "mustKnowZh": [
       "展開：A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B（A·Ā = 0 是互補律）。",
       "二分搜尋每次比較把搜尋範圍減半，最壞次數 ≈ ⌈log₂ 1000⌉。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "按運算次序先計 NOT：NOT 1 = 0。"
     ],
     "mustKnowEn": [
-      "Expand: A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B (A·Ā = 0 by complement).",
-      "Each comparison halves the search range, so the worst case ≈ ⌈log₂ 1000⌉.",
-      "AND outputs 1 only when every input is 1; the other three combinations all give 0. The description \"at least one input is 1\" belongs to OR; \"the two inputs differ\" belongs to XOR …",
-      "Following the order of operations, evaluate NOT first: NOT 1 = 0. Then the OR: 0 OR 0 = 0, so the answer is 0. Reading the expression as NOT (1 OR 0) would give 1 OR 0 = 1 and the…"
+      "Expand: A·(Ā + B) = A·Ā + A·B = 0 + A·B = A·B = A AND B (A·Ā = 0 by complement). A truth table confirms: true only when A=1 and B=1.",
+      "Each comparison halves the search range, so the worst case ≈ ⌈log₂ 1000⌉. Since 2¹⁰ = 1024 > 1000 > 512 = 2⁹, it is about 10.",
+      "AND outputs 1 only when every input is 1; the other three combinations all give 0. The description \"at least one input is 1\" belongs to OR; \"the two inputs differ\" belongs to XOR…",
+      "Following the order of operations, evaluate NOT first: NOT 1 = 0. Then the OR: 0 OR 0 = 0, so the answer is 0. Reading the expression as NOT (1 OR 0) would give 1 OR 0 = 1 and…"
     ],
     "examTipZh": "DSE 作答「邏輯與算法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Logic & algorithms”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "網絡計算",
     "titleEn": "Networking — calculation",
     "conceptZh": "關鍵是位元組 vs 位元：12 MB = 12 × 8 = 96 兆位元 (Mb)。",
-    "conceptEn": "The key is bytes vs bits: 12 MB = 12 × 8 = 96 megabits (Mb).",
+    "conceptEn": "The key is bytes vs bits: 12 MB = 12 × 8 = 96 megabits (Mb). Time = 96 Mb ÷ 8 Mbps = 12 seconds.",
     "mustKnowZh": [
       "關鍵是位元組 vs 位元：12 MB = 12 × 8 = 96 兆位元 (Mb)。",
       "1 位元組固定等於 8 位元，這是資訊科技科所有容量與速率換算的基礎。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "時間等於資料量除以速率：2,000 ÷ 500 = 4 秒。"
     ],
     "mustKnowEn": [
-      "The key is bytes vs bits: 12 MB = 12 × 8 = 96 megabits (Mb).",
-      "One byte is always 8 bits, and this is the basis of every capacity and rate conversion in ICT.",
-      "Using binary prefixes, 1 KB = 1,024 bytes, so 2 KB = 2 × 1,024 = 2,048 bytes.",
-      "Time equals amount of data divided by rate: 2,000 ÷ 500 = 4 seconds."
+      "The key is bytes vs bits: 12 MB = 12 × 8 = 96 megabits (Mb). Time = 96 Mb ÷ 8 Mbps = 12 seconds.",
+      "One byte is always 8 bits, and this is the basis of every capacity and rate conversion in ICT. Pay particular attention to the case of the unit symbol: a lower-case b means bit,…",
+      "Using binary prefixes, 1 KB = 1,024 bytes, so 2 KB = 2 × 1,024 = 2,048 bytes. The figure 2,000 treats the prefix as a decimal 1,000; 1,024 omits the multiplication by 2; and…",
+      "Time equals amount of data divided by rate: 2,000 ÷ 500 = 4 seconds. Because the file size and the rate are both given in KB, the units already match and no conversion is needed…"
     ],
     "examTipZh": "DSE 作答「網絡計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Networking — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

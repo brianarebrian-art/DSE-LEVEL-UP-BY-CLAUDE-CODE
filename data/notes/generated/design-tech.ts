@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "結構與機械・計算",
     "titleEn": "Structures & mechanisms — calculation",
     "conceptZh": "齒輪比 = 從動 ÷ 主動 = 60/20 = 3。",
-    "conceptEn": "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque). 【Trap】 “3× fa…",
+    "conceptEn": "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque).",
     "mustKnowZh": [
       "齒輪比 = 從動 ÷ 主動 = 60/20 = 3。",
       "動滑輪以兩段繩共同承托負載，故施力 ≈ 負載 ÷ 2，理想 MA = 2；但「功」守恆，省一半力就要多拉一倍距離。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "齒輪嚙合時，兩輪在單位時間內走過的齒數相同，故轉速與齒數成【反】比：$N_1 T_1 = N_2 T_2$。"
     ],
     "mustKnowEn": [
-      "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque). 【Trap】 “3× fa…",
-      "A movable pulley has two rope sections sharing the load, so effort ≈ load ÷ 2 and ideal MA = 2; work is conserved, so halving the force doubles the distance pulled.",
-      "A lever balances when the moments are equal: $F_1 d_1 = F_2 d_2$, so 20 × 2 = F × 5 and F = 40 ÷ 5 = 8 N.",
-      "Meshing gears pass the same number of teeth per unit time, so speed varies INVERSELY with tooth count: $N_1 T_1 = N_2 T_2$."
+      "Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque).",
+      "A movable pulley has two rope sections sharing the load, so effort ≈ load ÷ 2 and ideal MA = 2; work is conserved, so halving the force doubles the distance pulled. MA = 1 is the…",
+      "A lever balances when the moments are equal: $F_1 d_1 = F_2 d_2$, so 20 × 2 = F × 5 and F = 40 ÷ 5 = 8 N. The longer the arm the smaller the force required, which is the principle…",
+      "A lever balances when the moments are equal: $F_1 d_1 = F_2 d_2$, so 20 × 3 = F × 5 and F = 60 ÷ 5 = 12 N. The longer the arm the smaller the force required, which is the…"
     ],
     "examTipZh": "DSE 作答「結構與機械・計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Structures & mechanisms — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "材料與結構・推理",
     "titleEn": "Materials & structures — reasoning",
     "conceptZh": "三角形受側力時，除非邊長改變否則無法變形（幾何剛性）；四邊形在固定邊長下仍可被推成平行四邊形而坍塌。",
-    "conceptEn": "Under a sideways force a triangle cannot deform unless a side length changes (geometric rigidity); a rectangle of fixed side lengths can still be pushed into a parallelogram and c…",
+    "conceptEn": "Under a sideways force a triangle cannot deform unless a side length changes (geometric rigidity); a rectangle of fixed side lengths can still be pushed into a parallelogram and…",
     "mustKnowZh": [
       "三角形受側力時，除非邊長改變否則無法變形（幾何剛性）；四邊形在固定邊長下仍可被推成平行四邊形而坍塌。",
       "抗彎剛度與截面的「深度」成三次方關係：把材料移離中性軸，剛度上升得遠比重量快。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "三角形是唯一「邊長確定即形狀確定」的多邊形：三條邊的長度一經固定，內角便無法改變，即使接點是可自由轉動的鉸接也不會變成另一個形狀。"
     ],
     "mustKnowEn": [
-      "Under a sideways force a triangle cannot deform unless a side length changes (geometric rigidity); a rectangle of fixed side lengths can still be pushed into a parallelogram and c…",
-      "Bending stiffness varies with the cube of section depth: moving material away from the neutral axis raises stiffness far faster than it raises weight.",
-      "Aluminium alloy has roughly one third the density of steel, so it is far lighter for the same volume, and that is the primary reason for choosing it — aircraft, bicycles and porta…",
-      "A triangle is the only polygon whose shape is fully determined by its side lengths: fix the three sides and the angles cannot change, even if the joints are free-turning pins."
+      "Under a sideways force a triangle cannot deform unless a side length changes (geometric rigidity); a rectangle of fixed side lengths can still be pushed into a parallelogram and…",
+      "Bending stiffness varies with the cube of section depth: moving material away from the neutral axis raises stiffness far faster than it raises weight. Ribs place a small amount of…",
+      "Aluminium alloy has roughly one third the density of steel, so it is far lighter for the same volume, and that is the primary reason for choosing it — aircraft, bicycles and…",
+      "A triangle is the only polygon whose shape is fully determined by its side lengths: fix the three sides and the angles cannot change, even if the joints are free-turning pins. A…"
     ],
     "examTipZh": "DSE 作答「材料與結構・推理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Materials & structures — reasoning”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

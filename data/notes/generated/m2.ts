@@ -45,7 +45,7 @@ export const notes: Record<string, StudyNote> = {
       "Power rule: $\\int 3x^{2}\\,dx = \\frac{3}{3}x^{3} + C = x^{3} + C$.",
       "$\\int_0^{2} 3x\\,dx = \\left[\\frac{3x^2}{2}\\right]_0^{2} = 6$.",
       "$\\int e^{2x}\\,dx = \\frac{1}{2}e^{2x} + C$.",
-      "First find the antiderivative: $\\int x^{2}\\,dx = \\frac{x^{3}}{3}$."
+      "First find the antiderivative: $\\int x^{2}\\,dx = \\frac{x^{3}}{3}$. Then substitute the limits: $\\left[\\frac{x^{3}}{3}\\right]_{0}^{3} = \\frac{3^{3}}{3} - 0 = \\frac{27}{3} = 9$. A…"
     ],
     "examTipZh": "DSE 作答「積分法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Integration”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -145,7 +145,7 @@ export const notes: Record<string, StudyNote> = {
       "Substituting $n=k+1$ gives $\\frac{(k+1)(k+2)}{2}$.",
       "At $n=1$: LHS $=1$, RHS $=1^2=1$ — they match.",
       "Without the base case the \"dominoes\" have no starting point — the proof fails.",
-      "With $n = 5$: $\\frac{5(5+1)}{2} = \\frac{5 \\times 6}{2} = 15$."
+      "With $n = 5$: $\\frac{5(5+1)}{2} = \\frac{5 \\times 6}{2} = 15$. Traps: $30$ omits the division by 2; $10$ writes $n-1$ for $n+1$; $25$ uses $n^2$."
     ],
     "examTipZh": "DSE 作答「數學歸納法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Mathematical Induction”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -219,8 +219,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$|\\mathbf{a}|=\\sqrt{1^2+2^2+2^2}=\\sqrt{1+4+4}=\\sqrt{9}=3$.",
       "$\\cos\\theta=\\dfrac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|}=\\dfrac{1}{1\\cdot\\sqrt2}=\\dfrac{1}{\\sqrt2}$, so $\\theta=45^\\circ$.",
-      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$.",
-      "The dot product multiplies corresponding components and adds: $1(4) + 2(5) + 3(6) = 4 + 10 + 18 = 32$."
+      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$. Traps: $5$ simply adds the components; $9$ stops at the sum of squares without…",
+      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{2^2 + 6^2 + 9^2} = \\sqrt{121} = 11$. Traps: $17$ simply adds the components; $121$ stops at the sum of squares…"
     ],
     "examTipZh": "DSE 作答「三維向量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “3-D vectors”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -243,9 +243,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Cramer: $x = \\frac{c_1b_2 - b_1c_2}{\\Delta} = 1$.",
-      "The coefficient determinant is $\\Delta = 1(1) - 2(3) = -5 \\neq 0$, so the solution is unique.",
-      "The coefficient determinant is $\\Delta = 2(3) - 1(1) = 5 \\neq 0$, so the solution is unique.",
-      "A system of two linear equations has a unique solution exactly when the coefficient determinant is non-zero."
+      "The coefficient determinant is $\\Delta = 1(1) - 2(3) = -5 \\neq 0$, so the solution is unique. Replacing the first column by the constants, $\\Delta_x = 5(1) - 2(5) = -5$, hence $x…",
+      "The coefficient determinant is $\\Delta = 1(1) - 2(3) = -5 \\neq 0$, so the solution is unique. Replacing the first column by the constants, $\\Delta_x = 5(1) - 2(10) = -15$, hence…",
+      "The coefficient determinant is $\\Delta = 2(3) - 1(1) = 5 \\neq 0$, so the solution is unique. Replacing the first column by the constants, $\\Delta_x = 4(3) - 1(7) = 5$, hence $x =…"
     ],
     "examTipZh": "DSE 作答「線性方程組」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Systems of Linear Equations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

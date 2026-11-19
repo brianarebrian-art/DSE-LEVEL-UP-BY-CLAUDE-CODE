@@ -243,8 +243,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "婉約與豪放之別，主要在意境與情感：婉約詞情致細膩、含蓄低回，多抒個人離愁別緒（如《聲聲慢》的淒苦）；豪放詞境界開闊、氣勢磅礡，多寄家國興亡與人生壯懷（如《念奴嬌》的懷古蒼涼）。",
       "「以樂景寫哀情」屬反襯：愈是花好月圓，愈反照出詩人內心的悲苦，落差愈大則哀感愈深。",
-      "Wanyue ci centres on private feeling — parting, longing, the drifting of a life — in restrained language rich in implicit comparison and telling detail, with Liu Yong and Li Qingz…",
-      "The great river gives vastness of space and \"a thousand ages\" length of time; overlaid, they place the reader within an enormous frame from the first line."
+      "Wanyue ci centres on private feeling — parting, longing, the drifting of a life — in restrained language rich in implicit comparison and telling detail, with Liu Yong and Li…",
+      "The great river gives vastness of space and \"a thousand ages\" length of time; overlaid, they place the reader within an enormous frame from the first line. This structure —…"
     ],
     "examTipZh": "DSE 作答「風格比較・婉約與豪放」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Comparing Styles — Wanyue and Haofang”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

@@ -17,8 +17,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Opportunity cost is the single best forgone alternative (\\$300); not a sum, and \"free\" ≠ zero cost.",
-      "Opportunity cost includes non-monetary costs.",
-      "The \\$120 is paid and unrecoverable — a sunk cost that must not sway the choice now.",
+      "Opportunity cost includes non-monetary costs. A longer wait means more forgone time (and its best use), so the opportunity cost rises — even though the menu price is unchanged.",
+      "The \\$120 is paid and unrecoverable — a sunk cost that must not sway the choice now. Compare only future value: if leaving frees time for something better, leave. Staying \"so it…",
       "Opportunity cost is the value of the single best forgone alternative — the \\$300 job (not the sum of forgone options, nor the value of the chosen option)."
     ],
     "examTipZh": "DSE 作答「基礎概念」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -113,7 +113,7 @@ export const notes: Record<string, StudyNote> = {
       "Profit $= TR - TC = 10\\times50 - 350 = 150$.",
       "$AC = \\frac{TC}{Q} = \\frac{600}{50} = 12$.",
       "In the short run a fixed input limits the variable input’s extra output, so marginal product eventually falls.",
-      "A fixed cost (e.g."
+      "A fixed cost (e.g. rent) is independent of output and payable even at zero production."
     ],
     "examTipZh": "DSE 作答「廠商與生產」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Firms & Production”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -223,7 +223,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "微觀計算（高階）",
     "titleEn": "Microeconomics — calculation",
     "conceptZh": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。",
-    "conceptEn": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%.",
+    "conceptEn": "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%. %ΔTR ≈ %ΔP + %ΔQ = +10% − 4% = +6% > 0. When demand is inelastic (<1), a price rise raises total revenue.",
     "mustKnowZh": [
       "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。",
       "短期停產法則：當 P < AVC，繼續生產的虧損比停產（只蝕固定成本）更大，故應停產。",
@@ -231,10 +231,10 @@ export const notes: Record<string, StudyNote> = {
       "上限 \\$30 低於均衡 \\$50，屬有約束力的價格上限。"
     ],
     "mustKnowEn": [
-      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%.",
-      "Short-run shut-down rule: shut down when P < AVC, because the loss from producing then exceeds the fixed-cost-only loss from stopping.",
-      "%ΔP = (60 − 50) ÷ 50 = +20%; %ΔQ = (85 − 100) ÷ 100 = −15%.",
-      "The \\$30 ceiling is below the \\$50 equilibrium, so it binds."
+      "PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%. %ΔTR ≈ %ΔP + %ΔQ = +10% − 4% = +6% > 0. When demand is inelastic (<1), a price rise raises total revenue.",
+      "Short-run shut-down rule: shut down when P < AVC, because the loss from producing then exceeds the fixed-cost-only loss from stopping. Here P=\\$8 < AVC=\\$9 ⇒ shut down.",
+      "%ΔP = (60 − 50) ÷ 50 = +20%; %ΔQ = (85 − 100) ÷ 100 = −15%. |PED| = |−15% ÷ 20%| = 0.75 < 1 ⇒ inelastic.",
+      "The \\$30 ceiling is below the \\$50 equilibrium, so it binds. Shortage = Qd − Qs = 120 − 80 = 40 units. The legal price cannot rise back to equilibrium, so a shortage (and…"
     ],
     "examTipZh": "DSE 作答「微觀計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Microeconomics — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -248,7 +248,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "宏觀計算（高階）",
     "titleEn": "Macroeconomics — calculation",
     "conceptZh": "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5。",
-    "conceptEn": "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M. 【Trap】 \\$50M ignores the multiplier; \\$40M = 50×0.8 (only the first round of spending);…",
+    "conceptEn": "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M.",
     "mustKnowZh": [
       "簡單支出乘數 = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5。",
       "實質 GDP = 名義 GDP ÷ 平減指數 × 100 = 660 ÷ 110 × 100 = \\$600M。",
@@ -256,10 +256,10 @@ export const notes: Record<string, StudyNote> = {
       "支出法：GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$ 億元。"
     ],
     "mustKnowEn": [
-      "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M. 【Trap】 \\$50M ignores the multiplier; \\$40M = 50×0.8 (only the first round of spending);…",
-      "Real GDP = nominal ÷ deflator × 100 = 660 ÷ 110 × 100 = \\$600M.",
-      "Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.e.",
-      "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$."
+      "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M.",
+      "Real GDP = nominal ÷ deflator × 100 = 660 ÷ 110 × 100 = \\$600M. With prices above the base year, real output is below nominal.",
+      "Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.e. purchasing power falls about 3%.",
+      "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$. Traps: 1170 adds imports instead of subtracting; 960 omits the subtraction; 700…"
     ],
     "examTipZh": "DSE 作答「宏觀計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Macroeconomics — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -281,8 +281,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "工廠排污屬外部成本；街燈屬共用品；獨市經營屬壟斷力量；二手車買賣中賣方比買方更清楚車況，屬資訊不對稱。",
-      "Opportunity cost of 1 cloth: A = 12/6 = 2 wine; B = 4/1 = 4 wine ⇒ A’s cloth is cheaper, so A has the comparative advantage.",
-      "Tax incidence depends on relative elasticity: the more inelastic side (less able to change behaviour) bears more."
+      "Opportunity cost of 1 cloth: A = 12/6 = 2 wine; B = 4/1 = 4 wine ⇒ A’s cloth is cheaper, so A has the comparative advantage. Opportunity cost of 1 wine: A = 0.5 cloth; B = 0.25…",
+      "Tax incidence depends on relative elasticity: the more inelastic side (less able to change behaviour) bears more. Demand far more inelastic than supply ⇒ consumers cannot cut…"
     ],
     "examTipZh": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "examTipEn": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
@@ -304,8 +304,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "把農地逐步改為工業用地，最初調用的是產出最低的農地，其後被迫調用肥沃農地，每多一單位工業品放棄的糧食愈來愈多。",
-      "CS = ½ × Q × (Pmax − P) = 90. Trap: 180 drops the ½ (treats it as a rectangle).",
-      "Equilibrium requires $Q_d = Q_s$: 100 − 2P = −20 + 2P, so 120 = 4P and $P = 20$."
+      "CS = ½ × Q × (Pmax − P) = 90.",
+      "Equilibrium requires $Q_d = Q_s$: 100 − 2P = −20 + 2P, so 120 = 4P and $P = 20$. Substituting back into either equation gives the equilibrium quantity of 60 units, and agreement…"
     ],
     "examTipZh": "見到曲線形狀題，先答形狀反映甚麼，再答為何如此。只描述「向外凸」而不解釋資源適用性，答案缺了因由。",
     "examTipEn": "見到曲線形狀題，先答形狀反映甚麼，再答為何如此。只描述「向外凸」而不解釋資源適用性，答案缺了因由。",

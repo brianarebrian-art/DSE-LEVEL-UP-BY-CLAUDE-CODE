@@ -118,7 +118,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "A buffet lets guests help themselves to many dishes, emphasising variety and replenishment.",
       "Food safety focuses on preventing contamination, cross-contamination and temperature abuse.",
-      "HACCP monitors critical points (e.g.",
+      "HACCP monitors critical points (e.g. cooking temperatures) to prevent food-safety hazards.",
       "À la carte lets guests order dishes individually, each priced on its own."
     ],
     "examTipZh": "DSE 作答「餐飲服務」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "酒店營運計算",
     "titleEn": "Hotel operations — metrics",
     "conceptZh": "入住率 = 售出 ÷ 可售房 = 84 ÷ 120 = 70%。",
-    "conceptEn": "Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%.",
+    "conceptEn": "Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%. ADR = room revenue ÷ rooms SOLD = 84,000 ÷ 84 = \\$1,000.",
     "mustKnowZh": [
       "入住率 = 售出 ÷ 可售房 = 84 ÷ 120 = 70%。",
       "入住率 = 已售房間數 ÷ 可供出租房間數 × 100% = 120 ÷ 200 × 100% = 60%。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "平均房價 = 客房收入 ÷ 已售房間數 = 110,000 ÷ 100 = 1,100 元。"
     ],
     "mustKnowEn": [
-      "Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%.",
-      "Occupancy rate = rooms sold ÷ rooms available for sale × 100% = 120 ÷ 200 × 100% = 60%.",
-      "ADR = room revenue ÷ rooms sold = \\$70,000 ÷ 100 = \\$700. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a differe…",
-      "ADR = room revenue ÷ rooms sold = \\$110,000 ÷ 100 = \\$1,100. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a diff…"
+      "Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%. ADR = room revenue ÷ rooms SOLD = 84,000 ÷ 84 = \\$1,000.",
+      "Occupancy rate = rooms sold ÷ rooms available for sale × 100% = 120 ÷ 200 × 100% = 60%. The denominator is the rooms available for sale, not the hotel's total room count; rooms…",
+      "ADR = room revenue ÷ rooms sold = \\$70,000 ÷ 100 = \\$700. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a…",
+      "ADR = room revenue ÷ rooms sold = \\$110,000 ÷ 100 = \\$1,100. The denominator is rooms SOLD, not rooms available; using the latter gives revenue per available room (RevPAR), a…"
     ],
     "examTipZh": "DSE 作答「酒店營運計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Hotel operations — metrics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "概念分析・服務與可持續",
     "titleEn": "Concepts — service & sustainability",
     "conceptZh": "遊客量超出環境與設施所能承受的限度而造成損害，正是「承載力」被突破的典型；可持續旅遊強調把訪客量控制在承載力之內。",
-    "conceptEn": "Visitor numbers exceeding what the environment and facilities can bear, causing damage, is exactly a breach of carrying capacity; sustainable tourism keeps visitor numbers within …",
+    "conceptEn": "Visitor numbers exceeding what the environment and facilities can bear, causing damage, is exactly a breach of carrying capacity; sustainable tourism keeps visitor numbers within…",
     "mustKnowZh": [
       "遊客量超出環境與設施所能承受的限度而造成損害，正是「承載力」被突破的典型；可持續旅遊強調把訪客量控制在承載力之內。",
       "「關鍵時刻」是顧客與服務接觸、形成印象的時刻；妥善的服務補救能扭轉不滿、重建信任，往往比從未出錯更能提升忠誠（服務補救悖論），亦改善口碑。",
@@ -241,9 +241,9 @@ export const notes: Record<string, StudyNote> = {
       "服務有四項基本特徵：無形性、不可分離性（生產與消費同時發生）、易變性（同一員工在不同時候表現不一）、易逝性（今晚賣不出的房間不能留到明晚）。"
     ],
     "mustKnowEn": [
-      "Visitor numbers exceeding what the environment and facilities can bear, causing damage, is exactly a breach of carrying capacity; sustainable tourism keeps visitor numbers within …",
-      "A moment of truth is a service contact that shapes the guest’s impression; good service recovery can reverse dissatisfaction and rebuild trust, often raising loyalty more than if …",
-      "Sustainable tourism turns on CARRYING CAPACITY: how many visitors a destination can absorb without damaging its environment or disrupting local life.",
+      "Visitor numbers exceeding what the environment and facilities can bear, causing damage, is exactly a breach of carrying capacity; sustainable tourism keeps visitor numbers within…",
+      "A moment of truth is a service contact that shapes the guest’s impression; good service recovery can reverse dissatisfaction and rebuild trust, often raising loyalty more than if…",
+      "Sustainable tourism turns on CARRYING CAPACITY: how many visitors a destination can absorb without damaging its environment or disrupting local life. It also requires that a…",
       "Services have four basic characteristics: intangibility, inseparability of production from consumption, variability as the same employee performs differently at different moments,…"
     ],
     "examTipZh": "DSE 作答「概念分析・服務與可持續」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",

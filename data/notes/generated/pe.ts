@@ -17,7 +17,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The quadriceps lie at the front of the thigh and extend the knee; the hamstrings flex it.",
-      "The agonist contracts while the antagonist relaxes and controls; e.g.",
+      "The agonist contracts while the antagonist relaxes and controls; e.g. the biceps contract and triceps relax in elbow flexion.",
       "Knee and elbow are hinge joints (flexion-extension); shoulder and hip are ball-and-socket with wider movement.",
       "Tendons join muscle to bone, transmitting force; ligaments join bone to bone."
     ],
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "運動生理計算",
     "titleEn": "Exercise physiology — calculation",
     "conceptZh": "最大心率 = 220 − 16 = 204 bpm。",
-    "conceptEn": "Max HR = 220 − 16 = 204 bpm.",
+    "conceptEn": "Max HR = 220 − 16 = 204 bpm. Zone = 204 × 60% to 204 × 80% = 122.4 to 163.2, i.e. about 122–163 bpm.",
     "mustKnowZh": [
       "最大心率 = 220 − 16 = 204 bpm。",
       "BMI = 60 ÷ (1.6)² = 60 ÷ 2.56 ≈ 23.4 kg/m²。",
@@ -216,7 +216,7 @@ export const notes: Record<string, StudyNote> = {
       "BMI = 體重（公斤）÷ 身高（米）的平方 = 40.5 ÷ 1.5² = 40.5 ÷ 2.25 = 18。"
     ],
     "mustKnowEn": [
-      "Max HR = 220 − 16 = 204 bpm.",
+      "Max HR = 220 − 16 = 204 bpm. Zone = 204 × 60% to 204 × 80% = 122.4 to 163.2, i.e. about 122–163 bpm.",
       "BMI = 60 ÷ (1.6)² = 60 ÷ 2.56 ≈ 23.4 kg/m².",
       "Cardiac output = heart rate × stroke volume = 70 × 70 = 4900 mL/min = 4.9 L/min.",
       "BMI = mass in kg ÷ (height in m)² = 40.5 ÷ 1.5² = 40.5 ÷ 2.25 = 18. Height must be in metres, which is where marks are most often lost. BMI compares mass with height only and does…"
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "生物力學與能量系統",
     "titleEn": "Biomechanics & energy systems",
     "conceptZh": "約 10 秒內的最大強度爆發，主要由 ATP-PC 系統即時供能（肌肉內貯存的 ATP 與磷酸肌酸），快速但容量有限。",
-    "conceptEn": "A ~10 s maximal burst is powered mainly by the ATP-PC system (stored ATP and phosphocreatine in muscle) — fast but limited.",
+    "conceptEn": "A ~10 s maximal burst is powered mainly by the ATP-PC system (stored ATP and phosphocreatine in muscle) — fast but limited. The aerobic system is slow and suits long efforts; the…",
     "mustKnowZh": [
       "約 10 秒內的最大強度爆發，主要由 ATP-PC 系統即時供能（肌肉內貯存的 ATP 與磷酸肌酸），快速但容量有限。",
       "肘屈曲時：支點 = 肘關節，負載 = 手中重物，施力 = 肱二頭肌的附著點，且施力點介於支點與負載之間，屬第三類槓桿（人體大多數關節皆是，利於速度與活動幅度，犧牲省力）。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "起跳後身體是一個拋體，水平距離 = 水平速度 × 滯空時間。"
     ],
     "mustKnowEn": [
-      "A ~10 s maximal burst is powered mainly by the ATP-PC system (stored ATP and phosphocreatine in muscle) — fast but limited.",
-      "In elbow flexion the fulcrum is the elbow, the load is the weight in the hand, and the effort is the biceps attachment, which lies between fulcrum and load — a third-class lever (…",
-      "The three energy systems differ in the trade-off between RATE of supply and DURATION.",
-      "After take-off the body is a projectile, and horizontal distance equals horizontal velocity multiplied by time of flight."
+      "A ~10 s maximal burst is powered mainly by the ATP-PC system (stored ATP and phosphocreatine in muscle) — fast but limited. The aerobic system is slow and suits long efforts; the…",
+      "In elbow flexion the fulcrum is the elbow, the load is the weight in the hand, and the effort is the biceps attachment, which lies between fulcrum and load — a third-class lever…",
+      "The three energy systems differ in the trade-off between RATE of supply and DURATION. The phosphagen system regenerates ATP directly from creatine phosphate already stored in…",
+      "After take-off the body is a projectile, and horizontal distance equals horizontal velocity multiplied by time of flight. The vertical component sets how high the jumper rises and…"
     ],
     "examTipZh": "DSE 作答「生物力學與能量系統」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Biomechanics & energy systems”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

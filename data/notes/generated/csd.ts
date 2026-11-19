@@ -167,7 +167,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Climate change, pandemics and terrorism cross borders and need international cooperation to address.",
-      "Emissions and warming affect all, so coordinated cuts (e.g.",
+      "Emissions and warming affect all, so coordinated cuts (e.g. the Paris Agreement) are needed.",
       "The UN coordinates cooperation on peace, security, development and humanitarian issues, without overriding sovereignty.",
       "Differing development levels, interests and positions make burden-sharing and coordination difficult."
     ],
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "資料回應・數據詮釋",
     "titleEn": "Data-response · interpreting data",
     "conceptZh": "兩個變項同向變動只是「相關 / 同時出現」，並非「因果」。",
-    "conceptEn": "Two variables moving together is correlation/co-occurrence, not causation.",
+    "conceptEn": "Two variables moving together is correlation/co-occurrence, not causation. Many factors drive the Gini (technology, tax, education…), so the data cannot pin inequality on openness…",
     "mustKnowZh": [
       "兩個變項同向變動只是「相關 / 同時出現」，並非「因果」。",
       "當絕大多數人已接種，即使疫苗有效，病例中「已接種者」佔多數也屬必然——要比較的是「發病率」而非原始宗數。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "「NO₂ 跌 20%」是可查證的事實；「是否值得收費」是價值取捨，因人因優先次序而異。"
     ],
     "mustKnowEn": [
-      "Two variables moving together is correlation/co-occurrence, not causation.",
-      "When almost everyone is vaccinated, even an effective vaccine leaves most CASES among the vaccinated — you must compare RATES, not raw counts.",
-      "The data clearly shows poverty reduction, urbanisation and development advancing together, but a trend cannot prove any single factor or policy caused all of it (many policies, ma…",
-      "“NO₂ fell 20%” is checkable fact; “whether it is worth it” is a value trade-off that varies with priorities."
+      "Two variables moving together is correlation/co-occurrence, not causation. Many factors drive the Gini (technology, tax, education…), so the data cannot pin inequality on openness…",
+      "When almost everyone is vaccinated, even an effective vaccine leaves most CASES among the vaccinated — you must compare RATES, not raw counts. The rates: ≈0.67% vs 4%, ~6× lower…",
+      "The data clearly shows poverty reduction, urbanisation and development advancing together, but a trend cannot prove any single factor or policy caused all of it (many policies,…",
+      "“NO₂ fell 20%” is checkable fact; “whether it is worth it” is a value trade-off that varies with priorities. Separating them stops one side’s stance from masquerading as an…"
     ],
     "examTipZh": "DSE 作答「資料回應・數據詮釋」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data-response · interpreting data”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "多角度評鑑・持份者權衡",
     "titleEn": "Multi-perspective · stakeholders",
     "conceptZh": "高階評鑑不是選邊站，而是把不同持份者的關切（健康、公共需要、環境、生計）一併放上枱，考慮可行的減緩與監測安排，再作有條件、可被理由支持的判斷。",
-    "conceptEn": "Higher-order evaluation is not picking a side but putting every stakeholder concern (health, public need, environment, livelihoods) on the table, considering feasible mitigation a…",
+    "conceptEn": "Higher-order evaluation is not picking a side but putting every stakeholder concern (health, public need, environment, livelihoods) on the table, considering feasible mitigation…",
     "mustKnowZh": [
       "高階評鑑不是選邊站，而是把不同持份者的關切（健康、公共需要、環境、生計）一併放上枱，考慮可行的減緩與監測安排，再作有條件、可被理由支持的判斷。",
       "評鑑（evaluate）的核心是「在證據與多方考量之上，作出有理據的判斷」。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "很多政策的特徵正是【代價在前、回報在後】：例如環保法規令企業即時增加成本，環境改善卻要十年後才顯現。"
     ],
     "mustKnowEn": [
-      "Higher-order evaluation is not picking a side but putting every stakeholder concern (health, public need, environment, livelihoods) on the table, considering feasible mitigation a…",
-      "Evaluation means reaching a reasoned judgement on top of evidence and multiple considerations.",
+      "Higher-order evaluation is not picking a side but putting every stakeholder concern (health, public need, environment, livelihoods) on the table, considering feasible mitigation…",
+      "Evaluation means reaching a reasoned judgement on top of evidence and multiple considerations. Merely listing facts, or backing/opposing unconditionally, falls short of evaluation.",
       "The value of stakeholder analysis lies in first seeing everyone on the field: both those affected and those with influence must be listed, including the easily overlooked — future…",
-      "Many policies place the cost first and the return later: environmental regulation raises business costs at once while the environmental gain appears a decade on."
+      "Many policies place the cost first and the return later: environmental regulation raises business costs at once while the environmental gain appears a decade on. Looking only at…"
     ],
     "examTipZh": "DSE 作答「多角度評鑑・持份者權衡」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-perspective · stakeholders”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -268,7 +268,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "A local port accident triggering a cross-border chain reaction is textbook interdependence: global supply chains tie economies together so local shocks spill over.",
       "Exhausting a non-renewable resource for short-term growth shifts costs onto future generations — directly violating the intergenerational-equity core of sustainable development.",
-      "R&D, patents and high-tech exports rising together show innovation converting into economic and technological competitiveness — a key component and driver of overall national stre…",
+      "R&D, patents and high-tech exports rising together show innovation converting into economic and technological competitiveness — a key component and driver of overall national…",
       "Cross-border, shared-fate effects are the hallmark of a global commons: no country can fix it alone, so international cooperation is needed."
     ],
     "examTipZh": "DSE 作答「概念應用・當代世界」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",

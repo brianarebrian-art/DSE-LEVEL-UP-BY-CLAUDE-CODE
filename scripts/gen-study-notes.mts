@@ -66,26 +66,33 @@ function extractTrap(explanation: string): string | null {
 
 function firstSentence(text: string, max = 180): string {
   const t = String(text ?? '')
-    .replace(/陷阱[：:][\s\S]*$/, '')
-    .replace(/【陷阱】[\s\S]*$/i, '')
+    .replace(/陷阱[：:][\s\S]*$/u, '')
+    .replace(/【陷阱】[\s\S]*$/iu, '')
+    .replace(/【Trap】[\s\S]*$/iu, '')
+    .replace(/\bTrap[：:]\s*[\s\S]*$/iu, '')
     .replace(/\s+/g, ' ')
     .trim()
   if (!t) return ''
-  // 優先中文句號／問嘆號。英文句點只喺「. + 空白」先切，避免 37.5%／0.5／LaTeX 被腰斬。
-  const zh = t.match(/^[\s\S]*?[。！？]/)
-  if (zh) {
-    const cut = zh[0].trim()
-    return cut.length > max ? `${cut.slice(0, max - 1)}…` : cut
+
+  // 中文：喺句號／問嘆號切（唔掂英文句點 → 避免 37.5、i.e.、e.g.）。
+  const zhEnd = t.search(/[。！？]/u)
+  if (zhEnd >= 0) {
+    const cut = t.slice(0, zhEnd + 1).trim()
+    return cut.length > max ? softClip(cut, max) : cut
   }
-  const en = t.match(/^[\s\S]*?\.(?=\s|$)/)
-  if (en) {
-    const cut = en[0].trim()
-    // 拒絕「數字.」結尾（小數被截）
-    if (!/\d\.$/.test(cut)) {
-      return cut.length > max ? `${cut.slice(0, max - 1)}…` : cut
-    }
-  }
-  return t.length > max ? `${t.slice(0, max - 1)}…` : t
+
+  // 英文／混合：唔用句點分句；只做長度上限，喺空白處截，避免腰斬小數同縮寫。
+  if (t.length <= max) return t
+  return softClip(t, max)
+}
+
+/** 喺 max 內最後一個空白截斷；搵唔到就硬截。 */
+function softClip(text: string, max: number): string {
+  if (text.length <= max) return text
+  const window = text.slice(0, max)
+  const sp = window.lastIndexOf(' ')
+  const base = sp >= Math.floor(max * 0.5) ? window.slice(0, sp) : window.slice(0, max - 1)
+  return `${base.trimEnd()}…`
 }
 
 function uniqueKeep(items: string[], limit: number): string[] {

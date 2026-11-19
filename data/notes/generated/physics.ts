@@ -167,9 +167,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Use $v^2 = u^2 + 2as$: $0 = 30^2 + 2a(60) \\Rightarrow a = -7.5\\,\\text{m/s}^2$, magnitude $7.5\\,\\text{m/s}^2$.",
-      "Momentum conservation: $v = (2\\times3)/6 = 1\\,\\text{m/s}$.",
-      "Energy conservation: $mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{100} = 10\\,\\text{m/s}$.",
-      "Step one gives the landing speed: $v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s."
+      "Momentum conservation: $v = (2\\times3)/6 = 1\\,\\text{m/s}$. Before: $KE = \\tfrac12(2)(9) = 9\\,\\text{J}$; after: $KE = \\tfrac12(6)(1) = 3\\,\\text{J}$; lost $= 6\\,\\text{J}$.",
+      "Energy conservation: $mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{100} = 10\\,\\text{m/s}$. The mass cancels.",
+      "Step one gives the landing speed: $v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s. Step two gives the kinetic energy: $E_k = \\frac{1}{2}mv^2 = \\frac{1}{2} \\times 2 \\times…"
     ],
     "examTipZh": "DSE 作答「多步計算・力學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Mechanics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -183,7 +183,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "多步計算・電與熱",
     "titleEn": "Multi-step — Electricity & Heat",
     "conceptZh": "電流 $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{5+1} = 2\\,\\text{A}$。",
-    "conceptEn": "Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$.",
+    "conceptEn": "Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$. Terminal voltage $= IR = 10\\,\\text{V}$ (or $\\varepsilon - Ir = 12 - 2 = 10\\,\\text{V}$).",
     "mustKnowZh": [
       "電流 $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{5+1} = 2\\,\\text{A}$。",
       "並聯等效電阻 $= \\dfrac{6}{2} = 3\\,\\Omega$。",
@@ -191,10 +191,10 @@ export const notes: Record<string, StudyNote> = {
       "第一步由歐姆定律求電流：$I = \\dfrac{V}{R} = \\dfrac{12}{2} = 6$ A。"
     ],
     "mustKnowEn": [
-      "Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$.",
-      "Parallel resistance $= 3\\,\\Omega$.",
-      "Heat balance: heat lost by hot = heat gained by cold (equal $c$ cancels): $0.2(80-T) = 0.3(T-30)$.",
-      "Step one uses Ohm's law for the current: $I = \\frac{V}{R} = \\frac{12}{2} = 6$ A."
+      "Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$. Terminal voltage $= IR = 10\\,\\text{V}$ (or $\\varepsilon - Ir = 12 - 2 = 10\\,\\text{V}$).",
+      "Parallel resistance $= 3\\,\\Omega$. Total power $P = \\dfrac{V^2}{R} = \\dfrac{144}{3} = 48\\,\\text{W}$ (check: each resistor draws $2\\,\\text{A}$, $24\\,\\text{W}$ each, $48\\,\\text{W}$…",
+      "Heat balance: heat lost by hot = heat gained by cold (equal $c$ cancels): $0.2(80-T) = 0.3(T-30)$. $16 - 0.2T = 0.3T - 9 \\Rightarrow 25 = 0.5T \\Rightarrow T = 50°\\text{C}$.",
+      "Step one uses Ohm's law for the current: $I = \\frac{V}{R} = \\frac{12}{2} = 6$ A. Step two gives the power: $P = VI = 12 \\times 6 = 72$ W. The one-step route $P = \\frac{V^2}{R} =…"
     ],
     "examTipZh": "DSE 作答「多步計算・電與熱」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Electricity & Heat”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -208,7 +208,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "多步計算・波動光學放射",
     "titleEn": "Multi-step — Waves, Optics & Radioactivity",
     "conceptZh": "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。",
-    "conceptEn": "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$.",
+    "conceptEn": "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$. On refraction frequency is unchanged ($50\\,\\text{Hz}$), $v_2 = 10\\,\\text{m/s}$, so $\\lambda_2 = v_2/f = 10/50 =…",
     "mustKnowZh": [
       "介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。",
       "$12$ 天 $= 4$ 個半衰期，活度 $= 800 \\div 2^4 = 800 \\div 16 = 50\\,\\text{Bq}$。",
@@ -216,10 +216,10 @@ export const notes: Record<string, StudyNote> = {
       "第一步求波速：$v = f\\lambda = 4 \\times 3 = 12$ m/s。"
     ],
     "mustKnowEn": [
-      "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$.",
+      "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$. On refraction frequency is unchanged ($50\\,\\text{Hz}$), $v_2 = 10\\,\\text{m/s}$, so $\\lambda_2 = v_2/f = 10/50 =…",
       "$12$ days $= 4$ half-lives, so activity $= 800 \\div 2^4 = 50\\,\\text{Bq}$.",
       "The critical angle $\\theta_c$ satisfies $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$, so $\\theta_c \\approx 41.8°$.",
-      "Step one gives the wave speed: $v = f\\lambda = 4 \\times 3 = 12$ m/s."
+      "Step one gives the wave speed: $v = f\\lambda = 4 \\times 3 = 12$ m/s. Step two gives the time: $t = \\frac{d}{v} = \\frac{120}{12} = 10$ s. Traps: $12$ s stops at the speed and has…"
     ],
     "examTipZh": "DSE 作答「多步計算・波動光學放射」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Waves, Optics & Radioactivity”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -268,8 +268,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$W = mg = 20$ N.",
       "$p = mv = 6$ kg·m/s.",
-      "Constant speed means zero net force, so the push must exactly balance friction.",
-      "For forces in opposite directions the net force is their difference, acting in the direction of the larger: $12 - 5 = 7$ N to the right."
+      "Constant speed means zero net force, so the push must exactly balance friction. First the normal force: on a horizontal surface $N = mg = 2 \\times 10 = 20$ N. Then friction: $f =…",
+      "Constant speed means zero net force, so the push must exactly balance friction. First the normal force: on a horizontal surface $N = mg = 10 \\times 10 = 100$ N. Then friction: $f…"
     ],
     "examTipZh": "DSE 作答「力與運動」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Force & Motion”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -292,7 +292,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$\\rho = \\frac{m}{V} = 2$ kg/m³.",
       "$P = \\frac{F}{A} = 3$ Pa.",
-      "The marks are lost not on arithmetic but on confusing force with pressure."
+      "The marks are lost not on arithmetic but on confusing force with pressure. Turning the block on its side does not change its weight; only the contact area changes, so pressure…"
     ],
     "examTipZh": "DSE 作答「壓強與密度」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Pressure & Density”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -316,8 +316,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$E_k = \\frac12 mv^2 = 9$ J.",
       "$E_p = mgh = 60$ J.",
-      "Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = 25\\%$.",
-      "(a) and (b) are routine; the usual deduction in (b) is omitting the weight — the tension must both support the weight and supply the acceleration, and writing T = ma is the most c…"
+      "Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = 25\\%$. Traps: $75\\%$ is the wasted fraction; $0.25\\%$ forgets to multiply by 100 but keeps the % sign.",
+      "(a) and (b) are routine; the usual deduction in (b) is omitting the weight — the tension must both support the weight and supply the acceleration, and writing T = ma is the most…"
     ],
     "examTipZh": "DSE 作答「功、能與功率」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Work, Energy & Power”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

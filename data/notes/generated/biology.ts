@@ -43,8 +43,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "A gene is a segment of DNA carrying hereditary information.",
       "AA × aa: each offspring gets one A and one a, so all are Aa.",
-      "Aa × Aa → 1 AA : 2 Aa : 1 aa, i.e.",
-      "Aa × aa → 1 Aa : 1 aa, i.e."
+      "Aa × Aa → 1 AA : 2 Aa : 1 aa, i.e. 3 dominant : 1 recessive in phenotype.",
+      "Aa × aa → 1 Aa : 1 aa, i.e. 1 dominant : 1 recessive."
     ],
     "examTipZh": "DSE 作答「遺傳」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Genetics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -209,7 +209,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "遺傳推理",
     "titleEn": "Genetics — reasoning",
     "conceptZh": "母親 Iᴬ Iᴮ × 父親 ii。",
-    "conceptEn": "Mother Iᴬ Iᴮ × father ii.",
+    "conceptEn": "Mother Iᴬ Iᴮ × father ii. Gametes: mother gives Iᴬ or Iᴮ; father gives only i. Offspring Iᴬ i (group A) or Iᴮ i (group B), ~50% each. No Iᴬ/Iᴮ from father ⇒ no AB; mother gives no…",
     "mustKnowZh": [
       "母親 Iᴬ Iᴮ × 父親 ii。",
       "兒子的 X 必來自母親。",
@@ -217,10 +217,10 @@ export const notes: Record<string, StudyNote> = {
       "患病子女的基因型必為 aa，兩個隱性等位基因分別來自父與母，故雙親各自至少帶有一個 a。"
     ],
     "mustKnowEn": [
-      "Mother Iᴬ Iᴮ × father ii.",
-      "A son’s X comes from the mother.",
-      "Tall × tall yielding 1/4 dwarf (recessive) means both parents carry a hidden recessive allele, i.e.",
-      "The affected child must be aa, receiving one recessive allele from each parent, so each parent carries at least one a."
+      "Mother Iᴬ Iᴮ × father ii. Gametes: mother gives Iᴬ or Iᴮ; father gives only i. Offspring Iᴬ i (group A) or Iᴮ i (group B), ~50% each. No Iᴬ/Iᴮ from father ⇒ no AB; mother gives no…",
+      "A son’s X comes from the mother. She (Xᴬ Xᵃ) gives Xᴬ or Xᵃ with equal chance; a son getting Xᵃ is colour-blind. So among sons, 1/2 are colour-blind.",
+      "Tall × tall yielding 1/4 dwarf (recessive) means both parents carry a hidden recessive allele, i.e. Tt × Tt → 3 dominant : 1 recessive — Mendel’s monohybrid ratio.",
+      "The affected child must be aa, receiving one recessive allele from each parent, so each parent carries at least one a. Since both parents are phenotypically normal they cannot be…"
     ],
     "examTipZh": "DSE 作答「遺傳推理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Genetics — reasoning”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -234,7 +234,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "生理機制・因果鏈",
     "titleEn": "Physiology — causal chains",
     "conceptZh": "水經滲透由「較高（較不負）」水勢流向「較低（較負）」水勢。",
-    "conceptEn": "Osmosis moves water from higher (less negative) to lower (more negative) Ψ.",
+    "conceptEn": "Osmosis moves water from higher (less negative) to lower (more negative) Ψ. The solution at −400 kPa is higher than the cell at −800 kPa, so water moves into the cell, which tends…",
     "mustKnowZh": [
       "水經滲透由「較高（較不負）」水勢流向「較低（較負）」水勢。",
       "超過最適溫度，熱能破壞維持酶三維結構的鍵，活性部位形狀改變（變性），與受質的契合喪失，速率急降。",
@@ -242,9 +242,9 @@ export const notes: Record<string, StudyNote> = {
       "胰島素由胰島的 β 細胞分泌，作用是提高細胞膜對葡萄糖的通透性，令肝細胞與肌肉細胞加快吸收血中葡萄糖，並把它轉化為肝醣儲存，血糖因而回落 —— 這是一個典型的負回饋：血糖上升觸發胰島素，胰島素令血糖下降，血糖回落又令胰島素分泌減少。"
     ],
     "mustKnowEn": [
-      "Osmosis moves water from higher (less negative) to lower (more negative) Ψ.",
-      "Above the optimum, heat disrupts the bonds holding the enzyme’s 3-D shape; the active site changes shape (denaturation) and loses its fit for substrate, so the rate plunges.",
-      "During exercise muscle respiration increases sharply, producing carbon dioxide that enters the blood.",
+      "Osmosis moves water from higher (less negative) to lower (more negative) Ψ. The solution at −400 kPa is higher than the cell at −800 kPa, so water moves into the cell, which tends…",
+      "Above the optimum, heat disrupts the bonds holding the enzyme’s 3-D shape; the active site changes shape (denaturation) and loses its fit for substrate, so the rate plunges.…",
+      "During exercise muscle respiration increases sharply, producing carbon dioxide that enters the blood. Dissolved carbon dioxide forms carbonic acid and lowers blood pH, and the…",
       "Insulin is secreted by the β cells of the pancreatic islets and increases the permeability of cell membranes to glucose, so liver and muscle cells take up blood glucose faster and…"
     ],
     "examTipZh": "DSE 作答「生理機制・因果鏈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -268,9 +268,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "From producer to secondary consumer is TWO 10% transfers: 10 000 × 0.1 × 0.1 = 100 kJ.",
-      "The rising part shows light limiting; at the plateau, more light gives no increase, so light is now sufficient and the bottleneck shifts to another factor (CO₂ or temperature).",
-      "Population density = number of individuals ÷ area = 60 ÷ 20 = 3 per m².",
-      "Mark-and-recapture assumes marked individuals mix evenly, so the marked proportion in the second sample equals the marked proportion of the population: $\\frac{R}{C} = \\frac{M}{N}$…"
+      "The rising part shows light limiting; at the plateau, more light gives no increase, so light is now sufficient and the bottleneck shifts to another factor (CO₂ or temperature).…",
+      "Population density = number of individuals ÷ area = 60 ÷ 20 = 3 per m². When density is estimated from quadrats the quadrats must be placed randomly, or the estimate is…",
+      "Mark-and-recapture assumes marked individuals mix evenly, so the marked proportion in the second sample equals the marked proportion of the population: $\\frac{R}{C} =…"
     ],
     "examTipZh": "DSE 作答「數據與生態」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data & ecology”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

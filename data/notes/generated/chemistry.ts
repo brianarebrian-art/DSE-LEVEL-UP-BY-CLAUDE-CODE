@@ -169,7 +169,7 @@ export const notes: Record<string, StudyNote> = {
       "Members of a homologous series share a general formula and similar chemistry; consecutive ones differ by one $CH_2$, with physical properties trending with chain length.",
       "Saturated alkanes have only single bonds, formula $C_nH_{2n+2}$; alkenes with one C=C are $C_nH_{2n}$.",
       "Alkenes have a C=C double bond that adds bromine, decolourising bromine water; saturated alkanes do not react at room temperature, so this distinguishes them.",
-      "The double bond opens and the two bromine atoms add across adjacent carbons forming a dibromide with no small molecule lost — addition; alkanes undergo substitution with halogens …"
+      "The double bond opens and the two bromine atoms add across adjacent carbons forming a dibromide with no small molecule lost — addition; alkanes undergo substitution with halogens…"
     ],
     "examTipZh": "DSE 作答「有機化學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Organic Chemistry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -183,7 +183,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "定量計算（高階）",
     "titleEn": "Quantitative killers",
     "conceptZh": "比例 $H_2:O_2 = 2:1$。",
-    "conceptEn": "Ratio $H_2:O_2 = 2:1$.",
+    "conceptEn": "Ratio $H_2:O_2 = 2:1$. $0.5\\,\\text{mol}$ H₂ needs only $0.25\\,\\text{mol}$ O₂, but $0.5\\,\\text{mol}$ O₂ is present ⇒ O₂ in excess, H₂ is limiting. Water $= $ mol(H₂) $=…",
     "mustKnowZh": [
       "比例 $H_2:O_2 = 2:1$。",
       "mol HCl $= 0.0200\\times0.10 = 0.0020\\,\\text{mol}$ $=$ mol NaOH（1:1）。",
@@ -191,10 +191,10 @@ export const notes: Record<string, StudyNote> = {
       "摩爾比：C $40/12=3.33$、H $6.7/1=6.7$、O $53.3/16=3.33$。"
     ],
     "mustKnowEn": [
-      "Ratio $H_2:O_2 = 2:1$.",
-      "mol HCl $= 0.0200\\times0.10 = 0.0020\\,\\text{mol}$ $=$ mol NaOH (1:1).",
-      "mol CaCO₃ $= 5.0/100 = 0.05\\,\\text{mol}$ ⇒ mol CO₂ $= 0.05$ (1:1).",
-      "Mole ratio: C $40/12=3.33$, H $6.7/1=6.7$, O $53.3/16=3.33$."
+      "Ratio $H_2:O_2 = 2:1$. $0.5\\,\\text{mol}$ H₂ needs only $0.25\\,\\text{mol}$ O₂, but $0.5\\,\\text{mol}$ O₂ is present ⇒ O₂ in excess, H₂ is limiting. Water $= $ mol(H₂) $=…",
+      "mol HCl $= 0.0200\\times0.10 = 0.0020\\,\\text{mol}$ $=$ mol NaOH (1:1). $[NaOH] = 0.0020/0.0250 = 0.08\\,\\text{M}$.",
+      "mol CaCO₃ $= 5.0/100 = 0.05\\,\\text{mol}$ ⇒ mol CO₂ $= 0.05$ (1:1). Volume $= 0.05\\times24 = 1.2\\,\\text{dm}^3$.",
+      "Mole ratio: C $40/12=3.33$, H $6.7/1=6.7$, O $53.3/16=3.33$. Divide by $3.33$: C:H:O $= 1:2:1$ ⇒ empirical formula $CH_2O$."
     ],
     "examTipZh": "DSE 作答「定量計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Quantitative killers”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -217,9 +217,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Let Cr be $x$: $2x + 7(-2) = -2 \\Rightarrow 2x = 12 \\Rightarrow x = +6$.",
-      "By Le Chatelier, raising temperature shifts equilibrium toward the endothermic direction (here the reverse), so the equilibrium yield of NH₃ falls.",
-      "The change in oxidation number is the number of electrons transferred: $|2 - (7)| = 5$.",
-      "A more reactive metal displaces a less reactive one from its salt solution."
+      "By Le Chatelier, raising temperature shifts equilibrium toward the endothermic direction (here the reverse), so the equilibrium yield of NH₃ falls. Note: higher T speeds up the…",
+      "The change in oxidation number is the number of electrons transferred: $|2 - (7)| = 5$. A fall in oxidation number means electrons are gained, so the species is reduced. A useful…",
+      "A more reactive metal displaces a less reactive one from its salt solution. Since 鋅 was displaced, 鎂 is the more reactive. In the reaction 鎂 loses electrons to form ions — it is…"
     ],
     "examTipZh": "DSE 作答「氧化還原與平衡」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Redox & equilibrium”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -233,7 +233,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "有機化學（高階）",
     "titleEn": "Organic killers",
     "conceptZh": "$C_4H_9Cl$ 的結構異構體有 4 個：1-氯丁烷、2-氯丁烷、1-氯-2-甲基丙烷、2-氯-2-甲基丙烷（碳骨架有直鏈與支鏈，氯位置不同）。",
-    "conceptEn": "$C_4H_9Cl$ has 4 structural isomers: 1-chlorobutane, 2-chlorobutane, 1-chloro-2-methylpropane and 2-chloro-2-methylpropane (straight and branched carbon skeletons, different Cl po…",
+    "conceptEn": "$C_4H_9Cl$ has 4 structural isomers: 1-chlorobutane, 2-chlorobutane, 1-chloro-2-methylpropane and 2-chloro-2-methylpropane (straight and branched carbon skeletons, different Cl…",
     "mustKnowZh": [
       "$C_4H_9Cl$ 的結構異構體有 4 個：1-氯丁烷、2-氯丁烷、1-氯-2-甲基丙烷、2-氯-2-甲基丙烷（碳骨架有直鏈與支鏈，氯位置不同）。",
       "乙烯含 C=C 雙鍵，能在室溫下與溴「加成」，迅速使溴水（橙黃色）褪色，生成 1,2-二溴乙烷——這正是區分烯烴（不飽和）與烷烴（飽和）的測試。",
@@ -241,10 +241,10 @@ export const notes: Record<string, StudyNote> = {
       "同系列是指結構相似、通式相同、相鄰成員相差一個 $\\mathrm{CH_2}$ 的一組化合物。"
     ],
     "mustKnowEn": [
-      "$C_4H_9Cl$ has 4 structural isomers: 1-chlorobutane, 2-chlorobutane, 1-chloro-2-methylpropane and 2-chloro-2-methylpropane (straight and branched carbon skeletons, different Cl po…",
-      "Ethene has a C=C double bond and undergoes ADDITION with bromine at room temperature, rapidly decolourising the orange bromine water to form 1,2-dibromoethane — the standard test …",
-      "The degree of unsaturation is $\\frac{2C + 2 - H}{2} = \\frac{2(4) + 2 - 8}{2} = \\frac{2}{2} = 1$.",
-      "A homologous series is a family of compounds with similar structure, a common general formula, and successive members differing by $\\mathrm{CH_2}$."
+      "$C_4H_9Cl$ has 4 structural isomers: 1-chlorobutane, 2-chlorobutane, 1-chloro-2-methylpropane and 2-chloro-2-methylpropane (straight and branched carbon skeletons, different Cl…",
+      "Ethene has a C=C double bond and undergoes ADDITION with bromine at room temperature, rapidly decolourising the orange bromine water to form 1,2-dibromoethane — the standard test…",
+      "The degree of unsaturation is $\\frac{2C + 2 - H}{2} = \\frac{2(4) + 2 - 8}{2} = \\frac{2}{2} = 1$. It means that relative to the saturated alkane with the same carbon count,…",
+      "A homologous series is a family of compounds with similar structure, a common general formula, and successive members differing by $\\mathrm{CH_2}$. The alkanes are characterised…"
     ],
     "examTipZh": "DSE 作答「有機化學（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Organic killers”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -258,7 +258,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "化學式與式量",
     "titleEn": "Formulae & Formula Mass",
     "conceptZh": "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
-    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
+    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$. Traps: the \"rest\" is $11.1\\%$; $0.889\\%$ forgets to multiply by 100 but keeps the % sign.",
     "mustKnowZh": [
       "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
       "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{12}{16} \\times 100\\% = 75\\%$。",
@@ -266,9 +266,9 @@ export const notes: Record<string, StudyNote> = {
       "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$56 \\times 1 + 35.5 \\times 3 = 56 + 106.5 = 162.5$。"
     ],
     "mustKnowEn": [
-      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
-      "% by mass $= \\frac{12}{16} \\times 100\\% = 75\\%$.",
-      "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $23 \\times 2 + 16 \\…",
+      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$. Traps: the \"rest\" is $11.1\\%$; $0.889\\%$ forgets to multiply by 100 but keeps the % sign.",
+      "% by mass $= \\frac{12}{16} \\times 100\\% = 75\\%$. Traps: the \"rest\" is $25\\%$; $0.75\\%$ forgets to multiply by 100 but keeps the % sign.",
+      "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $23 \\times 2 + 16…",
       "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $56 \\times 1 + 35.5…"
     ],
     "examTipZh": "DSE 作答「化學式與式量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
@@ -318,8 +318,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$n = \\frac{16}{32} = 0.5$ mol, then $V = 24n = 12$ dm³.",
       "$n = \\frac{64}{32} = 2$ mol, then $V = 24n = 48$ dm³.",
-      "By Avogadro's law, gas volumes at the same temperature and pressure are in the same ratio as the moles, so the coefficients can be applied directly without converting to moles: $1…",
-      "Volume = amount in moles × molar volume = 0.5 × 24 = 12 dm³."
+      "By Avogadro's law, gas volumes at the same temperature and pressure are in the same ratio as the moles, so the coefficients can be applied directly without converting to moles:…",
+      "Volume = amount in moles × molar volume = 0.5 × 24 = 12 dm³. The molar volume does not depend on the identity of the gas: at the same temperature and pressure equal amounts of any…"
     ],
     "examTipZh": "DSE 作答「氣體體積」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Gas Volume”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
@@ -343,8 +343,8 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = 16$ cm³.",
       "1:1 ratio ⇒ $m(\\mathrm{CaO}) = \\frac{25\\times56}{100} = 14$ g.",
-      "A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied.",
-      "Use $n = \\dfrac{m}{M} = \\dfrac{11.7}{58.5} = 0.2$ mol."
+      "A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied. 2 mol of $\\mathrm{Mg}$ requires $2 \\times \\frac{1}{2} = 1$ mol of…",
+      "A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied. 2 mol of $\\mathrm{H_2}$ requires $2 \\times \\frac{1}{2} = 1$ mol of…"
     ],
     "examTipZh": "DSE 作答「化學計量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Stoichiometry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
