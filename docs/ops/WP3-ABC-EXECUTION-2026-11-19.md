@@ -29,8 +29,10 @@ WP4：[`WP4-ACCEPTANCE-2026-11-19.md`](./WP4-ACCEPTANCE-2026-11-19.md)
 
 ## 未做（刻意）
 
-- WP4 完整紅隊／WP5 批准發布  
-- Fluid Active CPU 優化（見下）  
+- WP4 完整紅隊 — 見 `WP4-ACCEPTANCE-2026-11-19.md`（通過）  
+- WP5 批准發布 — 見 `WP5-RELEASE-2026-11-19.md`（**已開；等 Merge #233**）  
+- Fluid Active CPU 優化（見下；**WP5 完成後**）  
+
 - Batch D／E（bank topic 登記、手機大改）
 
 ## Fluid Active CPU（WP5 之後）
