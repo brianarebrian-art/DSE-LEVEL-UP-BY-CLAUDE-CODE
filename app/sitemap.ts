@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getActiveSubjects } from '@/data/subjects'
+import { SUBJECT_TOPICS } from '@/data/questions/summary.generated'
 
 // ── sitemap.xml（2026-07-29，Brian greenlight）────────────────────────────────
 // 原則：**只收錄真實存在、且對爬蟲有內容可讀的公開頁**。
@@ -80,6 +81,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
+    // 每課題自學筆記（SEO／AEO 可索引正文）
+    ...subjectIds.flatMap((id) =>
+      (SUBJECT_TOPICS[id] ?? []).map((t) => ({
+        url: `${DOMAIN}/notes/${id}/${t.id}`,
+        changeFrequency: 'weekly' as const,
+        priority: 0.65,
+      })),
+    ),
     ...sourceLabEntries.map((e) => ({
       url: `${DOMAIN}/source-lab/${e.id}`,
       changeFrequency: 'monthly' as const,

@@ -21,8 +21,8 @@ export interface SubjectSummary {
 
 export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
   "math": {
-    "total": 1624,
-    "mc": 1594,
+    "total": 1633,
+    "mc": 1603,
     "written": 30,
     "topics": 25
   },
@@ -182,8 +182,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "轉化思維",
       "frameworkEn": "Transformative Thinking",
       "emoji": "🔄",
-      "count": 284,
-      "mcCount": 282,
+      "count": 286,
+      "mcCount": 284,
       "writtenCount": 2
     },
     {
@@ -193,8 +193,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 44,
-      "mcCount": 42,
+      "count": 45,
+      "mcCount": 43,
       "writtenCount": 2
     },
     {
@@ -215,8 +215,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "轉化思維",
       "frameworkEn": "Transformative Thinking",
       "emoji": "🔄",
-      "count": 47,
-      "mcCount": 45,
+      "count": 48,
+      "mcCount": 46,
       "writtenCount": 2
     },
     {
@@ -237,8 +237,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "轉化思維",
       "frameworkEn": "Transformative Thinking",
       "emoji": "🔄",
-      "count": 44,
-      "mcCount": 42,
+      "count": 45,
+      "mcCount": 43,
       "writtenCount": 2
     },
     {
@@ -248,8 +248,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "數列規律",
       "frameworkEn": "Sequence Patterns",
       "emoji": "🔢",
-      "count": 85,
-      "mcCount": 84,
+      "count": 86,
+      "mcCount": 85,
       "writtenCount": 1
     },
     {
@@ -270,8 +270,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "幾何直覺",
       "frameworkEn": "Geometric Intuition",
       "emoji": "📐",
-      "count": 57,
-      "mcCount": 55,
+      "count": 58,
+      "mcCount": 56,
       "writtenCount": 2
     },
     {
@@ -281,8 +281,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 44,
-      "mcCount": 44,
+      "count": 45,
+      "mcCount": 45,
       "writtenCount": 0
     },
     {
@@ -314,8 +314,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 44,
-      "mcCount": 43,
+      "count": 45,
+      "mcCount": 44,
       "writtenCount": 1
     },
     {
@@ -3483,7 +3483,7 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
-export const TOTAL_QUESTIONS = 26419
+export const TOTAL_QUESTIONS = 26428
 
 /**
  * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，五項相加等於 totalAuthored。
@@ -3492,8 +3492,8 @@ export const TOTAL_QUESTIONS = 26419
  * 狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
  */
 export const CONTENT_STATS = {
-  "totalAuthored": 27439,
-  "published": 26419,
+  "totalAuthored": 27448,
+  "published": 26428,
   "withdrawn": 616,
   "withheldTopic": 219,
   "pendingReview": 13,

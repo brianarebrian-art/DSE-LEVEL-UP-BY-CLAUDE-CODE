@@ -110,6 +110,7 @@ schemes, or a guaranteed grade.
 - [English learning route](https://www.dselevelup.com/dse-english): audience, writing formats and self-assessment
 - [Mathematics bank](https://www.dselevelup.com/subjects/math): current subject/topic practice options
 - [Topic notes](https://www.dselevelup.com/notes): subject-based revision notes
+- [Per-topic self-study notes](https://www.dselevelup.com/notes/math/quadratic_equations): every active subject topic has a printable note with concept, must-know points, exam tip, common trap, and a QR code that opens that topic’s practice session (browser Print → Save as PDF; no paid PDF API)
 - [Writing self-assessment](https://www.dselevelup.com/writing): not AI grading
 - [Content methodology](https://www.dselevelup.com/methodology): original-question approach and limitations
 - [Transparency](https://www.dselevelup.com/transparency): claims and withdrawal information
@@ -117,9 +118,11 @@ schemes, or a guaranteed grade.
 - [About](https://www.dselevelup.com/about): project background and FAQ
 - [Sitemap](https://www.dselevelup.com/sitemap.xml): selected indexable canonical routes, not an indexing report
 
-Subject patterns are /subjects/{id} and /notes/{id}; examples include /subjects/math,
-/subjects/english and /notes/physics. Use the subject index for all current IDs;
-"mathematics" and "english-language" are not valid subject IDs.
+Subject patterns are /subjects/{id}, /notes/{id}, and /notes/{id}/{topicId}; examples
+include /subjects/math, /notes/math, /notes/math/quadratic_equations, /subjects/english
+and /notes/physics. Use the subject index for all current IDs;
+"mathematics" and "english-language" are not valid subject IDs. Practice sessions live
+under /practice?subject={id}&topic={topicId} and remain noindex session shells.
 
 ## Accessibility and data
 
