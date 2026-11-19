@@ -1,7 +1,9 @@
 # 工作包 2：網站研究、問題定義、假設與實作計劃
 
-狀態：**計劃已提交 · 等創辦人批准先開 WP3** · 2026-11-19（Asia/Hong_Kong）  
-本文件**只係計劃**；**唔改**產品代碼、**唔**新增部署驗證、**唔**自動開 WP3–5。
+狀態：**計劃已修正證據 · WP3-A+B+C 已另開實作** · 2026-11-19（Asia/Hong_Kong）  
+本文件**只係計劃**；**唔改**產品代碼（實作喺 [PR #233](https://github.com/brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE/pull/233)）。
+
+**驗收範圍：** 本 PR 係 **ops／容量閘門後嘅 WP2 研究計劃**，**唔**屬 Feedback／auto-optimize 驗收（無 Feedback issue、無 `feedback`／`auto-optimize` 標籤）。
 
 前置：WP0 Graphify 本機地圖 · WP1 Functions Storage 清理（[PR #231](https://github.com/brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE/pull/231)；Dashboard **9.54 GB**／免費 ~10 GB 仍緊；3x 至 Dec 19）。
 
@@ -46,13 +48,13 @@
 
 ## 2. 問題定義（按優先）
 
-### P0 — 信任／合規／可發現性
+### P0 — 信任／合規／可發現性（2026-11-19 覆核）
 
-| ID | 問題 | 證據 | 影響 |
-|----|------|------|------|
-| P0-A | 可見「贊助／廣告預留」UI 與憲章「零廣告」衝突 | `components/AdSlot.tsx`；`docs/REPOSITORY-TRUTH-REPORT.md` | 對外聲稱同憲章不一致 |
-| P0-B | 雙重 robots／SEO 地圖與真實 route 不完全對齊 | `public/robots.txt` + `app/robots.ts`；Truth Report | 爬蟲／索引混亂 |
-| P0-C | 編輯長文（`/dse-maths/*`）缺直達課題練習 CTA | `quadratic-equations/page.tsx` 無 `/practice?subject=math&topic=quadratic_equations` | 學習漏斗斷開 |
+| ID | 狀態 | 現況證據（覆核） | 備註 |
+|----|------|------------------|------|
+| P0-A | **已解決（main）** | `components/AdSlot.tsx` **不存在**；`CategoryView` 無廣告／贊助預留 UI | 初稿誤引 `REPOSITORY-TRUTH-REPORT.md`（2026-10-22 基線）；SEO truth PR 已刪 AdSlot |
+| P0-B | **已解決（main）** | 只餘 `app/robots.ts`；**無** `public/robots.txt` | 同上：Truth Report 過時；雙 robots 已消 |
+| P0-C | **開缺（計劃時）→ 實作於 #233** | 計劃時 `quadratic-equations/page.tsx` 確缺 `/practice?subject=math&topic=quadratic_equations` CTA | 創辦人驗收確認 P0-C 正確；WP3-A 已補 |
 
 ### P1 — 體驗／內容可發現性／營運
 
@@ -75,8 +77,8 @@
 | # | 假設 | 點樣驗證 | 失敗時 |
 |---|------|----------|--------|
 | H1 | 數學×二次方程垂直切片可喺**唔加新依賴**下串通：編輯頁→筆記→練習→結果→（可選）紙筆 | 手動路徑 smoke + 既有單元測試 | 縮細為只補 CTA／修 P0 |
-| H2 | 移除／熄 `AdSlot` 唔破壞 off-syllabus 版面 | 視覺檢查 `/off-syllabus/*` | 改為中性「相關連結」區（仍零廣告） |
-| H3 | 統一 robots 單一來源唔影響正式索引意圖 | diff `robots.ts` vs 需要嘅 allow/disallow；抽查 sitemap | 回滾並只修衝突行 |
+| H2 | ~~移除 AdSlot~~ **作廢**（main 已無元件） | 覆核：檔案不存在 | — |
+| H3 | ~~統一 robots~~ **作廢**（已係 `app/robots.ts` 單一來源） | 覆核：無 `public/robots.txt` | — |
 | H4 | 帶 topic 嘅 paper-warrior 唔增加 Functions Storage（純前端） | 無新 serverless 產物；preview 用 ignore 或 cancel | 唔合併該批 |
 | H5 | 題庫正本／雲同步流程唔需要為本切片改 schema | 唔跑新 migration；只用現有 `?topic=` | 任何 schema 改動另開批准 |
 
@@ -98,18 +100,18 @@
 
 ---
 
-## 5. 建議實作批次（批准後先做）
+## 5. 建議實作批次
 
-| 批次 | 範圍 | 風險 | 依賴 |
-|------|------|------|------|
-| **A** | P0-C 漏斗 CTA（quadratic）＋ smoke 清單 | 低 | 無 |
-| **B** | P0-A 移除／熄 AdSlot；P0-B robots 單一來源 | 中（合規＋SEO） | 憲章：維持零廣告 |
-| **C** | P1-C paper-warrior query 預填；P1-D 訪客進度文案 | 低 | A |
-| **D**（另批） | P1-B bank 題 topic 登記（只數學二次方程相關先） | 中 | 內容稽核 |
-| **E**（另批） | P1-A 手機練習 390px 最小改動 | 中 | 設計約束／audit |
+| 批次 | 範圍 | 狀態 |
+|------|------|------|
+| **A** | P0-C 漏斗 CTA（quadratic） | **已批准並實作** → [PR #233](https://github.com/brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE/pull/233) |
+| **B** | 原計劃 AdSlot／robots；改為確認已解決＋ off-syllabus 去 emoji | **已批准並實作** → #233（P0-A／B 證據已標「已解決」） |
+| **C** | paper-warrior query 預填；訪客 C1 文案 | **已批准並實作** → #233 |
+| **D**（另批） | bank 題 topic 登記 | 未開 |
+| **E**（另批） | 手機練習 390px | 未開 |
 
-WP4：功能路徑＋紅隊（廣告回歸、robots、C1 文案、練習錯題）隔離驗收。  
-WP5：另一次「批准發布」後先上 production，再做發布後驗證。
+WP4：功能路徑＋紅隊隔離驗收（等 `開 WP4`）。  
+WP5：另一次「批准發布」後先上 production。Fluid Active CPU 優化 **WP5 之後**另開。
 
 ---
 
@@ -121,14 +123,10 @@ WP5：另一次「批准發布」後先上 production，再做發布後驗證。
 
 ---
 
-## 7. 待你批准（回覆用）
+## 7. 證據修正紀錄（回應驗收不合格）
 
-請回覆其中一種（可組合）：
+2026-11-19 創辦人驗收指出：
 
-1. **`批 WP3-A`** — 只做數學二次方程 CTA／漏斗（推薦第一步）  
-2. **`批 WP3-A+B`** — 另加 AdSlot＋robots  
-3. **`批 WP3-A+B+C`** — 再加 paper query＋訪客文案  
-4. **`改切片：…`** — 換科／課題  
-5. **`先刪 confirm_E`** — 再騰 Functions Storage 先實作  
-
-未收到上述明示前，**唔開始 WP3 代碼**。
+1. 本 PR **唔**入 Feedback／auto-optimize 驗收範圍 — **同意；已於文首標明**。  
+2. P0-A／P0-B 證據過時 — **同意；已改為「已解決（main）」並註明 Truth Report 基線日期**。  
+3. P0-C 正確 — **維持；實作見 #233**。
