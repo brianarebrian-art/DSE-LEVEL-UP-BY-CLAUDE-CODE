@@ -72,10 +72,14 @@ export default function Sidebar() {
     >
       <Link
         href="/"
-        className="flex min-h-16 flex-col items-center justify-center border-b border-line px-2 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent xl:items-start xl:px-5"
+        aria-label="DSE Level Up"
+        className="flex min-h-16 items-center justify-center border-b border-line px-1.5 text-center focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent xl:justify-start xl:px-5 xl:text-left"
       >
-        <span className="text-[11px] font-semibold tracking-wide text-accent xl:text-sm">DSE</span>
-        <span className="hidden text-sm font-semibold text-ink xl:inline">Level Up</span>
+        <span className="max-w-full text-[11px] font-semibold leading-tight text-ink xl:text-sm">
+          <span className="text-accent">DSE</span>
+          {' '}
+          <span>Level{'\u00A0'}Up</span>
+        </span>
       </Link>
 
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-2 py-4 xl:px-3">

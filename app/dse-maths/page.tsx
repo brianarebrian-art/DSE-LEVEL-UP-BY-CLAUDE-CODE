@@ -13,7 +13,7 @@ export const metadata: Metadata = createSeoMetadata({
 export default function DseMathsPage() {
   const topics = [
     { href: '/dse-maths/quadratic-equations', title: '一元二次方程完整筆記', description: '因式分解、配方法、二次公式與三條分步例題。' }, // i18n-exempt: zh-Hant editorial content
-    { href: '/dse-maths/question-types/quadratic-discriminant', title: '判別式參數題原創解析', description: '根的性質、參數範圍與代回檢查；非官方题解。' }, // i18n-exempt: zh-Hant editorial content
+    { href: '/dse-maths/question-types/quadratic-discriminant', title: '判別式參數題原創解析', description: '根的性質、參數範圍與代回檢查；非官方題解。' }, // i18n-exempt: zh-Hant editorial content
     { href: '/notes/math', title: 'Maths 課題筆記索引', description: '瀏覽現有課題與概念重點，按題目條件找出需要重溫的部分。' }, // i18n-exempt: zh-Hant editorial content
     { href: '/subjects/math', title: '數學原創練習題入口', description: '選擇科目及課題，完成題庫練習並核對解析。' }, // i18n-exempt: zh-Hant editorial content
   ]

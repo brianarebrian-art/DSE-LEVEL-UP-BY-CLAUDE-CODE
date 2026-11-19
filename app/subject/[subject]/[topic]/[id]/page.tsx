@@ -5,6 +5,17 @@ import { getSubjectQuestions } from '@/data/questions'
 import { completeSeoMetadata } from '@/lib/seo'
 import { SITE_ORIGIN } from '@/lib/site'
 import { JsonLd } from '@/components/Seo/JsonLd'
+import MathText from '@/components/MathText'
+
+function optionLabel(opt: unknown): string {
+  if (typeof opt === 'string') return opt
+  if (opt && typeof opt === 'object') {
+    const row = opt as { zh?: unknown; en?: unknown }
+    if (typeof row.zh === 'string') return row.zh
+    if (typeof row.en === 'string') return row.en
+  }
+  return ''
+}
 
 export async function generateMetadata({
   params,
@@ -17,8 +28,9 @@ export async function generateMetadata({
 
   if (!meta || !question) notFound()
 
-  const title = `DSE 2026 ${meta.name} 題目精解 (${question.topicZh || topic}) | 考試急症室` // i18n-exempt: SEO title
-  const description = `DSE 2026 ${meta.name} (${question.topicZh || topic}) 題目解析與解題思維。考試急症室提供 DSE 考評局規格模擬題目與避陷提示。` // i18n-exempt: SEO description
+  const topicName = question.topicZh || topic
+  const title = `DSE ${meta.name} 題目解析 (${topicName}) | DSE Level Up` // i18n-exempt: SEO title
+  const description = `${meta.name}「${topicName}」的原創改寫練習題與解析。並非考評局試題，不作成績保證。` // i18n-exempt: SEO description
 
   return completeSeoMetadata(
     {
@@ -45,15 +57,24 @@ export default async function QuestionPage({
 
   const topicName = question.topicZh || topic
   const pageUrl = `${SITE_ORIGIN}/subject/${subject}/${topic}/${id}`
+  const faq = [
+    {
+      q: `這題 ${meta.name}（${topicName}）練習考查什麼？`, // i18n-exempt: zh-Hant FAQ
+      a: `這是 DSE Level Up 就「${topicName}」編寫的原創改寫練習，用來練習審題與作答，並非香港考試及評核局的試題。`, // i18n-exempt: zh-Hant FAQ
+    },
+    {
+      q: '這些題目與考評局有關係嗎？', // i18n-exempt: zh-Hant FAQ
+      a: '沒有。DSE Level Up 與香港考試及評核局沒有從屬關係。題目為獨立改寫，只供練習，不作成績保證。', // i18n-exempt: zh-Hant FAQ
+    },
+  ]
 
-  // JSON-LD schema with FAQPage and QAPage
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'QAPage',
         '@id': `${pageUrl}#qapage`,
-        name: `DSE 2026 ${meta.name} ${topicName} 題目詳解 — 考試急症室`, // i18n-exempt: schema
+        name: `DSE ${meta.name} ${topicName} 題目解析`, // i18n-exempt: schema
         url: pageUrl,
         mainEntity: {
           '@type': 'Question',
@@ -70,30 +91,20 @@ export default async function QuestionPage({
       {
         '@type': 'FAQPage',
         '@id': `${pageUrl}#faq`,
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: `呢題 DSE 2026 ${meta.name} (${topicName}) 考核重點係咩？`, // i18n-exempt: schema
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: `本題針對 DSE 2026 ${meta.name} 課程重點考核 ${topicName} 核心概念，訓練審題與計算精確度。`, // i18n-exempt: schema
-            },
+        mainEntity: faq.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
           },
-          {
-            '@type': 'Question',
-            name: `考試急症室點樣協助溫習 ${meta.name}？`, // i18n-exempt: schema
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: '考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。', // i18n-exempt: schema
-            },
-          },
-        ],
+        })),
       },
       {
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}#breadcrumb`,
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'DSE Level Up 考試急症室', item: SITE_ORIGIN }, // i18n-exempt: schema
+          { '@type': 'ListItem', position: 1, name: 'DSE Level Up', item: SITE_ORIGIN },
           { '@type': 'ListItem', position: 2, name: meta.name, item: `${SITE_ORIGIN}/subjects/${subject}` },
           { '@type': 'ListItem', position: 3, name: topicName },
         ],
@@ -127,7 +138,7 @@ export default async function QuestionPage({
         </div>
 
         <h1 className="mb-6 text-xl font-bold leading-relaxed text-stone-900 dark:text-stone-50">
-          {question.content}
+          <MathText>{question.content}</MathText>
         </h1>
 
         {'options' in question && Array.isArray((question as { options?: string[] }).options) && (
@@ -146,7 +157,7 @@ export default async function QuestionPage({
                     }`}
                   >
                     <span className="mr-2 font-bold">{String.fromCharCode(65 + idx)}.</span>
-                    <span>{opt}</span>
+                    <MathText>{optionLabel(opt)}</MathText>
                     {isCorrect && (
                       <span className="ml-2 inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                         (正解 · Correct) {/* i18n-exempt: bilingual */}
@@ -162,7 +173,7 @@ export default async function QuestionPage({
         <div className="rounded-xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-800 dark:bg-stone-800/60">
           <h2 className="mb-2 text-sm font-bold text-stone-900 dark:text-stone-100">解題思維與分析 · Analysis</h2> {/* i18n-exempt: bilingual */}
           <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            {question.explanation || '此題目重點考察考生概念理解與細心審題能力。'} {/* i18n-exempt: fallback */}
+            <MathText>{question.explanation || '此題目重點考察考生概念理解與細心審題能力。'}</MathText> {/* i18n-exempt: fallback */}
           </p>
         </div>
       </article>
@@ -170,22 +181,12 @@ export default async function QuestionPage({
       <section className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-stone-900">
         <h2 className="mb-4 text-base font-bold text-stone-900 dark:text-stone-100">常見問題 · FAQ</h2> {/* i18n-exempt: bilingual */}
         <div className="space-y-4 text-sm">
-          <div>
-            <h3 className="font-semibold text-stone-800 dark:text-stone-200">
-              {`呢題 DSE 2026 ${meta.name} (${topicName}) 考核重點係咩？`} {/* i18n-exempt: zh-Hant FAQ */}
-            </h3>
-            <p className="mt-1 text-stone-600 dark:text-stone-400">
-              {`本題針對 DSE 2026 ${meta.name} 課程重點考核 ${topicName} 核心概念，訓練審題與計算精確度。`} {/* i18n-exempt: zh-Hant FAQ */}
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-stone-800 dark:text-stone-200">
-              {`考試急症室點樣協助溫習 ${meta.name}？`} {/* i18n-exempt: zh-Hant FAQ */}
-            </h3>
-            <p className="mt-1 text-stone-600 dark:text-stone-400">
-              考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。{/* i18n-exempt: zh-Hant FAQ */}
-            </p>
-          </div>
+          {faq.map((item) => (
+            <div key={item.q}>
+              <h3 className="font-semibold text-stone-800 dark:text-stone-200">{item.q}</h3>
+              <p className="mt-1 text-stone-600 dark:text-stone-400">{item.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 

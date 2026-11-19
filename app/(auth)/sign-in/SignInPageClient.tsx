@@ -1,15 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { useLocale } from '@/lib/i18n'
 import GoogleSignInButton from '@/components/auth/GoogleSignInButton'
 
-export default function SignInPageClient() {
+export default function SignInPageClient({ error }: { error?: string | null }) {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const params = useSearchParams()
-  const err = params.get('error')
+  const err = error || null
 
   return (
     <div className="min-h-[70vh] grid place-items-center px-4">
