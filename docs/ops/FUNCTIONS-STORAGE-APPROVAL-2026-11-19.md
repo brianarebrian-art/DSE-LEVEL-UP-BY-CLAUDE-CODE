@@ -188,11 +188,11 @@ Dependabot／Jules／相對舊 preview。
 | 已刪 ID 仍存在 | **0** |
 | 剩餘 deployments | **47**（READY 36 · ERROR 6 · CANCELED 5） |
 | `www.dselevelup.com` | HTTP **200** |
-| Functions Storage GB | **待 Dashboard**（API 無 Usage 讀數） |
+| Functions Storage GB | **已確認讀數 9.54 GB**（[`FUNCTIONS-STORAGE-RELEASE-2026-11-19.md`](./FUNCTIONS-STORAGE-RELEASE-2026-11-19.md)） |
 
 註：刪後仍見 **2** 個 production READY 唔喺今次批准包內（`dpl_9QA12…`、`dpl_FPPHQ4…`），**未刪**。
 
 ## 容量閘門 → 工作包 2
 
-**部分通過（刪除完成）· GB 釋放仍待 Dashboard 確認。**  
-未確認 Usage 釋放前，**唔**開始大規模網站實作。WP2 見 [`WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md`](./WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md)。
+**刪除完成 · Dashboard 讀數 9.54 GB（相對 ~10 GB 仍緊；3x 至 Dec 19）。**  
+WP2 **唔自動開工**，等創辦人明示。見 [`WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md`](./WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md)。

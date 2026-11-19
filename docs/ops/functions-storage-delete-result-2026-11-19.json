@@ -1152,7 +1152,28 @@
       "Batch 1–3 deleted 158/158, failed 0.",
       "confirm_E untouched (18/18 still present).",
       "Two additional production READY exist that were absent from the 2026-11-19 approval inventory; left alone.",
-      "Functions Storage GB still unknown via API — founder to confirm Dashboard release."
+      "Functions Storage GB still unknown via API — founder to confirm Dashboard release.",
+      "Founder Dashboard screenshot: Total 9.54 GB (Updated just now)."
+    ],
+    "functions_storage_gb": 9.54,
+    "functions_storage_verdict": "已確認讀數"
+  },
+  "dashboard_usage": {
+    "recorded_at_hk": "2026-11-19T22:54:14+08:00",
+    "source": "founder screenshot",
+    "metric": "Functions Storage Total size",
+    "team": "dselevelup",
+    "range": "last-3-months (chart ends ~2026-11-19 07:00)",
+    "total_gb": 9.54,
+    "free_tier_included_gb": 10,
+    "limits_increased_3x_until": "2026-12-19",
+    "verdict": "已確認讀數",
+    "notes": [
+      "Free tier included ~10 GB (L-COST-AND-CAPACITY-2026-10-29).",
+      "9.54 GB ≈ 95% of included 10 GB — still tight.",
+      "Temporary 3x limit until 2026-12-19.",
+      "Chart right edge ~07:00 HKT; Batch 1–3 delete ran ~22:40 HKT same day — further drop may still appear.",
+      "Screenshot: docs/ops/assets/functions-storage-2026-11-19.png"
     ]
   }
 }

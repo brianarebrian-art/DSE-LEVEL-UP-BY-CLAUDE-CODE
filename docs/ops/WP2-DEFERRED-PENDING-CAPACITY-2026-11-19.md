@@ -1,18 +1,19 @@
 # 工作包 2：暫緩（容量閘門未過）
 
-狀態：**未開始／受阻（等 Dashboard GB）** · 2026-11-19（Asia/Hong_Kong）
+狀態：**未開始／受阻（等創辦人開 WP2）** · 2026-11-19（Asia/Hong_Kong）
 
 ## 點解未交完整改善計劃
 
 工作包 1 Batch 1–3 **已批准並已刪除**（158／158）；正式站 smoke 通過。  
-**Functions Storage GB 仍待 Dashboard 確認**（見 [`FUNCTIONS-STORAGE-RELEASE-2026-11-19.md`](./FUNCTIONS-STORAGE-RELEASE-2026-11-19.md)）。  
-按指令：容量評估完成前唔新增部署、唔大規模實作。
+Dashboard：**Functions Storage = 9.54 GB**（已確認讀數；相對免費 ~10 GB 仍緊；3x 至 Dec 19）。見 [`FUNCTIONS-STORAGE-RELEASE-2026-11-19.md`](./FUNCTIONS-STORAGE-RELEASE-2026-11-19.md)。  
+按指令：未獲明示前唔大規模實作／唔為 WP2 新增部署驗證。
 
 依賴：
 
 1. ~~批准~~ [`FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md`](./FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md)  
 2. ~~執行刪除~~  
-3. **確認 Usage 下降**＋~~正式站 smoke~~
+3. ~~Dashboard 讀數~~（9.54 GB）＋~~正式站 smoke~~  
+4. **創辦人明示開 WP2**（或先批下一輪刪除，例如 `confirm_E`）
 
 ## 清理通過後 WP2 會涵蓋（預告，非正式計劃）
 
