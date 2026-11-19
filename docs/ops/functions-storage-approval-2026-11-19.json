@@ -581,483 +581,552 @@
       "state": "READY",
       "branch": "jules-2252358248411228645-9f547546",
       "sha": "c79477328109",
-      "created_hk": "2026-11-11T22:02:58+08:00"
+      "created_hk": "2026-11-11T22:02:58+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_EV74zmAcaYgqBwuE1CALH7XvDSsf",
       "state": "READY",
       "branch": "cursor/p1-home-practice-signup-eea4",
       "sha": "98c32361ba3d",
-      "created_hk": "2026-11-06T14:00:26+08:00"
+      "created_hk": "2026-11-06T14:00:26+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_GJxUVzoEFweuf6u47MKfpfXR7Jzo",
       "state": "READY",
       "branch": "cursor/lock-general-feedback-writes-f2eb",
       "sha": "6927ba3dc056",
-      "created_hk": "2026-11-06T11:35:27+08:00"
+      "created_hk": "2026-11-06T11:35:27+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_GUqa2hkSiyW4ZhsXyW4MTzQ9Dk41",
       "state": "READY",
       "branch": "cursor/anonymous-feedback-bc93",
       "sha": "c934bdc7fc81",
-      "created_hk": "2026-11-06T10:17:02+08:00"
+      "created_hk": "2026-11-06T10:17:02+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_wS1zNeP5GZ3E7EQCiz4ptn99Rq7C",
       "state": "READY",
       "branch": "cursor/fsrs-socratic-pillars-1fa9",
       "sha": "c604f211b5bb",
-      "created_hk": "2026-11-05T22:56:07+08:00"
+      "created_hk": "2026-11-05T22:56:07+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_6S1CYAM1nqhQkGkWKhkrRe67v1f3",
       "state": "READY",
       "branch": "cursor/fsrs-socratic-pillars-1fa9",
       "sha": "a41231ee7302",
-      "created_hk": "2026-11-05T22:30:44+08:00"
+      "created_hk": "2026-11-05T22:30:44+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_869iLD6vdQRqSjZzm8PHJrrhYJma",
       "state": "READY",
       "branch": "cursor/fsrs-socratic-pillars-1fa9",
       "sha": "0e8c3faa4093",
-      "created_hk": "2026-11-05T22:25:16+08:00"
+      "created_hk": "2026-11-05T22:25:16+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_AkCGPbbb9pv2DM8RZbnRbgsNRdt1",
       "state": "READY",
       "branch": "cursor/fsrs-socratic-pillars-1fa9",
       "sha": "25c2040fcae6",
-      "created_hk": "2026-11-05T22:17:27+08:00"
+      "created_hk": "2026-11-05T22:17:27+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_CzeFRX7efqFXfTiFeHBqzTx3tFnv",
       "state": "READY",
       "branch": "cursor/error-system-phase1-ba17",
       "sha": "2bc70c448f57",
-      "created_hk": "2026-11-05T21:10:33+08:00"
+      "created_hk": "2026-11-05T21:10:33+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_9bkBDM3gYg1Nk6C75tP7m4Pqi6on",
       "state": "READY",
       "branch": "cursor/error-system-phase1-ba17",
       "sha": "e75e18f944fe",
-      "created_hk": "2026-11-05T21:06:28+08:00"
+      "created_hk": "2026-11-05T21:06:28+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_4wWZShV2uQwdi3skseAKtJMxLfAL",
       "state": "READY",
       "branch": "cursor/error-system-phase1-ba17",
       "sha": "c36f73680b1a",
-      "created_hk": "2026-11-05T21:03:41+08:00"
+      "created_hk": "2026-11-05T21:03:41+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_7bd4v2ENQd9byBZ8Hjqb1uQCRh2W",
       "state": "READY",
       "branch": "cursor/error-system-phase1-ba17",
       "sha": "a1796fa31b35",
-      "created_hk": "2026-11-05T20:57:38+08:00"
+      "created_hk": "2026-11-05T20:57:38+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_AVepp6d1Q4ofZh8dBbiH5QddR8ha",
       "state": "READY",
       "branch": "cursor/error-system-phase1-ba17",
       "sha": "634149c3557a",
-      "created_hk": "2026-11-05T20:55:07+08:00"
+      "created_hk": "2026-11-05T20:55:07+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_J64faneuWz1Ahdd6QzzdZpk3FzAn",
       "state": "READY",
       "branch": "fix/ci-green-pipeline-hardening-5162916862186614060",
       "sha": "1a9d452f9517",
-      "created_hk": "2026-11-05T20:38:50+08:00"
+      "created_hk": "2026-11-05T20:38:50+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_C2FmYXTfzd5bDu3QkR658dbvbrkM",
       "state": "READY",
       "branch": "feat/original-icon-system-13800322783841313982",
       "sha": "9482a7c555ae",
-      "created_hk": "2026-11-05T20:28:14+08:00"
+      "created_hk": "2026-11-05T20:28:14+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_BiFcjiUvjyofmZU4ndmiNkJmbUut",
       "state": "READY",
       "branch": "feat/original-icon-system-13800322783841313982",
       "sha": "fc61a1d4d349",
-      "created_hk": "2026-11-05T20:16:46+08:00"
+      "created_hk": "2026-11-05T20:16:46+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_J5i8toTTaNyJWdeiwHAKb6iaWDYF",
       "state": "READY",
       "branch": "fix/ci-green-pipeline-hardening-5162916862186614060",
       "sha": "34155c345b04",
-      "created_hk": "2026-11-05T19:57:11+08:00"
+      "created_hk": "2026-11-05T19:57:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_B53fjUV1HnFEK6ige6ZsHE85EmaF",
       "state": "READY",
       "branch": "fix/jules-v2-mega-hardening-1834313361107824094",
       "sha": "df4e92f5be78",
-      "created_hk": "2026-11-05T19:56:53+08:00"
+      "created_hk": "2026-11-05T19:56:53+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_EmySYfbA8CxFFkp3iSujDU4QXaiW",
       "state": "READY",
       "branch": "fix/ci-green-pipeline-hardening-5162916862186614060",
       "sha": "4f978af25925",
-      "created_hk": "2026-11-05T18:30:11+08:00"
+      "created_hk": "2026-11-05T18:30:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_HcMJYRXsiVH6GVxi8GDbhg9MPBwZ",
       "state": "READY",
       "branch": "fix/ci-green-pipeline-hardening-5162916862186614060",
       "sha": "9fd4227a8ebc",
-      "created_hk": "2026-11-05T18:08:58+08:00"
+      "created_hk": "2026-11-05T18:08:58+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_6UMUQMuoW4vF3xov8nz8RwuvohGf",
       "state": "READY",
       "branch": "fix/jules-v2-mega-hardening-1834313361107824094",
       "sha": "a1167838689f",
-      "created_hk": "2026-11-05T16:35:13+08:00"
+      "created_hk": "2026-11-05T16:35:13+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_AdFAvytj5YHdnRGWYDVJHRteSqZs",
       "state": "READY",
       "branch": "fix/unblock-and-v6-hardening-5072772221867053830",
       "sha": "d966caeb1378",
-      "created_hk": "2026-11-05T16:18:36+08:00"
+      "created_hk": "2026-11-05T16:18:36+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_4D7wqB4nJuSiLFDFHMLfLNgf1JNq",
       "state": "READY",
       "branch": "fix/vercel-deployment-and-admin-ssr-13235156653816259292",
       "sha": "0c4a9da288f1",
-      "created_hk": "2026-11-05T15:15:55+08:00"
+      "created_hk": "2026-11-05T15:15:55+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_Hu4fF625c2QpxjRpE4k4XzoxAKAA",
       "state": "READY",
       "branch": "docs/pre-commit-verification-7620716863346364219",
       "sha": "c5acb62125f0",
-      "created_hk": "2026-11-05T13:41:11+08:00"
+      "created_hk": "2026-11-05T13:41:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_8qxKAtnAgeEfeqMq7zLsmEgoNJ91",
       "state": "READY",
       "branch": "security/p0-critical-rce-full-fix-14952407914974235964",
       "sha": "d474cc9c726c",
-      "created_hk": "2026-11-05T12:33:13+08:00"
+      "created_hk": "2026-11-05T12:33:13+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_GwEWupKu7fEHEErw5bxVdeorKXMR",
       "state": "READY",
       "branch": "security/p0-critical-rce-full-fix-14952407914974235964",
       "sha": "4b56d4567238",
-      "created_hk": "2026-11-05T12:06:52+08:00"
+      "created_hk": "2026-11-05T12:06:52+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_GcQnbUQ8of9r7VKt3s3CYoboybcY",
       "state": "READY",
       "branch": "cursor/translate-sqlite-cache-3165",
       "sha": "3ec4a0be773c",
-      "created_hk": "2026-11-05T00:01:32+08:00"
+      "created_hk": "2026-11-05T00:01:32+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_A5sZi9VUCBhWRkjYQSzGZdGFS2oE",
       "state": "READY",
       "branch": "cursor/vuln-tsunami-monitor-3165",
       "sha": "e6c88d40d293",
-      "created_hk": "2026-11-05T00:00:26+08:00"
+      "created_hk": "2026-11-05T00:00:26+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_6iXrc7J7w2AXdLMtJsKYgZxDHPA4",
       "state": "READY",
       "branch": "cursor/vuln-tsunami-monitor-3165",
       "sha": "9f1d0df9a734",
-      "created_hk": "2026-11-04T23:55:32+08:00"
+      "created_hk": "2026-11-04T23:55:32+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_J3tepfG8qikP6nTUg6dzQAjB7iJ3",
       "state": "READY",
       "branch": "cursor/vuln-tsunami-monitor-3165",
       "sha": "a00e235ee25b",
-      "created_hk": "2026-11-04T23:50:11+08:00"
+      "created_hk": "2026-11-04T23:50:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_BqC7wbaCvFZMwMfUeCyUyaV2zPQy",
       "state": "READY",
       "branch": "cursor/vuln-tsunami-monitor-3165",
       "sha": "8de1ee394322",
-      "created_hk": "2026-11-04T23:29:39+08:00"
+      "created_hk": "2026-11-04T23:29:39+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_EQ34ru2Ec6ykKYcSMLPLS7t72f2d",
       "state": "READY",
       "branch": "cursor/vuln-tsunami-monitor-3165",
       "sha": "3f2e3b5f1933",
-      "created_hk": "2026-11-04T23:20:37+08:00"
+      "created_hk": "2026-11-04T23:20:37+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_DKGG6huPWDmgKnDBvCLj6XoexFrA",
       "state": "READY",
       "branch": "cursor/v6-phase-10-post-release-97aa",
       "sha": "c06f9345cc81",
-      "created_hk": "2026-11-04T22:58:52+08:00"
+      "created_hk": "2026-11-04T22:58:52+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_E4pWZCMaV7HkATP5WUNcVsyKwD9U",
       "state": "READY",
       "branch": "cursor/v6-phase-5-10-reset-97aa",
       "sha": "66f71a98016f",
-      "created_hk": "2026-11-04T22:58:10+08:00"
+      "created_hk": "2026-11-04T22:58:10+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_4r7rnvYbEHHQqSbk8J4skmjKVzD1",
       "state": "READY",
       "branch": "cursor/v6-phase-9-release-97aa",
       "sha": "52787da164cc",
-      "created_hk": "2026-11-04T22:57:45+08:00"
+      "created_hk": "2026-11-04T22:57:45+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_JD2FHeTdLrAvGnRBieuPEJhz8DHW",
       "state": "READY",
       "branch": "cursor/v6-phase-8-acceptance-97aa",
       "sha": "2ddfa79d6221",
-      "created_hk": "2026-11-04T22:57:38+08:00"
+      "created_hk": "2026-11-04T22:57:38+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_8vADiz34RFsGvgda7uvrdqxuccEj",
       "state": "READY",
       "branch": "cursor/v6-phase-7-remediation-97aa",
       "sha": "0f85cf0c7d63",
-      "created_hk": "2026-11-04T22:57:34+08:00"
+      "created_hk": "2026-11-04T22:57:34+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_5R4mpYFb7RzNzr6af6Xorpf5N18b",
       "state": "READY",
       "branch": "cursor/v6-phase-6-test-report-97aa",
       "sha": "cb53dedace86",
-      "created_hk": "2026-11-04T22:57:29+08:00"
+      "created_hk": "2026-11-04T22:57:29+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_DdvvW51W3KfSFkCLJhmJMyjmXKsQ",
       "state": "READY",
       "branch": "cursor/v6-phase-5a-security-97aa",
       "sha": "29d326b0f368",
-      "created_hk": "2026-11-04T22:57:24+08:00"
+      "created_hk": "2026-11-04T22:57:24+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_HNWDw1D5RMiTMZ9Fh9Vqn1MZp3An",
       "state": "READY",
       "branch": "cursor/v6-phase-8-acceptance-97aa",
       "sha": "cfcff4c5d44d",
-      "created_hk": "2026-11-04T22:52:44+08:00"
+      "created_hk": "2026-11-04T22:52:44+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_ALztyrpHhDu3RXEbK8kgLbSrEvQc",
       "state": "READY",
       "branch": "cursor/v6-phase-7-remediation-97aa",
       "sha": "ebef5a55ed95",
-      "created_hk": "2026-11-04T22:51:05+08:00"
+      "created_hk": "2026-11-04T22:51:05+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_3iHqnDKetkzZiFAEiuXJPYoyuX48",
       "state": "READY",
       "branch": "cursor/v6-phase-6-test-report-97aa",
       "sha": "95b11793f77d",
-      "created_hk": "2026-11-04T22:48:47+08:00"
+      "created_hk": "2026-11-04T22:48:47+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_FWQn1rnbQNbLDkpkWmpnKTpzqtE8",
       "state": "READY",
       "branch": "cursor/v6-phase-5a-security-97aa",
       "sha": "416e075071d6",
-      "created_hk": "2026-11-04T22:40:31+08:00"
+      "created_hk": "2026-11-04T22:40:31+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_BQedzHkLu7b5LYdMCjFumNZRR4ZR",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "91bb86e84d02",
-      "created_hk": "2026-11-04T22:24:21+08:00"
+      "created_hk": "2026-11-04T22:24:21+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_CwZsdWGosCbrFxRefgfp1VEF5Kge",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "73dfbe821cdf",
-      "created_hk": "2026-11-04T22:22:13+08:00"
+      "created_hk": "2026-11-04T22:22:13+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_ABtKqqCBwK6AuWSberTj8ju566hn",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "f49ce635618e",
-      "created_hk": "2026-11-04T22:18:46+08:00"
+      "created_hk": "2026-11-04T22:18:46+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_3K6RHT8L2ZztaYQppBmQcFJGxVit",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "532f6fb5d34a",
-      "created_hk": "2026-11-04T22:15:11+08:00"
+      "created_hk": "2026-11-04T22:15:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_DAJD35TyHHMfewYZdY84VSgKiDdz",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "6b91679e613e",
-      "created_hk": "2026-11-04T22:12:07+08:00"
+      "created_hk": "2026-11-04T22:12:07+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_ooDa4nDazoGNXt8QAQsWW6hw1vbv",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "acc9c4a2fb64",
-      "created_hk": "2026-11-04T22:11:54+08:00"
+      "created_hk": "2026-11-04T22:11:54+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_8foBD5YfwTbqFsNzL22sD5LgwFz5",
       "state": "READY",
       "branch": "cursor/v6-phase-1-research-97aa",
       "sha": "841e76eb98e0",
-      "created_hk": "2026-11-04T22:08:07+08:00"
+      "created_hk": "2026-11-04T22:08:07+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_Hguxh76NA7MWkFF4Mnvddk363m2n",
       "state": "READY",
       "branch": "security/sentry-tunnel-hardening",
       "sha": "2d03e0c38d8b",
-      "created_hk": "2026-11-04T08:28:00+08:00"
+      "created_hk": "2026-11-04T08:28:00+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_2AY8tZrtsYqjvqBRu98MioYxLhuB",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "acef0a17fe1f",
-      "created_hk": "2026-11-03T22:54:12+08:00"
+      "created_hk": "2026-11-03T22:54:12+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_HF9hwpX4XsAUe6oV9YHusXo3Dcki",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "d3ea6feb7154",
-      "created_hk": "2026-11-03T21:35:05+08:00"
+      "created_hk": "2026-11-03T21:35:05+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_Bknhw1dgW1uaXN8n8NnY6LQ7CuWE",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "043a91ee167a",
-      "created_hk": "2026-11-03T21:25:39+08:00"
+      "created_hk": "2026-11-03T21:25:39+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_9KmcpNi2jFGWSGfjpZeJQyZ9RWes",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "aa2c10b405aa",
-      "created_hk": "2026-11-03T21:12:35+08:00"
+      "created_hk": "2026-11-03T21:12:35+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_7kxcnayvn995cSxwSrKZLmN7QenJ",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "d086b80ee3a9",
-      "created_hk": "2026-11-03T21:07:37+08:00"
+      "created_hk": "2026-11-03T21:07:37+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_63HoHFQxARbJpSpLZka15uo3P8X7",
       "state": "READY",
       "branch": "phase-1-research-baseline-5493710607434047134",
       "sha": "85535b98aceb",
-      "created_hk": "2026-11-03T20:59:50+08:00"
+      "created_hk": "2026-11-03T20:59:50+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_9MbNS7KuL1u1xKXLW2gpvD2yGWMn",
       "state": "READY",
       "branch": "seer/fix/admin-ignore-rejected-json",
       "sha": "42bb48be86e0",
-      "created_hk": "2026-11-03T19:59:06+08:00"
+      "created_hk": "2026-11-03T19:59:06+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_5LQSCbTCjB5DDbS8u8v8YNLJ9FdT",
       "state": "READY",
       "branch": "bolt-compute-stats-single-pass-15962631897872512347",
       "sha": "6f4c0147e7ad",
-      "created_hk": "2026-11-03T19:27:30+08:00"
+      "created_hk": "2026-11-03T19:27:30+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_EspVuHsuztTbmUHa3c77xJgeDXC1",
       "state": "READY",
       "branch": "sentinel-harden-oauth-redirect-13359181137092435105",
       "sha": "239d010bf79a",
-      "created_hk": "2026-11-03T19:23:23+08:00"
+      "created_hk": "2026-11-03T19:23:23+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_5cjbNjpgqNpFBqfxpuJ3pL2HXKXb",
       "state": "READY",
       "branch": "palette-bookmark-button-a11y-14872740280790951528",
       "sha": "2863ecdcbee4",
-      "created_hk": "2026-11-03T19:22:11+08:00"
+      "created_hk": "2026-11-03T19:22:11+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_DNDrJnmVQWARb3qhcwKCiRJ6MPBt",
       "state": "READY",
       "branch": "security/react-nextjs-dos-patched-preview",
       "sha": "6afd6501b86b",
-      "created_hk": "2026-11-03T15:52:02+08:00"
+      "created_hk": "2026-11-03T15:52:02+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_4dgSccK5Pmu1H8DW4jCsqa7G6Pfj",
       "state": "READY",
       "branch": "security/react-nextjs-dos-patched-preview",
       "sha": "733a2fde9ee1",
-      "created_hk": "2026-11-03T15:34:50+08:00"
+      "created_hk": "2026-11-03T15:34:50+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_9FY5dGTCC9k3cjvZFvuS2MHXeGSk",
       "state": "READY",
       "branch": "security/react-nextjs-dos-patched-preview",
       "sha": "169c41a02fa2",
-      "created_hk": "2026-11-03T15:32:02+08:00"
+      "created_hk": "2026-11-03T15:32:02+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_FGcY5dr7w2GKGec482FQNJaET4mo",
       "state": "READY",
       "branch": "security/react-nextjs-dos-patched-preview",
       "sha": "098d02622f8a",
-      "created_hk": "2026-11-03T15:25:31+08:00"
+      "created_hk": "2026-11-03T15:25:31+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_2Uc7nZpSJkdWiJ1d7XaEJFMYNYat",
       "state": "READY",
       "branch": "security/react-nextjs-dos-assessment",
       "sha": "52bb970f6972",
-      "created_hk": "2026-11-03T15:14:43+08:00"
+      "created_hk": "2026-11-03T15:14:43+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_2bYnrY8YrsHTUbwcy4zHKbqxUDed",
       "state": "READY",
       "branch": "security/react-nextjs-dos-assessment",
       "sha": "6a55d8f82a8c",
-      "created_hk": "2026-11-03T15:11:41+08:00"
+      "created_hk": "2026-11-03T15:11:41+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_FAcqxPQUd9XTz3gA8ji4poyNmHBm",
       "state": "READY",
       "branch": "v0/phase-1-learning-funnel",
       "sha": "2ec21f41363f",
-      "created_hk": "2026-11-02T15:24:30+08:00"
+      "created_hk": "2026-11-02T15:24:30+08:00",
+      "target": "preview"
     },
     {
       "id": "dpl_8cNhSeo9r6sYJo1cp7KRipckRATe",
       "state": "READY",
       "branch": "v0/phase-1-learning-funnel",
       "sha": "cca7372be307",
-      "created_hk": "2026-11-02T15:19:46+08:00"
+      "created_hk": "2026-11-02T15:19:46+08:00",
+      "target": "preview"
     }
   ],
   "batch3_old_production_ready": [
@@ -1066,182 +1135,234 @@
       "branch": "main",
       "sha": "87a71a209a4e",
       "created_hk": "2026-11-13T09:26:37+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_8MvSFzUxq2Ji37rtPkkUwdHESNtu",
       "branch": "main",
       "sha": "52106485eecb",
       "created_hk": "2026-11-13T09:17:10+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_5NL9fF8k7qKw5ZoMjorYNT6TE4kW",
       "branch": "main",
       "sha": "1cf7b6277847",
       "created_hk": "2026-11-13T08:08:51+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_ArG2RQCEG3qKKGMJq4MEsp6iFagW",
       "branch": "main",
       "sha": "5607babce657",
       "created_hk": "2026-11-11T22:03:25+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_Bfx5RHsJ4FtNWQEhZtzHUs6Wdaff",
       "branch": "main",
       "sha": "2d5c3f524bd5",
       "created_hk": "2026-11-10T22:16:13+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_81JQUNd91YRRp7ehnR8TdxyzcPVx",
       "branch": "main",
       "sha": "d8fd41a8f95b",
       "created_hk": "2026-11-10T08:54:26+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_4o8ucAmkibFEcP33EzY5hwZVukeu",
       "branch": "main",
       "sha": "5cfd9edd2a4e",
       "created_hk": "2026-11-10T08:53:49+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_7jUoCGukzSuGG9XtyQtEWfbdRU4C",
       "branch": "main",
       "sha": "f75e05e4d3f5",
       "created_hk": "2026-11-06T14:38:33+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_Furq2dtWD7MAAL4oez9hCmwXkxdW",
       "branch": "main",
       "sha": "b3f41b6a7d87",
       "created_hk": "2026-11-06T10:24:41+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_BTBaC4FYiFxVcvZZgpa3LCGhkUTU",
       "branch": "main",
       "sha": "a135c129b60b",
       "created_hk": "2026-11-05T22:39:56+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_EWg6BsmtLeGBY5eUkNXQMcYEwJkc",
       "branch": "main",
       "sha": "9700240353d4",
       "created_hk": "2026-11-05T21:11:35+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_9Na47MA2sFNfLKepdp4PJRHSPzqU",
       "branch": "main",
       "sha": "0dc04222d6e6",
       "created_hk": "2026-11-05T16:41:00+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_G7X5zfDUmApbvvxZLpSZggg6i76E",
       "branch": "main",
       "sha": "9d5bead64e1f",
       "created_hk": "2026-11-05T16:40:17+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_FK6ZkSSNWsBKzthQRqJzEmpeZYQr",
       "branch": "main",
       "sha": "f90adbc33267",
       "created_hk": "2026-11-05T16:20:04+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_2vJGyH57krM8QPbjvEn7AEGhCaK1",
       "branch": "main",
       "sha": "cd060af9965b",
       "created_hk": "2026-11-05T13:45:16+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_JDw8gGef56osyHz3WVbqQ1Pzs3CJ",
       "branch": "main",
       "sha": "f7961a8088b3",
       "created_hk": "2026-11-05T12:07:47+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_AhPLd4H5copApzNBtkWpdtYAdtSD",
       "branch": "main",
       "sha": "bf31707c82b2",
       "created_hk": "2026-11-05T00:02:52+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_8dC4fd7rDgdpTLsRULtaGYGCrWVz",
       "branch": "main",
       "sha": "ecc887bb8a32",
       "created_hk": "2026-11-04T23:21:27+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_CPHDSyNzpc5owBQ562XsbmNqm3LG",
       "branch": "main",
       "sha": "d9bb6a31b962",
       "created_hk": "2026-11-04T22:57:18+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_ARuLBcQnFQtKi5wPLaGHsXrahAbw",
       "branch": "main",
       "sha": "1740cb1ce79d",
       "created_hk": "2026-11-04T22:25:55+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_8pSU2cH3VfXuen2f6Jm3qddB9YV5",
       "branch": "main",
       "sha": "95134df63126",
       "created_hk": "2026-11-04T08:34:42+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_CcWaxcU7ZqLMKanLYNsq9Wh3swn5",
       "branch": "main",
       "sha": "a67e08de6e19",
       "created_hk": "2026-11-03T19:59:41+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_J6DB8MFAmHC61tzUzYGv3gMZWFZ7",
       "branch": "main",
       "sha": "a4849f993f19",
       "created_hk": "2026-11-03T19:55:46+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_5FcDQsvYx3q6AHpehj7NBsSPJehq",
       "branch": "main",
       "sha": "cec770e623db",
       "created_hk": "2026-11-03T19:25:02+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_HgDJuN8FBYEymjFdSzLTsordjBM8",
       "branch": "main",
       "sha": "39091482d48b",
       "created_hk": "2026-11-03T19:10:39+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     },
     {
       "id": "dpl_24aDFNtuVzgbkqygCg2D6VXBVa1e",
       "branch": "main",
       "sha": "1c4476788555",
       "created_hk": "2026-11-01T12:03:16+08:00",
-      "rollback": false
+      "rollback": false,
+      "target": "production",
+      "state": "READY"
     }
   ],
   "confirm_E": [

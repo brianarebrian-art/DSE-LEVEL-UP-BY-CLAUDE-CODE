@@ -30,6 +30,20 @@ const BATCH_KEYS = {
   3: 'batch3_old_production_ready',
 }
 
+/** Defaults when approval JSON omits target/state (batch3 rows historically did). */
+const BATCH_DEFAULTS = {
+  1: { target: 'preview', state: '' },
+  2: { target: 'preview', state: 'READY' },
+  3: { target: 'production', state: 'READY' },
+}
+
+function labelTargetState(row, batch) {
+  const defaults = BATCH_DEFAULTS[batch] || { target: 'unknown', state: '' }
+  const target = row.target || defaults.target
+  const state = row.state || defaults.state
+  return { target, state }
+}
+
 function parseBatches() {
   const argIdx = process.argv.indexOf('--batch')
   if (argIdx >= 0 && process.argv[argIdx + 1]) {
@@ -95,7 +109,8 @@ async function main() {
         console.error(`REFUSE: ${row.id} is in confirm_E[]`)
         process.exit(3)
       }
-      targets.push({ ...row, batch: n })
+      const { target, state } = labelTargetState(row, n)
+      targets.push({ ...row, batch: n, target, state })
     }
   }
 
@@ -108,30 +123,49 @@ async function main() {
     unique.push(t)
   }
 
+  const byTarget = unique.reduce((acc, t) => {
+    acc[t.target] = (acc[t.target] || 0) + 1
+    return acc
+  }, {})
   console.log(`team=${TEAM} dryRun=${DRY} batches=${batches.join(',')}`)
   console.log(`keep=${keep.size} confirm_E=${confirm.size} delete=${unique.length}`)
+  console.log(`delete_by_target ${JSON.stringify(byTarget)}`)
 
   const results = []
   let deleted = 0
   let failed = 0
   for (const t of unique) {
-    const label = `batch${t.batch} ${t.id} ${t.target || 'preview'} ${t.state || ''} ${t.branch || ''}`
+    const label = `batch${t.batch} ${t.id} ${t.target} ${t.state} ${t.branch || ''}`
     if (DRY) {
       console.log(`DRY would delete ${label}`)
-      results.push({ id: t.id, batch: t.batch, status: 'dry-run' })
+      results.push({
+        id: t.id,
+        batch: t.batch,
+        target: t.target,
+        state: t.state,
+        status: 'dry-run',
+      })
       deleted++
       continue
     }
     try {
       await api(`/v13/deployments/${t.id}`, { method: 'DELETE' })
       deleted++
-      results.push({ id: t.id, batch: t.batch, status: 'deleted' })
+      results.push({
+        id: t.id,
+        batch: t.batch,
+        target: t.target,
+        state: t.state,
+        status: 'deleted',
+      })
       console.log(`deleted ${label}`)
     } catch (e) {
       failed++
       results.push({
         id: t.id,
         batch: t.batch,
+        target: t.target,
+        state: t.state,
         status: 'failed',
         error: e.message,
         body: e.body || null,
