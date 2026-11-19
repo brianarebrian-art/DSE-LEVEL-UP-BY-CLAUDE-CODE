@@ -1,7 +1,8 @@
 # WP3-A+B+C 執行記錄
 
-狀態：**已實作（等 WP4／WP5）** · 2026-11-19（Asia/Hong_Kong）  
-批准：創辦人「批 WP3-A+B+C」
+狀態：**已實作 · WP4 隔離驗收通過** · 2026-11-19（Asia/Hong_Kong）  
+批准：創辦人「批 WP3-A+B+C」  
+WP4：[`WP4-ACCEPTANCE-2026-11-19.md`](./WP4-ACCEPTANCE-2026-11-19.md)
 
 計劃來源：[`WP2-SITE-IMPROVEMENT-PLAN-2026-11-19.md`](./WP2-SITE-IMPROVEMENT-PLAN-2026-11-19.md)（PR #232）
 
