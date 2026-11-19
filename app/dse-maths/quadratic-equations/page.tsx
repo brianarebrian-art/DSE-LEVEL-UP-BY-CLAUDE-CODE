@@ -223,9 +223,35 @@ export default function QuadraticEquationsPage() {
           </section>
 
           <section className="mt-10 rounded-2xl border border-accent/30 p-6" aria-labelledby="next-step">
-            <h2 id="next-step" className="text-xl font-medium text-ink">下一步：先寫步驟，再用工具安排練習</h2> {/* i18n-exempt: zh-Hant editorial content */}
-            <p className="mt-3 leading-8 text-ink-soft">先自行選一條方程，寫出你選哪一種方法、每個係數和最終代回。若要了解 AI 練習題生成器的使用方向，可前往相關頁面；<strong>功能狀態：</strong>該頁目前提供使用指引及練習平台入口，本頁不承諾即時生成、機器作文批改或自動評分。</p> {/* i18n-exempt: zh-Hant editorial content */}
-            <Link href="/ai/practice-generator" className="mt-4 inline-flex rounded-xl bg-accent-strong px-4 py-3 font-medium text-white">查看 AI 練習題生成器的使用指引</Link> {/* i18n-exempt: zh-Hant editorial content */}
+            <h2 id="next-step" className="text-xl font-medium text-ink">下一步：練一元二次方程</h2> {/* i18n-exempt: zh-Hant editorial content */}
+            <p className="mt-3 leading-8 text-ink-soft">
+              讀完概念後，用本站題庫做一節 MC 練習（訪客可練；未登入時刷新頁面會唔保留當節進度）。亦可睇課題筆記或列印紙筆卷。 {/* i18n-exempt: zh-Hant editorial content */}
+            </p>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                href="/practice?subject=math&topic=quadratic_equations"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-accent-strong px-4 py-3 font-medium text-on-accent"
+              >
+                開始二次方程練習 {/* i18n-exempt: zh-Hant editorial content */}
+              </Link>
+              <Link
+                href="/notes/math?topic=quadratic_equations"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-line px-4 py-3 font-medium text-ink"
+              >
+                課題筆記 {/* i18n-exempt: zh-Hant editorial content */}
+              </Link>
+              <Link
+                href="/paper-warrior?subject=math&topic=quadratic_equations"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-line px-4 py-3 font-medium text-ink"
+              >
+                列印練習卷 {/* i18n-exempt: zh-Hant editorial content */}
+              </Link>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-ink-muted">
+              若要了解 AI 練習題生成器嘅使用方向，可睇
+              <Link href="/ai/practice-generator" className="font-medium text-accent underline underline-offset-4">使用指引</Link>
+              ；該頁唔承諾即時生成或機器批改。 {/* i18n-exempt: zh-Hant editorial content */}
+            </p>
           </section>
         </article>
       </section>

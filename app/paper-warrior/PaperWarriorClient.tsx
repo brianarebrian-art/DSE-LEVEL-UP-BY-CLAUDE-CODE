@@ -37,15 +37,40 @@ import {
 // 同下面 .paper-sheet 嘅 A4 規則。冇後端 PDF 服務（$0 原則）。
 
 const activeSubjects = subjects.filter((s) => s.isActive)
+const activeSubjectIds = new Set(activeSubjects.map((s) => s.id))
 
-export default function PaperWarriorClient() {
+function resolveInitialSubject(raw: string | undefined): string {
+  const id = (raw ?? '').trim()
+  if (id && activeSubjectIds.has(id)) return id
+  return activeSubjects[0]?.id ?? 'math'
+}
+
+function resolveInitialTopic(subjectId: string, raw: string | undefined): string {
+  const topicId = (raw ?? '').trim()
+  if (!topicId) return ''
+  try {
+    const topics = SUBJECT_TOPICS[subjectId] ?? []
+    return topics.some((t) => t.id === topicId) ? topicId : ''
+  } catch {
+    return ''
+  }
+}
+
+export default function PaperWarriorClient({
+  initialSubject = '',
+  initialTopic = '',
+}: {
+  initialSubject?: string
+  initialTopic?: string
+} = {}) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
 
- const [subject, setSubject] = useState(activeSubjects[0]?.id ?? 'math')
- const [topic, setTopic] = useState('')
- const [size, setSize] = useState<number>(20)
+  const startSubject = resolveInitialSubject(initialSubject)
+  const [subject, setSubject] = useState(startSubject)
+  const [topic, setTopic] = useState(() => resolveInitialTopic(startSubject, initialTopic))
+  const [size, setSize] = useState<number>(20)
  const [written, setWritten] = useState<number>(0)
  const [withExplain, setWithExplain] = useState(false)
  const [paper, setPaper] = useState<

@@ -200,8 +200,11 @@ function Inner({ subjectId }: { subjectId: string }) {
  )}
 
  <p className="pt-1 text-center text-sm">
- <Link href={`/paper-warrior`} className="inline-flex min-h-11 items-center gap-1.5 text-accent-strong hover:underline">
- <Printer size={15} /> {tr('印一份紙筆卷練呢科', 'Print a paper set for this subject')}
+ <Link
+              href={`/paper-warrior?subject=${encodeURIComponent(subjectId)}&topic=${encodeURIComponent(note.topicId)}`}
+              className="inline-flex min-h-11 items-center gap-1.5 text-accent-strong hover:underline"
+            >
+ <Printer size={15} /> {tr('印一份紙筆卷練呢個課題', 'Print a paper set for this topic')}
             </Link>
  </p>
  </article>

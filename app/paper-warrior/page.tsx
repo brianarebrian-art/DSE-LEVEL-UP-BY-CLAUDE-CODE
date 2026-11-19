@@ -9,10 +9,23 @@ export const metadata = completeSeoMetadata({
   description: '從題庫建立可列印的 A4 練習卷，供你以紙筆完成後再回來自行對照答案。', // i18n-exempt: zh-Hant fixed search metadata
 }, '/paper-warrior')
 
-export default function PaperWarriorPage() {
+function firstString(v: string | string[] | undefined): string {
+  if (typeof v === 'string') return v
+  if (Array.isArray(v) && typeof v[0] === 'string') return v[0]
+  return ''
+}
+
+export default async function PaperWarriorPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}) {
+  const sp = await searchParams
+  const initialSubject = firstString(sp.subject)
+  const initialTopic = firstString(sp.topic)
   return (
     <div className="min-h-screen bg-surface text-ink-soft">
-      <PaperWarriorClient />
+      <PaperWarriorClient initialSubject={initialSubject} initialTopic={initialTopic} />
     </div>
   )
 }
