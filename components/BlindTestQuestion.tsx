@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useLocale } from '@/lib/i18n'
+import { TANGENT_FIGURE, tangentAnglePath } from '@/components/demoTangentGeometry'
 
 // 盲測黑題目 (Blind Test) — a screenshot-ready hardcore showcase for the landing
 // page / IG Reels. Key numbers and keywords are blacked out so only the FIGURE,
@@ -92,28 +93,29 @@ export default function BlindTestQuestion() {
         <span className="rounded-full border border-paper-ink/20 px-2 py-0.5 text-xs text-paper-muted">{tr('示範題，唔計分', 'Demo — not scored')}</span>
  </div>
 
-      {/* Figure — two tangents from an external point P to a circle */}
-      <svg viewBox="0 0 280 160" className="w-full h-36 mb-4" role="img" aria-label="circle with two tangents">
-        {/* ⚠️ SVG presentation attribute（fill="…" / stroke="…"）唔會解析 var() ——
-            佢哋唔係當 CSS 值咁 parse。要食 token 就一定要行 inline style。 */}
-        <circle cx="178" cy="82" r="44" fill="none" style={INK} strokeWidth="2" />
- <circle cx="178" cy="82" r="2.5" style={INK_FILL} />
- <text x="186" y="80" style={INK_FILL} fontSize="11">O</text>
-        {/* external point P and the two tangents */}
-        <line x1="58" y1="82" x2="160" y2="46" style={TRAP} strokeWidth="2" />
- <line x1="58" y1="82" x2="160" y2="118" style={TRAP} strokeWidth="2" />
- <circle cx="58" cy="82" r="2.5" style={TRAP_FILL} />
- <text x="40" y="86" style={TRAP_FILL} fontSize="11">P</text>
- <circle cx="160" cy="46" r="2.5" style={TRAP_FILL} />
- <text x="150" y="40" style={TRAP_FILL} fontSize="11">A</text>
- <circle cx="160" cy="118" r="2.5" style={TRAP_FILL} />
- <text x="150" y="132" style={TRAP_FILL} fontSize="11">B</text>
-        {/* point C on the major arc */}
-        <circle cx="214" cy="58" r="2.5" style={INK_FILL} />
- <text x="220" y="56" style={INK_FILL} fontSize="11">C</text>
- <line x1="214" y1="58" x2="160" y2="46" style={MUTED} strokeWidth="1.3" />
- <line x1="214" y1="58" x2="160" y2="118" style={MUTED} strokeWidth="1.3" />
- <path d="M 78 74 A 22 22 0 0 1 78 90" fill="none" style={TRAP} strokeWidth="1.3" />
+      {/* Figure — two tangents from an external point P to a circle.
+          Coordinates come from demoTangentGeometry so A and B stay on the circle. */}
+      <svg viewBox="0 0 280 160" width="280" height="160" className="w-full h-36 mb-4" role="img" focusable="false" aria-label={tr(
+        '圓心為 O 的圓。圓外一點 P 的兩條切線分別切圓於 A 和 B，C 在優弧 AB 上。',
+        'A circle with centre O. Two tangents from an external point P touch the circle at A and B. C is on the major arc AB.',
+      )}>
+        {/* SVG presentation attributes do not resolve var(); use inline style. */}
+        <circle cx={TANGENT_FIGURE.O.x} cy={TANGENT_FIGURE.O.y} r={TANGENT_FIGURE.r} fill="none" style={INK} strokeWidth="2" />
+ <circle cx={TANGENT_FIGURE.O.x} cy={TANGENT_FIGURE.O.y} r="2.5" style={INK_FILL} />
+ <text x={TANGENT_FIGURE.O.x + 8} y={TANGENT_FIGURE.O.y - 2} style={INK_FILL} fontSize="11">O</text>
+        <line x1={TANGENT_FIGURE.P.x} y1={TANGENT_FIGURE.P.y} x2={TANGENT_FIGURE.A.x} y2={TANGENT_FIGURE.A.y} style={TRAP} strokeWidth="2" />
+ <line x1={TANGENT_FIGURE.P.x} y1={TANGENT_FIGURE.P.y} x2={TANGENT_FIGURE.B.x} y2={TANGENT_FIGURE.B.y} style={TRAP} strokeWidth="2" />
+ <circle cx={TANGENT_FIGURE.P.x} cy={TANGENT_FIGURE.P.y} r="2.5" style={TRAP_FILL} />
+ <text x={TANGENT_FIGURE.P.x - 16} y={TANGENT_FIGURE.P.y + 4} style={TRAP_FILL} fontSize="11">P</text>
+ <circle cx={TANGENT_FIGURE.A.x} cy={TANGENT_FIGURE.A.y} r="2.5" style={TRAP_FILL} />
+ <text x={TANGENT_FIGURE.A.x - 14} y={TANGENT_FIGURE.A.y - 6} style={TRAP_FILL} fontSize="11">A</text>
+ <circle cx={TANGENT_FIGURE.B.x} cy={TANGENT_FIGURE.B.y} r="2.5" style={TRAP_FILL} />
+ <text x={TANGENT_FIGURE.B.x - 14} y={TANGENT_FIGURE.B.y + 14} style={TRAP_FILL} fontSize="11">B</text>
+        <circle cx={TANGENT_FIGURE.C.x} cy={TANGENT_FIGURE.C.y} r="2.5" style={INK_FILL} />
+ <text x={TANGENT_FIGURE.C.x + 6} y={TANGENT_FIGURE.C.y - 4} style={INK_FILL} fontSize="11">C</text>
+ <line x1={TANGENT_FIGURE.C.x} y1={TANGENT_FIGURE.C.y} x2={TANGENT_FIGURE.A.x} y2={TANGENT_FIGURE.A.y} style={MUTED} strokeWidth="1.3" />
+ <line x1={TANGENT_FIGURE.C.x} y1={TANGENT_FIGURE.C.y} x2={TANGENT_FIGURE.B.x} y2={TANGENT_FIGURE.B.y} style={MUTED} strokeWidth="1.3" />
+ <path d={tangentAnglePath()} fill="none" style={TRAP} strokeWidth="1.3" />
  </svg>
 
       {/* Redacted question */}
@@ -137,8 +139,8 @@ export default function BlindTestQuestion() {
  </div>
 
  <p className="text-[10px] text-paper-muted text-center mt-3">
-        {tr('黑色係考評局陷阱位 — 撳一下偷睇。喺 DSE Level Up，你要睇穿，唔係背答案。',
-            'The black blocks are the examiner’s traps — tap to peek. On DSE Level Up you see through them, you don’t memorise.')}
+        {tr('黑色方塊遮住數字，撳一下就可以睇。呢條係 DSE Level Up 原創示範，並非考評局試題。',
+            'The black blocks hide the numbers; tap to reveal them. This is an original DSE Level Up demo, not an HKEAA paper.')}
       </p>
  </div>
   )

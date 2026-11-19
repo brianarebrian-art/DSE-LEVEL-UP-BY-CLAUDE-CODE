@@ -57,6 +57,14 @@ const nextConfig: NextConfig = {
       // Not permanent, so a real page could take either address later.
       { source: '/progress', destination: '/dashboard', permanent: false },
       { source: '/breathe', destination: '/relax', permanent: false },
+      // Addresses people type instead of /sign-in and /sign-up. Not permanent,
+      // so a real page could take either address later.
+      { source: '/signin', destination: '/sign-in', permanent: false },
+      { source: '/login', destination: '/sign-in', permanent: false },
+      { source: '/log-in', destination: '/sign-in', permanent: false },
+      { source: '/sign_in', destination: '/sign-in', permanent: false },
+      { source: '/signup', destination: '/sign-up', permanent: false },
+      { source: '/sign_up', destination: '/sign-up', permanent: false },
     ]
   },
   async headers() {

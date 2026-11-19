@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { completeSeoMetadata } from '@/lib/seo'
 import { redirect } from 'next/navigation'
 import { getSyncUserId } from '@/lib/auth/server'
@@ -10,12 +9,17 @@ export const metadata = completeSeoMetadata({
 }, '/sign-in')
 
 // Already signed in → dashboard. getSyncUserId() = Supabase auth.users.id.
-export default async function Page() {
+// Read the error query here so the form is in the first HTML inside <main>.
+// A useSearchParams() boundary with an empty fallback left #main-content blank.
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string | string[] }>
+}) {
   if (await getSyncUserId()) redirect('/dashboard')
+  const params = await searchParams
+  const raw = params.error
+  const error = Array.isArray(raw) ? raw[0] : raw
 
-  return (
-    <Suspense fallback={null}>
-      <SignInPageClient />
-    </Suspense>
-  )
+  return <SignInPageClient error={error ?? null} />
 }

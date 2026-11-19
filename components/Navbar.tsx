@@ -117,10 +117,10 @@ export default function Navbar() {
  <div className="hidden lg:block">
  <Greeting />
  </div>
- <Link href="/" aria-label="DSE Level Up" className="flex min-h-11 min-w-0 items-center gap-2 text-lg font-semibold text-ink md:hidden">
+ <Link href="/" aria-label="DSE Level Up" className="flex min-h-11 min-w-0 items-center gap-2 text-sm font-semibold leading-tight text-ink sm:text-lg md:hidden">
  <BookOpen size={22} className="shrink-0 text-accent" aria-hidden />
- <span className="whitespace-nowrap">
-            DSE<span className="text-accent hidden sm:inline"> Level Up</span>
+ <span className="min-w-0">
+            DSE <span className="text-accent">Level{'\u00A0'}Up</span>
  </span>
  </Link>
  </div>

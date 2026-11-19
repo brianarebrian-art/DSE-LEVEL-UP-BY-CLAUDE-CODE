@@ -31,7 +31,7 @@ export const FEATURE_LABEL: Record<FeatureId, { zh: string; en: string }> = {
   error_analysis: { zh: '錯因分析', en: 'Error analysis' },
   focus_light: { zh: 'Focus 專注燈', en: 'Focus light' },
   quiet_mode: { zh: '安靜模式', en: 'Quiet mode' },
-  emergency_room: { zh: '考試急症室', en: 'Exam-day calm space' },
+  emergency_room: { zh: '考試日安靜空間', en: 'Exam-day calm space' },
   accessibility: { zh: '無障礙', en: 'Accessibility' },
 }
 

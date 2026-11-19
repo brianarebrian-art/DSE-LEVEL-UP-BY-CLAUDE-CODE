@@ -22,7 +22,7 @@ export default function LanguageToggle({ className = '' }: { className?: string 
     >
       <Languages aria-hidden="true" className="size-4 shrink-0" />
       <span>{controlLabel}</span>
-      <span aria-hidden="true" className="text-ink-muted">·</span>
+      <span aria-hidden="true" className="text-ink-muted">{' · '}</span>
       <span className="font-semibold">{label}</span>
     </button>
   )
