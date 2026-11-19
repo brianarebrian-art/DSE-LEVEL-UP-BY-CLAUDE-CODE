@@ -399,13 +399,13 @@ export default function ResultPageClient() {
           </Link>
         </section>
 
-        <section className="rounded-[var(--radius-card)] border border-line bg-surface-sunken p-4 pr-16 text-sm leading-relaxed text-ink-muted">
-          <p>
-            {locale === 'en'
-              ? 'To keep this progress, sync with Google. Skipping is fine — you can start another set whenever you want.'
-              : '想記住進度，可用 Google 同步。唔同步都得，隨時可以再開另一份。'}
-          </p>
-          {status !== 'authenticated' && !user && (
+        {status !== 'authenticated' && !user && (
+          <section className="rounded-[var(--radius-card)] border border-line bg-surface-sunken p-4 pr-16 text-sm leading-relaxed text-ink-muted">
+            <p>
+              {locale === 'en'
+                ? 'Guest mode: refreshing or closing this tab clears this session’s progress from memory. Sync with Google to keep it. Skipping is fine — you can start another set whenever you want.'
+                : '訪客模式：刷新或關閉分頁會清走呢一節喺記憶體嘅進度。想記住，可用 Google 同步。唔同步都得，隨時可以再開另一份。'}
+            </p>
             <button
               type="button"
               onClick={() => { void signInWithGoogle('/result') }}
@@ -413,8 +413,8 @@ export default function ResultPageClient() {
             >
               {locale === 'en' ? 'Sync with Google (optional)' : '用 Google 同步（可選）'}
             </button>
-          )}
-        </section>
+          </section>
+        )}
 
         {/* Subject context */}
         {(result.subjectName || subjMeta) && (

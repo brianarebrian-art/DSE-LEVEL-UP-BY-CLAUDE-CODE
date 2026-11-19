@@ -64,7 +64,7 @@ export default function CategoryView({
                   </p>
 
  <section>
- <h2 className="font-medium text-ink">🗣️ {o.life}</h2>
+ <h2 className="font-medium text-ink">{o.life}</h2>
  <h3 className="mt-2 text-xs font-medium text-ink-muted">{o.scene}</h3>
  <p>{c.scene}</p>
  <h3 className="mt-2 text-xs font-medium text-ink-muted">{o.dialogue}</h3>
@@ -80,12 +80,12 @@ export default function CategoryView({
  </section>
 
  <section>
- <h2 className="font-medium text-ink">🔍 {o.trivia}</h2>
+ <h2 className="font-medium text-ink">{o.trivia}</h2>
  <p className="mt-1">{c.trivia}</p>
  </section>
 
  <section className="rounded-xl bg-surface-sunken p-3">
- <h2 className="font-medium text-ink">💬 {o.chat}</h2>
+ <h2 className="font-medium text-ink">{o.chat}</h2>
  <p className="mt-1">{c.chat}</p>
  </section>
  <OffSyllabusShareButton card={c} />

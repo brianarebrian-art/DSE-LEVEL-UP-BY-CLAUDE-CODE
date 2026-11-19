@@ -31,6 +31,7 @@ import {
   type PaperItem,
   type PaperSpec,
 } from '@/lib/paper/paper'
+import { resolvePaperSubject, resolvePaperTopic } from '@/lib/paper/queryParams'
 
 // 紙筆戰士 —— 揀範圍 → 生成 A4 卷 → window.print()。
 // 用瀏覽器原生打印（零新 dependency、零成本），配合 globals.css 既有 @media print
@@ -38,14 +39,21 @@ import {
 
 const activeSubjects = subjects.filter((s) => s.isActive)
 
-export default function PaperWarriorClient() {
+export default function PaperWarriorClient({
+  initialSubject = '',
+  initialTopic = '',
+}: {
+  initialSubject?: string
+  initialTopic?: string
+} = {}) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
 
- const [subject, setSubject] = useState(activeSubjects[0]?.id ?? 'math')
- const [topic, setTopic] = useState('')
- const [size, setSize] = useState<number>(20)
+  const startSubject = resolvePaperSubject(initialSubject)
+  const [subject, setSubject] = useState(startSubject)
+  const [topic, setTopic] = useState(() => resolvePaperTopic(startSubject, initialTopic))
+  const [size, setSize] = useState<number>(20)
  const [written, setWritten] = useState<number>(0)
  const [withExplain, setWithExplain] = useState(false)
  const [paper, setPaper] = useState<
