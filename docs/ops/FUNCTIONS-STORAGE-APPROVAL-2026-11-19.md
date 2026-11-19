@@ -170,17 +170,19 @@ Dependabot／Jules／相對舊 preview。
 | `dpl_F8diAcHBRSd7EjLSRJrKM2AuEuq9` | preview | READY | `cursor/tighten-secondary-labels-78a2` | `aab332b5b89b` | 2026-11-10T11:09:50+08:00 |
 | `dpl_4g6P83ibZPQtyU4knmpPhYASZYNF` | preview | READY | `cursor/subject-explain-brand-35f7` | `9c34965edb60` | 2026-11-10T09:38:34+08:00 |
 
-## 執行閘門（阻塞）
+## 執行閘門
 
-1. **明確批准**本文件 Batch 1／2／3（可只批一部分）。  
-2. **授權途徑二選一**（唔好喺對話貼 secret）：
-   - Cursor／環境綁定 `VERCEL_TOKEN`（team `dselevelup`，可 DELETE deployment），然後：
+1. ~~明確批准 Batch 1／2／3~~ **已批准**（對話 2026-11-19）。  
+2. **仍缺授權憑證**（唔好喺對話貼 secret）：
+   - 喺 Cloud Agent 環境加入 secret `VERCEL_TOKEN`（team `dselevelup`，可 DELETE deployment），然後：
      ```bash
-     VERCEL_TOKEN=… node scripts/ops/delete-old-vercel-previews.mjs --dry-run
-     # 批准後去掉 --dry-run；或只刪批准 ID
+     VERCEL_TOKEN=… node scripts/ops/delete-approved-vercel-deployments.mjs --dry-run
+     VERCEL_TOKEN=… node scripts/ops/delete-approved-vercel-deployments.mjs
      ```
+     （只刪 JSON 內 batch1+2+3；永不碰 `keep[]`／`confirm_E[]`）
    - 或 Dashboard 人手刪：https://vercel.com/dselevelup/dse-level-up-by-claude-code/deployments  
-3. Vercel MCP **無** delete tool（只有 cancel）；腳本用 `DELETE /v13/deployments/:id`。
+3. Vercel MCP **無** delete tool（只有 cancel）；腳本用 `DELETE /v13/deployments/:id`。  
+4. `confirm_E`（18 個近 7 日 preview）**仍不刪**，直至另一次批准。
 
 ## 驗證計劃（刪後）
 
