@@ -3,4 +3,10 @@
 Agent B 寫入 `draft-{report_id}.json`（`status: awaiting_generation`）。  
 Cursor／教師喺此填完整題目後，先經 L1 `human_review`（24h）同 L2 `second_review`，先至 qbank promote。
 
+```bash
+# 印出可貼去 Cloud Agent 嘅 prompt
+npm run error:cursor-handoff
+npm run error:cursor-handoff -- --report 9001
+```
+
 唔好喺學生 UI 標「AI生成替換」；公開 provenance 用「經自動檢查」。
