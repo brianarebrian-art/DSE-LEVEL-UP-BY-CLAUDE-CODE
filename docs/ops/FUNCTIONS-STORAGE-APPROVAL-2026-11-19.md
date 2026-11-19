@@ -1,6 +1,6 @@
 # Functions Storage 清理批准包（工作包 1）
 
-狀態：**待批准 · 未刪除任何資源**  
+狀態：**Batch 1／2／3 已獲創辦人批准（2026-11-19）· 執行受阻：缺 `VERCEL_TOKEN`**  
 查詢時間：**2026-11-19T22:28:16+08:00**（Asia/Hong_Kong）  
 Team：`dselevelup` · Project：`dse-level-up-by-claude-code`（`prj_CQRC5oit3FL5KrrmCaAXxqUugfYu`）  
 正式網域：`www.dselevelup.com`／`dselevelup.com`（verified）
