@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「基礎概念」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Basic Concepts”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "135 元用了加法；8 元用了除法；900 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "135 adds; 8 divides; 900 halves the result. Note that total revenue is not profit — total cost must still be deducted. Questions often give price, quantity and cost together, so establish first whether revenue, cost or profit is wanted.",
     "source": "generated"
   },
   "ppf": {
@@ -47,7 +47,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "分辨四種要素時，先問報酬形式：地租、工資、利息、利潤。報酬是利潤的，便是企業家職能。",
     "examTipEn": "分辨四種要素時，先問報酬形式：地租、工資、利息、利潤。報酬是利潤的，便是企業家職能。",
     "commonTrapZh": "把企業家職能簡稱為「企業」。企業是組織，企業家職能是功能，兩者並非同一概念，混用會令答案的層次錯位。",
-    "commonTrapEn": "When revising “Production Possibility Frontier”, check definitions and units carefully.",
+    "commonTrapEn": "2 inverts the fraction and gives the cost per machine; 15 and 30 are total changes rather than costs per unit. Identify which good the question asks about — the increase in that good is the denominator.",
     "source": "sensei"
   },
   "demand_supply": {
@@ -141,7 +141,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "examTipEn": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "commonTrapZh": "把「價格昂貴」或「有人買不起」當成市場失靈。價格高低屬分配問題，市場失靈指的是效率問題，兩者不應混為一談。",
-    "commonTrapEn": "When revising “Market Structure”, check definitions and units carefully.",
+    "commonTrapEn": "90% is CR4 and adds all four; 40% takes only the largest firm; 32.5% averages instead of summing.",
     "source": "sensei"
   },
   "market_failure": {
@@ -164,7 +164,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "examTipEn": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "commonTrapZh": "把「價格昂貴」或「有人買不起」當成市場失靈。價格高低屬分配問題，市場失靈指的是效率問題，兩者不應混為一談。",
-    "commonTrapEn": "When revising “Market Failure”, check definitions and units carefully.",
+    "commonTrapEn": "\\$40 omits the one-half and treats it as a rectangle; \\$10 and \\$4 are merely the base and the height.",
     "source": "sensei"
   },
   "macroeconomics": {
@@ -214,7 +214,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「國際貿易」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “International Trade”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "0.5 單位是小麥【對布匹】的機會成本，方向倒轉；20 單位漏了除以布匹產量；10 單位把兩個產量相減。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "0.5 is the cost of wheat in terms of cloth, the reverse direction; 20 omits the division by cloth output; 10 subtracts the two outputs.",
     "source": "generated"
   },
   "econ_micro_calc": {
@@ -238,8 +238,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「微觀計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Microeconomics — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$1.25$ 上下倒轉；另外兩項只是其中一項的百分比變動，未相除。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「總收益下跌」誤用了富彈性的結論；「跌 10%」把彈性當 1；「需求量上升」弄錯了需求定律方向。",
+    "commonTrapEn": "“TR falls” applies the elastic-case result; “falls 10%” treats PED as 1; “quantity rises” reverses the law of demand.",
     "source": "generated"
   },
   "econ_macro_calc": {
@@ -259,12 +259,12 @@ export const notes: Record<string, StudyNote> = {
       "Simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ 0.2 = 5. ΔY = multiplier × ΔG = 5 × \\$50M = \\$250M.",
       "Real GDP = nominal ÷ deflator × 100 = 660 ÷ 110 × 100 = \\$600M. With prices above the base year, real output is below nominal.",
       "Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.e. purchasing power falls about 3%.",
-      "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$. Traps: 1170 adds imports instead of subtracting; 960 omits the subtraction; 700…"
+      "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$."
     ],
     "examTipZh": "DSE 作答「宏觀計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Macroeconomics — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "1170 把進口加上而非減去；960 漏了減進口；700 把整項淨出口一併漏掉。進口之所以要減，是因為 C、I、G 之中已包含購買外國貨品的開支，而那些貨品並非本地生產。",
-    "commonTrapEn": "index numbers are unitless, so a change in points means nothing until divided by the base. Using 126 as the denominator gives 4.8%. Reading 26% off the index itself forgets that the base year index is set at 100, so 126 means prices are 26% above the base year — a cumulative rise, not this year's inflation rate.",
+    "commonTrapZh": "\\$50M 忘了乘數；\\$40M = 50×0.8（只算首輪消費）；\\$62.5M = 50 ÷ 0.8（把 MPC 當乘數倒數用錯）。",
+    "commonTrapEn": "\\$50M ignores the multiplier; \\$40M = 50×0.8 (only the first round of spending); \\$62.5M = 50 ÷ 0.8 (mis-uses MPC).",
     "source": "generated"
   },
   "econ_trade_failure": {
@@ -287,7 +287,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "examTipEn": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
     "commonTrapZh": "把「價格昂貴」或「有人買不起」當成市場失靈。價格高低屬分配問題，市場失靈指的是效率問題，兩者不應混為一談。",
-    "commonTrapEn": "When revising “Trade & market failure”, check definitions and units carefully.",
+    "commonTrapEn": "“A is best at everything so needn’t trade” confuses absolute with comparative advantage — specialising by opportunity cost still benefits both; the other two reverse the computation.",
     "source": "sensei"
   },
   "market": {

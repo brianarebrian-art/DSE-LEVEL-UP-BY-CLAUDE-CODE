@@ -224,7 +224,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「資料回應・數據詮釋」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data-response · interpreting data”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "“Directly caused” commits the correlation-as-causation error; “narrowed” contradicts the data; “no relationship” ignores the co-trend — all overreach the data.",
     "source": "generated"
   },
   "csd_stakeholder_eval": {
@@ -249,7 +249,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「多角度評鑑・持份者權衡」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-perspective · stakeholders”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "The others each take one side (admin-supremacy / single veto / economy over environment), treating one stakeholder as decisive — exactly the single-angle trap.",
     "source": "generated"
   },
   "csd_concept_apply": {
@@ -274,7 +274,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「概念應用・當代世界」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Applying concepts · the contemporary world”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "“Self-sufficiency is the norm” and “isolation is best” contradict globalisation; “only one country” contradicts the worldwide price rise in the stimulus.",
     "source": "generated"
   }
 }

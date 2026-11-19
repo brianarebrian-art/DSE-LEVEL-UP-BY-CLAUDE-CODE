@@ -223,7 +223,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「古代制度・因果」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Ancient Institutions — Cause & Effect”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
+    "commonTrapZh": "「恢復井田封建」與其「廢井田」正相反；「黃老無為」是漢初路線；「廢除刑罰」更與商鞅嚴刑峻法的法家本色背道而馳。",
     "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
     "source": "generated"
   },
@@ -248,7 +248,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「近現代變局・評價」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Modern Upheavals — Evaluation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
+    "commonTrapZh": "洋務「未學西方政制」，故「照搬議會」錯；它正是引入西技，故「拒絕西方科技」錯；它由官辦、未發動民眾，故「動員全民」亦錯。",
     "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
     "source": "generated"
   }

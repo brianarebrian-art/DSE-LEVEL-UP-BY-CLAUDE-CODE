@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「力學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Mechanics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$0.667$ N 用了除法；$5$ N 用了加法；$20$ N 誤用重力加速度 $g = 10$ m/s²，那是計重量而非本題所問的合力。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$0.667$ N divides; $5$ N adds; $20$ N uses $g = 10$ m/s², which gives the weight rather than the net force asked for.",
     "source": "generated"
   },
   "electricity": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「波動」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Waves”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$1.5$ 與 $0.667$ 用了除法；$5$ 用了加法。單位可作核對：Hz 即每秒次數，乘以米得米每秒，正是速率的單位。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$1.5$ and $0.667$ divide; $5$ adds. Units provide a check: hertz is per second, and per second times metres gives metres per second, the unit of speed.",
     "source": "generated"
   },
   "optics": {
@@ -124,7 +124,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「光學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Optics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$0.833$ 上下倒轉（結果細於 1，一望即知不可能）；$0.5$ 用了相減；$7.5$ 用了相乘。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$0.833$ inverts the fraction and gives less than 1, which is impossible; $0.5$ subtracts; $7.5$ multiplies.",
     "source": "generated"
   },
   "radioactivity": {
@@ -149,7 +149,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「放射現象」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Radioactivity”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$133.33333333333334$ 把「減半 3 次」誤算成「除以 $2 \\times 3$」——減半是連乘不是連加；$700$ 是已衰變的數目；$200$ 誤除以 $4$。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$133.33333333333334$ treats 3 halvings as dividing by $2 \\times 3$, but halving compounds rather than adds; $700$ is the number that has decayed; $200$ divides by $4$.",
     "source": "generated"
   },
   "phys_hell_mechanics": {
@@ -173,8 +173,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「多步計算・力學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Mechanics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$20$ J 求了動量 $mv$ 而非動能；$10$ J 停在速率；$200$ J 漏了公式中的 $\\frac{1}{2}$。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$0.5$ 把 $30$ 當 $v^2$；$15 = 30/2$ 誤用時間公式；$900$ 漏除 $2s$。",
+    "commonTrapEn": "$0.5$ treats $30$ as $v^2$; $15=30/2$ misuses a time formula; $900$ omits dividing by $2s$.",
     "source": "generated"
   },
   "phys_hell_elec_heat": {
@@ -198,8 +198,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「多步計算・電與熱」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Electricity & Heat”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$6$ W 停在電流；$24$ W 把定律中的除法寫成乘法。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$12\\,\\text{V}$ 忽略了內阻的電壓降——這正是內阻題的關鍵陷阱；$2\\,\\text{V}$ 是內阻上的電壓；$11$ 用錯電流。",
+    "commonTrapEn": "$12\\,\\text{V}$ ignores the internal-resistance drop — the classic internal-resistance trap; $2\\,\\text{V}$ is the drop across $r$; $11$ uses the wrong current.",
     "source": "generated"
   },
   "phys_hell_wave_optics": {
@@ -219,12 +219,12 @@ export const notes: Record<string, StudyNote> = {
       "In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$. On refraction frequency is unchanged ($50\\,\\text{Hz}$), $v_2 = 10\\,\\text{m/s}$, so $\\lambda_2 = v_2/f = 10/50 =…",
       "$12$ days $= 4$ half-lives, so activity $= 800 \\div 2^4 = 50\\,\\text{Bq}$.",
       "The critical angle $\\theta_c$ satisfies $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$, so $\\theta_c \\approx 41.8°$.",
-      "Step one gives the wave speed: $v = f\\lambda = 4 \\times 3 = 12$ m/s. Step two gives the time: $t = \\frac{d}{v} = \\frac{120}{12} = 10$ s. Traps: $12$ s stops at the speed and has…"
+      "Step one gives the wave speed: $v = f\\lambda = 4 \\times 3 = 12$ m/s. Step two gives the time: $t = \\frac{d}{v} = \\frac{120}{12} = 10$ s."
     ],
     "examTipZh": "DSE 作答「多步計算・波動光學放射」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Multi-step — Waves, Optics & Radioactivity”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$12$ s 停在波速（單位亦錯）；$30$ s 用頻率作分母；$40$ s 用波長作分母 —— 後兩者都跳過了求波速這一步。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$0.4\\,\\text{m}$ 以為波長不變；$0.8$ 把波速與波長關係弄反；$0.1$ 誤改頻率——折射時改變的是波速與波長，頻率不變，正是此題的關鍵陷阱。",
+    "commonTrapEn": "$0.4$ assumes wavelength is unchanged; $0.8$ inverts the relation; $0.1$ wrongly changes frequency — on refraction speed and wavelength change, frequency does not.",
     "source": "generated"
   },
   "kinematics": {
@@ -316,7 +316,7 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$E_k = \\frac12 mv^2 = 9$ J.",
       "$E_p = mgh = 60$ J.",
-      "Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = 25\\%$. Traps: $75\\%$ is the wasted fraction; $0.25\\%$ forgets to multiply by 100 but keeps the % sign.",
+      "Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = 25\\%$.",
       "(a) and (b) are routine; the usual deduction in (b) is omitting the weight — the tension must both support the weight and supply the acceleration, and writing T = ma is the most…"
     ],
     "examTipZh": "DSE 作答「功、能與功率」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",

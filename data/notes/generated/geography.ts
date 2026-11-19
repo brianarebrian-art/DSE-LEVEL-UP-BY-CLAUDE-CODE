@@ -49,7 +49,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「河流與海岸環境」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “River & Coastal Environments”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "20 m³/s 只算了截面積，漏了流速；12.5 m³/s 把三個量相加；5 m³/s 漏了水深。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "20 m³/s is the area alone; 12.5 m³/s adds the three quantities; 5 m³/s omits the depth.",
     "source": "generated"
   },
   "weather_climate": {
@@ -74,7 +74,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「天氣與氣候」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Weather & Climate”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "23 °C 方向寫反；-280 °C 漏了除以 100；3 °C 只算了下降幅度而未減去。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "23 °C reverses the direction; -280 °C omits the division by 100; 3 °C is the fall itself, not subtracted.",
     "source": "generated"
   },
   "urban": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「城市發展」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Urban Development”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "50,000 只抄了總人口；0.4 把分子分母倒轉；1,000,000 改成了相乘。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "50,000 copies the total population; 0.4 inverts the fraction; 1,000,000 multiplies instead.",
     "source": "generated"
   },
   "industry": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「地理過程・因果鏈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Geographical process chains”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「分離成中洋脊」是建設性邊界；「只地震無火山」是轉形（保守）邊界；「海洋板塊浮上」違反密度大者隱沒的原理。",
+    "commonTrapEn": "“Mid-ocean ridge” is a constructive margin; “earthquakes but no volcanoes” is a transform margin; “oceanic plate rides over” violates the rule that the denser plate subducts.",
     "source": "generated"
   },
   "geo_data_manage": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「數據與環境管理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data & environmental management”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「市區因綠多水多而涼快」與熱島相反；「海拔較高故較暖」既與市區地形不符、海拔升高一般氣溫反降；「與材料活動無關」否定了主因。",
+    "commonTrapEn": "“Cities cooler from greenery/water” is the opposite; “higher altitude” is wrong (and higher altitude generally lowers temperature); “nothing to do with materials/activity” denies the main causes.",
     "source": "generated"
   }
 }

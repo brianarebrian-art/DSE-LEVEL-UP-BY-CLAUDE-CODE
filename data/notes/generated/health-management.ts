@@ -149,7 +149,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「公共衞生與疾病預防」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Public Health & Prevention”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "24 只抄了個案數目；0.048 乘了 100 而非 100,000；2083.3 把分子分母倒轉。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "24 copies the case count; 0.048 multiplies by 100 rather than 100,000; 2083.3 inverts the fraction.",
     "source": "generated"
   },
   "care_ethics": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「整全健康・概念應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Holistic health — application”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「身體無病即完全健康」把健康窄化為生理層面；「情緒社交與健康無關」「患病才算不健康」均否定了心理與社會維度。",
+    "commonTrapEn": "“No physical disease = fully healthy” narrows health to the physical; “emotions/social unrelated to health” and “unhealthy only once ill” deny the mental and social dimensions.",
     "source": "generated"
   },
   "hm_prevention_levels": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「三級預防分類」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Levels of prevention”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "其餘各項把篩查、疫苗、復康的級別對調或一概歸入一級，皆混淆了「病前／早期／病後」這條時間軸。",
+    "commonTrapEn": "The others swap or lump the levels, confusing the before/early/after timeline.",
     "source": "generated"
   },
   "hm_care_ethics_determinants": {
@@ -273,8 +273,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「照顧倫理與健康決定因素」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Care ethics & determinants”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「習慣與健康無關」走向另一極端；「純屬隨機」「只有基因」都否定了社會結構因素的系統性影響。",
+    "commonTrapEn": "“Habits irrelevant” over-corrects; “purely random” and “only genes” deny the systematic influence of social structure.",
     "source": "generated"
   }
 }

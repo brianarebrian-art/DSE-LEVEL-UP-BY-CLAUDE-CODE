@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「旅遊與款待業概論」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Intro to Tourism & Hospitality”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "50% 是增加的【人次】而非百分率；4.76% 用了期末作分母；105% 求的是期末相對期初的比例，減去 100 才是增長率。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "50% is the increase in arrivals rather than a percentage; 4.76% uses the final figure as denominator; 105% is the final as a proportion of the initial, needing 100 subtracted.",
     "source": "generated"
   },
   "service": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「住宿營運」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Accommodation Operations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "1,600 元漏了服務費；880 元只算了一晚；1,610 元把百分率當成金額加上去。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "\\$1,600 omits the service charge; \\$880 covers one night; \\$1,610 adds the percentage as an amount.",
     "source": "generated"
   },
   "food_beverage": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「酒店營運計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Hotel operations — metrics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "166.7% 把分子分母倒轉；40% 算的是空置率；120% 直接把房間數當成百分率。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "84% 把售出數當百分比；ADR \\$700 用了總房數作分母（應用「售出」房數）；120% 把分子分母倒轉。",
+    "commonTrapEn": "84% treats rooms sold as the percentage; ADR \\$700 uses total rooms as the denominator (it should be rooms SOLD); 120% inverts the ratio.",
     "source": "generated"
   },
   "ths_concept_analysis": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「概念分析・服務與可持續」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Concepts — service & sustainability”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "顧客忠誠度、市場區隔屬市場營銷概念；「乘數效應純得益」忽略了過度旅遊的環境社會成本。",
+    "commonTrapEn": "Customer loyalty and market segmentation are marketing concepts; “purely positive multiplier” ignores the environmental and social costs of over-tourism.",
     "source": "generated"
   }
 }

@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「細胞」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Cells”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "400 µm 乘了放大倍率而非除；20 µm 只抄了倍率；20,000 µm 完全沒有除以倍率。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "400 µm multiplies by the magnification instead of dividing; 20 µm copies the magnification; 20,000 µm never divides at all.",
     "source": "generated"
   },
   "genetics": {
@@ -224,8 +224,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「遺傳推理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Genetics — reasoning”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「A/B/AB/O 都可能」忽略了父親只提供 i；「全 AB」「全 O」更與配子組合相違。",
+    "commonTrapEn": "“A/B/AB/O” ignores that the father supplies only i; “all AB”/“all O” contradict the gamete combinations.",
     "source": "generated"
   },
   "bio_physio_chain": {
@@ -249,8 +249,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「生理機制・因果鏈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Physiology — causal chains”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "身體監測的是廢物累積，不是燃料短缺，因為二氧化碳的變化更快、更靈敏。體溫在運動時上升而非下降；肌肉肝醣在運動時被消耗，含量下降。",
-    "commonTrapEn": "the body monitors waste accumulation rather than fuel shortage, because carbon dioxide changes faster and more sensitively. Body temperature rises during exercise, and muscle glycogen is consumed, not accumulated.",
+    "commonTrapZh": "「流出」弄反方向；「無移動」只在兩者水勢相等時成立；「低→高」違反滲透定義（注意 −400 > −800）。",
+    "commonTrapEn": "“Out of the cell” reverses it; “no movement” needs equal Ψ; “low→high” violates osmosis (note −400 > −800).",
     "source": "generated"
   },
   "bio_data_ecology": {
@@ -274,8 +274,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「數據與生態」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data & ecology”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "60 株／平方米直接抄了總數；0.333 株／平方米把分子分母倒轉；1200 株／平方米改成了相乘。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "1 000 kJ 只算了一次傳遞（停在初級消費者）；10 kJ 算了三次；5 000 kJ 誤用 50%。能量逐級遞減，正是食物鏈通常少於 4–5 級的原因。",
+    "commonTrapEn": "1 000 kJ counts only one transfer (stops at the primary consumer); 10 kJ counts three; 5 000 kJ uses 50%. Energy falls at each level — why food chains rarely exceed 4–5 links.",
     "source": "generated"
   }
 }

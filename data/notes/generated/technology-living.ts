@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「膳食營養素」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Nutrients”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "1000% 把分子分母倒轉；5% 把克數當成百分率；90% 算的是仍需攝取的比例。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "1000% inverts the fraction; 5% reads grams as a percentage; 90% is the share still to be consumed.",
     "source": "generated"
   },
   "lifecycle": {
@@ -149,7 +149,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「纖維與布料」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Fibres & Fabrics”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "140 g 算的是聚酯纖維；30 g 把百分率當成克數；200 g 只抄了總重。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "140 g is the polyester; 30 g reads the percentage as grams; 200 g copies the total.",
     "source": "generated"
   },
   "fashion": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「營養計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Nutrition — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "165 千卡把蛋白質與脂肪的能量值調轉；140 千卡把脂肪也當作 4 千卡／克；35 千卡只把克數相加。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "240 kcal 把脂肪也當 4 kcal/g（漏算脂肪高能量）；360 把全部當 9；60 只把克數相加。",
+    "commonTrapEn": "240 treats fat as 4 kcal/g (under-counts fat); 360 treats all as 9; 60 just sums the grams.",
     "source": "generated"
   },
   "tl_food_textile_sci": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「食物與紡織科學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Food & textile science”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "糊化是澱粉吸水膨脹；焦糖化是糖受熱褐變；發酵涉及微生物——皆非蛋白凝固的機制。",
+    "commonTrapEn": "Gelatinisation is starch swelling in water; caramelisation is sugar browning; fermentation involves microbes — none is protein coagulation.",
     "source": "generated"
   }
 }

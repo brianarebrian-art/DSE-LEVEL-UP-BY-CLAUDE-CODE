@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「資料表示與處理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data Representation & Processing”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$1011_2$ 是 11 的二進位；$12_2$ 是八進位的寫法；$0101_2$ 把餘數次序讀反 —— 除法取餘數時，【最後】得出的餘數是最高位，這是最常見的失分位。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$1011_2$ is 11 in binary; $12_2$ is the octal form; $0101_2$ reads the remainders in the wrong order — the LAST remainder obtained is the most significant bit, and reversing it is the commonest slip.",
     "source": "generated"
   },
   "computer_systems": {
@@ -198,8 +198,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「資料表示計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Data representation — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$72$ 誤按八進位換算；$110$ 把二進位數字當成十進位數字直接讀出；$2$ 只數了 1 的個數。",
-    "commonTrapEn": "255 is the largest value an 8-bit number can hold, but the count of representable values is 256, because zero must be counted too — the largest value and the total differ by one, a distinction that recurs in questions on colour depth, memory addressing and unsigned integer ranges. The answers 128 and 512 are 2 to the power 7 and 2 to the power 9, one bit short and one bit over. Remember that the relation is exponential rather than proportional: raising the depth from 8 bits to 16 does not double the colours but takes them from 256 to 65,536, which is also why increasing colour depth makes file sizes grow so noticeably.",
+    "commonTrapZh": "11101011 漏了最後「+1」（只是一補數）；10010100 是符號–數值法（最高位當符號）；00010100 是正 20。",
+    "commonTrapEn": "11101011 omits the final +1 (that is one’s complement); 10010100 is sign-and-magnitude; 00010100 is +20.",
     "source": "generated"
   },
   "ict_logic_algo": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「邏輯與算法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Logic & algorithms”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "8 次是線性搜尋的最壞情況；4 次是線性搜尋的平均情況；6 次多算了一倍。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「A」忽略了 B 的限制；「B」忽略了 A；「A OR B」把 AND 當 OR。",
+    "commonTrapEn": "“A” drops the B condition; “B” drops A; “A OR B” swaps AND for OR.",
     "source": "generated"
   },
   "ict_network_calc": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「網絡計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Networking — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "壓縮省下的是傳送時間，但壓縮本身亦要花時間，兩者必須一併計算。由此亦可見壓縮並非永遠划算——若連線速率夠高，或壓縮率不理想，壓縮所花的時間可能超過所省下的時間。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "1.5 秒 = 12 ÷ 8，直接用 MB 除 Mbps，漏了 ×8 換算（最常見錯誤）；96 秒誤把分子分母關係弄錯；8 秒無依據。",
+    "commonTrapEn": "1.5 s = 12 ÷ 8, dividing MB by Mbps without the ×8 conversion (the classic error); 96 s mishandles the ratio; 8 s has no basis.",
     "source": "generated"
   }
 }

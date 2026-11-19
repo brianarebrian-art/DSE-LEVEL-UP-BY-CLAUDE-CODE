@@ -46,7 +46,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "判斷之前先問：兩事件可否同時發生。不可以便是互斥，可以則再檢查機率是否相乘成立。",
     "examTipEn": "判斷之前先問：兩事件可否同時發生。不可以便是互斥，可以則再檢查機率是否相乘成立。",
     "commonTrapZh": "把互斥當成獨立。兩個機率皆非零的互斥事件必定不獨立，因為其一發生時另一必定不發生，影響顯然存在。",
-    "commonTrapEn": "When revising “Probability”, check definitions and units carefully.",
+    "commonTrapEn": "$\\frac{2}{3}$ gives the red-to-blue RATIO rather than a probability; $\\frac{3}{5}$ is the probability of blue; $\\frac{5}{2}$ inverts the fraction and exceeds 1, which is already impossible for a probability.",
     "source": "sensei"
   },
   "functions": {
@@ -69,7 +69,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "凡題目問最大值、最小值或對稱軸，一律先完成平方；三個問題在完成平方之後都是直接讀出來的。",
     "examTipEn": "凡題目問最大值、最小值或對稱軸，一律先完成平方；三個問題在完成平方之後都是直接讀出來的。",
     "commonTrapZh": "把 (x − 3)² 的頂點橫坐標讀成 −3。括號內是 x 減 h，故 h 等於 3，符號在此最容易看錯。",
-    "commonTrapEn": "When revising “Functions & Modelling”, check definitions and units carefully.",
+    "commonTrapEn": "$14$ reads $x^2$ as $2x$; $15$ omits $x$ in the linear term; $7$ differentiates instead of evaluating.",
     "source": "sensei"
   },
   "trigonometry": {
@@ -92,7 +92,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "先判斷改動在括號內還是括號外，再決定橫向或縱向；括號內一律記住方向與符號相反。",
     "examTipEn": "先判斷改動在括號內還是括號外，再決定橫向或縱向；括號內一律記住方向與符號相反。",
     "commonTrapZh": "把 y = f(x − 3) 當成向左移。括號內的減號對應向右，這一點與直覺相反，是本課題最常見的錯誤。",
-    "commonTrapEn": "When revising “Trigonometry”, check definitions and units carefully.",
+    "commonTrapEn": "$\\frac{4}{5}$ is $\\cos A$; $\\frac{3}{4}$ is $\\tan A$; $\\frac{5}{3}$ inverts the fraction.",
     "source": "sensei",
     "explainerSrc": "/explainers/math-trigonometry.svg"
   },
@@ -116,7 +116,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "比較兩組數據時必須同時提及平均數與標準差；只講其中一項，無法說明兩組分佈的差異。",
     "examTipEn": "比較兩組數據時必須同時提及平均數與標準差；只講其中一項，無法說明兩組分佈的差異。",
     "commonTrapZh": "把標準差小理解為成績好。標準差只講分散程度，一班全部不及格亦可以有很小的標準差。",
-    "commonTrapEn": "When revising “Statistics”, check definitions and units carefully.",
+    "commonTrapEn": "$50$ is the sum without dividing; $20$ adds only the first and last; $12$ is the range.",
     "source": "sensei"
   },
   "logarithms": {
@@ -139,7 +139,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "每次動用定律前，先確認括號內是乘、除還是次方。是加減便不能拆，只能先計出括號內的值。",
     "examTipEn": "每次動用定律前，先確認括號內是乘、除還是次方。是加減便不能拆，只能先計出括號內的值。",
     "commonTrapZh": "把 log a − log b 與 (log a)/(log b) 混用。前者等於 log(a/b)，後者是換底公式的形式，兩者意義完全不同。",
-    "commonTrapEn": "$2$ is just the base.",
+    "commonTrapEn": "keeping $x=-2$ ignores the domain; $x = 2$ misreads the root of $(x + 2)$; $x = 8$ stops at $2^{3}$.",
     "source": "sensei"
   },
   "sequences": {
@@ -164,7 +164,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「數列」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Sequences”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$9$ 誤用了 $n - 1$（等差數列的首項公式 $a + (n-1)d$ 中的 $n-1$ 屬於公差項，不可套到通項上）；$10$ 漏了常數項；$7$ 把係數與常數項對調。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$9$ uses $n - 1$, borrowing it from the arithmetic formula $a + (n-1)d$ where it belongs to the common-difference term only; $10$ drops the constant; $7$ swaps coefficient and constant.",
     "source": "generated"
   },
   "percentage": {
@@ -212,7 +212,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「坐標幾何」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Coordinate Geometry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$\\frac{1}{3}$ 把分子分母倒轉（用了 $x$ 的變化除以 $y$ 的變化）；$6$ 只算了 $y$ 的變化，漏了除以 $x$ 的變化；$-3$ 符號弄錯。",
-    "commonTrapEn": "$25$ forgets the square root.",
+    "commonTrapEn": "$\\frac{1}{3}$ divides the change in $x$ by the change in $y$; $6$ is only the change in $y$; $-3$ has the wrong sign.",
     "source": "generated"
   },
   "inequalities": {
@@ -260,7 +260,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「圓的幾何特性」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Properties of Circles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$130^\\circ$ 是圓心角本身（漏除以 $2$）；$25^\\circ$ 是 $\\tfrac{1}{2}\\angle APB$；$50^\\circ$ 直接抄題目。",
-    "commonTrapEn": "$-5 \\pm 3$ drops the $\\sqrt{5}$.",
+    "commonTrapEn": "$130^\\circ$ forgets the $\\tfrac12$; $25^\\circ=\\tfrac12\\angle APB$; $50^\\circ$ just copies the question.",
     "source": "generated"
   },
   "trig_3d": {
@@ -279,13 +279,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\\angle GAC$. Base diagonal: $$AC=\\sqrt{8^2+6^2}=10.$$ In $\\triangle GAC$, $GC\\perp$ base and…",
       "【Marking Scheme】Let $M$ be the midpoint of a base edge. The dihedral angle is $\\angle VMO$. The apothem is $$OM=\\tfrac{6}{2}=3.$$ In $\\triangle VOM$, $VO\\perp OM$ with $VO=4$:…",
-      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.24$. With the slant edge $9$, $\\cos\\theta = \\dfrac{4.24}{9}$ ⇒ $\\theta \\approx 62^\\circ$. Traps: $69^\\circ$ is the face dihedral;…",
+      "Half-diagonal $= \\dfrac{6\\sqrt2}{2} \\approx 4.24$. With the slant edge $9$, $\\cos\\theta = \\dfrac{4.24}{9}$ ⇒ $\\theta \\approx 62^\\circ$.",
       "A space diagonal needs Pythagoras twice: first the base diagonal $\\sqrt{1^2 + 2^2}$, then that together with the height in a second right-angled triangle, giving $\\sqrt{1^2 + 2^2…"
     ],
     "examTipZh": "DSE 作答「三維三角學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “3D Trigonometry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$51^\\circ=\\tan^{-1}\\!\\frac{10}{8}$ 誤用「邊長 $8$」作鄰邊；$39^\\circ=\\tan^{-1}\\!\\frac{8}{10}$ 把對邊鄰邊倒轉；$50^\\circ$ 是胡亂約整。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$51^\\circ=\\tan^{-1}\\frac{10}{8}$ uses an edge as the adjacent side; $39^\\circ=\\tan^{-1}\\frac{8}{10}$ flips opposite/adjacent; $50^\\circ$ is loose rounding.",
     "source": "generated",
     "explainerSrc": "/explainers/math-trigonometry.svg"
   },
@@ -305,13 +305,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "【Marking Scheme】Arrange the $4$ boys: $4!=24$. This creates $5$ gaps $\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_\\,B\\,\\_$. Place the $3$ girls into distinct gaps (so none are adjacent), an ordered…",
       "【Marking Scheme】Use the complement. Total $$\\binom{9}{3}=84.$$ All-boys (no girl) $$\\binom{5}{3}=10,$$ so $$P(\\text{no girl})=\\frac{10}{84}=\\frac{5}{42}, \\quad P(\\ge 1\\text{…",
-      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\\times6=720.$$ Traps:…",
+      "【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\\times6=720.$$",
       "Sum odd ⇔ an odd number of odds ⇒ 3-odd or 1-odd-2-even. 3-odd $=10$; 1-odd-2-even $=30$. $P=\\dfrac{10}{40}=\\frac{1}{4}$."
     ],
     "examTipZh": "DSE 作答「排列與組合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Permutations & Combinations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$5040=7!$ 是「忽略限制」；$720=6!$ 或 $144=4!\\times6$ 是「分組方法用錯」。",
-    "commonTrapEn": "using the unconditional total 84 ignores \"sum is odd\".",
+    "commonTrapEn": "$5040=7!$ ignores the restriction; $720=6!$ and $144$ are mis-applied grouping.",
     "source": "generated"
   },
   "locus": {
@@ -336,7 +336,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「軌跡與坐標」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Locus & Coordinates”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$y=x+1$ 正是直線 $AB$ 本身（忘了取垂直）；$x+y-1=0$ 用錯中點/符號；$x+y+7=0$ 是常數項符號錯。",
-    "commonTrapEn": "using $PA=PB$ gives the perpendicular bisector (a straight line), which is wrong.",
+    "commonTrapEn": "$y=x+1$ is line $AB$ itself (forgot perpendicular); $x+y-1=0$ mishandles the midpoint/sign; $x+y+7=0$ has a sign error.",
     "source": "generated"
   },
   "polygons": {
@@ -354,14 +354,14 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The exterior angles of a polygon always sum to $360^\\circ$, so each exterior angle $=\\frac{360^\\circ}{10}=36^\\circ$.",
-      "The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = 5$: $(5-2) \\times 180 = 540^\\circ$. Traps: $900^\\circ$ omits the $-2$; $720^\\circ$ subtracts only 1; $360^\\circ$ is…",
-      "The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = 8$: $(8-2) \\times 180 = 1080^\\circ$. Traps: $1440^\\circ$ omits the $-2$; $1260^\\circ$ subtracts only 1; $360^\\circ$…",
-      "Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - 120 = 60^\\circ$; equivalently $(n-2)\\times 180 \\div n = 180 \\div 3 = 60^\\circ$, and the two routes must…"
+      "The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = 5$: $(5-2) \\times 180 = 540^\\circ$.",
+      "Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - 120 = 60^\\circ$; equivalently $(n-2)\\times 180 \\div n = 180 \\div 3 = 60^\\circ$, and the two routes must agree.",
+      "A regular polygon has equal exterior angles summing to $360^\\circ$, so each is $360 \\div 5 = 72^\\circ$."
     ],
     "examTipZh": "DSE 作答「多邊形與角」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Polygons & Angles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$900^\\circ$ 漏減 2；$720^\\circ$ 只減 1；$360^\\circ$ 是外角和，與邊數無關。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$900^\\circ$ omits the $-2$; $720^\\circ$ subtracts only 1; $360^\\circ$ is the exterior angle sum, independent of the number of sides.",
     "source": "generated"
   },
   "similar_solids": {
@@ -379,14 +379,14 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "The ratio of lengths $=\\sqrt{16}:\\sqrt{25}=4:5$, and the ratio of volumes is the cube of the ratio of lengths $=4^3:5^3=64:125$.",
-      "Areas of similar solids are in the square of the length ratio: $1^2 : 2^2 = 1 : 4$. Traps: $1 : 2$ uses the length ratio itself; $1 : 8$ cubes it (that is the volume ratio); $2 :…",
-      "Volumes of similar solids are in the cube of the length ratio: $1^3 : 2^3 = 1 : 8$. Traps: $1 : 4$ is the area ratio; $1 : 2$ is the length ratio; $3 : 6$ trebles instead of…",
-      "Areas of similar solids are in the square of the length ratio: $1^2 : 4^2 = 1 : 16$. Traps: $1 : 4$ uses the length ratio itself; $1 : 64$ cubes it (that is the volume ratio); $2…"
+      "Areas of similar solids are in the square of the length ratio: $1^2 : 2^2 = 1 : 4$.",
+      "Volumes of similar solids are in the cube of the length ratio: $1^3 : 2^3 = 1 : 8$.",
+      "Similar solids involve only three ratios: length $k$, area $k^{2}$ and volume $k^{3}$. Part (a) deliberately goes from small to large and part (b) from large to small, to test…"
     ],
     "examTipZh": "DSE 作答「相似形與相似立體」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Similar Figures & Solids”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$1 : 2$ 直接用長度比；$1 : 8$ 用了立方（那是體積比）；$2 : 4$ 誤把「平方」當成乘 2。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$1 : 2$ uses the length ratio itself; $1 : 8$ cubes it (that is the volume ratio); $2 : 4$ doubles instead of squaring.",
     "source": "generated"
   },
   "variation": {
@@ -395,7 +395,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "變分",
     "titleEn": "Variation",
     "conceptZh": "正比即 $y = kx$。",
-    "conceptEn": "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$. Traps: $6$ treats the relation as additive; $16$ skips…",
+    "conceptEn": "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$.",
     "mustKnowZh": [
       "正比即 $y = kx$。",
       "反比即 $xy = k$（乘積不變）。",
@@ -403,15 +403,15 @@ export const notes: Record<string, StudyNote> = {
       "設 $z = \\dfrac{k}{w}$。"
     ],
     "mustKnowEn": [
-      "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$. Traps: $6$ treats the relation as additive; $16$ skips…",
-      "Inverse variation means $xy = k$, a constant product. From $x = 2$, $y = 12$ we get $k = 2 \\times 12 = 24$, so at $x = 6$, $y = 24 \\div 6 = 4$. Traps: $36$ uses direct variation;…",
-      "Inverse variation means $xy = k$, a constant product. From $x = 2$, $y = 18$ we get $k = 2 \\times 18 = 36$, so at $x = 12$, $y = 36 \\div 12 = 3$. Traps: $108$ uses direct…",
-      "Inverse variation means $xy = k$, a constant product. From $x = 4$, $y = 9$ we get $k = 4 \\times 9 = 36$, so at $x = 6$, $y = 36 \\div 6 = 6$. Traps: $13.5$ uses direct variation;…"
+      "Direct variation means $y = kx$. From $x = 2$, $y = 4$ we get $k = 4 \\div 2 = 2$, so at $x = 4$, $y = 2 \\times 4 = 8$.",
+      "Inverse variation means $xy = k$, a constant product. From $x = 2$, $y = 12$ we get $k = 2 \\times 12 = 24$, so at $x = 6$, $y = 24 \\div 6 = 4$.",
+      "Part (c) separates the candidates. The correct method is to substitute the new $x$ and $y$ into the relation and let each percentage change act through its own power: $x$ appears…",
+      "Let $y = kx$. From $15 = 6k$ we get $k = 2.5$, so $y = 2.5x$ and $y = 2.5 \\times 10 = 25$ when $x = 10$. $19$ adds the increase in $x$ of $4$ directly to $y$, treating direct…"
     ],
     "examTipZh": "DSE 作答「變分」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Variation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$6$ 誤當成加法關係；$16$ 漏了先求 $k$；$2$ 用了反比。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$6$ treats the relation as additive; $16$ skips finding $k$; $2$ uses inverse variation.",
     "source": "generated"
   },
   "approximation": {
@@ -429,14 +429,14 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6. The next digit is 7 ($\\ge 5$), so round up and 6 becomes…",
-      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.5$ cm. The upper limit is $20 + 0.5 = 20.5$ cm. Traps: $21$ cm adds a…",
-      "Correct to the nearest $2$ cm means the true value differs by at most half a unit, that is $2 \\div 2 = 1$ cm. The upper limit is $20 + 1 = 21$ cm. Traps: $22$ cm adds a whole…",
-      "Percentage error is absolute error ÷ true value × 100%. The absolute error is $51 - 50 = 1$ g, so the percentage error is $1 \\div 50 \\times 100\\% = 2\\%$. Traps: $1.96\\%$ divides…"
+      "Correct to the nearest $1$ cm means the true value differs by at most half a unit, that is $1 \\div 2 = 0.5$ cm. The upper limit is $20 + 0.5 = 20.5$ cm.",
+      "Correct to the nearest $2$ cm means the true value differs by at most half a unit, that is $2 \\div 2 = 1$ cm. The upper limit is $20 + 1 = 21$ cm.",
+      "Percentage error is absolute error ÷ true value × 100%. The absolute error is $51 - 50 = 1$ g, so the percentage error is $1 \\div 50 \\times 100\\% = 2\\%$."
     ],
     "examTipZh": "DSE 作答「近似與誤差」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Approximation & Error”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$21$ cm 加了整個單位；$19.5$ cm 是下限；$20$ cm 是量得值本身。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$21$ cm adds a whole unit; $19.5$ cm is the lower limit; $20$ cm is the measurement itself.",
     "source": "generated"
   },
   "number_systems": {
@@ -454,14 +454,14 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer. $\\pi$ is irrational, and subtracting the rational…",
-      "Extract the perfect-square factor: $12 = 4 \\times 3$ and $\\sqrt{4} = 2$, so $\\sqrt{12} = 2\\sqrt{3}$. Traps: $4\\sqrt{3}$ moves $4$ out without taking its root; $2\\sqrt{6}$ extracts…",
-      "Extract the perfect-square factor: $20 = 4 \\times 5$ and $\\sqrt{4} = 2$, so $\\sqrt{20} = 2\\sqrt{5}$. Traps: $4\\sqrt{5}$ moves $4$ out without taking its root; $2\\sqrt{10}$…",
-      "Extract the perfect-square factor: $160 = 16 \\times 10$ and $\\sqrt{16} = 4$, so $\\sqrt{160} = 4\\sqrt{10}$. Traps: $16\\sqrt{10}$ moves $16$ out without taking its root;…"
+      "Extract the perfect-square factor: $12 = 4 \\times 3$ and $\\sqrt{4} = 2$, so $\\sqrt{12} = 2\\sqrt{3}$.",
+      "$\\sqrt{16} = 4$, which can be written as a ratio of two integers, so it is rational. The radicands of $\\sqrt{2}$, $\\sqrt{7}$ and $\\sqrt{20}$ are not perfect squares, so all three…",
+      "Let $x = 0.272727\\ldots$, so $100x = 27.272727\\ldots$. Subtracting gives $99x = 27$, hence $x = \\dfrac{27}{99} = \\dfrac{3}{11}$. $\\dfrac{27}{100}$ treats it as the terminating…"
     ],
     "examTipZh": "DSE 作答「數系」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Number Systems”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$4\\sqrt{3}$ 把 $4$ 整個搬出根號而未開方；$2\\sqrt{6}$ 只抽走一個 $2$；$3\\sqrt{2}$ 把兩個因子的角色調轉。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$4\\sqrt{3}$ moves $4$ out without taking its root; $2\\sqrt{6}$ extracts only one factor of $2$; $3\\sqrt{2}$ swaps the two factors.",
     "source": "generated"
   },
   "indices": {
@@ -523,9 +523,9 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "$12$ and $18$ share the largest factor $6$.",
-      "Factorise both numbers into primes and multiply the COMMON primes taken to the LOWER power: the highest common factor of $16$ and $40$ is $8$. Traps: $80$ is the lowest common…",
-      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{4 \\times 6}{\\text{HCF}} = \\frac{24}{2} = 12$. Traps: $2$ is the highest common…",
-      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{10 \\times 15}{\\text{HCF}} = \\frac{150}{5} = 30$. Traps: $5$ is the highest…"
+      "Factorise both numbers into primes and multiply the COMMON primes taken to the LOWER power: the highest common factor of $16$ and $40$ is $8$.",
+      "The lowest common multiple multiplies ALL primes taken to the HIGHER power, or equivalently $\\frac{4 \\times 6}{\\text{HCF}} = \\frac{24}{2} = 12$.",
+      "The number of positive factors is the product of (each exponent + 1): $(2+1)(3+1) = 12$. Answering $6$ multiplies the exponents without adding one — the \"+1\" covers taking that…"
     ],
     "examTipZh": "DSE 作答「因數與倍數」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Factors & Multiples”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

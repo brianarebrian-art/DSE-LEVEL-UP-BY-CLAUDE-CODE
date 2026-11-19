@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「排列與組合」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Permutations & Combinations”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$60$ 是【排列】 $P(5, 3)$，適用於職位有分別（例如選主席、秘書、司庫）的情況，數值大 $3!$ 倍；$15$ 用了相乘；$125$ 是可重複選取的情況。判斷用排列還是組合，只需問一句：調換兩個被選者的次序，結果算不算同一種？算，就是組合。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$60$ is the permutation $P(5, 3)$, which applies when the roles differ — chair, secretary, treasurer — and is larger by a factor of $3!$; $15$ multiplies; $125$ allows repetition. To choose between permutation and combination, ask one question: if two chosen people swap places, is it the same outcome? If so, it is a combination.",
     "source": "generated"
   },
   "binomial": {
@@ -74,7 +74,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「指數對數微積分」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Exp/Log Calculus”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$2e^{2x} + C$ 漏了連鎖法則帶來的 $\\dfrac{1}{2}$；$\\frac{1}{2}e^{2x} + C$ 多除了一次；$4e^{2x} + C$ 把係數乘了兩次。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$2e^{2x} + C$ drops the $\\frac{1}{2}$ from the chain rule; $\\frac{1}{2}e^{2x} + C$ divides once too often; $4e^{2x} + C$ applies the coefficient twice.",
     "source": "generated"
   },
   "calculus_app": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「微積分應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Applications of Calculus”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$14$ m/s 是 $t = 2$ 時的【位移】而非速度；$4$ m/s 是加速度 $\\dfrac{d^2s}{dt^2}$；$7$ m/s 是【平均】速度（位移÷時間），與瞬時速度不同。位移、速度、加速度三者相差一次求導，讀題時要看清楚問邊一個。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$14$ m/s is the displacement at $t = 2$, not the velocity; $4$ m/s is the acceleration $\\frac{d^2s}{dt^2}$; $7$ m/s is the average velocity, displacement over time, which differs from the instantaneous value. Displacement, velocity and acceleration are each one differentiation apart, so read carefully which is wanted.",
     "source": "generated"
   },
   "probability_dist": {
@@ -124,7 +124,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「概率分佈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Probability Distributions”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$0.9$ 是方差 $np(1-p)$；$10$ 只抄了試驗次數；$100$ 用了除法。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$0.9$ is the variance $np(1-p)$; $10$ copies the number of trials; $100$ divides.",
     "source": "generated"
   },
   "normal_distribution": {
@@ -174,7 +174,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「統計推斷」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Statistical Inference”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$6$ 是母體標準差本身，未除以 $\\sqrt{n}$；$1.5$ 除了 $n$ 而非 $\\sqrt{n}$；$12$ 用了乘法。留意樣本愈大標準誤愈細，但因為分母是 $\\sqrt{n}$，樣本要增至四倍才能令標準誤減半。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$6$ is the population standard deviation itself, undivided; $1.5$ divides by $n$ rather than $\\sqrt{n}$; $12$ multiplies. Note that a larger sample gives a smaller standard error, but since the denominator is $\\sqrt{n}$ the sample must quadruple to halve it.",
     "source": "generated"
   },
   "m1_distributions": {
@@ -194,12 +194,12 @@ export const notes: Record<string, StudyNote> = {
       "$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$.",
       "Poisson: $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$. $P(X=0)=\\dfrac{e^{-2}\\cdot 2^0}{0!}=e^{-2}\\approx 0.135$.",
       "Binomial: mean $=np=20\\times 0.3=6$; variance $=np(1-p)=20\\times 0.3\\times 0.7=4.2$.",
-      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$. Traps: $1$ is the mean $np$; $0.1$ uses $np^2$; $0.949$ is the standard deviation,…"
+      "For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = 10 \\times 0.1 \\times 0.9 = 0.9$."
     ],
     "examTipZh": "DSE 作答「概率分佈（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Probability distributions”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$1$ 是期望值 $np$；$0.1$ 誤用 $np^2$；$0.949$ 是標準差，即方差的平方根。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "0.0512 漏了組合數 $\\binom{5}{2}=10$；0.4 用了 $np$ 而非概率；0.04 只計了 $(0.2)^2$。",
+    "commonTrapEn": "0.0512 drops the coefficient $\\binom{5}{2}=10$; 0.4 uses $np$ instead of a probability; 0.04 is only $(0.2)^2$.",
     "source": "generated"
   },
   "m1_normal_calc": {
@@ -217,14 +217,14 @@ export const notes: Record<string, StudyNote> = {
     ],
     "mustKnowEn": [
       "Standardise: $Z=\\dfrac{65-50}{10}=1.5$, so $P(X>65)=P(Z>1.5)=0.0668$.",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{58 - 50}{4} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.…",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{42 - 50}{4} = -2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.…",
-      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{120 - 100}{10} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the…"
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{58 - 50}{4} = 2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{42 - 50}{4} = -2$, giving the number of standard deviations from the mean, with a negative value meaning below the mean.",
+      "The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{54 - 50}{4} = \\frac{4}{4} = 1$. A $z$-score says how many standard deviations a value lies from the mean, so it is…"
     ],
     "examTipZh": "DSE 作答「正態分佈計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Normal distribution — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$8$ 只求了差而未除以標準差；$27$ 把減號寫成加號；$0.5$ 上下倒轉。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "0.9332 是 $P(Z<1.5)$（互補）；0.5 忽略了標準化；0.1587 對應 $Z=1$（標準差用錯）。",
+    "commonTrapEn": "0.9332 is $P(Z<1.5)$ (the complement); 0.5 ignores standardising; 0.1587 corresponds to $Z=1$ (wrong s.d.).",
     "source": "generated"
   },
   "differentiation": {
@@ -294,7 +294,7 @@ export const notes: Record<string, StudyNote> = {
       "Binomial $E(X)=np=1$.",
       "$P(X=r) = \\frac{\\binom{4}{2}}{2^{4}} = \\frac{3}{8}$.",
       "Complement: $P(X\\ge1)=1-\\left(\\tfrac12\\right)^{3}=\\frac{7}{8}$.",
-      "For a binomial distribution $\\operatorname{Var}(X) = npq$ with $q = 1 - p = \\frac{4}{5}$, giving $25 \\times \\frac{1}{5} \\times \\frac{4}{5} = 4$. Traps: $5$ is the mean $np$; $1$…"
+      "For a binomial distribution $\\operatorname{Var}(X) = npq$ with $q = 1 - p = \\frac{4}{5}$, giving $25 \\times \\frac{1}{5} \\times \\frac{4}{5} = 4$."
     ],
     "examTipZh": "DSE 作答「二項分佈」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Binomial Distribution”: show steps and units; eliminate trap options in MC; structure long answers by marks.",

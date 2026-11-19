@@ -223,7 +223,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「詩詞鑑賞・手法與意境」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Poetry Appreciation — Devices & Imagery”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
+    "commonTrapZh": "「田園閒適」「兒女情長」「市井詼諧」皆與全詩悲秋、多病、潦倒的沉鬱基調相違，是只認句子表面、不察情景交融者的誤判。",
     "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
     "source": "generated"
   },
@@ -248,7 +248,7 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「風格比較・婉約與豪放」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Comparing Styles — Wanyue and Haofang”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
+    "commonTrapZh": "其餘三項把分別錯繫於體裁、純寫景／抒情或篇幅長短，皆非風格流派的實質。",
     "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
     "source": "generated"
   }

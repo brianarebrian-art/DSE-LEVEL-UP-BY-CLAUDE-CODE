@@ -211,20 +211,20 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "The closing couplet states that the poem (“this”) gives the beloved eternal life “so long as men can breathe” — the conceit is that verse confers immortality, so “eternal summer…",
     "mustKnowZh": [
       "The closing couplet states that the poem (“this”) gives the beloved eternal life “so long as men can breathe” — the conceit is that verse confers immortality, so “eternal summer…",
-      "The unanswered questions dramatise wonder and disquiet before the paradox of a creator capable of such “fearful symmetry”; the form (questioning, not asserting) is the meaning.…",
-      "Death “kindly stopped” and drives the carriage like a polite suitor — personification that recasts dying as an unhurried, civil journey rather than a horror. 【Trap autopsy】…",
+      "The unanswered questions dramatise wonder and disquiet before the paradox of a creator capable of such “fearful symmetry”; the form (questioning, not asserting) is the meaning.",
+      "Death “kindly stopped” and drives the carriage like a polite suitor — personification that recasts dying as an unhurried, civil journey rather than a horror.",
       "The lone, drifting cloud gives way to a teeming “host” of flowers; the contrast turns isolation into delighted connection with nature — the Romantic move from solitude to…"
     ],
     "mustKnowEn": [
       "The closing couplet states that the poem (“this”) gives the beloved eternal life “so long as men can breathe” — the conceit is that verse confers immortality, so “eternal summer…",
-      "The unanswered questions dramatise wonder and disquiet before the paradox of a creator capable of such “fearful symmetry”; the form (questioning, not asserting) is the meaning.…",
-      "Death “kindly stopped” and drives the carriage like a polite suitor — personification that recasts dying as an unhurried, civil journey rather than a horror. 【Trap autopsy】…",
+      "The unanswered questions dramatise wonder and disquiet before the paradox of a creator capable of such “fearful symmetry”; the form (questioning, not asserting) is the meaning.",
+      "Death “kindly stopped” and drives the carriage like a polite suitor — personification that recasts dying as an unhurried, civil journey rather than a horror.",
       "The lone, drifting cloud gives way to a teeming “host” of flowers; the contrast turns isolation into delighted connection with nature — the Romantic move from solitude to…"
     ],
     "examTipZh": "DSE 作答「Device & effect」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Device & effect”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "“Exactly like a summer’s day” takes a comparison the poem REJECTS (“more lovely and more temperate”) at face value; “summer is more beautiful” reverses it; “will fade like summer” directly contradicts “shall not fade.”",
     "source": "generated"
   },
   "elit_theme_irony": {
@@ -249,7 +249,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「Theme & irony」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Theme & irony”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "The statue is a “colossal wreck,” not preserved; the inscription proves arrogance, not humility; the empire has utterly vanished.",
     "source": "generated"
   }
 }

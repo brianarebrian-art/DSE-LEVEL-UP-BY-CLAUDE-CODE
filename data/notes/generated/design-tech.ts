@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「設計過程」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Design Process”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "3 把方向倒轉，當成放大比例；30 完全沒有換算；40 把比例數字當成加數。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "3 reverses the direction and treats it as an enlargement; 30 makes no conversion; 40 adds the scale figure.",
     "source": "generated"
   },
   "design_elements": {
@@ -74,7 +74,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「材料與特性」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Materials & Properties”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "37 把除法與乘法對調；100 只抄了體積；2.7 只抄了密度。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "37 divides instead of multiplying; 100 copies the volume; 2.7 copies the density.",
     "source": "generated"
   },
   "structures_mech": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「結構與機械・計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Structures & mechanisms — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "20 牛頓誤以為兩邊力相等（只有力臂相等時才成立）；200 牛頓把兩個距離都乘上；50 牛頓把兩個距離倒轉。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「轉速 3 倍」弄反了大齒輪轉慢的關係；「都不變」忽略齒數比；末項違反速度與扭力此消彼長。",
+    "commonTrapEn": "“3× faster” reverses the big-gear-turns-slower relation; “unchanged” ignores the ratio; the last breaks the speed-torque trade-off.",
     "source": "generated"
   },
   "dat_materials_reason": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「材料與結構・推理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Materials & structures — reasoning”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「用更多材料」非主因；「四邊形不能承力」過度；「純美觀」否定其結構作用。",
+    "commonTrapEn": "“More material” is not the reason; “rectangles bear no load” overstates; “decorative” denies its structural role.",
     "source": "generated"
   }
 }

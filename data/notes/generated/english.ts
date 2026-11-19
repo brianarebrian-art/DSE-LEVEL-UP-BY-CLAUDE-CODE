@@ -220,18 +220,18 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Register 由三樣決定：讀者是誰、寫作目的是甚麼、雙方關係有多接近。題目通常已經寫明，只是考生跳過不看。",
     "mustKnowZh": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
-      "The passage argues that managing the tools eats the time they were meant to save, so the tool \"stops being a means and quietly becomes an end\". 【Trap autopsy】 \"Useless / abandon…",
-      "The checklist is a concession (\"None of this is to deny that such tools can help\"): it shows a tool working as a means, which throws the misuse case into relief. 【Trap autopsy】…"
+      "The passage argues that managing the tools eats the time they were meant to save, so the tool \"stops being a means and quietly becomes an end\".",
+      "The checklist is a concession (\"None of this is to deny that such tools can help\"): it shows a tool working as a means, which throws the misuse case into relief."
     ],
     "mustKnowEn": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
-      "The passage argues that managing the tools eats the time they were meant to save, so the tool \"stops being a means and quietly becomes an end\". 【Trap autopsy】 \"Useless / abandon…",
-      "The checklist is a concession (\"None of this is to deny that such tools can help\"): it shows a tool working as a means, which throws the misuse case into relief. 【Trap autopsy】…"
+      "The passage argues that managing the tools eats the time they were meant to save, so the tool \"stops being a means and quietly becomes an end\".",
+      "The checklist is a concession (\"None of this is to deny that such tools can help\"): it shows a tool working as a means, which throws the misuse case into relief."
     ],
     "examTipZh": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "examTipEn": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "commonTrapZh": "全篇維持同一種語氣卻與收件人不符，例如寫給機構的投訴信用上 \"That's so annoying\"。錯不在英文本身，在對象判斷。",
-    "commonTrapEn": "When revising “Reading · Inference & Implication”, check definitions and units carefully.",
+    "commonTrapEn": "\"Useless / abandon altogether\" is the OVER-EXTREME trap — the writer explicitly concedes \"such tools can help\" (the surgeon’s checklist), so a total rejection contradicts the text. \"Improved dramatically\" is the strawman view the writer is rebutting, not his own. \"Too complicated\" is never claimed — the problem is misuse, not difficulty.",
     "source": "sensei"
   },
   "p1_tone": {
@@ -243,18 +243,18 @@ export const notes: Record<string, StudyNote> = {
     "conceptEn": "Register 由三樣決定：讀者是誰、寫作目的是甚麼、雙方關係有多接近。題目通常已經寫明，只是考生跳過不看。",
     "mustKnowZh": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
-      "\"Merely\" deflates the praise: elaborate organisation is set against actual productivity, implying the two are not the same. 【Trap autopsy】 \"Always the hardest-working\" is the…",
+      "\"Merely\" deflates the praise: elaborate organisation is set against actual productivity, implying the two are not the same.",
       "The praise is loaded with irony (six-colour calendars, committees breeding sub-committees) and detonated by the last line, where nothing is ever finished — mockery, but…"
     ],
     "mustKnowEn": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
-      "\"Merely\" deflates the praise: elaborate organisation is set against actual productivity, implying the two are not the same. 【Trap autopsy】 \"Always the hardest-working\" is the…",
+      "\"Merely\" deflates the praise: elaborate organisation is set against actual productivity, implying the two are not the same.",
       "The praise is loaded with irony (six-colour calendars, committees breeding sub-committees) and detonated by the last line, where nothing is ever finished — mockery, but…"
     ],
     "examTipZh": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "examTipEn": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "commonTrapZh": "全篇維持同一種語氣卻與收件人不符，例如寫給機構的投訴信用上 \"That's so annoying\"。錯不在英文本身，在對象判斷。",
-    "commonTrapEn": "reading “survive” literally as “anxious and fearful” (over-inference); the writer is using hyperbole to dismiss the hype, not expressing real fear.",
+    "commonTrapEn": "\"Always the hardest-working\" is the opposite of the point. \"The office rewards organisation more\" adds an institutional claim not in the text. \"Women are better organised\" over-reads the generic \"she\" as a claim about gender — the pronoun is incidental.",
     "source": "sensei"
   },
   "p1_vocab_ref": {
@@ -267,17 +267,17 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowZh": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
       "\"Labour spent on the scaffolding of work rather than the work itself\" — scaffolding is the metaphorical structure AROUND the real work (tagging, sorting, migrating notes), not the…",
-      "The \"qualifier\"s are the cautious modal expressions just quoted — \"may / could / are likely to\" — each one a hedge that the writer reads as honesty. 【Trap autopsy】 \"The authors\"…"
+      "The \"qualifier\"s are the cautious modal expressions just quoted — \"may / could / are likely to\" — each one a hedge that the writer reads as honesty."
     ],
     "mustKnowEn": [
       "同一件事寫給校長是 \"I would be grateful if you could consider\"，寫給同學則是 \"Do you think we could try\"。內容一樣，距離不同。",
       "\"Labour spent on the scaffolding of work rather than the work itself\" — scaffolding is the metaphorical structure AROUND the real work (tagging, sorting, migrating notes), not the…",
-      "The \"qualifier\"s are the cautious modal expressions just quoted — \"may / could / are likely to\" — each one a hedge that the writer reads as honesty. 【Trap autopsy】 \"The authors\"…"
+      "The \"qualifier\"s are the cautious modal expressions just quoted — \"may / could / are likely to\" — each one a hedge that the writer reads as honesty."
     ],
     "examTipZh": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "examTipEn": "落筆前把題目中的收件人與身分圈出，並寫下一個形容詞（formal / semi-formal / informal），全篇按這個標準檢查。",
     "commonTrapZh": "全篇維持同一種語氣卻與收件人不符，例如寫給機構的投訴信用上 \"That's so annoying\"。錯不在英文本身，在對象判斷。",
-    "commonTrapEn": "being pulled by the earlier negative wording into “exhausted and defeated”, ignoring the “confident” cue — context inference must weigh what follows the contrast word (Although).",
+    "commonTrapEn": "\"Physical construction\" takes the metaphor literally. \"Most important part\" inverts the meaning — scaffolding is explicitly contrasted with the work itself. \"Teamwork supporting colleagues\" imports a sense of \"support\" the passage never uses.",
     "source": "sensei"
   }
 }

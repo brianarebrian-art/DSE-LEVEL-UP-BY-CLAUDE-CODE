@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「形式分析・元素與原則」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Formal analysis — elements & principles”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "其餘各項把元素與原則對調、混為一談或否定分別。",
+    "commonTrapEn": "The others swap, conflate, or deny the distinction.",
     "source": "generated"
   },
   "va_history_context": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「藝術史・技法與風格」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Art history — technique & style”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「刻意平面化」與透視目的相反；「增加色彩」「與空間無關」皆離題。",
+    "commonTrapEn": "“Deliberately flatten” is the opposite aim; “more colours” and “nothing to do with space” miss the point.",
     "source": "generated"
   }
 }

@@ -59,19 +59,31 @@ const EXPLAINER_BY_TOPIC: Record<string, string> = {
   'math:trig_3d': '/explainers/math-trigonometry.svg',
 }
 
+/** 題庫解析尾部陷阱標記（中英 plural／autopsy／bracket 變體）。 */
+const TRAP_SUFFIX_RE =
+  /(?:陷阱[：:]|【陷阱】|【Trap[^】]*】|\[Trap\]|\bTraps?[：:])\s*[\s\S]*$/iu
+
+function stripTrapSuffix(text: string): string {
+  return String(text ?? '').replace(TRAP_SUFFIX_RE, '').replace(/\s+/g, ' ').trim()
+}
+
 function extractTrap(explanation: string): string | null {
-  const m = /陷阱[：:]\s*([^]*)$/.exec(String(explanation ?? ''))
+  const raw = String(explanation ?? '')
+  const m = /陷阱[：:]\s*([^]*)$/u.exec(raw) || /【陷阱】\s*([^]*)$/iu.exec(raw)
+  return m?.[1]?.trim() || null
+}
+
+function extractTrapEn(explanation: string): string | null {
+  const raw = String(explanation ?? '')
+  const m =
+    /【Trap[^】]*】\s*([^]*)$/iu.exec(raw) ||
+    /\[Trap\]\s*([^]*)$/i.exec(raw) ||
+    /\bTraps?[：:]\s*([^]*)$/i.exec(raw)
   return m?.[1]?.trim() || null
 }
 
 function firstSentence(text: string, max = 180): string {
-  const t = String(text ?? '')
-    .replace(/陷阱[：:][\s\S]*$/u, '')
-    .replace(/【陷阱】[\s\S]*$/iu, '')
-    .replace(/【Trap】[\s\S]*$/iu, '')
-    .replace(/\bTrap[：:]\s*[\s\S]*$/iu, '')
-    .replace(/\s+/g, ' ')
-    .trim()
+  const t = stripTrapSuffix(text)
   if (!t) return ''
 
   // 中文：喺句號／問嘆號切（唔掂英文句點 → 避免 37.5、i.e.、e.g.）。
@@ -169,13 +181,7 @@ for (const s of active) {
       4,
     )
     const trapsEn = uniqueKeep(
-      inTopic
-        .map((q) => {
-          const e = q.explanationEn ?? ''
-          const m = /\[Trap\]\s*([^]*)$/i.exec(e) || /Trap[：:]\s*([^]*)$/i.exec(e)
-          return m?.[1]?.trim() || ''
-        })
-        .filter(Boolean),
+      inTopic.map((q) => extractTrapEn(q.explanationEn ?? '')).filter(Boolean) as string[],
       4,
     )
     const concepts = uniqueKeep(

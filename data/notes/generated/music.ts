@@ -49,7 +49,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「樂理與記譜」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Theory & Notation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "4 誤把下數字當成每小節的拍數；其餘兩項是其他常見拍號的拍數。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "4 reads the lower number as the beat count; the other two are beat counts of other common signatures.",
     "source": "generated"
   },
   "form_structure": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「樂理・音程與調號」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Theory — intervals & keys”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "D♭ 字母正確但半音數差一，即把大二度與小的一級混淆；E 把半音數誤當成字母級數去數；C 是起音本身。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "大三度需 4 個半音（如 D–F♯）；純四度跨 4 個音名；大二度只跨 2 個音名。",
+    "commonTrapEn": "A major 3rd needs 4 semitones (e.g. D–F♯); a perfect 4th spans 4 letter names; a major 2nd spans only 2.",
     "source": "generated"
   },
   "mus_harmony_form": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「和聲・和弦與曲式」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Harmony — chords & form”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "大三和弦為 C–E–G（大三 + 純五）；小三和弦為 C–E♭–G（小三 + 純五）；增三和弦為 C–E–G♯（大三 + 增五）。關鍵在第五音是減五。",
+    "commonTrapEn": "Major = C–E–G (major 3rd + perfect 5th); minor = C–E♭–G; augmented = C–E–G♯. The key is the diminished 5th.",
     "source": "generated"
   }
 }

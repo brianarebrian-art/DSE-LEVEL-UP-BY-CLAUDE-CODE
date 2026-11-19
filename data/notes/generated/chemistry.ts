@@ -49,7 +49,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「酸鹼」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Acids & Bases”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$-1$ 漏了負號（pH 在中學範圍內不會是負數）；$13$ 是 pOH；$2$ 把指數乘了 2。記住 pH 愈細酸性愈強，每差 1 個單位，氫離子濃度相差 10 倍。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$-1$ drops the minus sign, and pH is not negative in the school range; $13$ is the pOH; $2$ doubles the exponent. Remember that a lower pH means a stronger acid, and each unit of pH is a tenfold change in hydrogen ion concentration.",
     "source": "generated"
   },
   "redox": {
@@ -74,7 +74,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「氧化還原」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Redox”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$-6$ 正負號相反；$+8$ 漏了氫的貢獻；$+4$ 少算了一個氧。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$-6$ has the wrong sign; $+8$ omits the hydrogen contribution; $+4$ counts one oxygen too few.",
     "source": "generated"
   },
   "rates_energy": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「反應速率與能量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Reaction Rates & Energy”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$0.167$ 上下倒轉；$24$ 用了乘法；$12$ 漏了除以時間。留意反應速率一般隨時間下降，因為反應物濃度不斷減少，所以「平均速率」與任何一刻的「瞬時速率」通常不同。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$0.167$ inverts the fraction; $24$ multiplies; $12$ omits the division by time. Note that the rate generally falls over time as the reactants are used up, so an average rate usually differs from the instantaneous rate at any moment.",
     "source": "generated"
   },
   "bonding": {
@@ -124,7 +124,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「化學鍵」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Chemical Bonding”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$\\mathrm{Mg_2Cl}$ 把電荷數直接寫成自己的下標而未交叉；$\\mathrm{Mg_2Cl_2}$ 與 $\\mathrm{MgCl_3}$ 各有一個下標多算了一，代入檢查電荷即知不平衡。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$\\mathrm{Mg_2Cl}$ uses each charge as its own subscript without crossing; $\\mathrm{Mg_2Cl_2}$ and $\\mathrm{MgCl_3}$ each have one subscript too many, which fails a charge check.",
     "source": "generated"
   },
   "periodic_table": {
@@ -149,7 +149,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「週期表」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “The Periodic Table”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$1, 8, 2$ 把次序倒轉；$11$ 直接寫了總數而未分層；$2, 9$ 忽略了第二層 8 個的上限。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$1, 8, 2$ reverses the order; $11$ gives the total without arranging it in shells; $2, 9$ ignores the eight-electron limit of the second shell.",
     "source": "generated"
   },
   "organic": {
@@ -174,7 +174,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「有機化學」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Organic Chemistry”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$\\mathrm{C_2H_{6}}$ 是同碳數的烷烴（通式 $\\mathrm{C_nH_{2n+2}}$）；$\\mathrm{C_2H_{2}}$ 是炔烴；$\\mathrm{C_2H_2}$ 誤把氫碳比當成 $1 : 1$。三個通式相差的氫數反映不飽和度：每多一個雙鍵或一個環，就少 2 個氫。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$\\mathrm{C_2H_{6}}$ is the alkane with the same carbon count ($\\mathrm{C_nH_{2n+2}}$); $\\mathrm{C_2H_{2}}$ is the alkyne; $\\mathrm{C_2H_2}$ assumes a $1 : 1$ ratio. The differences in hydrogen count reflect unsaturation: each extra double bond or ring costs two hydrogens.",
     "source": "generated"
   },
   "chem_hell_quant": {
@@ -198,8 +198,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「定量計算（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Quantitative killers”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$2$ mol 停在第一步；$1$ mol 把係數比倒轉；$64$ mol 把質量當成摩爾。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$18\\,\\text{g}$ 用了過量的 O₂（$1\\,\\text{mol}$ 水）——忽略了限量試劑，正是此題的關鍵陷阱；$4.5$、$36$ 為比例算錯。",
+    "commonTrapEn": "$18\\,\\text{g}$ uses the excess O₂ — ignoring the limiting reagent, the killer here; $4.5$/$36$ mis-scale.",
     "source": "generated"
   },
   "chem_hell_redox_equil": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「氧化還原與平衡」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Redox & equilibrium”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "方向相反的一項把氧化與還原調轉，是本課最常見的錯誤；$9$ 個把兩個氧化數相加而非相減。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$+3$ 是 $Cr^{3+}$（還原產物）；$+7$ 套用了錳的 $+7$；$+12$ 漏除 2 個 Cr。",
+    "commonTrapEn": "$+3$ is $Cr^{3+}$ (the reduced product); $+7$ borrows Mn’s value; $+12$ forgets to divide by the 2 Cr atoms.",
     "source": "generated"
   },
   "chem_hell_organic": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「有機化學（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Organic killers”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$2$ 多計一個；$0$ 誤以為飽和；$3$ 用碳數相減。這個數字係推斷結構的第一步：知道不飽和度，就知道要畫幾多個環或雙鍵。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "$2$ 只數了直鏈兩個；$3$ 漏了一個支鏈異構；$5$ 重複計算。",
+    "commonTrapEn": "$2$ counts only the straight chain; $3$ misses a branched isomer; $5$ double-counts.",
     "source": "generated"
   },
   "formula_mass": {
@@ -258,7 +258,7 @@ export const notes: Record<string, StudyNote> = {
     "titleZh": "化學式與式量",
     "titleEn": "Formulae & Formula Mass",
     "conceptZh": "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
-    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$. Traps: the \"rest\" is $11.1\\%$; $0.889\\%$ forgets to multiply by 100 but keeps the % sign.",
+    "conceptEn": "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
     "mustKnowZh": [
       "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{16}{18} \\times 100\\% = 88.9\\%$。",
       "質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{12}{16} \\times 100\\% = 75\\%$。",
@@ -266,15 +266,15 @@ export const notes: Record<string, StudyNote> = {
       "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$56 \\times 1 + 35.5 \\times 3 = 56 + 106.5 = 162.5$。"
     ],
     "mustKnowEn": [
-      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$. Traps: the \"rest\" is $11.1\\%$; $0.889\\%$ forgets to multiply by 100 but keeps the % sign.",
-      "% by mass $= \\frac{12}{16} \\times 100\\% = 75\\%$. Traps: the \"rest\" is $25\\%$; $0.75\\%$ forgets to multiply by 100 but keeps the % sign.",
+      "% by mass $= \\frac{16}{18} \\times 100\\% = 88.9\\%$.",
+      "% by mass $= \\frac{12}{16} \\times 100\\% = 75\\%$.",
       "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $23 \\times 2 + 16…",
       "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $56 \\times 1 + 35.5…"
     ],
     "examTipZh": "DSE 作答「化學式與式量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Formulae & Formula Mass”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$11.1\\%$ 是其餘部分；$0.889\\%$ 計出比值後漏了乘以 100，卻照樣加上百分號。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "the \"rest\" is $11.1\\%$; $0.889\\%$ forgets to multiply by 100 but keeps the % sign.",
     "source": "generated"
   },
   "concentration": {

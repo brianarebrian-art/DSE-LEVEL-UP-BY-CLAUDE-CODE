@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「微分法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Differentiation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$18$ 只計算了 $f(3)$ 而未求導；$36$ 忘記把指數減一；$6$ 漏掉了係數 $2$。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$18$ evaluates $f(3)$ without differentiating; $36$ forgets to reduce the exponent by one; $6$ drops the coefficient $2$.",
     "source": "generated",
     "explainerSrc": "/explainers/m2-differentiation.svg"
   },
@@ -75,7 +75,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「極限」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Limits”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$0$ 把直接代入所得的不定式 $\\tfrac{0}{0}$ 當成 $0$，不定式須先化簡；$3$ 化簡後只代入了 $x$，漏了加 $3$；$9$ 只取了分子的常數。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$0$ treats the indeterminate form $\\frac{0}{0}$ from direct substitution as $0$; $3$ forgets to add $3$ after simplifying; $9$ takes only the constant in the numerator.",
     "source": "generated"
   },
   "matrices": {
@@ -99,8 +99,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「矩陣與行列式」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Matrices & Determinants”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$8$ 加了（符號錯）；$6$ 漏了 $-bc$。",
-    "commonTrapEn": "$8$ adds instead of subtracts.",
+    "commonTrapZh": "11 計成 $ad+bc$；$-5$ 把 $bc-ad$ 倒轉；8 只取 $ad$。",
+    "commonTrapEn": "11 computes $ad+bc$; $-5$ inverts to $bc-ad$; 8 keeps only $ad$.",
     "source": "generated"
   },
   "vectors": {
@@ -145,12 +145,12 @@ export const notes: Record<string, StudyNote> = {
       "Substituting $n=k+1$ gives $\\frac{(k+1)(k+2)}{2}$.",
       "At $n=1$: LHS $=1$, RHS $=1^2=1$ — they match.",
       "Without the base case the \"dominoes\" have no starting point — the proof fails.",
-      "With $n = 5$: $\\frac{5(5+1)}{2} = \\frac{5 \\times 6}{2} = 15$. Traps: $30$ omits the division by 2; $10$ writes $n-1$ for $n+1$; $25$ uses $n^2$."
+      "With $n = 5$: $\\frac{5(5+1)}{2} = \\frac{5 \\times 6}{2} = 15$."
     ],
     "examTipZh": "DSE 作答「數學歸納法」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Mathematical Induction”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$30$ 漏了除以 2；$10$ 把 $n+1$ 寫成 $n-1$；$25$ 誤用 $n^2$。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$30$ omits the division by 2; $10$ writes $n-1$ for $n+1$; $25$ uses $n^2$.",
     "source": "generated"
   },
   "binomial_theorem": {
@@ -175,7 +175,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「二項式定理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Binomial Theorem”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$20$ 取錯了項（$r$ 差一，因為展開式由 $x^0$ 開始數，第 $k$ 項對應 $x^{k-1}$）；$12$ 用了相乘；$6$ 只抄了指數。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$20$ takes the wrong term, since the expansion is counted from $x^0$ so the $k$-th term carries $x^{k-1}$; $12$ multiplies; $6$ copies the exponent.",
     "source": "generated"
   },
   "calculus_app": {
@@ -200,7 +200,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「微積分應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Applications of Calculus”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "$3$ 求導時漏了因子 2；$6$ 是曲線上該點的 $y$ 坐標而非斜率；$4$ 漏掉了一次項的導數 $1$。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "$3$ loses the factor 2 when differentiating; $6$ is the $y$-coordinate of the point, not the slope; $4$ omits the derivative $1$ of the linear term.",
     "source": "generated"
   },
   "m2_vectors_3d": {
@@ -219,13 +219,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "$|\\mathbf{a}|=\\sqrt{1^2+2^2+2^2}=\\sqrt{1+4+4}=\\sqrt{9}=3$.",
       "$\\cos\\theta=\\dfrac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|}=\\dfrac{1}{1\\cdot\\sqrt2}=\\dfrac{1}{\\sqrt2}$, so $\\theta=45^\\circ$.",
-      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$. Traps: $5$ simply adds the components; $9$ stops at the sum of squares without…",
-      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{2^2 + 6^2 + 9^2} = \\sqrt{121} = 11$. Traps: $17$ simply adds the components; $121$ stops at the sum of squares…"
+      "The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3$.",
+      "The dot product multiplies corresponding components and adds: $1(4) + 2(5) + 3(6) = 4 + 10 + 18 = 32$. The result is a scalar rather than a vector, which is the key difference…"
     ],
     "examTipZh": "DSE 作答「三維向量」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “3-D vectors”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "$5$ 直接把分量相加；$9$ 停在平方和而未開方；$2.236$ 先加後開方，次序倒轉。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "9 漏了開方（停在平方和）；5 把分量相加（1+2+2）；$\\sqrt5$ 漏了其中一個分量。",
+    "commonTrapEn": "9 forgets the square root (stops at the sum of squares); 5 adds the components (1+2+2); $\\sqrt5$ drops a component.",
     "source": "generated"
   },
   "linear_systems": {

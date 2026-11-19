@@ -74,7 +74,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「會計」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Accounting”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "195,000 元把負債加上而非減去；45,000 元與 150,000 元分別是負債與資產本身。",
-    "commonTrapEn": "always using cost, or valuing at selling price (unrealised profit).",
+    "commonTrapEn": "\\$195,000 adds instead of subtracting; \\$45,000 and \\$150,000 are the liabilities and the assets themselves.",
     "source": "generated"
   },
   "financial_mgmt": {
@@ -99,7 +99,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「財務管理」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Financial Management”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "840,000 元用了加法；2.5 是流動比率——那是一個【比率】而非金額，兩者不可混用；240,000 元只抄了流動負債。",
-    "commonTrapEn": "confusing debentures with shares, or thinking interest depends on profit.",
+    "commonTrapEn": "840,000 adds; 2.5 is the current ratio, which is a ratio rather than an amount and must not be confused with it; 240,000 merely copies the liabilities.",
     "source": "generated"
   },
   "personal_finance": {
@@ -124,7 +124,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「個人理財」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Personal Finance”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "11,000 元用了單利公式；1,025 元是【利息】而非本利和，題目問的是到期總額；1,000 元是單利的利息。留意公式中的指數 2 正是複利與單利的分別所在：複利是連乘，單利是連加。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "11,000 uses the simple interest formula; 1,025 is the interest rather than the amount, and the question asks for the total at maturity; 1,000 is the simple interest. The exponent 2 is exactly where compound and simple interest part company: compounding multiplies where simple interest adds.",
     "source": "generated"
   },
   "bafs_ratio_analysis": {
@@ -144,12 +144,12 @@ export const notes: Record<string, StudyNote> = {
       "Current ratio = current assets ÷ current liabilities = 600,000 ÷ 240,000 = 2.5, i.e. 2.5 : 1.",
       "Gross profit = 800,000 − 600,000 = 200,000. Margin (on sales) = 200,000 ÷ 800,000 = 25%.",
       "Working capital = current assets − current liabilities = 600,000 − 240,000 = \\$360,000.",
-      "Current ratio = current assets ÷ current liabilities = \\$30,000 ÷ \\$20,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1.…"
+      "Current ratio = current assets ÷ current liabilities = \\$30,000 ÷ \\$20,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1."
     ],
     "examTipZh": "DSE 作答「比率分析（高階）」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Ratio analysis”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "0.67 : 1 把分子分母倒轉；0.5 : 1 用了營運資金而非流動資產作分子；10,000 是營運資金的【金額】，並非比率。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "0.4 : 1 把分子分母倒轉；360,000 是「營運資金」（流動資產 − 流動負債）非比率；40% 是把比率誤當百分比。",
+    "commonTrapEn": "0.4 : 1 inverts it; 360,000 is working capital (CA − CL), not a ratio; 40% mis-reads the ratio as a percentage.",
     "source": "generated"
   },
   "bafs_costing_pricing": {
@@ -169,12 +169,12 @@ export const notes: Record<string, StudyNote> = {
       "Unit contribution = price − unit variable cost = 20 − 12 = \\$8. Break-even units = fixed costs ÷ contribution = 60,000 ÷ 8 = 7,500.",
       "Payback = investment ÷ annual net cash inflow = 100,000 ÷ 25,000 = 4 years.",
       "25% mark-up on cost: price = cost × (1 + 25%) = 80 × 1.25 = \\$100.",
-      "Unit contribution margin = price − variable cost = \\$50 − \\$20 = \\$30, so the total is \\$30 × 2,000 = \\$60,000. Contribution first covers fixed costs; only the remainder is…"
+      "Unit contribution margin = price − variable cost = \\$50 − \\$20 = \\$30, so the total is \\$30 × 2,000 = \\$60,000. Contribution first covers fixed costs; only the remainder is profit."
     ],
     "examTipZh": "DSE 作答「成本・定價・回本」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Costing, pricing & payback”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "100,000 元是總銷售收入；40,000 元是總變動成本；30 元只是【單位】邊際貢獻，未乘銷量。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "3,000 = 60,000 ÷ 20（用了售價而非貢獻）；5,000 = 60,000 ÷ 12（用了變動成本）；12,000 用了錯誤基數。貢獻＝售價減「變動」成本，這是 break-even 的核心。",
+    "commonTrapEn": "3,000 = 60,000 ÷ 20 (uses price, not contribution); 5,000 = 60,000 ÷ 12 (uses variable cost); 12,000 uses a wrong base. Contribution = price − VARIABLE cost is the heart of break-even.",
     "source": "generated"
   },
   "bafs_depreciation": {
@@ -193,13 +193,13 @@ export const notes: Record<string, StudyNote> = {
     "mustKnowEn": [
       "Straight-line depreciation = (cost − residual) ÷ life = (100,000 − 10,000) ÷ 5 = \\$18,000 per year.",
       "Year 1 depreciation = 100,000 × 20% = 20,000, leaving a net book value of 80,000. Year 2 = 80,000 × 20% = \\$16,000 (the rate applies to the REDUCING balance, not the original…",
-      "Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$60,000 × 10% = \\$6,000, so the annual charge is (\\$60,000 − \\$6,000) ÷ 4 = \\$13,500. Traps:…",
-      "Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$60,000 × 10% = \\$6,000, so the annual charge is (\\$60,000 − \\$6,000) ÷ 6 = \\$9,000. Traps: \\$10,000…"
+      "Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$60,000 × 10% = \\$6,000, so the annual charge is (\\$60,000 − \\$6,000) ÷ 4 = \\$13,500.",
+      "The annual charge is (\\$60,000 − \\$6,000) ÷ 5 = \\$10,800, so accumulated depreciation after 2 years is \\$10,800 × 2 = \\$21,600. Net book value = cost − accumulated depreciation =…"
     ],
     "examTipZh": "DSE 作答「折舊計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Depreciation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "15,000 元漏了扣除殘值；1,500 元只把殘值攤分；54,000 元是可折舊總額，尚未除以年期。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "\\$20,000 = 100,000 ÷ 5，忘記扣殘值（最常見錯誤）；\\$22,000、\\$16,000 皆計錯。",
+    "commonTrapEn": "\\$20,000 = 100,000 ÷ 5 forgets the residual (the most common error); \\$22,000 and \\$16,000 mis-compute.",
     "source": "generated"
   },
   "financial_statements": {

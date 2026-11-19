@@ -173,8 +173,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「規範倫理・理論應用」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Normative theory — application”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「無論後果都要守的義務」是義務論(deontology)；「品格德性」是德性倫理(virtue ethics)；「多數人即時情緒」混淆了道德與情緒贊同，並非效益主義的計算。",
+    "commonTrapEn": "“A duty to keep regardless of consequences” is deontology; “character and virtue” is virtue ethics; “most people’s instant feeling” confuses morality with emotional approval, not the utilitarian calculation.",
     "source": "generated"
   },
   "eth_meta_reason": {
@@ -198,8 +198,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「道德推理・後設反思」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Moral reasoning — reflection”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「沒有謬誤」正中陷阱；「錯在引用數據」「錯在沒引經典」皆未指出真正的推理斷裂。",
+    "commonTrapEn": "“No fallacy” walks into the trap; “error is citing data” and “error is not citing scripture” both miss the real break in reasoning.",
     "source": "generated"
   }
 }

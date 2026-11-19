@@ -199,7 +199,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「運動與社會」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Sport & Society”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "12 場漏了除以 2；3 場是單淘汰制的場數；16 場把自己對自己也算了進去。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "12 omits the division by 2; 3 is the knockout figure; 16 counts teams playing themselves.",
     "source": "generated"
   },
   "pe_physiology_calc": {
@@ -223,8 +223,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「運動生理計算」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Exercise physiology — calculation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "27 漏了把身高平方；0.0018 用了厘米；91.1 把除法寫成乘法。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "132–176 漏減年齡（用 220）；102–122 用錯百分比；「固定 204」把上限當成訓練心率。",
+    "commonTrapEn": "132–176 forgets to subtract age (uses 220); 102–122 uses wrong percentages; “fixed 204” treats the ceiling as the training HR.",
     "source": "generated"
   },
   "pe_biomech_systems": {
@@ -248,8 +248,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「生物力學與能量系統」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Biomechanics & energy systems”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "有氧系統供能太慢，不主導短跑；乳酸系統在 100 米初段非主要；消化系統並非能量系統。",
+    "commonTrapEn": "The aerobic system is too slow for a sprint; the lactic system is not primary in the first seconds of a 100 m; the digestive system is not an energy system.",
     "source": "generated"
   }
 }

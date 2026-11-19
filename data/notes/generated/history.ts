@@ -24,7 +24,7 @@ export const notes: Record<string, StudyNote> = {
     "examTipZh": "DSE 作答「第一次世界大戰」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “The First World War”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
     "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapEn": "Italy, though in the Alliance, changed sides after the war began; and the Germany–Japan–Italy grouping belongs to the Second World War, more than twenty years later. Mismatching camps and periods is the commonest error here.",
     "source": "generated"
   },
   "ww2": {
@@ -298,8 +298,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「因果分析・導火線與根源」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Causation — trigger vs root cause”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「唯一根本原因」把導火線當根源；「純屬偶然」否定結構因素；「同盟阻止戰爭」與史實相反（同盟正是把戰爭擴大的機制）。",
+    "commonTrapEn": "“Sole fundamental cause” mistakes trigger for root; “purely accidental” denies structural causes; “alliances prevented war” is the reverse of what happened.",
     "source": "generated"
   },
   "hist_significance": {
@@ -323,8 +323,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「影響與意義評價」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Significance & evaluation”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「完全是美方／蘇方挑起」皆屬單方歸因；「與意識形態無關」抽走了核心矛盾。",
+    "commonTrapEn": "“Entirely the USA/USSR” are single-side attributions; “nothing to do with ideology” removes the core conflict.",
     "source": "generated"
   },
   "hist_source": {
@@ -348,8 +348,8 @@ export const notes: Record<string, StudyNote> = {
     ],
     "examTipZh": "DSE 作答「史料判讀」時：寫清楚步驟同單位；選擇題用排除法核對陷阱選項；長題按分步列式。",
     "examTipEn": "In DSE “Source analysis”: show steps and units; eliminate trap options in MC; structure long answers by marks.",
-    "commonTrapZh": "混淆相近概念、漏讀題幹限制，或計算後未代回原式檢查。",
-    "commonTrapEn": "Mixing nearby concepts, missing stem constraints, or not checking the answer in the original setup.",
+    "commonTrapZh": "「毫無價值」否定了偏見史料的用途；「客觀記錄敵國真貌」混淆了宣傳與事實；「帶情緒即偽造」是對史料的粗暴否定。",
+    "commonTrapEn": "“No value” denies the use of biased sources; “objective record of the enemy” confuses propaganda with fact; “emotional = forged” is a crude dismissal.",
     "source": "generated"
   }
 }
