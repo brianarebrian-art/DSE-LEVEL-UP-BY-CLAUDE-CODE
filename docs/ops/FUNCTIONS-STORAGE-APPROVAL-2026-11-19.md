@@ -1,7 +1,8 @@
 # Functions Storage 清理批准包（工作包 1）
 
-狀態：**Batch 1／2／3 已獲創辦人批准（2026-11-19）· 執行受阻：缺 `VERCEL_TOKEN`**  
-查詢時間：**2026-11-19T22:28:16+08:00**（Asia/Hong_Kong）  
+狀態：**Batch 1／2／3 已執行完畢（2026-11-19）· deleted=158 failed=0**  
+查詢時間（盤點）：**2026-11-19T22:28:16+08:00**（Asia/Hong_Kong）  
+執行／驗證：見 [functions-storage-delete-result-2026-11-19.json](./functions-storage-delete-result-2026-11-19.json) · [FUNCTIONS-STORAGE-RELEASE-2026-11-19.md](./FUNCTIONS-STORAGE-RELEASE-2026-11-19.md)  
 Team：`dselevelup` · Project：`dse-level-up-by-claude-code`（`prj_CQRC5oit3FL5KrrmCaAXxqUugfYu`）  
 正式網域：`www.dselevelup.com`／`dselevelup.com`（verified）
 
@@ -173,25 +174,25 @@ Dependabot／Jules／相對舊 preview。
 ## 執行閘門
 
 1. ~~明確批准 Batch 1／2／3~~ **已批准**（對話 2026-11-19）。  
-2. **仍缺授權憑證**（唔好喺對話貼 secret）：
-   - 喺 Cloud Agent 環境加入 secret `VERCEL_TOKEN`（team `dselevelup`，可 DELETE deployment），然後：
-     ```bash
-     VERCEL_TOKEN=… node scripts/ops/delete-approved-vercel-deployments.mjs --dry-run
-     VERCEL_TOKEN=… node scripts/ops/delete-approved-vercel-deployments.mjs
-     ```
-     （只刪 JSON 內 batch1+2+3；永不碰 `keep[]`／`confirm_E[]`）
-   - 或 Dashboard 人手刪：https://vercel.com/dselevelup/dse-level-up-by-claude-code/deployments  
+2. ~~`VERCEL_TOKEN`~~ **已到位**；dry-run → 實刪完成（`deleted=158` `failed=0`）。  
 3. Vercel MCP **無** delete tool（只有 cancel）；腳本用 `DELETE /v13/deployments/:id`。  
 4. `confirm_E`（18 個近 7 日 preview）**仍不刪**，直至另一次批准。
 
-## 驗證計劃（刪後）
+## 驗證結果（刪後）
 
-- 同一範圍再 list deployments  
-- Dashboard Usage：Functions Storage／Deployment Storage（標：已確認釋放／等待更新／無法驗證）  
-- Smoke：`https://www.dselevelup.com/` 科目→練習主流程  
-- 確認保留嘅 3 個 production READY 仍在  
+| 檢查 | 結果 |
+|------|------|
+| 刪除結果 | **158／158** · failed **0** |
+| 保留 3 production READY | 全部仍在（`dpl_6qjo5…`／`dpl_56GAcs…`／`dpl_8a6QSm…`） |
+| confirm_E | **18／18** 仍在（未動） |
+| 已刪 ID 仍存在 | **0** |
+| 剩餘 deployments | **47**（READY 36 · ERROR 6 · CANCELED 5） |
+| `www.dselevelup.com` | HTTP **200** |
+| Functions Storage GB | **待 Dashboard**（API 無 Usage 讀數） |
+
+註：刪後仍見 **2** 個 production READY 唔喺今次批准包內（`dpl_9QA12…`、`dpl_FPPHQ4…`），**未刪**。
 
 ## 容量閘門 → 工作包 2
 
-**未通過。** 未刪除、未量到釋放前，**唔**開始大規模網站實作／唔新增部署驗證清理。  
-WP2 改善計劃另文提交，等本清理批准＋釋放驗證後先做。
+**部分通過（刪除完成）· GB 釋放仍待 Dashboard 確認。**  
+未確認 Usage 釋放前，**唔**開始大規模網站實作。WP2 見 [`WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md`](./WP2-DEFERRED-PENDING-CAPACITY-2026-11-19.md)。

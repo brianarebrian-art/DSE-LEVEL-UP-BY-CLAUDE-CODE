@@ -1,17 +1,18 @@
 # 工作包 2：暫緩（容量閘門未過）
 
-狀態：**未開始／受阻** · 2026-11-19（Asia/Hong_Kong）
+狀態：**未開始／受阻（等 Dashboard GB）** · 2026-11-19（Asia/Hong_Kong）
 
 ## 點解未交完整改善計劃
 
-工作包 1 清理**尚未獲批准、尚未執行、尚未驗證 Functions Storage 釋放**。  
+工作包 1 Batch 1–3 **已批准並已刪除**（158／158）；正式站 smoke 通過。  
+**Functions Storage GB 仍待 Dashboard 確認**（見 [`FUNCTIONS-STORAGE-RELEASE-2026-11-19.md`](./FUNCTIONS-STORAGE-RELEASE-2026-11-19.md)）。  
 按指令：容量評估完成前唔新增部署、唔大規模實作。
 
 依賴：
 
-1. 批准 [`FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md`](./FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md)  
-2. 執行刪除（`VERCEL_TOKEN` 或 Dashboard）  
-3. 確認 Usage 下降＋正式站 smoke  
+1. ~~批准~~ [`FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md`](./FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md)  
+2. ~~執行刪除~~  
+3. **確認 Usage 下降**＋~~正式站 smoke~~
 
 ## 清理通過後 WP2 會涵蓋（預告，非正式計劃）
 
