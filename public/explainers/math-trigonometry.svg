@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Right triangle trigonometry diagram">
+  <rect width="640" height="360" fill="#F7F4EF"/>
+  <polygon points="120,300 480,300 120,80" fill="#FED7AA" stroke="#9A3412" stroke-width="3"/>
+  <rect x="120" y="280" width="20" height="20" fill="none" stroke="#9A3412" stroke-width="2"/>
+  <text x="280" y="330" font-family="Georgia, serif" font-size="18" fill="#1C1917">adjacent</text>
+  <text x="50" y="200" font-family="Georgia, serif" font-size="18" fill="#1C1917">opposite</text>
+  <text x="300" y="170" font-family="Georgia, serif" font-size="18" fill="#1C1917">hypotenuse</text>
+  <text x="140" y="290" font-family="Georgia, serif" font-size="16" fill="#9A3412">θ</text>
+  <text x="420" y="80" font-family="Georgia, serif" font-size="18" fill="#1C1917">sin θ = opp / hyp</text>
+  <text x="420" y="110" font-family="Georgia, serif" font-size="18" fill="#1C1917">cos θ = adj / hyp</text>
+  <text x="420" y="140" font-family="Georgia, serif" font-size="18" fill="#1C1917">tan θ = opp / adj</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Quadratic parabola diagram">
+  <rect width="640" height="360" fill="#F7F4EF"/>
+  <g stroke="#1C1917" stroke-width="2" fill="none">
+    <line x1="80" y1="300" x2="560" y2="300"/>
+    <line x1="160" y1="40" x2="160" y2="320"/>
+  </g>
+  <path d="M100 60 Q320 520 540 60" stroke="#C2410C" stroke-width="4" fill="none"/>
+  <circle cx="320" cy="280" r="6" fill="#C2410C"/>
+  <text x="330" y="275" font-family="Georgia, serif" font-size="18" fill="#1C1917">vertex</text>
+  <text x="400" y="50" font-family="Georgia, serif" font-size="20" fill="#1C1917">y = ax² + bx + c</text>
+  <text x="200" y="340" font-family="Georgia, serif" font-size="16" fill="#44403C">Δ &gt; 0 → two x-intercepts</text>
+</svg>
