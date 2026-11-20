@@ -20,6 +20,8 @@ test('DOC_ONLY matches governance paths and rejects app code', () => {
   assert.ok(DOC_ONLY.test('docs/tokens.md'))
   assert.ok(DOC_ONLY.test('.cursor/skills/apple-design/SKILL.md'))
   assert.ok(DOC_ONLY.test('scripts/vercel-ignore-build.mjs'))
+  assert.ok(DOC_ONLY.test('.graphifyignore'))
+  assert.ok(DOC_ONLY.test('.gitignore'))
   assert.ok(!DOC_ONLY.test('app/page.tsx'))
   assert.ok(!DOC_ONLY.test('components/Navbar.tsx'))
   assert.ok(!DOC_ONLY.test('scripts/emoji-guard.mjs'))
@@ -27,6 +29,15 @@ test('DOC_ONLY matches governance paths and rejects app code', () => {
 
 test('shouldSkipDocsOnly only when every path is docs-only', () => {
   assert.equal(shouldSkipDocsOnly(['docs/a.md', 'README.md']), true)
+  assert.equal(
+    shouldSkipDocsOnly([
+      'docs/ops/FUNCTIONS-STORAGE-APPROVAL-2026-11-19.md',
+      '.cursor/rules/graphify.mdc',
+      '.graphifyignore',
+      '.gitignore',
+    ]),
+    true,
+  )
   assert.equal(shouldSkipDocsOnly(['docs/a.md', 'app/page.tsx']), false)
   assert.equal(shouldSkipDocsOnly(null), false)
   assert.equal(shouldSkipDocsOnly([]), false)

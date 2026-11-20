@@ -1,0 +1,1179 @@
+{
+  "ranAt_hk": "19/11/2026, 10:49:35 pm",
+  "dryRun": false,
+  "batches": [
+    1,
+    2,
+    3
+  ],
+  "deleted": 158,
+  "failed": 0,
+  "keep": [
+    "dpl_6qjo5KJKtLkiXrhUQyobEh1MU3Pn",
+    "dpl_56GAcsG82Bwrhy8r31CeEp3TP94x",
+    "dpl_8a6QSm6dhadaZtuGNEeViM8yrWYp"
+  ],
+  "results": [
+    {
+      "id": "dpl_3DRBfYZZfyAheZFEDVP46URyX5gA",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9y3qnpa9nGXdtpNf3JnMoSFUVQST",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2yRj2j1Xvw7JXDz3x2gjyc5RZ6MK",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HFFEUYNwd8HEZnXRm1FhnQhRjjdB",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_81mEgyvmbyF9n5ynHTk93Dqg6Yqo",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_F8FS1GK6VqWVAU8NkKjZss5A8Cux",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DXugcc3sKFdnyCpwg5o5GEtffkDP",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_85PbjEubDGJPu7rHFFeZnxs9h7US",
+      "batch": 1,
+      "target": "production",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9XBnJT5TLE19K4KmrgkmyKwh5S1r",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_96TQNeH2ajyQysrSee9ZgSpawAcE",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GRvQVbTk4rGheVjhQjpoDbsi8iZQ",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8w1wuePENGfk3T2mY8W8Kjtky6rM",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8BCFsaPvMzWPtjWXNtwwbqxH5gnf",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_E8iYCsWiqykCZ3hSvzcRzFN4hJjZ",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GNa6k96Q6RzphwBSjfzu34f5K7tM",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Dqkk26fiu2p2VigUxEoUjZpv2Fw3",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FktWyy2pPskJP1vyHXUykSUkC1J5",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_B2hUKe9DGrAfmEWbXkey7NjzqJ3o",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2oKzFzbvwgvv2UuqEbcrisPriyBe",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CjuuxkrsAw1Qrje85zznsT6J7DhY",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BAaLjWehEcCMrNWNh5KSxokJPzsc",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EnnQKF97BiJQnK9GMSoEjGUNCQjL",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Cw2vs9YqRbg2h9hXC9vKeoZBh7cb",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DRVZxsxcH3guMcuAYw3BzrB68opa",
+      "batch": 1,
+      "target": "production",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_7rpiLat7hp36aKVuyB7jnK93ZGpM",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_F3LtzgK86Bh7EDuCXxoQbVjgNWu2",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2oAzCb1EiAY8fPrdd6bzzQbbtchz",
+      "batch": 1,
+      "target": "production",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AihE5XoMhZruPCp1B89HTfFiCXey",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_6G9VAgSYDy3LLJU14P1PoJkj1kCb",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FSSrir4FbrxE3xw8Q4G61d4io8ic",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_qqCZPywrMjWV16Dim5qSxgqoGY41",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8NFMF72Kz4fP7K5LhmBjfE14JUAF",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FKtdQBzJxjpPEc5gKqX4dfML6L7t",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9b1reRHDYUNnaNVoS1hbGadQJzbR",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_D1hCzCTca6wNeS6PUViw5ibsr5LZ",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_3XskeUuve5mNKBF63ACENyn23zDo",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9uzYipuiB8xqkmBu6Nzqag8PFp3X",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AvZ6ZBAus9t1YREBdVShVCzFHuse",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DNa4ZNakMuimGj1ZvsSC6hRPhbnM",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8XM5tBCTSQinnFUk4Uj5beMyv2Ci",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AoBpKij3L8F5yG8T4xN366Jbe799",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2bbDAHhKVV4PDEfCo5k5QF5FnLRG",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BkdGEyoKjzfyAZwhZttE14MvotCc",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HTapHrzVvbtpV4LX3FiN1FV66t74",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Ay1nnAh3bSzwaPFEgFUHt6XzLYgu",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5AwpXX17WAXF2sCd9AJvV3NaS8vz",
+      "batch": 1,
+      "target": "preview",
+      "state": "CANCELED",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GYvg6E2mRcguF5wFNNBmxHzwmS6B",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_62Umy2yk7BgA3nGU9BTwyrVE8jv5",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GJWnQg72GMUXYNTLPhaa3ons3Png",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BVjJWAKZj3cUVBGCVKm6eNnT9eLk",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DtagfEo7i3T7bk74tXLZCf8tUHAH",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5qcoXwhkR5VANV3H4YoiQjUgY5HP",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_E4zLAmEXcG7XmL5C74SuoTcvE6U8",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2Qmk9FiDySWSDnNi2KH3mJ5N7ZtU",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CMJFikAF4Fui2SN8Y95RKQHnV6jc",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Bvnw5yKmQJ9HE5dUkbyFJTfCnAwK",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FGtqhsM1teN4Ci3WvBoQXHsy4AgB",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4MfdwKUaR9cXXnoNoC4hmC6uucJB",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_RAUfaMsJYGcMiKLPNoMJa5twa2gM",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Fu9g55X5c574jstZ2Rgz1xRAVUuU",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BtXYXxaVQAyCUrXbjD7yndxTkpit",
+      "batch": 1,
+      "target": "production",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_RrXokVaqGSqkuHsgVkvVFbFSyhba",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8CcJBYqqvPC8Nf3JR8Xvmp1xSFg4",
+      "batch": 1,
+      "target": "preview",
+      "state": "ERROR",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GANicTHacCtAgr4ZQmZR54ixnueC",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EV74zmAcaYgqBwuE1CALH7XvDSsf",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GJxUVzoEFweuf6u47MKfpfXR7Jzo",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GUqa2hkSiyW4ZhsXyW4MTzQ9Dk41",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_wS1zNeP5GZ3E7EQCiz4ptn99Rq7C",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_6S1CYAM1nqhQkGkWKhkrRe67v1f3",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_869iLD6vdQRqSjZzm8PHJrrhYJma",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AkCGPbbb9pv2DM8RZbnRbgsNRdt1",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CzeFRX7efqFXfTiFeHBqzTx3tFnv",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9bkBDM3gYg1Nk6C75tP7m4Pqi6on",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4wWZShV2uQwdi3skseAKtJMxLfAL",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_7bd4v2ENQd9byBZ8Hjqb1uQCRh2W",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AVepp6d1Q4ofZh8dBbiH5QddR8ha",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_J64faneuWz1Ahdd6QzzdZpk3FzAn",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_C2FmYXTfzd5bDu3QkR658dbvbrkM",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BiFcjiUvjyofmZU4ndmiNkJmbUut",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_J5i8toTTaNyJWdeiwHAKb6iaWDYF",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_B53fjUV1HnFEK6ige6ZsHE85EmaF",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EmySYfbA8CxFFkp3iSujDU4QXaiW",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HcMJYRXsiVH6GVxi8GDbhg9MPBwZ",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_6UMUQMuoW4vF3xov8nz8RwuvohGf",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AdFAvytj5YHdnRGWYDVJHRteSqZs",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4D7wqB4nJuSiLFDFHMLfLNgf1JNq",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Hu4fF625c2QpxjRpE4k4XzoxAKAA",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8qxKAtnAgeEfeqMq7zLsmEgoNJ91",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GwEWupKu7fEHEErw5bxVdeorKXMR",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_GcQnbUQ8of9r7VKt3s3CYoboybcY",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_A5sZi9VUCBhWRkjYQSzGZdGFS2oE",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_6iXrc7J7w2AXdLMtJsKYgZxDHPA4",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_J3tepfG8qikP6nTUg6dzQAjB7iJ3",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BqC7wbaCvFZMwMfUeCyUyaV2zPQy",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EQ34ru2Ec6ykKYcSMLPLS7t72f2d",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DKGG6huPWDmgKnDBvCLj6XoexFrA",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_E4pWZCMaV7HkATP5WUNcVsyKwD9U",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4r7rnvYbEHHQqSbk8J4skmjKVzD1",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_JD2FHeTdLrAvGnRBieuPEJhz8DHW",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8vADiz34RFsGvgda7uvrdqxuccEj",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5R4mpYFb7RzNzr6af6Xorpf5N18b",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DdvvW51W3KfSFkCLJhmJMyjmXKsQ",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HNWDw1D5RMiTMZ9Fh9Vqn1MZp3An",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_ALztyrpHhDu3RXEbK8kgLbSrEvQc",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_3iHqnDKetkzZiFAEiuXJPYoyuX48",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FWQn1rnbQNbLDkpkWmpnKTpzqtE8",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BQedzHkLu7b5LYdMCjFumNZRR4ZR",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CwZsdWGosCbrFxRefgfp1VEF5Kge",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_ABtKqqCBwK6AuWSberTj8ju566hn",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_3K6RHT8L2ZztaYQppBmQcFJGxVit",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DAJD35TyHHMfewYZdY84VSgKiDdz",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_ooDa4nDazoGNXt8QAQsWW6hw1vbv",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8foBD5YfwTbqFsNzL22sD5LgwFz5",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Hguxh76NA7MWkFF4Mnvddk363m2n",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2AY8tZrtsYqjvqBRu98MioYxLhuB",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HF9hwpX4XsAUe6oV9YHusXo3Dcki",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Bknhw1dgW1uaXN8n8NnY6LQ7CuWE",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9KmcpNi2jFGWSGfjpZeJQyZ9RWes",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_7kxcnayvn995cSxwSrKZLmN7QenJ",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_63HoHFQxARbJpSpLZka15uo3P8X7",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9MbNS7KuL1u1xKXLW2gpvD2yGWMn",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5LQSCbTCjB5DDbS8u8v8YNLJ9FdT",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EspVuHsuztTbmUHa3c77xJgeDXC1",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5cjbNjpgqNpFBqfxpuJ3pL2HXKXb",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_DNDrJnmVQWARb3qhcwKCiRJ6MPBt",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4dgSccK5Pmu1H8DW4jCsqa7G6Pfj",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9FY5dGTCC9k3cjvZFvuS2MHXeGSk",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FGcY5dr7w2GKGec482FQNJaET4mo",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2Uc7nZpSJkdWiJ1d7XaEJFMYNYat",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2bYnrY8YrsHTUbwcy4zHKbqxUDed",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FAcqxPQUd9XTz3gA8ji4poyNmHBm",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8cNhSeo9r6sYJo1cp7KRipckRATe",
+      "batch": 2,
+      "target": "preview",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4qy25qzpjX9uvuvK61HSczQ1G7tX",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8MvSFzUxq2Ji37rtPkkUwdHESNtu",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5NL9fF8k7qKw5ZoMjorYNT6TE4kW",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_ArG2RQCEG3qKKGMJq4MEsp6iFagW",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Bfx5RHsJ4FtNWQEhZtzHUs6Wdaff",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_81JQUNd91YRRp7ehnR8TdxyzcPVx",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_4o8ucAmkibFEcP33EzY5hwZVukeu",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_7jUoCGukzSuGG9XtyQtEWfbdRU4C",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_Furq2dtWD7MAAL4oez9hCmwXkxdW",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_BTBaC4FYiFxVcvZZgpa3LCGhkUTU",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_EWg6BsmtLeGBY5eUkNXQMcYEwJkc",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_9Na47MA2sFNfLKepdp4PJRHSPzqU",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_G7X5zfDUmApbvvxZLpSZggg6i76E",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_FK6ZkSSNWsBKzthQRqJzEmpeZYQr",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_2vJGyH57krM8QPbjvEn7AEGhCaK1",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_JDw8gGef56osyHz3WVbqQ1Pzs3CJ",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_AhPLd4H5copApzNBtkWpdtYAdtSD",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8dC4fd7rDgdpTLsRULtaGYGCrWVz",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CPHDSyNzpc5owBQ562XsbmNqm3LG",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_ARuLBcQnFQtKi5wPLaGHsXrahAbw",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_8pSU2cH3VfXuen2f6Jm3qddB9YV5",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_CcWaxcU7ZqLMKanLYNsq9Wh3swn5",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_J6DB8MFAmHC61tzUzYGv3gMZWFZ7",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_5FcDQsvYx3q6AHpehj7NBsSPJehq",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_HgDJuN8FBYEymjFdSzLTsordjBM8",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    },
+    {
+      "id": "dpl_24aDFNtuVzgbkqygCg2D6VXBVa1e",
+      "batch": 3,
+      "target": "production",
+      "state": "READY",
+      "status": "deleted"
+    }
+  ],
+  "executed_at_hk": "2026-11-19T22:50:22+08:00",
+  "verification": {
+    "www_dselevelup_com_http": 200,
+    "robots_txt_http": 200,
+    "keep_present": 3,
+    "confirm_E_present": 18,
+    "deleted_still_present": 0,
+    "remaining_deployments": 47,
+    "remaining_by_state": {
+      "READY": 36,
+      "ERROR": 6,
+      "CANCELED": 5
+    },
+    "remaining_by_target": {
+      "preview": 41,
+      "production": 6
+    },
+    "production_READY": 5,
+    "keep_ids": [
+      "dpl_6qjo5KJKtLkiXrhUQyobEh1MU3Pn",
+      "dpl_56GAcsG82Bwrhy8r31CeEp3TP94x",
+      "dpl_8a6QSm6dhadaZtuGNEeViM8yrWYp"
+    ],
+    "extra_production_READY_not_in_approval": [
+      "dpl_9QA12dFnDLCJyVpoFkrpNJJJRWjL",
+      "dpl_FPPHQ4J8Rtb8km26Uw4RvBngk7aK"
+    ],
+    "notes": [
+      "Batch 1–3 deleted 158/158, failed 0.",
+      "confirm_E untouched (18/18 still present).",
+      "Two additional production READY exist that were absent from the 2026-11-19 approval inventory; left alone.",
+      "Functions Storage GB still unknown via API — founder to confirm Dashboard release.",
+      "Founder Dashboard screenshot: Total 9.54 GB (Updated just now)."
+    ],
+    "functions_storage_gb": 9.54,
+    "functions_storage_verdict": "已確認讀數"
+  },
+  "dashboard_usage": {
+    "recorded_at_hk": "2026-11-19T22:54:14+08:00",
+    "source": "founder screenshot",
+    "metric": "Functions Storage Total size",
+    "team": "dselevelup",
+    "range": "last-3-months (chart ends ~2026-11-19 07:00)",
+    "total_gb": 9.54,
+    "free_tier_included_gb": 10,
+    "limits_increased_3x_until": "2026-12-19",
+    "verdict": "已確認讀數",
+    "notes": [
+      "Free tier included ~10 GB (L-COST-AND-CAPACITY-2026-10-29).",
+      "9.54 GB ≈ 95% of included 10 GB — still tight.",
+      "Temporary 3x limit until 2026-12-19.",
+      "Chart right edge ~07:00 HKT; Batch 1–3 delete ran ~22:40 HKT same day — further drop may still appear.",
+      "Screenshot: docs/ops/assets/functions-storage-2026-11-19.png"
+    ]
+  }
+}

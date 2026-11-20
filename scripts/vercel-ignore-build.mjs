@@ -32,7 +32,7 @@ function build(reason) {
 
 /** Docs / agent / governance paths that do not need a preview deploy. */
 export const DOC_ONLY =
-  /^(docs\/|\.cursor\/|\.github\/|content\/|scripts\/vercel-ignore-build\.mjs$|AGENTS\.md$|CLAUDE\.md$|README\.md$|LICENSE$|\.gitignore$)/
+  /^(docs\/|\.cursor\/|\.github\/|content\/|scripts\/vercel-ignore-build\.mjs$|AGENTS\.md$|CLAUDE\.md$|README\.md$|LICENSE$|\.gitignore$|\.graphifyignore$)/
 
 function runGit(cmd, exec = execSync) {
   return exec(cmd, {
