@@ -15,6 +15,7 @@ import {
   parseGeneralFeedback,
   reflectionCard,
 } from '@/lib/generalFeedback'
+import GuestProductWriteNote from '@/components/GuestProductWriteNote'
 import { useLocale } from '@/lib/i18n'
 
 const FEATURE_HINT: Record<FeatureId, { zh: string; en: string }> = {
@@ -67,6 +68,7 @@ export default function FeedbackClient() {
   const [ahaText, setAhaText] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [notice, setNotice] = useState('')
+  const [needsSignIn, setNeedsSignIn] = useState(false)
   const [card, setCard] = useState<{ title: string; text: string } | null>(null)
   const [copyNote, setCopyNote] = useState('')
 
@@ -75,6 +77,7 @@ export default function FeedbackClient() {
   const submit = async () => {
     if (status === 'sending') return
     setNotice('')
+    setNeedsSignIn(false)
     const parsed = parseGeneralFeedback({
       features,
       accessibility: { answers: a11y, note: a11yNote },
@@ -96,11 +99,16 @@ export default function FeedbackClient() {
     try {
       const res = await fetch('/api/feedback-general', {
         method: 'POST',
-        credentials: 'omit',
+        credentials: 'same-origin',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(parsed.value),
       })
       const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null
+      if (res.status === 401 || data?.error === 'unauthenticated') {
+        setStatus('idle')
+        setNeedsSignIn(true)
+        return
+      }
       if (res.ok && data?.ok === true) {
         setCard(reflectionCard(parsed.value, en ? 'en' : 'zh'))
         setStatus('idle')
@@ -186,8 +194,8 @@ export default function FeedbackClient() {
         <h1 className="font-serif text-3xl leading-tight text-ink sm:text-4xl">{tr('匿名意見', 'Anonymous feedback')}</h1>
         <p className="mt-3 text-base leading-7 text-ink-soft">
           {tr(
-            '呢頁可以唔填。我哋唔會記低你嘅帳戶、電郵或者 IP。冇分數，亦唔會催你交。',
-            'This page is optional. We do not keep your account, email or IP. There is no score, and nothing hurries you to send it.',
+            '呢頁可以唔填。想保存嚟幫我哋改進產品，請先用 Google 登入。未登入送出唔會寫入。仍然完全免費。登入唔係付費牆，亦唔會解鎖任何收費內容。保存嗰行唔會記低你嘅帳戶、電郵或者 IP。冇分數，亦唔會催你交。',
+            'This page is optional. To keep it so we can improve the product, sign in with Google first. If you are not signed in, sending writes nothing. This is still completely free. Signing in is not a paywall and unlocks no paid content. A saved row does not keep your account, email or IP. There is no score, and nothing hurries you to send it.',
           )}
         </p>
         <p className="mt-2 text-sm leading-6 text-ink-muted">
@@ -320,6 +328,7 @@ export default function FeedbackClient() {
           >
             {status === 'sending' ? tr('送出緊', 'Sending') : tr('送出意見', 'Send feedback')}
           </button>
+          {needsSignIn ? <GuestProductWriteNote en={en} /> : null}
           <p aria-live="polite" className="mt-3 min-h-5 text-sm leading-6 text-ink-muted">
             {notice}
           </p>

@@ -8,6 +8,7 @@ import {
   inclusiveWarningZh,
   scanInclusiveText,
 } from '@/lib/inclusiveFilter'
+import GuestProductWriteNote from '@/components/GuestProductWriteNote'
 import { CATEGORIES, type CategoryKey } from '@/lib/questionReport'
 
 // 題目勘誤入口 —— 學生見到題目有問題，喺當場報得返。
@@ -32,7 +33,8 @@ import { CATEGORIES, type CategoryKey } from '@/lib/questionReport'
 // ══ 2026-10-04：可以直接送出（審計 #7，創辦人回覆「a」）══
 // 「送出」只傳學生【揀】的內容：題號、問題類別、介面語言（lib/questionReport.ts，
 // 表 question_reports）。學生自己寫的描述不會傳到本站，只會經學生自己的電郵寄出
-// （憲章 §16.E 約束 5）。不記帳戶、IP 或裝置。
+// （憲章 §16.E 約束 5）。不記帳戶、IP 或裝置。2026-11-20：未登入回 401，唔寫入；
+// 畫面會請學生用 Google 登入先保存。登入後寫入嘅列仍然冇身份欄。
 // 送出失敗（包括資料表未建立）一定會顯示，並指向電郵；只有伺服器回覆 { ok: true }
 // 才顯示「收到」，避免重犯「有個掣但寫入唔到」的錯。
 const REPORT_EMAIL = 'dselevelup@gmail.com'
@@ -93,7 +95,7 @@ export default function ReportQuestionButton({
   const [copied, setCopied] = useState(false)
   // 撳咗「用電郵寄出」：只代表郵件程式已開啟（或者冇反應），唔代表已寄出。
   const [prepared, setPrepared] = useState(false)
-  const [send, setSend] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
+  const [send, setSend] = useState<'idle' | 'sending' | 'sent' | 'failed' | 'guest'>('idle')
   const panelRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
@@ -147,10 +149,15 @@ export default function ReportQuestionButton({
     try {
       const res = await fetch('/api/report', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ questionId, category: cat, locale: en ? 'en' : 'zh' }),
       })
-      const data = (await res.json().catch(() => null)) as { ok?: boolean } | null
+      const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null
+      if (res.status === 401 || data?.error === 'unauthenticated') {
+        setSend('guest')
+        return
+      }
       setSend(res.ok && data?.ok === true ? 'sent' : 'failed')
     } catch {
       setSend('failed')
@@ -206,8 +213,8 @@ export default function ReportQuestionButton({
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {en
-                  ? 'Pick the kind of problem and press Send. We receive only the question ID and the kind of problem, not who you are. A person reads every report; if we are wrong, the question gets fixed or withdrawn.'
-                  : '揀問題類別，撳「送出」就得。我哋只會收到題號同問題類別，唔會知道你係邊個。每一份都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
+                  ? 'Pick the kind of problem and press Send. If you are signed in with Google, we receive only the question ID and the kind of problem, not who you are. If you are not signed in, nothing is saved. Signing in is completely free. It is not a paywall and unlocks no paid content. A person reads every saved report; if we are wrong, the question gets fixed or withdrawn.'
+                  : '揀問題類別，撳「送出」就得。已用 Google 登入，我哋只會收到題號同問題類別，唔會知道你係邊個。未登入唔會保存。登入完全免費，唔係付費牆，亦唔會解鎖任何收費內容。每一份保存咗嘅報告都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
               </p>
               <p className="mt-2 font-mono text-[11px] text-ink-muted">
                 {en ? 'Question ID' : '題號'}: {questionId}
@@ -245,7 +252,7 @@ export default function ReportQuestionButton({
               >
                 {send === 'sending' ? (en ? 'Sending…' : '傳送緊…') : send === 'sent' ? (en ? 'Sent' : '已送出') : en ? 'Send' : '送出'}
               </button>
-              <p aria-live="polite" className="mt-2 text-xs leading-relaxed text-ink-muted">
+              <div aria-live="polite" className="mt-2 text-xs leading-relaxed text-ink-muted">
                 {send === 'sent'
                   ? en
                     ? `Received — ${tutorLabel} are checking. Reports are anonymous, so we cannot message you when it is fixed; withdrawn items show on Transparency.`
@@ -254,8 +261,9 @@ export default function ReportQuestionButton({
                     ? en
                       ? 'It did not go through. Please send it by email below instead.'
                       : '傳送唔到。請用下面嘅電郵寄出。'
-                    : ''}
-              </p>
+                    : null}
+                {send === 'guest' ? <GuestProductWriteNote en={en} /> : null}
+              </div>
 
               {/* 學生自己寫的描述只經學生自己的電郵寄出，本站不儲存（憲章 §16.E 約束 5）。 */}
               <h3 className="mt-5 border-t border-line pt-4 text-sm font-medium text-ink">
