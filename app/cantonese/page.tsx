@@ -32,10 +32,10 @@ import CantoneseView from './CantoneseView'
 //    證明唔到「個音讀得啱」—— 兩句唔同意思，頁面文案亦係咁寫。
 //
 // ══ 入口 ══
-// 2026-09-26 起由「不考之地」（/off-syllabus）入，入口只喺三橫選單同側欄最尾；
-// 首頁當眼卡已移走（Yuna：「唔好擺咁當眼位置」）。範圍決定見憲章 §1.2 註。
-// ⚠️ 2026-09-19 之前入口曾經喺 /subjects/chinese 頂部，已剷 —— 呢個唔屬於任何一科。
-// 冇入口嘅路由 = 孤兒，scripts/integration-guard.mjs 會嗌。
+// 2026-09-26 起曾由「不考之地」（/off-syllabus）進入，首頁當眼卡已移走。
+// 2026-11-20 創辦人刪除該區。本頁保留為獨立路由，不放首頁當眼卡，
+// 頁內不再連回已刪除的區。直接網址、場景頁返回與 sitemap 仍可到達。
+// ⚠️ 2026-09-19 之前入口曾經在 /subjects/chinese 頂部，已刪 —— 這不屬於任何一科。
 
 export const metadata = completeSeoMetadata({
   title: '新來港・香港日常廣東話 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata

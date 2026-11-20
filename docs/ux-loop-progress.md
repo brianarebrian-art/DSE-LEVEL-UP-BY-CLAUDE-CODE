@@ -1,5 +1,7 @@
 # UX 改善循環紀錄
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。下文若把它寫成側欄最尾的現行項目，只反映當時量度。`/cantonese` 保留，且不是首頁當眼入口。
+
 **來源：** 2026-09-30 Yuna 貼上的「Claude Code Loop Prompt：DSE Level Up 持續 UX／產品／增長改善循環」，要求由 LOOP 1 開始持續迭代。
 **分支：** `feat/ux-loop`（由 `origin/main` 的 `feda328` 開出，已包含信任中心同步數目及 `/practice` 題數標示的修正）。
 **憲章 §4：** 該 prompt 列明每輪一個小 slice 及其次序，視作創辦人對所列 slice 的批准。每輪動手前，先在本檔寫明影響範圍；超出 prompt 所列範圍，或屬 prompt 第九節列明須由使用者決定的事項，一律停下。

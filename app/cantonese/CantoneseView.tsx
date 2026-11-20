@@ -21,7 +21,7 @@ export default function CantoneseView({ topics }: { topics: CantoneseTopic[] }) 
         <div className="mb-2 flex items-center gap-1 text-sm text-ink-muted">
  <Link href="/" className="hover:text-accent">{t.common.home}</Link>
  <span aria-hidden>/</span>
- <Link href="/off-syllabus" className="hover:text-accent">{t.nav.offSyllabus}</Link>
+ <span aria-current="page">{c.courseShort}</span>
  </div>
 
         {/* 「業餘班 · 非正規課程」擺喺標題【上面】而唔係腳註 —— 一個學生應該

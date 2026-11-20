@@ -1,5 +1,7 @@
 # 回歸修復紀錄：13 項 npm test 失敗
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。`OffSyllabusShareButton` 及其外部網址白名單已一併移除。下文該行只反映 2026-10-22 的修復。`/cantonese` 保留。
+
 **日期：** 2026-10-22
 **範圍：** 只處理 `/home/ubuntu/dse-evidence/final-test.log` 中的 13 項失敗；未執行完整 `npm test`、未執行 build、未修改題庫資料、未修改 `components/Seo/` 或所有文章頁。
 

@@ -10,8 +10,6 @@ const zh = {
     // 2026-09-30（LOOP 36）：主名稱用學生認得的「列印練習卷」，「紙筆戰士」只作頁面副題。
     paper: '列印練習卷',
     notes: '知識凝結',
-    // 2026-09-26 Yuna：非 DSE 考核範圍嘅內容集中喺呢度，入口只喺三橫選單同側欄。
-    offSyllabus: '不考之地',
     startPractice: '開始練習',
     // 手機底欄：刻意沿用各頁自己嘅叫法，唔另創「今日／回顧／我的」一套新詞 ——
     // 掣寫「今日」但撳落去個頁面寫「我的進度」，只會令學生要記兩套名。
@@ -19,36 +17,19 @@ const zh = {
     tabProgress: '進度',
     tabSaved: '收藏',
     tabAccount: '帳戶',
-    // 漢堡／側欄次要區標題（四格以外：筆記、不考之地、關於…）
+    // 漢堡／側欄次要區標題（四格以外：筆記、關於…）
     more: '更多',
   },
   // 前／後頁導航（PageNav）。目的地名一律沿用上面 nav 嘅叫法 —— 同底欄、
   // 側欄同一個原則：掣寫一個名、頁寫另一個名，學生就要記兩套。
   // 呢度只補一個 nav 冇嘅 `home`，其餘全部由 lib/pageOrder 對應返上面。
-  // 不考之地（/off-syllabus）。2026-09-26 Yuna 定名同標語。
-  offSyllabus: {
-    tagline: '純粹為樂趣而學',
-    lead: '呢度嘅嘢唔屬任何 DSE 科目，亦唔會喺考試出現。唔計分、唔記進度，想睇就睇。',
-    // 話題卡（data/offSyllabus）。卡片內容本身係廣東話，只有呢啲標題跟語言切換。
-    cardsTitle: '話題卡',
-    cardsLead: '十個範疇，揀一個開始睇。唔使記、唔使答，睇完可以同朋友吹下水。',
-    cardsUnit: ' 張卡',
-    life: '生活點用？',
-    scene: '場景',
-    dialogue: '地道對白',
-    explain: '解密',
-    trivia: '不考冷知識',
-    chat: '今日吹水話題',
-    aiNote: '話題卡由 AI 協助撰寫，冷知識未經專家逐張核對；如發現錯漏，請以可靠資料為準。',
-    enNote: '',
-  },
   // 新來港學生支援頁（/cantonese）。
   //
   // ⚠️ 2026-09-19 範圍改過兩次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
   //    生活求生粵語唔屬於呢度」，而家係【十六個全部日常生活場景】，並且由 Claude Code 校對後直接出街。
   //    舊句留喺度會變成一段同內容直接打架嘅條文 —— 憲章 §8.1 記低過呢個模式，
   //    所以改寫而唔係擺喺度當佢仲啱。
-  //    範圍本身仲未喺 docs/charter.md 調和，詳見 data/cantonese.ts 檔頭。
+  //    範圍見憲章 §1 第 2.1 點（2026-11-20）：非考試趣味區已刪，本頁仍是獨立路由。
   // ⚠️ 亦【唔會】出現卷三／卷四，或者任何 DSE 卷別 —— 呢個唔屬中文科。
   //    喺一版教買衫搭車嘅頁度講卷別，只會令人以為呢度係試前溫習。
   cantonese: {
@@ -107,10 +88,6 @@ const zh = {
       repeat: '請人重複',
       close: '收尾・道謝',
     },
-    // 「不考之地」（/off-syllabus）入面嘅卡。2026-09-26 前係首頁當眼卡，已移走。
-    homeTitle: '新來港・香港日常廣東話',
-    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。返學、食飯、搭車、打風、睇醫生、約人打波 —— 十六個場景，每句附粵拼、普通話同英文，仲有點樣學嘅方法。',
-    homeCta: '立即學習',
   },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
@@ -127,8 +104,7 @@ const zh = {
     // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
     predictor: '練習表現',
     relax: '呼吸空間',
-    offSyllabus: '不考之地',
-    // 側欄組名：主要四格 ＋ 更多（次要工具）＋ 不考之地獨立尾組。
+    // 側欄組名：主要四格 ＋ 更多（次要工具）。
     groupMain: '主要',
     groupMore: '更多',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
@@ -486,28 +462,12 @@ const en: typeof zh = {
     about: 'About',
     paper: 'Printable practice set',
     notes: 'Notes',
-    offSyllabus: 'Off the Syllabus',
     startPractice: 'Start Practice',
     tabPractice: 'Practise',
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
     more: 'More',
-  },
-  offSyllabus: {
-    tagline: 'Learning just for fun',
-    lead: 'Nothing here belongs to a DSE subject or turns up in an exam. No scores, no progress tracking. Browse as you like.',
-    cardsTitle: 'Topic cards',
-    cardsLead: 'Ten themes. Pick one and browse. Nothing to remember, nothing to answer.',
-    cardsUnit: ' cards',
-    life: 'In real life',
-    scene: 'Scene',
-    dialogue: 'What people say',
-    explain: 'What it means',
-    trivia: 'Fun fact (not on any exam)',
-    chat: 'Chat starter',
-    aiNote: 'These cards were written with AI help, and the fun facts have not been checked one by one by an expert. If something looks wrong, trust a reliable source.',
-    enNote: 'The cards are written in Cantonese.',
   },
   cantonese: {
     title: 'New to Hong Kong — everyday Cantonese',
@@ -554,10 +514,6 @@ const en: typeof zh = {
       repeat: 'Asking to repeat',
       close: 'Closing · thanks',
     },
-    homeTitle: 'New to Hong Kong — everyday Cantonese',
-    homeLead:
-      'What people here actually say differs from what the textbook teaches. School, eating, getting around, typhoons, the doctor, making plans — sixteen situations, each line with Jyutping, Putonghua and English, plus how to learn it.',
-    homeCta: 'Start learning',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
@@ -569,7 +525,6 @@ const en: typeof zh = {
     errorDna: 'Error patterns',
     predictor: 'Practice performance',
     relax: 'Breathing Space',
-    offSyllabus: 'Off the Syllabus',
     groupMain: 'Main',
     groupMore: 'More',
     quote: 'Multiple-choice trains judgement, not memorised answers, and not the whole paper.',

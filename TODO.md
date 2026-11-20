@@ -1,5 +1,7 @@
 # 升級待辦
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。下列已完成項目是刪除前的歷史，不要恢復此區或把它當現行導覽。`/cantonese` 保留，且不是首頁當眼入口。
+
 - [x] 「不考之地」卡片具備手機優先、可觸控、可用鍵盤的展開互動，並在 reduced-motion 下保留完整內容。
 - [x] 卡片分享按鈕可將卡片摘要、當前連結、Threads 與 Instagram 平台連結複製到剪貼簿。
 - [x] 公開學科與「不考之地」分類頁具備獨特 title、description、Open Graph、Twitter Card 與 canonical metadata。

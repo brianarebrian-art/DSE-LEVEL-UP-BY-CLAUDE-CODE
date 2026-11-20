@@ -26,7 +26,6 @@ import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 import { sourceLabEntries } from '@/data/history-sources'
 import { ARTICLE_DATES } from '@/lib/articleDates'
 import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
-import { CATEGORIES } from '@/data/offSyllabus'
 import { shouldNoIndex } from '@/lib/seoPolicy'
 import { SCENE_IDS } from '@/data/cantonese'
 import { getSubjectQuestions } from '@/data/questions'
@@ -53,7 +52,6 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/trust', priority: 0.7, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
-  { path: '/off-syllabus', priority: 0.7, freq: 'weekly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
   { path: '/cantonese', priority: 0.4, freq: 'monthly' },
   { path: '/cantonese/learn', priority: 0.4, freq: 'monthly' },
@@ -82,11 +80,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...sourceLabEntries.map((e) => ({
       url: `${DOMAIN}/source-lab/${e.id}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    })),
-    ...CATEGORIES.map((c) => ({
-      url: `${DOMAIN}/off-syllabus/${c.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

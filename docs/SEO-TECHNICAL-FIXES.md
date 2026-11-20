@@ -1,5 +1,7 @@
 # 技術 SEO 修復紀錄
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。下文若寫「入口仍在不考之地」或分類頁驗收，只反映當時修復，不是現行導覽。`/cantonese` 保留，且不是首頁當眼入口。
+
 基線為 `d25c63740a9184d0303e2558c8ee6f51643258d6`，修復分支為 `seo/truth-audit-quality-pages`。本文件記錄程式修復，不將本機建置、GitHub PR 或 HTTP 200 視為正式部署、Google 索引或搜尋成效。基線問題及 130 URL 清單見 `REPOSITORY-TRUTH-REPORT.md`；最終退出碼及 HTTP 結果見 `SEO-RELEASE-VALIDATION.md`。
 
 ## 問題、證據與修改
