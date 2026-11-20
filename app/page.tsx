@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import HomePageClient from './HomePageClient'
 import { createSeoMetadata, breadcrumbJsonLd } from '@/lib/seo'
+import { homeSeoDescription } from '@/lib/dynamicSeoDescriptions'
 import { JsonLd } from '@/components/Seo/JsonLd'
 
 export const metadata: Metadata = createSeoMetadata({
   title: 'DSE Level Up | DSE 溫習平台 | 選擇題練判斷', // i18n-exempt: zh-Hant fixed search metadata
-  description: '免費、無廣告、毋須登入。一節約 10 題選擇題，大約 15 分鐘。題目為原創改寫，並非考評局試題，不作成績保證。', // i18n-exempt: zh-Hant fixed search metadata
+  description: homeSeoDescription(), // i18n-exempt: zh-Hant fixed search metadata
   path: '/',
   type: 'website',
 })

@@ -99,6 +99,32 @@ export function cantoneseSeoDescription({ title, why, phraseCount, wordCount }: 
   )
 }
 
+const QUESTION_DESCRIPTION_SENTENCES = [
+  '登入之後仍然完全免費，沒有廣告，也沒有要付費先解鎖的內容。',
+  '未登入時可以先完成一節練習，進度留在這部裝置。',
+  '題目用來核對概念和解題步驟，應配合課本和教師指引。',
+  '本站與香港考試及評核局沒有從屬關係。',
+  '先看清楚題目問什麼，再核對解析。',
+  '可按課題選擇下一節練習。',
+  '解析說明做法，不代替課堂。',
+]
+
+/** Homepage search snippet. Keeps the existing offer, then only whole sentences. */
+export function homeSeoDescription(): string {
+  return completeDescription(
+    '免費、無廣告、毋須登入。一節約 10 題選擇題，大約 15 分鐘。題目為原創改寫，並非考評局試題，不作成績保證。',
+    QUESTION_DESCRIPTION_SENTENCES,
+  )
+}
+
+/** One indexed practice question. Subject and topic stay in the first sentence. */
+export function questionSeoDescription(subjectName: string, topicName: string): string {
+  return completeDescription(
+    `${subjectName}「${topicName}」的原創改寫練習題與解析。並非考評局試題，不作成績保證。`,
+    QUESTION_DESCRIPTION_SENTENCES,
+  )
+}
+
 export function sourceLabSeoDescription({ title, date, place, factCount, perspectiveCount, positionCount }: SourceLabInput): string {
   return completeDescription(
     `「${title}」是史料判讀室的 DSE 歷史科卷一資料題訓練頁，涵蓋${factCount}項事實、${perspectiveCount}種詮釋及${positionCount}項立場；頁面標示的時間為${date}，地點為${place}。`,

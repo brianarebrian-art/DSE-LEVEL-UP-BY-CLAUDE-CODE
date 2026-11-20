@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { LogIn, Loader2 } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { signInWithGoogle } from '@/lib/auth/google-auth'
@@ -18,6 +19,7 @@ export default function GoogleSignInButton({
 }) {
   const { locale } = useLocale()
   const en = locale === 'en'
+  const router = useRouter()
   const [busy, setBusy] = useState(false)
 
   async function onClick() {
@@ -26,7 +28,7 @@ export default function GoogleSignInButton({
     const { error } = await signInWithGoogle(next)
     if (error) {
       setBusy(false)
-      window.location.href = `/sign-in?error=${encodeURIComponent(error)}`
+      router.push(`/sign-in?error=${encodeURIComponent(error)}`)
     }
     // On success the browser navigates to Google / Supabase — leave busy=true.
   }

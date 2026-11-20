@@ -81,7 +81,8 @@ test('public copy drops the retired brand and the unsubstantiated study claims',
   const subject = read('app/subject/[subject]/[topic]/[id]/page.tsx')
   assert.doesNotMatch(subject, /DSE 2026/)
   assert.match(subject, /DSE \$\{meta\.name\} 題目解析/)
-  assert.match(subject, /並非考評局試題/)
+  assert.match(subject, /questionSeoDescription/)
+  assert.match(read('lib/dynamicSeoDescriptions.ts'), /並非考評局試題/)
   assert.match(subject, /沒有從屬關係/)
   assert.match(subject, /<MathText>/)
   assert.match(subject, /isCorrect/)
@@ -89,11 +90,15 @@ test('public copy drops the retired brand and the unsubstantiated study claims',
   assert.doesNotMatch(read('app/dse-maths/page.tsx'), /非官方题解/)
 })
 
-test('homepage meta description leads with the practice offer', () => {
+test('homepage meta description leads with the practice offer', async () => {
   const home = read('app/page.tsx')
-  assert.match(home, /description: '免費、無廣告、毋須登入。一節約 10 題選擇題，大約 15 分鐘。題目為原創改寫，並非考評局試題，不作成績保證。'/)
+  assert.match(home, /homeSeoDescription\(\)/)
   assert.doesNotMatch(home, /科目筆記和寫作自評/)
   assert.doesNotMatch(home, /全站雙語|一節20題|答錯鎖60秒/)
+  const { homeSeoDescription } = await import('../dynamicSeoDescriptions.ts')
+  const description = homeSeoDescription()
+  assert.match(description, /^免費、無廣告、毋須登入。一節約 10 題選擇題，大約 15 分鐘。題目為原創改寫，並非考評局試題，不作成績保證。/)
+  assert.ok([...description].length >= 150 && [...description].length <= 160, description)
 })
 
 test('homepage tangent points lie on the circle and the lines are tangents', async () => {

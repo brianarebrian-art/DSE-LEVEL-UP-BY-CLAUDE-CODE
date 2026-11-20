@@ -4,6 +4,7 @@ import { getSubject } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import { explanationDisplay } from '@/data/public-samples/batch-1'
 import { completeSeoMetadata } from '@/lib/seo'
+import { questionSeoDescription } from '@/lib/dynamicSeoDescriptions'
 import { SITE_ORIGIN } from '@/lib/site'
 import { JsonLd } from '@/components/Seo/JsonLd'
 import MathText from '@/components/MathText'
@@ -33,7 +34,7 @@ export async function generateMetadata({
   const display = explanationDisplay(id, question)
   const topicName = display.topicZh || topic
   const title = `DSE ${meta.name} 題目解析 (${topicName}) | DSE Level Up` // i18n-exempt: SEO title
-  const description = `${meta.name}「${topicName}」的原創改寫練習題與解析。並非考評局試題，不作成績保證。` // i18n-exempt: SEO description
+  const description = questionSeoDescription(meta.name, topicName) // i18n-exempt: SEO description
 
   return completeSeoMetadata(
     {

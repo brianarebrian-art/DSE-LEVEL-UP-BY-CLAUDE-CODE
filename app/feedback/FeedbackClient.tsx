@@ -4,7 +4,6 @@ import { useState } from 'react'
 import {
   A11Y_CHOICES,
   A11Y_IDS,
-  A11Y_LABEL,
   FEATURE_CHOICES,
   FEATURE_IDS,
   FEATURE_LABEL,

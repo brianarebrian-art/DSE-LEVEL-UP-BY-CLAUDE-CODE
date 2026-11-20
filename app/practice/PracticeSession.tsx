@@ -245,9 +245,9 @@ export default function PracticeSession({
   const { locale, t } = useLocale()
   const { status: authStatus } = useAuthSession()
   const subjectMeta = getSubject(subjectId)
-  const countIfSignedIn = (c: Parameters<typeof sendPracticeCount>[0]) => {
+  const countIfSignedIn = useCallback((c: Parameters<typeof sendPracticeCount>[0]) => {
     if (authStatus === 'authenticated') sendPracticeCount(c)
-  }
+  }, [authStatus])
 
   const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode, cause))
   // 第 3 週 · 引擎五：連續答對／答錯狀態。純 session 內存 ——
@@ -624,7 +624,7 @@ export default function PracticeSession({
       })
       notifyProgressChanged()
     }
-  }, [answers, answerState, firstAnswer, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, nextWish, currentQ])
+  }, [answers, answerState, firstAnswer, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, nextWish, currentQ, authStatus, countIfSignedIn])
 
   // 睇到解析先算取得價值。選單／結果頁的登入說明聽呢個事件，練習中唔彈窗。
   useEffect(() => {

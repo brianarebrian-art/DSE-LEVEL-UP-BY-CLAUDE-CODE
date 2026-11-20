@@ -41,7 +41,6 @@ export default function LongQuestionCard({
 }) {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const tr = (zh: string, e?: string) => (en && e ? e : zh)
 
  const [value, setValue] = useState('')
  const [submitted, setSubmitted] = useState(false)
