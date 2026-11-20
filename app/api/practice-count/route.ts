@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
+import { getSyncUserId } from '@/lib/auth/server'
 import { parsePracticeCount, toRpcArgs, PRACTICE_COUNTS_ENABLED } from '@/lib/practiceCount'
 import {
   hongKongCalendarDay,
@@ -11,9 +12,10 @@ import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
 
 // POST /api/practice-count — add one to today's count for a subject (founders' reply 40a,
-// 2026-10-08; lib/practiceCount.ts). Stores no account, IP, device or time of day: the
-// route never looks up the session, the IP address or the user agent. Abuse is limited per
-// IP in proxy.ts (in memory only).
+// 2026-10-08; lib/practiceCount.ts). Signed-in only (Fluid Active CPU, 2026-11-20):
+// unsigned callers get { ok: true, counted: false } and touch nothing. Stored totals
+// still hold no account, IP, device or time of day — only day / subject / event aggregates.
+// Abuse is limited per IP in proxy.ts (in memory only).
 //
 // Counts only on the production deployment, and only while PRACTICE_COUNTS_ENABLED is on;
 // otherwise it answers { ok: true, counted: false } and touches nothing, so local and
@@ -32,6 +34,14 @@ export async function POST(request: Request) {
   if (!PRACTICE_COUNTS_ENABLED || process.env.VERCEL_ENV !== 'production') {
     return NextResponse.json({ ok: true, counted: false })
   }
+
+  // Guests must not invoke Supabase RPC (Fluid Active CPU). Soft-skip, not 401 —
+  // the practice UI treats counting as best-effort.
+  const userId = await getSyncUserId()
+  if (!userId) {
+    return NextResponse.json({ ok: true, counted: false, reason: 'sign_in_required' })
+  }
+
   const read = await readJsonLimited(request, BODY_LIMIT.small)
   if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
   const parsed = parsePracticeCount(read.value)

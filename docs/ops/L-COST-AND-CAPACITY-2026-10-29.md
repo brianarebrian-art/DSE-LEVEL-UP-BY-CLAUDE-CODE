@@ -105,4 +105,39 @@ node scripts/vercel-ignore-build.mjs
 - [ ] 已截 Usage 圖  
 - [ ] 已刪舊 Preview／已改 Retention  
 - [ ] Preview Deployments：維持／暫時關閉  
-- [ ] 超額期間：等重置／准 Pro（金額寫明）  
+- [ ] 超額期間：等重置／准 Pro（金額寫明）
+
+## 7. Dashboard 清用量逐步（2026-11-20）
+
+Agent **無** Vercel delete API／未登入 CLI 時，請創辦人手做：
+
+### A. 刪舊 Preview（降 Function Storage）
+
+1. 開 https://vercel.com/dselevelup/dse-level-up-by-claude-code/deployments  
+2. Filter：**Preview**（或非 Production）  
+3. 刪除舊 Ready／Error／Canceled；**保留** production 最近 2–3 個 Ready  
+4. 或者加 team token `VERCEL_TOKEN` 後跑：  
+   `node scripts/ops/delete-old-vercel-previews.mjs --dry-run`  
+   `node scripts/ops/delete-old-vercel-previews.mjs`
+
+### B. 縮短 Deployment Retention
+
+1. Project → **Settings** → **Security** → **Deployment Retention**  
+2. Pre-Production／Canceled／Errored 設 **1–7 日**（建議 1 日）  
+3. Save
+
+### C. （可選）暫時關 Preview Deployments
+
+Settings → Git → Preview Deployments → Disable（考季爆額時）
+
+### D. 確認 Ignored Build Step
+
+Build & Development Settings → Ignored Build Step：  
+`node scripts/vercel-ignore-build.mjs`  
+（Dependabot／docs-only 應 skip；`main` 永遠 build）
+
+### E. 產品側已落地（本輪 PR）
+
+- 未登入：一節試用後要 Google 登入再開新節  
+- 未登入：唔打 `/api/practice-count`、唔打 `/api/result/verify`  
+- 詳見憲章 §3.1；意見反饋系統本輪延後 

@@ -1,17 +1,16 @@
-// Anonymous practice counts (founders' reply 40a, 2026-10-08;
+// Practice-set counts (founders' reply 40a, 2026-10-08;
 // docs/learning-loop-measurement-plan-2026-10-08.md, option 丙).
 //
 // Two moments are counted, per day and subject only: a practice set starting (and whether
 // it was started from the result page's practise-again links) and a practice set
-// finishing (with how many questions it had). Nothing identifies a student: no account,
-// IP, device, time of day, question or answer, and the table keeps running totals, not
-// one row per event (supabase/migrations/0023_practice_counts.sql).
+// finishing (with how many questions it had). The table keeps running totals, not one
+// row per event (supabase/migrations/0023_practice_counts.sql) — still no account, IP,
+// device, time of day, question or answer in the stored row.
 //
-// Switched on 2026-10-08 together with the privacy page section 「數練習次數」 and
-// POLICY_VERSION 2026-10-08.v1 (founders' replies 42a, 44a); migration 0023 applied the
-// same day. Opening an explanation is not counted (reply 43a). Turning this off makes
-// the practice page send nothing and the route store nothing
-// (lib/__tests__/practice-count.test.mts).
+// 2026-11-20: client + route only count when the visitor is signed in (Fluid Active CPU).
+// Unsigned practice never POSTs. Opening an explanation is not counted (reply 43a).
+// Turning PRACTICE_COUNTS_ENABLED off makes the practice page send nothing and the route
+// store nothing (lib/__tests__/practice-count.test.mts).
 import { getSubject } from '@/data/subjects'
 
 export const PRACTICE_COUNTS_ENABLED = true

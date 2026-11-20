@@ -33,6 +33,8 @@ import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { cameFromResult, sendPracticeCount } from '@/lib/practiceCount'
+import { markGuestFreeSessionUsed } from '@/lib/guestPracticeQuota'
+import { useAuthSession } from '@/lib/auth/session'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
@@ -241,7 +243,11 @@ export default function PracticeSession({
 }: SessionProps) {
   const router = useRouter()
   const { locale, t } = useLocale()
+  const { status: authStatus } = useAuthSession()
   const subjectMeta = getSubject(subjectId)
+  const countIfSignedIn = (c: Parameters<typeof sendPracticeCount>[0]) => {
+    if (authStatus === 'authenticated') sendPracticeCount(c)
+  }
 
   const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode, cause))
   // 第 3 週 · 引擎五：連續答對／答錯狀態。純 session 內存 ——
@@ -512,7 +518,8 @@ export default function PracticeSession({
           subjectId, subjectName, topicFilter: topicFilter ?? null,
           score, total: 1, grade: '—', topicResults, elapsed, timestamp: Date.now(),
         })
-        sendPracticeCount({ subject: subjectId, event: 'completed', fromResult: false, answered: 1 })
+        if (authStatus !== 'authenticated') markGuestFreeSessionUsed()
+        countIfSignedIn({ subject: subjectId, event: 'completed', fromResult: false, answered: 1 })
         recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
         if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
         clearActiveSession()
@@ -568,8 +575,9 @@ export default function PracticeSession({
         timestamp: Date.now(),
         difficultyResults,
       })
-      // Anonymous count (founders' reply 40a): sent before the move to /result, with keepalive.
-      sendPracticeCount({ subject: subjectId, event: 'completed', fromResult: false, answered: totalQ })
+      // Signed-in count only (Fluid CPU): guests never hit /api/practice-count.
+      if (authStatus !== 'authenticated') markGuestFreeSessionUsed()
+      countIfSignedIn({ subject: subjectId, event: 'completed', fromResult: false, answered: totalQ })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
       if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
@@ -835,14 +843,15 @@ export default function PracticeSession({
     acceptResume()
   }, [resumeOffer, acceptResume])
 
-  // Anonymous count (founders' reply 40a): one "started" per new set, once the first
-  // question is on screen. Not while a resume card is waiting, and not for a resumed set.
+  // Signed-in count only: one "started" per new set once the first question is on
+  // screen. Guests skip this (Fluid CPU). Not while a resume card is waiting.
   useEffect(() => {
+    if (authStatus !== 'authenticated') return
     if (startCounted.current || resumedRef.current || resumeOffer || questions.length === 0) return
     if (current !== 0 || answers.length !== 0) return
     startCounted.current = true
     sendPracticeCount({ subject: subjectId, event: 'started', fromResult: cameFromResult(window.location.search), answered: 0 })
-  }, [resumeOffer, questions.length, current, answers.length, subjectId])
+  }, [authStatus, resumeOffer, questions.length, current, answers.length, subjectId])
 
   const declineResume = useCallback(() => {
     clearActiveSession()

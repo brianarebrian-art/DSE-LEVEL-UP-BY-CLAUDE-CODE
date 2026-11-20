@@ -1,10 +1,9 @@
-// The platform is 100% free, for everyone — fully open, no limits or gating of any
-// kind. Every subject is available to every visitor, signed in or not. (Google
-// sign-in still exists, but only to sync progress across devices; it grants no
-// extra access.)
+// The platform stays 100% free — no paid tiers, ads, or unlock walls.
+// Google sign-in syncs progress and (from 2026-11-20) is required after one
+// free unsigned practice set, solely to keep Vercel Fluid Active CPU inside
+// the §5 hosting budget. Signed-in practice has no question cap.
 //
-// The only thing the practice runner still needs from here is how many questions to
-// draw per run.
+// The practice runner still needs how many questions to draw per run.
 
 // ── 一節幾多題 ────────────────────────────────────────────────────────────
 // 2026-09-09：由 20 減到 10（Yuna 裁決）。

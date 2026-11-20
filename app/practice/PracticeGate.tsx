@@ -4,20 +4,22 @@ import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
+import { useAuthSession } from '@/lib/auth/session'
 import { loadAttempts } from '@/lib/progress'
 import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
+import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import { A11yButton } from '@/components/A11yPanel'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
+import GuestSessionGate from '@/components/GuestSessionGate'
 import { hasElectives, isQuestionInScope, type ElectiveSelection } from '@/lib/electives'
 import type { ReverseCause } from '@/lib/reverseLog'
 
-// Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
-// free, so there is no wall, cap or tier check here any more — we simply load
-// the subject's question bank (its own lazy chunk) and run.
+// Client-only quiz runner. Signed-in practice is unlimited and free.
+// Unsigned visitors get one free set, then Google sign-in (Fluid CPU / §5).
 const PracticeSession = dynamic(() => import('./PracticeSession'), {
   ssr: false,
   loading: () => <Loading kind="mc" />,
@@ -131,13 +133,28 @@ export default function PracticeGate({
 }) {
   const long = mode === 'long'
   const electives = useElectiveSelection(subjectId)
+  const { status: authStatus } = useAuthSession()
+  const returnPath = guestPracticeReturnPath({
+    subjectId,
+    topicFilter,
+    mode,
+    cause,
+    sessionSize,
+  })
+
   // The subject's question bank, lazily fetched as its own chunk.
   // 兩條路各自只攞自己嗰種題 —— MC runner 讀 options／correctIndex，攞錯會即時爆。
   const [mcBank, setMcBank] = useState<MCQuestion[] | null>(null)
   const [writtenBank, setWrittenBank] = useState<WrittenQuestion[] | null>(null)
   const [loadFailed, setLoadFailed] = useState(false)
 
+  const guestBlocked =
+    isAuthUiEnabled() &&
+    authStatus === 'unauthenticated' &&
+    !mayStartGuestPractice({ authStatus, authUiEnabled: true })
+
   useEffect(() => {
+    if (guestBlocked) return
     let alive = true
     setLoadFailed(false)
     const fail = () => { if (alive) setLoadFailed(true) }
@@ -149,7 +166,7 @@ export default function PracticeGate({
     return () => {
       alive = false
     }
-  }, [subjectId, long])
+  }, [subjectId, long, guestBlocked])
 
   // Mixed practice follows the saved electives. A session the student opened on
   // one topic is left alone: choosing that topic is an explicit request. If the
@@ -164,6 +181,10 @@ export default function PracticeGate({
     () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
     [writtenBank, subjectId, topicFilter, selKey],
   )
+
+  // Wait for auth before gating — avoids a flash of the runner then the wall.
+  if (isAuthUiEnabled() && authStatus === 'loading') return <Loading kind={long ? undefined : 'mc'} />
+  if (guestBlocked) return <GuestSessionGate returnPath={returnPath} />
 
   if (loadFailed) return <BankLoadError subjectId={subjectId} />
 
@@ -205,4 +226,23 @@ function inScope<T extends { id: string; topic: string }>(bank: T[], subjectId: 
   const sel = JSON.parse(selKey) as ElectiveSelection | null
   const kept = bank.filter((q) => isQuestionInScope(subjectId, q, sel ?? undefined))
   return kept.length ? kept : bank
+}
+
+function guestPracticeReturnPath(opts: {
+  subjectId: string
+  topicFilter: string | null
+  mode: 'normal' | 'weakness' | 'long' | 'cause'
+  cause: ReverseCause | null | undefined
+  sessionSize?: number
+}): string {
+  const q = new URLSearchParams()
+  q.set('subject', opts.subjectId)
+  if (opts.topicFilter) q.set('topic', opts.topicFilter)
+  if (opts.mode === 'weakness' || opts.mode === 'long') q.set('mode', opts.mode)
+  if (opts.mode === 'cause' && opts.cause) {
+    q.set('mode', 'cause')
+    q.set('cause', opts.cause)
+  }
+  if (opts.sessionSize === 1) q.set('size', '1')
+  return `/practice?${q.toString()}`
 }

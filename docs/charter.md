@@ -7,7 +7,8 @@
 
 # DSE LEVEL UP — CLAUDE.md
 # 戰場只有一個：香港中學文憑試（DSE）
-# 最後更新：2026-10-04 | §12.1 約束 6 答案形狀檢查適用於所有入庫途徑（創辦人決定 17A、17A-2a）
+# 最後更新：2026-11-20 | §3.1 未登入一節試用（Fluid Active CPU／§5）；登入後仍無限免費
+# 前次：2026-10-04 | §12.1 約束 6 答案形狀檢查適用於所有入庫途徑（創辦人決定 17A、17A-2a）
 # 前次：2026-10-04 | §12.1 首頁加「未經註冊教師審定」及收起題數（創辦人決定 10a）；§13 免責聲明改為「練習表現估算僅供參考」（A7-1）
 # 前次：2026-09-26 | §12 改為機器閘自動入庫＋事後退回；§1 新增 2.1 不考之地（Yuna 指示）
 # 前次：2026-09-26 | 新增 §18 取消簽署制度、§19 Notion 第二大腦（Yuna 指示）
@@ -29,10 +30,10 @@
      內容不計分、不記進度；§5 成本死鎖照樣適用；每加入一項內容，由創辦人決定。
      第一項是新來港香港日常廣東話（`/cantonese`）。本條取代 `docs/charter-amendment-2026-09-19-DRAFT.md` 的三個選項。
 3. **絕對免費原則（永久有效）。**（2026-09-05 Brian 裁決，撤銷 2026-09-04 之「核心免費原則＋Plus 自願支持計劃」修訂）
-   全部功能、全部科目、無限題數，一律免費。**冇付費層、冇每日題數上限、冇任何形式嘅收費、訂閱、廣告或付費牆。**
-   - **3.1 冇額度。** 2026-09-04 修訂曾引入「每日 40 題」上限，該上限**從未上線**，現已連同整套收費框架一併撤銷。`entitlements.ts` 維持完全開放。
+   全部功能、全部科目，一律免費。**冇付費層、冇任何形式嘅收費、訂閱、廣告或付費牆。** 登入 Google **唔會**解鎖付費內容。
+   - **3.1 登入後無限；未登入一節試用（2026-11-20，為 §5／Fluid Active CPU）。** 已登入：無限題數、無限節數。未登入：同一裝置最多完成 **一節**練習（標準卷長見 `SESSION_SIZE`，而家 10 題；「只做 1 題」或書寫卷完成亦計用咗呢次試用），之後要 Google 登入先再開新節。**唔係付費牆** —— 動機係 Vercel Hobby **Fluid Active CPU** 每月爆額（見 `docs/ops/L-COST-AND-CAPACITY-2026-10-29.md`）。未登入期間唔寫作答上雲、唔打 `practice-count`／`result/verify`。2026-09-04 曾引入「每日 40 題」付費額度，**從未上線**並已撤銷（見 3.2）；今次試用閘唔可以演變成收費。
    - **3.2 已剷除嘅嘢（存檔，防止重建）。** Stripe 接線、`/confirm-payment`、`/thank-you`、`lib/payment/`、每日額度計數、五張付費表（`plus_entitlements`／`purchases`／`consent_logs`／`plus_devices`／`site_config`）全部刪除，見 `supabase/migrations/0015_drop_payment.sql`。**剷之前逐張數過，五張表合共只有 1 行（一個從未被讀取嘅 feature flag），冇一筆真實交易。**
-   - **3.3 點解要連憲章一齊改。** 2026-09-04 嗰次修訂係 Brian ＋ Yuna 雙簽寫入憲章嘅。淨係剷代碼、留住條文，下一個 session 讀憲章就會照 §8.2 白名單再起一次 —— 呢個模式憲章自己喺 §8.1 同 §8.2 各記低過一次（「唔喺憲章度調和，每個新 session 都會…重新爭論一輪」）。所以代碼同條文同一日一齊改。
+   - **3.3 點解要連憲章一齊改。** 2026-09-04 嗰次修訂係 Brian ＋ Yuna 雙簽寫入憲章嘅。淨係剷代碼、留住條文，下一個 session 讀憲章就會照 §8.2 白名單再起一次 —— 呢個模式憲章自己喺 §8.1 同 §8.2 各記低過一次（「唔喺憲章度調和，每個新 session 都會…重新爭論一輪」）。所以代碼同條文同一日一齊改。2026-11-20 試用閘同樣寫入憲章，避免下個 session 當佢違 §3 而拆走。
 
 4. **零版權侵犯。** 所有題目必須使用「原創平行改寫法 (Archetype Masking)」，更換數字、情境、人名，精準保留底層考核邏輯。Footer 每頁必須顯示：「© DSE Level Up 2026. Not affiliated with HKEAA. All questions are independently rewritten for educational purposes.」
 5. **每月總技術成本死鎖 US$200 以內。**（2026-07-29 Brian 拍板，2026-08-20 Yuna 確認；舊值 HK$180.81 作廢。與 `scripts/budget-guard.mjs` 一致 —— 兩者將來要一齊改。）嚴禁調用任何需付費嘅第三方 API，嚴禁**新增**套件（尤其 Drizzle ORM、Chart.js、D3、Recharts）。**例外（2026-10-30）：** 現有 Supabase 專案上啟用 **Supabase Auth Google**（`@supabase/ssr`）已批准；唔准另開第二個付費 auth 服務，亦唔准重建 Auth.js／Better Auth。
@@ -56,7 +57,7 @@
 
 - **Framework:** Next.js 16.2.9 + React 19.2.4
 - **Styling:** Tailwind CSS v4
-- **Auth:** **唯一** Supabase Auth · Google OAuth（2026-10-30 重建）。Session = `@supabase/ssr` cookie；身份 key = `auth.users.id`（uuid）。舊 Google `sub` 經 `auth_identity_map` 遷移。未登入可練，**唔寫長期本機進度、唔上雲**（C1）。
+- **Auth:** **唯一** Supabase Auth · Google OAuth（2026-10-30 重建）。Session = `@supabase/ssr` cookie；身份 key = `auth.users.id`（uuid）。舊 Google `sub` 經 `auth_identity_map` 遷移。未登入可練 **一節**（§3.1），**唔寫長期本機進度、唔上雲**（C1）；之後要登入先繼續。
   - 已拆除：Auth.js v5、Better Auth、`FLIP-TO-BETTER-AUTH.md`、`DataPortability`、`InAppBrowserNotice`。
   - 設計／移除清單：`docs/auth/SUPABASE-GOOGLE-REBUILD-DESIGN.md`、`docs/auth/REMOVAL-CHECKLIST-GOOGLE-AUTH-REBUILD.md`。
   - **生產 schema apply／Google Console redirect 改動** 要另一次創辦人「批准發布」。

@@ -9,6 +9,8 @@ import LongQuestionCard from '@/components/LongQuestionCard'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
 import { A11yButton } from '@/components/A11yPanel'
 import { useLocale } from '@/lib/i18n'
+import { useAuthSession } from '@/lib/auth/session'
+import { markGuestFreeSessionUsed } from '@/lib/guestPracticeQuota'
 import { getSeen, orderUnseenFirst, recordSeen } from '@/lib/seen'
 import { recordTopicOutcomes } from '@/lib/topicStats'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
@@ -72,6 +74,7 @@ export default function LongPracticeSession({
   sessionSize?: number
 }) {
   const { locale } = useLocale()
+  const { status: authStatus } = useAuthSession()
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
 
@@ -105,7 +108,13 @@ export default function LongPracticeSession({
   const [done, setDone] = useState(false)
   // 已自評但仲未決定要唔要記錯因嘅題目（決策 ③ 嘅溫和邀請）
   const [inviteFor, setInviteFor] = useState<WrittenQuestion | null>(null)
- const [assessed, setAssessed] = useState<{ q: WrittenQuestion; credit: number }[]>([])
+  const [assessed, setAssessed] = useState<{ q: WrittenQuestion; credit: number }[]>([])
+
+  // Unsigned visitors: finishing a written set uses the one free session (Fluid CPU).
+  useEffect(() => {
+    if (!done || authStatus === 'authenticated') return
+    markGuestFreeSessionUsed()
+  }, [done, authStatus])
 
   const current = questions[idx]
 

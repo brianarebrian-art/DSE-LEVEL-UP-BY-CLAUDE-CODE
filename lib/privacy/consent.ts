@@ -62,8 +62,12 @@
  *
  * 2026-11-06.v1 —— 新增「匿名意見」：/feedback 自願送出嘅情景選擇同短句
  * （general_feedback.payload；不記帳戶、電郵、IP）。屬新增採集類別，所以 bump。
+ *
+ * 2026-11-20.v1 —— 「數練習次數」改為只喺已登入時送出（未登入唔打 practice-count，
+ * 慳 Fluid Active CPU）；表內仍只存日／科聚合、唔記帳戶。屬採集範圍收窄＋文案改，
+ * 指紋閘要求 bump。
  */
-export const POLICY_VERSION = '2026-11-06.v1'
+export const POLICY_VERSION = '2026-11-20.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'
