@@ -38,19 +38,29 @@ test('the migration matches the categories and holds nothing that identifies a s
   assert.doesNotMatch(sql, /create policy/)
 })
 
-test('the API route reads no session, IP or device, and says when the table is missing', () => {
+test('unsigned reports are rejected before insert; a missing table is still 503', () => {
   const route = strip(read('app/api/report/route.ts'))
-  assert.doesNotMatch(route, /getSyncUserId|auth\(|x-forwarded-for|x-real-ip|user-agent|cookies\(/)
+  assert.match(route, /getSyncUserId\(\)/)
+  assert.match(route, /if \(!userId\) return NextResponse\.json\(\{ error: 'unauthenticated' \}, \{ status: 401 \}\)/)
+  const gate = route.indexOf('if (!userId)')
+  const helper = route.indexOf('insertOnlyIfSignedIn(')
+  const insert = route.indexOf('.insert(')
+  assert.ok(gate !== -1 && helper > gate && insert > helper)
+  assert.equal(route.split('.insert(').length - 1, 1)
+  assert.doesNotMatch(route, /user_id|x-forwarded-for|x-real-ip|user-agent|cookies\(/)
   assert.match(route, /parseReport\(read\.value\)/)
-  assert.match(route, /insert\(toRow\(parsed\.value\)\)/)
-  assert.match(route, /'PGRST205'/)
-  assert.match(route, /status: missing \? 503 : 500/)
+  assert.match(route, /toRow\(parsed\.value\)/)
+  assert.match(read('lib/api/signedWrite.ts'), /'PGRST205'/)
+  assert.match(read('lib/api/signedWrite.ts'), /status: missing \? 503 : 500/)
 })
 
 test('the button sends no description and only says "received" on { ok: true }', () => {
   const src = read('components/ReportQuestionButton.tsx')
   const body = src.match(/body: JSON\.stringify\((\{[^}]*\})\)/)![1]
   assert.equal(body, "{ questionId, category: cat, locale: en ? 'en' : 'zh' }")
+  assert.match(src, /res\.status === 401 \|\| data\?\.error === 'unauthenticated'/)
+  assert.match(src, /setSend\('guest'\)/)
+  assert.match(src, /GuestProductWriteNote/)
   assert.match(src, /setSend\(res\.ok && data\?\.ok === true \? 'sent' : 'failed'\)/)
   assert.match(src, /傳送唔到。請用下面嘅電郵寄出。/)
   assert.match(src, /呢度寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。/)

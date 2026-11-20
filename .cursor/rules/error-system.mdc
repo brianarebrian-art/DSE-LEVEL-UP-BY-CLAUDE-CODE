@@ -24,7 +24,7 @@ globs:
 
 1. **冇冷門科豁免雙審** — 替換題一律 `human_review` → `second_review`；禁止「單審-冷門科」
 2. **替換題 L1 快審 24h** — `l1_due_at`；L1＝`human_review`，L2＝`second_review`
-3. **匿名可舉報** — 唔加 `reporter_id`／IP；唔存學生自由文字（§16.E）
+3. **列本身仍然匿名，但要登入先寫入** — 2026-11-20 創辦人收窄：未登入 `POST /api/report` 回 401，零 insert。唔加 `reporter_id`／IP；唔存學生自由文字（§16.E）
 4. **唔標「AI生成替換」** — 學生端用「經自動檢查」；禁止該字串
 
 ## File queue
@@ -42,5 +42,5 @@ globs:
 
 ## proxy／限流
 
-- 舉報繼續 `POST /api/report`；`proxy` 唔攔 public report
+- 舉報繼續 `POST /api/report`；`proxy` 唔改做登入牆（401 喺 route，用 `getSyncUserId()`）
 - 限流沿用 `report` class（而家 10／10min／IP）

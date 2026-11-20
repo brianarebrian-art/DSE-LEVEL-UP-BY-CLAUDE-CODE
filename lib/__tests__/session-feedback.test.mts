@@ -34,11 +34,18 @@ test('the migration matches the allowed values and holds nothing that identifies
   assert.doesNotMatch(sql, /create policy/)
 })
 
-test('the route reads no session, IP or device', () => {
+test('unsigned feedback is rejected before insert; the stored row still has no identity', () => {
   const route = strip(read('app/api/feedback/route.ts'))
-  assert.doesNotMatch(route, /getSyncUserId|auth\(|x-forwarded-for|x-real-ip|user-agent|cookies\(/)
+  assert.match(route, /getSyncUserId\(\)/)
+  assert.match(route, /if \(!userId\) return NextResponse\.json\(\{ error: 'unauthenticated' \}, \{ status: 401 \}\)/)
+  const gate = route.indexOf('if (!userId)')
+  const helper = route.indexOf('insertOnlyIfSignedIn(')
+  const insert = route.indexOf('.insert(')
+  assert.ok(gate !== -1 && helper > gate && insert > helper)
+  assert.equal(route.split('.insert(').length - 1, 1)
+  assert.match(route, /toFeedbackRow\(parsed\.value\)/)
+  assert.doesNotMatch(route, /user_id|x-forwarded-for|x-real-ip|user-agent|cookies\(/)
   assert.match(route, /parseFeedback\(read\.value\)/)
-  assert.match(route, /insert\(toFeedbackRow\(parsed\.value\)\)/)
 })
 
 test('the card uses the approved wording, says thanks only on { ok: true }, and sits on /result', async () => {
@@ -46,6 +53,13 @@ test('the card uses the approved wording, says thanks only on { ok: true }, and 
   for (const s of ['題入面，你覺得有冇題目出錯？', '下次溫書，你會唔會再用呢度？', "zh: '冇'", "zh: '有'", "zh: '唔肯定'", "zh: '會'", "zh: '唔會'", "zh: '未知'",
     '多謝！下次見到有問題嘅題目，可以喺嗰條題下面撳「呢條題有問題？話我哋知」，我哋就知道係邊條。', '多謝你話我哋知！'])
     assert.ok(card.includes(s), s)
+  assert.match(card, /res\.status === 401 \|\| data\?\.error === 'unauthenticated'/)
+  assert.match(card, /'guest'/)
+  assert.match(card, /GuestProductWriteNote/)
+  assert.match(read('components/GuestProductWriteNote.tsx'), /href="\/sign-in"/)
+  assert.match(read('components/GuestProductWriteNote.tsx'), /未有保存/)
+  assert.match(read('components/GuestProductWriteNote.tsx'), /仍然完全免費/)
+  assert.match(read('components/GuestProductWriteNote.tsx'), /唔係付費牆/)
   assert.match(card, /res\.ok && data\?\.ok === true \? 'sent' : 'failed'/)
   assert.match(card, /body: JSON\.stringify\(\{ subject: subjectId, question, answer, locale: en \? 'en' : 'zh' \}\)/)
   assert.match(read('app/result/ResultPageClient.tsx'), /\{result\.subjectId && <SessionFeedback subjectId=\{result\.subjectId\} total=\{result\.total\} \/>\}/)

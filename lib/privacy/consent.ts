@@ -66,8 +66,11 @@
  * 2026-11-20.v1 —— 「數練習次數」改為只喺已登入時送出（未登入唔打 practice-count，
  * 慳 Fluid Active CPU）；表內仍只存日／科聚合、唔記帳戶。屬採集範圍收窄＋文案改，
  * 指紋閘要求 bump。
+ *
+ * 2026-11-20.v2 —— 再收窄：未登入唔再寫入題目問題報告、完卷兩條問題、匿名意見。
+ * 登入後保存嘅列仍然唔記帳戶、電郵、IP。冇新增欄位。指紋閘要求 bump。
  */
-export const POLICY_VERSION = '2026-11-20.v1'
+export const POLICY_VERSION = '2026-11-20.v2'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

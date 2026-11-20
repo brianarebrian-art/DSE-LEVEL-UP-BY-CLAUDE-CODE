@@ -16,6 +16,8 @@
 | 3 | 匿名可以舉報 | **擴充**現有 `question_reports`；**不**加 `reporter_id`／IP／email／自由文字；繼續經 `POST /api/report` service_role 寫入 |
 | 4 | 新題唔要標「AI生成替換」 | `public_label_zh`／`public_label_en` check **禁止**含「AI生成」等字樣；預設「經自動檢查」／`Automated checks only`（滿足 §12.1／§16.B 機檢披露，又唔加「AI生成替換」） |
 
+**2026-11-20 創辦人收窄（覆蓋「未登入都可寫」）：** 未登入 `POST /api/report` 回 401，唔 insert。列仍然唔加 `reporter_id`／IP／email／自由文字。已有列保留，唔刪、唔改欄。
+
 產品用語對照：
 
 | 口語 | DB／0024 stage |

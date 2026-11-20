@@ -5,6 +5,8 @@
 
 只存四項：題號、問題類別、介面語言、收到時間。不存帳戶、IP、裝置，亦不存學生自己寫的描述（描述只經學生自己的電郵寄出）。
 
+2026-11-20：未登入 `POST /api/report` 回 401，唔會新增列。已用 Google／Supabase 登入先會寫入，列嘅內容仍然係上面四項。已有列保留，唔好因為呢次改動而刪行。
+
 ## 一、建立資料表（只做一次，在合併入 `main` 之前）
 
 1. 登入 Supabase，打開專案 `DSE-LEVEL-UP`。
@@ -59,6 +61,7 @@ delete from public.question_reports where status <> 'open' and created_at < now(
 
 2026-10-04 起（審計 #8，創辦人回覆「5a」），結果頁問兩條可以不答的問題。表已於同日由 Claude 應創辦人要求建立。
 每次按掣一行：科目、問題（`had_error` 有冇題目出錯／`will_return` 會唔會再用）、答案（`yes`／`no`／`unsure`）、語言、時間。
+2026-11-20：未登入 `POST /api/feedback` 回 401，唔會新增列。題目同答案選項冇改。已有列保留。`/feedback` 嘅 `general_feedback` 同樣要登入先寫入。
 
 過去 30 日，每科「覺得有題目出錯」的比例：
 
