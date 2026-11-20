@@ -2,10 +2,12 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getSubject } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
+import { explanationDisplay } from '@/data/public-samples/batch-1'
 import { completeSeoMetadata } from '@/lib/seo'
 import { SITE_ORIGIN } from '@/lib/site'
 import { JsonLd } from '@/components/Seo/JsonLd'
 import MathText from '@/components/MathText'
+import { TeachingForceDiagram } from '@/components/subject/TeachingForceDiagram'
 
 function optionLabel(opt: unknown): string {
   if (typeof opt === 'string') return opt
@@ -28,7 +30,8 @@ export async function generateMetadata({
 
   if (!meta || !question) notFound()
 
-  const topicName = question.topicZh || topic
+  const display = explanationDisplay(id, question)
+  const topicName = display.topicZh || topic
   const title = `DSE ${meta.name} 題目解析 (${topicName}) | DSE Level Up` // i18n-exempt: SEO title
   const description = `${meta.name}「${topicName}」的原創改寫練習題與解析。並非考評局試題，不作成績保證。` // i18n-exempt: SEO description
 
@@ -55,7 +58,10 @@ export default async function QuestionPage({
 
   if (!meta || !question) notFound()
 
-  const topicName = question.topicZh || topic
+  const display = explanationDisplay(id, question)
+  const topicName = display.topicZh || topic
+  const explanationText = display.explanation || '此題目重點考察考生概念理解與細心審題能力。' // i18n-exempt: fallback
+  const explanationParts = explanationText.split('\n').map((part) => part.trim()).filter(Boolean)
   const pageUrl = `${SITE_ORIGIN}/subject/${subject}/${topic}/${id}`
   const faq = [
     {
@@ -78,12 +84,12 @@ export default async function QuestionPage({
         url: pageUrl,
         mainEntity: {
           '@type': 'Question',
-          name: question.content,
-          text: question.content,
+          name: display.content,
+          text: display.content,
           answerCount: 1,
           acceptedAnswer: {
             '@type': 'Answer',
-            text: question.explanation || '題目詳細解析請參考解題步驟與概念重點。', // i18n-exempt: schema
+            text: display.explanation || '題目詳細解析請參考解題步驟與概念重點。', // i18n-exempt: schema
             url: pageUrl,
           },
         },
@@ -130,23 +136,28 @@ export default async function QuestionPage({
         </ol>
       </nav>
 
-      <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
+      <article
+        className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900"
+        data-explanation-source={display.source}
+      >
         <div className="mb-4 inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
           <span>{meta.name} · {topicName}</span>
           <span className="mx-1.5">·</span>
-          <span>難度 · Difficulty：{question.difficulty || 'medium'}</span> {/* i18n-exempt: bilingual */}
+          <span>難度 · Difficulty：{display.difficulty || 'medium'}</span> {/* i18n-exempt: bilingual */}
         </div>
 
         <h1 className="mb-6 text-xl font-bold leading-relaxed text-stone-900 dark:text-stone-50">
-          <MathText>{question.content}</MathText>
+          <MathText>{display.content}</MathText>
         </h1>
 
-        {'options' in question && Array.isArray((question as { options?: string[] }).options) && (
+        {display.diagram ? <TeachingForceDiagram model={display.diagram} /> : null}
+
+        {Array.isArray(display.options) && (
           <div className="mb-6 space-y-3">
             <h2 className="text-sm font-medium text-stone-500 dark:text-stone-400">選項 · Options</h2> {/* i18n-exempt: bilingual */}
             <ul className="space-y-2">
-              {(question as { options: string[]; correctIndex?: number }).options.map((opt: string, idx: number) => {
-                const isCorrect = idx === (question as { correctIndex?: number }).correctIndex
+              {display.options.map((opt, idx) => {
+                const isCorrect = idx === display.correctIndex
                 return (
                   <li
                     key={idx}
@@ -172,9 +183,13 @@ export default async function QuestionPage({
 
         <div className="rounded-xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-800 dark:bg-stone-800/60">
           <h2 className="mb-2 text-sm font-bold text-stone-900 dark:text-stone-100">解題思維與分析 · Analysis</h2> {/* i18n-exempt: bilingual */}
-          <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            <MathText>{question.explanation || '此題目重點考察考生概念理解與細心審題能力。'}</MathText> {/* i18n-exempt: fallback */}
-          </p>
+          <div className="space-y-2">
+            {explanationParts.map((part, index) => (
+              <p key={index} className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+                <MathText>{part}</MathText>
+              </p>
+            ))}
+          </div>
         </div>
       </article>
 
