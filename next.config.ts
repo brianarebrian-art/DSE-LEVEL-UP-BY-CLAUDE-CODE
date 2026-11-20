@@ -53,6 +53,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/security.txt', destination: '/.well-known/security.txt', permanent: true },
+      // Founder order 2026-11-20: 不考之地 is removed. Permanent so old links
+      // do not keep serving the cards (Next.js redirect, same list as below).
+      { source: '/off-syllabus', destination: '/', permanent: true },
+      { source: '/off-syllabus/:category', destination: '/', permanent: true },
       // Founders' reply 19a (2026-10-04): addresses people type by the nav labels.
       // Not permanent, so a real page could take either address later.
       { source: '/progress', destination: '/dashboard', permanent: false },

@@ -15,6 +15,5 @@
   {"path":"/subjects/not-a-subject","status":404},
   {"path":"/notes/not-a-subject","status":404},
   {"path":"/cantonese/not-a-scene","status":404},
-  {"path":"/source-lab/not-a-source","status":404},
-  {"path":"/off-syllabus/not-a-category","status":404}
+  {"path":"/source-lab/not-a-source","status":404}
 ]

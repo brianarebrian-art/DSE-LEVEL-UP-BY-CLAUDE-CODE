@@ -57,13 +57,13 @@ const NAV_PREFETCH_OFF = new Set([
   '/bookmarks',
   '/account',
   '/notes',
-  '/off-syllabus',
   '/about',
   '/credits',
 ])
 
 // IA：四格跨裝置同名（練習·進度·收藏·帳戶）—— 漢堡主列同底欄一字不差。
-// 筆記／不考之地降入「更多」，唔再同第四格搶位（以前桌面第四＝筆記、手機第四＝帳戶）。
+// 筆記降入「更多」，不再與第四格搶位（以前桌面第四是筆記、手機第四是帳戶）。
+// 2026-11-20：非 DSE 趣味內容入口已刪，此處不再保留。
 const primaryLinks: {
   href: string
   key: 'tabPractice' | 'tabProgress' | 'tabSaved' | 'tabAccount'
@@ -76,11 +76,9 @@ const primaryLinks: {
 
 const moreLinks: {
   href: string
-  key: 'notes' | 'offSyllabus'
+  key: 'notes'
 }[] = [
   { href: '/notes', key: 'notes' },
-  // 2026-09-26 Yuna：非 DSE 範圍嘅內容只由「更多」入，唔放首頁。
-  { href: '/off-syllabus', key: 'offSyllabus' },
 ]
 
 export default function Navbar() {

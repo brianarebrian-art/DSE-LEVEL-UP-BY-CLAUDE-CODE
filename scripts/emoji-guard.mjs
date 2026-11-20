@@ -12,7 +12,7 @@ import { join, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
-// data/heroContent 等會直接上畫面；題庫／offSyllabus 卡 emoji 欄位靠 JSX 規則禁渲染。
+// data/heroContent 等會直接上畫面；題庫 frameworkEmoji 欄位靠 JSX 規則禁渲染。
 const SCAN_DIRS = ['app', 'components', 'lib']
 const SCAN_FILES = ['data/heroContent.ts']
 

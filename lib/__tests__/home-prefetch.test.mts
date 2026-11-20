@@ -53,7 +53,7 @@ test('ContinueCard (primary resume CTA) does not disable prefetch', () => {
 
 test('shell nav: secondary routes set prefetch false; practice entries do not', () => {
   assert.match(nav, /NAV_PREFETCH_OFF = new Set\(\[/)
-  for (const href of ['/dashboard', '/bookmarks', '/account', '/notes', '/off-syllabus', '/about', '/credits']) {
+  for (const href of ['/dashboard', '/bookmarks', '/account', '/notes', '/about', '/credits']) {
     assert.match(nav, new RegExp(`'${href}'`))
   }
   assert.match(nav, /prefetch=\{NAV_PREFETCH_OFF\.has\(l\.href\) \? false : undefined\}/)

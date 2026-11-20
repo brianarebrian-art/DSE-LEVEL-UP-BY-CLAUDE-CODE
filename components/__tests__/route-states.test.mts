@@ -114,7 +114,7 @@ test('練習頁必須自己有離開路徑 —— 全屏模式冇咗 Navbar', ()
 })
 
 // ── 導覽 IA：四格跨裝置同名（2026-10-30）──────────────────────────────────
-test('漢堡主列四格同底欄；筆記／不考之地喺更多', () => {
+test('漢堡主列四格同底欄；筆記喺更多，沒有不考之地', () => {
   const src = readFileSync(new URL('../Navbar.tsx', import.meta.url).pathname, 'utf8')
   const primaryStart = src.indexOf('}[] = [', src.indexOf('const primaryLinks'))
   const primaryBlock = src.slice(primaryStart, src.indexOf('\n]', primaryStart))
@@ -124,7 +124,8 @@ test('漢堡主列四格同底欄；筆記／不考之地喺更多', () => {
   const moreStart = src.indexOf('}[] = [', src.indexOf('const moreLinks'))
   const moreBlock = src.slice(moreStart, src.indexOf('\n]', moreStart))
   const more = [...moreBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
-  assert.deepEqual(more, ['/notes', '/off-syllabus'])
+  assert.deepEqual(more, ['/notes'])
+  assert.doesNotMatch(src, /off-syllabus|offSyllabus|不考之地/)
   assert.ok(primary.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
 })
 

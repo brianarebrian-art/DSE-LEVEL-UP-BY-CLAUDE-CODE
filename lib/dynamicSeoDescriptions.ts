@@ -12,11 +12,6 @@ type CantoneseInput = {
   wordCount: number
 }
 
-type OffSyllabusInput = {
-  title: string
-  cardCount: number
-}
-
 type SourceLabInput = {
   title: string
   date: string
@@ -100,18 +95,6 @@ export function cantoneseSeoDescription({ title, why, phraseCount, wordCount }: 
       '詞語表把常見字詞拆開，方便在別的情境重新組合。',
       '可先按場景熟習實用用語，再因應真實對話調整語氣。',
       '可按需要選讀。',
-    ],
-  )
-}
-
-export function offSyllabusSeoDescription({ title, cardCount }: OffSyllabusInput): string {
-  return completeDescription(
-    `「${title}」是不考之地的分類頁，收錄${cardCount}張可展開閱讀的知識卡。頁面以生活場景、對白、解密、冷知識和吹水話題呈現內容。`,
-    [
-      '此區純粹為樂趣而學，不設計分、測驗或進度紀錄。',
-      '卡片可供閱讀和討論，內容不取代專業建議或正式課程材料。',
-      '冷知識由 AI 協助撰寫，並非每項均經專家逐條查證。',
-      '閱讀時宜自行核實重要資訊。',
     ],
   )
 }

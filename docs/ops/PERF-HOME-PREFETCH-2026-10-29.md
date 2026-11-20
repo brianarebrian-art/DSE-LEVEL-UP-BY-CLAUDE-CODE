@@ -13,7 +13,9 @@
 | 類別 | 路由例子 | Prefetch |
 |---|---|---|
 | 練習主路徑 | 快速開始 `/practice?subject=…`、`ContinueCard`、Navbar／BottomNav「開始練習」`/start`、殼層「練習」`/subjects`、科目卡 | **保持預設**（允許預取） |
-| 次要殼層／資訊 | `/bookmarks`、`/dashboard`、`/predictor`、`/relax`、`/off-syllabus`、`/notes`、`/account`、`/about`、`/credits`、首頁 `/transparency`、`/trust`、季節副 CTA（`hero.ctaSecHref`） | **`prefetch={false}`** |
+| 次要殼層／資訊 | `/bookmarks`、`/dashboard`、`/predictor`、`/relax`、`/notes`、`/account`、`/about`、`/credits`、首頁 `/transparency`、`/trust`、季節副 CTA（`hero.ctaSecHref`） | **`prefetch={false}`** |
+
+2026-11-20：`/off-syllabus` 已刪並轉址至首頁，不再屬於預取清單。`/cantonese` 保留，但不是首頁當眼入口。
 
 改動檔：`app/HomePageClient.tsx`、`components/Navbar.tsx`、`components/Sidebar.tsx`、`components/BottomNav.tsx`。  
 靜態回歸：`lib/__tests__/home-prefetch.test.mts`。

@@ -12,7 +12,6 @@ import {
   Dna,
   ChartColumnIncreasing,
   Leaf,
-  Compass,
 } from 'lucide-react'
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
@@ -30,7 +29,6 @@ const MORE = [
   { href: '/dashboard#error-dna', key: 'errorDna' as const, Icon: Dna, exact: true },
   { href: '/predictor', key: 'predictor' as const, Icon: ChartColumnIncreasing, exact: false },
   { href: '/relax', key: 'relax' as const, Icon: Leaf, exact: false },
-  { href: '/off-syllabus', key: 'offSyllabus' as const, Icon: Compass, exact: false },
 ]
 
 const SIDEBAR_PREFETCH_OFF: ReadonlySet<string> = new Set(

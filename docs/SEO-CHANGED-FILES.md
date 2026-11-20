@@ -1,5 +1,7 @@
 # 本輪檔案變更清單
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。下文檔案清單是該輪 SEO 改動的歷史，不是現行頁面。`/cantonese` 保留。
+
 基線：`d25c63740a9184d0303e2558c8ee6f51643258d6`。分支：`seo/truth-audit-quality-pages`。A＝新增、M＝修改、D＝刪除。此清單只列本輪改動，完整差異以PR Files changed及交付包patch為準。
 
 總數：224個檔案；{'M': 106, 'A': 116, 'D': 2}。沒有`.env`實值、node_modules或`.next`產物。

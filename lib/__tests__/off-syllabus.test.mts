@@ -1,31 +1,40 @@
-// 不考之地 (/off-syllabus). Yuna 2026-09-26: non-DSE content stays in the site but out of
-// prominent places; the Cantonese course is reached through it, not from the homepage.
+// 2026-11-20 founder order: 不考之地 is removed. /cantonese stays, without that name
+// and without a homepage card. Old URLs redirect home so they are not leftover cards.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 
 const read = (p: string) => readFileSync(p, 'utf8')
 
-test('the hamburger more-list and the sidebar end with 不考之地', () => {
-  const nav = read('components/Navbar.tsx')
-  const moreStart = nav.indexOf('}[] = [', nav.indexOf('const moreLinks'))
-  const moreBlock = nav.slice(moreStart, nav.indexOf('\n]', moreStart))
-  const more = [...moreBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
-  assert.equal(more.at(-1), '/off-syllabus', 'last more-list item')
-  const side = read('components/Sidebar.tsx')
-  const moreSide = side.slice(side.indexOf('const MORE'), side.indexOf(']', side.indexOf('const MORE')) + 1)
-  const items = [...moreSide.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
-  assert.equal(items.at(-1), '/off-syllabus', 'last sidebar more item')
+test('off-syllabus pages, data and share button are gone', () => {
+  for (const p of [
+    'app/off-syllabus/page.tsx',
+    'app/off-syllabus/[category]/page.tsx',
+    'data/offSyllabus/index.ts',
+    'components/OffSyllabusShareButton.tsx',
+  ]) {
+    assert.equal(existsSync(p), false, p)
+  }
+  assert.ok(existsSync('app/cantonese/page.tsx'), '/cantonese must stay')
 })
 
-test('name and tagline are as decided', () => {
-  const dict = read('lib/dictionary.ts')
-  assert.match(dict, /offSyllabus: '不考之地'/)
-  assert.match(dict, /tagline: '純粹為樂趣而學'/)
-})
-
-test('the homepage no longer links to /cantonese; 不考之地 does', () => {
+test('navigation, dictionary, sitemap and route manifest do not offer the section', () => {
+  for (const p of ['components/Navbar.tsx', 'components/Sidebar.tsx', 'app/sitemap.ts', 'public/manus-routes.json']) {
+    assert.doesNotMatch(read(p), /off-syllabus|offSyllabus|不考之地|Beyond the syllabus/)
+  }
+  assert.doesNotMatch(read('lib/dictionary.ts'), /offSyllabus|不考之地|Off the Syllabus|Beyond the syllabus/)
+  assert.doesNotMatch(read('app/cantonese/CantoneseView.tsx'), /off-syllabus|offSyllabus/)
   assert.doesNotMatch(read('app/page.tsx'), /href="\/cantonese"/)
-  assert.match(read('app/off-syllabus/OffSyllabusView.tsx'), /href: '\/cantonese'/)
-  assert.match(read('app/cantonese/CantoneseView.tsx'), /href="\/off-syllabus"/, 'the course links back')
+  assert.doesNotMatch(read('app/HomePageClient.tsx'), /href="\/cantonese"/)
+})
+
+test('old off-syllabus URLs redirect to the homepage', async () => {
+  const { default: config } = await import('../../next.config.ts')
+  const rules = (await config.redirects?.()) ?? []
+  for (const source of ['/off-syllabus', '/off-syllabus/:category']) {
+    const rule = rules.find((item: { source: string }) => item.source === source)
+    assert.ok(rule, `${source} has no redirect`)
+    assert.equal(rule.destination, '/')
+    assert.equal(rule.permanent, true)
+  }
 })

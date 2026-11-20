@@ -19,9 +19,9 @@ test('primary four match the bottom tab hrefs in the same order', () => {
   }
 })
 
-test('more tools end with off-syllabus', () => {
-  assert.ok(more.includes('/notes'))
-  assert.equal(more.at(-1), '/off-syllabus')
+test('more tools keep notes and do not include off-syllabus', () => {
+  assert.deepEqual(more, ['/notes', '/dashboard#error-dna', '/predictor', '/relax'])
+  assert.doesNotMatch(side, /off-syllabus|offSyllabus|不考之地/)
 })
 
 test('group labels exist in both languages', () => {

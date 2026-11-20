@@ -1,5 +1,7 @@
 # DSE Level Up v6 Phase 1 研究
 
+> **2026-11-20：** 創辦人已刪除「不考之地」（`/off-syllabus`）。下文路線清單若仍包含該路徑，只反映 2026-11-04 研究時的站況，不是現行導覽。`/cantonese` 保留，且不是首頁當眼入口。
+
 - **狀態：** Phase 1 完成；已批准進入 Phase 2（見 `phase-2-problem-definition.md`）
 - **研究日期：** 2026-11-04（Asia/Hong_Kong）
 - **基線 commit：** `95134df`（`main`，Merge pull request #175）

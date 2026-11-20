@@ -82,15 +82,11 @@ export const EXCLUDED: Record<string, string> = {
 
   // 支線功能頁：由 /subjects 或各自入口入，唔喺主循環
   //
-  // ⚠️ /cantonese 刻意【唔入】PAGE_ORDER。本檔開頭寫明循環嗰六條係
-  //    Navbar ∩ BottomNav ∩ Sidebar 嘅交集，而 /cantonese 唔喺任何一條
-  //    持久導航入面。為咗一個新頁破自己一日前先寫低嘅規則，個規則就變裝飾。
-  //    2026-09-26 起入口改為「不考之地」（/off-syllabus），首頁當眼卡已移走。
-  //    入口唔擺科目總覽，因為新來港支援唔屬於任何一科。
-  '/cantonese': '新來港日常廣東話（業餘班·非正規生活支援），由 /off-syllabus 入，唔屬任何科目',
-  // 2026-09-26 Yuna：非 DSE 範圍內容嘅集合頁，入口喺三橫選單同側欄最尾，刻意唔入循環。
-  '/off-syllabus': '不考之地：非 DSE 考核範圍內容，由三橫選單及側欄入，唔屬主循環',
-  '/off-syllabus/[category]': '動態詳情頁（話題卡範疇），返回路徑係返 /off-syllabus',
+  // /cantonese 刻意不入 PAGE_ORDER。本檔開頭寫明循環是
+  // Navbar、BottomNav、Sidebar 的交集，而 /cantonese 不在任何一條持久導航內。
+  // 2026-09-26 曾由「不考之地」進入；2026-11-20 創辦人刪除該區。
+  // 頁面保留，但不放首頁當眼卡，頁內不再連回已刪除的區。
+  '/cantonese': '新來港日常廣東話（業餘班、非正規生活支援）。獨立路由，不屬任何科目，不放首頁當眼位置',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
   '/review/trace': '先備回溯練習，由進度頁進入，不加入主循環',
