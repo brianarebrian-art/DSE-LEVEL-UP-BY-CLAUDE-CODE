@@ -46,9 +46,11 @@ type Q = { id: string; explanation?: string; explanationEn?: string; mcHack?: st
 const textsOf = (q: Q) => [q.explanation, q.explanationEn, q.mcHack, q.mcHackEn, ...(q.optionNotes ?? []).flatMap((n) => [n.zh, n.en])].filter((t): t is string => typeof t === 'string')
 
 // LEGACY_BASELINE ceilings (2026-09-29). Lower, never raise.
+// 2026-11-20: bank 277 → 99 and ordinal 416 → 196 after fixed hits were removed
+// from the grandfather lists (check-posref --banks: zero new hits). Runtime stays 676.
 const CEILING: Record<string, number> = {
-  'scripts/qbank/posref-bank-baseline.json': 277,
-  'scripts/qbank/posref-ordinal-baseline.json': 416,
+  'scripts/qbank/posref-bank-baseline.json': 99,
+  'scripts/qbank/posref-ordinal-baseline.json': 196,
   'scripts/qbank/posref-runtime-baseline.json': 676, // 838 → 800 → 758 → 682 → 676: M1-02 (38), M1-03 (42), M1-04 (5), M2-01 (36), PHY-01 (35), PHY-02 (6) rewritten (founders' replies 31-1c, 32a, 33a, 34a, 39a)
 }
 

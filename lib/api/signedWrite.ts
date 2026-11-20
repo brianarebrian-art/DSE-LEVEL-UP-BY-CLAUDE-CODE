@@ -14,7 +14,9 @@ export type SignedInsertOutcome =
 export async function insertOnlyIfSignedIn<T>(
   userId: string | null,
   row: T,
-  insert: (row: T) => Promise<{ error: DbWriteError }>,
+  // Infer T from the row only. The callback parameter is contravariant, so if it
+  // is also an inference site a union of row shapes collapses to `never`.
+  insert: (row: NoInfer<T>) => Promise<{ error: DbWriteError }>,
 ): Promise<SignedInsertOutcome> {
   if (typeof userId !== 'string' || userId.length === 0) return { status: 'unauthenticated' }
   const { error } = await insert(row)

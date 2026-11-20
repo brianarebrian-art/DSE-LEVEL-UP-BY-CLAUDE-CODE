@@ -80,35 +80,33 @@ test('session feedback, general feedback and question reports keep their old row
   assert.equal(report.ok, true)
   if (!report.ok) return
 
-  const rows = [
-    toFeedbackRow(session.value),
-    { payload: general.value },
-    toRow(report.value),
-  ]
-  const inserted: unknown[] = []
-  for (const row of rows) {
+  // One concrete row per call. A union of the three shapes is inferred as the
+  // intersection in the callback, which is `never`, and then fails the build.
+  async function checkRow<T>(row: T) {
+    let saved: T | undefined
     const denied = await insertOnlyIfSignedIn(null, row, async () => {
-      inserted.push(row)
+      saved = row
       return { error: null }
     })
     assert.equal(denied.status, 'unauthenticated')
-  }
-  assert.deepEqual(inserted, [])
+    assert.equal(saved, undefined)
 
-  for (const row of rows) {
     const allowed = await insertOnlyIfSignedIn('auth-users-uuid', row, async (value) => {
-      inserted.push(value)
+      saved = value
       return { error: null }
     })
     assert.equal(allowed.status, 'ok')
+    assert.deepEqual(saved, row)
+    const text = JSON.stringify(saved)
+    assert.equal(text.includes('student-1'), false)
+    assert.equal(text.includes('a@b.com'), false)
+    assert.equal(text.includes('user_id'), false)
+    assert.equal(text.includes('我個名'), false)
   }
-  assert.deepEqual(inserted, rows)
-  for (const row of inserted) {
-    assert.equal(JSON.stringify(row).includes('student-1'), false)
-    assert.equal(JSON.stringify(row).includes('a@b.com'), false)
-    assert.equal(JSON.stringify(row).includes('user_id'), false)
-    assert.equal(JSON.stringify(row).includes('我個名'), false)
-  }
+
+  await checkRow(toFeedbackRow(session.value))
+  await checkRow({ payload: general.value })
+  await checkRow(toRow(report.value))
 })
 
 test('the three write routes gate on getSyncUserId before any insert', () => {

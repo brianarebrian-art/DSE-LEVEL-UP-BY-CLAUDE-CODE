@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { useLocale } from '@/lib/i18n'
 import { applyReview, intervalDays, weightsForReviewCount, type CardState } from '@/lib/fsrs/scheduler'
 import { updateMastery } from '@/lib/fsrs/bkt'
@@ -111,7 +112,7 @@ export default function TraceWalk() {
     <div className="mx-auto w-full max-w-2xl px-4 py-10">
       <p className="text-xs tracking-wide text-ink-muted">{tr('先備回溯', 'Prerequisite trace')}</p>
       <div className="mt-3 flex items-start gap-3">
-        <img src="/icons/knowledge-node.svg" alt="" width={40} height={40} className="mt-1" />
+        <Image src="/icons/knowledge-node.svg" alt="" width={40} height={40} unoptimized className="mt-1" />
         <h1 className="min-w-0 font-serif text-3xl leading-tight text-ink">{tr('答不上時，先退回兩層', 'When a step does not land, walk back two layers')}</h1>
       </div>
       <p className="mt-3 text-sm leading-6 text-ink-muted">
@@ -179,11 +180,12 @@ export default function TraceWalk() {
             <p className="mt-4 text-sm leading-6 text-ink">{en ? reply.similar.en : reply.similar.zh}</p>
           )}
           {reply.explainerSrc && (
-            <img
+            <Image
               src={reply.explainerSrc}
               alt={tr('另一個例子的圖解，不是本題答案', 'A diagram of a different example, not this item’s answer')}
               width={480}
               height={640}
+              unoptimized
               className="mt-4 w-full rounded-xl border border-line"
             />
           )}

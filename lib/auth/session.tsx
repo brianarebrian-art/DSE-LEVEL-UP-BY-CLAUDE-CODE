@@ -92,6 +92,9 @@ export function authSignInGoogle(to?: string): void {
       : '/dashboard')
   void signInWithGoogle(target).then((r) => {
     if (r.error && typeof window !== 'undefined') {
+      // This helper is not a Client Component, so useRouter is unavailable.
+      // A full load still shows the error if the OAuth redirect already started.
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full document load from a non-component helper
       window.location.href = `/sign-in?error=${encodeURIComponent(r.error)}`
     }
   })
@@ -138,6 +141,9 @@ export function authSignOut(): void {
     } catch {
       /* best-effort */
     }
+    // Hard reload after the device wipe. A client transition would keep the
+    // signed-in React tree in memory on a shared computer.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full reload after wipe
     window.location.href = '/'
   })()
 }

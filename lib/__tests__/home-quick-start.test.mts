@@ -2,8 +2,10 @@
 //
 // The promise on the homepage is "pick a subject and the first question opens".
 // These tests check that the links really do that: each one reaches a full
-// session of an active subject, never an elective dialog or a sign-in, and the
-// time shown comes from the same place as the subject page's estimate.
+// session of an active subject, never an elective dialog. The first set does
+// not ask for an account. After that set, the practice path asks for Google
+// sign-in (one free set, then unlimited free use). That prompt is not a paywall.
+// The time shown comes from the same place as the subject page's estimate.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
@@ -47,9 +49,22 @@ test('each quick-start subject has enough multiple-choice questions for a full s
   }
 })
 
-test('the practice path never asks the student to sign in', () => {
-  for (const f of ['app/practice/PracticeShell.tsx', 'app/practice/PracticeGate.tsx', 'app/practice/PracticeSession.tsx', 'components/NotTonightGate.tsx']) {
-    assert.doesNotMatch(read(f), /useAuthSession|useSession|signIn\(|next-auth|better-auth/, f)
+test('the first practice set stays open; a later set asks for Google, not payment', () => {
+  const gate = read('app/practice/PracticeGate.tsx')
+  assert.match(gate, /GuestSessionGate/)
+  assert.match(gate, /mayStartGuestPractice/)
+  assert.match(gate, /guestBlocked/)
+  assert.doesNotMatch(gate, /paywall|checkout|stripe|付款|收費|subscription/i)
+
+  const guest = read('components/GuestSessionGate.tsx')
+  assert.match(guest, /signInWithGoogle/)
+  assert.match(guest, /仍然完全免費/)
+  assert.match(guest, /Still 100% free/)
+  assert.doesNotMatch(guest, /paywall|checkout|stripe|付款|收費|subscription/i)
+
+  // Quick start and the bedtime reminder must not grow a second sign-in stack.
+  for (const f of ['app/practice/PracticeShell.tsx', 'components/NotTonightGate.tsx']) {
+    assert.doesNotMatch(read(f), /useAuthSession|signIn\(|next-auth|better-auth|signInWithGoogle/, f)
   }
 })
 

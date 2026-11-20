@@ -36,10 +36,15 @@ const hand = inCohort('positional-handwritten')
 const isOut = (s: string, id: string) => withdrawn[s]?.[id]?.reason === 'POSITIONAL_RATIONALE_REFERENCE'
 
 // ── ① ② cohorts, recomputed from the baselines rather than read back from the log ──
-test('the machine cohort is exactly the ordinal-baseline questions outside the first 176', () => {
+test('the unrestored machine cohort is exactly the ordinal-baseline questions outside the first 176', () => {
   const fromBaseline = new Set(idsOf('scripts/qbank/posref-ordinal-baseline.json').filter((id) => !first.has(id)))
   assert.equal(first.size, 176)
-  assert.deepEqual([...machine].sort(), [...fromBaseline].sort())
+  // A restored rewrite leaves the grandfather list but stays in its cohort.
+  const stillOpen = [...machine].filter((id) => log[id]?.stage !== 'restored')
+  assert.deepEqual(stillOpen.sort(), [...fromBaseline].sort())
+  for (const id of machine) {
+    if (log[id]?.stage === 'restored') assert.equal(fromBaseline.has(id), false, `${id} was restored and must leave the grandfather list`)
+  }
   assert.equal(machine.size, 135)
 })
 
