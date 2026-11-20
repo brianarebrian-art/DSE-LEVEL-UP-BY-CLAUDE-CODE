@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
+import Illustration from '@/src/components/ui/Illustration'
 
 // Custom 404 body. The document title and robots tags live on the server
 // not-found page so missing URLs are not published with the homepage metadata.
@@ -10,9 +11,11 @@ export default function NotFoundView() {
   const en = locale === 'en'
   return (
     <div className="min-h-screen flex items-center justify-center px-4 text-center">
- <div>
- <div className="text-6xl mb-4" aria-hidden></div>
- <h1 className="text-2xl font-extrabold mb-2">{en ? 'Page not found' : '搵唔到呢一頁'}</h1>
+      <div>
+        <div className="mb-4 flex justify-center text-warning" aria-hidden>
+          <Illustration name="error-state" width={160} height={120} className="text-warning" />
+        </div>
+        <h1 className="text-2xl font-extrabold mb-2">{en ? 'Page not found' : '搵唔到呢一頁'}</h1>
         {/* light-first 遷移漏網：text-slate-400 落 #FAFAF8 只有 2.52:1，未過 AA。 */}
         <p className="text-ink-muted mb-6 text-sm">
           {en ? 'The link may have changed, or the address was mistyped.' : '連結可能已經改咗，或者你打錯咗網址。'}

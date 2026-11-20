@@ -29,6 +29,7 @@ import { withFromResult } from '@/lib/practiceCount'
 import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
 import { getReverseLog } from '@/lib/reverseLog'
 import { formatStudyDay, hkDayString } from '@/lib/hkTime'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 
 interface TopicResult {
   topic: string
@@ -760,7 +761,9 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
               而資訊過載本身就係壓力源（規格 §2.3 步驟 5）。 */}
           {items.slice(0, 3).map((d) => (
  <li key={d.id} className="flex items-start gap-2 text-sm text-ink-soft">
- <span aria-hidden>{DIMENSION_BY_ID[d.dimension].icon}</span>
+              <span className="text-accent shrink-0 mt-0.5" aria-hidden>
+                <SpotIcon name={DIMENSION_BY_ID[d.dimension].icon} size={16} />
+              </span>
  <span>
                 {d.label}
                 {/* 而家嘅 label 係系統砌（「課題 · 維度」），已經帶咗維度名，

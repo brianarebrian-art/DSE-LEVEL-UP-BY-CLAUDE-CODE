@@ -19,6 +19,21 @@
 - **構成要素**：守護盾牌、導向信標燈與引導虛線軌道。
 - **伴隨元件**：告知「練習紀錄存喺呢部裝置度，冇受影響」，提供「試多次」與「返回首頁」捷徑。
 
+### C. 溫書枱插圖 (`study-desk`)
+- **語意情境**：關於頁、品牌介紹頭圖。
+- **構成要素**：安靜書枱、書本、柔和燈暈；莫蘭迪灰綠與陶土書脊。
+- **伴隨元件**：品牌說明文案；唔放統計或 CTA 重疊在圖上。
+
+### D. 方法流程插圖 (`method-flow`)
+- **語意情境**：方法論頁頭圖。
+- **構成要素**：題型卡 → 放大分析 → 改寫卡 → 練習筆；金色引導線。
+
+### E. Spot 圖標 (`src/components/ui/SpotIcon.tsx`)
+- **語意情境**：曾清空 emoji 嘅卡片／步驟／五官練習／社群功能。
+- **規範**：24×24、2px stroke、`currentColor`；名稱如 `adapt`、`eye`、`mood`、`calm-done`。
+- **紅線**：禁止 Unicode emoji；禁止付費 MCP／外部圖庫（憲章 §5）。
+
 ## 3. 開發實作準則
-- 存放位置：`src/assets/illustrations/*.svg` 與 `src/components/ui/Illustration.tsx`。
+- 存放位置：`public/assets/illustrations/`、`src/components/ui/Illustration.tsx`、`src/components/ui/SpotIcon.tsx`。
 - 零外部圖像依賴，全代碼打包內嵌，杜絕 CDN 遺失風險。
+- 可選靜態 JPG（如 `study-desk.jpg`）只作參考／未來 hero；預設 UI 用內嵌 SVG。

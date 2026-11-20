@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { isNotTonight } from '@/lib/notTonight'
 import { useLocale } from '@/lib/i18n'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 
 // NTM 溫柔二次確認（Emma/UDL 決策 2026-07-16：❌ 真・鎖，✅ 增加摩擦）。
 // 開咗「今晚唔溫得」仍然入 /practice → 彈一次溫馨確認，零強制零封鎖：
@@ -34,8 +35,10 @@ export default function NotTonightGate({ children }: { children: React.ReactNode
           aria-labelledby="ntm-gate-title"
           className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center"
         >
- <div className="text-4xl mb-3" aria-hidden></div>
- <h1 id="ntm-gate-title" className="text-lg font-medium text-ink mb-2">
+          <div className="mb-3 flex justify-center text-accent" aria-hidden>
+            <SpotIcon name="breath" size={40} />
+          </div>
+          <h1 id="ntm-gate-title" className="text-lg font-medium text-ink mb-2">
             {en ? 'Not-tonight mode is on' : '你開咗「今晚唔溫得」'}
           </h1>
  <p className="text-sm text-ink-soft leading-relaxed mb-5">

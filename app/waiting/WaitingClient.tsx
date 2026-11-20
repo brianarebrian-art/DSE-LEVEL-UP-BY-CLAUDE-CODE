@@ -5,6 +5,7 @@ import { ArrowLeft, Lock } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import DailyQuote from '@/components/waiting/DailyQuote'
 import BreathingExercise from '@/components/BreathingExercise'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 
 // 方向二：等放榜專區（light-first，靜態安全版）。
 // 金句輪播 + 4-7-8 呼吸法 + 真危機熱線信號牌（用返站內已驗證號碼）。
@@ -20,8 +21,10 @@ export default function WaitingClient() {
  <div className="mx-auto max-w-2xl px-4 py-12">
         {/* Hero */}
         <div className="mb-10 text-center">
- <div className="mb-4 text-5xl" aria-hidden></div>
- <h1 className="mb-3 text-3xl font-medium text-ink sm:text-4xl">
+          <div className="mb-4 flex justify-center text-accent" aria-hidden>
+            <SpotIcon name="care" size={48} />
+          </div>
+          <h1 className="mb-3 text-3xl font-medium text-ink sm:text-4xl">
             {en ? 'Before results day, we’re with you' : '放榜前，我哋陪你'}
           </h1>
  <p className="mx-auto max-w-xl text-ink-muted leading-relaxed">

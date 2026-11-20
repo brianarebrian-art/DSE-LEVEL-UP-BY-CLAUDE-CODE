@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Play, Wind } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 import { loadSensoryPref } from './SensoryMenu'
 import NowPlayingBar from './NowPlayingBar'
 
@@ -177,8 +178,10 @@ export default function SoloPlayer() {
   if (quietMode) {
     return (
       <div className="text-center py-10">
- <div className="text-2xl mb-3" aria-hidden></div>
- <p className="text-ink mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
+        <div className="mb-3 flex justify-center text-accent" aria-hidden>
+          <SpotIcon name="breath" size={32} />
+        </div>
+        <p className="text-ink mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
         {/* FIX: [A3] 「回藥術」（遊戲術語）→「呼吸練習」；[B5] 對比度提升 */}
         <p className="text-sm text-ink-soft mb-6">{en ? 'You can try the text-only breathing exercise, or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅呼吸練習，或者返主頁改返感官偏好。'}</p>
  <Link

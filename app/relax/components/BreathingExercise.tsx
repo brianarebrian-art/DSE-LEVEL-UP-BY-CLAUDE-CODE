@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/lib/i18n'
 import { Volume2, VolumeX } from 'lucide-react'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 import { loadSensoryPref } from './SensoryMenu'
 import {
   PATTERNS,
@@ -121,8 +122,10 @@ export default function BreathingExercise() {
     <div className="on-dark-overlay fixed inset-0 z-50 flex flex-col items-center justify-center bg-[rgba(10,10,15,0.96)] px-6 pb-6 pt-16">
       {done ? (
         <div className="text-center max-w-xs">
- <div className="text-3xl mb-4" aria-hidden></div>
- <p className="text-ink mb-2">
+          <div className="mb-4 flex justify-center text-accent" aria-hidden>
+            <SpotIcon name="calm-done" size={36} />
+          </div>
+          <p className="text-ink mb-2">
             {en ? 'Breathing done.' : '呼吸完成。'}
           </p>
  <p className="text-sm text-ink-muted mb-8 leading-relaxed">
@@ -185,8 +188,9 @@ export default function BreathingExercise() {
  </div>
  </div>
 
- <p className="text-[13px] text-ink-muted mb-1 text-center">
-            🌬️ {en ? p_when(pattern, true) : p_when(pattern, false)}
+          <p className="text-[13px] text-ink-muted mb-1 text-center inline-flex items-center justify-center gap-1.5 w-full">
+            <SpotIcon name="breath" size={14} className="text-accent" />
+            {en ? p_when(pattern, true) : p_when(pattern, false)}
             {reduced ? (en ? ' (animation off per your system setting)' : '（已按系統設定停用動畫）') : ''}
           </p>
           {/* ⚠️ 呢句係健康安全提示，唔係裝飾 —— 一定唔可以用 ink-faint（2.91 / 2.70）。

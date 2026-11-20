@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Coffee, Footprints, Headphones, Wind, Leaf } from 'lucide-react'
+import { ArrowRight, Coffee, Footprints, Headphones, Users, Wind, Leaf } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { IG_GROUP_ENTRY_NOTE } from '@/lib/site'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 import type { SensoryPref } from './SensoryMenu'
 import Mascot from '@/components/Mascot'
 
@@ -108,7 +109,9 @@ export default function RelaxLanding({
  pref.quiet ? 'opacity-90' : ''
  }`}
         >
- <div className="mb-2 text-2xl" aria-hidden></div>
+          <div className="mb-2 text-accent" aria-hidden>
+            <SpotIcon name="breath" size={28} />
+          </div>
           {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
           <div className="mb-1 font-serif text-lg text-ink">{en ? 'Solo Recharge' : '獨處充電'}</div>
  <div className="text-sm text-ink-soft">
@@ -123,7 +126,9 @@ export default function RelaxLanding({
           style={{ ['--relax-in-delay' as string]: '140ms' }}
           className="relax-in block rounded-2xl border border-line bg-surface-raised p-6 transition-colors hover:border-subj-rose/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
- <div className="mb-2 text-2xl" aria-hidden></div>
+          <div className="mb-2 text-subj-rose" aria-hidden>
+            <Users size={28} strokeWidth={1.5} />
+          </div>
           {/* FIX: [A3][A4][B9] 「組隊開黑」→「同戰友傾偈」；「打卡」→「記錄心情」；描述完整顯示 */}
           <div className="mb-1 font-serif text-lg text-ink">{en ? 'Chat with study buddies' : '同戰友傾偈'}</div>
  <div className="text-sm text-ink-soft">
@@ -156,9 +161,10 @@ export default function RelaxLanding({
       {/* 5-4-3-2-1 落地練習（SEN-07 靜態安全網）：慌／解離感時用五官拉返當下 */}
       <Link
         href="/relax/grounding"
-        className="block min-h-11 w-full rounded-[10px] border border-accent/30 py-3 text-center text-sm text-accent transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[10px] border border-accent/30 py-3 text-center text-sm text-accent transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
-        🧭 {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
+        <SpotIcon name="hand" size={16} className="text-accent" />
+        {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
       </Link>
 
       {/* 放榜前緩衝空間（第 4 週端到端 QA 發現）：/waiting 一直喺 sitemap 入面，
@@ -167,9 +173,10 @@ export default function RelaxLanding({
           日子先用得着，所以擺喺呼吸空間落面，唔擺喺練習流程入面。 */}
       <Link
         href="/waiting"
-        className="mt-3 block min-h-11 w-full rounded-[10px] border border-accent/30 py-3 text-center text-sm text-accent transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[10px] border border-accent/30 py-3 text-center text-sm text-accent transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
-        🕯️ {en ? 'Before results day · a slower place to wait' : '放榜前 · 一個慢啲嘅地方等'}
+        <SpotIcon name="care" size={16} className="text-gold" />
+        {en ? 'Before results day · a slower place to wait' : '放榜前 · 一個慢啲嘅地方等'}
       </Link>
 
       {/* FIX: [A3][B5] 「補 1 格 MP 都得」→「唞 1 分鐘都得」；提升對比度 */}

@@ -1,19 +1,23 @@
 'use client'
 
+import { Headphones } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import BackButton from '../components/BackButton'
 import SoloPlayer from '../components/SoloPlayer'
 
-// /relax/solo — 🎧 獨處充電：官方 YouTube 電台（Lo-fi／落雨）+ Web Audio 雙耳節拍。
+// /relax/solo — 獨處充電：官方 YouTube 電台（Lo-fi／落雨）+ Web Audio 雙耳節拍。
 export default function SoloPageClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
   return (
     <div>
- <BackButton />
- <div className="mt-4 mb-6">
+      <BackButton />
+      <div className="mt-4 mb-6">
         {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
-        <h1 className="text-xl font-bold text-ink">🎧 {en ? 'Solo Recharge' : '獨處充電'}</h1>
+        <h1 className="text-xl font-bold text-ink inline-flex items-center gap-2">
+          <Headphones size={20} className="text-accent" aria-hidden />
+          {en ? 'Solo Recharge' : '獨處充電'}
+        </h1>
  <p className="text-sm text-ink-muted mt-1">
           {en ? 'Pick a sound, close your eyes, rest a while. Even one track counts.' : '揀首聲音，閉埋眼，抖一陣。聽 1 首都得。'}
         </p>
