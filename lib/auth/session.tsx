@@ -5,6 +5,7 @@ import type { User } from '@supabase/supabase-js'
 import { getSupabaseBrowser } from '@/lib/auth/supabase-browser'
 import { signInWithGoogle, signOutSupabase } from '@/lib/auth/google-auth'
 import { wipeThisDevice } from '@/lib/privacy/wipeDevice'
+import { clearGuestFreeSessionUsed } from '@/lib/guestPracticeQuota'
 import { hasUnsyncedLocalProgress, snapshotLocal } from '@/lib/sync'
 
 // Supabase Auth session seam for the whole app. Components use `useAuthSession()`
@@ -66,6 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!alive) return
       const u = session?.user ?? null
+      if (u) clearGuestFreeSessionUsed()
       setValue({
         user: mapUser(u),
         status: u ? 'authenticated' : 'unauthenticated',

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
+import { getSyncUserId } from '@/lib/auth/server'
 import { loadRegradeMCQuestions } from '@/data/questions/load'
 import { safeLog } from '@/lib/safeLog'
 import { regrade, isSubmittedAnswers, MAX_ANSWERS } from '@/lib/verifyResult'
@@ -8,9 +9,8 @@ import { regrade, isSubmittedAnswers, MAX_ANSWERS } from '@/lib/verifyResult'
 //
 // 設計取捨（逐條寫低，因為每一條都係刻意嘅）：
 //
-// • 【唔要求登入】。全站 100% 免費、唔使登入就做得題；覆核加一道登入閘，
-//   等於為咗一個純顯示層嘅核對而擋住未登入嘅學生。呢個 route 唔讀唔寫任何
-//   用戶數據，冇身份可洩，所以匿名係啱嘅。
+// • 【要登入】（2026-11-20，Fluid Active CPU）。載入成科答案庫係重 serverless
+//   CPU；未登入結果頁唔再打呢個 route。未登入回 401，唔載題庫。
 //
 // • 【零儲存】。唔寫 Supabase、唔寫 log、唔記 IP。入面係學生答錯咗啲乜 ——
 //   對一個 12–18 歲平台嚟講，呢啲嘢唔存落 server 就冇得洩。
@@ -31,6 +31,12 @@ interface Body {
 }
 
 export async function POST(request: Request) {
+  // Auth before any bank load — that load is the Fluid CPU cost.
+  const userId = await getSyncUserId()
+  if (!userId) {
+    return NextResponse.json({ error: 'unauthenticated', verified: false }, { status: 401 })
+  }
+
   const read = await readJsonLimited<Body>(request, BODY_LIMIT.small)
   if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'invalid JSON body' }, { status: read.status })
   const body = (read.value ?? {}) as Body

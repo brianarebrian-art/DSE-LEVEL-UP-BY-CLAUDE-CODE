@@ -17,8 +17,8 @@ export default function SignInPageClient({ error }: { error?: string | null }) {
         </h1>
         <p className="text-sm text-ink-muted mb-5">
           {en
-            ? 'Sign in once with Google to sync progress across devices. Still 100% free — sign-in never unlocks paid content. Practice without signing in keeps progress only until you leave this page.'
-            : '用 Google 登入一次就可以跨裝置同步進度。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。未登入練習嘅進度只喺呢次瀏覽有效，離開頁面就會消失。'}
+            ? 'Sign in once with Google to sync progress across devices and keep practising after the free trial set. Still 100% free — sign-in never unlocks paid content. Without signing in you can finish one practice set; progress stays on this device only.'
+            : '用 Google 登入一次就可以跨裝置同步進度，並喺免費試用額度之後繼續練習。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。未登入最多可完成一節練習；進度只留喺呢部機。'}
         </p>
 
         <p className="text-xs text-ink-muted mb-4">

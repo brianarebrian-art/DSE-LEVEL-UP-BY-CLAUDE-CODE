@@ -26,6 +26,7 @@ import { type DailyStatsCardData } from '@/components/DailyStatsCard'
 import { buildCauseCardData } from '@/lib/causeCard'
 import { resultNextSteps } from '@/lib/resultNextSteps'
 import { withFromResult } from '@/lib/practiceCount'
+import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
 import { getReverseLog } from '@/lib/reverseLog'
 import { formatStudyDay, hkDayString } from '@/lib/hkTime'
 
@@ -143,6 +144,7 @@ export default function ResultPageClient() {
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
+  // Server verify only for signed-in users (Fluid Active CPU — bank reload is costly).
   useEffect(() => {
     const now = Date.now()
     setStudyAt(now)
@@ -158,8 +160,7 @@ export default function ResultPageClient() {
     if (!data) return
     setResult(data)
 
-    // 服務端覆核：用答案庫重批一次對數。背景進行，唔阻塞結果畫面，
-    // 離線／失敗一律靜靜跳過（憲章：網絡問題唔可以變成學生見到嘅錯誤）。
+    if (status !== 'authenticated') return
     if (!data.submitted?.length || !data.subjectId) return
     const ctrl = new AbortController()
     fetch('/api/result/verify', {
@@ -187,13 +188,19 @@ export default function ResultPageClient() {
         /* 離線／中斷 —— 覆核係額外保障，唔係必要條件 */
       })
     return () => ctrl.abort()
-  }, [])
+  }, [status])
 
   const displayScore = useCountUp(result?.score ?? 0, 280) // Phase 4：短 enter，唔慶祝
   const displayPct = useCountUp(
     result ? Math.round((result.score / result.total) * 100) : 0,
     280
   )
+
+  // After the free unsigned set, practise-again must go through Google (Fluid CPU).
+  const guestMustSignIn =
+    isAuthUiEnabled() &&
+    status === 'unauthenticated' &&
+    !mayStartGuestPractice({ authStatus: status, authUiEnabled: true })
 
   if (!checked) {
     return (
@@ -384,12 +391,28 @@ export default function ResultPageClient() {
               <span className="text-sm text-ink-muted">{locale === 'en' ? 'Not chosen' : '未揀中'}</span>
             </div>
           </div>
-          <Link
-            href={result.subjectId ? `/practice?subject=${encodeURIComponent(result.subjectId)}` : '/#quick-start'}
-            className="mt-5 flex h-14 w-full items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-[17px] font-bold text-on-accent focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {locale === 'en' ? `Another ${result.total}` : `再開 ${result.total} 題`}
-          </Link>
+          {guestMustSignIn ? (
+            <button
+              type="button"
+              onClick={() => {
+                void signInWithGoogle(
+                  result.subjectId
+                    ? `/practice?subject=${encodeURIComponent(result.subjectId)}`
+                    : '/practice',
+                )
+              }}
+              className="mt-5 flex h-14 w-full items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-[17px] font-bold text-on-accent focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {locale === 'en' ? 'Sign in with Google to continue' : '登入 Google 後繼續練習'}
+            </button>
+          ) : (
+            <Link
+              href={result.subjectId ? `/practice?subject=${encodeURIComponent(result.subjectId)}` : '/#quick-start'}
+              className="mt-5 flex h-14 w-full items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-[17px] font-bold text-on-accent focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {locale === 'en' ? `Another ${result.total}` : `再開 ${result.total} 題`}
+            </Link>
+          )}
           <Link
             href="/subjects"
             className="mt-5 inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -401,9 +424,13 @@ export default function ResultPageClient() {
 
         <section className="rounded-[var(--radius-card)] border border-line bg-surface-sunken p-4 pr-16 text-sm leading-relaxed text-ink-muted">
           <p>
-            {locale === 'en'
-              ? 'To keep this progress, sync with Google. Skipping is fine — you can start another set whenever you want.'
-              : '想記住進度，可用 Google 同步。唔同步都得，隨時可以再開另一份。'}
+            {guestMustSignIn
+              ? locale === 'en'
+                ? 'You have finished the free trial set. Sign in with Google to keep practising for free and save progress across devices.'
+                : '你已完成免費試用額度。登入 Google 帳戶後可繼續免費練習，並保存跨裝置進度。'
+              : locale === 'en'
+                ? 'To keep this progress, sync with Google. Skipping is fine — you can start another set whenever you want.'
+                : '想記住進度，可用 Google 同步。唔同步都得，隨時可以再開另一份。'}
           </p>
           {status !== 'authenticated' && !user && (
             <button
@@ -411,7 +438,13 @@ export default function ResultPageClient() {
               onClick={() => { void signInWithGoogle('/result') }}
               className="mt-3 flex h-12 w-full items-center justify-center rounded-[var(--radius-control)] border border-accent bg-surface-raised text-base font-bold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              {locale === 'en' ? 'Sync with Google (optional)' : '用 Google 同步（可選）'}
+              {guestMustSignIn
+                ? locale === 'en'
+                  ? 'Continue with Google'
+                  : '用 Google 繼續'
+                : locale === 'en'
+                  ? 'Sync with Google (optional)'
+                  : '用 Google 同步（可選）'}
             </button>
           )}
         </section>
@@ -466,6 +499,30 @@ export default function ResultPageClient() {
         {(() => {
           const steps = resultNextSteps({ ...result, log: getReverseLog() })
           const en = locale === 'en'
+          if (guestMustSignIn) {
+            return (
+              <nav aria-label={en ? 'Next steps' : '下一步'} className="no-print space-y-3">
+                <p className="text-sm leading-relaxed text-ink-muted">
+                  {en
+                    ? 'Sign in with Google to open another practice set. It stays free.'
+                    : '登入 Google 後即可再開一節練習，仍然完全免費。'}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => { void signInWithGoogle(withFromResult(steps.retryHref)) }}
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover"
+                >
+                  {en ? 'Continue with Google' : '用 Google 繼續'}
+                </button>
+                <Link
+                  href={steps.topicsHref}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-[colors,transform] duration-100 hover:bg-surface-sunken"
+                >
+                  {r.pickTopic} <ArrowRight size={16} aria-hidden />
+                </Link>
+              </nav>
+            )
+          }
           return (
             <nav aria-label={en ? 'Next steps' : '下一步'} className="no-print space-y-3">
               {steps.weakest && (

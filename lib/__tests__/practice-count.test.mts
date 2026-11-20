@@ -59,9 +59,12 @@ test('the migration matches the events and holds nothing that identifies a stude
   assert.match(sql, /set search_path = public/)
 })
 
-test('the route reads no session, IP or device, and stores nothing unless enabled on production', async () => {
+test('the route requires a signed-in user, stores no IP or device, and stores nothing unless enabled on production', async () => {
   const route = strip(read('app/api/practice-count/route.ts'))
-  assert.doesNotMatch(route, /getSyncUserId|auth\(|x-forwarded-for|x-real-ip|user-agent|cookies\(|headers\(/)
+  // 2026-11-20: signed-in only (Fluid CPU). Still no IP / UA / device in the count row.
+  assert.match(route, /getSyncUserId/)
+  assert.match(route, /sign_in_required|counted: false/)
+  assert.doesNotMatch(route, /x-forwarded-for|x-real-ip|user-agent/)
   assert.match(route, /if \(!PRACTICE_COUNTS_ENABLED \|\| process\.env\.VERCEL_ENV !== 'production'\) \{/)
   assert.match(route, /parsePracticeCount\(read\.value\)/)
   assert.match(route, /\.rpc\(FN, toRpcArgs\(parsed\.value\)\)/)
@@ -72,12 +75,14 @@ test('the route reads no session, IP or device, and stores nothing unless enable
   assert.match(read('proxy.ts'), /apiRouteClass|limitForRouteClass/)
 })
 
-test('the practice page counts one start per new set and a finish on both ways to finish', () => {
+test('the practice page counts one start per new set and a finish on both ways to finish (signed-in only)', () => {
   const src = read('app/practice/PracticeSession.tsx')
   assert.equal((src.match(/event: 'started'/g) ?? []).length, 1)
   assert.equal((src.match(/event: 'completed'/g) ?? []).length, 2, 'the one-question finish and the normal finish')
+  assert.match(src, /if \(authStatus !== 'authenticated'\) return/)
   assert.match(src, /if \(startCounted\.current \|\| resumedRef\.current \|\| resumeOffer \|\| questions\.length === 0\) return/)
   assert.match(src, /resumedRef\.current = true/)
+  assert.match(src, /countIfSignedIn|authStatus === 'authenticated'/)
 })
 
 test('the result page marks its practise-again links, and only those', () => {
@@ -117,6 +122,7 @@ test('the counts are on only while the privacy page describes them', () => {
   const privacy = read('app/privacy/PrivacyClient.tsx')
   if (PRACTICE_COUNTS_ENABLED) {
     assert.match(privacy, /title=\{en \? 'Counting practice sets' : '數練習次數'\}/, 'the privacy page must describe the counts while they are on')
+    assert.match(privacy, /Only signed-in practice sets are counted|只會計已登入嘅練習/)
     // 43a: opening an explanation is not counted, so nothing about explanations is sent.
     assert.doesNotMatch(strip(read('lib/practiceCount.ts')), /explanation/i)
   } else {
