@@ -1,7 +1,9 @@
 'use client'
 
+import { Camera, ShieldAlert, Users } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import SpotIcon, { type SpotIconName } from '@/src/components/ui/SpotIcon'
 import BackButton from './BackButton'
 
 // 👥 戰友集結區 — Instagram Group 影子溫書室（00 後遊戲化包裝，IG 最終版 spec）。
@@ -26,15 +28,15 @@ const IG_GROUP_ADMIN = 'school.q.1'
 // 神經霓虹色系（賽博學術風）
 // FIX: [A3][A4] 遊戲術語清除：「簽到 Buff」→「心情記錄」、「開黑語音房」→「群組語音房」、
 //               「打卡」→「記錄心情」（CEO 命名修訂 2026-07-15）
-const IG_FEATURES = [
-  { icon: '', titleZh: '每日心情記錄', titleEn: 'Daily mood log', descZh: '深夜溫書記錄心情，互相打氣唔孤單', descEn: 'Log your mood on late-night study sessions — keep each other going', color: 'var(--color-subj-sage)' },
-  { icon: '', titleZh: '科目戰術討論區', titleEn: 'Subject tactics board', descZh: 'Econ／中文／英文／數學互助', descEn: 'Econ / Chinese / English / Maths — help each other out', color: 'var(--color-subj-rose)' },
-  { icon: '', titleZh: '精選攻略', titleEn: 'Curated guides', descZh: '溫書資源、錯題整理、考試貼士', descEn: 'Study resources, mistake logs, exam tips', color: 'var(--color-subj-clay)' },
+const IG_FEATURES: { icon: SpotIconName; titleZh: string; titleEn: string; descZh: string; descEn: string; color: string }[] = [
+  { icon: 'mood', titleZh: '每日心情記錄', titleEn: 'Daily mood log', descZh: '深夜溫書記錄心情，互相打氣唔孤單', descEn: 'Log your mood on late-night study sessions — keep each other going', color: 'var(--color-subj-sage)' },
+  { icon: 'board', titleZh: '科目戰術討論區', titleEn: 'Subject tactics board', descZh: 'Econ／中文／英文／數學互助', descEn: 'Econ / Chinese / English / Maths — help each other out', color: 'var(--color-subj-rose)' },
+  { icon: 'guide', titleZh: '精選攻略', titleEn: 'Curated guides', descZh: '溫書資源、錯題整理、考試貼士', descEn: 'Study resources, mistake logs, exam tips', color: 'var(--color-subj-clay)' },
 ]
 
 const TAGS = [
-  { zh: ' 深夜溫書記錄心情', en: ' Late-night mood logs' },
-  { zh: ' 科目互助', en: ' Subject help' },
+  { zh: '深夜溫書記錄心情', en: 'Late-night mood logs' },
+  { zh: '科目互助', en: 'Subject help' },
 ]
 
 export default function GroupCommunity() {
@@ -44,7 +46,10 @@ export default function GroupCommunity() {
     <div>
  <BackButton />
  <div className="mt-4 mb-4 text-center">
- <h1 className="text-2xl font-bold text-ink">👥 {en ? 'Squad HQ' : '戰友集結區'}</h1>
+          <h1 className="text-2xl font-bold text-ink inline-flex items-center justify-center gap-2">
+            <Users size={22} className="text-subj-rose" aria-hidden />
+            {en ? 'Squad HQ' : '戰友集結區'}
+          </h1>
  <p className="text-sm text-ink-muted mt-1">{en ? "You're not alone. Come team up — don't grind solo." : '你唔係一個人。入嚟組隊，唔單打獨鬥。'}</p>
  </div>
 
@@ -64,8 +69,8 @@ export default function GroupCommunity() {
             style={{ background: 'linear-gradient(135deg, #833AB4, #FD1D1D, #F77737)' }}
             aria-hidden
           >
- 
- </div>
+            <Camera size={22} strokeWidth={1.75} />
+          </div>
  <div>
  <h2 className="text-base font-bold text-ink">{en ? 'DSE LEVEL UP · Shadow Study Room' : IG_GROUP_NAME}</h2>
  <p className="text-xs text-ink-muted">{en ? 'The DSE final stretch · anonymous group study' : 'DSE 最後戰線 · 匿名組隊溫書'}</p>
@@ -97,7 +102,7 @@ export default function GroupCommunity() {
     但 2.38 之下佢係睇唔清嘅。改用跟主題嘅 surface-sunken。 */}
         <div className="rounded-xl bg-surface-sunken border border-line p-4 mb-4">
  <div className="flex items-start gap-3">
- <span className="text-lg" aria-hidden></span>
+              <ShieldAlert size={18} className="text-ink-muted shrink-0 mt-0.5" aria-hidden />
  <div>
  <div className="text-sm font-medium text-ink">{en ? 'Before you join' : '入群之前'}</div>
  <div className="text-xs text-ink-muted leading-relaxed mt-1">
@@ -136,12 +141,12 @@ export default function GroupCommunity() {
             className="rounded-xl bg-surface-raised border border-line p-4 transition-colors"
             style={{ ['--glow' as string]: f.color }}
           >
- <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-lg mb-2"
-              style={{ background: `${f.color}1f`, boxShadow: `0 0 12px ${f.color}33` }}
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center mb-2"
+              style={{ background: `${f.color}1f`, boxShadow: `0 0 12px ${f.color}33`, color: f.color }}
               aria-hidden
             >
-              {f.icon}
+              <SpotIcon name={f.icon} size={20} />
             </div>
  <div className="text-sm font-medium text-ink">{en ? f.titleEn : f.titleZh}</div>
  <div className="text-xs text-ink-muted mt-0.5">{en ? f.descEn : f.descZh}</div>

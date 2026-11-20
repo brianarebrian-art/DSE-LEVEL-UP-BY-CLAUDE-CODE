@@ -8,6 +8,7 @@ import StoredDataInspector from '@/components/StoredDataInspector'
 import RestDayPicker from '@/components/RestDayPicker'
 import ExamCountdownToggle from '@/components/ExamCountdownToggle'
 import GoogleSignInButton from '@/components/auth/GoogleSignInButton'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 
 // Account settings — the PDPO one-click erasure (bilingual via useLocale). Deletes the
 // user's server-side data (cloud progress) and clears local data.
@@ -107,8 +108,10 @@ export default function AccountPageClient() {
 
         {done ? (
           <div className="bg-surface-raised border border-line rounded-2xl p-6 text-center">
- <div className="text-4xl mb-3" aria-hidden></div>
- <p className="text-ink font-bold mb-2">{en ? 'Your data has been deleted' : '已刪除你的資料'}</p>
+            <div className="mb-3 flex justify-center text-accent" aria-hidden>
+              <SpotIcon name="calm-done" size={40} />
+            </div>
+            <p className="text-ink font-bold mb-2">{en ? 'Your data has been deleted' : '已刪除你的資料'}</p>
  <p className="text-ink-muted text-sm leading-relaxed mb-3">
               {cloudCleared
                 ? en

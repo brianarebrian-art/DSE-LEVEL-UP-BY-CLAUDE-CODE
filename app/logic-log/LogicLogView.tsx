@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Pencil, Check, X } from 'lucide-react'
+import { ArrowLeft, CalendarDays, Pencil, Check, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import {
   buildLogEntries, buildActiveDays, isConsecutive, nodeSize, nodeTone, setMoodNote,
@@ -81,8 +81,8 @@ export default function LogicLogView() {
         {days.total > 0 && (
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
  <div className="rounded-2xl border border-line bg-surface-raised p-5">
- <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
- <span aria-hidden></span>
+              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+                <CalendarDays size={14} aria-hidden className="text-accent" />
                 {en ? 'This month' : '本月溫習'}
               </div>
  <p className="text-3xl sm:text-4xl font-medium text-accent leading-tight">
@@ -93,8 +93,8 @@ export default function LogicLogView() {
               </p>
  </div>
  <div className="rounded-2xl border border-line bg-surface-raised p-5">
- <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
- <span aria-hidden></span>
+              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+                <CalendarDays size={14} aria-hidden className="text-gold" />
                 {en ? 'All time' : '總共溫習'}
               </div>
  <p className="text-3xl sm:text-4xl font-medium text-gold leading-tight">

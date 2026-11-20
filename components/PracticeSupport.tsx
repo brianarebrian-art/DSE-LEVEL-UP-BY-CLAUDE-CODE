@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Moon } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { getWrongAnswerLog } from '@/lib/reverseLog'
+import SpotIcon from '@/src/components/ui/SpotIcon'
 
 // 練習頁支援小隊（Yuna/Sarah/Emma/Leo）：
 // 1. 「易讀字體」—— BDA 風格指引推薦嘅系統無襯線堆疊（零下載）
@@ -93,8 +94,10 @@ export default function PracticeSupport() {
       {doneToday && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-scrim-soft px-4 pb-4 pt-16 backdrop-blur-sm">
  <div role="dialog" aria-modal="true" aria-labelledby="enough-today-title" className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
- <div className="text-3xl mb-3" aria-hidden></div>
- <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
+            <div className="mb-3 flex justify-center text-accent" aria-hidden>
+              <SpotIcon name="calm-done" size={36} />
+            </div>
+            <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
  <p className="text-sm text-ink-muted mb-5 leading-relaxed">
               {blindSpotsToday > 0
                 ? en

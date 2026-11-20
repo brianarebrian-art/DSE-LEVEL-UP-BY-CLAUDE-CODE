@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Lock, CheckCircle2, Search, Printer } from 'lucide-react'
+import Illustration from '@/src/components/ui/Illustration'
 import SubjectMark from '@/components/marks/SubjectMark'
 import {
   subjects,
@@ -267,8 +268,10 @@ export default function SubjectsView() {
         {/* No results */}
         {totalMatched === 0 && (
           <div className="text-center py-16 text-ink-muted">
- <div className="text-4xl mb-3"></div>
- <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
+            <div className="mb-3 flex justify-center text-accent">
+              <Illustration name="empty-state" width={144} height={112} className="text-accent" />
+            </div>
+            <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
  <button
               type="button"
               onClick={() => { setQuery(''); setCategory('all') }}

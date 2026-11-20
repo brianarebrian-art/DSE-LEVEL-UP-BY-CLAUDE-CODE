@@ -6,10 +6,11 @@
 // 「你係咪睇漏咗題目？」讀落係審問，「我睇漏咗題目啲字」讀落係自述。
 // 同一個意思，一個令學生防衛，一個令佢肯認。
 import type { Dimension } from './types'
+import type { SpotIconName } from '@/src/components/ui/SpotIcon'
 
 export interface DimensionDef {
   id: Dimension
-  icon: string
+  icon: SpotIconName
   /** 反思閘上面畀學生揀嘅句子（第一人稱） */
   label: string
   labelEn: string
@@ -20,19 +21,19 @@ export interface DimensionDef {
 
 export const DIMENSIONS: readonly DimensionDef[] = [
   {
-    id: 'A', icon: '',
+    id: 'A', icon: 'analyze',
     label: '我對呢個概念本身唔清楚',
     labelEn: 'I am not clear on the concept itself',
     short: '概念盲區', shortEn: 'Concept blind spot',
   },
   {
-    id: 'B', icon: '',
+    id: 'B', icon: 'eye',
     label: '概念我識，但我睇漏咗題目啲字',
     labelEn: 'I know the concept, but I misread the question',
     short: '審題陷阱', shortEn: 'Question-reading trap',
   },
   {
-    id: 'C', icon: '',
+    id: 'C', icon: 'practise',
     label: '我明，只係計錯／寫漏',
     labelEn: 'I understood it — I just slipped in the working',
     short: '運算粗心', shortEn: 'Careless slip',

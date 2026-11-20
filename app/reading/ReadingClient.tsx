@@ -107,8 +107,8 @@ export default function ReadingClient() {
  <span className="text-[11px] font-medium text-gold bg-surface-sunken border border-gold/25 px-2.5 py-0.5 rounded-full">
                   {tr(p.partZh, p.part)}
                 </span>
- <span className="text-[11px] font-medium text-violet bg-surface-sunken border border-violet/25 px-2.5 py-0.5 rounded-full">
-                  🎯 {tr(p.skillZh, p.skill)}
+                <span className="text-[11px] font-medium text-violet bg-surface-sunken border border-violet/25 px-2.5 py-0.5 rounded-full">
+                  {tr(p.skillZh, p.skill)}
                 </span>
  </div>
  <h2 className="text-xl font-medium text-ink mb-4">{p.title}</h2>

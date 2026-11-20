@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import MathText from '@/components/MathText'
 import { useLocale } from '@/lib/i18n'
+import SpotIcon, { type SpotIconName } from '@/src/components/ui/SpotIcon'
+import Illustration from '@/src/components/ui/Illustration'
 
-// Language-neutral emoji per framework, zipped by index with the translated copy
-// in t.methodology.frameworks. (Examples span Maths, Chemistry, Biology, Economics.)
-const fwEmojis = ['', '', '', '']
+// Morandi spot icons per framework, zipped by index with t.methodology.frameworks.
+const fwIcons: SpotIconName[] = ['adapt', 'spark-step', 'analyze', 'practise']
+const flowSteps: SpotIconName[] = ['official', 'analyze', 'rewrite', 'practise']
 
 export default function MethodologyClient() {
   const { t, locale } = useLocale()
@@ -31,18 +33,21 @@ export default function MethodologyClient() {
 
         {/* Header */}
         <div className="text-center mb-16">
- <div className="inline-flex items-center gap-2 bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mb-6 text-sm text-gold">
+          <div className="mb-6 flex justify-center text-accent">
+            <Illustration name="method-flow" width={200} height={150} className="text-accent" />
+          </div>
+          <div className="inline-flex items-center gap-2 bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mb-6 text-sm text-gold">
             {m.badge}
           </div>
- <h1 className="text-3xl sm:text-4xl font-medium mb-4 text-ink">
+          <h1 className="text-3xl sm:text-4xl font-medium mb-4 text-ink">
             {m.title1}
             <br />
- <span className="text-accent">{m.title2}</span>
- </h1>
- <p className="text-ink-muted text-lg max-w-2xl mx-auto leading-relaxed">
+            <span className="text-accent">{m.title2}</span>
+          </h1>
+          <p className="text-ink-muted text-lg max-w-2xl mx-auto leading-relaxed">
             {m.intro}
           </p>
- </div>
+        </div>
 
         {/* The core insight */}
         <div className="bg-surface-sunken border border-gold/20 rounded-2xl p-6 sm:p-8 mb-16">
@@ -61,22 +66,22 @@ export default function MethodologyClient() {
         {/* Methodology flow — how every framework gets turned into practice */}
         <div className="flex items-center justify-center gap-2 sm:gap-3 mb-10 flex-wrap">
           {[
-            { icon: '', label: m.officialLabel },
-            { icon: '', label: m.analysisLabel },
-            { icon: '', label: m.rewrittenLabel },
-            { icon: '', label: en ? 'Your turn' : '你嚟做' },
+            { icon: flowSteps[0], label: m.officialLabel },
+            { icon: flowSteps[1], label: m.analysisLabel },
+            { icon: flowSteps[2], label: m.rewrittenLabel },
+            { icon: flowSteps[3], label: en ? 'Your turn' : '你嚟做' },
           ].map((step, i, arr) => (
- <Fragment key={i}>
- <div className="flex flex-col items-center gap-1.5 w-20 text-center">
- <div className="w-12 h-12 rounded-xl bg-surface-raised border border-line-strong grid place-items-center text-xl">
-                  {step.icon}
+            <Fragment key={i}>
+              <div className="flex flex-col items-center gap-1.5 w-20 text-center">
+                <div className="w-12 h-12 rounded-xl bg-surface-raised border border-line-strong grid place-items-center text-accent">
+                  <SpotIcon name={step.icon} size={22} />
                 </div>
- <span className="text-[11px] text-ink-muted leading-tight">{step.label}</span>
- </div>
+                <span className="text-[11px] text-ink-muted leading-tight">{step.label}</span>
+              </div>
               {i < arr.length - 1 && <ArrowRight className="text-ink-muted shrink-0" size={16} />}
- </Fragment>
- ))}
- </div>
+            </Fragment>
+          ))}
+        </div>
 
  <div className="space-y-4">
           {m.frameworks.map((f, i) => {
@@ -90,7 +95,9 @@ export default function MethodologyClient() {
                   aria-expanded={isOpen}
                   className="w-full text-left px-6 py-5 flex items-center gap-4 hover:bg-surface-sunken border border-gold/40 transition-colors"
                 >
- <span className="text-3xl">{fwEmojis[i]}</span>
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-sunken text-accent">
+                    <SpotIcon name={fwIcons[i]} size={24} />
+                  </span>
  <div className="min-w-0">
  <h3 className="text-lg font-medium text-ink">{f.name}</h3>
  <p className="text-ink-muted text-sm">{f.tagline}</p>
@@ -163,8 +170,9 @@ export default function MethodologyClient() {
         {/* 誠實披露：書寫題永不機器批改，自評唔計入任何數字。
             擺喺 CTA 之前 —— 學生撳去練習之前就應該知呢件事，而唔係做完先發現。 */}
         <div className="mt-16 rounded-2xl border border-line bg-surface-sunken p-6">
- <h2 className="text-base font-medium text-ink mb-2">
-            ✍️ {locale === 'en' ? 'About written questions' : '關於書寫題'}
+          <h2 className="text-base font-medium text-ink mb-2 flex items-center gap-2">
+            <SpotIcon name="rewrite" size={18} className="text-accent" />
+            {locale === 'en' ? 'About written questions' : '關於書寫題'}
           </h2>
  <p className="text-sm text-ink-muted leading-relaxed">
             {locale === 'en'
@@ -180,8 +188,9 @@ export default function MethodologyClient() {
             一個平台嗰陣，最想知嘅正正係「佢做唔到啲乜」—— 因為肯講嗰啲，先信得過
             佢講做得到嘅嘢。 */}
         <div className="mt-16 rounded-2xl border border-line bg-surface-raised p-6">
- <h2 className="text-base font-medium text-ink mb-3">
-            🎯 {locale === 'en' ? 'What this method does and does not cover' : '呢套方法涵蓋到咩、涵蓋唔到咩'}
+          <h2 className="text-base font-medium text-ink mb-3 flex items-center gap-2">
+            <SpotIcon name="analyze" size={18} className="text-accent" />
+            {locale === 'en' ? 'What this method does and does not cover' : '呢套方法涵蓋到咩、涵蓋唔到咩'}
           </h2>
 
  <p className="text-sm text-ink-soft leading-relaxed mb-4">
