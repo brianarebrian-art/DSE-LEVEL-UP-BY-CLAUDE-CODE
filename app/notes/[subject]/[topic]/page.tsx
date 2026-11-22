@@ -1,4 +1,5 @@
 import { completeSeoMetadata, breadcrumbJsonLd, articleJsonLd } from '@/lib/seo'
+import { topicNotesSeoDescription } from '@/lib/dynamicSeoDescriptions'
 import { notFound } from 'next/navigation'
 import { getActiveSubjects, getSubject } from '@/data/subjects'
 import { SUBJECT_TOPICS } from '@/data/questions/summary.generated'
@@ -27,8 +28,7 @@ export async function generateMetadata({
   const note = await getStudyNote(subject, topic)
   if (!meta || !note) notFound()
   const title = `${note.titleZh}自學筆記 | ${meta.name} | DSE Level Up` // i18n-exempt: SEO title
-  const description =
-    `${note.titleZh}（${note.titleEn}）DSE ${meta.name}自學筆記：概念、必記要點、考試技巧與常見陷阱。免費列印／PDF，掃碼即開練習。`.slice(0, 160) // i18n-exempt: SEO description
+  const description = topicNotesSeoDescription({ name: meta.name, titleZh: note.titleZh })
   return completeSeoMetadata(
     { title, description },
     `/notes/${subject}/${topic}`,

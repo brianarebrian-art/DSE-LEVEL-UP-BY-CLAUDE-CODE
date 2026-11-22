@@ -26,6 +26,11 @@ emitted generic `Article` data although the notes contract requires `TechArticle
 this mismatch and checks every generated topic's schema, headline and canonical
 URL after the fix. The smoke summary now prints issue counts and representative
 paths as well as retaining the full artifact; it still exits nonzero on failure.
+The next run exposed the other shared topic-page defect: descriptions only used
+`slice(0, 160)`, so all 296 were shorter than the required 150 code points. Topic
+metadata now reuses the existing whole-sentence description builder (no padding,
+truncation or weakened length limit), and the page-output test checks the actual
+metadata for every generated topic as well.
 
 ESLint and typecheck passed on this baseline. The dependency PR's red status was
 not proof of an ESLint 10 regression. A separate Supabase Preview failure needs

@@ -52,7 +52,7 @@ describe('QR print card contrast', () => {
 })
 
 describe('topic notes structured data', () => {
-  it('every generated topic emits TechArticle with the visible headline and correct URL', () => {
+  it('every generated topic has a complete description, canonical URL and TechArticle headline', () => {
     const result = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '-e', `
       import assert from 'node:assert/strict';
       import { registerHooks } from 'node:module';
@@ -74,6 +74,10 @@ describe('topic notes structured data', () => {
         return null;
       }
       for (const params of route.generateStaticParams()) {
+        const metadata = await route.generateMetadata({ params: Promise.resolve(params) });
+        const descriptionLength = Array.from(metadata.description).length;
+        assert.ok(descriptionLength >= 150 && descriptionLength <= 160, params.subject + '/' + params.topic + ': description length ' + descriptionLength);
+        assert.equal(metadata.alternates.canonical, 'https://www.dselevelup.com/notes/' + params.subject + '/' + params.topic);
         const element = await page({ params: Promise.resolve(params) });
         const graph = element.props.children[0].props.data['@graph'];
         const article = graph.find((item) => item['@type'] === 'TechArticle');
