@@ -83,3 +83,7 @@
 本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 [HKEAA 網站](https://www.hkeaa.edu.hk/) 查閱或下載。練習表現估算僅供參考，最終成績以 HKEAA 公布為準。
 
 © DSE Level Up 2026. Not affiliated with HKEAA. All questions are independently rewritten for educational purposes.
+
+## DSE 專屬首頁與搜尋設定
+
+首頁架構、雙語文案、Google Search Console 驗證與上線前 SEO/GEO/AEO 清單：[`docs/DSE-HOME-SEARCH-HANDOFF.md`](docs/DSE-HOME-SEARCH-HANDOFF.md)。

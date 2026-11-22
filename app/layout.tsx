@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { googleVerification } from '@/lib/searchVerification'
 import Script from 'next/script'
 import { headers } from 'next/headers'
 import { Noto_Sans_TC } from 'next/font/google'
@@ -45,6 +46,7 @@ const SUBJECT_COUNT = getActiveSubjects().length
 const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 選擇題練判斷' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
 export const metadata: Metadata = {
+  verification: googleVerification(process.env.NEXT_PUBLIC_GSC_VERIFICATION_TOKEN),
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
   // 發出警告，且 og:image 會輸出成相對路徑，大部分社交平台抓不到。
   metadataBase: new URL(SITE_URL),

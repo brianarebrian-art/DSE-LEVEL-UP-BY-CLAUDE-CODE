@@ -16,6 +16,8 @@ import { getCurrentSeason } from '@/utils/season'
 import { getSeasonalHero } from '@/data/heroContent'
 import Mascot from '@/components/Mascot'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
+import { HOME_INTRO, HOME_ROUTES, HOME_FAQS } from '@/lib/homeContent'
+import { localiseFaq } from '@/lib/faq'
 
 const activeSubjects = getActiveSubjects()
 const quickSubjects = quickStartSubjects()
@@ -44,6 +46,7 @@ export default function HomePage() {
   const { t, locale } = useLocale()
   const h = t.home
   const en = locale === 'en'
+  const faq = localiseFaq(HOME_FAQS, en)
   const hero = getSeasonalHero(getCurrentSeason(), locale === 'en')
   const pathname = usePathname()
 
@@ -79,12 +82,15 @@ export default function HomePage() {
               <span>{hero.badge}</span>
             </p>
             <h1 id="homepage-heading" className="font-serif hero-rise-1 mb-3 text-[2.125rem] font-bold leading-[1.3] tracking-tight text-ink sm:text-5xl">
-              {en ? 'A little practice. A clearer mind.' : '每日行少少，個腦清晰啲。'}
+              {en ? 'DSE practice, at your own pace.' : 'DSE 溫習，按你的節奏。'}
             </h1>
+            <p className="mx-auto mb-4 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0">
+              {en ? HOME_INTRO.en : HOME_INTRO.zh}
+            </p>
             <p className="mx-auto mb-5 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0">
               {en
                 ? `${SESSION_SIZE} thoughtful questions · about ${sessionMins} minutes · take it at your own pace.`
-                : `每日 ${SESSION_SIZE} 題，約 ${sessionMins} 分鐘。唔使趕，按自己節奏就可以。`}
+                : `每節 ${SESSION_SIZE} 題，約 ${sessionMins} 分鐘。唔使趕，按自己節奏就可以。`}
             </p>
             <div className="mx-auto mb-5 max-w-md rounded-[var(--radius-control)] bg-surface-sunken px-2 py-2.5 text-center text-xs leading-relaxed text-ink-muted md:mx-0">
               <p>
@@ -118,6 +124,9 @@ export default function HomePage() {
                 {en ? 'You can stop whenever you need. Your practice is not a test of your worth.' : '需要時隨時可以停。練習唔代表你嘅能力或價值。'}
               </p>
               <QuickStartGrid labelledBy="quick-start-label" en={en} />
+              <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+                {en ? 'One free set without signing in; then Google sign-in to continue. Always free.' : '未登入可完成一節試用；之後用 Google 登入繼續，仍然免費。'}
+              </p>
               <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2 md:justify-start">
                 <Link
                   href="/dashboard"
@@ -211,6 +220,33 @@ export default function HomePage() {
         {/* 示範盲測卡放喺首屏以下，唔搶 hero；接線符合憲章第 4 條。 */}
         <div className="mx-auto mt-10 max-w-xl">
           <BlindTestQuestion />
+        </div>
+      </section>
+
+      <section aria-labelledby="home-routes-heading" className="border-t border-line bg-surface px-4 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <h2 id="home-routes-heading" className="text-2xl font-semibold text-ink sm:text-3xl">{en ? 'Find your next step' : '找到適合你的下一步'}</h2>
+          <p className="mt-3 text-ink-muted">{en ? 'Start with a question, a concept or a writing task. You do not have to do everything at once.' : '由一條題、一個概念或一次寫作自評開始，不必一次做完所有事情。'}</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {HOME_ROUTES.map((route, i) => <Link key={route.href} href={route.href} prefetch={false} className="rounded-[var(--radius-card)] border border-line bg-surface-raised p-6 transition-colors hover:border-accent focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent">
+              <span aria-hidden className="text-sm font-semibold text-accent">0{i + 1}</span>
+              <h3 className="mt-3 text-lg font-semibold text-ink">{en ? route.labelEn : route.labelZh}<span aria-hidden> →</span></h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{en ? route.detailEn : route.detailZh}</p>
+            </Link>)}
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="home-faq-heading" className="border-t border-line bg-surface px-4 py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl">
+          <h2 id="home-faq-heading" className="text-2xl font-semibold text-ink sm:text-3xl">{en ? 'Before you begin' : '開始之前，你可能想知道'}</h2>
+          <div className="mt-6 divide-y divide-line border-y border-line">
+            {faq.map(item => <details key={item.q} className="py-1">
+              <summary className="min-h-12 cursor-pointer py-4 text-base font-semibold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent">{item.q}</summary>
+              <p className="pb-5 text-sm leading-relaxed text-ink-muted">{item.a}</p>
+            </details>)}
+          </div>
+          <Link href="/transparency" prefetch={false} className="mt-4 inline-flex min-h-12 items-center text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent">{en ? 'Check question status and limitations' : '核對題庫狀態與使用限制'}<span aria-hidden> →</span></Link>
         </div>
       </section>
 
