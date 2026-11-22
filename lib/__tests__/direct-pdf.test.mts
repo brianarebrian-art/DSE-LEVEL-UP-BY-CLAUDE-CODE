@@ -48,3 +48,10 @@ test('outlined diagram retains accessible labels without SVG text font dependenc
  const config=readFileSync('next.config.ts','utf8')
  assert.match(config,/'\/api\/notes-pdf\/\*': \['\.\/assets\/fonts\/\*\*'/)
 })
+
+test('diagram build fails closed on missing glyphs and normalizes only typographic minus',()=>{
+ const generator=readFileSync('scripts/notes/outline-diagram.mjs','utf8')
+ assert.match(generator,/hasGlyphForCodePoint/)
+ assert.match(generator,/Missing diagram glyph/)
+ assert.match(generator,/replace\(\/−\/g,'-'\)/)
+})

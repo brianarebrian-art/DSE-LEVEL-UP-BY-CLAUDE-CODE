@@ -65,7 +65,7 @@ PR仍相依#247，應先處理基底合併與教材發布閘，不用較舊previ
 - 數學／物理單課題與數學合集抽樣：PDF文字可擷取繁中、字型嵌入、頁碼正確、QR正確。數學合集71頁，這是現有25課題摘要，不是71頁已教研覆核教材。
 - 字型及數式測試不等於實體手機、第三方閱讀器、印表機或香港字形偏好驗收；最終遠端API資產追蹤／runtime仍須按最新PR Preview核對。
 
-完整本機回歸：**1,577測試通過、0失敗、0略過**；TypeScript、ESLint 0 warnings、13QA及secret scan通過；production依賴audit為0 vulnerabilities。已知4GiB sandbox無法穩定完成大型production build，沿用先前批准的遠端CI／Vercel build驗收，不以本機dev成功冒充production成功。
+完整本機回歸：**1,578測試通過、0失敗、0略過**；TypeScript、ESLint 0 warnings、13QA及secret scan通過；production依賴audit為0 vulnerabilities。已知4GiB sandbox無法穩定完成大型production build，沿用先前批准的遠端CI／Vercel build驗收，不以本機dev成功冒充production成功。
 
 ## 本次檔案
 
@@ -93,3 +93,7 @@ PR仍相依#247，應先處理基底合併與教材發布閘，不用較舊previ
 - `scripts/notes/audit-learning.mts`
 - `scripts/notes/math-quadratic-source.svg`
 - `scripts/notes/outline-diagram.mjs`
+
+### 部署後缺字覆核
+
+Preview實際下載API回應200（CDN request record），證實部署資產追蹤可讀中文字型。視覺覆核另確認WenQuanYi未包含U+2212數學減號；PDF文字與SVG輪廓輸出時將其等價轉為ASCII減號，原教材字串／數值不改。圖解重建工具加上逐字glyph檢查，缺字即失敗，不再默默輸出方框。中文字形已轉向量輪廓，仍不以桌面截圖取代iOS／Android實機驗收。

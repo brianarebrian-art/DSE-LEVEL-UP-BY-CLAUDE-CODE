@@ -36,7 +36,7 @@ export async function createNotePdf({subjectName,notes,date}:NotePdfInput):Promi
   function text(value:string,size=11,color='#173d36') {
     doc.font('Chinese').fontSize(size)
     // PDFKit wraps CJK text and embeds only glyphs used in this document.
-    const paragraphs=value.split('\n')
+    const paragraphs=value.replace(/−/g,'-').split('\n')
     for(const paragraph of paragraphs){
       const height=doc.heightOfString(paragraph,{width:WIDTH,lineGap:4})
       room(Math.min(height,100))
