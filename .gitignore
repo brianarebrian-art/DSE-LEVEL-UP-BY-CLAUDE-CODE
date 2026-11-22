@@ -62,3 +62,6 @@ skills-lock.json
 # Graphify local code map (never deploy / never commit)
 graphify-out/
 .graphify/
+
+# Local/CI diagnostics (uploaded by Actions)
+/artifacts/

@@ -2,6 +2,7 @@
 """Read-only HTTP checks. Local production-mode HTML is not Google indexing evidence."""
 import argparse
 import concurrent.futures
+from collections import Counter
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -152,6 +153,17 @@ def inspect(origin, canonical_origin, item, name, user_agent, output):
         return {'path': path, 'user_agent': name, 'issues': [str(error)], 'scope': 'BLOCKED: request failed'}
 
 
+def summarize(results, report):
+    failures = [record for record in results if record['issues']]
+    return {
+        'responses': len(results),
+        'responses_with_issues': len(failures),
+        'issue_counts': dict(Counter(issue for record in failures for issue in record['issues'])),
+        'examples': [{key: record.get(key) for key in ['path', 'user_agent', 'issues']} for record in failures[:10]],
+        'report': str(report),
+    }
+
+
 def main():
     cli = argparse.ArgumentParser()
     cli.add_argument('--origin', required=True)
@@ -192,7 +204,7 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(lambda task: inspect(args.origin, args.canonical_origin, *task, output), tasks))
     (output / 'responses.json').write_text(json.dumps(results, ensure_ascii=False, indent=2) + '\n')
-    print(json.dumps({'responses': len(results), 'responses_with_issues': sum(bool(record['issues']) for record in results), 'report': str(output / 'responses.json')}, ensure_ascii=False))
+    print(json.dumps(summarize(results, output / 'responses.json'), ensure_ascii=False))
     if args.strict and any(record['issues'] for record in results):
         raise SystemExit(1)
 

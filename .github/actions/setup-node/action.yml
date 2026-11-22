@@ -1,0 +1,19 @@
+name: Locked Node setup
+description: Use the repository Node version and install the lockfile
+runs:
+  using: composite
+  steps:
+    - name: Setup Node from .nvmrc
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: .nvmrc
+        cache: npm
+        cache-dependency-path: package-lock.json
+    - name: Install locked dependencies
+      shell: bash
+      run: |
+        set -euo pipefail
+        mkdir -p artifacts
+        node --version
+        npm --version
+        npm ci 2>&1 | tee artifacts/install.log

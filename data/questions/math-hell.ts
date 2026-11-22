@@ -2,7 +2,7 @@ import type { Question, Topic } from './types'
 import { makeQ, type Pair, type TopicMeta, type FwMeta } from './_builder'
 
 // Math multi-step hard set —— 掛入【現有】課題 id，令 3:5:2 抽樣池內 hard 更硬。
-// 唔另開 hell 課題。每條答案人手計過。
+// 不另設 hell 課題。每條答案均經人手計算。
 
 const q = makeQ('math')
 const opt = (v: string): Pair => [`$${v}$`, `$${v}$`]
@@ -39,7 +39,7 @@ export const mathHellQuestions: Question[] = [
       C('$0 < k < 1$', '$0 < k < 1$'),
       C('$k > 0$', '$k > 0$'),
     ],
-    C('相異實根：$\\Delta = (k+1)^2 - 4(k-1) = (k-1)^2 + 4 > 0$ 恆成立。兩正根：和 $k+1 > 0$、積 $k-1 > 0 \\Rightarrow k > 1$。\n\n陷阱：以為 $\\Delta$ 仲要另加條件；漏咗「相異」或「正」。',
+    C('相異實根：$\\Delta = (k+1)^2 - 4(k-1) = (k-1)^2 + 4 > 0$ 恆成立。兩正根：和 $k+1 > 0$、積 $k-1 > 0 \\Rightarrow k > 1$。\n\n陷阱：以為 $\\Delta$ 仍要另加條件；遺漏「相異」或「正」。',
       'Distinct real roots always hold. Both positive $\\Rightarrow k>1$.\n\n【Trap】 Extra $\\Delta$ constraint; dropping “distinct” or “positive”.')),
 
   q(id('qd'), T.quad, FW.transform, 'hard', 2023, 3,
@@ -114,5 +114,5 @@ export const mathHellQuestions: Question[] = [
       '$d=3$, $a=2$, 10th term $=29$.\n\n【Trap】 Wrong index gap; wrong $d$.')),
 ]
 
-/** 全部掛入現有課題，唔新增 Topic chips。 */
+/** 全部歸入現有課題，不新增 Topic chips。 */
 export const mathHellTopics: Topic[] = []

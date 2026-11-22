@@ -49,6 +49,7 @@ export const EXCLUDED: Record<string, string> = {
   // 唔係畀學生嘅
   '/admin': '管理後台，唔應該有學生導航',
   '/admin/quality': '管理品質後台，有權限守衛，不屬學生導航',
+  '/calm-demo': '僅 development 可用的 UI 示範，production／preview 回 404，不屬學生導航',
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
   '/sentry-example-page': '開發時確認 Sentry。production 回 404，不屬於學生導航',
@@ -64,6 +65,7 @@ export const EXCLUDED: Record<string, string> = {
   '/cantonese/[sceneId]': '動態詳情頁，返回路徑係返 /cantonese',
   '/cantonese/learn': '廣東話學習方法頁，由 /cantonese 入，返回路徑係返 /cantonese',
   '/notes/[subject]': '動態詳情頁，返回路徑係返 /notes',
+  '/notes/[subject]/[topic]': '課題筆記詳情，由科目筆記進入，內建麵包屑返回上層與練習入口',
   '/source-lab/[id]': '動態詳情頁，返回路徑係返 /source-lab',
   '/subjects/[subject]': '動態詳情頁，返回路徑係返 /subjects',
   '/subject/[subject]/[topic]/[id]': '動態題目詳解頁，由搜尋引擎或分享進入，內建麵包屑導航與練習入口',

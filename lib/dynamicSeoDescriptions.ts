@@ -86,6 +86,21 @@ export function notesSeoDescription({ name, questionCount, topicCount }: Omit<Su
   )
 }
 
+/** Individual revision note: keep complete sentences and identify its real topic. */
+export function topicNotesSeoDescription({ name, titleZh }: { name: string; titleZh: string }): string {
+  return completeDescription(
+    `DSE Level Up 的${name}「${titleZh}」自學筆記，整理本課題的核心概念、必記要點、考試技巧與常見陷阱。`,
+    [
+      '筆記可列印或透過瀏覽器儲存為 PDF，頁內二維碼可開啟同一課題的原創改寫練習。',
+      '所有內容免費，並非香港考試及評核局官方試題或官方評分參考。',
+      '筆記只供溫習參考，應配合課本、課堂和教師指引使用。',
+      '可按自己的節奏選讀。',
+      '先理解概念，再核對作答步驟。',
+      '可重點回看常見陷阱。',
+    ],
+  )
+}
+
 export function cantoneseSeoDescription({ title, why, phraseCount, wordCount }: CantoneseInput): string {
   return completeDescription(
     `「${title}」是新來港・香港日常廣東話的生活場景頁：${why}頁面提供${phraseCount}句常用表達和${wordCount}個詞語，逐項附粵拼、普通話、英文及用法提示。`,

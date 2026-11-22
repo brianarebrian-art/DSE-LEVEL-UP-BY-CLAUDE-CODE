@@ -1,4 +1,5 @@
 import { completeSeoMetadata, breadcrumbJsonLd, articleJsonLd } from '@/lib/seo'
+import { topicNotesSeoDescription } from '@/lib/dynamicSeoDescriptions'
 import { notFound } from 'next/navigation'
 import { getActiveSubjects, getSubject } from '@/data/subjects'
 import { SUBJECT_TOPICS } from '@/data/questions/summary.generated'
@@ -7,6 +8,9 @@ import { practiceTopicPath } from '@/lib/notes/practiceLink'
 import { JsonLd } from '@/components/Seo/JsonLd'
 import NotesSubjectClient from '../NotesSubjectClient'
 import Link from 'next/link'
+
+// Structured data mirrors the bilingual visible note, independent of client locale.
+const tr = (zh: string, en: string) => `${zh} · ${en}`
 
 export function generateStaticParams() {
   return getActiveSubjects().flatMap((s) =>
@@ -24,8 +28,7 @@ export async function generateMetadata({
   const note = await getStudyNote(subject, topic)
   if (!meta || !note) notFound()
   const title = `${note.titleZh}自學筆記 | ${meta.name} | DSE Level Up` // i18n-exempt: SEO title
-  const description =
-    `${note.titleZh}（${note.titleEn}）DSE ${meta.name}自學筆記：概念、必記要點、考試技巧與常見陷阱。免費列印／PDF，掃碼即開練習。`.slice(0, 160) // i18n-exempt: SEO description
+  const description = topicNotesSeoDescription({ name: meta.name, titleZh: note.titleZh })
   return completeSeoMetadata(
     { title, description },
     `/notes/${subject}/${topic}`,
@@ -49,15 +52,18 @@ export default async function NotesTopicPage({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      articleJsonLd({
-        path,
-        title: h1,
-        description: note.conceptZh.slice(0, 160),
-        dateModified: '2026-11-19',
-      }),
+      {
+        ...articleJsonLd({
+          path,
+          title: h1,
+          description: note.conceptZh.slice(0, 160),
+          dateModified: '2026-11-19',
+        }),
+        '@type': 'TechArticle',
+      },
       breadcrumbJsonLd([
         { name: 'DSE Level Up', path: '/' },
-        { name: '所有科目筆記', path: '/notes' },
+        { name: tr('所有科目筆記', 'Subject notes'), path: '/notes' },
         { name: meta.name, path: `/notes/${subject}` },
         { name: note.titleZh, path },
       ]),
@@ -66,18 +72,18 @@ export default async function NotesTopicPage({
         mainEntity: [
           {
             '@type': 'Question',
-            name: `${note.titleZh}要記咩？`,
+            name: tr(`${note.titleZh}要記咩？`, `What should I remember about ${note.titleEn}?`),
             acceptedAnswer: {
               '@type': 'Answer',
-              text: note.mustKnowZh.join('；'),
+              text: tr(note.mustKnowZh.join('；'), note.mustKnowEn.join('; ')),
             },
           },
           {
             '@type': 'Question',
-            name: `${note.titleZh}常見陷阱係咩？`,
+            name: tr(`${note.titleZh}常見陷阱係咩？`, `What are common traps in ${note.titleEn}?`),
             acceptedAnswer: {
               '@type': 'Answer',
-              text: note.commonTrapZh,
+              text: tr(note.commonTrapZh, note.commonTrapEn),
             },
           },
         ],

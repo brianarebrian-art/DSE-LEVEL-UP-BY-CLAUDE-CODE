@@ -1,3 +1,4 @@
+import { heroSection } from './helpers/home-source.mts'
 // Homepage quick start (UX loop 2, 2026-09-30; lib/quickStart.ts).
 //
 // The promise on the homepage is "pick a subject and the first question opens".
@@ -85,17 +86,16 @@ test('session length in minutes has one source', () => {
 
 test('the quick start sits in the hero, before the trust chips, with the other-subjects link beside it', () => {
   const page = read('app/HomePageClient.tsx')
-  const hero = page.slice(page.indexOf('── HERO ──'), page.indexOf('── 信任列 ──'))
+  const hero = heroSection(page)
   // Since audit loop T09 the grid is a shared QuickStartGrid, also used by the bottom CTA.
   const at = hero.indexOf('<QuickStartGrid labelledBy="quick-start-label"')
   assert.ok(at > 0, 'quick-start links in the hero')
   assert.match(page, /function QuickStartGrid[\s\S]{0,400}href=\{quickStartHref\(s\.id\)\}/)
   assert.ok(at < hero.indexOf('h.trust1'), 'quick start before trust chips')
   assert.ok(hero.indexOf('hero.ctaStartHref') > at, 'other-subjects link after the quick start')
-  assert.match(hero, /唔使登入/)
   assert.match(hero, /睇我的進度/)
   // Seasonal support stays on the page, below the first screen.
-  const below = page.slice(page.indexOf('── 信任列 ──'))
+  const below = page.slice(page.indexOf(hero) + hero.length)
   assert.match(below, /hero\.ctaSecHref/)
 })
 

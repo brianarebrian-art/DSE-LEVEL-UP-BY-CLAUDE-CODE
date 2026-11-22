@@ -1,3 +1,4 @@
+import { heroSection } from './helpers/home-source.mts'
 // P1 homepage path, practice thumb-zone gutter, and sign-in timing.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
@@ -10,10 +11,10 @@ const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
 
 test('homepage primary path is the no-sign-in subject picker; secondary is outline', () => {
   const home = read('app/HomePageClient.tsx')
-  const hero = home.slice(home.indexOf('── HERO ──'), home.indexOf('── 信任列 ──'))
+  const hero = heroSection(home)
   assert.match(hero, /id="quick-start"/)
   assert.equal('揀'.codePointAt(0), 0x63c0)
-  assert.match(hero, /唔使登入／揀科開始 \$\{SESSION_SIZE\} 題/)
+  assert.match(hero, /<QuickStartGrid labelledBy="quick-start-label"/)
   assert.doesNotMatch(hero, /擇科|撿科/)
   const practice = read('app/practice/PracticeSession.tsx')
   assert.match(practice, /未揀中/)

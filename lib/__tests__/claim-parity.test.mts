@@ -32,7 +32,7 @@
 //
 // 漂移嘅原因係結構性：題庫每星期加題，llms.txt 係人手維護嘅純文字。
 // 冇閘就一定會再漂移，所以呢度每次 npm test 都拎真數字對一次。
-// 改咗題庫 → 跑 npm run gen:summary → 順手更新 llms.txt。
+// 改咗題庫 → 跑 npm run gen:summary → 同步生成 llms.txt。
 // ============================================================================
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
@@ -45,7 +45,7 @@ const txt = readFileSync(join(ROOT, 'public/llms.txt'), 'utf8')
 const { SUBJECT_SUMMARY, TOTAL_QUESTIONS } = await import('../../data/questions/summary.generated.ts')
 const { subjects } = await import('../../data/subjects.ts')
 const active = subjects.filter((s) => s.isActive !== false)
-const FIX = '—— 跑 `npm run gen:summary` 攞真數字，然後更新 public/llms.txt'
+const FIX = '—— 跑 `npm run gen:summary` 同步生成 public/llms.txt'
 
 const num = (s: string) => Number(s.replace(/,/g, ''))
 
@@ -66,8 +66,8 @@ test('llms.txt 嘅 MC／書寫題拆分同真題庫一致', () => {
 
 test('llms.txt 逐科題數同真題庫一致', () => {
   for (const s of active) {
-    // 逐科寫成 `math 1539`，用詞界防止 m1 撞 m1x 之類
-    const m = txt.match(new RegExp(`\\b${s.id.replace(/-/g, '\\-')} (\\d+)\\b`))
+    // Anchor the entire bullet: history must not match chinese-history.
+    const m = txt.match(new RegExp(`^- ${s.id} (\\d+)$`, 'm'))
     assert.ok(m, `llms.txt 冇列 ${s.id} 嘅題數 ${FIX}`)
     assert.equal(
       Number(m[1]), SUBJECT_SUMMARY[s.id].total,
@@ -157,7 +157,7 @@ test('全部對外題數聲稱都同真題庫一致 —— 唔限於 llms.txt', 
       `MC ${mcTotal}、書寫 ${writtenTotal}）：\n  ${bad.join('\n  ')}\n\n` +
       `呢啲數字會俾搜尋引擎同 AI agent 直接讀。唔好手寫 —— 由 ` +
       `data/questions/summary.generated.ts 嘅 TOTAL_QUESTIONS 衍生，` +
-      `咁就唔會再漂。llms.txt 係純文字，跑 \`npm run gen:summary\` 之後人手更新。`,
+      `咁就唔會再漂。llms.txt 題數段由 \`npm run gen:summary\` 同步產生。`,
   )
 })
 
