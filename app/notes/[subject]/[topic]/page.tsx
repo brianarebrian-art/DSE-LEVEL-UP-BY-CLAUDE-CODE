@@ -10,6 +10,7 @@ import TopicStudyNote from '@/components/TopicStudyNote'
 import { TOPIC_LESSONS } from '@/data/notes/lessons'
 import StudyNoteActions from '@/components/StudyNoteActions'
 import Link from 'next/link'
+import MathText from '@/components/MathText'
 import { SITE_ORIGIN } from '@/lib/site'
 import { topicExplainerSrc } from '@/data/notes/explainers'
 
@@ -100,7 +101,7 @@ export default async function NotesTopicPage({
             <header className="space-y-3">
               <p className="text-sm font-semibold text-accent">{meta.name} · 香港中學文憑試（DSE）</p>{/* i18n-exempt: Traditional Chinese editorial page */}
               <h1 className="break-words text-3xl font-semibold leading-tight text-ink sm:text-4xl">{h1}</h1>
-              <p className="text-base leading-8 text-ink-soft">{note.conceptZh}</p>
+              <p className="text-base leading-8 text-ink-soft"><MathText>{note.conceptZh}</MathText></p>
               <p className="text-sm text-ink-muted">編輯：{lesson?.author ?? 'DSE Level Up 既有筆記摘要'}；內容未經註冊教師審定。{lesson ? `更新：${lesson.updated}。編輯草稿，待覆核。` : '完整教材仍待逐課題補充。'}</p>{/* i18n-exempt: transparent Traditional Chinese provenance */}
             </header>
             <p className="text-sm text-ink-muted">文件生成日期：{new Date().toLocaleDateString('zh-HK', {timeZone:'Asia/Hong_Kong'})}</p>{/* i18n-exempt: actual document generation date, not content review date */}

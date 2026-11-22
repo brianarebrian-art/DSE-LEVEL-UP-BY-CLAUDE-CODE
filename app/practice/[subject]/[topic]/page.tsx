@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import MathText from '@/components/MathText'
 import { notFound } from 'next/navigation'
 import { getSubject } from '@/data/subjects'
 import { SUBJECT_TOPICS } from '@/data/questions/summary.generated'
@@ -30,7 +31,7 @@ export default async function Page({params}:{params:Promise<{subject:string;topi
     <Link href={`/notes/${subject}/${topic}`} className="inline-flex min-h-12 items-center text-accent underline underline-offset-4">返回課題筆記</Link>{/* i18n-exempt: Traditional Chinese CTA */}
     <p className="mt-5 text-sm text-ink-muted">{meta.name} · 香港中學文憑試（DSE）</p>{/* i18n-exempt: Traditional Chinese editorial content */}
     <h1 className="mt-2 break-words text-3xl font-semibold leading-tight">{t.zh}：選擇練習難度</h1>{/* i18n-exempt: Traditional Chinese heading */}
-    <p className="mt-4 leading-8 text-ink-soft">{note.conceptZh}</p>
+    <p className="mt-4 leading-8 text-ink-soft"><MathText>{note.conceptZh}</MathText></p>
     <p className="mt-4 text-sm leading-7 text-ink-muted">每節最多 {SESSION_SIZE} 題；不足時只使用現有題目，不以其他課題或難度補足。難度沿用現有題庫標記，尚未代表已完成全題庫難度重審。</p>{/* i18n-exempt: honest Traditional Chinese instructions */}
     <form action="/practice" method="get" className="mt-6 space-y-5 rounded-2xl border border-line bg-surface-raised p-5">
       <input type="hidden" name="subject" value={subject}/><input type="hidden" name="topic" value={topic}/>

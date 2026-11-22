@@ -84,3 +84,13 @@ test('pilot diagram has the actual roots and vertex of its labelled quadratic',(
   assert.deepEqual(point(.5),{x:290,y:310})
   assert.match(svg,/頂點/);assert.doesNotMatch(svg,/vertex|intercepts/)
 })
+
+test('LaTeX concept summaries use the existing math renderer on notes and preparation pages', async()=>{
+  const {getStudyNote}=pick(await import('../notes/studyNotes.ts'))
+  const sample=await getStudyNote('physics','mechanics')
+  assert.ok(sample)
+  assert.match(sample.conceptZh,/\$/,'the regression sample must actually contain LaTeX')
+  for(const path of ['app/practice/[subject]/[topic]/page.tsx','app/notes/[subject]/[topic]/page.tsx']){
+    assert.match(read(path),/<MathText>\{note.conceptZh\}<\/MathText>/,path)
+  }
+})

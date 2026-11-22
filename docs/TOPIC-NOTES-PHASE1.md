@@ -128,7 +128,7 @@
 
 ## 本機實跑結果
 
-- 完整測試 **1,570 passed、0 failed、0 skipped**；TypeScript、ESLint（0 warnings）、13 項 QA、secret scan、production dependency audit（0 vulnerabilities）通過。
+- 完整測試 **1,571 passed、0 failed、0 skipped**；TypeScript、ESLint（0 warnings）、13 項 QA、secret scan、production dependency audit（0 vulnerabilities）通過。
 - 本機 development 瀏覽器：360／390／430／768／1440px 的二次方程頁無水平溢出、唯一 H1、正確 canonical。原始 HTML 含學習目標與例題，FAQ/schema 逐項一致。
 - 筆記區 axe WCAG 自動檢查 0 violations；不代表完整 WCAG 或螢幕閱讀器人工審核。
 - PDF 按鈕發出一次原生列印請求，暫用正確科目／課題檔名；該請求在測試中攔截，不把它當成操作系統已儲存成功。
@@ -142,3 +142,9 @@
 首次 Preview 覆核發現舊二次方程 SVG 的拋物線與「兩個交點」標示不一致。新增 `public/explainers/math-quadratic-study.svg`，用明確函數 y = x² − 4x + 3 繪製，兩根 (1,0)／(3,0)、頂點 (2,−1)，全圖繁體中文。新增測試獨立計算曲線控制點、兩根及頂點，避免只修標籤不修圖。只在新筆記頁替換，不覆寫其他頁仍使用的舊素材；其他使用處留待專屬內容覆核。
 
 遠端首次 production build 已確認 `/notes/[subject]`、`/notes/[subject]/[topic]`、`/practice/[subject]/[topic]` 均標為 `ƒ`，與載入邊界的動態路由合約一致。修正版最新提交仍需重新 build／Preview 核對，以 PR 描述最終結果為準。
+
+### 跨科目數式與圖中文字驗證
+
+自動審閱以 `physics/mechanics` 重現摘要包含 LaTeX 的情況。筆記開頭及練習準備頁統一使用現有 MathText，避免顯示 `$...$` 與反斜線原始標記，並加入實際含公式樣本的回歸測試。此修正沒有更改題目內容。
+
+Preview 截圖的獨立 SVG 內有部分中文字顯示缺字方框；來源字串及數學座標已核實，但該瀏覽器的 SVG 中文字型渲染未獲驗證，仍需 iOS Safari／Android Chrome 實機覆核。不把截圖的方框當作已通過跨裝置視覺驗收。
