@@ -51,7 +51,7 @@ export default async function NotesTopicPage({
   const path = `/notes/${subject}/${topic}`
   const practice = topicLearningPath(subject, topic)
   const lesson = TOPIC_LESSONS[`${subject}:${topic}`]
-  const explainer = topicExplainerSrc(subject, topic, note.explainerSrc)
+  const explainer = subject === 'math' && topic === 'quadratic_equations' ? '/explainers/math-quadratic-study.svg' : topicExplainerSrc(subject, topic, note.explainerSrc)
   const h1 = `${note.titleZh}自學筆記`  // i18n-exempt: requested Traditional Chinese H1
 
   const jsonLd = {

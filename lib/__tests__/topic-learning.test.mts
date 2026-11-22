@@ -73,3 +73,14 @@ test('empty difficulty levels are real gaps, not fabricated labels',()=>{
     assert.equal(filterNotePractice(qs,t.id,level.value).length,qs.filter(q=>q.topic===t.id&&q.difficulty===level.value).length)
   }
 })
+
+test('pilot diagram has the actual roots and vertex of its labelled quadratic',()=>{
+  const svg=read('public/explainers/math-quadratic-study.svg')
+  assert.match(svg,/M90 30Q290 590 490 30/)
+  for(const [x,y] of [[1,0],[3,0],[2,-1]])assert.equal(x*x-4*x+3,y)
+  const point=(t:number)=>({x:(1-t)**2*90+2*(1-t)*t*290+t*t*490,y:(1-t)**2*30+2*(1-t)*t*590+t*t*30})
+  assert.deepEqual(point(.25),{x:190,y:240})
+  assert.deepEqual(point(.75),{x:390,y:240})
+  assert.deepEqual(point(.5),{x:290,y:310})
+  assert.match(svg,/頂點/);assert.doesNotMatch(svg,/vertex|intercepts/)
+})

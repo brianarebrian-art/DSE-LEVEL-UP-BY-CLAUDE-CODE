@@ -15,7 +15,7 @@ const copy = {
   disclaimer:'本平台試題為獨立改寫版本，並非香港考試及評核局官方試題。練習表現不代表正式考試成績。', // i18n-exempt: Traditional Chinese disclaimer
 }
 export default function TopicStudyNote({note,subjectName,lesson}:{note:StudyNote;subjectName:string;lesson?:TopicLesson}) {
-  const src = topicExplainerSrc(note.subjectId, note.topicId, note.explainerSrc)
+  const src = note.subjectId === 'math' && note.topicId === 'quadratic_equations' ? '/explainers/math-quadratic-study.svg' : topicExplainerSrc(note.subjectId, note.topicId, note.explainerSrc)
   const url = topicLearningUrl(note.subjectId, note.topicId)
   const block = 'note-section rounded-2xl border border-line bg-surface-raised p-4 sm:p-6'
   const heading = 'mb-4 text-xl font-semibold text-ink'
