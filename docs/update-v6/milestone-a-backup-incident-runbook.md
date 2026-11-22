@@ -1,8 +1,8 @@
 # Milestone A：Backup／PITR 與事故回應 runbook
 
-- **狀態：** 操作文件完成；**未**指定 Incident commander；**未**做 Level 3 實彈演練  
-- **日期：** 2026-11-04（Asia/Hong_Kong）  
-- **硬閘：** P0 #3（負責人、backup／PITR、RTO、RPO）未書面確認前，唔可宣稱「演練合格」或對 production 做破壞性 restore  
+- **狀態：** 操作文件完成；Founder 為 Incident Commander、工程 on-call 為 backup（姓名、輪值及 escalation channel 待填）；**未**做 Level 3 實彈演練
+- **日期：** 2026-11-21（Asia/Hong_Kong）
+- **硬閘：** RTO 4h／RPO 1h 為目標，須先確認 Supabase plan、backup retention、PITR 能力及資料庫 region；姓名、聯絡 channel 未確認前，唔可宣稱事故流程已可執行；Level 3 未演練前唔可宣稱「演練合格」或對 production 做破壞性 restore
 
 對齊：`phase-4b-data-security-design.md` §8；升級參考 `docs/security/H-THREAT-MODEL-AND-INCIDENT-DRILL-2026-10-29.md`（Auth 以 **Supabase Auth · Google** 為準，忽略稿內 Auth.js／Better Auth 字眼）。
 
@@ -14,7 +14,7 @@
 |---|---|
 | Backup schedule | 依 Supabase 計劃；**要書面確認**實際保留日數 |
 | PITR | 任何 production migration／大量資料搬遷前必須確認 **on**，並完成至少一次 restore drill |
-| RTO／RPO | **待創辦人定數字**；本文件只列程序 |
+| RTO／RPO | **目標：RTO 4h／RPO 1h**（Founder 選定）；須確認 Supabase plan、PITR 可用性與保留期能支援，未確認前唔係已承諾 SLA |
 | App rollback | feature flag off；讀路徑切回 `user_progress` blob；migration 只准 additive |
 | Checksum（D4） | mismatch → 人工；禁止自動覆蓋學生進度 |
 
@@ -41,11 +41,12 @@
 
 | 角色 | 狀態 |
 |---|---|
-| Incident commander | **未指定**（P0 阻擋） |
-| 技術回應 | 創辦人／工程輪值（待定） |
+| Incident commander | Founder（角色已指定；姓名／聯絡方式待填） |
+| 技術回應／backup | 工程 on-call（角色已指定；姓名／輪值與 backup 聯絡方式待填） |
+| Escalation channel | **待指定**（需填入可用嘅即時通訊 channel 同聯絡備援） |
 | 對外溝通 | 必須創辦人批准模板後先發 |
 
-未指定 commander 前：任何 SEV1 仍由發現者即刻執行「撤 key／限流／關旗」技術圍堵，同時通知創辦人。
+負責人姓名、輪值及 escalation channel 未落實前：任何 SEV1 仍由發現者即刻執行「撤 key／限流／關旗」技術圍堵，同時通知創辦人。
 
 ---
 
@@ -130,6 +131,23 @@
 - [x] Backup／PITR 程序同硬閘寫明  
 - [x] SEV、圍堵、共用 IP 叮囑  
 - [x] Post-mortem／對外模板骨架  
-- [ ] Incident commander 人名（**未定**）  
-- [ ] RTO／RPO 數字（**未定**）  
-- [ ] Level 3 PITR drill（**未做**）
+- [ ] Incident commander／工程 on-call 姓名、輪值與 escalation channel（角色已定，實際聯絡資料未定）
+- [ ] 驗證 Supabase backup retention、PITR 可用性及資料庫 region 能支援 RTO 4h／RPO 1h 目標
+- [ ] Level 3 PITR drill（**未做；確認 PITR 與測試環境後才安排**）
+
+## 10. Vercel production review（2026-11-21）
+
+以下係對 `dse-level-up-by-claude-code` 嘅查核；除咗一項未發布嘅 log-only draft 外，無 Vercel production 設定改動。
+
+| 項目 | 查核結果／後續 |
+|---|---|
+| Production deployment | 最新查到嘅 production deployment 為 Ready；Function region `hkg1`、2 GB memory、300 秒 timeout。`vercel.json` 同 app region 設定一致。 |
+| DNS／SSL | `dselevelup.com` 使用 Vercel nameservers，DNS 檢查無 misconfiguration；apex 同 `www` 均出現在 production deployment aliases。證書自動續期已開；當時證書到期尚餘 46–54 日。 |
+| Deployment protection | `ssoProtection.deploymentType=all_except_custom_domains`；Git fork protection 已開。Preview 受保護，custom domains 不在呢項保護範圍。 |
+| Firewall／bot protection | 查核時 Firewall 未啟用；無 IP blocks、無 custom rules；managed Bot Protection 原為 off。已 stage Bot Protection action=Log 嘅 draft，**未發布，未影響 production traffic**。OWASP ruleset 顯示需要 Security Plus。未封鎖任何 IP；先監察再決定 block/challenge，避免誤傷共用校園 IP。 |
+| Log drains | 此 project 查到 0 個 drains；如要持久化 logs，需先選定並設定目的地。 |
+| Team security check | 9 項檢查中 8 項 passing、1 項 failing：5 個環境變數未標記 Sensitive（見下列名稱）。 |
+| Sensitive variables | `KV_URL`、`KV_REST_API_READ_ONLY_TOKEN`、`KV_REST_API_TOKEN`、`REDIS_URL`、`SENTRY_AUTH_TOKEN`。需於 Vercel 環境變數設定中標記 Sensitive；本次未更改設定，亦未喺回應或檔案中顯示變數值。 |
+| Database region／PITR | Supabase region、backup retention 同 PITR 狀態未能從 project/deployment 查詢確認；確認後再驗證 4h／1h targets，再安排 restore drill。 |
+
+Speed Insights 元件已喺 production code render；平台收集狀態、Observability Plus、Spend Management 及 log drain 目的地未由呢次檢查確認。
