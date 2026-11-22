@@ -1813,3 +1813,29 @@ html[data-contrast='more'][data-theme='cyber'] {
 .chart-series-4 { stroke: var(--color-chart-4); fill: var(--color-chart-4); stroke-dasharray: 8 3 2 3; }
 .chart-series-5 { stroke: var(--color-chart-5); fill: var(--color-chart-5); stroke-dasharray: 1 2; }
 .chart-series-6 { stroke: var(--color-chart-6); fill: var(--color-chart-6); stroke-dasharray: 4 2 1 2; }
+
+
+/* Topic notes: local to the new server-rendered document, not all print flows. */
+.topic-note-document .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.topic-note-document .note-section { overflow-wrap: anywhere; }
+@media print {
+  body:has(.topic-note-document) #main-content { padding: 0 !important; margin: 0 !important; }
+  body:has(.topic-note-document) .topic-note-layout { padding: 0 !important; max-width: none !important; }
+  .topic-note-document { font-size: 11pt; line-height: 1.65; }
+  .topic-note-document .note-section { border-color: #cbd5e1; background: white !important; break-inside: auto; }
+  .topic-note-document h1, .topic-note-document h2, .topic-note-document h3 { break-after: avoid; }
+  .topic-note-document img, .topic-note-document svg { max-width: 100%; break-inside: avoid; }
+  .topic-note-document .note-answer > * { display: block !important; }
+  .topic-note-document .note-answer { content-visibility: visible !important; }
+  .topic-note-document .note-answer::details-content { display: block !important; content-visibility: visible !important; }
+  .note-qr-page { break-before: page; page-break-before: always; break-inside: avoid; }
+  .note-qr-page svg { width: 48mm; height: 48mm; margin: auto; }
+}
+@media print {
+  .topic-note-document { page: topic-notes; }
+  @page topic-notes {
+    size: A4;
+    margin: 16mm;
+    @bottom-center { content: counter(page) " / " counter(pages); font-size: 9pt; color: #0f172a; }
+  }
+}

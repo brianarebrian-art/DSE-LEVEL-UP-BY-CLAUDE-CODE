@@ -19,7 +19,16 @@ import { join } from 'node:path'
 const APP = new URL('../../app', import.meta.url).pathname
 
 /** build 標記 `ƒ` 嘅使用者頁面路由 —— 只有呢啲准有 loading.tsx。 */
-const DYNAMIC_ROUTES = new Set(['admin', 'dev/answer-cards', 'dev/long-session'])
+const DYNAMIC_ROUTES = new Set(['admin', 'dev/answer-cards', 'dev/long-session',
+  // These notes/task routes inherit the root per-request CSP nonce (headers()).
+  // Keep this contract explicit: a return to static rendering must reconsider loading UI.
+  'notes/[subject]/[topic]', 'practice/[subject]/[topic]',
+])
+
+test('new note loading boundaries require the per-request nonce rendering contract', () => {
+  const root = readFileSync(join(APP, 'layout.tsx'), 'utf8')
+  assert.match(root, /const nonce = \(await headers\(\)\)\.get\('x-nonce'\)/)
+})
 
 function walk(dir: string, rel = ''): string[] {
   const out: string[] = []

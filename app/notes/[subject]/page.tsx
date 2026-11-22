@@ -5,6 +5,7 @@ import { getSubjectQuestions, getSubjectTopics } from '@/data/questions'
 import { SITE_ORIGIN } from '@/lib/site'
 import { JsonLd } from '@/components/Seo/JsonLd'
 import { notesSeoDescription } from '@/lib/dynamicSeoDescriptions'
+import SubjectMark from '@/components/marks/SubjectMark'
 import NotesSubjectClient from './NotesSubjectClient'
 
 // 每科一版靜態頁（同 /subjects/[subject] 一致），課題用 ?topic= 深連結 ——
@@ -35,7 +36,7 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
   const topics = getSubjectTopics(subject)
   const total = getSubjectQuestions(subject).length
   const description = notesSeoDescription({ name: meta.name, questionCount: total, topicCount: topics.length })
-  const h1 = `${meta.name}知識凝結筆記 · ${meta.name} revision notes` // i18n-exempt: actual bilingual resource title
+  const h1 = `${meta.name}自學筆記總覽` // i18n-exempt: requested Traditional Chinese resource title
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -68,24 +69,20 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
     <>
       <JsonLd data={jsonLd} />
       <div className="min-h-screen bg-surface text-ink-soft">
-        <header className="mx-auto max-w-4xl px-4 pt-8">
-          <h1>{meta.name}知識凝結筆記 · {meta.name} revision notes{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
-          <p>本頁按課題整理{meta.name}的重點與常見陷阱，題庫現有 {total} 條獨立改寫題目，分為 {topics.length} 個課題。所有題目均為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
-          <p>
-            Topic-by-topic revision notes for {meta.name}, covering {total} independently rewritten questions across{' '}
-            {topics.length} topics. Not affiliated with the HKEAA.
-          </p>
+        <header className="mx-auto max-w-4xl space-y-5 px-4 pt-8" lang="zh-HK">
+          <SubjectMark subject={meta} size="md" />
+          <h1 className="text-3xl font-semibold leading-tight">{h1}</h1>
+          <p className="leading-8">本頁按課題整理{meta.name}的概念與常見錯誤，並連結至每個課題的筆記、列印及練習入口。現有 {topics.length} 個課題摘要；完整教材仍須逐一補充及覆核。</p>{/* i18n-exempt: requested Traditional Chinese editorial content */}
+          <p className="text-sm leading-7 text-ink-muted">適用程度：香港中學文憑試（DSE）。題庫現有 {total} 條獨立改寫題目，並非考評局官方試題，未經註冊教師審定。</p>{/* i18n-exempt: requested Traditional Chinese disclosure */}
           <section aria-labelledby="topic-list-heading">
-            <h2 id="topic-list-heading">課題一覽 · Topics{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h2>
-            <ul>
-              {topics.map((t) => (
-                <li key={t.id}>
-                  <a href={`/notes/${subject}/${t.id}`}>
-                    {t.zh}
-                    {t.en ? ` · ${t.en}` : ''} — {t.count}
-                  </a>
-                </li>
-              ))}
+            <h2 id="topic-list-heading" className="mb-4 text-xl font-semibold">課題與學習重點</h2>{/* i18n-exempt: requested Traditional Chinese heading */}
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {topics.map((t,i) => <li key={t.id}>
+                <a href={`/notes/${subject}/${t.id}`} className="flex min-h-16 items-center gap-4 rounded-xl border border-line bg-surface-raised p-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-accent hover:border-accent">
+                  <span aria-hidden className="font-semibold text-accent">{String(i+1).padStart(2,'0')}</span>
+                  <span className="min-w-0 break-words"><strong>{t.zh}</strong><span className="mt-1 block text-sm text-ink-muted">{t.count} 題 · 筆記、列印與練習</span></span>{/* i18n-exempt: requested Traditional Chinese link description */}
+                </a>
+              </li>)}
             </ul>
           </section>
         </header>

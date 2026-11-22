@@ -10,7 +10,8 @@ import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
-import type { MCQuestion, WrittenQuestion } from '@/data/questions'
+import { filterNotePractice } from '@/lib/notes/topicLearning'
+import type { Difficulty, MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import { A11yButton } from '@/components/A11yPanel'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
@@ -122,6 +123,7 @@ export default function PracticeGate({
   mode = 'normal',
   cause = null,
   sessionSize,
+  difficulty,
 }: {
   subjectId: string
   topicFilter: string | null
@@ -130,6 +132,7 @@ export default function PracticeGate({
   cause?: ReverseCause | null
   /** C6「只做 1 題」會傳 1；其餘一律用標準卷長。 */
   sessionSize?: number
+  difficulty?: Difficulty
 }) {
   const long = mode === 'long'
   const electives = useElectiveSelection(subjectId)
@@ -140,6 +143,7 @@ export default function PracticeGate({
     mode,
     cause,
     sessionSize,
+    difficulty,
   })
 
   // The subject's question bank, lazily fetched as its own chunk.
@@ -182,6 +186,8 @@ export default function PracticeGate({
     [writtenBank, subjectId, topicFilter, selKey],
   )
 
+  const selectedMc = useMemo(() => scopedMc && filterNotePractice(scopedMc, topicFilter, difficulty), [scopedMc, topicFilter, difficulty])
+
   // Wait for auth before gating — avoids a flash of the runner then the wall.
   if (isAuthUiEnabled() && authStatus === 'loading') return <Loading kind={long ? undefined : 'mc'} />
   if (guestBlocked) return <GuestSessionGate returnPath={returnPath} />
@@ -208,10 +214,12 @@ export default function PracticeGate({
 
   if (scopedMc === null) return <Loading kind="mc" />
 
+  if (difficulty && selectedMc?.length === 0) return <div role="status" className="mx-auto max-w-xl px-4 py-20 text-ink"><p>這個課題的所選難度暫未有題目；不會以其他難度或課題代替。</p><Link href={topicFilter ? `/practice/${encodeURIComponent(subjectId)}/${encodeURIComponent(topicFilter)}` : '/subjects'} className="mt-4 inline-flex min-h-12 items-center text-accent underline">返回選擇練習</Link></div> // i18n-exempt: requested Traditional Chinese empty state
+
   return (
     <PracticeSession
-      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (cause ?? '') + '|' + (sessionSize ?? '')}
-      bank={scopedMc}
+      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (cause ?? '') + '|' + (sessionSize ?? '') + '|' + (difficulty ?? '')}
+      bank={difficulty ? selectedMc! : scopedMc}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSize ?? SESSION_SIZE}
@@ -234,6 +242,7 @@ function guestPracticeReturnPath(opts: {
   mode: 'normal' | 'weakness' | 'long' | 'cause'
   cause: ReverseCause | null | undefined
   sessionSize?: number
+  difficulty?: Difficulty
 }): string {
   const q = new URLSearchParams()
   q.set('subject', opts.subjectId)
@@ -243,6 +252,7 @@ function guestPracticeReturnPath(opts: {
     q.set('mode', 'cause')
     q.set('cause', opts.cause)
   }
+  if (opts.difficulty) q.set('difficulty', opts.difficulty)
   if (opts.sessionSize === 1) q.set('size', '1')
   return `/practice?${q.toString()}`
 }

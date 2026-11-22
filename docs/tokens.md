@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **330** 個 custom property 宣告，分佈喺 **262** 個 block。
+掃到 **330** 個 custom property 宣告，分佈喺 **280** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -597,3 +597,21 @@ node scripts/gen-token-doc.mjs
 | L1813 | `.chart-series-4` |
 | L1814 | `.chart-series-5` |
 | L1815 | `.chart-series-6` |
+| L1819 | `.topic-note-document .katex-display` |
+| L1820 | `.topic-note-document .note-section` |
+| L1821 | `@media print` |
+| L1822 | `@media print › body:has(.topic-note-document) #main-content` |
+| L1823 | `@media print › body:has(.topic-note-document) .topic-note-layout` |
+| L1824 | `@media print › .topic-note-document` |
+| L1825 | `@media print › .topic-note-document .note-section` |
+| L1826 | `@media print › .topic-note-document h1, .topic-note-document h2, .topic-note-document h3` |
+| L1827 | `@media print › .topic-note-document img, .topic-note-document svg` |
+| L1828 | `@media print › .topic-note-document .note-answer > *` |
+| L1829 | `@media print › .topic-note-document .note-answer` |
+| L1830 | `@media print › .topic-note-document .note-answer::details-content` |
+| L1831 | `@media print › .note-qr-page` |
+| L1832 | `@media print › .note-qr-page svg` |
+| L1834 | `@media print` |
+| L1835 | `@media print › .topic-note-document` |
+| L1836 | `@media print › @page topic-notes` |
+| L1839 | `@media print › @page topic-notes › @bottom-center` |
