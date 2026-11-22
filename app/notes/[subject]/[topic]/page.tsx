@@ -52,12 +52,15 @@ export default async function NotesTopicPage({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      articleJsonLd({
-        path,
-        title: h1,
-        description: note.conceptZh.slice(0, 160),
-        dateModified: '2026-11-19',
-      }),
+      {
+        ...articleJsonLd({
+          path,
+          title: h1,
+          description: note.conceptZh.slice(0, 160),
+          dateModified: '2026-11-19',
+        }),
+        '@type': 'TechArticle',
+      },
       breadcrumbJsonLd([
         { name: 'DSE Level Up', path: '/' },
         { name: tr('所有科目筆記', 'Subject notes'), path: '/notes' },

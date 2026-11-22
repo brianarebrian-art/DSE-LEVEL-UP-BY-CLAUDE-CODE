@@ -297,7 +297,8 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
                   {en ? meta?.nameEn : meta?.name}
                 </p>
                 <p className="mt-2 break-all text-xs text-neutral-600">{practiceUrl}</p>
-                <p className="mt-3 text-xs text-ink-muted">
+                {/* This print/QR card stays white in both themes; keep its ink dark too. */}
+                <p className="mt-3 text-xs text-neutral-700">
                   {tr(
                     '用瀏覽器「列印」→「儲存為 PDF」即可下載。DSE Level Up 免費 · 非考評局。',
                     'Use the browser Print → Save as PDF to download. DSE Level Up is free · not HKEAA.',

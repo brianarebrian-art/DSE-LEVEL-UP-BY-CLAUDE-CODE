@@ -19,6 +19,14 @@ Running every QA gate independently also exposed term/register violations,
 missing translations, a contrast warning, an unlinked demo, stale token docs and
 unclassified routes. Do not stop diagnosis at the first failing gate.
 
+The first repaired remote run then reached the previously blocked production
+HTML smoke: 888 of 1,344 responses had issues. The 296 new topic-note routes
+emitted generic `Article` data although the notes contract requires `TechArticle`
+(three user agents per route). An actual page-output regression test reproduces
+this mismatch and checks every generated topic's schema, headline and canonical
+URL after the fix. The smoke summary now prints issue counts and representative
+paths as well as retaining the full artifact; it still exits nonzero on failure.
+
 ESLint and typecheck passed on this baseline. The dependency PR's red status was
 not proof of an ESLint 10 regression. A separate Supabase Preview failure needs
 its own provider diagnostic; it is not explained by the Actions logs.
@@ -129,7 +137,9 @@ practice sessions or saved time capsules.
 - New routes need explicit navigation classification and a real entry/back path,
   or a documented developer-only policy enforced by code, not just a whitelist.
 - Validate both language choices, including labels and structured data; use existing
-  semantic text tokens rather than weakening contrast or translation rules.
+  semantic text tokens rather than weakening contrast or translation rules. The
+  QR/print card deliberately stays white, so its caption also uses theme-invariant
+  dark ink; a dark-theme semantic muted token on that white card is not safe.
 - Never use `continue-on-error`, delete failing tests, suppress the exit status of
   a pipeline, or trust a cached green test result to pass these checks.
 - Do not add broad `docs/**` path exclusions: token docs and SEO route manifests

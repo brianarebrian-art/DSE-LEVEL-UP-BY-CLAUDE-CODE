@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
 import { describe, it } from 'node:test'
 
 const { SUBJECT_TOPICS } = await import('../../data/questions/summary.generated.ts')
@@ -36,5 +38,50 @@ describe('practice link for note QR', () => {
       practiceTopicUrl('math', 'quadratic_equations'),
       'https://www.dselevelup.com/practice?subject=math&topic=quadratic_equations',
     )
+  })
+})
+
+describe('QR print card contrast', () => {
+  it('keeps dark caption ink on its fixed white surface in either theme', () => {
+    const source = readFileSync('app/notes/[subject]/NotesSubjectClient.tsx', 'utf8')
+    const footer = source.slice(source.indexOf('<footer'), source.indexOf('</footer>'))
+    assert.match(footer, /bg-white/)
+    assert.match(footer, /mt-3 text-xs text-neutral-700/)
+    assert.doesNotMatch(footer, /text-ink-muted|text-neutral-500/)
+  })
+})
+
+describe('topic notes structured data', () => {
+  it('every generated topic emits TechArticle with the visible headline and correct URL', () => {
+    const result = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '-e', `
+      import assert from 'node:assert/strict';
+      import { registerHooks } from 'node:module';
+      registerHooks({ load(url, context, nextLoad) {
+        if (url.endsWith('.css')) return { format: 'commonjs', source: '', shortCircuit: true };
+        return nextLoad(url, context);
+      }});
+      globalThis.React = (await import('react')).default;
+      const imported = await import('./app/notes/[subject]/[topic]/page.tsx');
+      const route = imported.default?.default ? imported.default : imported;
+      const page = route.default;
+      function findH1(node) {
+        if (!node || typeof node !== 'object') return null;
+        if (node.type === 'h1') return node.props.children;
+        for (const child of [node.props?.children].flat()) {
+          const found = findH1(child);
+          if (found) return found;
+        }
+        return null;
+      }
+      for (const params of route.generateStaticParams()) {
+        const element = await page({ params: Promise.resolve(params) });
+        const graph = element.props.children[0].props.data['@graph'];
+        const article = graph.find((item) => item['@type'] === 'TechArticle');
+        assert.ok(article, params.subject + '/' + params.topic + ': TechArticle required');
+        assert.equal(article.headline, findH1(element));
+        assert.equal(article.url, 'https://www.dselevelup.com/notes/' + params.subject + '/' + params.topic);
+      }
+    `], { env: { ...process.env, NODE_ENV: 'test' }, encoding: 'utf8' })
+    assert.equal(result.status, 0, result.stderr)
   })
 })
