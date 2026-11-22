@@ -58,7 +58,7 @@
     "error:cursor-handoff": "npx --yes tsx@4.19.2 scripts/error-system/cursor-handoff.mts"
   },
   "dependencies": {
-    "@sentry/nextjs": "11.10.0",
+    "@sentry/nextjs": "11.14.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.119.0",
     "@vercel/speed-insights": "^2.0.0",
