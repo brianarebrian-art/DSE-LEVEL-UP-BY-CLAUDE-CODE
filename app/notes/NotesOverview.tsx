@@ -66,8 +66,8 @@ export default function NotesOverview() {
         </h2>
         <p className="mt-1 text-sm text-ink-muted">
           {tr(
-            '做題沉澱出嚟嘅筆記，唔係要你額外背多份嘢。',
-            'Notes that settle out of the practice you have already done — not one more thing to memorise.',
+            '每科每個課題都有自學筆記，可列印／儲存 PDF；紙上有 QR 掃碼即開該課題練習。',
+            'Every subject topic has self-study notes you can print or save as PDF, with a QR code back to that topic’s practice.',
           )}
         </p>
       </header>

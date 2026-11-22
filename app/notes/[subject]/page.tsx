@@ -80,7 +80,7 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
             <ul>
               {topics.map((t) => (
                 <li key={t.id}>
-                  <a href={`/notes/${subject}?topic=${t.id}`}>
+                  <a href={`/notes/${subject}/${t.id}`}>
                     {t.zh}
                     {t.en ? ` · ${t.en}` : ''} — {t.count}
                   </a>

@@ -39,6 +39,7 @@
     "qbank:live-charscan": "npx --yes tsx@4.19.2 scripts/qbank/live-charscan.mts",
     "qbank:promote-all": "node scripts/qbank/promote-all.mjs",
     "gen:summary": "npx --yes tsx@4.19.2 scripts/gen-question-summary.mts",
+    "gen:study-notes": "npx --yes tsx@4.19.2 scripts/gen-study-notes.mts",
     "qa:copy": "node scripts/copy-guard.mjs",
     "qbank:recalibrate-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/recalibrate-difficulty.mts",
     "qbank:simulate-sampling": "npx --yes tsx@4.19.2 scripts/qbank/simulate-sampling.mts",
