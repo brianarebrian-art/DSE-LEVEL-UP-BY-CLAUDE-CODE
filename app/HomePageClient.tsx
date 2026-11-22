@@ -62,22 +62,29 @@ export default function HomePage() {
       <CountdownBanner />
       <InstallHint />
 
-      {/* ── HERO ── Morandi: one composition, no gradient, no second solid entry. */}
-      <section className="relative px-4 pb-10 pt-6 sm:pb-16 sm:pt-12">
-        <div className="relative z-10 mx-auto grid max-w-5xl items-start gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
+      <section aria-label={en ? 'A calmer way to prepare' : '用舒服啲嘅節奏準備 DSE'} className="px-4 pb-7 pt-5 sm:pb-10 sm:pt-7">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+          <p className="font-medium text-ink">{en ? 'Free for everyone · No ads · All subjects' : '永久免費 · 零廣告 · 全科都可以練'}</p>
+          <p>{en ? 'Made for Hong Kong students, with SEN-friendly choices.' : '為香港同學而設，照顧 SEN 需要。'}</p>
+        </div>
+      </section>
+
+      {/* A single, quiet starting point; no timers, rankings or urgency. */}
+      <section className="relative px-4 pb-12 pt-5 sm:pb-16 sm:pt-8">
+        <div className="relative z-10 mx-auto grid max-w-5xl items-start gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
           <div className="hero-rise text-center md:text-left">
-            <p className="mb-2 text-[13px] text-ink-muted">
+            <p className="mb-3 text-[13px] text-ink-muted">
               <span>DSE Level Up</span>
               <span aria-hidden className="px-1">·</span>
               <span>{hero.badge}</span>
             </p>
-            <h1 className="font-serif hero-rise-1 mb-2.5 text-[2.125rem] font-bold leading-[1.3] tracking-tight text-ink sm:text-5xl">
-              {en ? 'Practise judgment, not memorisation.' : '練判斷，唔係背答案。'}
+            <h1 className="font-serif hero-rise-1 mb-3 text-[2.125rem] font-bold leading-[1.3] tracking-tight text-ink sm:text-5xl">
+              {en ? 'A little practice. A clearer mind.' : '每日行少少，個腦清晰啲。'}
             </h1>
-            <p className="mx-auto mb-4 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0">
+            <p className="mx-auto mb-5 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0">
               {en
-                ? `About ${SESSION_SIZE} multiple-choice questions · ~${sessionMins} minutes · free, no ads, no sign-in required.`
-                : `約 ${SESSION_SIZE} 條選擇題 · ${sessionMins} 分鐘左右 · 免費無廣告，唔使登入。`}
+                ? `${SESSION_SIZE} thoughtful questions · about ${sessionMins} minutes · take it at your own pace.`
+                : `每日 ${SESSION_SIZE} 題，約 ${sessionMins} 分鐘。唔使趕，按自己節奏就可以。`}
             </p>
             <div className="mx-auto mb-5 max-w-md rounded-[var(--radius-control)] bg-surface-sunken px-2 py-2.5 text-center text-xs leading-relaxed text-ink-muted md:mx-0">
               <p>
@@ -104,10 +111,11 @@ export default function HomePage() {
               <ContinueCard />
             </div>
             <div id="quick-start" className="mx-auto max-w-md scroll-mt-24 rounded-[var(--radius-card)] border border-line bg-surface-raised px-4 pb-3 pt-5 text-center md:mx-0 md:text-left">
-              <p id="quick-start-label" className="mb-4 text-lg font-bold text-ink">
-                {en
-                  ? `No sign-in · pick a subject, start ${SESSION_SIZE}`
-                  : `唔使登入／揀科開始 ${SESSION_SIZE} 題`}
+              <p id="quick-start-label" className="mb-2 text-lg font-bold text-ink">
+                {en ? 'Choose one subject to begin' : '揀一科，慢慢開始'}
+              </p>
+              <p className="mb-4 text-sm leading-relaxed text-ink-muted">
+                {en ? 'You can stop whenever you need. Your practice is not a test of your worth.' : '需要時隨時可以停。練習唔代表你嘅能力或價值。'}
               </p>
               <QuickStartGrid labelledBy="quick-start-label" en={en} />
               <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2 md:justify-start">
@@ -173,12 +181,12 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-              {en ? 'How practice works here' : '呢度點樣練'}
+              {en ? 'Learning can be gentler' : '學習可以溫柔啲'}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
               {en
-                ? 'Short multiple-choice sets that train judgment — not a full paper simulator.'
-                : '短選擇題節流，練判斷同常見陷阱 —— 唔係成卷模擬考。'}
+                ? 'Ten considered questions, not endless drills. No leaderboards, streak pressure or comparison.'
+                : '十題重判斷，唔使無止境操卷。無排行榜、無連續打卡壓力，亦唔比較同學。'}
             </p>
           </div>
           <div className="flex flex-col items-center gap-2 sm:items-end">
