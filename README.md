@@ -87,3 +87,7 @@
 ## DSE 專屬首頁與搜尋設定
 
 首頁架構、雙語文案、Google Search Console 驗證與上線前 SEO/GEO/AEO 清單：[`docs/DSE-HOME-SEARCH-HANDOFF.md`](docs/DSE-HOME-SEARCH-HANDOFF.md)。
+
+## 自學筆記／列印／QR 第一階段
+
+[實查覆蓋、路由、PDF 限制、回滾與待補教材清單](docs/TOPIC-NOTES-PHASE1.md)。本輪保留 DSE 範圍，不冒稱已完成全科完整教材。

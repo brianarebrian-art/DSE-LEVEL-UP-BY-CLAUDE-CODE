@@ -1,5 +1,7 @@
 'use client'
 
+import { parseNoteDifficulty } from '@/lib/notes/topicLearning'
+
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -66,6 +68,7 @@ function PracticeRouter() {
   const params = useSearchParams()
   const subjectId = params.get('subject')
   const topicFilter = params.get('topic')
+  const difficulty = parseNoteDifficulty(params.get('difficulty'))
   // `long` = 書寫題獨立卷（決策 ②）。同 MC 卷完全分開，唔共用 sessionSize。
   const rawMode = params.get('mode')
   // `cause` = practise by self-diagnosed error cause (UX audit F1, lib/causeMode.ts).
@@ -82,12 +85,13 @@ function PracticeRouter() {
   // Re-mount the gate (and the session beneath it) whenever subject/topic/mode changes.
   return (
     <PracticeGate
-      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${cause ?? ''}|${size ?? ''}`}
+      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${cause ?? ''}|${size ?? ''}|${difficulty ?? ''}`}
       subjectId={subjectId}
       topicFilter={topicFilter}
       mode={mode}
       cause={mode === 'cause' ? cause : null}
       sessionSize={size}
+      difficulty={difficulty}
     />
   )
 }

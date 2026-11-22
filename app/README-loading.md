@@ -52,3 +52,7 @@ gapMs:        0
 `/dashboard` 算進度），已經由元件自己嘅骨架屏處理
 （`components/Skeleton.tsx` → `PracticeGate`、`DashboardPageClient`），
 唔關 `loading.tsx` 事 —— 兩者填嘅係唔同嘅窗口。
+
+## 2026-11-22：課題筆記與練習準備頁
+
+`/notes/[subject]/[topic]` 與 `/practice/[subject]/[topic]` 的載入邊界依賴目前根 layout 的 `await headers()`／每次請求 CSP nonce，並非沒有動態資料依賴的純靜態頁。測試保留動態路由 allowlist，另外鎖定這個 nonce 合約；如日後改回可靜態生成，須重新檢討這兩個載入邊界。正式 build 的路由標記仍須在 PR 驗收時核對。

@@ -16,12 +16,14 @@ export default function QRCode({
   value,
   size = 96,
   className,
+  label = 'QR code',
 }: {
   /** 要編碼的文字。過長會由編碼器拋錯（上限約 213 位元組）。 */
   value: string
   /** 邊長（px）。 */
   size?: number
   className?: string
+  label?: string
 }) {
   const matrix = encodeQR(value)
   const n = matrix.length
@@ -44,7 +46,7 @@ export default function QRCode({
       className={className}
       shapeRendering="crispEdges"
       role="img"
-      aria-label="QR code"
+      aria-label={label}
     >
       <rect width={span} height={span} fill="#fff" />
       <path d={d} fill="#000" />
