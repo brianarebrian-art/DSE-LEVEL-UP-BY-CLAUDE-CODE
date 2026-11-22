@@ -8,6 +8,7 @@ import {
   Eye,
   Lightbulb,
   Type,
+  Wind,
   X,
 } from 'lucide-react'
 import MathText from '@/components/MathText'
@@ -17,6 +18,12 @@ const subjects = [
   '經濟', '企業會計與財務概論', '資訊及通訊科技', '視覺藝術', '音樂', '體育', '旅遊與款待',
   '健康管理與社會關懷', '英國文學', '中國文學', '倫理與宗教', '科技與生活', '設計與應用科技',
   '創意媒體', '組合科學',
+]
+
+const fontSizes = [
+  { label: 'A−', value: 0.9, name: '較細字級' },
+  { label: 'A', value: 1, name: '標準字級' },
+  { label: 'A+', value: 1.5, name: '放大字級' },
 ]
 
 const gradeBars = [
@@ -38,17 +45,13 @@ export default function CalmDseExperience() {
   const [reduceMotion, setReduceMotion] = useState(false)
   const [capsuleSealed, setCapsuleSealed] = useState(false)
 
-  const scaleFont = (direction: -1 | 1) => {
-    setFontScale((current) => Math.min(1.5, Math.max(1, current + direction * 0.25)))
-  }
-
   return (
     <main
-      className={`min-h-screen overflow-x-clip text-[#2B2B2B] ${eyeCare ? 'bg-[#F1EBDD]' : 'bg-[#F6F3ED]'}`}
+      className={`min-h-screen overflow-x-clip text-[#2B2B2B] ${eyeCare ? 'bg-[#F1EBDD]' : 'bg-[#F6F3ED]'} ${reduceMotion ? '[&_*]:transition-none' : ''}`}
       style={{ fontSize: `${16 * fontScale}px`, letterSpacing: '0.02em', lineHeight: 1.8 }}
       data-reduced-motion={reduceMotion ? 'true' : 'false'}
     >
-      <div className="mx-auto flex max-w-5xl flex-col gap-14 px-4 pb-36 pt-8 sm:gap-20 sm:px-8 sm:pb-32 sm:pt-14">
+      <div className="mx-auto flex max-w-5xl flex-col gap-14 px-4 pb-24 pt-8 sm:gap-20 sm:px-8 sm:pb-20 sm:pt-14">
         <header className="flex flex-col items-center gap-8 text-center sm:gap-10">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm font-medium text-[#4A656C]">DSE Level Up · 鬆綁練習</p>
@@ -59,6 +62,63 @@ export default function CalmDseExperience() {
               15 分鐘重判斷・睇清出題邏輯・25 科 27,000+ 題・永久免費零廣告
             </p>
           </div>
+          <section aria-labelledby="display-settings-heading" className="mx-auto w-full max-w-3xl rounded-3xl border border-[#E8E2D8] bg-[#FFFEFB] p-5 text-left shadow-[0_8px_32px_rgba(0,0,0,0.04)] sm:p-6">
+            <div className="mb-5 flex items-start gap-3">
+              <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-[#E8DDD0]/70 text-[#514E48]">
+                <Accessibility aria-hidden="true" size={20} strokeWidth={1.5} />
+              </span>
+              <div>
+                <h2 id="display-settings-heading" className="text-lg font-semibold">顯示設定</h2>
+                <p className="mt-1 text-sm text-[#69635F]">按你舒服嘅方式調整字級、護眼同動態。</p>
+              </div>
+            </div>
+
+            <p role="status" aria-live="polite" className="mb-4 text-sm text-[#69635F]">
+              字級 {Math.round(fontScale * 100)}% · 護眼{eyeCare ? '已開啟' : '已關閉'} · 減少動態{reduceMotion ? '已開啟' : '已關閉'}
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:items-end">
+              <fieldset>
+                <legend className="mb-2 flex items-center gap-2 text-sm font-medium text-[#57544E]">
+                  <Type aria-hidden="true" size={18} strokeWidth={1.5} /> 文字大小
+                </legend>
+                <div className="grid grid-cols-3 gap-2">
+                  {fontSizes.map(({ label, value, name }) => (
+                    <button
+                      key={label}
+                      type="button"
+                      aria-label={name}
+                      aria-pressed={fontScale === value}
+                      onClick={() => setFontScale(value)}
+                      className={`min-h-11 rounded-full border px-3 text-sm font-semibold transition-colors motion-reduce:transition-none ${focusClasses} ${fontScale === value ? 'border-[#4A656C] bg-[#4A656C]' : 'border-[#DCD7CE] bg-[#FDFBF7] hover:bg-[#F0EEE7]'}`}
+                      style={{ color: fontScale === value ? 'var(--color-on-accent)' : '#57544E' }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+
+              <div role="group" aria-label="閱讀偏好" className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  aria-pressed={eyeCare}
+                  onClick={() => setEyeCare((active) => !active)}
+                  className={`flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 text-sm font-medium transition-colors motion-reduce:transition-none ${focusClasses} ${eyeCare ? 'border-[#A58F7A] bg-[#E8DDD0] text-[#514E48]' : 'border-[#DCD7CE] bg-[#FDFBF7] text-[#57544E] hover:bg-[#F0EEE7]'}`}
+                >
+                  <Eye aria-hidden="true" size={18} strokeWidth={1.5} /> 護眼
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={reduceMotion}
+                  onClick={() => setReduceMotion((active) => !active)}
+                  className={`flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 text-sm font-medium transition-colors motion-reduce:transition-none ${focusClasses} ${reduceMotion ? 'border-[#A58F7A] bg-[#E8DDD0] text-[#514E48]' : 'border-[#DCD7CE] bg-[#FDFBF7] text-[#57544E] hover:bg-[#F0EEE7]'}`}
+                >
+                  <Wind aria-hidden="true" size={18} strokeWidth={1.5} /> 減少動態
+                </button>
+              </div>
+            </div>
+          </section>
           <a
             href="#practice"
             className={`inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#4A656C] px-7 py-3 text-base font-semibold text-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-colors hover:bg-[#526354] active:bg-[#465448] ${focusClasses}`}
@@ -74,6 +134,7 @@ export default function CalmDseExperience() {
             ))}
           </ul>
         </header>
+
 
         <section id="practice" aria-labelledby="practice-heading" className="scroll-mt-8">
           <div className="mx-auto max-w-3xl">
@@ -94,7 +155,8 @@ export default function CalmDseExperience() {
                     type="button"
                     aria-pressed={selected}
                     onClick={() => setSelectedSubject(subject)}
-                    className={`${pillBase} ${focusClasses} ${selected ? 'border-[#687966] bg-[#4A656C] text-white' : 'border-[#DCD7CE] bg-[#FFFEFB] text-ink hover:border-[#899783] hover:bg-[#F0EEE7]'}`}
+                    className={`${pillBase} ${focusClasses} ${selected ? 'border-[#687966] bg-[#4A656C] hover:bg-[#3E555B]' : 'border-[#DCD7CE] bg-[#FFFEFB] hover:border-[#899783] hover:bg-[#F0EEE7]'}`}
+                    style={{ color: selected ? 'var(--color-on-accent)' : '#57544E' }}
                   >
                     {subject}
                   </button>
@@ -211,28 +273,6 @@ export default function CalmDseExperience() {
         </section>
       </div>
 
-      <aside aria-label="SEN 顯示設定" className="fixed inset-x-3 bottom-[5.5rem] z-20 mx-auto w-auto max-w-none rounded-3xl border border-[#DCD7CE] bg-[#FFFEFB]/95 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur sm:bottom-5 sm:right-5 sm:left-auto sm:w-fit sm:max-w-fit sm:p-2">
-        <div className="flex flex-nowrap items-center justify-center gap-1 sm:gap-1.5">
-          <span className="flex min-h-11 items-center gap-1 px-1.5 text-[13px] font-medium text-[#6C6A65] sm:px-2" aria-hidden="true">
-            <Accessibility size={20} strokeWidth={1.5} />
-            SEN
-          </span>
-          <button type="button" onClick={() => scaleFont(-1)} aria-label="縮小文字 A-" disabled={fontScale <= 1} className={`inline-flex min-h-11 min-w-9 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-1 text-[13px] font-medium text-ink hover:bg-[#F0EEE7] disabled:opacity-45 ${focusClasses}`}>
-            A-
-          </button>
-          <span aria-live="polite" className="min-w-10 text-center text-[14px] font-semibold text-[#4F4C46]">{fontScale === 1 ? 'A' : `${Math.round(fontScale * 100)}%`}</span>
-          <button type="button" onClick={() => scaleFont(1)} aria-label="放大文字 A+" disabled={fontScale >= 1.5} className={`inline-flex min-h-11 min-w-9 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-1 text-[13px] font-medium text-ink hover:bg-[#F0EEE7] disabled:opacity-45 ${focusClasses}`}>
-            A+
-          </button>
-          <span className="mx-0.5 h-6 w-px shrink-0 bg-[#E3DED5]" aria-hidden="true" />
-          <button type="button" aria-pressed={eyeCare} onClick={() => setEyeCare((active) => !active)} className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full px-2 text-[13px] text-[#57544E] hover:bg-[#F0EEE7] sm:px-3 sm:text-[14px] ${focusClasses} ${eyeCare ? 'bg-[#E8DDD0]' : ''}`}>
-            <Eye size={18} strokeWidth={1.5} aria-hidden="true" /> 護眼
-          </button>
-          <button type="button" aria-pressed={reduceMotion} onClick={() => setReduceMotion((active) => !active)} className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full px-2 text-[13px] text-[#57544E] hover:bg-[#F0EEE7] sm:px-3 sm:text-[14px] ${focusClasses} ${reduceMotion ? 'bg-[#E8DDD0]' : ''}`}>
-            <Type size={18} strokeWidth={1.5} aria-hidden="true" /> 減少動態
-          </button>
-        </div>
-      </aside>
     </main>
   )
 }
