@@ -8,12 +8,10 @@ export function parseStoredLocale(raw: string | null | undefined): Locale | null
   return raw === 'zh' || raw === 'en' ? raw : null
 }
 
-/**
- * 未選擇時的瀏覽器後備：`navigator.language` 以 en 開頭（en、en-GB、en-HK）為英文，其餘為中文。
- * 不讀 `navigator.languages`，避免與「只看 language」的規格分叉。
- */
+/** Traditional Chinese is the default; an explicitly saved English choice still works. */
 export function localeFromBrowserLanguage(language: string | null | undefined): Locale {
-  return (language ?? '').toLowerCase().startsWith('en') ? 'en' : 'zh'
+  void language
+  return 'zh'
 }
 
 /** 已儲存的選擇永遠優先於瀏覽器語言。 */

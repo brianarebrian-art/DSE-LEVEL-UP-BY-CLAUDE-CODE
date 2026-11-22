@@ -74,6 +74,8 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
           <h1 className="text-3xl font-semibold leading-tight">{h1}</h1>
           <p className="leading-8">本頁按課題整理{meta.name}的概念與常見錯誤，並連結至每個課題的筆記、列印及練習入口。現有 {topics.length} 個課題摘要；完整教材仍須逐一補充及覆核。</p>{/* i18n-exempt: requested Traditional Chinese editorial content */}
           <p className="text-sm leading-7 text-ink-muted">適用程度：香港中學文憑試（DSE）。題庫現有 {total} 條獨立改寫題目，並非考評局官方試題，未經註冊教師審定。</p>{/* i18n-exempt: requested Traditional Chinese disclosure */}
+          <a href={`/api/notes-pdf/${encodeURIComponent(subject)}`} download className="inline-flex min-h-12 items-center rounded-xl bg-accent-strong px-5 py-3 text-sm font-semibold text-on-accent hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-accent">下載本科課題摘要 PDF 合集</a>{/* i18n-exempt: accurately labelled Traditional Chinese collection download */}
+          <p className="text-sm leading-7 text-ink-muted">合集收錄現有課題摘要與待覆核教材，不代表完整教科書或已完成學科審核。</p>{/* i18n-exempt: truthful collection scope */}
           <section aria-labelledby="topic-list-heading">
             <h2 id="topic-list-heading" className="mb-4 text-xl font-semibold">課題與學習重點</h2>{/* i18n-exempt: requested Traditional Chinese heading */}
             <ul className="grid gap-3 sm:grid-cols-2">

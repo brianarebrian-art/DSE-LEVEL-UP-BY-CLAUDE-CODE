@@ -30,13 +30,13 @@ test('已儲存的 zh / en 先於瀏覽器；無效值不當成已選擇', () =>
   assert.equal(parseStoredLocale(null), null)
   assert.equal(resolveLocale('en', 'zh-HK'), 'en')
   assert.equal(resolveLocale('zh', 'en-GB'), 'zh')
-  assert.equal(resolveLocale('nope', 'en-HK'), 'en')
+  assert.equal(resolveLocale('nope', 'en-HK'), 'zh')
   assert.equal(resolveLocale(null, 'fr-FR'), 'zh')
 })
 
-test('瀏覽器語言只看開頭是不是 en', () => {
+test('未明確選擇語言時一律繁中，保留儲存的英文選擇', () => {
   for (const lang of ['en', 'en-GB', 'en-HK', 'EN-us']) {
-    assert.equal(localeFromBrowserLanguage(lang), 'en', lang)
+    assert.equal(localeFromBrowserLanguage(lang), 'zh', lang)
   }
   for (const lang of ['zh-HK', 'zh-TW', 'yue', 'fr', '', undefined]) {
     assert.equal(localeFromBrowserLanguage(lang), 'zh', String(lang))
