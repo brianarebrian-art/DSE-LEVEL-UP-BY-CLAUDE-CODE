@@ -115,3 +115,12 @@ test('agent-b script refuses silent fixed and API keys', () => {
   assert.equal(src.includes('GROK_API_KEY'), false)
   assert.match(src, /即 fixed/)
 })
+
+test('cursor-handoff prints Cloud Agent prompt without paid API keys', () => {
+  const src = readFileSync(join(process.cwd(), 'scripts/error-system/cursor-handoff.mts'), 'utf8')
+  assert.match(src, /經自動檢查/)
+  assert.match(src, /dual_review/)
+  assert.equal(src.includes('GROK_API_KEY'), false)
+  assert.equal(src.includes('xai'), false)
+  assert.match(src, /draft_ready/)
+})

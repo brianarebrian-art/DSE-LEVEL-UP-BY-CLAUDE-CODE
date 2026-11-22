@@ -1,8 +1,9 @@
 # 題目錯誤反映系統 — Phase 5：Agent B（Executor）
 
-> **狀態：** 決策引擎＋CLI 已入 repo；預設 dry-run；**唔**自動 `fixed`／唔跳雙審。  
-> **日期：** 2026-11-05（Asia/Hong_Kong）  
-> **繼承：** phase-1…4
+> **狀態：** **創辦人已批准營運**（2026-11-19「批」）。決策引擎＋CLI 已入 repo；預設 dry-run；**唔**自動 `fixed`／唔跳雙審。  
+> **日期：** 2026-11-05（文件）；營運批准 2026-11-19（Asia/Hong_Kong）  
+> **繼承：** phase-1…4  
+> **營運手冊：** [`docs/ops/ERROR-SYSTEM-OPS-RUNBOOK-2026-11-19.md`](../ops/ERROR-SYSTEM-OPS-RUNBOOK-2026-11-19.md)
 
 ---
 
@@ -16,8 +17,10 @@
 | [`drafts/error-replacements/`](../../drafts/error-replacements/) | 替換題草稿殼（awaiting_generation） |
 | [`lib/__tests__/error-system-agent-b.test.mts`](../../lib/__tests__/error-system-agent-b.test.mts) | 合約測試 |
 | `npm run error:agent-b` | 入口 |
+| [`scripts/error-system/cursor-handoff.mts`](../../scripts/error-system/cursor-handoff.mts) | 印 Cursor Agent 接手 prompt（零 API） |
+| `npm run error:cursor-handoff` | 接手入口 |
 
-**Phase 5 完成。** Phase 6 見 [`phase-6-ui-test.md`](./phase-6-ui-test.md)。
+**Phase 5 完成並已批准營運。** Phase 6 見 [`phase-6-ui-test.md`](./phase-6-ui-test.md)。
 
 ---
 
@@ -87,9 +90,11 @@ rm -f .grok-queue/report-9001.json .grok-investigations/result-9001.json \
 - [x] 無 `fixed` 決策輸出  
 - [x] 公開標籤「經自動檢查」  
 - [x] 單元測試  
-- [ ] Production `--withdraw`／`--push-status` — 營運明確批准後  
+- [x] Production `--withdraw`（僅 `enqueue_replacement`）— 創辦人 2026-11-19 批准  
+- [ ] Production `--push-status` — 等正式庫已 apply migration 0034  
 - [x] Phase 6 UI／通知 — [`phase-6-ui-test.md`](./phase-6-ui-test.md)
+- [x] Cursor handoff prompt — `npm run error:cursor-handoff`
 
 ---
 
-**Phase 5 完成，等待批准**
+**Phase 5 完成；創辦人已批准營運（2026-11-19）**
