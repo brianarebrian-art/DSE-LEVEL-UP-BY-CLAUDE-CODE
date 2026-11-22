@@ -25,6 +25,7 @@ const ROOT = process.cwd()
 /** 明示豁免：唔應該有站內連結嘅路由，逐條寫低理由。 */
 const ALLOW_UNLINKED = {
   '/admin': '題目審批後台，只俾管理員直接輸入網址入',
+  '/calm-demo': '僅 development 可用的 UI 示範，production／preview 回 404，不應加入學生入口',
   '/dev/answer-cards': '開發用預覽頁，唔屬於學生流程',
   '/dev/long-session': '開發用預覽頁，唔屬於學生流程',
   '/sign-in-error': '登入失敗時由 OAuth／callback 重新導向入嚟，唔應該有站內連結',

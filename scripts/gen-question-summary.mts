@@ -241,3 +241,25 @@ writeFileSync(LONGEST_FILE, longestOut)
 console.log(`✓ data/questions/option-length.generated.ts (measured ${measuredAt})`)
 console.log(`  ${active.length} 科 · ${Object.values(summary).reduce((n, v) => n + v.topics, 0)} 個課題 · ${total} 條題目`)
 console.log(`  檔案大小 ${(out.length / 1024).toFixed(0)}KB`)
+
+// Public agent-facing totals must be generated in the same operation as the UI summary.
+const llmsFile = join(ROOT, 'public/llms.txt')
+const llms = readFileSync(llmsFile, 'utf8')
+const startMarker = '<!-- BEGIN GENERATED QUESTION SCOPE -->'
+const endMarker = '<!-- END GENERATED QUESTION SCOPE -->'
+if (llms.split(startMarker).length !== 2 || llms.split(endMarker).length !== 2 || llms.indexOf(startMarker) >= llms.indexOf(endMarker)) {
+  throw new Error('public/llms.txt requires exactly one ordered generated scope block')
+}
+const formatCount = (n: number) => n.toLocaleString('en-US')
+const totalMc = Object.values(summary).reduce((n, v) => n + v.mc, 0)
+const scope = `${startMarker}
+The generated question-bank summary lists ${formatCount(total)} questions across ${active.length} HKDSE subjects:
+${formatCount(totalMc)} multiple-choice and ${formatCount(total - totalMc)}
+written questions. Subject totals are the default practice pool. Items recomputed by a
+program and not checked one by one are excluded from these totals; the transparency
+page is the single source for practice, withdrawn, and held-out counts. Subject totals:
+
+${active.map((s) => `- ${s.id} ${summary[s.id].total}`).join('\n')}
+${endMarker}`
+writeFileSync(llmsFile, llms.slice(0, llms.indexOf(startMarker)) + scope + llms.slice(llms.indexOf(endMarker) + endMarker.length))
+console.log('✓ public/llms.txt (generated scope only)')

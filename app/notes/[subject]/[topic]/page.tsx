@@ -8,6 +8,9 @@ import { JsonLd } from '@/components/Seo/JsonLd'
 import NotesSubjectClient from '../NotesSubjectClient'
 import Link from 'next/link'
 
+// Structured data mirrors the bilingual visible note, independent of client locale.
+const tr = (zh: string, en: string) => `${zh} · ${en}`
+
 export function generateStaticParams() {
   return getActiveSubjects().flatMap((s) =>
     (SUBJECT_TOPICS[s.id] ?? []).map((t) => ({ subject: s.id, topic: t.id })),
@@ -57,7 +60,7 @@ export default async function NotesTopicPage({
       }),
       breadcrumbJsonLd([
         { name: 'DSE Level Up', path: '/' },
-        { name: '所有科目筆記', path: '/notes' },
+        { name: tr('所有科目筆記', 'Subject notes'), path: '/notes' },
         { name: meta.name, path: `/notes/${subject}` },
         { name: note.titleZh, path },
       ]),
@@ -66,18 +69,18 @@ export default async function NotesTopicPage({
         mainEntity: [
           {
             '@type': 'Question',
-            name: `${note.titleZh}要記咩？`,
+            name: tr(`${note.titleZh}要記咩？`, `What should I remember about ${note.titleEn}?`),
             acceptedAnswer: {
               '@type': 'Answer',
-              text: note.mustKnowZh.join('；'),
+              text: tr(note.mustKnowZh.join('；'), note.mustKnowEn.join('; ')),
             },
           },
           {
             '@type': 'Question',
-            name: `${note.titleZh}常見陷阱係咩？`,
+            name: tr(`${note.titleZh}常見陷阱係咩？`, `What are common traps in ${note.titleEn}?`),
             acceptedAnswer: {
               '@type': 'Answer',
-              text: note.commonTrapZh,
+              text: tr(note.commonTrapZh, note.commonTrapEn),
             },
           },
         ],

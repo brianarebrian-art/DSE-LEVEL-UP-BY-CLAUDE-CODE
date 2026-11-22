@@ -70,7 +70,7 @@ export default function HomePage() {
       </section>
 
       {/* A single, quiet starting point; no timers, rankings or urgency. */}
-      <section className="relative px-4 pb-12 pt-5 sm:pb-16 sm:pt-8">
+      <section id="homepage-hero" aria-labelledby="homepage-heading" className="relative px-4 pb-12 pt-5 sm:pb-16 sm:pt-8">
         <div className="relative z-10 mx-auto grid max-w-5xl items-start gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
           <div className="hero-rise text-center md:text-left">
             <p className="mb-3 text-[13px] text-ink-muted">
@@ -78,7 +78,7 @@ export default function HomePage() {
               <span aria-hidden className="px-1">·</span>
               <span>{hero.badge}</span>
             </p>
-            <h1 className="font-serif hero-rise-1 mb-3 text-[2.125rem] font-bold leading-[1.3] tracking-tight text-ink sm:text-5xl">
+            <h1 id="homepage-heading" className="font-serif hero-rise-1 mb-3 text-[2.125rem] font-bold leading-[1.3] tracking-tight text-ink sm:text-5xl">
               {en ? 'A little practice. A clearer mind.' : '每日行少少，個腦清晰啲。'}
             </h1>
             <p className="mx-auto mb-5 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0">

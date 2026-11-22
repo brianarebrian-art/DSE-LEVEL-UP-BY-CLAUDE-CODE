@@ -24,13 +24,14 @@ Contact: dselevelup@gmail.com
 
 ## Question-bank scope
 
-The generated question-bank summary lists 26,419 questions across 25 HKDSE subjects:
-25,358 multiple-choice and 1,061
+<!-- BEGIN GENERATED QUESTION SCOPE -->
+The generated question-bank summary lists 26,428 questions across 25 HKDSE subjects:
+25,367 multiple-choice and 1,061
 written questions. Subject totals are the default practice pool. Items recomputed by a
 program and not checked one by one are excluded from these totals; the transparency
 page is the single source for practice, withdrawn, and held-out counts. Subject totals:
 
-- math 1624
+- math 1633
 - m2 983
 - m1 898
 - physics 1120
@@ -42,8 +43,8 @@ page is the single source for practice, withdrawn, and held-out counts. Subject 
 - ict 1111
 - economics 1061
 - csd 984
-- history 1089
 - chinese-history 1087
+- history 1089
 - geography 1108
 - chinese-literature 1055
 - english-literature 1027
@@ -55,6 +56,7 @@ page is the single source for practice, withdrawn, and held-out counts. Subject 
 - music 1027
 - pe 1032
 - technology-living 1033
+<!-- END GENERATED QUESTION SCOPE -->
 
 There is no public third-party API or MCP server. Read public content pages;
 /sitemap.xml lists the selected canonical URLs intended for search, excluding

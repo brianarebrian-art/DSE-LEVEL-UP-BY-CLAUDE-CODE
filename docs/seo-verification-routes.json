@@ -10,6 +10,7 @@
   {"path":"/dse-maths/question-types/quadratic-discriminant","noindex":true},
   {"path":"/dse-physics/motion-equations","noindex":true},
   {"path":"/account","noindex":true},
+  {"path":"/calm-demo","status":404,"noindex":true},
   {"path":"/dev/answer-cards","status":404,"noindex":true},
   {"path":"/this-route-does-not-exist","status":404},
   {"path":"/subjects/not-a-subject","status":404},

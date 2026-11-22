@@ -1,3 +1,4 @@
+import { heroSection } from './helpers/home-source.mts'
 // Student-facing subject copy and homepage claims (2026-09-29).
 //
 // 1. Subject descriptions are shown on /subjects, on each subject page, and in search
@@ -83,7 +84,7 @@ test('the homepage stat wall has no unsupported numbers', () => {
 
 test('the homepage hero does not wait for JavaScript to become visible', () => {
   const page = read('app/HomePageClient.tsx')
-  const hero = page.slice(page.indexOf('── HERO ──'), page.indexOf('── 信任列 ──'))
+  const hero = heroSection(page)
   assert.ok(hero.length > 0, 'hero section found')
   // Comments mention the old class by name; only real className strings count.
   assert.doesNotMatch(hero.replace(/\{\/\*[\s\S]*?\*\/\}/g, ''), /className="[^"]*animate-on-scroll/)
