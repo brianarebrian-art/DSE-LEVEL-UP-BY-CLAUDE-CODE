@@ -3,6 +3,9 @@ import Link from 'next/link'
 import HomePageClient from './HomePageClient'
 import { createSeoMetadata, breadcrumbJsonLd } from '@/lib/seo'
 import { homeSeoDescription } from '@/lib/dynamicSeoDescriptions'
+import { HOME_FAQS } from '@/lib/homeContent'
+import { faqPageSchema, localiseFaq } from '@/lib/faq'
+import { SITE_ORIGIN } from '@/lib/site'
 import { JsonLd } from '@/components/Seo/JsonLd'
 
 export const metadata: Metadata = createSeoMetadata({
@@ -15,6 +18,7 @@ export const metadata: Metadata = createSeoMetadata({
 export default function HomePage() {
   return <>
     <JsonLd data={breadcrumbJsonLd([{ name: 'DSE Level Up', path: '/' }])} />
+    <JsonLd data={{ '@context': 'https://schema.org', ...faqPageSchema(localiseFaq(HOME_FAQS, false), `${SITE_ORIGIN}/`) }} />
     <HomePageClient />
     {/* SEO / crawler routes: keep links, demote visual weight so this is not a second hero. */}
     <nav aria-label="Subject learning routes" className="mx-auto max-w-5xl border-t border-line px-4 py-6 text-sm">
