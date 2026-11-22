@@ -58,3 +58,7 @@ skills-lock.json
 
 # Error-system Agent B ephemeral audit appends (WORM DB is migration 0034)
 .grok-investigations/_audit/
+
+# Graphify local code map (never deploy / never commit)
+graphify-out/
+.graphify/
