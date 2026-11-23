@@ -105,7 +105,7 @@ export default async function NotesTopicPage({
               <p className="text-sm text-ink-muted">編輯：{lesson?.author ?? 'DSE Level Up 既有筆記摘要'}；內容未經註冊教師審定。{lesson ? `更新：${lesson.updated}。編輯草稿，待覆核。` : '完整教材仍待逐課題補充。'}</p>{/* i18n-exempt: transparent Traditional Chinese provenance */}
             </header>
             <p className="text-sm text-ink-muted">文件生成日期：{new Date().toLocaleDateString('zh-HK', {timeZone:'Asia/Hong_Kong'})}</p>{/* i18n-exempt: actual document generation date, not content review date */}
-            <StudyNoteActions subject={meta.name} topic={note.titleZh} />
+            <StudyNoteActions subject={meta.name} topic={note.titleZh} subjectId={subject} topicId={topic} />
             <Link href={practice} className="no-print inline-flex min-h-12 items-center rounded-xl bg-accent-strong px-5 py-3 text-sm font-semibold text-on-accent hover:bg-accent-hover">立即做練習：{note.titleZh}</Link>{/* i18n-exempt: Traditional Chinese CTA */}
             <TopicStudyNote note={note} subjectName={meta.name} lesson={lesson} />
           </article>

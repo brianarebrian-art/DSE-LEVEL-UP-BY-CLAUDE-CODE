@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { noteFilename } from '@/lib/notes/topicLearning'
 
 /** Native printing keeps text selectable and SVG QR sharp, without a PDF SDK. */
-export default function StudyNoteActions({subject, topic}:{subject:string; topic:string}) {
+export default function StudyNoteActions({subject, topic, subjectId, topicId}:{subject:string; topic:string; subjectId:string; topicId:string}) {
   const [message,setMessage] = useState('')
   const [busy,setBusy] = useState(false)
   const [ready,setReady] = useState(false)
@@ -37,10 +37,11 @@ export default function StudyNoteActions({subject, topic}:{subject:string; topic
   }
   return <div className="no-print space-y-3" lang="zh-HK">
     <div className="flex flex-wrap gap-3">
+      <a href={`/api/notes-pdf/${encodeURIComponent(subjectId)}?topic=${encodeURIComponent(topicId)}`} download className="inline-flex min-h-12 items-center rounded-xl bg-accent-strong px-4 py-3 text-sm font-semibold text-on-accent hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-accent">直接下載 PDF</a>{/* i18n-exempt: requested Traditional Chinese download control */}
       <button type="button" disabled={!ready || busy} onClick={() => void print(true)} className="min-h-12 rounded-xl bg-accent-strong px-4 py-3 text-sm font-semibold text-on-accent hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-accent disabled:cursor-wait disabled:opacity-60">儲存 PDF（列印）{/* i18n-exempt: requested Traditional Chinese controls */}</button>
       <button type="button" disabled={!ready || busy} onClick={() => void print(false)} className="min-h-12 rounded-xl border border-line-strong bg-surface-raised px-4 py-3 text-sm font-semibold text-ink hover:bg-surface-sunken focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-accent disabled:cursor-wait disabled:opacity-60">列印筆記{/* i18n-exempt: requested Traditional Chinese controls */}</button>
     </div>
-    <p className="text-sm leading-7 text-ink-muted">PDF 使用瀏覽器原生列印，不會直接下載檔案。選擇 A4；如需每頁頁碼，請啟用瀏覽器的頁首及頁尾（不同手機支援不同）。{/* i18n-exempt: requested Traditional Chinese instructions */}</p>
+    <p className="text-sm leading-7 text-ink-muted">「直接下載 PDF」會下載已嵌入中文字型的 A4 檔案；另可使用原生列印。手機的儲存位置及檔名由瀏覽器決定。{/* i18n-exempt: requested Traditional Chinese instructions */}</p>
     <p className="text-sm leading-7 text-ink-muted" role="status" aria-live="polite">{message}</p>
     <noscript>請使用瀏覽器選單的「列印」或分享功能，儲存為 PDF。{/* i18n-exempt: requested Traditional Chinese instructions */}</noscript>
   </div>

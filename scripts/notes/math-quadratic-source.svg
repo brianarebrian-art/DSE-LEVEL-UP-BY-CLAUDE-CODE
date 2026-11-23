@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+<title id="title">二次函數的兩個橫軸交點</title>
+<desc id="desc">以 y 等於 x 平方減四 x 加三為例，頂點為二、負一，與橫軸交於一、零及三、零，判別式為四，大於零。</desc>
+<rect width="640" height="360" rx="16" fill="#f7f7f0"/>
+<g stroke="#c6d0c9" stroke-width="1"><path d="M90 60V290M190 60V290M290 60V290M390 60V290M490 60V290M90 100H550M90 170H550M90 240H550"/></g>
+<g stroke="#173d36" stroke-width="2"><path d="M70 240H565M90 300V55"/></g>
+<path d="M90 30Q290 590 490 30" fill="none" stroke="#b13b19" stroke-width="4"/>
+<g fill="#173d36" font-family="sans-serif" font-size="16"><text x="30" y="28" font-size="20" font-weight="700">y = x² − 4x + 3</text><text x="568" y="246">x</text><text x="78" y="48">y</text><text x="72" y="262">0</text><text x="153" y="225">(1, 0)</text><text x="376" y="225">(3, 0)</text><text x="310" y="292">頂點 (2, −1)</text><text x="32" y="337">Δ = (−4)² − 4 × 1 × 3 = 4 ＞ 0：兩個相異實根</text></g>
+<g fill="#b13b19" stroke="#fff" stroke-width="2"><circle cx="190" cy="240" r="5"/><circle cx="390" cy="240" r="5"/><circle cx="290" cy="310" r="5"/></g>
+</svg>

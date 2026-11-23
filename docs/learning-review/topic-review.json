@@ -1,0 +1,5415 @@
+[
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "quadratic_equations",
+    "title": "二次方程",
+    "questions": 286,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 105,
+      "hard": 179
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": true,
+    "dedicatedDiagram": true,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "probability",
+    "title": "概率",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 15,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "functions",
+    "title": "函數與建模",
+    "questions": 52,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 29,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "trigonometry",
+    "title": "三角函數",
+    "questions": 48,
+    "mcLevels": {
+      "easy": 13,
+      "medium": 31,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": true,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "statistics",
+    "title": "統計",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 21,
+      "medium": 15,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "logarithms",
+    "title": "對數與指數",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 29,
+      "hard": 13
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "sequences",
+    "title": "數列",
+    "questions": 86,
+    "mcLevels": {
+      "easy": 37,
+      "medium": 47,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "percentage",
+    "title": "百分數與利率",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 13,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "coordinate_geometry",
+    "title": "坐標幾何",
+    "questions": 58,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 50,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "inequalities",
+    "title": "不等式",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 6,
+      "medium": 28,
+      "hard": 11
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "circles",
+    "title": "圓的幾何特性",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 16,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "trig_3d",
+    "title": "三維三角學",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 14,
+      "hard": 29
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": true,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "permutation_combination",
+    "title": "排列與組合",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 17,
+      "hard": 27
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "locus",
+    "title": "軌跡與坐標",
+    "questions": 70,
+    "mcLevels": {
+      "easy": 34,
+      "medium": 24,
+      "hard": 12
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "polygons",
+    "title": "多邊形與角",
+    "questions": 47,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 16,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "similar_solids",
+    "title": "相似形與相似立體",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 15,
+      "medium": 22,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "variation",
+    "title": "變分",
+    "questions": 65,
+    "mcLevels": {
+      "easy": 33,
+      "medium": 29,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "approximation",
+    "title": "近似與誤差",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 15,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "number_systems",
+    "title": "數系",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 33,
+      "medium": 9,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "indices",
+    "title": "指數定律",
+    "questions": 64,
+    "mcLevels": {
+      "easy": 61,
+      "medium": 1,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "linear_functions",
+    "title": "一次函數",
+    "questions": 76,
+    "mcLevels": {
+      "easy": 76,
+      "medium": 0,
+      "hard": 0
+    },
+    "missingLevels": [
+      "medium",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "factors_multiples",
+    "title": "因數與倍數",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 20,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "arithmetic_sequence",
+    "title": "等差數列",
+    "questions": 142,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 139,
+      "hard": 1
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "geometric_sequence",
+    "title": "等比數列",
+    "questions": 45,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 25,
+      "hard": 19
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "math",
+    "subjectName": "數學（必修部分）",
+    "topic": "polynomials",
+    "title": "餘式與因式定理",
+    "questions": 61,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 58,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "differentiation",
+    "title": "微分法",
+    "questions": 108,
+    "mcLevels": {
+      "easy": 37,
+      "medium": 67,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": true,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "integration",
+    "title": "積分法",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 81,
+      "hard": 17
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "limits",
+    "title": "極限",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 76,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "matrices",
+    "title": "矩陣與行列式",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 19,
+      "medium": 35,
+      "hard": 37
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "vectors",
+    "title": "向量",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 49,
+      "medium": 41,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "mathematical_induction",
+    "title": "數學歸納法",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 38,
+      "hard": 31
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "binomial_theorem",
+    "title": "二項式定理",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 58,
+      "hard": 31
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "calculus_app",
+    "title": "微積分應用",
+    "questions": 102,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 81,
+      "hard": 19
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "m2_vectors_3d",
+    "title": "三維向量",
+    "questions": 102,
+    "mcLevels": {
+      "easy": 12,
+      "medium": 48,
+      "hard": 41
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m2",
+    "subjectName": "數學 M2（代數與微積分）",
+    "topic": "linear_systems",
+    "title": "線性方程組",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 6,
+      "medium": 51,
+      "hard": 40
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "permutation_combination",
+    "title": "排列與組合",
+    "questions": 67,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 48,
+      "hard": 14
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "binomial",
+    "title": "二項式定理",
+    "questions": 81,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 26,
+      "hard": 26
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "exp_log_calculus",
+    "title": "指數對數微積分",
+    "questions": 29,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 18,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "calculus_app",
+    "title": "微積分應用",
+    "questions": 107,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 99,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "probability_dist",
+    "title": "概率分佈",
+    "questions": 82,
+    "mcLevels": {
+      "easy": 22,
+      "medium": 24,
+      "hard": 34
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "normal_distribution",
+    "title": "正態分佈",
+    "questions": 57,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 45,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "statistics_inference",
+    "title": "統計推斷",
+    "questions": 59,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 29,
+      "hard": 28
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "m1_distributions",
+    "title": "概率分佈（高階）",
+    "questions": 63,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 24,
+      "hard": 38
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "m1_normal_calc",
+    "title": "正態分佈計算",
+    "questions": 122,
+    "mcLevels": {
+      "easy": 120,
+      "medium": 0,
+      "hard": 1
+    },
+    "missingLevels": [
+      "medium"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "differentiation",
+    "title": "微分",
+    "questions": 100,
+    "mcLevels": {
+      "easy": 20,
+      "medium": 42,
+      "hard": 36
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "integration",
+    "title": "積分",
+    "questions": 70,
+    "mcLevels": {
+      "easy": 20,
+      "medium": 30,
+      "hard": 19
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "m1",
+    "subjectName": "數學 M1（微積分與統計）",
+    "topic": "binomial_distribution",
+    "title": "二項分佈",
+    "questions": 61,
+    "mcLevels": {
+      "easy": 13,
+      "medium": 26,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "mechanics",
+    "title": "力學",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 34,
+      "medium": 57,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "electricity",
+    "title": "電學",
+    "questions": 181,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 71,
+      "hard": 77
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "heat",
+    "title": "熱學",
+    "questions": 69,
+    "mcLevels": {
+      "easy": 9,
+      "medium": 27,
+      "hard": 24
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "waves",
+    "title": "波動",
+    "questions": 80,
+    "mcLevels": {
+      "easy": 35,
+      "medium": 36,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "optics",
+    "title": "光學",
+    "questions": 74,
+    "mcLevels": {
+      "easy": 39,
+      "medium": 23,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "radioactivity",
+    "title": "放射現象",
+    "questions": 90,
+    "mcLevels": {
+      "easy": 17,
+      "medium": 43,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "phys_hell_mechanics",
+    "title": "多步計算・力學",
+    "questions": 65,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 0,
+      "hard": 65
+    },
+    "missingLevels": [
+      "easy",
+      "medium"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "phys_hell_elec_heat",
+    "title": "多步計算・電與熱",
+    "questions": 53,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 15,
+      "hard": 38
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "phys_hell_wave_optics",
+    "title": "多步計算・波動光學放射",
+    "questions": 68,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 0,
+      "hard": 68
+    },
+    "missingLevels": [
+      "easy",
+      "medium"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "kinematics",
+    "title": "運動學",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 55,
+      "hard": 17
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "force_motion",
+    "title": "力與運動",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 34,
+      "medium": 46,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "pressure_density",
+    "title": "壓強與密度",
+    "questions": 66,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 35,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "physics",
+    "subjectName": "物理",
+    "topic": "work_energy",
+    "title": "功、能與功率",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 54,
+      "hard": 25
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "mole",
+    "title": "摩爾概念",
+    "questions": 100,
+    "mcLevels": {
+      "easy": 77,
+      "medium": 13,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "acids_bases",
+    "title": "酸鹼",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 29,
+      "medium": 41,
+      "hard": 36
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "redox",
+    "title": "氧化還原",
+    "questions": 47,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 34,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "rates_energy",
+    "title": "反應速率與能量",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 31,
+      "medium": 26,
+      "hard": 27
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "bonding",
+    "title": "化學鍵",
+    "questions": 75,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 67,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "periodic_table",
+    "title": "週期表",
+    "questions": 48,
+    "mcLevels": {
+      "easy": 22,
+      "medium": 23,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "organic",
+    "title": "有機化學",
+    "questions": 55,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 16,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "chem_hell_quant",
+    "title": "定量計算（高階）",
+    "questions": 134,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 25,
+      "hard": 106
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "chem_hell_redox_equil",
+    "title": "氧化還原與平衡",
+    "questions": 44,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 21,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "chem_hell_organic",
+    "title": "有機化學（高階）",
+    "questions": 36,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 17,
+      "hard": 16
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "formula_mass",
+    "title": "化學式與式量",
+    "questions": 31,
+    "mcLevels": {
+      "easy": 13,
+      "medium": 16,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "concentration",
+    "title": "濃度",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 79,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "gas_volume",
+    "title": "氣體體積",
+    "questions": 62,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 28,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chemistry",
+    "subjectName": "化學",
+    "topic": "stoichiometry",
+    "title": "化學計量",
+    "questions": 54,
+    "mcLevels": {
+      "easy": 6,
+      "medium": 0,
+      "hard": 40
+    },
+    "missingLevels": [
+      "medium"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "cells",
+    "title": "細胞",
+    "questions": 100,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 60,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "genetics",
+    "title": "遺傳",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 48,
+      "medium": 25,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": true,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "human_body",
+    "title": "人體系統",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 82,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "coordination",
+    "title": "神經與協調",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 20,
+      "hard": 67
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "enzymes",
+    "title": "酶",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 45,
+      "hard": 13
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "photosynthesis",
+    "title": "光合作用",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 42,
+      "medium": 45,
+      "hard": 12
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "ecology",
+    "title": "生態",
+    "questions": 100,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 59,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "digestion",
+    "title": "營養與消化",
+    "questions": 117,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 102,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "bio_genetics_logic",
+    "title": "遺傳推理",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 34,
+      "hard": 35
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "bio_physio_chain",
+    "title": "生理機制・因果鏈",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 83,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "biology",
+    "subjectName": "生物",
+    "topic": "bio_data_ecology",
+    "title": "數據與生態",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 21,
+      "hard": 61
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "grammar",
+    "title": "Grammar",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 46,
+      "hard": 18
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "tenses",
+    "title": "Tenses",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 45,
+      "hard": 18
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "vocabulary",
+    "title": "Vocabulary",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 42,
+      "hard": 16
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "word_formation",
+    "title": "Word Formation",
+    "questions": 91,
+    "mcLevels": {
+      "easy": 26,
+      "medium": 45,
+      "hard": 19
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "reading",
+    "title": "Reading Comprehension",
+    "questions": 85,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 77,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "genre_tone",
+    "title": "Genre, Tone & Register",
+    "questions": 85,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 43,
+      "hard": 17
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "integrated",
+    "title": "Integrated Skills",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 82,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "cloze",
+    "title": "Cloze & Usage",
+    "questions": 81,
+    "mcLevels": {
+      "easy": 21,
+      "medium": 43,
+      "hard": 16
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "paper1_reading",
+    "title": "DSE Paper 1 Reading",
+    "questions": 85,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 42,
+      "hard": 19
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "p1_inference",
+    "title": "Reading · Inference & Implication",
+    "questions": 83,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 36,
+      "hard": 22
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "p1_tone",
+    "title": "Reading · Tone & Attitude",
+    "questions": 84,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 37,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english",
+    "subjectName": "英國語文",
+    "topic": "p1_vocab_ref",
+    "title": "Reading · Vocabulary & Reference",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 44,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "fanwen_content",
+    "title": "指定範文・內容",
+    "questions": 61,
+    "mcLevels": {
+      "easy": 16,
+      "medium": 25,
+      "hard": 14
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "fanwen_diction",
+    "title": "指定範文・字詞",
+    "questions": 68,
+    "mcLevels": {
+      "easy": 26,
+      "medium": 30,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "fanwen_lines",
+    "title": "指定範文・名句手法",
+    "questions": 73,
+    "mcLevels": {
+      "easy": 13,
+      "medium": 26,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "classical",
+    "title": "課外文言閱讀",
+    "questions": 59,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 35,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "comprehension",
+    "title": "白話閱讀理解",
+    "questions": 60,
+    "mcLevels": {
+      "easy": 9,
+      "medium": 46,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "rhetoric",
+    "title": "修辭手法",
+    "questions": 56,
+    "mcLevels": {
+      "easy": 14,
+      "medium": 42,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "idioms_vocab",
+    "title": "成語與詞語",
+    "questions": 58,
+    "mcLevels": {
+      "easy": 12,
+      "medium": 46,
+      "hard": 0
+    },
+    "missingLevels": [
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "chars_errors",
+    "title": "字音字形與病句",
+    "questions": 53,
+    "mcLevels": {
+      "easy": 20,
+      "medium": 27,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "classical_lexis",
+    "title": "文言實詞・一詞多義",
+    "questions": 59,
+    "mcLevels": {
+      "easy": 15,
+      "medium": 39,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "paragraph_function",
+    "title": "段落結構與作用",
+    "questions": 60,
+    "mcLevels": {
+      "easy": 16,
+      "medium": 40,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "argument_essay",
+    "title": "論說文・思辨立意",
+    "questions": 79,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 56,
+      "hard": 1
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "narrative_essay",
+    "title": "命題寫作・記敘抒情",
+    "questions": 75,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 55,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "descriptive_essay",
+    "title": "命題寫作・描寫",
+    "questions": 65,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 55,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "mixed_essay",
+    "title": "命題寫作・綜合",
+    "questions": 65,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 55,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "practical_writing",
+    "title": "實用寫作",
+    "questions": 75,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 55,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "material_essay",
+    "title": "材料作文・立意與引申",
+    "questions": 10,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "missingLevels": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "classical_moral_infer",
+    "title": "課外文言・寓意推論",
+    "questions": 59,
+    "mcLevels": {
+      "easy": 17,
+      "medium": 35,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "classical_passage_read",
+    "title": "課外文言・篇章精讀",
+    "questions": 60,
+    "mcLevels": {
+      "easy": 17,
+      "medium": 36,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese",
+    "subjectName": "中國語文",
+    "topic": "classical_compare",
+    "title": "課外文言・比較閱讀",
+    "questions": 10,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 5,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "business_env",
+    "title": "商業環境",
+    "questions": 24,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 11,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "management",
+    "title": "管理",
+    "questions": 25,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 11,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "accounting",
+    "title": "會計",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 22,
+      "medium": 65,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "financial_mgmt",
+    "title": "財務管理",
+    "questions": 43,
+    "mcLevels": {
+      "easy": 9,
+      "medium": 17,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "personal_finance",
+    "title": "個人理財",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 6,
+      "medium": 72,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "bafs_ratio_analysis",
+    "title": "比率分析（高階）",
+    "questions": 90,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 44,
+      "hard": 19
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "bafs_costing_pricing",
+    "title": "成本・定價・回本",
+    "questions": 86,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 62,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "bafs_depreciation",
+    "title": "折舊計算",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 37,
+      "medium": 25,
+      "hard": 41
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "financial_statements",
+    "title": "財務報表",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 31,
+      "medium": 20,
+      "hard": 35
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "ratios",
+    "title": "財務比率",
+    "questions": 52,
+    "mcLevels": {
+      "easy": 13,
+      "medium": 13,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "depreciation",
+    "title": "折舊",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 13,
+      "hard": 64
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "interest",
+    "title": "利息",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 68,
+      "hard": 10
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "bafs",
+    "subjectName": "企業、會計與財務概論",
+    "topic": "costing",
+    "title": "成本與定價",
+    "questions": 84,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 12,
+      "hard": 56
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "data_representation",
+    "title": "資料表示與處理",
+    "questions": 115,
+    "mcLevels": {
+      "easy": 33,
+      "medium": 37,
+      "hard": 29
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "computer_systems",
+    "title": "電腦系統與硬件",
+    "questions": 118,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 33,
+      "hard": 65
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "networking",
+    "title": "網絡與互聯網",
+    "questions": 117,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 9,
+      "hard": 88
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "programming",
+    "title": "程式編寫與算法",
+    "questions": 117,
+    "mcLevels": {
+      "easy": 43,
+      "medium": 45,
+      "hard": 13
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "databases",
+    "title": "資料庫",
+    "questions": 118,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 50,
+      "hard": 49
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "security_ethics",
+    "title": "資訊保安與道德",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 11,
+      "medium": 51,
+      "hard": 36
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "multimedia_web",
+    "title": "多媒體與網絡技術",
+    "questions": 116,
+    "mcLevels": {
+      "easy": 8,
+      "medium": 83,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "ict_data_rep_calc",
+    "title": "資料表示計算",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 58,
+      "hard": 11
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "ict_logic_algo",
+    "title": "邏輯與算法",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 53,
+      "medium": 27,
+      "hard": 23
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ict",
+    "subjectName": "資訊及通訊科技",
+    "topic": "ict_network_calc",
+    "title": "網絡計算",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 29,
+      "medium": 37,
+      "hard": 30
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "basic_concepts",
+    "title": "基礎概念",
+    "questions": 68,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 20,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "ppf",
+    "title": "生產可能線（PPF）",
+    "questions": 69,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 50,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "demand_supply",
+    "title": "需求與供應",
+    "questions": 80,
+    "mcLevels": {
+      "easy": 38,
+      "medium": 21,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "elasticity",
+    "title": "彈性",
+    "questions": 76,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 37,
+      "hard": 18
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "firm_production",
+    "title": "廠商與生產",
+    "questions": 90,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 47,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "market_structure",
+    "title": "市場結構",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 19,
+      "hard": 55
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "market_failure",
+    "title": "市場失靈",
+    "questions": 86,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 47,
+      "hard": 22
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "macroeconomics",
+    "title": "宏觀經濟",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 79,
+      "hard": 15
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "trade",
+    "title": "國際貿易",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 31,
+      "medium": 39,
+      "hard": 16
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "econ_micro_calc",
+    "title": "微觀計算（高階）",
+    "questions": 73,
+    "mcLevels": {
+      "easy": 31,
+      "medium": 38,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "econ_macro_calc",
+    "title": "宏觀計算（高階）",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 19,
+      "medium": 53,
+      "hard": 30
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "econ_trade_failure",
+    "title": "貿易與市場失靈",
+    "questions": 71,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 47,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "economics",
+    "subjectName": "經濟",
+    "topic": "market",
+    "title": "市場效率",
+    "questions": 56,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 5,
+      "hard": 51
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "hk_constitution",
+    "title": "「一國兩制」與憲制秩序",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 49,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "hk_rule_of_law",
+    "title": "法治、權利與責任",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 29,
+      "medium": 56,
+      "hard": 24
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "hk_society",
+    "title": "香港社會與參與",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 48,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "china_reform",
+    "title": "改革開放與國家發展",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 27,
+      "medium": 50,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "china_tech_power",
+    "title": "科技創新與綜合國力",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 8,
+      "medium": 82,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "globalization",
+    "title": "經濟全球化",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 80,
+      "hard": 9
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "interdependence",
+    "title": "互聯相依的世界",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 35,
+      "medium": 45,
+      "hard": 23
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "sustainability",
+    "title": "可持續發展與公共衞生",
+    "questions": 25,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 8,
+      "hard": 8
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "csd_data_response",
+    "title": "資料回應・數據詮釋",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 78,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "csd_stakeholder_eval",
+    "title": "多角度評鑑・持份者權衡",
+    "questions": 85,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 40,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "csd",
+    "subjectName": "公民與社會發展",
+    "topic": "csd_concept_apply",
+    "title": "概念應用・當代世界",
+    "questions": 86,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 39,
+      "hard": 20
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "preqin_polity",
+    "title": "先秦政治",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "qinhan_tang",
+    "title": "秦漢至隋唐制度",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "song_qing",
+    "title": "宋元明清",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "late_qing",
+    "title": "晚清變局",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "revolution",
+    "title": "辛亥革命",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "republic",
+    "title": "民國發展",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 25,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "prc",
+    "title": "中共建國至改革",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 78,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "hk_taiwan",
+    "title": "香港與兩岸",
+    "questions": 112,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 62,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "chist_ancient_institution",
+    "title": "古代制度・因果",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 21,
+      "medium": 56,
+      "hard": 25
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-history",
+    "subjectName": "中國歷史",
+    "topic": "chist_modern_causation",
+    "title": "近現代變局・評價",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 20,
+      "medium": 56,
+      "hard": 26
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "ww1",
+    "title": "第一次世界大戰",
+    "questions": 77,
+    "mcLevels": {
+      "easy": 61,
+      "medium": 8,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "ww2",
+    "title": "第二次世界大戰",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 68,
+      "medium": 8,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "cold_war",
+    "title": "冷戰",
+    "questions": 71,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 57,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "dictatorship",
+    "title": "極權主義興起",
+    "questions": 68,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 9,
+      "hard": 54
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "intl_coop",
+    "title": "國際合作",
+    "questions": 83,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 66,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "china_mod",
+    "title": "中國現代化",
+    "questions": 74,
+    "mcLevels": {
+      "easy": 53,
+      "medium": 8,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "japan_mod",
+    "title": "日本現代化",
+    "questions": 78,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 63,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "hk_seasia",
+    "title": "香港與東南亞",
+    "questions": 66,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 56,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "hk_mod",
+    "title": "香港的現代化與蛻變",
+    "questions": 86,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 80,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "seasia",
+    "title": "東南亞：由殖民地到獨立國家",
+    "questions": 87,
+    "mcLevels": {
+      "easy": 78,
+      "medium": 4,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "postwar_conflicts",
+    "title": "戰後衝突與聯合國",
+    "questions": 76,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 69,
+      "hard": 1
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "hist_causation",
+    "title": "因果分析・導火線與根源",
+    "questions": 82,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 65,
+      "hard": 14
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "hist_significance",
+    "title": "影響與意義評價",
+    "questions": 74,
+    "mcLevels": {
+      "easy": 67,
+      "medium": 5,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "history",
+    "subjectName": "歷史",
+    "topic": "hist_source",
+    "title": "史料判讀",
+    "questions": 79,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 74,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "plate_hazards",
+    "title": "板塊與自然災害",
+    "questions": 119,
+    "mcLevels": {
+      "easy": 29,
+      "medium": 64,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "rivers_coasts",
+    "title": "河流與海岸環境",
+    "questions": 127,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 71,
+      "hard": 35
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "weather_climate",
+    "title": "天氣與氣候",
+    "questions": 115,
+    "mcLevels": {
+      "easy": 47,
+      "medium": 47,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "urban",
+    "title": "城市發展",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 45,
+      "medium": 46,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "industry",
+    "title": "工業區位",
+    "questions": 112,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 42,
+      "hard": 50
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "food",
+    "title": "糧食與飢荒",
+    "questions": 125,
+    "mcLevels": {
+      "easy": 59,
+      "medium": 46,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "rainforest",
+    "title": "熱帶雨林",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 65,
+      "hard": 24
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "climate_change",
+    "title": "氣候變化與環境管理",
+    "questions": 117,
+    "mcLevels": {
+      "easy": 52,
+      "medium": 44,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "geo_process_chain",
+    "title": "地理過程・因果鏈",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 44,
+      "medium": 43,
+      "hard": 11
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "geography",
+    "subjectName": "地理",
+    "topic": "geo_data_manage",
+    "title": "數據與環境管理",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 62,
+      "medium": 24,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "pre_qin_han",
+    "title": "先秦兩漢文學",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 94,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "tang_poetry",
+    "title": "唐詩",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 94,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "song_ci",
+    "title": "宋詞",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 94,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "yuan_drama",
+    "title": "元曲戲劇",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 94,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "ming_qing",
+    "title": "明清小說",
+    "questions": 106,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 94,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "genres",
+    "title": "文學體裁",
+    "questions": 112,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 101,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "techniques",
+    "title": "寫作手法",
+    "questions": 112,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 100,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "appreciation",
+    "title": "文學鑑賞",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 98,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "clit_poetry_appreciation",
+    "title": "詩詞鑑賞・手法與意境",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 1,
+      "medium": 92,
+      "hard": 7
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "chinese-literature",
+    "subjectName": "中國文學",
+    "topic": "clit_craft_compare",
+    "title": "風格比較・婉約與豪放",
+    "questions": 95,
+    "mcLevels": {
+      "easy": 23,
+      "medium": 67,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "poetry",
+    "title": "Poetry",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 83,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "drama",
+    "title": "Drama",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "prose_fiction",
+    "title": "Prose Fiction",
+    "questions": 106,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "devices",
+    "title": "Literary Devices",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 100,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "characterisation",
+    "title": "Characterisation",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "themes",
+    "title": "Themes",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "shakespeare",
+    "title": "Shakespeare",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "criticism",
+    "title": "Criticism",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 95,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "elit_device_effect",
+    "title": "Device & effect",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 91,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "english-literature",
+    "subjectName": "英語文學",
+    "topic": "elit_theme_irony",
+    "title": "Theme & irony",
+    "questions": 95,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 87,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "ethical_theories",
+    "title": "規範倫理學",
+    "questions": 116,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 103,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "applied_ethics",
+    "title": "應用倫理",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 32,
+      "medium": 50,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "moral_concepts",
+    "title": "道德概念",
+    "questions": 108,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 97,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "christianity",
+    "title": "基督宗教",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 99,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "buddhism",
+    "title": "佛教",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 99,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "religion_ethics",
+    "title": "宗教倫理",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 98,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "eth_theory_apply",
+    "title": "規範倫理・理論應用",
+    "questions": 107,
+    "mcLevels": {
+      "easy": 31,
+      "medium": 52,
+      "hard": 23
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ethics-religious",
+    "subjectName": "倫理與宗教",
+    "topic": "eth_meta_reason",
+    "title": "道德推理・後設反思",
+    "questions": 102,
+    "mcLevels": {
+      "easy": 14,
+      "medium": 81,
+      "hard": 6
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "intro",
+    "title": "旅遊與款待業概論",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 80,
+      "medium": 7,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "service",
+    "title": "優質顧客服務",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 102,
+      "medium": 6,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "destinations",
+    "title": "旅遊目的地",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 89,
+      "medium": 7,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "accommodation",
+    "title": "住宿營運",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 72,
+      "medium": 31,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "food_beverage",
+    "title": "餐飲服務",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 88,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "travel_trade",
+    "title": "旅行社與會展",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 87,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "sustainable",
+    "title": "可持續旅遊",
+    "questions": 115,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 6,
+      "hard": 104
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "impacts",
+    "title": "旅遊影響",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 7,
+      "hard": 94
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "ths_hotel_metrics",
+    "title": "酒店營運計算",
+    "questions": 84,
+    "mcLevels": {
+      "easy": 24,
+      "medium": 42,
+      "hard": 17
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "ths",
+    "subjectName": "旅遊與款待",
+    "topic": "ths_concept_analysis",
+    "title": "概念分析・服務與可持續",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 103,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "health_concept",
+    "title": "健康概念",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 74,
+      "hard": 8
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "lifespan",
+    "title": "人生發展",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 76,
+      "medium": 11,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "care_systems",
+    "title": "醫療與社會照顧系統",
+    "questions": 84,
+    "mcLevels": {
+      "easy": 9,
+      "medium": 70,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "health_promotion",
+    "title": "促進健康",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 24,
+      "hard": 72
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "community_care",
+    "title": "社區照顧",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 77,
+      "medium": 6,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "public_health",
+    "title": "公共衞生與疾病預防",
+    "questions": 105,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 70,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "care_ethics",
+    "title": "照顧倫理",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 11,
+      "hard": 68
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "care_skills",
+    "title": "照顧技巧",
+    "questions": 99,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 89,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "hm_holistic_concept",
+    "title": "整全健康・概念應用",
+    "questions": 91,
+    "mcLevels": {
+      "easy": 26,
+      "medium": 11,
+      "hard": 53
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "hm_prevention_levels",
+    "title": "三級預防分類",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 79,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "health-management",
+    "subjectName": "健康管理與社會關懷",
+    "topic": "hm_care_ethics_determinants",
+    "title": "照顧倫理與健康決定因素",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 90,
+      "hard": 2
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "design_process",
+    "title": "設計過程",
+    "questions": 91,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 76,
+      "hard": 9
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "design_elements",
+    "title": "設計元素與原則",
+    "questions": 95,
+    "mcLevels": {
+      "easy": 76,
+      "medium": 15,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "materials",
+    "title": "材料與特性",
+    "questions": 92,
+    "mcLevels": {
+      "easy": 51,
+      "medium": 32,
+      "hard": 8
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "structures_mech",
+    "title": "結構與機械",
+    "questions": 116,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 106,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "manufacturing",
+    "title": "生產工序",
+    "questions": 112,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 95,
+      "hard": 12
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "cad_cam",
+    "title": "電腦輔助設計與製造",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 103,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "ergonomics",
+    "title": "人體工學",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 5,
+      "medium": 12,
+      "hard": 84
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "sustainability",
+    "title": "可持續設計",
+    "questions": 106,
+    "mcLevels": {
+      "easy": 94,
+      "medium": 5,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "dat_mechanisms_calc",
+    "title": "結構與機械・計算",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 0,
+      "medium": 33,
+      "hard": 63
+    },
+    "missingLevels": [
+      "easy"
+    ],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "design-tech",
+    "subjectName": "設計與應用科技",
+    "topic": "dat_materials_reason",
+    "title": "材料與結構・推理",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 82,
+      "hard": 11
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "art_appreciation",
+    "title": "藝術評賞",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 7,
+      "medium": 85,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "elements_principles",
+    "title": "藝術元素與原則",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 11,
+      "medium": 77,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "western_art",
+    "title": "西方藝術",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 72,
+      "medium": 23,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "chinese_art",
+    "title": "中國藝術",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 88,
+      "hard": 11
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "media_techniques",
+    "title": "媒材與技法",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 87,
+      "medium": 7,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "modern_contemporary",
+    "title": "現代與當代藝術",
+    "questions": 115,
+    "mcLevels": {
+      "easy": 102,
+      "medium": 7,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "visual_design",
+    "title": "視覺設計",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 76,
+      "medium": 18,
+      "hard": 9
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "art_context",
+    "title": "藝術與文化",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 80,
+      "medium": 11,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "va_formal_analysis",
+    "title": "形式分析・元素與原則",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 74,
+      "medium": 10,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "visual-arts",
+    "subjectName": "視覺藝術",
+    "topic": "va_history_context",
+    "title": "藝術史・技法與風格",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 15,
+      "medium": 89,
+      "hard": 8
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "elements",
+    "title": "音樂元素",
+    "questions": 108,
+    "mcLevels": {
+      "easy": 26,
+      "medium": 49,
+      "hard": 32
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "theory_notation",
+    "title": "樂理與記譜",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 66,
+      "medium": 13,
+      "hard": 13
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "form_structure",
+    "title": "曲式與結構",
+    "questions": 109,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 64,
+      "hard": 41
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "western_history",
+    "title": "西方音樂史",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 81,
+      "medium": 27,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "chinese_music",
+    "title": "中國音樂",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 15,
+      "medium": 74,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "instruments",
+    "title": "樂器與合奏",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 75,
+      "medium": 11,
+      "hard": 23
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "listening",
+    "title": "聆聽與分析",
+    "questions": 104,
+    "mcLevels": {
+      "easy": 28,
+      "medium": 69,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "creating",
+    "title": "創作與演奏",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 35,
+      "medium": 35,
+      "hard": 24
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "mus_theory_intervals",
+    "title": "樂理・音程與調號",
+    "questions": 111,
+    "mcLevels": {
+      "easy": 35,
+      "medium": 25,
+      "hard": 50
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "music",
+    "subjectName": "音樂",
+    "topic": "mus_harmony_form",
+    "title": "和聲・和弦與曲式",
+    "questions": 88,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 67,
+      "hard": 18
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "anatomy",
+    "title": "解剖學",
+    "questions": 97,
+    "mcLevels": {
+      "easy": 12,
+      "medium": 81,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "physiology",
+    "title": "運動生理學",
+    "questions": 90,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 80,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "biomechanics",
+    "title": "生物力學",
+    "questions": 102,
+    "mcLevels": {
+      "easy": 46,
+      "medium": 50,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "fitness_training",
+    "title": "體適能與訓練",
+    "questions": 113,
+    "mcLevels": {
+      "easy": 68,
+      "medium": 40,
+      "hard": 3
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "nutrition_health",
+    "title": "營養與健康",
+    "questions": 131,
+    "mcLevels": {
+      "easy": 93,
+      "medium": 5,
+      "hard": 32
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "injuries",
+    "title": "運動創傷",
+    "questions": 91,
+    "mcLevels": {
+      "easy": 74,
+      "medium": 6,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "psychology",
+    "title": "運動心理學",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 92,
+      "medium": 12,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "sport_society",
+    "title": "運動與社會",
+    "questions": 101,
+    "mcLevels": {
+      "easy": 46,
+      "medium": 18,
+      "hard": 35
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "pe_physiology_calc",
+    "title": "運動生理計算",
+    "questions": 94,
+    "mcLevels": {
+      "easy": 19,
+      "medium": 36,
+      "hard": 37
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "pe",
+    "subjectName": "體育",
+    "topic": "pe_biomech_systems",
+    "title": "生物力學與能量系統",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 2,
+      "medium": 96,
+      "hard": 4
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "nutrition",
+    "title": "膳食營養素",
+    "questions": 93,
+    "mcLevels": {
+      "easy": 32,
+      "medium": 30,
+      "hard": 29
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "lifecycle",
+    "title": "生命週期營養",
+    "questions": 89,
+    "mcLevels": {
+      "easy": 30,
+      "medium": 49,
+      "hard": 9
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "meal_planning",
+    "title": "膳食計劃",
+    "questions": 116,
+    "mcLevels": {
+      "easy": 57,
+      "medium": 53,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "food_science",
+    "title": "食物科學",
+    "questions": 114,
+    "mcLevels": {
+      "easy": 82,
+      "medium": 22,
+      "hard": 9
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "food_safety",
+    "title": "食物安全",
+    "questions": 98,
+    "mcLevels": {
+      "easy": 6,
+      "medium": 41,
+      "hard": 49
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "fibres",
+    "title": "纖維與布料",
+    "questions": 108,
+    "mcLevels": {
+      "easy": 86,
+      "medium": 15,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "fashion",
+    "title": "成衣與時尚",
+    "questions": 110,
+    "mcLevels": {
+      "easy": 4,
+      "medium": 100,
+      "hard": 5
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "consumer",
+    "title": "消費與可持續",
+    "questions": 103,
+    "mcLevels": {
+      "easy": 58,
+      "medium": 10,
+      "hard": 34
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "tl_nutrition_calc",
+    "title": "營養計算",
+    "questions": 96,
+    "mcLevels": {
+      "easy": 29,
+      "medium": 45,
+      "hard": 21
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  },
+  {
+    "subject": "technology-living",
+    "subjectName": "科技與生活",
+    "topic": "tl_food_textile_sci",
+    "title": "食物與紡織科學",
+    "questions": 106,
+    "mcLevels": {
+      "easy": 3,
+      "medium": 92,
+      "hard": 10
+    },
+    "missingLevels": [],
+    "notePresent": true,
+    "expandedLesson": false,
+    "dedicatedDiagram": false,
+    "contentReview": "pending_subject_expert",
+    "difficultyReview": "pending_subject_expert"
+  }
+]
