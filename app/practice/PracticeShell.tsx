@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { useLocale, useT } from '@/lib/i18n'
 import PracticeGate from './PracticeGate'
 import { parseCause } from '@/lib/causeMode'
+import type { Difficulty } from '@/data/questions'
 import PracticeSupport from '@/components/PracticeSupport'
 // NTM 溫柔二次確認：開咗「今晚唔溫得」入嚟會先問一次（零強制，確認即放行）
 import NotTonightGate from '@/components/NotTonightGate'
@@ -73,21 +74,31 @@ function PracticeRouter() {
   const cause = parseCause(params.get('cause'))
   const mode =
     rawMode === 'weakness' ? 'weakness' : rawMode === 'long' ? 'long' : rawMode === 'cause' && cause ? 'cause' : 'normal'
-  // C6「只做 1 題」：唯一支援嘅細卷尺寸。刻意唔開放任意數字 ——
-  // 呢個入口存在嘅意義係「門檻低到冇得再低」，唔係一個自訂長度功能。
-  const size = params.get('size') === '1' ? 1 : undefined
+  const requestedSize = Number(params.get('size'))
+  const size = Number.isInteger(requestedSize) && requestedSize >= 1 && requestedSize <= 20
+    ? requestedSize
+    : undefined
+  const setup = params.get('setup') === '1'
+  const rawDifficulty = params.get('difficulty')
+  const difficulty: Difficulty | undefined =
+    rawDifficulty === 'easy' || rawDifficulty === 'medium' || rawDifficulty === 'hard'
+      ? rawDifficulty
+      : undefined
 
   if (!subjectId) return <MissingSubject />
 
   // Re-mount the gate (and the session beneath it) whenever subject/topic/mode changes.
   return (
     <PracticeGate
-      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${cause ?? ''}|${size ?? ''}`}
+      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${cause ?? ''}|${size ?? ''}|${difficulty ?? ''}|${setup ? 'setup' : ''}`}
       subjectId={subjectId}
       topicFilter={topicFilter}
+
       mode={mode}
       cause={mode === 'cause' ? cause : null}
       sessionSize={size}
+      difficulty={difficulty}
+      setup={setup}
     />
   )
 }

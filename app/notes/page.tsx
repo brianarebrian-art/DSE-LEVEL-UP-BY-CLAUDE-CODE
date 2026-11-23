@@ -15,7 +15,7 @@ export default function NotesPage() {
     <div className="min-h-screen bg-surface text-ink-soft">
       <PageBreadcrumb path="/notes" title={String(metadata.title).replace(/\s*\|\s*DSE Level Up$/, '')} />
       <header className="mx-auto max-w-4xl px-4 pt-8">
-        <h1>學科筆記 · Subject revision notes{/* i18n-exempt: server component 無 locale hook */}</h1>
+        <h1>學科自學筆記</h1>
         <p>按學科與課題瀏覽題庫既有解析和常見陷阱；個人練習紀錄只會在你的裝置上顯示。{/* i18n-exempt: server component 無 locale hook */}</p>
       </header>
       <NotesOverview />

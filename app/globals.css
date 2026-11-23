@@ -637,9 +637,32 @@ body {
   }
 
   /* 4 — A4 geometry: generous margins, no clipped cards across page breaks */
-  @page {
-    size: A4;
-    margin: 1.6cm;
+@page {
+  size: A4;
+  margin: 1.6cm;
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    color: #625f59;
+    font-size: 9pt;
+  }
+}
+
+
+  #study-note-print-root {
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  #study-note-print-root h2,
+  #study-note-print-root h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  #study-note-print-root img,
+  #study-note-print-root svg {
+    max-width: 100%;
+    height: auto;
   }
   .rounded-2xl,
   .rounded-xl {

@@ -35,19 +35,19 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
   const topics = getSubjectTopics(subject)
   const total = getSubjectQuestions(subject).length
   const description = notesSeoDescription({ name: meta.name, questionCount: total, topicCount: topics.length })
-  const h1 = `${meta.name}知識凝結筆記 · ${meta.name} revision notes` // i18n-exempt: actual bilingual resource title
+  const h1 = `${meta.name}自學筆記`
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'TechArticle',
+        '@type': 'LearningResource',
         '@id': `${SITE_ORIGIN}/notes/${subject}#resource`,
         url: `${SITE_ORIGIN}/notes/${subject}`,
         name: h1, // i18n-exempt: 與可見 H1 完全一致的 server-only JSON-LD 名稱
         headline: h1,
         description,
-        learningResourceType: 'Revision notes',
-        educationalLevel: 'Hong Kong Diploma of Secondary Education (HKDSE)',
+        learningResourceType: 'DSE 科目溫習筆記',
+        educationalLevel: '香港中學文憑考試（DSE）',
         inLanguage: 'zh-HK',
         isAccessibleForFree: true,
         isPartOf: { url: `${SITE_ORIGIN}/notes` },
@@ -68,21 +68,16 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
     <>
       <JsonLd data={jsonLd} />
       <div className="min-h-screen bg-surface text-ink-soft">
-        <header className="mx-auto max-w-4xl px-4 pt-8">
-          <h1>{meta.name}知識凝結筆記 · {meta.name} revision notes{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
-          <p>本頁按課題整理{meta.name}的重點與常見陷阱，題庫現有 {total} 條獨立改寫題目，分為 {topics.length} 個課題。所有題目均為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
-          <p>
-            Topic-by-topic revision notes for {meta.name}, covering {total} independently rewritten questions across{' '}
-            {topics.length} topics. Not affiliated with the HKEAA.
-          </p>
+        <header className="no-print mx-auto max-w-4xl px-4 pt-8">
+          <h1>{h1}</h1>
+          <p>本頁按課題整理{meta.name}的重點與常見陷阱，題庫現有 {total} 條獨立改寫題目，分為 {topics.length} 個課題。所有題目均為原創改寫，並非香港考試及評核局（HKEAA）官方試題。</p>
           <section aria-labelledby="topic-list-heading">
-            <h2 id="topic-list-heading">課題一覽 · Topics{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h2>
+            <h2 id="topic-list-heading">課題一覽</h2>
             <ul>
               {topics.map((t) => (
                 <li key={t.id}>
                   <a href={`/notes/${subject}/${t.id}`}>
-                    {t.zh}
-                    {t.en ? ` · ${t.en}` : ''} — {t.count}
+                    {t.zh} — {t.count} 題
                   </a>
                 </li>
               ))}

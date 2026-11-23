@@ -10,13 +10,14 @@ import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
-import type { MCQuestion, WrittenQuestion } from '@/data/questions'
+import type { Difficulty, MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import { A11yButton } from '@/components/A11yPanel'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
 import GuestSessionGate from '@/components/GuestSessionGate'
 import { hasElectives, isQuestionInScope, type ElectiveSelection } from '@/lib/electives'
 import type { ReverseCause } from '@/lib/reverseLog'
+import PracticeSetup from './PracticeSetup'
 
 // Client-only quiz runner. Signed-in practice is unlimited and free.
 // Unsigned visitors get one free set, then Google sign-in (Fluid CPU / §5).
@@ -122,14 +123,18 @@ export default function PracticeGate({
   mode = 'normal',
   cause = null,
   sessionSize,
+  difficulty,
+  setup = false,
 }: {
   subjectId: string
   topicFilter: string | null
   mode?: 'normal' | 'weakness' | 'long' | 'cause'
   /** With mode='cause': the error cause to practise (lib/causeMode.ts). */
   cause?: ReverseCause | null
-  /** C6「只做 1 題」會傳 1；其餘一律用標準卷長。 */
+  /** 練習題數；設定頁最多提供 20 題一組。 */
   sessionSize?: number
+  difficulty?: Difficulty
+  setup?: boolean
 }) {
   const long = mode === 'long'
   const electives = useElectiveSelection(subjectId)
@@ -137,9 +142,12 @@ export default function PracticeGate({
   const returnPath = guestPracticeReturnPath({
     subjectId,
     topicFilter,
+
     mode,
     cause,
     sessionSize,
+    difficulty,
+    setup,
   })
 
   // The subject's question bank, lazily fetched as its own chunk.
@@ -149,6 +157,7 @@ export default function PracticeGate({
   const [loadFailed, setLoadFailed] = useState(false)
 
   const guestBlocked =
+    !setup &&
     isAuthUiEnabled() &&
     authStatus === 'unauthenticated' &&
     !mayStartGuestPractice({ authStatus, authUiEnabled: true })
@@ -176,10 +185,17 @@ export default function PracticeGate({
   // returns a fresh object on every storage event, and LongPracticeSession
   // rebuilds (reshuffles) its pool whenever `bank` changes identity.
   const selKey = JSON.stringify(electives.sel ?? null)
-  const scopedMc = useMemo(() => mcBank && inScope(mcBank, subjectId, topicFilter, selKey), [mcBank, subjectId, topicFilter, selKey])
+  const scopedMc = useMemo(
+    () => mcBank && inScope(mcBank, subjectId, topicFilter, selKey),
+    [mcBank, subjectId, topicFilter, selKey],
+  )
+  const difficultyMc = useMemo(
+    () => scopedMc && (difficulty ? scopedMc.filter((question) => question.difficulty === difficulty) : scopedMc),
+    [scopedMc, difficulty],
+  )
   const scopedWritten = useMemo(
-    () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
-    [writtenBank, subjectId, topicFilter, selKey],
+    () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey, difficulty),
+    [writtenBank, subjectId, topicFilter, selKey, difficulty],
   )
 
   // Wait for auth before gating — avoids a flash of the runner then the wall.
@@ -194,8 +210,23 @@ export default function PracticeGate({
     return electives.ready ? <ElectiveSelector subject={subjectId} /> : <Loading />
   }
 
+  if (setup && !long) {
+    if (scopedMc === null) return <Loading kind="mc" />
+    return (
+      <PracticeSetup
+        subjectId={subjectId}
+        topicFilter={topicFilter}
+        bank={scopedMc}
+        presetDifficulty={difficulty}
+      />
+    )
+  }
+
   if (long) {
     if (scopedWritten === null) return <Loading />
+    if (difficulty && scopedWritten.length === 0) {
+      return <DifficultyUnavailable subjectId={subjectId} topicFilter={topicFilter} />
+    }
     return (
       <LongPracticeSession
         key={subjectId + '|' + (topicFilter ?? '') + '|long'}
@@ -206,12 +237,15 @@ export default function PracticeGate({
     )
   }
 
-  if (scopedMc === null) return <Loading kind="mc" />
+  if (difficultyMc === null) return <Loading kind="mc" />
+  if (difficulty && difficultyMc.length === 0) {
+    return <DifficultyUnavailable subjectId={subjectId} topicFilter={topicFilter} />
+  }
 
   return (
     <PracticeSession
       key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (cause ?? '') + '|' + (sessionSize ?? '')}
-      bank={scopedMc}
+      bank={difficultyMc}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSize ?? SESSION_SIZE}
@@ -221,11 +255,41 @@ export default function PracticeGate({
   )
 }
 
-function inScope<T extends { id: string; topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
-  if (topicFilter) return bank
-  const sel = JSON.parse(selKey) as ElectiveSelection | null
-  const kept = bank.filter((q) => isQuestionInScope(subjectId, q, sel ?? undefined))
-  return kept.length ? kept : bank
+function DifficultyUnavailable({ subjectId, topicFilter }: { subjectId: string; topicFilter: string | null }) {
+  const { locale } = useLocale()
+  const query = new URLSearchParams({ subject: subjectId })
+  if (topicFilter) query.set('topic', topicFilter)
+  return (
+    <div className="mx-auto max-w-lg px-4 py-16 text-center">
+      <h1 className="text-xl font-semibold text-ink">呢個課題暫時未有此難度題目</h1>
+      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+        目前題庫未能提供這個難度的練習，請改選其他難度或返回課題筆記。
+      </p>
+      <Link
+        href={`/practice?${query.toString()}`}
+        className="mt-6 inline-flex min-h-11 items-center rounded-xl bg-accent-strong px-5 text-sm font-medium text-on-accent hover:bg-accent-hover"
+      >
+        {locale === 'en' ? 'Practise all available levels' : '練習此課題全部難度'}
+      </Link>
+    </div>
+  )
+}
+
+function inScope<T extends { id: string; topic: string; difficulty: Difficulty }>(
+  bank: T[],
+  subjectId: string,
+  topicFilter: string | null,
+  selKey: string,
+  difficulty?: Difficulty,
+): T[] {
+  const topicBank = topicFilter
+    ? bank.filter((question) => question.topic === topicFilter)
+    : (() => {
+        const sel = JSON.parse(selKey) as ElectiveSelection | null
+        const kept = bank.filter((q) => isQuestionInScope(subjectId, q, sel ?? undefined))
+        return kept.length ? kept : bank
+      })()
+  return difficulty ? topicBank.filter((q) => q.difficulty === difficulty) : topicBank
 }
 
 function guestPracticeReturnPath(opts: {
@@ -234,6 +298,8 @@ function guestPracticeReturnPath(opts: {
   mode: 'normal' | 'weakness' | 'long' | 'cause'
   cause: ReverseCause | null | undefined
   sessionSize?: number
+  difficulty?: Difficulty
+  setup?: boolean
 }): string {
   const q = new URLSearchParams()
   q.set('subject', opts.subjectId)
@@ -243,6 +309,8 @@ function guestPracticeReturnPath(opts: {
     q.set('mode', 'cause')
     q.set('cause', opts.cause)
   }
-  if (opts.sessionSize === 1) q.set('size', '1')
+  if (opts.sessionSize && opts.sessionSize <= 20) q.set('size', String(opts.sessionSize))
+  if (opts.difficulty) q.set('difficulty', opts.difficulty)
+  if (opts.setup) q.set('setup', '1')
   return `/practice?${q.toString()}`
 }
