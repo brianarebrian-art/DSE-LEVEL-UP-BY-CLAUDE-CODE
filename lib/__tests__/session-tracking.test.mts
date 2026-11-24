@@ -114,11 +114,10 @@ test('冇訪客編號、冇追蹤 cookie', () => {
 test('私隱頁有講「開過 app 嘅日期」，同埋講明未登入唔記錄', () => {
   assert.match(PRIVACY, /開過 app 嘅日期/, '私隱頁冇披露新採集')
   assert.match(PRIVACY, /一日一行/, '私隱頁應該講明粒度')
-  // 2026-10-02：加咗 Vercel Web Analytics（整體瀏覽量），句子改為「唔會留低任何關於你嘅紀錄」，
-  // 意思不變：未登入唔會入資料庫。
-  // 2026-10-04: question reports can be sent (question id and category only, not traceable to a
-  // student), so the sentence now says no row in the database is about you.
-  assert.match(PRIVACY, /未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅/, '私隱頁應該講明未登入唔記錄')
+  // 2026-11-24: guest user data is not uploaded to the database, and the outstanding
+  // browser-localStorage retention gap is disclosed because this is documentation-only.
+  assert.match(PRIVACY, /未登入期間，你嘅答題、結果同進度唔會上傳到資料庫/, '私隱頁應該講明未登入資料不上傳')
+  assert.match(PRIVACY, /目前程式仍會喺瀏覽器 localStorage 保存最近一次結果及部分練習統計/, '私隱頁應該披露未登入本機記錄差距')
   assert.match(PRIVACY, /dates you opened the app/i, '英文版亦要有')
 })
 

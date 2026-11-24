@@ -33,8 +33,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <h1 className="text-2xl font-medium text-ink">{en ? 'Privacy policy' : '私隱政策'}</h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {en
-            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was last checked against the actual code and the actual database on 4 October 2026 — not against a specification.'
-            : '對照香港《個人資料（私隱）條例》寫。以下每一句最近一次喺 2026 年 10 月 4 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
+            ? 'Written with reference to Hong Kong’s Personal Data (Privacy) Ordinance. Policy updated 24 November 2026. We disclose below that the current browser code still retains some unsigned practice data locally, despite the new no-retention policy.'
+            : '參照香港《個人資料（私隱）條例》編寫。政策於 2026 年 11 月 24 日更新。下文會披露：目前瀏覽器程式仍會喺本機保留部分未登入練習資料，未符合最新的不保留紀錄政策。'}
         </p>
       </header>
 
@@ -53,21 +53,21 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'You do not have to sign in' : '你唔使登入'}>
         <p>
           {en
-            ? 'Every practice question, every subject, every note and every wellbeing tool works without an account. If you never sign in, your data never leaves your browser — there is no account for us to look at.'
-            : '所有練習題、所有科目、所有筆記同所有情緒工具，唔登入都用得。如果你由頭到尾都唔登入，你嘅資料完全唔會離開你部瀏覽器 —— 我哋根本冇一個帳戶可以睇。'}
+            ? 'You can start without signing in and answer up to 10 questions. Unsigned practice answers, results, and progress are not uploaded to our database. Effective 24 November 2026, the policy is not to retain guest practice records; however, the current code still stores the most recent result and some practice statistics in browser localStorage, so that part has not yet been implemented.'
+            : '毋須登入即可開始練習，未登入最多可答 10 題。未登入期間的答題、結果及進度不會上傳到資料庫。自 2026 年 11 月 24 日起，政策是不保留訪客練習紀錄；但目前程式仍會在瀏覽器 localStorage 保存最近一次結果及部分練習統計，尚未落實這部分政策。'}
         </p>
         <p>
           {en
-            ? 'Signing in with Google does one thing and one thing only: it lets your progress follow you to another device. It unlocks no extra content — the whole site is free either way.'
-            : 'Google 登入只做一件事：令你嘅進度可以跟你去另一部機。佢唔會解鎖任何額外內容 —— 全站無論點都係免費。'}
+            ? 'Google sign-in removes the 10-question guest limit and lets supported progress follow you to another device. It unlocks no paid content — the whole site is free either way.'
+            : 'Google 登入會解除未登入的 10 題上限，亦可以同步支援的進度去另一部機。登入不會解鎖任何收費內容 —— 全站無論點都係免費。'}
         </p>
       </Section>
 
       <Section title={en ? 'What is stored on your own device' : '存喺你自己部機嘅嘢'}>
         <p>
           {en
-            ? 'By default everything lives in your browser’s local storage: your scores, the questions and topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
-            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你答錯嘅題同易錯嘅課題、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
+            ? 'Some preferences and personal tools are stored in your browser. The current code also stores the most recent practice result and some practice statistics in localStorage, including for unsigned visitors; this conflicts with the no-guest-record policy above and still needs implementation work.'
+            : '部分偏好及個人小工具會存喺瀏覽器。本程式目前亦會把最近一次練習結果及部分練習統計存入 localStorage，未登入用戶亦受影響；這與上文不保留訪客練習紀錄的政策不符，仍需另行實作。'}
         </p>
         <p>
           {en ? 'You can see the exact list, on your own device, at ' : '你可以喺你自己部機睇到完整清單：'}
@@ -138,8 +138,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (Question reports, the two questions after practice, and anonymous feedback are kept only after you sign in with Google. If you are not signed in, sending writes nothing. A saved row still has no account, email or IP, so we cannot tell who sent it. See “Reporting a problem with a question”, “Two questions after practice” and “Anonymous feedback” below. Signing in is completely free. It is not a paywall and unlocks no paid content.) (When you are signed in, we count how many practice sets start and finish each day, as totals only; see “Counting practice sets” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. Words you wrote for yourself (time capsules, writing drafts, your latest result) stay on your device. The only exception is a few sentences you choose to send on the anonymous feedback page after you sign in: we keep those with the options you picked, without your account, email or IP, so we cannot tell who sent them. If you are not signed in, that page writes nothing.'
-            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（題目問題報告、做完練習嗰兩條問題，同匿名意見，要先用 Google 登入先會保存；未登入送出唔會寫入資料庫。保存嗰行仍然唔記帳戶、電郵或 IP，認唔出係邊個。見下面「報告題目問題」、「做完練習嘅兩條問題」同「匿名意見」。登入完全免費，唔係付費牆，亦唔會解鎖任何收費內容。）（你登入咗之後，我哋會數每日有幾多節練習開始同做完，只存總數，見下面「數練習次數」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你寫畀自己嘅字（時間囊、寫作草稿、最近一次練習結果）永遠留喺你部機。唯一例外：你登入之後喺匿名意見頁自己撳送出嗰幾句，會同你揀嘅選項一齊收低，但唔記帳戶、電郵或 IP，認唔出係邊個。未登入送出唔會寫入。'}
+            ? 'If you are not signed in, your practice answers, results, and progress are not uploaded to our database. Effective 2026-11-24, guests may answer up to 10 questions and we intend not to retain practice records. Documentation-only update: the current code still stores the most recent result and some practice statistics in browser localStorage, so this no-local-record policy is not yet implemented. (Question reports, the two questions after practice, and anonymous feedback are kept only after you sign in with Google. If you are not signed in, sending writes nothing. A saved row still has no account, email or IP, so we cannot tell who sent it. See “Reporting a problem with a question”, “Two questions after practice” and “Anonymous feedback” below. Signing in is completely free. It is not a paywall and unlocks no paid content.) (When you are signed in, we count how many practice sets start and finish each day, as totals only; see “Counting practice sets” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. Words you wrote for yourself (time capsules, writing drafts, your latest result) stay on your device. The only exception is a few sentences you choose to send on the anonymous feedback page after you sign in: we keep those with the options you picked, without your account, email or IP, so we cannot tell who sent them. If you are not signed in, that page writes nothing.'
+            : '未登入期間，你嘅答題、結果同進度唔會上傳到資料庫。自 2026 年 11 月 24 日起，未登入最多可答 10 題，政策上亦不保留練習紀錄。注意：本次只更新文件；目前程式仍會喺瀏覽器 localStorage 保存最近一次結果及部分練習統計，尚未落實「不保留本機紀錄」。（題目問題報告、做完練習嗰兩條問題，同匿名意見，要先用 Google 登入先會保存；未登入送出唔會寫入資料庫。保存嗰行仍然唔記帳戶、電郵或 IP，認唔出係邊個。見下面「報告題目問題」、「做完練習嘅兩條問題」同「匿名意見」。登入完全免費，唔係付費牆，亦唔會解鎖任何收費內容。）（你登入咗之後，我哋會數每日有幾多節練習開始同做完，只存總數，見下面「數練習次數」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你寫畀自己嘅字（時間囊、寫作草稿、最近一次練習結果）永遠留喺你部機。唯一例外：你登入之後喺匿名意見頁自己撳送出嗰幾句，會同你揀嘅選項一齊收低，但唔記帳戶、電郵或 IP，認唔出係邊個。未登入送出唔會寫入。'}
         </p>
       </Section>
 

@@ -84,9 +84,9 @@ test('practice gate and APIs enforce the cost boundary', () => {
   assert.match(result, /guestMustSignIn/)
 })
 
-test('charter documents the guest trial as cost control, not a paywall', () => {
+test('charter documents the 10-question guest policy and storage gap', () => {
   const charter = readFileSync('docs/charter.md', 'utf8')
-  assert.match(charter, /未登入一節試用/)
-  assert.match(charter, /Fluid Active CPU/)
-  assert.match(charter, /唔係付費牆/)
+  assert.match(charter, /未登入最多可答 \*\*10 題\*\*/)
+  assert.match(charter, /不得上傳至資料庫或作為練習紀錄保留/)
+  assert.match(charter, /目前程式的本機儲存尚未符合此政策/)
 })

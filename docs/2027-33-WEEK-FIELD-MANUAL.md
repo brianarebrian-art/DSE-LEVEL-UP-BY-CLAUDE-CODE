@@ -2,7 +2,7 @@
 ## Claude Code 專用執行手冊｜2026-08-24 至 2027-04-07
 
 > **版本：** 2026-08-24 v1.0  
-> **狀態提醒（2026-11-24）：** 本手冊包含當時的推斷及舊技術狀態，並非現行產品事實；執行前先核對 [`README.md`](../README.md)、[`docs/charter.md`](charter.md)、`package.json` 及官方網站。現行登入為 Supabase Auth · Google OAuth（不是 Auth.js）；目前題庫／科目數以透明度頁為準。Source of Truth 的訪客無限練習說法（核實 2026-11-10）與 2026-11-20 憲章的一節訪客試用限制有差異，未對賬前不得把前者當作現行行為。
+> **狀態提醒（2026-11-24）：** 本手冊包含當時的推斷及舊技術狀態，並非現行產品事實；執行前先核對 [`README.md`](../README.md)、[`docs/charter.md`](charter.md)、`package.json` 及官方網站。現行登入為 Supabase Auth · Google OAuth（不是 Auth.js）；目前題庫／科目數以透明度頁為準。未登入最多可答 10 題，答題／結果／進度不得上傳資料庫或保留為練習紀錄。注意：文件已更新，但目前程式仍會在瀏覽器 localStorage 保存最近一次結果及部分練習統計。
 > **執行者：** Claude Code（AI 助手）  
 > **最終決策權：** Brian（CEO）／Yuna（COO）  
 > **有效期：** 至 2027-04-07 23:59 HKT  

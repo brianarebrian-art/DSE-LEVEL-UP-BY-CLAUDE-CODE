@@ -7,8 +7,8 @@
 
 # DSE LEVEL UP — CLAUDE.md
 # 戰場只有一個：香港中學文憑試（DSE）
-# 最後更新：2026-11-20 | §1 第 2.1 點：創辦人刪除「不考之地」（/off-syllabus）；/cantonese 保留
-# 前次：2026-11-20 | §3.1 未登入一節試用（Fluid Active CPU／§5）；登入後仍無限免費
+# 最後更新：2026-11-24 | §3.1 未登入最多 10 題；不保留未登入練習紀錄、不上傳用戶數據至資料庫
+# 前次：2026-11-20 | §1 第 2.1 點：創辦人刪除「不考之地」（/off-syllabus）；/cantonese 保留
 # 前次：2026-10-04 | §12.1 約束 6 答案形狀檢查適用於所有入庫途徑（創辦人決定 17A、17A-2a）
 # 前次：2026-10-04 | §12.1 首頁加「未經註冊教師審定」及收起題數（創辦人決定 10a）；§13 免責聲明改為「練習表現估算僅供參考」（A7-1）
 # 前次：2026-09-26 | §12 改為機器閘自動入庫＋事後退回；§1 新增 2.1 不考之地（Yuna 指示）
@@ -30,7 +30,7 @@
      `/cantonese`（新來港香港日常廣東話）是獨立路由，不是「不考之地」的分類，予以保留。不要把它做成首頁當眼卡；全齡層、亞太區擴張照樣禁止。本條仍取代 `docs/charter-amendment-2026-09-19-DRAFT.md` 的三個選項；該草案及 2026-09-26 的入口安排只作歷史。
 3. **絕對免費原則（永久有效）。**（2026-09-05 Brian 裁決，撤銷 2026-09-04 之「核心免費原則＋Plus 自願支持計劃」修訂）
    全部功能、全部科目，一律免費。**冇付費層、冇任何形式嘅收費、訂閱、廣告或付費牆。** 登入 Google **唔會**解鎖付費內容。
-   - **3.1 登入後無限；未登入一節試用（2026-11-20，為 §5／Fluid Active CPU）。** 已登入：無限題數、無限節數。未登入：同一裝置最多完成 **一節**練習（標準卷長見 `SESSION_SIZE`，而家 10 題；「只做 1 題」或書寫卷完成亦計用咗呢次試用），之後要 Google 登入先再開新節。**唔係付費牆** —— 動機係 Vercel Hobby **Fluid Active CPU** 每月爆額（見 `docs/ops/L-COST-AND-CAPACITY-2026-10-29.md`）。未登入期間唔寫作答上雲、唔打 `practice-count`／`result/verify`。2026-09-04 曾引入「每日 40 題」付費額度，**從未上線**並已撤銷（見 3.2）；今次試用閘唔可以演變成收費。
+   - **3.1 登入後無限；未登入最多 10 題（2026-11-24）。** 已登入：無限題數、無限節數。未登入：最多回答 **10 題**；答題、結果及進度不得上傳至資料庫或作為練習紀錄保留。登入只用於保存及跨裝置同步已登入用戶的進度，完全免費，唔係付費牆。未登入期間唔打 `practice-count`／`result/verify`。**實作差距：** 本次只更新文件；目前程式仍會把最近一次結果及部分練習統計寫入瀏覽器 `localStorage`，未符合不保留本機練習紀錄的政策，實作需另行更新。2026-09-04 曾引入「每日 40 題」付費額度，**從未上線**並已撤銷（見 3.2）；任何試用限制唔可以演變成收費。
    - **3.2 已剷除嘅嘢（存檔，防止重建）。** Stripe 接線、`/confirm-payment`、`/thank-you`、`lib/payment/`、每日額度計數、五張付費表（`plus_entitlements`／`purchases`／`consent_logs`／`plus_devices`／`site_config`）全部刪除，見 `supabase/migrations/0015_drop_payment.sql`。**剷之前逐張數過，五張表合共只有 1 行（一個從未被讀取嘅 feature flag），冇一筆真實交易。**
    - **3.3 點解要連憲章一齊改。** 2026-09-04 嗰次修訂係 Brian ＋ Yuna 雙簽寫入憲章嘅。淨係剷代碼、留住條文，下一個 session 讀憲章就會照 §8.2 白名單再起一次 —— 呢個模式憲章自己喺 §8.1 同 §8.2 各記低過一次（「唔喺憲章度調和，每個新 session 都會…重新爭論一輪」）。所以代碼同條文同一日一齊改。2026-11-20 試用閘同樣寫入憲章，避免下個 session 當佢違 §3 而拆走。
 
@@ -56,7 +56,7 @@
 
 - **Framework:** Next.js 16.2.9 + React 19.2.4
 - **Styling:** Tailwind CSS v4
-- **Auth:** **唯一** Supabase Auth · Google OAuth（2026-10-30 重建）。Session = `@supabase/ssr` cookie；身份 key = `auth.users.id`（uuid）。舊 Google `sub` 經 `auth_identity_map` 遷移。未登入可練 **一節**（§3.1），**唔寫長期本機進度、唔上雲**（C1）；之後要登入先繼續。
+- **Auth:** **唯一** Supabase Auth · Google OAuth（2026-10-30 重建）。Session = `@supabase/ssr` cookie；身份 key = `auth.users.id`（uuid）。舊 Google `sub` 經 `auth_identity_map` 遷移。未登入最多可答 **10 題**（§3.1），答題／結果／進度不得上傳資料庫或保留為練習紀錄；目前程式的本機儲存尚未符合此政策，詳見 §3.1。
   - 已拆除：Auth.js v5、Better Auth、`FLIP-TO-BETTER-AUTH.md`、`DataPortability`、`InAppBrowserNotice`。
   - 設計／移除清單：`docs/auth/SUPABASE-GOOGLE-REBUILD-DESIGN.md`、`docs/auth/REMOVAL-CHECKLIST-GOOGLE-AUTH-REBUILD.md`。
   - **生產 schema apply／Google Console redirect 改動** 要另一次創辦人「批准發布」。

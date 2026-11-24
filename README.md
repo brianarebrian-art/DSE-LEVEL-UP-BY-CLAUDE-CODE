@@ -11,9 +11,9 @@
 
 ## 專案簡介
 
-DSE Level Up 是一個為香港中學文憑試（DSE）考生而設的免費溫習平台，協助中四至中六學生以短題練習判斷及常見陷阱、檢視學習進度，並透過解析備試。平台不是整卷模擬考。毋須登入即可開始練習；可選 Google 登入只用於跨裝置同步，不會解鎖付費內容。平台不隸屬香港考試及評核局（HKEAA），亦不保證考試成績。
+DSE Level Up 是一個為香港中學文憑試（DSE）考生而設的免費溫習平台，協助中四至中六學生以短題練習判斷及常見陷阱、檢視學習進度，並透過解析備試。平台不是整卷模擬考。毋須登入即可開始練習；未登入最多可答 10 題。Google 登入可繼續無限練習及跨裝置同步，不會解鎖付費內容。平台不隸屬香港考試及評核局（HKEAA），亦不保證考試成績。
 
-平台永久免費、無廣告、無付費層或付費牆。已登入用戶可無限練習。未登入用戶目前每部裝置可完成一節試用練習，之後需登入才可繼續。此限制與 Source of Truth（2026-11-10 核實）所載「無限題數／不需登入」有差異；較新的專案憲章（2026-11-20）記錄了訪客試用限制。本 README 保留此差異，不將「免費」誤述為訪客無限制；請以最新官網介面及憲章為準。
+平台永久免費、無廣告、無付費層或付費牆。已登入用戶可無限練習。自 2026-11-24 起，未登入用戶最多可做 10 題；未登入期間的答題、結果及進度不得上傳資料庫或保留為練習紀錄。注意：本次只更新文件；目前程式仍會在瀏覽器 localStorage 保存最近一次結果及部分練習統計，尚未符合「不保留本機紀錄」政策。
 
 ## 主要功能
 
@@ -116,9 +116,9 @@ npm run build
 
 ## 项目简介
 
-DSE Level Up 是一个面向香港中学文凭考试（DSE）考生的免费学习平台，帮助中四至中六学生通过短题练习判断力和常见陷阱、查看学习进度，并通过解析备考。平台不是整卷模拟考试。无需登录即可开始练习；可选 Google 登录仅用于跨设备同步，不会解锁付费内容。平台不隶属于香港考试及评核局（HKEAA），也不保证考试成绩。
+DSE Level Up 是一个面向香港中学文凭考试（DSE）考生的免费学习平台，帮助中四至中六学生通过短题练习判断力和常见陷阱、查看学习进度，并通过解析备考。平台不是整卷模拟考试。无需登录即可开始练习；未登录最多可答 10 道题。Google 登录后可继续无限练习并跨设备同步，不会解锁付费内容。平台不隶属于香港考试及评核局（HKEAA），也不保证考试成绩。
 
-平台永久免费、无广告、无付费层或付费墙。已登录用户可无限练习。未登录用户目前每台设备可完成一节试用练习，之后需登录才能继续。这与 Source of Truth（2026-11-10 核实）所载“题数无限／无需登录”有差异；较新的项目宪章（2026-11-20）记录了访客试用限制。本 README 保留该差异，不将“免费”误述为访客无限制；请以最新官网界面和宪章为准。
+平台永久免费、无广告、无付费层或付费墙。已登录用户可无限练习。自 2026-11-24 起，未登录用户最多可做 10 道题；未登录期间的答题、结果和进度不得上传数据库或保留为练习记录。注意：本次只更新文件；当前程序仍会在浏览器 localStorage 保存最近一次结果及部分练习统计，尚未符合“不保留本地记录”政策。
 
 ## 主要功能
 
@@ -221,9 +221,9 @@ npm run build
 
 ## About
 
-DSE Level Up is a free study platform for Hong Kong Diploma of Secondary Education (DSE) candidates. It helps secondary students practise reasoning and common traps through short questions, review progress, and study with explanations. It is not a full-length mock-exam platform. Practice can be started without signing in; optional Google sign-in is only for cross-device progress sync and does not unlock paid content. The platform is not affiliated with the Hong Kong Examinations and Assessment Authority (HKEAA) and does not guarantee exam results.
+DSE Level Up is a free study platform for Hong Kong Diploma of Secondary Education (DSE) candidates. It helps secondary students practise reasoning and common traps through short questions, review progress, and study with explanations. It is not a full-length mock-exam platform. Practice can be started without signing in, with a 10-question guest limit. Google sign-in enables unlimited practice and cross-device progress sync; it does not unlock paid content. The platform is not affiliated with the Hong Kong Examinations and Assessment Authority (HKEAA) and does not guarantee exam results.
 
-The platform is permanently free, ad-free, and has no paid tier or paywall. Signed-in users can practise without a question or session cap. Guests can currently complete one trial practice session per device and must sign in to continue. This differs from the Source of Truth verified on 2026-11-10, which says practice is unlimited and does not require sign-in; the newer project charter (2026-11-20) records the guest trial limit. This README preserves the discrepancy rather than implying that free access means unlimited guest access. Refer to the current website and charter.
+The platform is permanently free, ad-free, and has no paid tier or paywall. Signed-in users can practise without a question or session cap. Effective 2026-11-24, guests may answer up to 10 questions; their answers, results, and progress must not be uploaded to the database or retained as practice records. Documentation-only update: the current code still stores the most recent result and some practice statistics in browser localStorage, so it does not yet meet the no-local-record policy.
 
 ## Features
 
