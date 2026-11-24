@@ -1,0 +1,39 @@
+name: Feature request / 功能建議 / 功能建议
+description: Suggest a student-focused improvement / 提議以學生需要為本的改進 / Suggest a student-focused improvement
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **繁體中文：** 請勿加入密碼、token、API key、學生個人資料或其他秘密。提交前請先搜尋現有 Issues。
+
+        **简体中文：** 请勿加入密码、token、API key、学生个人信息或其他秘密。提交前请先搜索现有 Issues。
+
+        **English:** Do not include passwords, tokens, API keys, student personal data, or other secrets. Search existing Issues before submitting.
+  - type: textarea
+    id: need
+    attributes:
+      label: 問題或需求／问题或需求／Problem or need
+      description: 想改善甚麼情況？／希望改善什么情况？／What situation would this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: 建議解決方法／建议解决方法／Proposed solution
+      description: 你建議如何改善？／你建议如何改进？／How would you improve it?
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: 預期效益／预期效果／Expected benefit
+      description: 對學生或其他用戶有甚麼幫助？／对学生或其他用户有什么帮助？／How would this help students or other users?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 截圖或參考資料（如有）／截图或参考资料（如有）／Screenshots or references (optional)
+      description: 上載前請移除個人資料及秘密。／上传前请移除个人信息和秘密。／Remove personal data and secrets before uploading.

@@ -1,8 +1,10 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Security vulnerability (private)
+  - name: Security vulnerability / 安全漏洞 / 安全漏洞（私人回報／私下报告／Private report）
     url: mailto:dselevelup@gmail.com
-    about: Do not file public issues for security bugs — email dselevelup@gmail.com
-  - name: Use the live site
+    about: |
+      繁體中文：安全問題請私下電郵回報，請勿開公開 Issue。／简体中文：安全问题请通过邮件私下报告，请勿创建公开 Issue。／English: Report security concerns privately by email; do not open a public Issue.
+  - name: Use the live site / 使用網站 / 使用网站
     url: https://www.dselevelup.com/
-    about: Students practising DSE do not need a GitHub issue — open the website
+    about: |
+      繁體中文：學生可直接使用網站溫習，毋須建立 GitHub Issue。／简体中文：学生可直接使用网站学习，无需创建 GitHub Issue。／English: Students can study on the website without creating a GitHub Issue.
