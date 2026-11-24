@@ -1,34 +1,38 @@
-name: Question / content issue
-description: Wrong answer, unclear explanation, or syllabus concern
+name: Question / content issue / 題目／內容問題 / 题目／内容问题
+description: Report a question, explanation, or syllabus concern / 回報題目、解析或課程範圍問題 / 反馈题目、解析或课程范围问题
 title: "[content] "
 labels: ["content"]
 body:
   - type: markdown
     attributes:
       value: |
-        用嚟回報**題目／解析**問題。請提供科目同大概題意；**唔好**貼完整可能受版權保護嘅官方試卷原文。
+        **繁體中文：** 請勿貼出完整官方試卷原文、個人資料或秘密。安全漏洞請勿使用公開表單，請參閱 SECURITY.md。
+
+        **简体中文：** 请勿粘贴完整官方试卷原文、个人信息或秘密。安全漏洞请勿使用公开表单，请参阅 SECURITY.md。
+
+        **English:** Do not paste complete official exam text, personal information, or secrets. Do not use this public form for security vulnerabilities; see SECURITY.md.
   - type: dropdown
     id: subject
     attributes:
-      label: Subject (approx.)
+      label: 科目（大約即可）／科目（大致即可）／Subject (approximate)
       options:
-        - Maths
-        - English
-        - Chinese
-        - CSD / 公民
-        - Science
-        - Other / 其他
+        - 數學／数学／Maths
+        - 英文／英语／English
+        - 中文／中文／Chinese
+        - 公民與社會發展／公民与社会发展／Citizenship and Social Development
+        - 科學／科学／Science
+        - 其他／其他／Other
     validations:
       required: true
   - type: textarea
     id: issue
     attributes:
-      label: What is wrong?
-      description: Wrong key? Ambiguous wording? Out of syllabus? Broken KaTeX?
+      label: 問題是甚麼？／问题是什么？／What is wrong?
+      description: 答案錯誤、題意含糊、超出範圍或排版問題等。／答案错误、题意含糊、超出范围或排版问题等。／Wrong answer, ambiguous wording, out-of-scope content, or formatting issue.
     validations:
       required: true
   - type: textarea
     id: hint
     attributes:
-      label: How to find the item
-      description: Topic name, rough stem paraphrase, or screenshot description (no personal data).
+      label: 如何找到這道題？／如何找到这道题？／How can we find the item?
+      description: 提供主題、題目大意或截圖描述；不要貼完整受版權保護的官方原文。／提供主题、题目大意或截图描述；不要粘贴完整受版权保护的官方原文。／Give the topic, a paraphrase, or a screenshot description; do not paste complete copyrighted official text.
