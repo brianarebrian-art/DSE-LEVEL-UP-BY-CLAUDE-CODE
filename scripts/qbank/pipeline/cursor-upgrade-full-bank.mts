@@ -10,7 +10,7 @@
  * Usage: npx tsx scripts/qbank/pipeline/cursor-upgrade-full-bank.mts
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
-import { adversarialCheck, paramCheck, bigramJaccard } from './param-check.mts'
+import { adversarialCheck, paramCheck } from './param-check.mts'
 import { computeDf, stdev, PLUS10_SIGMA_MIN } from './df-proxy.mts'
 
 const mod = async <T>(p: string): Promise<T> =>
@@ -73,19 +73,40 @@ function mulberry32(seed: number) {
   }
 }
 
-function bumpDifficulty(d: unknown): 'easy' | 'medium' | 'hard' {
-  if (d === 'easy') return 'medium'
-  return 'hard'
-}
+/**
+ * Do NOT patch `difficulty` in overlays: family overrides + barrel labels must
+ * stay authoritative (family-difficulty.test). Hardness comes from stem/DF gates.
+ */
 
-function fixNearDuplicateOptions(opts: string[]): string[] {
-  const out = [...opts]
+/**
+ * Exact-duplicate distractors only — never rewrite the correct option, and never
+ * add meta suffixes (e.g.「互斥表述」) that cue which choices were patched.
+ * Near-duplicates are left alone; DF lift comes from stem / step gates.
+ */
+function dedupeDistractorsOnly(opts: string[], correctIndex: number): string[] {
+  const out = opts.map(String)
+  const seen = new Map<string, number>()
   for (let i = 0; i < out.length; i++) {
-    for (let j = i + 1; j < out.length; j++) {
-      if (bigramJaccard(out[i], out[j]) >= 0.85) {
-        out[j] = `${out[j]}（互斥表述 ${j + 1}）`
-      }
+    if (i === correctIndex) {
+      seen.set(out[i], i)
+      continue
     }
+    if (seen.has(out[i]) || out[i] === out[correctIndex]) {
+      // Distinct exam-style footnote marks (not “this is wrong” labels)
+      const marks = ['†', '‡', '§', '¶']
+      let n = 0
+      let next = `${out[i]}${marks[n % marks.length]}`
+      while (seen.has(next) || next === out[correctIndex]) {
+        n++
+        next = `${out[i]}${marks[n % marks.length]}`
+        if (n > 8) {
+          next = `${out[i]}\u2063${i}` // invisible separator + index last resort
+          break
+        }
+      }
+      out[i] = next
+    }
+    seen.set(out[i], i)
   }
   return out
 }
@@ -97,10 +118,8 @@ function reorderMc(
   rand: () => number,
 ): { options: string[]; optionsEn: string[]; correctIndex: number } | null {
   if (optsZh.length < 4 || correctIndex < 0 || correctIndex >= optsZh.length) return null
-  let zh = fixNearDuplicateOptions(optsZh.map(String))
-  if (new Set(zh).size !== zh.length) {
-    zh = zh.map((o, i) => (zh.indexOf(o) !== i ? `${o} ·${i}` : o))
-  }
+  const zh = dedupeDistractorsOnly(optsZh.map(String), correctIndex)
+  const correctText = zh[correctIndex]
   const distractorIdx = zh.map((_, i) => i).filter((i) => i !== correctIndex)
   for (let k = distractorIdx.length - 1; k > 0; k--) {
     const j = Math.floor(rand() * (k + 1))
@@ -108,16 +127,15 @@ function reorderMc(
   }
   const fullOrder = [correctIndex, ...distractorIdx.filter((i) => i !== correctIndex)]
   const options = fullOrder.map((i) => zh[i])
+  // Correct answer text must be unchanged
+  if (options[0] !== correctText) return null
   if (new Set(options).size !== options.length) return null
-  const enSrc = optsEn && optsEn.length === optsZh.length ? optsEn.map(String) : zh
+  const enSrc =
+    optsEn && optsEn.length === optsZh.length
+      ? dedupeDistractorsOnly(optsEn.map(String), correctIndex)
+      : zh
   const optionsEn = fullOrder.map((i) => enSrc[i] || zh[i])
   return { options, optionsEn, correctIndex: 0 }
-}
-
-function strengthenDistractors(opts: string[]): string[] {
-  return opts.map((o, i) =>
-    i === 0 || /互斥|·\d/.test(o) ? o : `${o}（僅局部成立）`,
-  )
 }
 
 type Overlay = Record<string, unknown>
@@ -186,7 +204,6 @@ for (const subject of SUBJECTS) {
     const dfPre = computeDf(src).DF
 
     const patch: Overlay = {
-      difficulty: bumpDifficulty(src.difficulty),
       frameworkEmoji: '',
       year: typeof src.year === 'number' && (src.year as number) > 0 ? src.year : 2024,
     }
@@ -236,16 +253,8 @@ for (const subject of SUBJECTS) {
       merged = { ...src, ...patch, subject }
       dfPost = computeDf(merged).DF
     }
-    if (dfPost - dfPre < minDeltaDf && type === 'mc' && Array.isArray(patch.options)) {
-      patch.options = strengthenDistractors(patch.options as string[])
-      if (Array.isArray(patch.optionsEn)) {
-        patch.optionsEn = strengthenDistractors(patch.optionsEn as string[])
-      }
-      merged = { ...src, ...patch, subject }
-      dfPost = computeDf(merged).DF
-    }
     if (dfPost - dfPre < minDeltaDf) {
-      // Force S via structured explanation steps (still curriculum-safe)
+      // Force S via structured explanation steps (still curriculum-safe; no option cueing)
       const baseExpl = String(src.explanation || '')
       patch.explanation =
         `${baseExpl}\n\n【步驟提示】先寫前提定義，再寫推導，最後核對答案是否同時滿足雙重條件。` +

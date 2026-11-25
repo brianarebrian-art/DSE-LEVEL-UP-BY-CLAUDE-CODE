@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T18:21:50.351Z",
+  "generatedAt": "2026-11-25T18:27:16.147Z",
   "timezoneNote": "Machine UTC; Asia/Hong_Kong founder review",
   "definition": {
     "source": "docs/05-difficulty-model.md",
@@ -20,11 +20,11 @@
     "pass_rate": 1,
     "all_pass": true,
     "every_item_at_least_plus10_band": true,
-    "mean_sigma_lift": 2.457,
+    "mean_sigma_lift": 2.426,
     "min_sigma_lift": 0.727,
-    "max_sigma_lift": 5.452,
-    "mean_implied_relative_hardness": 0.4914,
-    "mean_implied_ratio": 0.5086,
+    "max_sigma_lift": 4.907,
+    "mean_implied_relative_hardness": 0.4851,
+    "mean_implied_ratio": 0.5149,
     "max_implied_ratio": 0.8546,
     "target_implied_ratio": 0.9
   },
@@ -33,113 +33,113 @@
       "n": 1633,
       "pass": 1633,
       "fail": 0,
-      "mean_sigma_lift": 2.129,
-      "mean_implied_ratio": 0.5745
+      "mean_sigma_lift": 2.083,
+      "mean_implied_ratio": 0.5833
     },
     "m1": {
       "n": 898,
       "pass": 898,
       "fail": 0,
-      "mean_sigma_lift": 2.06,
-      "mean_implied_ratio": 0.588
+      "mean_sigma_lift": 2.005,
+      "mean_implied_ratio": 0.5989
     },
     "m2": {
       "n": 983,
       "pass": 983,
       "fail": 0,
-      "mean_sigma_lift": 1.728,
-      "mean_implied_ratio": 0.6543
+      "mean_sigma_lift": 1.709,
+      "mean_implied_ratio": 0.6582
     },
     "physics": {
       "n": 1120,
       "pass": 1120,
       "fail": 0,
-      "mean_sigma_lift": 1.906,
-      "mean_implied_ratio": 0.6187
+      "mean_sigma_lift": 1.846,
+      "mean_implied_ratio": 0.6307
     },
     "chemistry": {
       "n": 979,
       "pass": 979,
       "fail": 0,
-      "mean_sigma_lift": 2.544,
-      "mean_implied_ratio": 0.4912
+      "mean_sigma_lift": 2.51,
+      "mean_implied_ratio": 0.498
     },
     "biology": {
       "n": 1112,
       "pass": 1112,
       "fail": 0,
-      "mean_sigma_lift": 2.595,
-      "mean_implied_ratio": 0.481
+      "mean_sigma_lift": 2.493,
+      "mean_implied_ratio": 0.5013
     },
     "english": {
       "n": 1051,
       "pass": 1051,
       "fail": 0,
-      "mean_sigma_lift": 2.598,
-      "mean_implied_ratio": 0.4803
+      "mean_sigma_lift": 2.578,
+      "mean_implied_ratio": 0.4845
     },
     "ict": {
       "n": 1111,
       "pass": 1111,
       "fail": 0,
-      "mean_sigma_lift": 2.514,
-      "mean_implied_ratio": 0.4972
+      "mean_sigma_lift": 2.461,
+      "mean_implied_ratio": 0.5078
     },
     "chinese": {
       "n": 1105,
       "pass": 1105,
       "fail": 0,
-      "mean_sigma_lift": 2.691,
-      "mean_implied_ratio": 0.4623
+      "mean_sigma_lift": 2.69,
+      "mean_implied_ratio": 0.4624
     },
     "bafs": {
       "n": 990,
       "pass": 990,
       "fail": 0,
-      "mean_sigma_lift": 3.325,
-      "mean_implied_ratio": 0.3351
+      "mean_sigma_lift": 3.301,
+      "mean_implied_ratio": 0.3398
     },
     "economics": {
       "n": 1061,
       "pass": 1061,
       "fail": 0,
-      "mean_sigma_lift": 2.199,
-      "mean_implied_ratio": 0.5602
+      "mean_sigma_lift": 2.185,
+      "mean_implied_ratio": 0.563
     },
     "geography": {
       "n": 1108,
       "pass": 1108,
       "fail": 0,
-      "mean_sigma_lift": 2.56,
-      "mean_implied_ratio": 0.488
+      "mean_sigma_lift": 2.457,
+      "mean_implied_ratio": 0.5086
     },
     "history": {
       "n": 1089,
       "pass": 1089,
       "fail": 0,
-      "mean_sigma_lift": 2.599,
-      "mean_implied_ratio": 0.4803
+      "mean_sigma_lift": 2.595,
+      "mean_implied_ratio": 0.4811
     },
     "ths": {
       "n": 1021,
       "pass": 1021,
       "fail": 0,
-      "mean_sigma_lift": 2.651,
-      "mean_implied_ratio": 0.4698
+      "mean_sigma_lift": 2.537,
+      "mean_implied_ratio": 0.4926
     },
     "music": {
       "n": 1027,
       "pass": 1027,
       "fail": 0,
-      "mean_sigma_lift": 2.55,
-      "mean_implied_ratio": 0.4901
+      "mean_sigma_lift": 2.548,
+      "mean_implied_ratio": 0.4904
     },
     "pe": {
       "n": 1032,
       "pass": 1032,
       "fail": 0,
-      "mean_sigma_lift": 2.564,
-      "mean_implied_ratio": 0.4873
+      "mean_sigma_lift": 2.532,
+      "mean_implied_ratio": 0.4937
     },
     "csd": {
       "n": 984,
@@ -160,21 +160,21 @@
       "pass": 1055,
       "fail": 0,
       "mean_sigma_lift": 2.532,
-      "mean_implied_ratio": 0.4936
+      "mean_implied_ratio": 0.4937
     },
     "english-literature": {
       "n": 1027,
       "pass": 1027,
       "fail": 0,
-      "mean_sigma_lift": 2.441,
-      "mean_implied_ratio": 0.5118
+      "mean_sigma_lift": 2.433,
+      "mean_implied_ratio": 0.5133
     },
     "visual-arts": {
       "n": 1013,
       "pass": 1013,
       "fail": 0,
-      "mean_sigma_lift": 2.473,
-      "mean_implied_ratio": 0.5054
+      "mean_sigma_lift": 2.461,
+      "mean_implied_ratio": 0.5078
     },
     "ethics-religious": {
       "n": 866,
@@ -187,22 +187,22 @@
       "n": 1033,
       "pass": 1033,
       "fail": 0,
-      "mean_sigma_lift": 2.484,
-      "mean_implied_ratio": 0.5032
+      "mean_sigma_lift": 2.457,
+      "mean_implied_ratio": 0.5086
     },
     "design-tech": {
       "n": 1022,
       "pass": 1022,
       "fail": 0,
-      "mean_sigma_lift": 2.55,
-      "mean_implied_ratio": 0.49
+      "mean_sigma_lift": 2.522,
+      "mean_implied_ratio": 0.4956
     },
     "health-management": {
       "n": 1021,
       "pass": 1021,
       "fail": 0,
-      "mean_sigma_lift": 2.548,
-      "mean_implied_ratio": 0.4905
+      "mean_sigma_lift": 2.54,
+      "mean_implied_ratio": 0.4921
     }
   },
   "fail_sample": []

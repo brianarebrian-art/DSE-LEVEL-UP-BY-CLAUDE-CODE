@@ -57,8 +57,7 @@ export function computeDf(q: Record<string, unknown>): DfDims {
         if (bigramJaccard(opts[i], opts[j]) > 0.7) nearDup++
       }
     }
-    // Distinct mutual-exclusion distractors raise D; near-dups do not
-    if (opts.some((o) => /互斥|exclusive|·\d/.test(o))) D = Math.min(5, D + 1)
+    // Near-duplicate options weaken distractor quality (docs/05 D)
     if (nearDup > 0) D = Math.max(1, D - 1)
   } else if (type !== 'mc') {
     D = /評分|rubric|步驟|必須/i.test(expl) ? 3 : 2
