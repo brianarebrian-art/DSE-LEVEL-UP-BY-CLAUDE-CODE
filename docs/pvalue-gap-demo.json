@@ -27,10 +27,10 @@
       "sample_size": 10,
       "delta_p": 0,
       "ratio_p": 1,
-      "same_topic_type": true,
+      "same_topic_type": false,
       "in_formal_aggregate": false,
       "anomaly_flag": false,
-      "skip_reason": "sample_lt_30"
+      "skip_reason": "same_topic_type_unverified"
     }
   ],
   "aggregate": {

@@ -61,6 +61,13 @@ export function computeDluP(correct: number, attempts: number): number | null {
   return correct / attempts
 }
 
+/** Accept only finite probabilities in [0, 1]; otherwise null. */
+export function clampUnitInterval(p: number | null | undefined): number | null {
+  if (p == null || !Number.isFinite(p)) return null
+  if (p < 0 || p > 1) return null
+  return p
+}
+
 export function computeDeltaRatio(
   dlu: number | null,
   hkeaa: number | null,
@@ -73,10 +80,11 @@ export function computeDeltaRatio(
 }
 
 export function metricize(row: ItemInput): ItemMetric {
-  let dlu =
+  const dluRaw =
     row.dlu_p != null && Number.isFinite(row.dlu_p)
       ? row.dlu_p
       : computeDluP(row.correct_count ?? NaN, row.attempt_count ?? NaN)
+  const dlu = clampUnitInterval(dluRaw)
   const sample =
     typeof row.sample_size === 'number'
       ? row.sample_size
@@ -84,18 +92,21 @@ export function metricize(row: ItemInput): ItemMetric {
         ? row.attempt_count
         : 0
 
-  const ref =
-    row.hkeaa_ref_p != null && Number.isFinite(row.hkeaa_ref_p) ? row.hkeaa_ref_p : null
-  const est =
-    row.hkeaa_est_p != null && Number.isFinite(row.hkeaa_est_p) ? row.hkeaa_est_p : null
+  const ref = clampUnitInterval(
+    row.hkeaa_ref_p != null && Number.isFinite(row.hkeaa_ref_p) ? row.hkeaa_ref_p : null,
+  )
+  const est = clampUnitInterval(
+    row.hkeaa_est_p != null && Number.isFinite(row.hkeaa_est_p) ? row.hkeaa_est_p : null,
+  )
   const kind: ItemMetric['hkeaa_p_kind'] = ref != null ? 'ref' : est != null ? 'est' : 'none'
   const hkeaa = kind === 'ref' ? ref : kind === 'est' ? est : null
   const { delta_p, ratio_p } = computeDeltaRatio(dlu, hkeaa)
 
   let skip_reason: string | undefined
-  // Opt-in only: missing/undefined same_topic_type must NOT enter formal stats
+  // Opt-in only: omitted/undefined/false same_topic_type must NOT enter formal stats
   const same = row.same_topic_type === true
-  if (!same) skip_reason = 'cross_topic_or_type'
+  if (row.same_topic_type === undefined) skip_reason = 'same_topic_type_unverified'
+  else if (!same) skip_reason = 'cross_topic_or_type'
   else if (sample < MIN_N) skip_reason = 'sample_lt_30'
   else if (hkeaa == null) skip_reason = 'no_hkeaa_p'
   else if (dlu == null) skip_reason = 'no_dlu_p'
@@ -203,10 +214,21 @@ const report = {
   input_n: metrics.length,
   aggregate: agg,
   items: metrics,
-  report_template_zh:
-    agg.formal_n === 0
-      ? '現階段無法計算正式聚合：缺生產作答或官方／推定 P，或全部 n<30。標 UNKNOWN。'
-      : `現階段 DSE Level Up 統計：平台相對考評局對應考點，平均相對比值為 ${agg.mean_ratio_p?.toFixed(3) ?? 'null'}；平均絕對差距 ${(agg.mean_delta_p != null ? (agg.mean_delta_p * 100).toFixed(1) : 'null')} 個百分點。（已統計 ${agg.formal_n} 題，每題 n≥${MIN_N}；樣本群體≠全港應考考生。）`,
+  report_template_zh: (() => {
+    if (agg.formal_n === 0) {
+      return '現階段無法計算正式聚合：缺生產作答或官方／推定 P，或全部 n<30，或缺 same_topic_type===true。標 UNKNOWN。'
+    }
+    const formal = metrics.filter((m) => m.in_formal_aggregate)
+    const estN = formal.filter((m) => m.hkeaa_p_kind === 'est').length
+    const refN = formal.filter((m) => m.hkeaa_p_kind === 'ref').length
+    const benchNote =
+      estN === 0
+        ? '基準全部為官方參照 P（hkeaa_ref_p）'
+        : refN === 0
+          ? '基準全部為估計 P（hkeaa_est_p，非官方公布數字）'
+          : `基準混合：官方參照 ${refN} 題、估計 P（hkeaa_est_p） ${estN} 題`
+    return `現階段 DSE Level Up 統計：平台相對考評局對應考點，平均相對比值為 ${agg.mean_ratio_p?.toFixed(3) ?? 'null'}；平均絕對差距 ${(agg.mean_delta_p != null ? (agg.mean_delta_p * 100).toFixed(1) : 'null')} 個百分點。（已統計 ${agg.formal_n} 題，每題 n≥${MIN_N}；${benchNote}；樣本群體≠全港應考考生。）`
+  })(),
 }
 
 mkdirSync('docs', { recursive: true })

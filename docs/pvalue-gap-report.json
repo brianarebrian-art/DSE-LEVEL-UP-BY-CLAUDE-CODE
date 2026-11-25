@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T18:00:21.457Z",
+  "generatedAt": "2026-11-25T18:13:22.753Z",
   "timezoneNote": "Machine UTC; report for Asia/Hong_Kong founder review",
   "definitions": {
     "P": "correct / valid_attempts in [0,1]; larger = easier",
@@ -25,5 +25,5 @@
     "anomalies": []
   },
   "items": [],
-  "report_template_zh": "現階段無法計算正式聚合：缺生產作答或官方／推定 P，或全部 n<30。標 UNKNOWN。"
+  "report_template_zh": "現階段無法計算正式聚合：缺生產作答或官方／推定 P，或全部 n<30，或缺 same_topic_type===true。標 UNKNOWN。"
 }
