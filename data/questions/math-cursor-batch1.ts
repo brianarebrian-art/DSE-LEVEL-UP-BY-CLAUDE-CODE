@@ -1,9 +1,9 @@
 import type { Question } from './types'
 
 /**
- * Math Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
+ * math Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata (df_intent, rewrite_of) lives in ledger JSON, not on Question.
  */
 export const mathCursorBatch1Questions: Question[] = [
   {
@@ -36,10 +36,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "配方：$f(x)=-4(x-3)^2+4$，極大值 $4$，頂點 $x=3>0$。干擾項把 $x$ 座標當極大值或符號錯。",
     "explanationEn": "Complete the square: max $4$ at $x=3>0$. Distractors confuse $x$ with the max value.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_func_1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_func_8",
@@ -71,10 +68,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "配方：$f(x)=-4(x-2)^2+9$，極大值 $9$，頂點 $x=2>0$。干擾項把 $x$ 座標當極大值或符號錯。",
     "explanationEn": "Complete the square: max $9$ at $x=2>0$. Distractors confuse $x$ with the max value.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_func_8",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_stat_3",
@@ -106,10 +100,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "排序後第 4 項為中位數 $7$。平均值約 $8.3$，屬常見混淆。",
     "explanationEn": "Median is the middle value $7$; mean ≈ $8.3$ is a common distractor.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_stat_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_seq_ap_5",
@@ -141,10 +132,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{9}=49$，$S_{9}=\\frac{9}{2}(9+49)=261$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=49$, $S_n=261$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_seq_ap_5",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_seq_gp_4",
@@ -176,10 +164,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{9}=62$，$S_{9}=\\frac{9}{2}(6+62)=306$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=62$, $S_n=306$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_seq_gp_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_coord_d_4",
@@ -211,10 +196,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{6^2+9^2}=10.82$，中點 $=(\\frac{2+8}{2},\\frac{4+13}{2})=(5,8.5)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_coord_d_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_coord_m_3",
@@ -246,10 +228,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{3^2+6^2}=6.71$，中點 $=(\\frac{3+6}{2},\\frac{2+8}{2})=(4.5,5)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_coord_m_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_coord_s_3",
@@ -281,10 +260,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{6^2+7^2}=9.22$，中點 $=(\\frac{0+6}{2},\\frac{3+10}{2})=(3,6.5)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_coord_s_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_coord_s_4",
@@ -316,10 +292,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{6^2+8^2}=10$，中點 $=(\\frac{4+10}{2},\\frac{1+9}{2})=(7,5)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_coord_s_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_math_pc_1",
@@ -353,10 +326,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Boys first, then place girls in gaps.",
     "mcHack": "「插空法」(gap method)：先放沒限制的男生 ($4!$)，再把女生塞進 $5$ 個空隙 ($P(5,3)$)。$24\\times60=1440$。凡見「不相鄰」即用插空。",
     "mcHackEn": "Gap method: place the unconstrained boys first ($4!$), then slot girls into the $5$ gaps ($P(5,3)$). $24\\times60=1440$. \"Not adjacent\" $\\Rightarrow$ always use gaps.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "math_pc_1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mp_k2_3",
@@ -390,10 +360,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Boys first, then place girls in gaps.",
     "mcHack": "條件概率「縮樣本空間」：分母只數「和為奇」那 $25$ 個，分子 $10$ ⇒ $\\frac{2}{5}$。",
     "mcHackEn": "Condition shrinks the sample space to the 25 odd-sum cases ⇒ $\\frac{2}{5}$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k2_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mp_k2_7",
@@ -427,10 +394,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Boys first, then place girls in gaps.",
     "mcHack": "條件概率「縮樣本空間」：分母只數「和為奇」那 $56$ 個，分子 $35$ ⇒ $\\frac{5}{8}$。",
     "mcHackEn": "Condition shrinks the sample space to the 56 odd-sum cases ⇒ $\\frac{5}{8}$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k2_7",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mp_k3_6",
@@ -464,10 +428,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=44$.",
     "mcHack": "不必解出兩根！$(\\alpha+\\beta)^2-2\\alpha\\beta=\\frac{13}{9}$，韋達一步即得。",
     "mcHackEn": "Don't solve the roots — $(\\alpha+\\beta)^2-2\\alpha\\beta=\\frac{13}{9}$ via Vieta.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k3_6",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mp_k5_0",
@@ -501,10 +462,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Use half-diagonal of base and lateral edge.",
     "mcHack": "側棱配半對角線（並非邊心距！）：$\\cos\\theta=\\dfrac{\\text{半對角線}}{\\text{側棱}}$ ⇒ $\\theta\\approx62^\\circ$。",
     "mcHackEn": "Edge pairs with the half-diagonal (not the apothem): $\\cos\\theta=\\tfrac{\\text{half-diag}}{\\text{edge}} ⇒ 62^\\circ$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k5_0",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mp_k6_4",
@@ -538,10 +496,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Boys first, then place girls in gaps.",
     "mcHack": "分兩限制落手：先鎖個位（偶）＋千位（範圍），中間兩位自由排。切勿一次過用乘法原理而忽略重疊限制。",
     "mcHackEn": "Pin the units (even) and thousands (range) first, then arrange the middle two — don't blanket-multiply and miss the overlap.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k6_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mp_k9_3",
@@ -575,10 +530,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "explanationEn": "Positive slope ⇒ A<0; negative intercept ⇒ C>0; thus (A-B)/C<0.",
     "mcHack": "設 $B>0$ 做基準，由斜率 $-A/B$、截距 $-C/B$ 反推 $A$、$C$ 的符號，再做符號乘除 ⇒ $\\frac{A-B}{C} < 0$。轉號是關鍵所在。",
     "mcHackEn": "Fix $B>0$, deduce the signs of $A,C$ from slope $-A/B$ and intercept $-C/B$, then do sign arithmetic ⇒ $\\frac{A-B}{C} < 0$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mp_k9_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_e2_2_1_4",
@@ -610,10 +562,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$f(6)=17$，再 $f(17)=39$。干擾項停在一步或漏加常數。",
     "explanationEn": "Compose twice; distractors stop after one evaluation.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e2_2_1_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e2_2_5_5",
@@ -645,10 +594,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$f(4)=25$，再 $f(25)=130$。干擾項停在一步或漏加常數。",
     "explanationEn": "Compose twice; distractors stop after one evaluation.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e2_2_5_5",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e2_3_1_3",
@@ -680,10 +626,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$f(5)=34$，再 $f(34)=208$。干擾項停在一步或漏加常數。",
     "explanationEn": "Compose twice; distractors stop after one evaluation.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e2_3_1_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e2_6_3_4",
@@ -715,10 +658,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$f(3)=11$，再 $f(11)=35$。干擾項停在一步或漏加常數。",
     "explanationEn": "Compose twice; distractors stop after one evaluation.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e2_6_3_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e3_400_25",
@@ -750,10 +690,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "先 ×$(1+10/100)$ 再 ×$(1-20/100)$ = $704$。不可把百分率直接相減。",
     "explanationEn": "Sequential multipliers; cannot subtract percentages directly.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e3_400_25",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e3_600_5",
@@ -785,10 +722,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "先 ×$(1+10/100)$ 再 ×$(1-20/100)$ = $352$。不可把百分率直接相減。",
     "explanationEn": "Sequential multipliers; cannot subtract percentages directly.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e3_600_5",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_e3_800_25",
@@ -820,10 +754,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "先 ×$(1+15/100)$ 再 ×$(1-20/100)$ = $644$。不可把百分率直接相減。",
     "explanationEn": "Sequential multipliers; cannot subtract percentages directly.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_e3_800_25",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m1_2_3",
@@ -855,10 +786,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-3$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=42$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=42$.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m1_2_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m2_3_6_6",
@@ -890,10 +818,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{10}=53$，$S_{10}=\\frac{10}{2}(8+53)=305$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=53$, $S_n=305$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m2_3_6_6",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m2_3_6_12",
@@ -925,10 +850,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{10}=48$，$S_{10}=\\frac{10}{2}(3+48)=255$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=48$, $S_n=255$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m2_3_6_12",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m2_7_4_12",
@@ -960,10 +882,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{12}=69$，$S_{12}=\\frac{12}{2}(3+69)=432$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=69$, $S_n=432$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m2_7_4_12",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m2_7_5_6",
@@ -995,10 +914,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{8}=28$，$S_{8}=\\frac{8}{2}(7+28)=140$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=28$, $S_n=140$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m2_7_5_6",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m2_8_3_6",
@@ -1030,10 +946,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$a_{10}=59$，$S_{10}=\\frac{10}{2}(5+59)=320$。干擾項為第 $n$ 項或錯誤求和公式。",
     "explanationEn": "$a_n=59$, $S_n=320$. Distractors are $a_n$ or wrong sum formula.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m2_8_3_6",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m4_2",
@@ -1065,10 +978,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{4^2+5^2}=6.4$，中點 $=(\\frac{0+4}{2},\\frac{2+7}{2})=(2,4.5)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m4_2",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m6_4_3_-1",
@@ -1100,10 +1010,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$AB=\\sqrt{4^2+6^2}=7.21$，中點 $=(\\frac{2+6}{2},\\frac{4+10}{2})=(4,7)$。",
     "explanationEn": "Distance and midpoint formulas applied together.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m6_4_3_-1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m8_1_5_2",
@@ -1135,10 +1042,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "餘數定理：$f(3)=14$。",
     "explanationEn": "Remainder theorem: $f(3)=14$.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m8_1_5_2",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m8_2_6_1",
@@ -1170,10 +1074,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "餘數定理：$f(2)=5$。",
     "explanationEn": "Remainder theorem: $f(2)=5$.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m8_2_6_1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m8_3_2_3",
@@ -1205,10 +1106,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "餘數定理：$f(4)=13$。",
     "explanationEn": "Remainder theorem: $f(4)=13$.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m8_3_2_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_m8_4_2_2",
@@ -1240,10 +1138,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "餘數定理：$f(5)=33$。",
     "explanationEn": "Remainder theorem: $f(5)=33$.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_m8_4_2_2",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_h1_2_9",
@@ -1275,10 +1170,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-4$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=44$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=44$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_2_9",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_3_1",
@@ -1310,10 +1202,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-5$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=46$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=46$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_3_1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_3_8",
@@ -1345,10 +1234,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=7$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=53$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=53$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_3_8",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_4_1",
@@ -1380,10 +1266,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=40$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=40$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_4_1",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_4_3",
@@ -1415,10 +1298,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-3$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=31$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=31$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_4_3",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_14_5",
@@ -1450,10 +1330,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=29$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=29$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_14_5",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h1_14_8",
@@ -1485,10 +1362,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\alpha+\\beta=4$，$\\alpha\\beta=-5$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=26$。",
     "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=26$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h1_14_8",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h3_5_4",
@@ -1520,10 +1394,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$S_\\infty=\\frac{a}{1-r}=\\frac{8}{1-1/4}=\\frac{32}{3}$。",
     "explanationEn": "Infinite sum $a/(1-r)$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h3_5_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h3_7_4",
@@ -1555,10 +1426,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$S_\\infty=\\frac{a}{1-r}=\\frac{5}{1-1/4}=\\frac{20}{3}$。",
     "explanationEn": "Infinite sum $a/(1-r)$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h3_7_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_h3_9_4",
@@ -1590,10 +1458,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$S_\\infty=\\frac{a}{1-r}=\\frac{9}{1-1/3}=\\frac{27}{2}$。",
     "explanationEn": "Infinite sum $a/(1-r)$.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_h3_9_4",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "math_cr_b1_mb_p1_17",
@@ -1625,10 +1490,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "內角和 $(16-2)\\times180=2520$，每角 157.5°。外角 $360/16$ 為常見混淆。",
     "explanationEn": "Interior sum $(n-2)180$; each = sum/n. Exterior angle is a distractor.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_p1_17",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_p2b_6",
@@ -1660,10 +1522,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "內角和 $(8-2)\\times180=1080$，每角 135°。外角 $360/8$ 為常見混淆。",
     "explanationEn": "Interior sum $(n-2)180$; each = sum/n. Exterior angle is a distractor.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_p2b_6",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_p2b_9",
@@ -1695,10 +1554,7 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "內角和 $(12-2)\\times180=1800$，每角 150°。外角 $360/12$ 為常見混淆。",
     "explanationEn": "Interior sum $(n-2)180$; each = sum/n. Exterior angle is a distractor.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_p2b_9",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "math_cr_b1_mb_p2b_20",
@@ -1730,9 +1586,6 @@ export const mathCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "內角和 $(17-2)\\times180=2700$，每角 158.8235294117647°。外角 $360/17$ 為常見混淆。",
     "explanationEn": "Interior sum $(n-2)180$; each = sum/n. Exterior angle is a distractor.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "mb_p2b_20",
-    "rewrite_batch": "math-cursor-batch1"
+    "marks": 1
   }
 ] as Question[]

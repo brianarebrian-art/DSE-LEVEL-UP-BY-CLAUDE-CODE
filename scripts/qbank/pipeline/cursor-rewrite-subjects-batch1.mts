@@ -261,14 +261,17 @@ for (const subject of SUBJECTS) {
   )
 
   const exportName = `${subject}CursorBatch1Questions`
+  const forTs = subjectDrafts.map(
+    ({ df_intent: _d, rewrite_of: _r, rewrite_batch: _b, ...rest }) => rest,
+  )
   const ts = `import type { Question } from './types'
 
 /**
  * ${subject} Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata lives in ledger JSON (not on Question).
  */
-export const ${exportName}: Question[] = ${JSON.stringify(subjectDrafts, null, 2)} as Question[]
+export const ${exportName}: Question[] = ${JSON.stringify(forTs, null, 2)} as Question[]
 `
   writeFileSync(`data/questions/${subject}-cursor-batch1.ts`, ts)
 

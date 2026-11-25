@@ -3,7 +3,7 @@ import type { Question } from './types'
 /**
  * economics Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata (df_intent, rewrite_of) lives in ledger JSON, not on Question.
  */
 export const economicsCursorBatch1Questions: Question[] = [
   {
@@ -36,10 +36,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "機會成本只計放棄的「最佳」替代方案（\\$300），不可相加，免費≠零成本。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Opportunity cost is the single best forgone alternative (\\$300); not a sum, and \"free\" ≠ zero cost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_oc_1",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_ocq_6",
@@ -71,10 +68,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "「免費」只指沒有金錢支出。病人仍放棄了輪候與康復所需的時間及其最佳用途，這些非貨幣代價就是機會成本，故「免費 ≠ 零機會成本」。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "\"Free\" only means no money is paid. Patients still give up the time (and its best use) spent waiting and recovering — those non-monetary sacrifices are the opportunity cost. So \"free\" ≠ zero opportunity cost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_ocq_6",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_bc_13",
@@ -106,10 +100,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "理性決策在邊際效益 > 邊際成本時繼續，直至兩者相等。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Rational choices continue while marginal benefit exceeds marginal cost, stopping where they are equal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_bc_13",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_eq_21",
@@ -141,10 +132,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "令 $Q_d=Q_s$：$80-P = P-20$，解得 $P^* = 50$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Set $Q_d=Q_s$: $80-P = P-20$, giving $P^* = 50$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_eq_21",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_dsc_34",
@@ -176,10 +164,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "本身價格變動是沿線移動；口味、收入、相關物品價格等才令曲線移動。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Own-price changes move along the curve; tastes, income and related-good prices shift it.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_dsc_34",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "economics_cr_b1_econ_ec_46",
@@ -211,10 +196,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "完全乏彈性 (PED=0) 需求量不隨價格變動，曲線垂直。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Perfectly inelastic (PED=0) quantity ignores price — a vertical curve.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_ec_46",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_profit_56",
@@ -246,10 +228,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "利潤 $= TR - TC = 6\\times200 - 900 = 300$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Profit $= TR - TC = 6\\times200 - 900 = 300$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_profit_56",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_fc_64",
@@ -281,10 +260,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "價格高於 AVC 時繼續生產可補回可變成本及部分固定成本，蝕得較少。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "If price covers AVC, producing recovers variable cost plus some fixed cost — a smaller loss than shutting.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 4,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_fc_64",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 4
   },
   {
     "id": "economics_cr_b1_econ_ms_70",
@@ -316,10 +292,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "寡頭由少數大廠商主導，彼此決策互相影響（如定價博弈）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A few large firms dominate and each one’s decisions affect the others (price interdependence).\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 4,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_ms_70",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 4
   },
   {
     "id": "economics_cr_b1_econ_ms_75",
@@ -351,10 +324,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "差異化使產品非完全替代，廠商面對向下傾斜需求，具少許定價力。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Differentiation makes goods imperfect substitutes, giving a downward-sloping demand and some pricing power.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_ms_75",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_ms_79",
@@ -386,10 +356,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "合謀如同壟斷，限產提價以增共同利潤，但對消費者不利且常不穩定。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Collusion mimics monopoly — cutting output to raise price and joint profit — at consumers’ expense.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 4,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_ms_79",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 4
   },
   {
     "id": "economics_cr_b1_econ_mf_84",
@@ -421,10 +388,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "人人想免費享用而不付費，私人缺乏誘因供應，故多由政府提供。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Everyone wants to consume without paying, so private firms lack incentive — government usually provides them.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 4,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mf_84",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 4
   },
   {
     "id": "economics_cr_b1_econ_mf_90",
@@ -456,10 +420,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "市場失靈指市場機制未能達到帕累托效率，常因外部性、共用品、壟斷或資訊問題。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Market failure is a failure to reach efficient allocation, due to externalities, public goods, monopoly or information gaps.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 4,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mf_90",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 4
   },
   {
     "id": "economics_cr_b1_econ_pg_135",
@@ -491,10 +452,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "煙花在空中綻放，要向個別觀賞者收費並排除不付費者，成本近乎不可行（非排他）；多一人觀看無損他人觀賞（非競爭）——雙條件俱備。判別理由必須是這兩個特性：「有人付費」或「免費觀看」都不是分類準則。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Excluding non-payers from a sky-borne display is practically impossible and viewing is non-rival — both conditions hold. Who paid, or that it is free to watch, is irrelevant to the classification.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_pg_135",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_mc_109",
@@ -526,10 +484,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "經濟增長一般指實質 GDP 隨時間上升的百分比。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Growth is usually the percentage rise in real GDP over time.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mc_109",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econ_mc_110",
@@ -561,10 +516,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "溫和通脹常伴隨增長；持續通縮或惡性通脹才嚴重損害經濟。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Mild inflation often accompanies growth; persistent deflation or hyperinflation are the harmful extremes.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mc_110",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_econh_tr_8",
@@ -596,10 +548,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "機會成本：造 1 匹布——甲 = 12/6 = 2 桶酒，乙 = 4/1 = 4 桶酒 ⇒ 甲布的機會成本較低，甲有比較優勢；造 1 桶酒——甲 = 6/12 = 0.5 匹布，乙 = 1/4 = 0.25 匹布 ⇒ 乙酒的機會成本較低。故甲產布、乙產酒，再貿易雙贏。\n\n【陷阱】「甲樣樣較高產就毋須貿易」混淆了絕對優勢與比較優勢——即使甲絕對優勢樣樣勝，按機會成本分工仍對雙方有利；其餘兩項與機會成本計算相反。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Opportunity cost of 1 cloth: A = 12/6 = 2 wine; B = 4/1 = 4 wine ⇒ A’s cloth is cheaper, so A has the comparative advantage. Opportunity cost of 1 wine: A = 0.5 cloth; B = 0.25 cloth ⇒ B has it in wine. So A makes cloth, B makes wine, and both gain from trade.\n\n【Trap】 “A is best at everything so needn’t trade” confuses absolute with comparative advantage — specialising by opportunity cost still benefits both; the other two reverse the computation.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econh_tr_8",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "economics_cr_b1_ec_e1_8_20",
@@ -631,10 +580,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收入 = 價格 × 銷量 = 8 × 20 = 160 元。陷阱：28 元是相加（並非相乘）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "TR = P × Q = 160. Trap: 28 adds instead of multiplying.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_e1_8_20",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_e1_10_20",
@@ -666,10 +612,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收入 = 價格 × 銷量 = 10 × 20 = 200 元。陷阱：30 元是相加（並非相乘）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "TR = P × Q = 200. Trap: 30 adds instead of multiplying.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_e1_10_20",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_e1_20_100",
@@ -701,10 +644,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收入 = 價格 × 銷量 = 20 × 100 = 2000 元。陷阱：120 元是相加（並非相乘）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "TR = P × Q = 2000. Trap: 120 adds instead of multiplying.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_e1_20_100",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_e2_5",
@@ -736,10 +676,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "變幅 = (新－舊)/舊 × 100% = (180−150)/150 × 100% = 20%。陷阱：除以新價得 16.7%（分母錯）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Change = (new−old)/old × 100% = 20%. Trap: dividing by the new price is wrong.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_e2_5",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_e3_5_3",
@@ -771,10 +708,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "平均成本 = 總成本 / 產量 = 15 / 5 = 3 元。陷阱：0.33 元上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "AC = TC/Q = 3. Trap: 0.33 inverts the ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_e3_5_3",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_m2_9",
@@ -806,10 +740,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "支出乘數 = 1 / (1 − MPC) = 1 / (1 − 0.4) = 1 / 0.6 = 1.67。陷阱：2.5 用了 1/MPC；0.6 只計了 MPS。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Multiplier = 1/(1−MPC) = 1.67. Trap: 2.5 uses 1/MPC; 0.6 is only the MPS.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_m2_9",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_m3_120_60",
@@ -841,10 +772,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "利潤 = 總收入 − 總成本 = 120 − 60 = 60 元。陷阱：180 元加了；-60 元符號反。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Profit = TR − TC = 60. Trap: -60 has the sign reversed.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_m3_120_60",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_ec_h1_6",
@@ -876,10 +804,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "%ΔQ = (120−80)/80 = 50%；%ΔP = (9−12)/12 = -25%。|PED| = |50 / -25| = 2。陷阱：13.33 用了絕對變化（並非百分比）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "%ΔQ=50%, %ΔP=-25% ⇒ |PED|=2. Trap: using raw changes gives 13.33.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_h1_6",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "economics_cr_b1_ec_h1_11",
@@ -911,10 +836,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "%ΔQ = (80−50)/50 = 60%；%ΔP = (7−14)/14 = -50%。|PED| = |60 / -50| = 1.2。陷阱：4.29 用了絕對變化（並非百分比）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "%ΔQ=60%, %ΔP=-50% ⇒ |PED|=1.2. Trap: using raw changes gives 4.29.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "ec_h1_11",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "economics_cr_b1_eb_pf1_45_15_30",
@@ -946,10 +868,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "機會成本 $=$ 放棄的數量 $\\div$ 得到的數量。機器由 45 減至 30，放棄 15 部；糧食由 15 增至 45，得到 30 噸。故每噸糧食的機會成本 $= 15 \\div 30 = 0.5$ 部。陷阱：2 部把分子分母倒轉，得出的是「每部機器的機會成本」；15 部與 30 部只是變動總量，不是每單位的機會成本。讀題時先確認題目問哪一種產品，該產品的增加量就是分母。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Opportunity cost is the amount given up divided by the amount gained. Machines fall from 45 to 30, so 15 are given up; grain rises from 15 to 45, so 30 tonnes are gained. The cost per tonne is 15 ÷ 30 = 0.5 machines. Traps: 2 inverts the fraction and gives the cost per machine; 15 and 30 are total changes rather than costs per unit. Identify which good the question asks about — the increase in that good is the denominator.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_pf1_45_15_30",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_ma1_400_120",
@@ -981,10 +900,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "支出法：GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$ 億元。陷阱：1170 把進口加上而非減去；960 漏了減進口；700 把整項淨出口一併漏掉。進口之所以要減，是因為 C、I、G 之中已包含購買外國貨品的開支，而那些貨品並非本地生產。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "By the expenditure approach GDP $= C + I + G + (X - M) = 400 + 120 + 180 + (260 - 210) = 750$. Traps: 1170 adds imports instead of subtracting; 960 omits the subtraction; 700 drops net exports entirely. Imports are deducted because C, I and G already include spending on foreign-made goods, which were not produced domestically.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_ma1_400_120",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_ma1_520_160",
@@ -1016,10 +932,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "支出法：GDP $= C + I + G + (X - M) = 520 + 160 + 210 + (310 - 260) = 940$ 億元。陷阱：1460 把進口加上而非減去；1200 漏了減進口；890 把整項淨出口一併漏掉。進口之所以要減，是因為 C、I、G 之中已包含購買外國貨品的開支，而那些貨品並非本地生產。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "By the expenditure approach GDP $= C + I + G + (X - M) = 520 + 160 + 210 + (310 - 260) = 940$. Traps: 1460 adds imports instead of subtracting; 1200 omits the subtraction; 890 drops net exports entirely. Imports are deducted because C, I and G already include spending on foreign-made goods, which were not produced domestically.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_ma1_520_160",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_ma2_075_100",
@@ -1051,10 +964,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "乘數 $= \\dfrac{1}{1 - \\text{MPC}} = \\dfrac{1}{1 - 0.75} = 4$。國民收入的總增幅 $=$ 注入額 $\\times$ 乘數 $= 100 \\times 4 = 400$ 億元。陷阱：100 億元只計了最初的注入；133.3 億元誤除以 MPC；75 億元誤乘以 MPC。理解乘數為何大於 1 比記公式重要：一筆新開支成為某人的收入，該人再花掉其中 75%，如此遞減下去。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The multiplier is $\\frac{1}{1 - \\text{MPC}} = \\frac{1}{1 - 0.75} = 4$, so the total rise is the injection times the multiplier: 100 × 4 = 400. Traps: 100 counts only the initial injection; 133.3 divides by the MPC; 75 multiplies by it. Understanding why the multiplier exceeds one matters more than the formula: new spending becomes someone's income, they spend 75% of it, and so on in a shrinking series.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_ma2_075_100",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_bc1_15_120",
@@ -1086,10 +996,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收益 $=$ 價格 $\\times$ 銷售量 $= 15 \\times 120 = 1,800$ 元。陷阱：135 元用了加法；8 元用了除法；900 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total revenue is price times quantity: 15 × 120 = 1,800. Traps: 135 adds; 8 divides; 900 halves the result. Note that total revenue is not profit — total cost must still be deducted. Questions often give price, quantity and cost together, so establish first whether revenue, cost or profit is wanted.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_bc1_15_120",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_bc1_25_120",
@@ -1121,10 +1028,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收益 $=$ 價格 $\\times$ 銷售量 $= 25 \\times 120 = 3,000$ 元。陷阱：145 元用了加法；4.8 元用了除法；1,500 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total revenue is price times quantity: 25 × 120 = 3,000. Traps: 145 adds; 4.8 divides; 1,500 halves the result. Note that total revenue is not profit — total cost must still be deducted. Questions often give price, quantity and cost together, so establish first whether revenue, cost or profit is wanted.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_bc1_25_120",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_eb_bc1_40_120",
@@ -1156,10 +1060,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "總收益 $=$ 價格 $\\times$ 銷售量 $= 40 \\times 120 = 4,800$ 元。陷阱：160 元用了加法；3 元用了除法；2,400 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total revenue is price times quantity: 40 × 120 = 4,800. Traps: 160 adds; 3 divides; 2,400 halves the result. Note that total revenue is not profit — total cost must still be deducted. Questions often give price, quantity and cost together, so establish first whether revenue, cost or profit is wanted.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "eb_bc1_40_120",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_tf1_4_200",
@@ -1191,10 +1092,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 4 × 200 = 800 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：204 元把稅率與數量相加；200 元只抄了成交量；50 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total tax revenue = tax per unit × quantity traded after the tax = \\$4 × 200 = \\$800. The AFTER-tax quantity must be used: the tax raises price and reduces quantity, so using the pre-tax quantity overstates revenue. The burden is shared between buyers and sellers according to the relative elasticities of demand and supply, but the total revenue does not depend on that split. Traps: \\$204 adds the tax to the quantity; \\$200 copies the quantity; \\$50 divides instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_tf1_4_200",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_tf1_8_200",
@@ -1226,10 +1124,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 8 × 200 = 1,600 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：208 元把稅率與數量相加；200 元只抄了成交量；25 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total tax revenue = tax per unit × quantity traded after the tax = \\$8 × 200 = \\$1,600. The AFTER-tax quantity must be used: the tax raises price and reduces quantity, so using the pre-tax quantity overstates revenue. The burden is shared between buyers and sellers according to the relative elasticities of demand and supply, but the total revenue does not depend on that split. Traps: \\$208 adds the tax to the quantity; \\$200 copies the quantity; \\$25 divides instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_tf1_8_200",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_tf1_8_1200",
@@ -1261,10 +1156,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 8 × 1,200 = 9,600 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：1,208 元把稅率與數量相加；1,200 元只抄了成交量；150 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Total tax revenue = tax per unit × quantity traded after the tax = \\$8 × 1,200 = \\$9,600. The AFTER-tax quantity must be used: the tax raises price and reduces quantity, so using the pre-tax quantity overstates revenue. The burden is shared between buyers and sellers according to the relative elasticities of demand and supply, but the total revenue does not depend on that split. Traps: \\$1,208 adds the tax to the quantity; \\$1,200 copies the quantity; \\$150 divides instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_tf1_8_1200",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_tf2_150_10",
@@ -1296,10 +1188,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "社會成本 = 私人成本 + 外部成本 = 150 + 10 = 160 元。當存在外部成本時，廠商只按私人成本決策，產量高於社會最適水平，造成無謂損失，這就是負外部性引致的市場失靈。陷阱：140 元把外部成本減去；150 元只計私人成本，正是廠商本身的視角；10 元只計外部成本。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Social cost = private cost + external cost = \\$150 + \\$10 = \\$160. When an external cost exists the firm decides on private cost alone, so output exceeds the socially optimal level and a deadweight loss arises — this is the market failure caused by a negative externality. Traps: \\$140 subtracts the external cost; \\$150 counts only the private cost, which is precisely the firm's own view; \\$10 counts only the external cost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_tf2_150_10",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_mc1_40_12",
@@ -1331,10 +1220,7 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "平均成本 = 總成本 ÷ 產量 = 480 ÷ 40 = 12 元。平均成本與邊際成本不同：前者是總成本攤分到每一單位，後者是多生產一單位所【增加】的成本；只有當邊際成本低於平均成本時，平均成本才會下降。陷阱：480 元是總成本；19,200 元改成了相乘；40 元只抄了產量。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Average cost = total cost ÷ output = \\$480 ÷ 40 = \\$12. Average cost differs from marginal cost: the former spreads total cost over every unit, the latter is the ADDITIONAL cost of one more unit; average cost falls only while marginal cost lies below it. Traps: \\$480 is the total cost; \\$19,200 multiplies instead; \\$40 copies the output.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mc1_40_12",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "economics_cr_b1_econ_mc2_2_8_600",
@@ -1366,9 +1252,6 @@ export const economicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "邊際成本 = 總成本增加量 ÷ 產量增加量 = (616 − 600) ÷ 2 = 16 ÷ 2 = 8 元。陷阱：16 元只算了總成本的增加量而未除以產量增幅；28 元與 30 元都是【平均】成本，並非邊際成本 —— 平均與邊際的混淆是本課題最常見的失分位。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Marginal cost = change in total cost ÷ change in output = (\\$616 − \\$600) ÷ 2 = \\$16 ÷ 2 = \\$8. Traps: \\$16 is the change in total cost without dividing by the change in output; \\$28 and \\$30 are AVERAGE costs — confusing average with marginal is where this topic is most often lost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "econ_mc2_2_8_600",
-    "rewrite_batch": "economics-cursor-batch1"
+    "marks": 1
   }
 ] as Question[]

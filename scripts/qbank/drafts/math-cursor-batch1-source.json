@@ -1385,7 +1385,7 @@
       "$\\frac{5}{4}$"
     ],
     "correctIndex": 0,
-    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{5}{1 - \\frac{1}{4}} = \\dfrac{5}{\\frac{3}{4}} = \\frac{20}{3}$。陷阱：$4$ 用了 $1+r$（符號錯）；$\\frac{5}{4}$ 只算了第二項。",
+    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{5}{1 - \\frac{1}{4}} = \\dfrac{5}{\\frac{3}{4}} = \\frac{20}{3}$。陷阱：$4$ 用了 $1+r$（符號錯）；$\\frac{5}{4}$ 只取了 a·r（首項乘公比）。",
     "explanationEn": "$S_\\infty = \\frac{a}{1-r} = \\frac{20}{3}$. Trap: $4$ uses $1+r$.",
     "marks": 2
   },
@@ -1417,7 +1417,7 @@
       "$\\frac{7}{4}$"
     ],
     "correctIndex": 0,
-    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{7}{1 - \\frac{1}{4}} = \\dfrac{7}{\\frac{3}{4}} = \\frac{28}{3}$。陷阱：$\\frac{28}{5}$ 用了 $1+r$（符號錯）；$\\frac{7}{4}$ 只算了第二項。",
+    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{7}{1 - \\frac{1}{4}} = \\dfrac{7}{\\frac{3}{4}} = \\frac{28}{3}$。陷阱：$\\frac{28}{5}$ 用了 $1+r$（符號錯）；$\\frac{7}{4}$ 只取了 a·r（首項乘公比）。",
     "explanationEn": "$S_\\infty = \\frac{a}{1-r} = \\frac{28}{3}$. Trap: $\\frac{28}{5}$ uses $1+r$.",
     "marks": 2
   },
@@ -1449,7 +1449,7 @@
       "$\\frac{9}{4}$"
     ],
     "correctIndex": 0,
-    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{9}{1 - \\frac{1}{4}} = \\dfrac{9}{\\frac{3}{4}} = 12$。陷阱：$\\frac{36}{5}$ 用了 $1+r$（符號錯）；$\\frac{9}{4}$ 只算了第二項。",
+    "explanation": "$|r| = \\dfrac{1}{4} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{9}{1 - \\frac{1}{4}} = \\dfrac{9}{\\frac{3}{4}} = 12$。陷阱：$\\frac{36}{5}$ 用了 $1+r$（符號錯）；$\\frac{9}{4}$ 只取了 a·r（首項乘公比）。",
     "explanationEn": "$S_\\infty = \\frac{a}{1-r} = 12$. Trap: $\\frac{36}{5}$ uses $1+r$.",
     "marks": 2
   },

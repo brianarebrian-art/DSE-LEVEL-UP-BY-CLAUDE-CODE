@@ -3,7 +3,7 @@ import type { Question } from './types'
 /**
  * chemistry Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata (df_intent, rewrite_of) lives in ledger JSON, not on Question.
  */
 export const chemistryCursorBatch1Questions: Question[] = [
   {
@@ -36,10 +36,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$m = nM = 4\\times32 = 128\\,\\text{g}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$m = nM = 4\\times32 = 128\\,\\text{g}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_mnM_9",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_ph_28",
@@ -71,10 +68,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\text{pH} = -\\log[\\text{H}^+] = -\\log(0.1) = 1$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$\\text{pH} = -\\log[\\text{H}^+] = -\\log(0.1) = 1$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_ph_28",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_rx_44",
@@ -106,10 +100,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "氫在大多數化合物中為 $+1$（金屬氫化物中為 $-1$）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Hydrogen is usually $+1$ (but $-1$ in metal hydrides).\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_rx_44",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_disp_52",
@@ -141,10 +132,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "較活潑的金屬能把較不活潑金屬的離子還原並置換出來。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A more reactive metal can reduce and displace the ions of a less reactive metal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_disp_52",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_bd_79",
@@ -176,10 +164,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "金屬鍵中離域電子（電子海）可自由移動，故能導電與導熱。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Metallic bonding has delocalised electrons (a “sea”) free to move, so metals conduct electricity and heat.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_bd_79",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_bd_84",
@@ -211,10 +196,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "氫與氧均為非金屬，共用電子形成共價鍵。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Hydrogen and oxygen are non-metals; they share electrons in covalent bonds.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_bd_84",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chem_pt_99",
@@ -246,10 +228,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "過渡金屬常具可變氧化態、形成有色離子、可作催化劑。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Transition metals show variable oxidation states, form coloured ions, and act as catalysts.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chem_pt_99",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemh_qu_1",
@@ -281,10 +260,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "比例 $H_2:O_2 = 2:1$。$0.5\\,\\text{mol}$ H₂ 只需 $0.25\\,\\text{mol}$ O₂，但有 $0.5\\,\\text{mol}$ O₂ ⇒ O₂ 過量、H₂ 為限量試劑。生成水 $= $ mol(H₂) $= 0.5\\,\\text{mol}$，質量 $= 0.5\\times18 = 9\\,\\text{g}$。\n\n【陷阱】$18\\,\\text{g}$ 用了過量的 O₂（$1\\,\\text{mol}$ 水）——忽略了限量試劑，正是此題的關鍵陷阱；$4.5$、$36$ 為比例算錯。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Ratio $H_2:O_2 = 2:1$. $0.5\\,\\text{mol}$ H₂ needs only $0.25\\,\\text{mol}$ O₂, but $0.5\\,\\text{mol}$ O₂ is present ⇒ O₂ in excess, H₂ is limiting. Water $= $ mol(H₂) $= 0.5\\,\\text{mol}$, mass $= 9\\,\\text{g}$.\n\n【Trap】 $18\\,\\text{g}$ uses the excess O₂ — ignoring the limiting reagent, the killer here; $4.5$/$36$ mis-scale.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemh_qu_1",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "chemistry_cr_b1_chemh_re_7",
@@ -316,10 +292,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "依勒沙特列原理，升溫令平衡向吸熱方向（此處為逆反應）移動，故氨的平衡產率下降。注意：升溫會加快反應「速率」，但對放熱反應而言「產率」反而下降——速率與產率是兩回事，正是此題的關鍵陷阱。\n\n【陷阱】「產率上升」混淆了速率與產率；「不變」「完全停止」都與勒沙特列原理相違。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "By Le Chatelier, raising temperature shifts equilibrium toward the endothermic direction (here the reverse), so the equilibrium yield of NH₃ falls. Note: higher T speeds up the RATE but lowers the YIELD for an exothermic reaction — rate ≠ yield, the killer here.\n\n【Trap】 “Yield rises” confuses rate with yield; “unchanged”/“stops” contradict Le Chatelier.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemh_re_7",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "chemistry_cr_b1_cb_e1_0_2",
@@ -351,10 +324,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$n = \\dfrac{m}{M} = \\dfrac{36}{18} = 2$ mol。陷阱：$648$ 用了乘法；$0.5$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$n = \\frac{m}{M} = 2$ mol. Trap: $648$ multiplies instead of dividing.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_e1_0_2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_e1_2_2",
@@ -386,10 +356,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$n = \\dfrac{m}{M} = \\dfrac{32}{16} = 2$ mol。陷阱：$512$ 用了乘法；$0.5$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$n = \\frac{m}{M} = 2$ mol. Trap: $512$ multiplies instead of dividing.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_e1_2_2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_m1_6_5",
@@ -421,10 +388,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$c = \\dfrac{n}{V} = \\dfrac{6}{5} = 1.2$ mol/dm³。陷阱：$0.833$ 上下倒轉；$30$ 用了乘法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$c = \\frac{n}{V} = 1.2$ mol/dm³. Trap: $0.833$ inverts the ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_m1_6_5",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_h1_1_2_5",
@@ -456,10 +420,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "先求摩爾 $n = \\dfrac{110}{44} = 2.5$ mol，再 $V = n \\times 24 = 2.5 \\times 24 = 60$ dm³。陷阱：$2.5$ 漏了 $\\times 24$；$2640$ 用了質量而非摩爾。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$n = \\frac{110}{44} = 2.5$ mol, then $V = 24n = 60$ dm³. Trap: $2640$ uses mass instead of moles.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_h1_1_2_5",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_h2_2_3_48",
@@ -491,10 +452,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "酸鹼摩爾比 $1:1$：$c_aV_a = c_bV_b$ ⇒ $V_b = \\dfrac{c_aV_a}{c_b} = \\dfrac{2\\times48}{3} = 32$ cm³。陷阱：$72$ 將兩個濃度倒轉；$96$ 漏了 $\\div c_b$；$48$ 當兩者體積相等。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = 32$ cm³. Trap: $96$ forgets $\\div c_b$; $48$ assumes equal volumes.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_h2_2_3_48",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_h2_3_2_40",
@@ -526,10 +484,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "酸鹼摩爾比 $1:1$：$c_aV_a = c_bV_b$ ⇒ $V_b = \\dfrac{c_aV_a}{c_b} = \\dfrac{3\\times40}{2} = 60$ cm³。陷阱：$26.67$ 將兩個濃度倒轉；$120$ 漏了 $\\div c_b$；$40$ 當兩者體積相等。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = 60$ cm³. Trap: $120$ forgets $\\div c_b$; $40$ assumes equal volumes.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_h2_3_2_40",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_h2_3_4_48",
@@ -561,10 +516,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "酸鹼摩爾比 $1:1$：$c_aV_a = c_bV_b$ ⇒ $V_b = \\dfrac{c_aV_a}{c_b} = \\dfrac{3\\times48}{4} = 36$ cm³。陷阱：$64$ 將兩個濃度倒轉；$144$ 漏了 $\\div c_b$；$48$ 當兩者體積相等。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = 36$ cm³. Trap: $144$ forgets $\\div c_b$; $48$ assumes equal volumes.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_h2_3_4_48",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_ab1_3_鹽酸",
@@ -596,10 +548,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "pH $= -\\log[\\mathrm{H^+}]$。當 $[\\mathrm{H^+}] = 10^{-3}$ M 時，pH $= -\\log(10^{-3}) = 3$。陷阱：$-3$ 漏了負號（pH 在中學範圍內不會是負數）；$11$ 是 pOH；$6$ 把指數乘了 2。記住 pH 愈細酸性愈強，每差 1 個單位，氫離子濃度相差 10 倍。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "pH $= -\\log[\\mathrm{H^+}]$, so with $[\\mathrm{H^+}] = 10^{-3}$ M the pH is $-\\log(10^{-3}) = 3$. Traps: $-3$ drops the minus sign, and pH is not negative in the school range; $11$ is the pOH; $6$ doubles the exponent. Remember that a lower pH means a stronger acid, and each unit of pH is a tenfold change in hydrogen ion concentration.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ab1_3_鹽酸",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_ab2_01_25_05",
@@ -631,10 +580,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "一元酸與一元鹼按 $1 : 1$ 反應，故 $M_aV_a = M_bV_b$。代入：$0.1 \\times 25 = 0.5 \\times V_b$，得 $V_b = 5$ cm³。陷阱：$125$ cm³ 把兩個濃度調轉；$1.25$ cm³ 用了相乘；$25$ cm³ 以為體積必定相同——只有兩者濃度相等時才成立。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A monobasic acid and a monoacidic base react $1 : 1$, so $M_aV_a = M_bV_b$. Substituting: $0.1 \\times 25 = 0.5 \\times V_b$, giving $V_b = 5$ cm³. Traps: $125$ cm³ swaps the two concentrations; $1.25$ cm³ multiplies; $25$ cm³ assumes equal volumes, which holds only when the concentrations are equal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ab2_01_25_05",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_ab2_02_25_05",
@@ -666,10 +612,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "一元酸與一元鹼按 $1 : 1$ 反應，故 $M_aV_a = M_bV_b$。代入：$0.2 \\times 25 = 0.5 \\times V_b$，得 $V_b = 10$ cm³。陷阱：$62.5$ cm³ 把兩個濃度調轉；$2.5$ cm³ 用了相乘；$25$ cm³ 以為體積必定相同——只有兩者濃度相等時才成立。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A monobasic acid and a monoacidic base react $1 : 1$, so $M_aV_a = M_bV_b$. Substituting: $0.2 \\times 25 = 0.5 \\times V_b$, giving $V_b = 10$ cm³. Traps: $62.5$ cm³ swaps the two concentrations; $2.5$ cm³ multiplies; $25$ cm³ assumes equal volumes, which holds only when the concentrations are equal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ab2_02_25_05",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_ab2_02_50_01",
@@ -701,10 +644,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "一元酸與一元鹼按 $1 : 1$ 反應，故 $M_aV_a = M_bV_b$。代入：$0.2 \\times 50 = 0.1 \\times V_b$，得 $V_b = 100$ cm³。陷阱：$25$ cm³ 把兩個濃度調轉；$1$ cm³ 用了相乘；$50$ cm³ 以為體積必定相同——只有兩者濃度相等時才成立。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A monobasic acid and a monoacidic base react $1 : 1$, so $M_aV_a = M_bV_b$. Substituting: $0.2 \\times 50 = 0.1 \\times V_b$, giving $V_b = 100$ cm³. Traps: $25$ cm³ swaps the two concentrations; $1$ cm³ multiplies; $50$ cm³ assumes equal volumes, which holds only when the concentrations are equal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ab2_02_50_01",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_ab2_05_40_02",
@@ -736,10 +676,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "一元酸與一元鹼按 $1 : 1$ 反應，故 $M_aV_a = M_bV_b$。代入：$0.5 \\times 40 = 0.2 \\times V_b$，得 $V_b = 100$ cm³。陷阱：$16$ cm³ 把兩個濃度調轉；$4$ cm³ 用了相乘；$40$ cm³ 以為體積必定相同——只有兩者濃度相等時才成立。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A monobasic acid and a monoacidic base react $1 : 1$, so $M_aV_a = M_bV_b$. Substituting: $0.5 \\times 40 = 0.2 \\times V_b$, giving $V_b = 100$ cm³. Traps: $16$ cm³ swaps the two concentrations; $4$ cm³ multiplies; $40$ cm³ assumes equal volumes, which holds only when the concentrations are equal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ab2_05_40_02",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_re1_12_4",
@@ -771,10 +708,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "平均反應速率 $=$ 變化量 $\\div$ 時間 $= 12 \\div 4 = 3$ cm³/min。陷阱：$0.333$ 上下倒轉；$48$ 用了乘法；$12$ 漏了除以時間。留意反應速率一般隨時間下降，因為反應物濃度不斷減少，所以「平均速率」與任何一刻的「瞬時速率」通常不同。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Average rate = change ÷ time = $12 \\div 4 = 3$ cm³/min. Traps: $0.333$ inverts the fraction; $48$ multiplies; $12$ omits the division by time. Note that the rate generally falls over time as the reactants are used up, so an average rate usually differs from the instantaneous rate at any moment.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_re1_12_4",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_re1_30_3",
@@ -806,10 +740,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "平均反應速率 $=$ 變化量 $\\div$ 時間 $= 30 \\div 3 = 10$ cm³/min。陷阱：$0.1$ 上下倒轉；$90$ 用了乘法；$30$ 漏了除以時間。留意反應速率一般隨時間下降，因為反應物濃度不斷減少，所以「平均速率」與任何一刻的「瞬時速率」通常不同。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Average rate = change ÷ time = $30 \\div 3 = 10$ cm³/min. Traps: $0.1$ inverts the fraction; $90$ multiplies; $30$ omits the division by time. Note that the rate generally falls over time as the reactants are used up, so an average rate usually differs from the instantaneous rate at any moment.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_re1_30_3",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_re1_48_4",
@@ -841,10 +772,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "平均反應速率 $=$ 變化量 $\\div$ 時間 $= 48 \\div 4 = 12$ cm³/min。陷阱：$0.083$ 上下倒轉；$192$ 用了乘法；$48$ 漏了除以時間。留意反應速率一般隨時間下降，因為反應物濃度不斷減少，所以「平均速率」與任何一刻的「瞬時速率」通常不同。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Average rate = change ÷ time = $48 \\div 4 = 12$ cm³/min. Traps: $0.083$ inverts the fraction; $192$ multiplies; $48$ omits the division by time. Note that the rate generally falls over time as the reactants are used up, so an average rate usually differs from the instantaneous rate at any moment.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_re1_48_4",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_pt1_16",
@@ -876,10 +804,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "中性原子的電子數等於原子序，即 $16$ 個。由內層向外填充，每層上限依次為 2、8、8，得 $2, 8, 6$。由此可讀出：電子層數 $= 3$，即位於第 3 週期；最外層電子數決定族數。陷阱：$6, 8, 2$ 把次序倒轉；$16$ 直接寫了總數而未分層；$2, 14$ 忽略了第二層 8 個的上限。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A neutral atom has as many electrons as its atomic number, that is $16$. Filling from the inner shells outward with capacities 2, 8, 8 gives $2, 8, 6$. From this: the number of shells is 3, so the element lies in Period 3, and the outermost shell determines the group. Traps: $6, 8, 2$ reverses the order; $16$ gives the total without arranging it in shells; $2, 14$ ignores the eight-electron limit of the second shell.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_pt1_16",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_or1a_4",
@@ -911,10 +836,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "烯烴含一個碳碳雙鍵，通式為 $\\mathrm{C_nH_{2n}}$。代入 $n = 4$ 得 $\\mathrm{C_4H_{8}}$。陷阱：$\\mathrm{C_4H_{10}}$ 是同碳數的烷烴（通式 $\\mathrm{C_nH_{2n+2}}$）；$\\mathrm{C_4H_{6}}$ 是炔烴；$\\mathrm{C_4H_4}$ 誤把氫碳比當成 $1 : 1$。三個通式相差的氫數反映不飽和度：每多一個雙鍵或一個環，就少 2 個氫。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "An alkene contains one carbon–carbon double bond and has the general formula $\\mathrm{C_nH_{2n}}$, so with $n = 4$ it is $\\mathrm{C_4H_{8}}$. Traps: $\\mathrm{C_4H_{10}}$ is the alkane with the same carbon count ($\\mathrm{C_nH_{2n+2}}$); $\\mathrm{C_4H_{6}}$ is the alkyne; $\\mathrm{C_4H_4}$ assumes a $1 : 1$ ratio. The differences in hydrogen count reflect unsaturation: each extra double bond or ring costs two hydrogens.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_or1a_4",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_cb_hq1_128_32_H2O",
@@ -946,10 +868,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "第一步由質量求摩爾：$n = \\dfrac{m}{M_r} = \\dfrac{128}{32} = 4$ mol。第二步按方程式係數比 $1 : 2$ 換算：生成 $4 \\times 2 = 8$ mol。陷阱：$4$ mol 停在第一步；$2$ mol 把係數比倒轉；$128$ mol 把質量當成摩爾。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Step one converts mass to moles: $n = \\frac{m}{M_r} = \\frac{128}{32} = 4$ mol. Step two applies the coefficient ratio $1 : 2$: $4 \\times 2 = 8$ mol. Traps: $4$ mol stops at step one; $2$ mol inverts the coefficient ratio; $128$ mol treats mass as moles.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_hq1_128_32_H2O",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_hq2_2",
@@ -981,10 +900,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "氣體體積 $= n \\times V_m = 2 \\times 24 = 48$ dm³。重點在於莫耳體積與氣體【種類無關】—— 同溫同壓下，$2$ mol 氧氣與 $2$ mol 氫氣佔同一體積，儘管兩者質量相差 16 倍。這就是亞佛加德羅定律，亦是氣體反應可以直接用體積比代替摩爾比的理由。陷阱：$0.0833$ dm³ 用了除法；$24$ dm³ 直接抄了莫耳體積；$2$ dm³ 把摩爾當成體積。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Gas volume is $n \\times V_m = 2 \\times 24 = 48$ dm³. The key point is that molar volume does not depend on the identity of the gas: at the same temperature and pressure, $2$ mol of oxygen and $2$ mol of hydrogen occupy the same volume despite a sixteenfold difference in mass. This is Avogadro's law, and it is why volume ratios can replace mole ratios in reactions between gases. Traps: $0.0833$ dm³ divides; $24$ dm³ copies the molar volume; $2$ dm³ treats moles as a volume.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_hq2_2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_cb_ho1_6_6",
@@ -1016,10 +932,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "不飽和度 $= \\dfrac{2C + 2 - H}{2} = \\dfrac{2(6) + 2 - 6}{2} = \\dfrac{8}{2} = 4$。它的意思是：相對於同碳數的飽和烷烴 $\\mathrm{C_6H_{14}}$，本分子每少 2 個氫就多一個環或一個雙鍵（三鍵計作 2）。所以 $4$ 代表環與雙鍵合共 $4$ 個。陷阱：$5$ 多計一個；$0$ 誤以為飽和；$2$ 用碳數相減。這個數字係推斷結構的第一步：知道不飽和度，就知道要畫幾多個環或雙鍵。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The degree of unsaturation is $\\frac{2C + 2 - H}{2} = \\frac{2(6) + 2 - 6}{2} = \\frac{8}{2} = 4$. It means that relative to the saturated alkane with the same carbon count, $\\mathrm{C_6H_{14}}$, every two hydrogens short corresponds to one ring or one double bond, with a triple bond counting as two. So 4 means rings and double bonds total 4. Traps: 5 counts one too many; 0 assumes saturation; 2 subtracts from the carbon count. This figure is the first step in deducing a structure: knowing the unsaturation tells you how many rings or double bonds to draw.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "cb_ho1_6_6",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "chemistry_cr_b1_chemc_fm1_AlF3",
@@ -1051,10 +964,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$27 \\times 1 + 19 \\times 3 = 27 + 57 = 84$。陷阱：$46$ 忽略了下標，把每種原子當成只有一個；$1539$ 把兩部分相乘而非相加；$65$ 少數了一個原子。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $27 \\times 1 + 19 \\times 3 = 27 + 57 = 84$. Traps: $46$ ignores the subscripts and counts one atom of each; $1539$ multiplies the two parts instead of adding; $65$ counts one atom too few.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_fm1_AlF3",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_fm2_NaCl",
@@ -1086,10 +996,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "質量百分比 = 該元素的總質量 ÷ 式量 × 100% = 23 ÷ 58.5 × 100% = 39.3%。分子必須是該元素在【整條化學式】中的總質量，若元素出現多於一個原子便要先乘上原子數目。陷阱：254.3% 把分子分母倒轉；60.7% 算的是其餘元素的百分比；23% 把質量當成百分率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Percentage by mass = total mass of the element ÷ formula mass × 100% = 23 ÷ 58.5 × 100% = 39.3%. The numerator must be the element's total mass across the WHOLE formula, so an element appearing more than once must first be multiplied by its subscript. Traps: 254.3% inverts the fraction; 60.7% is the percentage of everything else; 23% reads a mass as a percentage.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_fm2_NaCl",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_fm2_ZnO",
@@ -1121,10 +1028,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "質量百分比 = 該元素的總質量 ÷ 式量 × 100% = 65 ÷ 81 × 100% = 80.2%。分子必須是該元素在【整條化學式】中的總質量，若元素出現多於一個原子便要先乘上原子數目。陷阱：124.6% 把分子分母倒轉；19.8% 算的是其餘元素的百分比；65% 把質量當成百分率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Percentage by mass = total mass of the element ÷ formula mass × 100% = 65 ÷ 81 × 100% = 80.2%. The numerator must be the element's total mass across the WHOLE formula, so an element appearing more than once must first be multiplied by its subscript. Traps: 124.6% inverts the fraction; 19.8% is the percentage of everything else; 65% reads a mass as a percentage.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_fm2_ZnO",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_fm2_CO2",
@@ -1156,10 +1060,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "質量百分比 = 該元素的總質量 ÷ 式量 × 100% = 12 ÷ 44 × 100% = 27.3%。分子必須是該元素在【整條化學式】中的總質量，若元素出現多於一個原子便要先乘上原子數目。陷阱：366.7% 把分子分母倒轉；72.7% 算的是其餘元素的百分比；12% 把質量當成百分率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Percentage by mass = total mass of the element ÷ formula mass × 100% = 12 ÷ 44 × 100% = 27.3%. The numerator must be the element's total mass across the WHOLE formula, so an element appearing more than once must first be multiplied by its subscript. Traps: 366.7% inverts the fraction; 72.7% is the percentage of everything else; 12% reads a mass as a percentage.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_fm2_CO2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_pt2_Ne",
@@ -1191,10 +1092,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "週期數等於【已佔用電子殼層的數目】。電子排布 2, 8 共有 2 層，故該元素位於第 2 週期；而最外層電子數則決定族數。陷阱：第 18 週期把族數當成週期數，兩者由不同的資料決定（族看最外層電子，週期看殼層數目）；第 10 週期把原子序當成週期數；第 3 週期多數了一層。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The period number equals the NUMBER OF OCCUPIED ELECTRON SHELLS. The arrangement 2, 8 has 2 shells, so the element lies in period 2; the number of outermost electrons determines the group instead. Traps: period 18 confuses the group with the period, and the two come from different data (outer electrons versus shell count); period 10 reads the atomic number as the period; period 3 counts one shell too many.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_pt2_Ne",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_pt2g_K",
@@ -1226,10 +1124,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "第 1、2 及 13 至 18 族的族數由最外層電子數決定：最外層有 1 至 2 個電子時，族數即該數目；有 3 至 8 個電子時，族數為該數目加 10。電子排布 2, 8, 8, 1 的最外層電子數對應第 1 族。同族元素最外層電子數相同，化學性質因而相似 —— 這正是週期表按族排列的理由。陷阱：第 4 族把週期數當成族數；第 19 族用了原子序；第 2 族數多或數少了一個電子。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "For groups 1, 2 and 13 to 18 the group number follows from the outermost electrons: with 1 or 2 outer electrons the group is that number; with 3 to 8 it is that number plus 10. The arrangement 2, 8, 8, 1 therefore gives group 1. Elements in the same group share the same number of outer electrons and hence similar chemistry, which is precisely why the table is arranged this way. Traps: group 4 uses the period number; group 19 uses the atomic number; group 2 miscounts the outer electrons by one.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_pt2g_K",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_rx2_S_4_m2",
@@ -1261,10 +1156,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "氧在化合物中的氧化數通常為 $-2$，而全部原子的氧化數總和必須等於該粒子的電荷（此離子為 -2）。設 S 的氧化數為 $x$：$x + 4(-2) = -2$，解得 $x = +6$。陷阱：$-6$ 符號寫反；$+4$ 直接抄了氧原子數目；$+8$ 忘記除以 S 的原子數 1。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Oxygen is normally $-2$ in compounds, and the oxidation numbers of all atoms must sum to the charge on the species (-2 for this ion). Letting $x$ be the oxidation number of S: $x + 4(-2) = -2$, so $x = +6$. Traps: $-6$ has the wrong sign; $+4$ copies the number of oxygen atoms; $+8$ omits the division by the 1 S atoms.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_rx2_S_4_m2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_bd2_Cu2Cl1",
@@ -1296,10 +1188,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "離子化合物整體必須電中性，故正電荷總量要等於負電荷總量。$2$ 與 $1$ 的最小公倍數為 2，需要 1 個 Cu 離子與 2 個 Cl 離子，化學式為 $\\mathrm{CuCl_2}$。留意下標是【對方】的電荷數再約簡，這就是交叉法。陷阱：把兩個下標對調；$\\mathrm{CuCl}$ 忽略了電荷不相等；$\\mathrm{CuCl_3}$ 把兩個電荷數相加當成下標。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "An ionic compound must be electrically neutral, so the total positive charge equals the total negative charge. The lowest common multiple of $2$ and $1$ is 2, requiring 1 Cu ions and 2 Cl ions, giving $\\mathrm{CuCl_2}$. Note that each subscript comes from the OTHER ion's charge, after cancelling — this is the crossover rule. Traps: the two subscripts are interchanged; $\\mathrm{CuCl}$ ignores the unequal charges; $\\mathrm{CuCl_3}$ adds the two charges and uses the sum as a subscript.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_bd2_Cu2Cl1",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_bd2_Ag1O2",
@@ -1331,10 +1220,7 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "離子化合物整體必須電中性，故正電荷總量要等於負電荷總量。$1$ 與 $2$ 的最小公倍數為 2，需要 2 個 Ag 離子與 1 個 O 離子，化學式為 $\\mathrm{Ag_2O}$。留意下標是【對方】的電荷數再約簡，這就是交叉法。陷阱：把兩個下標對調；$\\mathrm{AgO}$ 忽略了電荷不相等；$\\mathrm{AgO_3}$ 把兩個電荷數相加當成下標。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "An ionic compound must be electrically neutral, so the total positive charge equals the total negative charge. The lowest common multiple of $1$ and $2$ is 2, requiring 2 Ag ions and 1 O ions, giving $\\mathrm{Ag_2O}$. Note that each subscript comes from the OTHER ion's charge, after cancelling — this is the crossover rule. Traps: the two subscripts are interchanged; $\\mathrm{AgO}$ ignores the unequal charges; $\\mathrm{AgO_3}$ adds the two charges and uses the sum as a subscript.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_bd2_Ag1O2",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "chemistry_cr_b1_chemc_gv2_3",
@@ -1366,9 +1252,6 @@ export const chemistryCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "體積 = 摩爾數 × 氣體摩爾體積 = 3 × 24 = 72 dm³。氣體摩爾體積與氣體的種類無關 —— 相同溫度壓力下，等摩爾數的任何氣體佔相同體積（亞佛加德羅定律）。陷阱：0.125 dm³ 改成了相除；24 dm³ 漏了乘摩爾數；3 dm³ 只抄了摩爾數。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Volume = amount in moles × molar volume = 3 × 24 = 72 dm³. The molar volume does not depend on the identity of the gas: at the same temperature and pressure equal amounts of any gas occupy equal volumes (Avogadro's law). Traps: 0.125 dm³ divides instead; 24 dm³ omits the amount; 3 dm³ copies the amount.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "chemc_gv2_3",
-    "rewrite_batch": "chemistry-cursor-batch1"
+    "marks": 1
   }
 ] as Question[]

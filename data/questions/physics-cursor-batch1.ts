@@ -3,7 +3,7 @@ import type { Question } from './types'
 /**
  * physics Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata (df_intent, rewrite_of) lives in ledger JSON, not on Question.
  */
 export const physicsCursorBatch1Questions: Question[] = [
   {
@@ -36,10 +36,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$F = ma = 5 \\times 4 = 20\\,\\text{N}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$F = ma = 5 \\times 4 = 20\\,\\text{N}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_fma_2",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_fma_7",
@@ -71,10 +68,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$F = ma = 12 \\times 3 = 36\\,\\text{N}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$F = ma = 12 \\times 3 = 36\\,\\text{N}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_fma_7",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_mom_25",
@@ -106,10 +100,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$p = mv = 5\\times3 = 15\\,\\text{kg·m/s}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$p = mv = 5\\times3 = 15\\,\\text{kg·m/s}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_mom_25",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_mom_26",
@@ -141,10 +132,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$p = mv = 4\\times7 = 28\\,\\text{kg·m/s}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$p = mv = 4\\times7 = 28\\,\\text{kg·m/s}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_mom_26",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_vir_41",
@@ -176,10 +164,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$V = IR = 1.5\\times8 = 12\\,\\text{V}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$V = IR = 1.5\\times8 = 12\\,\\text{V}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_vir_41",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_heatc_68",
@@ -211,10 +196,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "輻射以電磁波傳播，可在真空中進行；傳導與對流均需介質。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Radiation travels as electromagnetic waves and works in a vacuum; conduction and convection need a medium.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_heatc_68",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_vfl_79",
@@ -246,10 +228,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$v = f\\lambda = 10\\times2 = 20\\,\\text{m/s}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$v = f\\lambda = 10\\times2 = 20\\,\\text{m/s}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_vfl_79",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_period_86",
@@ -281,10 +260,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$T = \\frac{1}{f} = \\frac{1}{10} = 0.1\\,\\text{s}$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$T = \\frac{1}{f} = \\frac{1}{10} = 0.1\\,\\text{s}$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_period_86",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_opt_98",
@@ -316,10 +292,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "由密介質射向疏介質且入射角超過臨界角時，光全部反射回原介質。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "From a denser to a rarer medium beyond the critical angle, all light reflects back — total internal reflection.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_opt_98",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phy_half_113",
@@ -351,10 +324,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "每個半衰期數量減半：$N = \\frac{3200}{2^{5}} = 100$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Each half-life halves the amount: $N = \\frac{3200}{2^{5}} = 100$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phy_half_113",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_phyh_wo_9",
@@ -386,10 +356,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "臨界角 $\\theta_c$ 滿足 $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$，故 $\\theta_c \\approx 41.8°$。\n\n【陷阱】$48.2° = 90°-41.8°$（取了餘角）；$33.6°$ 用 $\\sin\\theta_c = n-1$ 之類錯式；$90°$ 誤解臨界角定義。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The critical angle $\\theta_c$ satisfies $\\sin\\theta_c = \\dfrac{1}{n} = \\dfrac{1}{1.5} = 0.667$, so $\\theta_c \\approx 41.8°$.\n\n【Trap】 $48.2° = 90°-41.8°$ (the complement); $33.6°$ uses a wrong formula; $90°$ misreads the definition.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "phyh_wo_9",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "physics_cr_b1_pb_e1_5_3",
@@ -421,10 +388,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "速率 $= \\dfrac{\\text{距離}}{\\text{時間}} = \\dfrac{15}{3} = 5$ m/s。陷阱：$45$ 用了乘法；$0.2$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Speed $= \\frac{d}{t} = \\frac{15}{3} = 5$ m/s. Trap: $45$ multiplies instead of dividing.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e1_5_3",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_e2_4_3",
@@ -456,10 +420,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$V = IR = 4 \\times 3 = 12$ V。陷阱：$1.333$ 或 $0.75$ 錯用了除法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$V = IR = 12$ V. Trap: dividing instead of multiplying.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e2_4_3",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_e3_2",
@@ -491,10 +452,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$W = mg = 2 \\times 10 = 20$ N。陷阱：$2$ 漏了 $\\times g$；$0.2$ 錯用了除法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$W = mg = 20$ N. Trap: $2$ forgets to multiply by $g$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e3_2",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_e4_4_2",
@@ -526,10 +484,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\rho = \\dfrac{m}{V} = \\dfrac{8}{2} = 4$ kg/m³。陷阱：$0.25$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$\\rho = \\frac{m}{V} = 4$ kg/m³. Trap: inverting the ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e4_4_2",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_e4_4_4",
@@ -561,10 +516,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\rho = \\dfrac{m}{V} = \\dfrac{16}{4} = 4$ kg/m³。陷阱：$0.25$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$\\rho = \\frac{m}{V} = 4$ kg/m³. Trap: inverting the ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e4_4_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_e4_5_4",
@@ -596,10 +548,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$\\rho = \\dfrac{m}{V} = \\dfrac{20}{4} = 5$ kg/m³。陷阱：$0.2$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$\\rho = \\frac{m}{V} = 5$ kg/m³. Trap: inverting the ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_e4_5_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m1_2_6_4",
@@ -631,10 +580,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$v = u + at = 2 + 6\\times4 = 2 + 24 = 26$ m/s。陷阱：$24$ 漏了初速 $u$；$8$ 漏了 $\\times t$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$v = u + at = 26$ m/s. Trap: $24$ drops the initial velocity $u$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m1_2_6_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m1_6_2_5",
@@ -666,10 +612,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$v = u + at = 6 + 2\\times5 = 6 + 10 = 16$ m/s。陷阱：$10$ 漏了初速 $u$；$8$ 漏了 $\\times t$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$v = u + at = 16$ m/s. Trap: $10$ drops the initial velocity $u$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m1_6_2_5",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m2_4_8",
@@ -701,10 +644,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$E_k = \\tfrac12 mv^2 = \\tfrac12 \\times 4 \\times 8^2 = 128$ J。陷阱：$256$ 漏了 $\\tfrac12$；$16$ 漏了平方。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$E_k = \\frac12 mv^2 = 128$ J. Trap: $256$ drops the $\\frac12$; $16$ forgets to square $v$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m2_4_8",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m3_8_10",
@@ -736,10 +676,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$E_p = mgh = 8\\times10\\times10 = 800$ J。陷阱：$80$ 漏了 $g$；$400$ 誤加了 $\\tfrac12$（那個是動能公式）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$E_p = mgh = 800$ J. Trap: $80$ drops $g$; $400$ wrongly adds a $\\frac12$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m3_8_10",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m3_10_5",
@@ -771,10 +708,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$E_p = mgh = 10\\times10\\times5 = 500$ J。陷阱：$50$ 漏了 $g$；$250$ 誤加了 $\\tfrac12$（那個是動能公式）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$E_p = mgh = 500$ J. Trap: $50$ drops $g$; $250$ wrongly adds a $\\frac12$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m3_10_5",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m5_2_9",
@@ -806,10 +740,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$p = mv = 2\\times9 = 18$ kg·m/s。陷阱：$9$ 誤加 $\\tfrac12$（那個是動能）；$0.222$ 用了除法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$p = mv = 18$ kg·m/s. Trap: $9$ wrongly halves it.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m5_2_9",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m5_4_3",
@@ -841,10 +772,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$p = mv = 4\\times3 = 12$ kg·m/s。陷阱：$6$ 誤加 $\\tfrac12$（那個是動能）；$1.333$ 用了除法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$p = mv = 12$ kg·m/s. Trap: $6$ wrongly halves it.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m5_4_3",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m5_12_9",
@@ -876,10 +804,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$p = mv = 12\\times9 = 108$ kg·m/s。陷阱：$54$ 誤加 $\\tfrac12$（那個是動能）；$1.333$ 用了除法。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$p = mv = 108$ kg·m/s. Trap: $54$ wrongly halves it.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m5_12_9",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m6_3_6",
@@ -911,10 +836,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$P = \\dfrac{F}{A} = \\dfrac{18}{3} = 6$ Pa。陷阱：$54$ 用了乘法；$0.167$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$P = \\frac{F}{A} = 6$ Pa. Trap: $54$ multiplies instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m6_3_6",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m6_3_9",
@@ -946,10 +868,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$P = \\dfrac{F}{A} = \\dfrac{27}{3} = 9$ Pa。陷阱：$81$ 用了乘法；$0.111$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$P = \\frac{F}{A} = 9$ Pa. Trap: $81$ multiplies instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m6_3_9",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m6_4_7",
@@ -981,10 +900,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$P = \\dfrac{F}{A} = \\dfrac{28}{4} = 7$ Pa。陷阱：$112$ 用了乘法；$0.143$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$P = \\frac{F}{A} = 7$ Pa. Trap: $112$ multiplies instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m6_4_7",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m6_5_4",
@@ -1016,10 +932,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$P = \\dfrac{F}{A} = \\dfrac{20}{5} = 4$ Pa。陷阱：$100$ 用了乘法；$0.25$ 上下倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$P = \\frac{F}{A} = 4$ Pa. Trap: $100$ multiplies instead.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m6_5_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m7_3",
@@ -1051,10 +964,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "串聯：$R = R_1 + R_2 = 8 + 4 = 12$ Ω。陷阱：$2.67$ 是並聯公式；$6$ 是取平均。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Series: $R = R_1 + R_2 = 12$ Ω. Trap: $2.67$ is the parallel value.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m7_3",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_m7_8",
@@ -1086,10 +996,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "串聯：$R = R_1 + R_2 = 6 + 6 = 12$ Ω。陷阱：$3$ 是並聯公式；$6$ 是取平均。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Series: $R = R_1 + R_2 = 12$ Ω. Trap: $3$ is the parallel value.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_m7_8",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "physics_cr_b1_pb_h1_4_5_2",
@@ -1121,10 +1028,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$v = \\sqrt{u^2 + 2as} = \\sqrt{16 + 20} = \\sqrt{36} = 6$ m/s。陷阱：$36$ 漏了開方；$14$ 誤套 $u+as$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$v = \\sqrt{u^2 + 2as} = 6$ m/s. Trap: $36$ forgets the square root.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h1_4_5_2",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h1_4_6_4",
@@ -1156,10 +1060,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "$v = \\sqrt{u^2 + 2as} = \\sqrt{16 + 48} = \\sqrt{64} = 8$ m/s。陷阱：$64$ 漏了開方；$28$ 誤套 $u+as$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "$v = \\sqrt{u^2 + 2as} = 8$ m/s. Trap: $64$ forgets the square root.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h1_4_6_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_2_3",
@@ -1191,10 +1092,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{2} + \\dfrac{1}{3}$ ⇒ $R = \\dfrac{2\\times3}{2+3} = 1.2$ Ω。陷阱：$5$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 1.2$ Ω. Trap: $5$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_2_3",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_2_7",
@@ -1226,10 +1124,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{2} + \\dfrac{1}{7}$ ⇒ $R = \\dfrac{2\\times7}{2+7} = 1.56$ Ω。陷阱：$9$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 1.56$ Ω. Trap: $9$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_2_7",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_3_4",
@@ -1261,10 +1156,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{3} + \\dfrac{1}{4}$ ⇒ $R = \\dfrac{3\\times4}{3+4} = 1.71$ Ω。陷阱：$7$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 1.71$ Ω. Trap: $7$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_3_4",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_3_5",
@@ -1296,10 +1188,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{3} + \\dfrac{1}{5}$ ⇒ $R = \\dfrac{3\\times5}{3+5} = 1.88$ Ω。陷阱：$8$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 1.88$ Ω. Trap: $8$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_3_5",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_4_6",
@@ -1331,10 +1220,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{4} + \\dfrac{1}{6}$ ⇒ $R = \\dfrac{4\\times6}{4+6} = 2.4$ Ω。陷阱：$10$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 2.4$ Ω. Trap: $10$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_4_6",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_6_7",
@@ -1366,10 +1252,7 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{6} + \\dfrac{1}{7}$ ⇒ $R = \\dfrac{6\\times7}{6+7} = 3.23$ Ω。陷阱：$13$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 3.23$ Ω. Trap: $13$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_6_7",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "physics_cr_b1_pb_h2_7_8",
@@ -1401,9 +1284,6 @@ export const physicsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "並聯：$\\dfrac{1}{R} = \\dfrac{1}{7} + \\dfrac{1}{8}$ ⇒ $R = \\dfrac{7\\times8}{7+8} = 3.73$ Ω。陷阱：$15$ 誤當串聯；並聯總電阻一定細過任何一個電阻。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Parallel: $R = \\frac{R_1R_2}{R_1+R_2} = 3.73$ Ω. Trap: $15$ treats it as series — parallel R is always smaller than either resistor.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "pb_h2_7_8",
-    "rewrite_batch": "physics-cursor-batch1"
+    "marks": 2
   }
 ] as Question[]

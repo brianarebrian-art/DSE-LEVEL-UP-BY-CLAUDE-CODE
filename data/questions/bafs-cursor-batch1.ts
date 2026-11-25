@@ -3,7 +3,7 @@ import type { Question } from './types'
 /**
  * bafs Cursor rewrite batch 1 — DRAFT / ADVERSARIAL_PASSED only.
  * NOT wired into load.ts. Do not import from student-facing loaders.
- * df_intent = DSE_PLUS_10 (intent only; not empirically proven +10%).
+ * Lifecycle metadata (df_intent, rewrite_of) lives in ledger JSON, not on Question.
  */
 export const bafsCursorBatch1Questions: Question[] = [
   {
@@ -36,10 +36,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "有限公司具獨立法人地位，股東責任以出資為限，個人資產受保障。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A limited company is a separate legal person; shareholders’ liability is capped at their investment, protecting personal assets.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_env_1",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_env_9",
@@ -71,10 +68,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "公司具獨立法人地位，可自行擁有資產與承擔債務，股東責任有限。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A company is a separate legal person that owns assets and bears debts; shareholder liability is limited.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_env_9",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_mgmt_25",
@@ -106,10 +100,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "計劃確立目標並規劃資源與步驟，是其他管理職能的基礎。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Planning sets goals and maps resources and steps, underpinning the other functions.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_mgmt_25",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_mgmt_33",
@@ -141,10 +132,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "強品牌提升辨識度與信任，顧客願付溢價並重複購買。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A strong brand boosts recognition and trust, letting firms charge more and retain customers.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_mgmt_33",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_mgmt_40",
@@ -176,10 +164,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "招聘擴大應徵人才庫；甄選經面試／測試挑選合適人選。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Recruitment widens the applicant pool; selection picks the best fit via interviews/tests.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_mgmt_40",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_cr_61",
@@ -211,10 +196,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 $=\\frac{9000}{3000}=3:1$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio $=\\frac{9000}{3000}=3:1$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_cr_61",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_cr_62",
@@ -246,10 +228,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 $=\\frac{6000}{4000}=1.5:1$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio $=\\frac{6000}{4000}=1.5:1$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_cr_62",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_qr_66",
@@ -281,10 +260,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "速動比率 $=\\frac{8000-2000}{3000}=2:1$（剔除流動性較低的存貨）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Quick ratio $=\\frac{8000-2000}{3000}=2:1$ (excluding less-liquid inventory).\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_qr_66",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_ac_73",
@@ -316,10 +292,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "資產負債表是某時點的財務狀況快照，須符合會計等式。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "A balance sheet is a point-in-time snapshot satisfying the accounting equation.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ac_73",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_si_85",
@@ -351,10 +324,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "單利 $=P r t = 12000\\times5\\%\\times3 = 1800$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Simple interest $=Prt = 12000\\times5\\%\\times3 = 1800$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_si_85",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_dep_89",
@@ -386,10 +356,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "每年折舊 $=\\frac{60000-10000}{5}=10000$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Annual depreciation $=\\frac{60000-10000}{5}=10000$.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dep_89",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_fc_96",
@@ -421,10 +388,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "利潤是會計概念，現金才是支付能力；現金斷流可致周轉不靈。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Profit is an accounting figure; cash is what pays bills — a cash shortfall can be fatal.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_fc_96",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_pf_106",
@@ -456,10 +420,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "只還最低額令未付餘額持續以高息滾存，債務拖延且總成本大增。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Minimum payments leave a balance compounding at high interest, prolonging and inflating the debt.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_pf_106",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bafs_pf_112",
@@ -491,10 +452,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "定期定額（平均成本法）攤分買入價，減低時機風險，但不保證盈利。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Dollar-cost averaging spreads the entry price, easing timing risk, though profit is not guaranteed.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_pf_112",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafsh_de_8",
@@ -526,10 +484,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "第一年折舊 = 100,000 × 20% = 20,000，年末帳面淨值 = 80,000。第二年折舊 = 80,000 × 20% = \\$16,000（折舊率乘的是「餘額」而非原值）。\n\n【陷阱】\\$20,000 是直線法／第一年的數；\\$12,800 是第三年的折舊（64,000×20%）；\\$40,000 = 兩年相加。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Year 1 depreciation = 100,000 × 20% = 20,000, leaving a net book value of 80,000. Year 2 = 80,000 × 20% = \\$16,000 (the rate applies to the REDUCING balance, not the original cost).\n\n【Trap】 \\$20,000 is straight-line / year 1; \\$12,800 is year 3 (64,000×20%); \\$40,000 sums two years.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 3,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafsh_de_8",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 3
   },
   {
     "id": "bafs_cr_b1_bf_e3_100_30",
@@ -561,10 +516,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "淨利 = 毛利 − 費用 = 100 − 30 = 70 元。陷阱：130 元加了費用（應該減）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Net profit = gross profit − expenses = 70. Trap: 130 adds expenses.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_e3_100_30",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bf_e3_250_50",
@@ -596,10 +548,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "淨利 = 毛利 − 費用 = 250 − 50 = 200 元。陷阱：300 元加了費用（應該減）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Net profit = gross profit − expenses = 200. Trap: 300 adds expenses.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_e3_250_50",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bf_m1_12",
@@ -631,10 +580,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "毛利率 = 毛利 / 銷貨 × 100% = 160/640 × 100% = 25%。陷阱：75% 是成本率；400% 分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Margin = GP/sales × 100% = 25%. Trap: inverting gives 400%.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_m1_12",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bf_m2_2",
@@ -666,10 +612,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "直線折舊 = (成本 − 殘值) / 年限 = (8000 − 800) / 4 = 1800 元。陷阱：2000 元漏了減殘值。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Depreciation = (cost − residual)/life = 1800. Trap: 2000 forgets to deduct the residual.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_m2_2",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bf_m4_6",
@@ -701,10 +644,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "售價 = 成本 × (1 + 加成%) = 90 × (1 + 20%) = 108 元。陷阱：110 元直接加了 20（並非 20%）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Price = cost × (1 + markup%) = 108. Trap: 110 adds 20 directly, not 20%.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_m4_6",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bf_h1_8",
@@ -736,10 +676,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "每件貢獻 = 售價 − 變動成本 = 25 − 10 = 15 元；收支平衡 = 固定成本 / 貢獻 = 1800 / 15 = 120 件。陷阱：72 件用了售價（漏減變動成本）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Contribution = 25−10 = 15; break-even = FC/contribution = 120. Trap: using price gives 72.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_h1_8",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bf_h2_0",
@@ -771,10 +708,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "本利和 = 本金 × (1 + 利率)^年期 = 1000 × (1 + 10%)^2 = 1210 元。陷阱：1200 元用了單利（沒有複利效應）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Amount = P(1 + r)^t = 1210. Trap: 1200 uses simple interest (no compounding).\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_h2_0",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bf_h2_5",
@@ -806,10 +740,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "本利和 = 本金 × (1 + 利率)^年期 = 4000 × (1 + 5%)^2 = 4410 元。陷阱：4400 元用了單利（沒有複利效應）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Amount = P(1 + r)^t = 4410. Trap: 4400 uses simple interest (no compounding).\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_h2_5",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bf_h3_4",
@@ -841,10 +772,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "淨利 = 600 − 360 − 120 = 120 元；淨利率 = 120/600 × 100% = 20%。陷阱：40% 是毛利率（漏減費用）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Net margin = (sales−COGS−expenses)/sales × 100% = 20%. Trap: 40% is the gross margin.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_h3_4",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bf_h3_5",
@@ -876,10 +804,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "淨利 = 1200 − 800 − 200 = 200 元；淨利率 = 200/1200 × 100% = 16.7%。陷阱：33.3% 是毛利率（漏減費用）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Net margin = (sales−COGS−expenses)/sales × 100% = 16.7%. Trap: 33.3% is the gross margin.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bf_h3_5",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bb_pf2_50000_005_2",
@@ -911,10 +836,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "複利本利和 $= P(1 + r)^{t} = 50,000 \\times 1.05^{2} = 55,125$ 元。陷阱：55,000 元用了單利公式；5,125 元是【利息】而非本利和，題目問的是到期總額；5,000 元是單利的利息。留意公式中的指數 2 正是複利與單利的分別所在：複利是連乘，單利是連加。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The compound amount is $P(1 + r)^{t} = 50,000 \\times 1.05^{2} = 55,125$. Traps: 55,000 uses the simple interest formula; 5,125 is the interest rather than the amount, and the question asks for the total at maturity; 5,000 is the simple interest. The exponent 2 is exactly where compound and simple interest part company: compounding multiplies where simple interest adds.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bb_pf2_50000_005_2",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_dp1_60000_5_10",
@@ -946,10 +868,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "直線法每年折舊 = (成本 − 殘值) ÷ 可使用年期。殘值 = 60,000 × 10% = 6,000 元，故每年折舊 = (60,000 − 6,000) ÷ 5 = 10,800 元。陷阱：12,000 元漏了扣除殘值；1,200 元只把殘值攤分；54,000 元是可折舊總額，尚未除以年期。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$60,000 × 10% = \\$6,000, so the annual charge is (\\$60,000 − \\$6,000) ÷ 5 = \\$10,800. Traps: \\$12,000 omits the residual; \\$1,200 spreads only the residual; \\$54,000 is the total depreciable amount before dividing by the life.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp1_60000_5_10",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_dp1_100000_5_10",
@@ -981,10 +900,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "直線法每年折舊 = (成本 − 殘值) ÷ 可使用年期。殘值 = 100,000 × 10% = 10,000 元，故每年折舊 = (100,000 − 10,000) ÷ 5 = 18,000 元。陷阱：20,000 元漏了扣除殘值；2,000 元只把殘值攤分；90,000 元是可折舊總額，尚未除以年期。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$100,000 × 10% = \\$10,000, so the annual charge is (\\$100,000 − \\$10,000) ÷ 5 = \\$18,000. Traps: \\$20,000 omits the residual; \\$2,000 spreads only the residual; \\$90,000 is the total depreciable amount before dividing by the life.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp1_100000_5_10",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_dp2_150000_6_2",
@@ -1016,10 +932,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "每年折舊 = (150,000 − 15,000) ÷ 6 = 22,500 元，2 年的累計折舊 = 22,500 × 2 = 45,000 元。帳面淨值 = 成本 − 累計折舊 = 150,000 − 45,000 = 105,000 元。陷阱：45,000 元是累計折舊本身；127,500 元只扣了一年；90,000 元把殘值重複扣除一次（殘值已包含在帳面淨值之內）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The annual charge is (\\$150,000 − \\$15,000) ÷ 6 = \\$22,500, so accumulated depreciation after 2 years is \\$22,500 × 2 = \\$45,000. Net book value = cost − accumulated depreciation = \\$150,000 − \\$45,000 = \\$105,000. Traps: \\$45,000 is the accumulated depreciation itself; \\$127,500 deducts only one year; \\$90,000 deducts the residual a second time, since it is already contained in the net book value.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp2_150000_6_2",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_dp3_50000_20",
@@ -1051,10 +964,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "減值餘額法以【帳面淨值】而非成本為計算基礎。第一年折舊 = 50,000 × 20% = 10,000 元，年末帳面淨值 = 40,000 元；第二年折舊 = 40,000 × 20% = 8,000 元。陷阱：10,000 元是第一年的折舊，誤以為兩年相同（那是直線法的特徵）；18,000 元是兩年的累計折舊；20,000 元把成本乘以兩倍稅率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The reducing-balance method applies the rate to the net book value rather than to cost. Year 1: \\$50,000 × 20% = \\$10,000, leaving a net book value of \\$40,000. Year 2: \\$40,000 × 20% = \\$8,000. Traps: \\$10,000 is the year-1 charge and assumes the two years are equal, which is the straight-line pattern; \\$18,000 is the two-year accumulated total; \\$20,000 applies twice the rate to cost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp3_50000_20",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_dp3_200000_50",
@@ -1086,10 +996,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "減值餘額法以【帳面淨值】而非成本為計算基礎。第一年折舊 = 200,000 × 50% = 100,000 元，年末帳面淨值 = 100,000 元；第二年折舊 = 100,000 × 50% = 50,000 元。陷阱：100,000 元是第一年的折舊，誤以為兩年相同（那是直線法的特徵）；150,000 元是兩年的累計折舊；200,000 元把成本乘以兩倍稅率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "The reducing-balance method applies the rate to the net book value rather than to cost. Year 1: \\$200,000 × 50% = \\$100,000, leaving a net book value of \\$100,000. Year 2: \\$100,000 × 50% = \\$50,000. Traps: \\$100,000 is the year-1 charge and assumes the two years are equal, which is the straight-line pattern; \\$150,000 is the two-year accumulated total; \\$200,000 applies twice the rate to cost.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp3_200000_50",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_dp4_80000_70000_60000",
@@ -1121,10 +1028,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "出售損益 = 售價 − 帳面淨值。帳面淨值 = 成本 − 累計折舊 = 80,000 − 70,000 = 10,000 元，故損益 = 60,000 − 10,000 = 50,000 元（收益）。陷阱：-20,000 元用了原成本而非帳面淨值，忽略了資產已折舊多年；10,000 元只是帳面淨值；-10,000 元把累計折舊當成了帳面淨值。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Gain or loss on disposal = proceeds − net book value. The net book value is cost − accumulated depreciation = \\$80,000 − \\$70,000 = \\$10,000, so the result is \\$60,000 − \\$10,000 = \\$50,000 (a gain). Traps: \\$-20,000 compares with original cost and ignores the years already depreciated; \\$10,000 is merely the net book value; \\$-10,000 treats accumulated depreciation as the net book value.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 2,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_dp4_80000_70000_60000",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 2
   },
   {
     "id": "bafs_cr_b1_bafs_ra1_20000_15",
@@ -1156,10 +1060,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 30,000 ÷ 20,000 = 1.5，即 1.5 : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：0.67 : 1 把分子分母倒轉；0.5 : 1 用了營運資金而非流動資產作分子；10,000 是營運資金的【金額】，並非比率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio = current assets ÷ current liabilities = \\$30,000 ÷ \\$20,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Traps: 0.67 : 1 inverts the fraction; 0.5 : 1 uses working capital in the numerator; 10,000 is the working capital amount, not a ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra1_20000_15",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra1_20000_30",
@@ -1191,10 +1092,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 60,000 ÷ 20,000 = 3，即 3 : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：0.33 : 1 把分子分母倒轉；2 : 1 用了營運資金而非流動資產作分子；40,000 是營運資金的【金額】，並非比率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio = current assets ÷ current liabilities = \\$60,000 ÷ \\$20,000 = 3, that is 3 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Traps: 0.33 : 1 inverts the fraction; 2 : 1 uses working capital in the numerator; 40,000 is the working capital amount, not a ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra1_20000_30",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra1_25000_15",
@@ -1226,10 +1124,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 37,500 ÷ 25,000 = 1.5，即 1.5 : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：0.67 : 1 把分子分母倒轉；0.5 : 1 用了營運資金而非流動資產作分子；12,500 是營運資金的【金額】，並非比率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio = current assets ÷ current liabilities = \\$37,500 ÷ \\$25,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Traps: 0.67 : 1 inverts the fraction; 0.5 : 1 uses working capital in the numerator; 12,500 is the working capital amount, not a ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra1_25000_15",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra1_50000_15",
@@ -1261,10 +1156,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 75,000 ÷ 50,000 = 1.5，即 1.5 : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：0.67 : 1 把分子分母倒轉；0.5 : 1 用了營運資金而非流動資產作分子；25,000 是營運資金的【金額】，並非比率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Current ratio = current assets ÷ current liabilities = \\$75,000 ÷ \\$50,000 = 1.5, that is 1.5 : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Traps: 0.67 : 1 inverts the fraction; 0.5 : 1 uses working capital in the numerator; 25,000 is the working capital amount, not a ratio.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra1_50000_15",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra2_30000_20_20",
@@ -1296,10 +1188,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "速動比率 = (流動資產 − 存貨) ÷ 流動負債 = (60,000 − 12,000) ÷ 30,000 = 1.6，即 1.6 : 1。剔除存貨是因為存貨變現最慢，未必能即時用以償還短期債務。陷阱：2 : 1 是流動比率，未剔除存貨；0.4 : 1 只用了存貨；0.63 : 1 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Quick ratio = (current assets − inventory) ÷ current liabilities = (\\$60,000 − \\$12,000) ÷ \\$30,000 = 1.6, that is 1.6 : 1. Inventory is excluded because it is the slowest current asset to convert into cash. Traps: 2 : 1 is the current ratio and leaves inventory in; 0.4 : 1 uses inventory alone; 0.63 : 1 inverts the fraction.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra2_30000_20_20",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra2_50000_20_40",
@@ -1331,10 +1220,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "速動比率 = (流動資產 − 存貨) ÷ 流動負債 = (100,000 − 40,000) ÷ 50,000 = 1.2，即 1.2 : 1。剔除存貨是因為存貨變現最慢，未必能即時用以償還短期債務。陷阱：2 : 1 是流動比率，未剔除存貨；0.8 : 1 只用了存貨；0.83 : 1 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Quick ratio = (current assets − inventory) ÷ current liabilities = (\\$100,000 − \\$40,000) ÷ \\$50,000 = 1.2, that is 1.2 : 1. Inventory is excluded because it is the slowest current asset to convert into cash. Traps: 2 : 1 is the current ratio and leaves inventory in; 0.8 : 1 uses inventory alone; 0.83 : 1 inverts the fraction.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra2_50000_20_40",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra4_500000_25",
@@ -1366,10 +1252,7 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "資本負債比率 = 總負債 ÷ 總資產 × 100% = 125,000 ÷ 500,000 × 100% = 25%。比率愈高代表財務槓桿愈大、利息負擔愈重。陷阱：33.3% 用了權益而非總資產作分母（那是負債權益比）；75% 算的是權益比率；400% 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Debt-to-total-assets = total liabilities ÷ total assets × 100% = \\$125,000 ÷ \\$500,000 × 100% = 25%. A higher ratio means greater financial leverage and a heavier interest burden. Traps: 33.3% uses equity as the denominator, which is the debt-to-equity ratio; 75% is the equity ratio; 400% inverts the fraction.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra4_500000_25",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   },
   {
     "id": "bafs_cr_b1_bafs_ra4_800000_60",
@@ -1401,9 +1284,6 @@ export const bafsCursorBatch1Questions: Question[] = [
     "correctIndex": 0,
     "explanation": "資本負債比率 = 總負債 ÷ 總資產 × 100% = 480,000 ÷ 800,000 × 100% = 60%。比率愈高代表財務槓桿愈大、利息負擔愈重。陷阱：150% 用了權益而非總資產作分母（那是負債權益比）；40% 算的是權益比率；166.7% 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
     "explanationEn": "Debt-to-total-assets = total liabilities ÷ total assets × 100% = \\$480,000 ÷ \\$800,000 × 100% = 60%. A higher ratio means greater financial leverage and a heavier interest burden. Traps: 150% uses equity as the denominator, which is the debt-to-equity ratio; 40% is the equity ratio; 166.7% inverts the fraction.\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.",
-    "marks": 1,
-    "df_intent": "DSE_PLUS_10",
-    "rewrite_of": "bafs_ra4_800000_60",
-    "rewrite_batch": "bafs-cursor-batch1"
+    "marks": 1
   }
 ] as Question[]
