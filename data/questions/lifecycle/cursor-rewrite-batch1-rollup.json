@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-11-25T17:49:57.547Z",
+  "subjects": {
+    "physics": {
+      "source": 40,
+      "upgraded": 40,
+      "skippedDefect": 0,
+      "failedGate": 0
+    },
+    "chemistry": {
+      "source": 40,
+      "upgraded": 39,
+      "skippedDefect": 1,
+      "failedGate": 0
+    },
+    "biology": {
+      "source": 40,
+      "upgraded": 39,
+      "skippedDefect": 1,
+      "failedGate": 0
+    },
+    "bafs": {
+      "source": 40,
+      "upgraded": 40,
+      "skippedDefect": 0,
+      "failedGate": 0
+    },
+    "economics": {
+      "source": 40,
+      "upgraded": 39,
+      "skippedDefect": 1,
+      "failedGate": 0
+    }
+  },
+  "totalUpgraded": 197,
+  "wiredIntoLoadTs": false,
+  "claimEmpiricalPlus10": false
+}

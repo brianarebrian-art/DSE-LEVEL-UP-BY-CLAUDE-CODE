@@ -45,7 +45,7 @@ export async function POST(request: Request) {
   if (typeof token !== 'string' || token.length < 20) {
     return NextResponse.json({ error: 'invalid_token' }, { status: 400 })
   }
-  if (!Array.isArray(answers) || answers.length > 40) {
+  if (!Array.isArray(answers) || answers.length === 0 || answers.length > 40) {
     return NextResponse.json({ error: 'invalid_answers' }, { status: 400 })
   }
 
@@ -70,6 +70,9 @@ export async function POST(request: Request) {
     if (row.chosenIndex < 0 || row.chosenIndex > 5) continue
     normalized.push({ id: row.id, chosenIndex: Math.floor(row.chosenIndex) })
   }
+  if (normalized.length === 0) {
+    return NextResponse.json({ error: 'empty_answers' }, { status: 400 })
+  }
 
   const bank = await loadSubjectQuestions(subjectId)
   const mc = bank.filter((q): q is MCQuestion => q.type === 'mc')
@@ -80,13 +83,14 @@ export async function POST(request: Request) {
 
   let explanations: Record<string, { zh: string; en?: string }> | undefined
   if (read.value?.includeExplanations === true) {
+    const answered = new Set(graded.answeredIds)
     const map = new Map(
       mc.map((q) => [q.id, { zh: q.explanation, en: q.explanationEn }]),
     )
     explanations = {}
-    for (const d of graded.details) {
-      const e = map.get(d.id)
-      if (e) explanations[d.id] = e
+    for (const id of answered) {
+      const e = map.get(id)
+      if (e) explanations[id] = e
     }
   }
 
