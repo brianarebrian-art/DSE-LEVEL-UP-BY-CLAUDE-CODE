@@ -1,6 +1,7 @@
 # docs/19-final-scorecard.md
 
-> 2026-11-26（Asia/Hong_Kong）· 只准 PASS / FAIL / UNKNOWN
+> 2026-11-26（Asia/Hong_Kong）· 只准 PASS / FAIL / UNKNOWN  
+> **創辦人一次彙報（26,428 誠實版）：** [`docs/25-founder-oneshot-26428-report.md`](./25-founder-oneshot-26428-report.md)
 
 | # | 標準 | 結果 | 說明 |
 |---|---|---|---|
