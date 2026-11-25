@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.dselevelup.com/schema/item.schema.json",
+  "title": "DSELevelUpItem",
+  "type": "object",
+  "required": [
+    "id",
+    "subject",
+    "paper",
+    "topic_path",
+    "item_type",
+    "marks",
+    "difficulty",
+    "cognitive_level",
+    "language",
+    "version",
+    "review_status",
+    "calibration_status",
+    "source_status"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "subject": { "type": "string" },
+    "paper": { "type": "string", "description": "e.g. P1, P2, ALL, UNKNOWN" },
+    "section": { "type": "string" },
+    "topic_path": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "subtopic": { "type": "string" },
+    "item_type": {
+      "type": "string",
+      "enum": ["mc", "text", "long", "listening", "oral", "practical", "other"]
+    },
+    "marks": { "type": "number", "exclusiveMinimum": 0 },
+    "difficulty": {
+      "type": "string",
+      "enum": ["EASY", "FOUNDATION", "STANDARD", "CHALLENGING", "DSE_PLUS_10", "EXTENSION"]
+    },
+    "difficulty_legacy": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "df_score": { "type": "number" },
+    "cognitive_level": { "type": "integer", "minimum": 1, "maximum": 6 },
+    "language": { "type": "string", "enum": ["zh-HK", "en", "bilingual"] },
+    "has_image": { "type": "boolean" },
+    "has_table": { "type": "boolean" },
+    "has_audio": { "type": "boolean" },
+    "has_formula": { "type": "boolean" },
+    "has_code": { "type": "boolean" },
+    "answer_key": { "type": "object" },
+    "explanation": { "type": "object" },
+    "misconceptions": { "type": "array", "items": { "type": "string" } },
+    "trap_patterns": { "type": "array", "items": { "type": "string" } },
+    "randomization_rules": { "type": "object" },
+    "print_layout": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "curriculum_version": { "type": "string" },
+    "source_status": {
+      "type": "string",
+      "enum": ["ORIGINAL", "REWRITTEN", "PARAM_UPGRADED", "LEGACY"]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "PARAM_CHECKED",
+        "AI_BLIND_REVIEWED",
+        "ADVERSARIAL_PASSED",
+        "HUMAN_SPOT_CHECKED",
+        "APPROVED",
+        "RELEASED",
+        "REJECTED",
+        "RETIRED",
+        "LEGACY_UNCALIBRATED",
+        "CALIBRATION_INSUFFICIENT"
+      ]
+    },
+    "calibration_status": {
+      "type": "string",
+      "enum": ["NONE", "INSUFFICIENT", "PROVISIONAL", "CALIBRATED"]
+    }
+  },
+  "additionalProperties": true
+}

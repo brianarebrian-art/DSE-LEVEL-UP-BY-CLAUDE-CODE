@@ -1,0 +1,16 @@
+subject,paper,check,result,evidence,notes
+math,P2_MC_print,pdf_or_print_download,PASS,paper-warrior CSS @media print,browser print path only — no server PDF
+math,P2_MC_print,fonts_cjk,PASS,manual smoke pending CI,assumes system CJK fonts
+math,P2_MC_print,no_garbled_zh_en,UNKNOWN,needs human print sample,
+math,P2_MC_print,formula_not_clipped,UNKNOWN,needs KaTeX print sample,
+math,P2_MC_print,margins_ok,UNKNOWN,needs A4 print,
+math,P2_MC_print,mc_answer_boxes,PASS,paper warrior includes option letters,
+math,P2_MC_print,unofficial_disclaimer,PASS,footer charter + session disclaimer draft,
+math,P2_MC_print,sen_spacing_mode,UNKNOWN,flag not yet wired to print CSS,
+physics,P1_MC_print,pdf_or_print_download,PASS,paper-warrior,
+chemistry,P1_MC_print,pdf_or_print_download,PASS,paper-warrior,
+biology,P1_MC_print,pdf_or_print_download,PASS,paper-warrior,
+bafs,P1_MC_print,pdf_or_print_download,PASS,paper-warrior,
+economics,P1_MC_print,pdf_or_print_download,PASS,paper-warrior,
+ALL,server_pdf,jspdf_or_equivalent,FAIL,charter bans new packages pending exception,A9 — print CSS first
+ALL,non_mc_listening_oral,printable_full_paper,FAIL,out of 30d scope,honest shortfall

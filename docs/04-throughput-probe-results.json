@@ -1,0 +1,517 @@
+{
+  "generatedAt": "2026-11-26 01:24",
+  "mode": "deterministic_gates_only",
+  "llmCostPerItemUsd": null,
+  "note": "LLM blind-review cost UNKNOWN until FOUNDER_AI budget approved (A7)",
+  "n": 50,
+  "paramPass": 50,
+  "advPass": 50,
+  "simFlag": 0,
+  "elapsedMs": 337,
+  "avgMsPerItem": 0.4,
+  "estimatedDeterministicDayCapacity_6x8h": 432000000,
+  "pilotCapRecommendation": 2500,
+  "failures": [],
+  "rows": [
+    {
+      "subject": "math",
+      "id": "mb3_cr1_45",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "math",
+      "id": "mb2_fn1_334",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb_e2_3_1_3",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "math",
+      "id": "mb2_pb1_24",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb2_lc2_912_1",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb_m2_3_6_12",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb2_sq2_41_7",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "math",
+      "id": "mb_h1_14_5",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb3_fm1_30_75",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "math",
+      "id": "mb_m6_4_3_-1",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "physics",
+      "id": "pb_op1_15_樹脂",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "physics",
+      "id": "pb_h4_24_100_400",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "physics",
+      "id": "phy_half_110",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "physics",
+      "id": "pb_m6_3_8",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 3
+    },
+    {
+      "subject": "physics",
+      "id": "pb_ra1_6400_4",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "physics",
+      "id": "pb_hm1_45_10",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "physics",
+      "id": "phy_qit_58",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "physics",
+      "id": "phy_wavec_91",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "physics",
+      "id": "phy_mom_26",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "physics",
+      "id": "pb_he1_60_3",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemd_gv3_Cl2_1",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemd_gv3_CO_2",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemg_qt3_1_100_NaOH",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemg_qt3_0p5_100_NaOH",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "chemistry",
+      "id": "chem_pt_93",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "cb_e2_9_3",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemc_fm2_AgCl",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chem_ab_19",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 4
+    },
+    {
+      "subject": "chemistry",
+      "id": "chemg_qt3_1_100_NaCl",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "chemistry",
+      "id": "chem_formula_39",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob_bi3_20000_15",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob2_gl2_70",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "biology",
+      "id": "biob_dg1_20_15_15",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob2_dg1_40_10",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob_hb1_85_100",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "rcl_bio_genetics_27",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "biology",
+      "id": "biob_ge1_Aa_Aa_花色",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob2_ch1_90_80",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "biob2_ge1_10",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "biology",
+      "id": "bio2_bi4_10_4_40",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_in4_60000_24_4",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_in4_48000_24_4",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_ac2_50000_160000_45000",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_dp5_120000_5_6",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_dp5_144000_5_4",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_ac2_20000_160000_15000",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_ac1_150000_30",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 1
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_ra4_200000_75",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_cp3_400_20",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    },
+    {
+      "subject": "bafs",
+      "id": "bafs_gm_50",
+      "param_ok": true,
+      "adv_ok": true,
+      "similarity_flag": false,
+      "errors": [],
+      "warnings": [],
+      "ms": 0
+    }
+  ]
+}
