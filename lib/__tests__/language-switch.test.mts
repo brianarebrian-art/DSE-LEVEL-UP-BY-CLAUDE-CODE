@@ -9,8 +9,8 @@ import * as localeNs from '../localePreference.ts'
 const localeMod = (localeNs as unknown as { default?: typeof localeNs }).default ?? localeNs
 const {
   immersiveLanguageOffset,
+  defaultLocale,
   interfaceLanguageAnnouncement,
-  localeFromBrowserLanguage,
   parseStoredLocale,
   resolveLocale,
   showsStudentLanguageControl,
@@ -21,26 +21,18 @@ const {
 const read = (rel: string) =>
   readFileSync(fileURLToPath(new URL(`../../${rel}`, import.meta.url)), 'utf8')
 
-test('已儲存的 zh / en 先於瀏覽器；無效值不當成已選擇', () => {
+test('新訪客預設使用繁體中文；已儲存的介面選擇優先', () => {
+  assert.equal(defaultLocale(), 'zh')
   assert.equal(parseStoredLocale('en'), 'en')
   assert.equal(parseStoredLocale('zh'), 'zh')
   assert.equal(parseStoredLocale('EN'), null)
   assert.equal(parseStoredLocale('zh-HK'), null)
   assert.equal(parseStoredLocale(''), null)
   assert.equal(parseStoredLocale(null), null)
-  assert.equal(resolveLocale('en', 'zh-HK'), 'en')
-  assert.equal(resolveLocale('zh', 'en-GB'), 'zh')
-  assert.equal(resolveLocale('nope', 'en-HK'), 'en')
-  assert.equal(resolveLocale(null, 'fr-FR'), 'zh')
-})
-
-test('瀏覽器語言只看開頭是不是 en', () => {
-  for (const lang of ['en', 'en-GB', 'en-HK', 'EN-us']) {
-    assert.equal(localeFromBrowserLanguage(lang), 'en', lang)
-  }
-  for (const lang of ['zh-HK', 'zh-TW', 'yue', 'fr', '', undefined]) {
-    assert.equal(localeFromBrowserLanguage(lang), 'zh', String(lang))
-  }
+  assert.equal(resolveLocale('en'), 'en')
+  assert.equal(resolveLocale('zh'), 'zh')
+  assert.equal(resolveLocale('nope'), 'zh')
+  assert.equal(resolveLocale(null), 'zh')
 })
 
 test('考卷語言不跟介面：數學用原文，英文科用英文欄', () => {
@@ -99,7 +91,7 @@ test('掛載時不寫入 localStorage；只有 setLocale / toggle 會寫', () =>
   const mount = src.match(/useEffect\(\(\) => \{([\s\S]*?)\}, \[\]\)/)
   assert.ok(mount, '找不到只跑一次的掛載 effect')
   assert.match(mount[1], /resolveLocale\(/)
-  assert.match(mount[1], /navigator\.language/)
+  assert.doesNotMatch(mount[1], /navigator\.language/)
   assert.doesNotMatch(mount[1], /setItem/)
   assert.match(src, /function writeStored\(next: Locale\)/)
   assert.match(src, /localStorage\.setItem\(LOCALE_STORAGE_KEY, next\)/)

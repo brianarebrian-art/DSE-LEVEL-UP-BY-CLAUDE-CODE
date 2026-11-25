@@ -8,17 +8,14 @@ export function parseStoredLocale(raw: string | null | undefined): Locale | null
   return raw === 'zh' || raw === 'en' ? raw : null
 }
 
-/**
- * 未選擇時的瀏覽器後備：`navigator.language` 以 en 開頭（en、en-GB、en-HK）為英文，其餘為中文。
- * 不讀 `navigator.languages`，避免與「只看 language」的規格分叉。
- */
-export function localeFromBrowserLanguage(language: string | null | undefined): Locale {
-  return (language ?? '').toLowerCase().startsWith('en') ? 'en' : 'zh'
+/** 新訪客預設使用繁體中文，符合香港 DSE 學生的主要使用情境。 */
+export function defaultLocale(): Locale {
+  return 'zh'
 }
 
-/** 已儲存的選擇永遠優先於瀏覽器語言。 */
-export function resolveLocale(stored: string | null | undefined, browserLanguage: string | null | undefined): Locale {
-  return parseStoredLocale(stored) ?? localeFromBrowserLanguage(browserLanguage)
+/** 學生曾明確選擇的介面語言優先；新訪客預設使用繁體中文。 */
+export function resolveLocale(stored: string | null | undefined): Locale {
+  return parseStoredLocale(stored) ?? defaultLocale()
 }
 
 /**
@@ -33,7 +30,7 @@ export function tr(zh: string, en: string | null | undefined, locale: Locale): s
   return enText
 }
 
-/** 只在學生主動切換之後朗讀。首次繪製與掛載後套用已存／瀏覽器語言都不呼叫。 */
+/** 只在學生主動切換之後朗讀。首次繪製及掛載時套用已儲存語言都不呼叫。 */
 export function interfaceLanguageAnnouncement(locale: Locale): string {
   return locale === 'en' ? 'Interface language: English' : '介面語言：中文'
 }
