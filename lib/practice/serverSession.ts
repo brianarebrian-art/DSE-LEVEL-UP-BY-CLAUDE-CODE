@@ -160,9 +160,17 @@ export function buildSession(
     exp: Date.now() + 2 * 60 * 60 * 1000,
     items,
   }
-  const publicItems: PublicSessionItem[] = items.map(
-    ({ correctShuffledIndex: _c, ...rest }) => rest,
-  )
+  const publicItems: PublicSessionItem[] = items.map((item) => ({
+    id: item.id,
+    content: item.content,
+    contentEn: item.contentEn,
+    options: item.options,
+    optionsEn: item.optionsEn,
+    marks: item.marks,
+    topic: item.topic,
+    topicZh: item.topicZh,
+    difficulty: item.difficulty,
+  }))
   return { token: encodeSession(payload), publicItems, sessionId }
 }
 
