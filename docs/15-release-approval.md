@@ -17,11 +17,11 @@
 
 ## 本輪可簽清單（待創辦人一次簽署）
 
-詳見 [`docs/signoff-pack-batch1.md`](./signoff-pack-batch1.md) 與 [`docs/signoff-pack-batch1-ids.json`](./signoff-pack-batch1-ids.json)。
+全庫升級後：見 [`docs/27-full-bank-upgrade.md`](./27-full-bank-upgrade.md) 與 [`docs/signoff-pack-full-upgrade-ids.json`](./signoff-pack-full-upgrade-ids.json)。
 
-| 批次 | ADVERSARIAL_PASSED | 已接線 load.ts |
+| 批次 | 數量 | Loader |
 |---|---|---|
-| Pilot 500 | 500 | 正本既有題（狀態標註；非本輪新接線） |
-| Cursor rewrite batch1（6 科） | 246 | **否** |
+| **全庫 overlay 升級** | **26,428** `ADVERSARIAL_PASSED` | **已接** `applyFullUpgradeOverlay` |
+| 早期 pilot／batch1 包 | 見 `signoff-pack-batch1*` | 已被全庫 overlay 覆蓋 |
 
-簽署前禁止把 Cursor 改寫匯入 `data/questions/load.ts`。
+`RELEASED` 仍為 0，直至創辦人一次簽署。實證難 10% 仍未宣稱。

@@ -93,7 +93,8 @@ export function metricize(row: ItemInput): ItemMetric {
   const { delta_p, ratio_p } = computeDeltaRatio(dlu, hkeaa)
 
   let skip_reason: string | undefined
-  const same = row.same_topic_type !== false
+  // Opt-in only: missing/undefined same_topic_type must NOT enter formal stats
+  const same = row.same_topic_type === true
   if (!same) skip_reason = 'cross_topic_or_type'
   else if (sample < MIN_N) skip_reason = 'sample_lt_30'
   else if (hkeaa == null) skip_reason = 'no_hkeaa_p'
