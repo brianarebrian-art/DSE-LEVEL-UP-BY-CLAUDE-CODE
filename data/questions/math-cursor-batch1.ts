@@ -448,20 +448,20 @@ export const mathCursorBatch1Questions: Question[] = [
     "content": "設 $\\alpha$、$\\beta$ 為方程 $2x^2 -12x -8 = 0$ 的兩根。求 $\\alpha^2+\\beta^2$。",
     "contentEn": "Roots $\\alpha,\\beta$ of $2x^2 -12x -8 = 0$. Find $\\alpha^2+\\beta^2$.",
     "options": [
-      "$11$",
+      "$44$",
       "$28$",
       "$4$",
       "$36$"
     ],
     "optionsEn": [
-      "$11$",
+      "$44$",
       "$28$",
       "$4$",
       "$36$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-4$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=44$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-4$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=44$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=44$.",
     "mcHack": "不必解出兩根！$(\\alpha+\\beta)^2-2\\alpha\\beta=\\frac{13}{9}$，韋達一步即得。",
     "mcHackEn": "Don't solve the roots — $(\\alpha+\\beta)^2-2\\alpha\\beta=\\frac{13}{9}$ via Vieta.",
     "marks": 2,
@@ -841,20 +841,20 @@ export const mathCursorBatch1Questions: Question[] = [
     "content": "設 $\\alpha$、$\\beta$ 為方程 $2x^2 -12x -6 = 0$ 的兩根。求 $\\alpha^2+\\beta^2$。",
     "contentEn": "Roots $\\alpha,\\beta$ of $2x^2 -12x -6 = 0$. Find $\\alpha^2+\\beta^2$.",
     "options": [
-      "$\\frac{21}{2}$",
+      "$42$",
       "$36$",
       "$30$",
       "$3$"
     ],
     "optionsEn": [
-      "$\\frac{21}{2}$",
+      "$42$",
       "$36$",
       "$30$",
       "$3$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-3$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=42$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-3$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=42$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=42$.",
     "marks": 1,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_m1_2_3",
@@ -1273,8 +1273,8 @@ export const mathCursorBatch1Questions: Question[] = [
       "$4$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-4$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=44$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-4$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=44$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=44$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_2_9",
@@ -1308,8 +1308,8 @@ export const mathCursorBatch1Questions: Question[] = [
       "$5$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-5$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=46$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-5$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=46$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=46$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_3_1",
@@ -1343,8 +1343,8 @@ export const mathCursorBatch1Questions: Question[] = [
       "$49$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=7$，$\\alpha\\beta=-2$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=53$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=7$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=53$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=53$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_3_8",
@@ -1378,8 +1378,8 @@ export const mathCursorBatch1Questions: Question[] = [
       "$32$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-2$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=40$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=6$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=40$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=40$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_4_1",
@@ -1401,20 +1401,20 @@ export const mathCursorBatch1Questions: Question[] = [
     "content": "設 $\\alpha$、$\\beta$ 為方程 $2x^2 -10x -6 = 0$ 的兩根。求 $\\alpha^2+\\beta^2$。",
     "contentEn": "Roots $\\alpha,\\beta$ of $2x^2 -10x -6 = 0$. Find $\\alpha^2+\\beta^2$.",
     "options": [
-      "$\\frac{31}{4}$",
+      "$31$",
       "$19$",
       "$3$",
       "$25$"
     ],
     "optionsEn": [
-      "$\\frac{31}{4}$",
+      "$31$",
       "$19$",
       "$3$",
       "$25$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-3$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=31$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-3$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=31$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=31$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_4_3",
@@ -1436,20 +1436,20 @@ export const mathCursorBatch1Questions: Question[] = [
     "content": "設 $\\alpha$、$\\beta$ 為方程 $2x^2 -10x -4 = 0$ 的兩根。求 $\\alpha^2+\\beta^2$。",
     "contentEn": "Roots $\\alpha,\\beta$ of $2x^2 -10x -4 = 0$. Find $\\alpha^2+\\beta^2$.",
     "options": [
-      "$\\frac{29}{4}$",
+      "$29$",
       "$25$",
       "$2$",
       "$21$"
     ],
     "optionsEn": [
-      "$\\frac{29}{4}$",
+      "$29$",
       "$25$",
       "$2$",
       "$21$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-2$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=29$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=5$，$\\alpha\\beta=-2$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=29$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=29$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_14_5",
@@ -1471,20 +1471,20 @@ export const mathCursorBatch1Questions: Question[] = [
     "content": "設 $\\alpha$、$\\beta$ 為方程 $2x^2 -8x -10 = 0$ 的兩根。求 $\\alpha^2+\\beta^2$。",
     "contentEn": "Roots $\\alpha,\\beta$ of $2x^2 -8x -10 = 0$. Find $\\alpha^2+\\beta^2$.",
     "options": [
-      "$\\frac{13}{2}$",
+      "$26$",
       "$6$",
       "$5$",
       "$16$"
     ],
     "optionsEn": [
-      "$\\frac{13}{2}$",
+      "$26$",
       "$6$",
       "$5$",
       "$16$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\alpha+\\beta=4$，$\\alpha\\beta=-5$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=26$。",
-    "explanationEn": "Use $(α+β)^2-2αβ$.",
+    "explanation": "$\\alpha+\\beta=4$，$\\alpha\\beta=-5$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=26$。",
+    "explanationEn": "Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=26$.",
     "marks": 2,
     "df_intent": "DSE_PLUS_10",
     "rewrite_of": "mb_h1_14_8",

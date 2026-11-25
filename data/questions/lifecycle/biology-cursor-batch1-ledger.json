@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T17:49:57.547Z",
+  "generatedAt": "2026-11-25T17:59:49.399Z",
   "batch": "biology-cursor-batch1",
   "summary": {
     "source": 40,
@@ -24,7 +24,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_genetics_34",
@@ -40,7 +40,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_human_body_43",
@@ -56,7 +56,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_human_body_45",
@@ -72,7 +72,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_human_body_46",
@@ -88,7 +88,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_coordination_57",
@@ -104,7 +104,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_enzymes_71",
@@ -120,7 +120,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_enzymes_74",
@@ -136,7 +136,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_enzymes_76",
@@ -152,7 +152,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_photosynthesis_90",
@@ -168,7 +168,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio_ecology_99",
@@ -184,7 +184,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bioh_ge_2",
@@ -200,7 +200,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi1_40_6",
@@ -216,7 +216,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi1_80_6",
@@ -232,7 +232,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_50_60_8",
@@ -248,7 +248,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_50_80_20",
@@ -264,7 +264,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_60_50_10",
@@ -275,7 +275,7 @@
       "ai_blind": "DETERMINISTIC_ONLY",
       "df_intent": "DSE_PLUS_10",
       "reason": "defect_scan_blocked",
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_60_60_20",
@@ -291,7 +291,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_80_40_10",
@@ -307,7 +307,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_80_50_8",
@@ -323,7 +323,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_bi2_100_80_20",
@@ -339,7 +339,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio2_bi4_5_10_40",
@@ -355,7 +355,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_bio2_bi5_4",
@@ -371,7 +371,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ce1_10_4",
@@ -387,7 +387,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ce1_15_100",
@@ -403,7 +403,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_en2_40_10",
@@ -419,7 +419,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_en2_50_10",
@@ -435,7 +435,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ph1_4_5",
@@ -451,7 +451,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ph1_20_2",
@@ -467,7 +467,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ph2_10",
@@ -483,7 +483,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ge1_Aa_aa_種子形狀",
@@ -499,7 +499,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_hb1_60_72",
@@ -515,7 +515,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_hb1_65_60",
@@ -531,7 +531,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_hb1_75_60",
@@ -547,7 +547,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_hb1_75_80",
@@ -563,7 +563,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_hb2_500_3300_1000",
@@ -579,7 +579,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_dg1_30_20_15",
@@ -595,7 +595,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_dg1_40_20_15",
@@ -611,7 +611,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_dg1_60_25_5",
@@ -627,7 +627,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "biology_cr_b1_biob_ec2_200_15",
@@ -643,7 +643,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     }
   ]
 }

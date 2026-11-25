@@ -8,23 +8,24 @@
 
 | 清單 | 數量 | 檔案 | 學生可見？ |
 |---|---|---|---|
-| Pilot 500（確定性閘） | 500 | `data/questions/lifecycle/pilot-500-ledger.json` | 否（仍未接 `RELEASED`；部分已在正本但標 `PARAM_UPGRADED`／`DSE_PLUS_10_UNCALIBRATED`） |
+| Pilot 確定性閘（**已扣缺陷**） | **486** | `data/questions/lifecycle/pilot-500-ledger.json`（扣 `gap-defect-scan` blocked） | 否（仍未接 `RELEASED`） |
 | Math Cursor rewrite batch1 | 49 | `data/questions/lifecycle/math-cursor-batch1-ledger.json` | **否** — 未接線 `load.ts` |
 | Physics Cursor rewrite batch1 | 40 | `data/questions/lifecycle/physics-cursor-batch1-ledger.json` | **否** |
 | Chemistry Cursor rewrite batch1 | 39 | `data/questions/lifecycle/chemistry-cursor-batch1-ledger.json` | **否** |
 | Biology Cursor rewrite batch1 | 39 | `data/questions/lifecycle/biology-cursor-batch1-ledger.json` | **否** |
 | BAFS Cursor rewrite batch1 | 40 | `data/questions/lifecycle/bafs-cursor-batch1-ledger.json` | **否** |
 | Economics Cursor rewrite batch1 | 39 | `data/questions/lifecycle/economics-cursor-batch1-ledger.json` | **否** |
-| **Cursor 改寫合計（可簽進下一步）** | **246** | `data/questions/lifecycle/cursor-rewrite-batch1-rollup.json` | **否** |
+| **Cursor 改寫合計** | **246** | `data/questions/lifecycle/cursor-rewrite-batch1-rollup.json` | **否** |
+| **可簽合計** | **732**（486+246） | `docs/signoff-pack-batch1-ids.json` | **否** |
 
-機器可讀 ID 清單：`docs/signoff-pack-batch1-ids.json`
+機器可讀 ID 清單：`docs/signoff-pack-batch1-ids.json`（`pilotIds` **不含** 14 題缺陷封鎖）
 
 ## 明確排除
 
 - 全部 `LEGACY_UNCALIBRATED`（~25,928）
-- 缺陷掃描 `blocked`（14 題）— 見 `docs/gap-defect-scan-results.json`
+- 缺陷掃描 `blocked`（**14** 題）— 見 `docs/gap-defect-scan-results.json`；**唔入** `pilotIds`
 - Cursor 改寫中 `REJECTED`／`CURSOR_REWRITE_BLOCKED_DEFECT`／`CURSOR_REWRITE_GATE_FAIL`
-- 任何「已證明難 10%」宣稱（本輪僅 `df_intent=DSE_PLUS_10`，校準 `INSUFFICIENT`）
+- 任何「已證明難 10%」宣稱（本輪僅 `df_intent=DSE_PLUS_10`，校準 `INSUFFICIENT`；正式 `ratio_p` 見 [`docs/26-pvalue-accuracy-metrics.md`](./26-pvalue-accuracy-metrics.md)）
 
 ## 簽署後先做（仍非全庫）
 
@@ -36,6 +37,7 @@
 
 - [ ] 已讀 `docs/02-accuracy-gap.md`：答對率落差 ≠ 已難 10%  
 - [ ] 已讀 `docs/08-hypothesis-results.md`：主因比例 UNKNOWN  
+- [ ] 確認可簽 **732**（486 pilot 清潔 + 246 Cursor）且 14 缺陷題已排除  
 - [ ] 確認 Cursor 改寫 **246** 題均未接線學生正本  
 - [ ] 確認空 answers 洩鍵已修（grade API）  
 - [ ] 確認無外部 LLM 本輪預算／呼叫  

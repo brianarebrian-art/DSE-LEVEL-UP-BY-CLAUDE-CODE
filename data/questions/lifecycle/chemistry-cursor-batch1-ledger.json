@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T17:49:57.547Z",
+  "generatedAt": "2026-11-25T17:59:49.399Z",
   "batch": "chemistry-cursor-batch1",
   "summary": {
     "source": 40,
@@ -24,7 +24,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_ph_28",
@@ -40,7 +40,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_rx_44",
@@ -56,7 +56,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_disp_52",
@@ -72,7 +72,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_bd_79",
@@ -88,7 +88,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_bd_84",
@@ -104,7 +104,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chem_pt_99",
@@ -120,7 +120,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemh_qu_1",
@@ -136,7 +136,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemh_re_7",
@@ -152,7 +152,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_e1_0_2",
@@ -168,7 +168,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_e1_2_2",
@@ -184,7 +184,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_m1_6_5",
@@ -200,7 +200,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_m3_3",
@@ -211,7 +211,7 @@
       "ai_blind": "DETERMINISTIC_ONLY",
       "df_intent": "DSE_PLUS_10",
       "reason": "defect_scan_blocked",
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_h1_1_2_5",
@@ -227,7 +227,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_h2_2_3_48",
@@ -243,7 +243,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_h2_3_2_40",
@@ -259,7 +259,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_h2_3_4_48",
@@ -275,7 +275,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ab1_3_鹽酸",
@@ -291,7 +291,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ab2_01_25_05",
@@ -307,7 +307,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ab2_02_25_05",
@@ -323,7 +323,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ab2_02_50_01",
@@ -339,7 +339,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ab2_05_40_02",
@@ -355,7 +355,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_re1_12_4",
@@ -371,7 +371,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_re1_30_3",
@@ -387,7 +387,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_re1_48_4",
@@ -403,7 +403,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_pt1_16",
@@ -419,7 +419,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_or1a_4",
@@ -435,7 +435,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_hq1_128_32_H2O",
@@ -451,7 +451,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_hq2_2",
@@ -467,7 +467,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_cb_ho1_6_6",
@@ -483,7 +483,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_fm1_AlF3",
@@ -499,7 +499,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_fm2_NaCl",
@@ -515,7 +515,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_fm2_ZnO",
@@ -531,7 +531,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_fm2_CO2",
@@ -547,7 +547,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_pt2_Ne",
@@ -563,7 +563,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_pt2g_K",
@@ -579,7 +579,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_rx2_S_4_m2",
@@ -595,7 +595,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_bd2_Cu2Cl1",
@@ -611,7 +611,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_bd2_Ag1O2",
@@ -627,7 +627,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     },
     {
       "id": "chemistry_cr_b1_chemc_gv2_3",
@@ -643,7 +643,7 @@
       "version": 1,
       "errors": [],
       "warnings": [],
-      "at": "2026-11-25T17:49:57.547Z"
+      "at": "2026-11-25T17:59:49.399Z"
     }
   ]
 }

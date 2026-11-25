@@ -1,0 +1,50 @@
+{
+  "note": "Synthetic demo only — not production. Shows ΔP=-0.12, ratio=0.80 for n=100.",
+  "demo": [
+    {
+      "item_id": "_demo_ok",
+      "subject": "math",
+      "hkeaa_ref_p": 0.6,
+      "hkeaa_est_p": null,
+      "hkeaa_p_kind": "ref",
+      "hkeaa_p": 0.6,
+      "dlu_p": 0.48,
+      "sample_size": 100,
+      "delta_p": -0.12,
+      "ratio_p": 0.8,
+      "same_topic_type": true,
+      "in_formal_aggregate": true,
+      "anomaly_flag": false
+    },
+    {
+      "item_id": "_demo_small_n",
+      "subject": "math",
+      "hkeaa_ref_p": 0.5,
+      "hkeaa_est_p": null,
+      "hkeaa_p_kind": "ref",
+      "hkeaa_p": 0.5,
+      "dlu_p": 0.5,
+      "sample_size": 10,
+      "delta_p": 0,
+      "ratio_p": 1,
+      "same_topic_type": true,
+      "in_formal_aggregate": false,
+      "anomaly_flag": false,
+      "skip_reason": "sample_lt_30"
+    }
+  ],
+  "aggregate": {
+    "formal_n": 1,
+    "mean_delta_p": -0.12,
+    "mean_ratio_p": 0.8,
+    "target_ratio": 0.9,
+    "bySubject": {
+      "math": {
+        "n": 1,
+        "mean_delta_p": -0.12,
+        "mean_ratio_p": 0.8
+      }
+    },
+    "anomalies": []
+  }
+}

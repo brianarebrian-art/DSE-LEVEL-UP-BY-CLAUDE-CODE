@@ -14,8 +14,8 @@
 | Lifecycle：試點確定性閘 | **500** | `ADVERSARIAL_PASSED`；校準 `INSUFFICIENT`；**RELEASED=0** |
 | Lifecycle：其餘 | **25,928** | `LEGACY_UNCALIBRATED`（ledger-only） |
 | Cursor 改寫草稿（新 ID，**唔計入** 26,428） | **246** | `ADVERSARIAL_PASSED`；**未接** `data/questions/load.ts` |
-| 一次簽署候選 | **746**（500+246） | 等創辦人簽 — [`docs/signoff-pack-batch1.md`](./signoff-pack-batch1.md) |
-| APPROVED／RELEASED／實證 DSE_PLUS_10 | **0／0／0** | 禁止對外宣稱已達標 |
+| 一次簽署候選 | **732**（486 清潔 pilot + 246 Cursor；已扣 14 缺陷） | 等創辦人簽 — [`docs/signoff-pack-batch1.md`](./signoff-pack-batch1.md) |
+| APPROVED／RELEASED／實證 DSE_PLUS_10 | **0／0／0** | 禁止對外宣稱已達標；P 值規則見 [`docs/26-pvalue-accuracy-metrics.md`](./26-pvalue-accuracy-metrics.md) |
 
 帳本來源：
 
@@ -89,7 +89,7 @@
 
 ## 創辦人下一步
 
-1. 讀簽署包 [`docs/signoff-pack-batch1.md`](./signoff-pack-batch1.md)（746 候選，非 26,428）  
+1. 讀簽署包 [`docs/signoff-pack-batch1.md`](./signoff-pack-batch1.md)（732 候選，非 26,428）  
 2. 簽完先允許：分批接線已簽 Cursor 草稿 + server grade 灰度  
 3. Legacy 25,928 繼續分批缺陷閘 → 改寫 → 再簽；禁止一次口頭全放  
 

@@ -263,20 +263,20 @@ function upgrade(q: Q, seed: number): Built | null {
   }
 
   if (topic === 'quadratic_equations' || /mp_k3|mb_m1|mb_h1/.test(q.id)) {
+    // Keep A=1..2 but scale coefficients so Vieta sum/prod are exactly `sum`/`prod`
+    // (do NOT divide the answer by A² — roots are unchanged under proportional scaling).
     const A = 1 + Math.floor(rand() * 2)
-    const sum = 4 + Math.floor(rand() * 5) // alpha+beta = -b/a wait for x^2 - Sx + P
-    const prod = -2 - Math.floor(rand() * 4) // can be negative
-    // Ask alpha^2+beta^2 = S^2 - 2P
+    const sum = 4 + Math.floor(rand() * 5)
+    const prod = -2 - Math.floor(rand() * 4)
     const sq = sum * sum - 2 * prod
-    const correct = A === 1 ? fmtNum(sq) : frac(sq, A * A)
-    // For A>1: equation A x^2 - (A*sum)x + A*prod = 0 → roots same, sum=S, prod=P
+    const correct = fmtNum(sq)
     const b = -A * sum
     const c = A * prod
-    const opts = pickDistinct(rand, A === 1 ? fmtNum(sq) : frac(sq, A * A), [
+    const opts = pickDistinct(rand, correct, [
       fmtNum(sum * sum),
       fmtNum(Math.abs(prod)),
       fmtNum(sum * sum + 2 * prod),
-      frac(sum * sum - 2 * prod, A),
+      frac(sq, A), // trap: wrongly divide by leading coefficient
     ])
     const eq =
       A === 1
@@ -287,8 +287,8 @@ function upgrade(q: Q, seed: number): Built | null {
       contentEn: `Roots $\\alpha,\\beta$ of $${eq}$. Find $\\alpha^2+\\beta^2$.`,
       options: opts,
       optionsEn: opts,
-      explanation: `$\\alpha+\\beta=${sum}$，$\\alpha\\beta=${prod}$，$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=${sq}$。`,
-      explanationEn: `Use $(α+β)^2-2αβ$.`,
+      explanation: `$\\alpha+\\beta=${sum}$，$\\alpha\\beta=${prod}$（與首項係數無關），$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=${sq}$。`,
+      explanationEn: `Vieta sum/prod unchanged by scaling A; $\\alpha^2+\\beta^2=${sq}$.`,
       difficulty: 'hard',
     }
   }

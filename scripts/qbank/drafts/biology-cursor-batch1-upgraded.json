@@ -22,9 +22,9 @@
     ],
     "optionsEn": [
       "cytosine (C)",
-      "uracil (U)",
+      "adenine (A)",
       "thymine (T)",
-      "adenine (A)"
+      "uracil (U)"
     ],
     "correctIndex": 0,
     "explanation": "G 與 C 以三個氫鍵配對。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -57,8 +57,8 @@
     ],
     "optionsEn": [
       "one fertilised egg that split",
-      "two sperm and one egg",
       "two fertilised eggs",
+      "two sperm and one egg",
       "asexual reproduction in the parent"
     ],
     "correctIndex": 0,
@@ -127,9 +127,9 @@
     ],
     "optionsEn": [
       "pancreas",
-      "thyroid",
+      "adrenal gland",
       "liver",
-      "adrenal gland"
+      "thyroid"
     ],
     "correctIndex": 0,
     "explanation": "胰臟分泌胰島素，促使細胞攝取葡萄糖、降低血糖。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -163,8 +163,8 @@
     "optionsEn": [
       "left atrium",
       "right ventricle",
-      "left ventricle",
-      "right atrium"
+      "right atrium",
+      "left ventricle"
     ],
     "correctIndex": 0,
     "explanation": "肺靜脈把含氧血送回左心房，再經左心室泵向全身。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -197,9 +197,9 @@
     ],
     "optionsEn": [
       "retina",
-      "cornea",
       "iris",
-      "lens"
+      "lens",
+      "cornea"
     ],
     "correctIndex": 0,
     "explanation": "視網膜含感光細胞（視桿、視錐），把光轉為神經訊號。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -233,8 +233,8 @@
     "optionsEn": [
       "amylase",
       "lipase",
-      "catalase",
-      "protease"
+      "protease",
+      "catalase"
     ],
     "correctIndex": 0,
     "explanation": "唾液澱粉酶把澱粉分解為麥芽糖。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -267,9 +267,9 @@
     ],
     "optionsEn": [
       "increase",
-      "stay constant",
+      "decrease",
       "drop to zero",
-      "decrease"
+      "stay constant"
     ],
     "correctIndex": 0,
     "explanation": "在最適溫度以下，升溫增加分子碰撞，速率上升；超過最適則因變性下降。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -302,8 +302,8 @@
     ],
     "optionsEn": [
       "each have a particular optimum pH",
-      "work equally at all pH",
       "work only at neutral pH",
+      "work equally at all pH",
       "are unaffected by pH"
     ],
     "correctIndex": 0,
@@ -372,9 +372,9 @@
     ],
     "optionsEn": [
       "ecosystem",
-      "community",
       "population",
-      "species"
+      "species",
+      "community"
     ],
     "correctIndex": 0,
     "explanation": "生態系統 = 生物群落 + 非生物環境（如陽光、土壤、水）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -442,8 +442,8 @@
     ],
     "optionsEn": [
       "6 per m²",
-      "240 per m²",
       "9600 per m²",
+      "240 per m²",
       "0.167 per m²"
     ],
     "correctIndex": 0,
@@ -477,9 +477,9 @@
     ],
     "optionsEn": [
       "6 per m²",
-      "480 per m²",
+      "0.167 per m²",
       "38400 per m²",
-      "0.167 per m²"
+      "480 per m²"
     ],
     "correctIndex": 0,
     "explanation": "種群密度 = 個體數 ÷ 面積 = 480 ÷ 80 = 6 株／平方米。以樣方估算密度時，樣方必須隨機選取，否則會系統性高估或低估。陷阱：480 株／平方米直接抄了總數；0.167 株／平方米把分子分母倒轉；38400 株／平方米改成了相乘。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -513,8 +513,8 @@
     "optionsEn": [
       "375 fish",
       "102 fish",
-      "6.7 fish",
-      "3000 fish"
+      "3000 fish",
+      "6.7 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{50 \\times 60}{8} = 375$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：102 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；6.7 條把 $C$ 與 $R$ 的位置調轉；3000 條漏了除以 8。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -547,9 +547,9 @@
     ],
     "optionsEn": [
       "200 fish",
-      "4000 fish",
+      "12.5 fish",
       "110 fish",
-      "12.5 fish"
+      "4000 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{50 \\times 80}{20} = 200$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：110 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；12.5 條把 $C$ 與 $R$ 的位置調轉；4000 條漏了除以 20。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -582,9 +582,9 @@
     ],
     "optionsEn": [
       "180 fish",
-      "100 fish",
+      "3600 fish",
       "20 fish",
-      "3600 fish"
+      "100 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{60 \\times 60}{20} = 180$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：100 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；20 條把 $C$ 與 $R$ 的位置調轉；3600 條漏了除以 20。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -617,9 +617,9 @@
     ],
     "optionsEn": [
       "320 fish",
-      "3200 fish",
+      "110 fish",
       "20 fish",
-      "110 fish"
+      "3200 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{80 \\times 40}{10} = 320$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：110 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；20 條把 $C$ 與 $R$ 的位置調轉；3200 條漏了除以 10。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -652,9 +652,9 @@
     ],
     "optionsEn": [
       "500 fish",
-      "12.8 fish",
+      "122 fish",
       "4000 fish",
-      "122 fish"
+      "12.8 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{80 \\times 50}{8} = 500$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：122 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；12.8 條把 $C$ 與 $R$ 的位置調轉；4000 條漏了除以 8。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -687,9 +687,9 @@
     ],
     "optionsEn": [
       "400 fish",
-      "160 fish",
+      "8000 fish",
       "25 fish",
-      "8000 fish"
+      "160 fish"
     ],
     "correctIndex": 0,
     "explanation": "標記重捕法假設標記個體在種群中均勻混合，故第二次樣本中帶標記的比例等於種群中被標記的比例：$\\dfrac{R}{C} = \\dfrac{M}{N}$，即 $N = \\dfrac{M \\times C}{R} = \\dfrac{100 \\times 80}{20} = 400$ 條。此法要求標記不影響存活率、期間無大量遷入遷出。陷阱：160 條把兩次樣本相加再扣重複，忽略了未被捕獲的個體；25 條把 $C$ 與 $R$ 的位置調轉；8000 條漏了除以 20。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -757,9 +757,9 @@
     ],
     "optionsEn": [
       "1.5 : 1",
-      "0.667 : 1",
       "64 : 1",
-      "96 : 1"
+      "96 : 1",
+      "0.667 : 1"
     ],
     "correctIndex": 0,
     "explanation": "表面積 = $6s^2 = 6 \\times 4^2 = 96$ 平方毫米；體積 = $s^3 = 64$ 立方毫米；比值 = 96 ÷ 64 = 1.5。細胞愈大，這個比值愈【小】—— 表面積按平方增長而體積按立方增長，物質交換的面積跟不上需求，這正是細胞不能無限長大、以及大型生物需要肺、腸絨毛等摺疊結構增加表面積的原因。陷阱：0.667 : 1 把分子分母倒轉；96 : 1 與 64 : 1 分別只取了表面積與體積。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -792,9 +792,9 @@
     ],
     "optionsEn": [
       "$\\times 40$",
-      "$\\times 20$",
+      "$\\times 4$",
       "$\\times 14$",
-      "$\\times 4$"
+      "$\\times 20$"
     ],
     "correctIndex": 0,
     "explanation": "總放大率是兩個鏡的放大率【相乘】而非相加：$10 \\times 4 = 40$。答 $\\times 14$ 是把兩者相加，這是最常見的失分位。要留意放大率提高並不等於解像力提高——看得更大而細節未必更清楚，兩者是不同的概念。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -827,8 +827,8 @@
     ],
     "optionsEn": [
       "$\\times 1500$",
-      "$\\times 100$",
       "$\\times 115$",
+      "$\\times 100$",
       "$\\times 750$"
     ],
     "correctIndex": 0,
@@ -862,8 +862,8 @@
     ],
     "optionsEn": [
       "high temperature denatures the enzyme, so the active site no longer fits the substrate",
-      "high temperature uses up the enzyme entirely, leaving none in the mixture",
       "high temperature slows the substrate molecules, so collisions become less frequent",
+      "high temperature uses up the enzyme entirely, leaving none in the mixture",
       "high temperature converts the enzyme into substrate, so no product forms"
     ],
     "correctIndex": 0,
@@ -897,9 +897,9 @@
     ],
     "optionsEn": [
       "high temperature denatures the enzyme, so the active site no longer fits the substrate",
-      "high temperature slows the substrate molecules, so collisions become less frequent",
+      "high temperature converts the enzyme into substrate, so no product forms",
       "high temperature uses up the enzyme entirely, leaving none in the mixture",
-      "high temperature converts the enzyme into substrate, so no product forms"
+      "high temperature slows the substrate molecules, so collisions become less frequent"
     ],
     "correctIndex": 0,
     "explanation": "超過最適溫度後，維持酶三維結構的氫鍵等作用被破壞，【活性部位】形狀改變，底物不再吻合，速率因而下降——此即變性。要留意兩點：一、變性通常不可逆，降溫亦不會回復；二、溫度升高本身會加快分子運動，故速率下降並非由於碰撞減少，而是由於能夠催化的酶減少。酶屬催化劑，反應前後本身不被消耗，亦不會轉化為底物。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -967,9 +967,9 @@
     ],
     "optionsEn": [
       "22 units/h",
-      "2 units/h",
+      "18 units/h",
       "20 units/h",
-      "18 units/h"
+      "2 units/h"
     ],
     "correctIndex": 0,
     "explanation": "實驗測得的氣體交換量是【淨】值，因為植物同時進行呼吸，把部分光合產物消耗掉。故總光合 = 淨光合 + 呼吸 = $20 + 2 = 22$ 單位／小時。答 $18$ 是把兩者相減，方向剛好寫反。理解方法：植物實際製造的多於我們量到的，量到的只是扣除自用之後的餘額。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1072,9 +1072,9 @@
     ],
     "optionsEn": [
       "4.32 L/min",
+      "43.2 L/min",
       "0.833 L/min",
-      "132 L/min",
-      "43.2 L/min"
+      "132 L/min"
     ],
     "correctIndex": 0,
     "explanation": "心輸出量 = 心搏量 × 心率 = $60 \\times 72 = 4320$ 毫升／分鐘，除以 1000 得 4.32 公升／分鐘。要留意運動時心輸出量上升，可以來自心率上升，亦可以來自心搏量上升；受過訓練者靜息心率較低，正是因為心搏量較大，同樣的輸出量只需較少次數。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1142,9 +1142,9 @@
     ],
     "optionsEn": [
       "4.5 L/min",
-      "1.25 L/min",
+      "45 L/min",
       "135 L/min",
-      "45 L/min"
+      "1.25 L/min"
     ],
     "correctIndex": 0,
     "explanation": "心輸出量 = 心搏量 × 心率 = $75 \\times 60 = 4500$ 毫升／分鐘，除以 1000 得 4.5 公升／分鐘。要留意運動時心輸出量上升，可以來自心率上升，亦可以來自心搏量上升；受過訓練者靜息心率較低，正是因為心搏量較大，同樣的輸出量只需較少次數。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1177,9 +1177,9 @@
     ],
     "optionsEn": [
       "6 L/min",
+      "155 L/min",
       "60 L/min",
-      "0.938 L/min",
-      "155 L/min"
+      "0.938 L/min"
     ],
     "correctIndex": 0,
     "explanation": "心輸出量 = 心搏量 × 心率 = $75 \\times 80 = 6000$ 毫升／分鐘，除以 1000 得 6 公升／分鐘。要留意運動時心輸出量上升，可以來自心率上升，亦可以來自心搏量上升；受過訓練者靜息心率較低，正是因為心搏量較大，同樣的輸出量只需較少次數。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1212,9 +1212,9 @@
     ],
     "optionsEn": [
       "4800 ml",
-      "3800 ml",
+      "4300 ml",
       "6000 ml",
-      "4300 ml"
+      "3800 ml"
     ],
     "correctIndex": 0,
     "explanation": "肺活量 = 潮氣量 + 補吸氣量 + 補呼氣量 = $500 + 3300 + 1000 = 4800$ 毫升。要留意肺活量【不包括】餘氣量——即用力呼氣後仍留在肺中的空氣，那部分無法自主排出，故不計入可用容量。肺總量才等於肺活量加餘氣量。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1247,9 +1247,9 @@
     ],
     "optionsEn": [
       "1405 kJ",
-      "702.5 kJ",
       "2105 kJ",
-      "1105 kJ"
+      "1105 kJ",
+      "702.5 kJ"
     ],
     "correctIndex": 0,
     "explanation": "逐項相乘後相加：$30 \\times 17 + 20 \\times 17 + 15 \\times 37 = 510 + 340 + 555 = 1405$ 千焦。要留意脂肪的能量值約為碳水化合物的兩倍多，故即使脂肪的質量最小，它在總能量中所佔的比例往往不低——這正是同樣重量的食物能量值可以相差很遠的原因。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1282,9 +1282,9 @@
     ],
     "optionsEn": [
       "1575 kJ",
-      "1275 kJ",
+      "2475 kJ",
       "787.5 kJ",
-      "2475 kJ"
+      "1275 kJ"
     ],
     "correctIndex": 0,
     "explanation": "逐項相乘後相加：$40 \\times 17 + 20 \\times 17 + 15 \\times 37 = 680 + 340 + 555 = 1575$ 千焦。要留意脂肪的能量值約為碳水化合物的兩倍多，故即使脂肪的質量最小，它在總能量中所佔的比例往往不低——這正是同樣重量的食物能量值可以相差很遠的原因。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1317,9 +1317,9 @@
     ],
     "optionsEn": [
       "1630 kJ",
-      "3230 kJ",
+      "815 kJ",
       "1530 kJ",
-      "815 kJ"
+      "3230 kJ"
     ],
     "correctIndex": 0,
     "explanation": "逐項相乘後相加：$60 \\times 17 + 25 \\times 17 + 5 \\times 37 = 1020 + 425 + 185 = 1630$ 千焦。要留意脂肪的能量值約為碳水化合物的兩倍多，故即使脂肪的質量最小，它在總能量中所佔的比例往往不低——這正是同樣重量的食物能量值可以相差很遠的原因。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1352,9 +1352,9 @@
     ],
     "optionsEn": [
       "230 ",
-      "30",
-      "170",
-      "3000"
+      "30 ",
+      "3000 ",
+      "170 "
     ],
     "correctIndex": 0,
     "explanation": "增長數目 = $200 \\times 15\\% = 30$，故一年後為 $200 + 30 = 230$ 個。要留意百分率增長屬【複合】性質：若增長率維持不變，第二年的增長數目會大於第一年，因為基數已經變大。這正是指數增長曲線在初期看似平緩、其後急升的原因。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",

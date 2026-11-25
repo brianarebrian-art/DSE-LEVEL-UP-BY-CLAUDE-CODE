@@ -30,8 +30,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "$\\$300$",
       "$\\$0$",
-      "$\\$250$",
-      "$\\$550$"
+      "$\\$550$",
+      "$\\$250$"
     ],
     "correctIndex": 0,
     "explanation": "機會成本只計放棄的「最佳」替代方案（\\$300），不可相加，免費≠零成本。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -64,9 +64,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "false — the work and other uses given up while waiting and recovering are opportunity costs",
-      "true — the service is free of charge, so there is no cost",
+      "false — but the opportunity cost equals only the market price of the medicine",
       "true — the cost has been fully borne by the government",
-      "false — but the opportunity cost equals only the market price of the medicine"
+      "true — the service is free of charge, so there is no cost"
     ],
     "correctIndex": 0,
     "explanation": "「免費」只指沒有金錢支出。病人仍放棄了輪候與康復所需的時間及其最佳用途，這些非貨幣代價就是機會成本，故「免費 ≠ 零機會成本」。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -99,8 +99,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "the extra benefit and extra cost of one more unit",
-      "sunk costs",
       "average benefit and average cost",
+      "sunk costs",
       "total benefit and total cost only"
     ],
     "correctIndex": 0,
@@ -134,9 +134,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$50$",
-      "$80$",
+      "$100$",
       "$20$",
-      "$100$"
+      "$80$"
     ],
     "correctIndex": 0,
     "explanation": "令 $Q_d=Q_s$：$80-P = P-20$，解得 $P^* = 50$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -169,9 +169,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "a change in consumer tastes",
-      "a change in the good’s own price",
+      "a change in quantity traded",
       "a price change along the curve",
-      "a change in quantity traded"
+      "a change in the good’s own price"
     ],
     "correctIndex": 0,
     "explanation": "本身價格變動是沿線移動；口味、收入、相關物品價格等才令曲線移動。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -204,9 +204,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "vertical",
+      "downward sloping",
       "horizontal",
-      "upward sloping",
-      "downward sloping"
+      "upward sloping"
     ],
     "correctIndex": 0,
     "explanation": "完全乏彈性 (PED=0) 需求量不隨價格變動，曲線垂直。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -239,9 +239,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$\\$300$",
-      "$\\$-300$",
       "$\\$2100$",
-      "$\\$1200$"
+      "$\\$1200$",
+      "$\\$-300$"
     ],
     "correctIndex": 0,
     "explanation": "利潤 $= TR - TC = 6\\times200 - 900 = 300$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -274,9 +274,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "keep producing (at least covering some fixed cost)",
+      "exit the market at once",
       "raise its fixed cost",
-      "shut down immediately",
-      "exit the market at once"
+      "shut down immediately"
     ],
     "correctIndex": 0,
     "explanation": "價格高於 AVC 時繼續生產可補回可變成本及部分固定成本，蝕得較少。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -309,8 +309,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "few in number and mutually interdependent",
-      "very numerous and independent",
       "always selling identical goods",
+      "very numerous and independent",
       "facing no entry barriers"
     ],
     "correctIndex": 0,
@@ -344,8 +344,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "gain some pricing power",
-      "guarantee a loss",
       "remove all competition",
+      "guarantee a loss",
       "become a pure price taker"
     ],
     "correctIndex": 0,
@@ -380,8 +380,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "jointly restrict output and raise price for higher profit",
       "raise output to lower price",
-      "promote perfect competition",
-      "give up pricing power"
+      "give up pricing power",
+      "promote perfect competition"
     ],
     "correctIndex": 0,
     "explanation": "合謀如同壟斷，限產提價以增共同利潤，但對消費者不利且常不穩定。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -414,9 +414,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "under-supplied by private markets",
-      "over-priced",
+      "efficiently supplied by the market",
       "over-supplied",
-      "efficiently supplied by the market"
+      "over-priced"
     ],
     "correctIndex": 0,
     "explanation": "人人想免費享用而不付費，私人缺乏誘因供應，故多由政府提供。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -520,8 +520,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "the growth rate of real GDP",
       "the inflation rate",
-      "the interest rate",
-      "a stock index"
+      "a stock index",
+      "the interest rate"
     ],
     "correctIndex": 0,
     "explanation": "經濟增長一般指實質 GDP 隨時間上升的百分比。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -589,8 +589,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "A has the comparative advantage in cloth (opp. cost of 1 cloth = 2 wine < B’s 4 wine), so A specialises in cloth and B in wine",
-      "neither country can gain from trade",
       "B has the comparative advantage in cloth",
+      "neither country can gain from trade",
       "A is more productive in everything, so it should produce both and not trade"
     ],
     "correctIndex": 0,
@@ -624,9 +624,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$160",
-      "\\$168",
+      "\\$12",
       "\\$28",
-      "\\$12"
+      "\\$168"
     ],
     "correctIndex": 0,
     "explanation": "總收入 = 價格 × 銷量 = 8 × 20 = 160 元。陷阱：28 元是相加（並非相乘）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -694,9 +694,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$2000",
-      "\\$120",
+      "\\$2020",
       "\\$80",
-      "\\$2020"
+      "\\$120"
     ],
     "correctIndex": 0,
     "explanation": "總收入 = 價格 × 銷量 = 20 × 100 = 2000 元。陷阱：120 元是相加（並非相乘）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -729,8 +729,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "+20%",
-      "+30%",
       "+120%",
+      "+30%",
       "+16.7%"
     ],
     "correctIndex": 0,
@@ -764,8 +764,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$3",
-      "\\$10",
       "\\$75",
+      "\\$10",
       "\\$0.33"
     ],
     "correctIndex": 0,
@@ -799,9 +799,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "1.67",
-      "0.6",
+      "2.5",
       "0.4",
-      "2.5"
+      "0.6"
     ],
     "correctIndex": 0,
     "explanation": "支出乘數 = 1 / (1 − MPC) = 1 / (1 − 0.4) = 1 / 0.6 = 1.67。陷阱：2.5 用了 1/MPC；0.6 只計了 MPS。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -834,8 +834,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$60",
-      "\\$2",
       "\\$180",
+      "\\$2",
       "-\\$60"
     ],
     "correctIndex": 0,
@@ -869,9 +869,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "2",
+      "13.33",
       "0.5",
-      "4",
-      "13.33"
+      "4"
     ],
     "correctIndex": 0,
     "explanation": "%ΔQ = (120−80)/80 = 50%；%ΔP = (9−12)/12 = -25%。|PED| = |50 / -25| = 2。陷阱：13.33 用了絕對變化（並非百分比）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -905,8 +905,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "1.2",
       "0.83",
-      "2.4",
-      "4.29"
+      "4.29",
+      "2.4"
     ],
     "correctIndex": 0,
     "explanation": "%ΔQ = (80−50)/50 = 60%；%ΔP = (7−14)/14 = -50%。|PED| = |60 / -50| = 1.2。陷阱：4.29 用了絕對變化（並非百分比）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1044,9 +1044,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "400",
+      "75",
       "133.3",
-      "100",
-      "75"
+      "100"
     ],
     "correctIndex": 0,
     "explanation": "乘數 $= \\dfrac{1}{1 - \\text{MPC}} = \\dfrac{1}{1 - 0.75} = 4$。國民收入的總增幅 $=$ 注入額 $\\times$ 乘數 $= 100 \\times 4 = 400$ 億元。陷阱：100 億元只計了最初的注入；133.3 億元誤除以 MPC；75 億元誤乘以 MPC。理解乘數為何大於 1 比記公式重要：一筆新開支成為某人的收入，該人再花掉其中 75%，如此遞減下去。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1114,9 +1114,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$3,000",
-      "\\$4.8",
       "\\$145",
-      "\\$1,500"
+      "\\$1,500",
+      "\\$4.8"
     ],
     "correctIndex": 0,
     "explanation": "總收益 $=$ 價格 $\\times$ 銷售量 $= 25 \\times 120 = 3,000$ 元。陷阱：145 元用了加法；4.8 元用了除法；1,500 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1149,9 +1149,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$4,800",
-      "\\$3",
       "\\$2,400",
-      "\\$160"
+      "\\$160",
+      "\\$3"
     ],
     "correctIndex": 0,
     "explanation": "總收益 $=$ 價格 $\\times$ 銷售量 $= 40 \\times 120 = 4,800$ 元。陷阱：160 元用了加法；3 元用了除法；2,400 元多除了 2。要留意總收益不是利潤——利潤還要減去總成本。試卷經常在同一題內同時給出價格、數量與成本，讀題時必須先確認所問的是收益、成本還是利潤。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1184,9 +1184,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$800",
-      "\\$204",
       "\\$50",
-      "\\$200"
+      "\\$200",
+      "\\$204"
     ],
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 4 × 200 = 800 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：204 元把稅率與數量相加；200 元只抄了成交量；50 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1219,9 +1219,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$1,600",
-      "\\$208",
       "\\$25",
-      "\\$200"
+      "\\$200",
+      "\\$208"
     ],
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 8 × 200 = 1,600 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：208 元把稅率與數量相加；200 元只抄了成交量；25 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1254,9 +1254,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$9,600",
-      "\\$150",
+      "\\$1,208",
       "\\$1,200",
-      "\\$1,208"
+      "\\$150"
     ],
     "correctIndex": 0,
     "explanation": "稅收總額 = 每單位稅額 × 課稅後成交量 = 8 × 1,200 = 9,600 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：1,208 元把稅率與數量相加；1,200 元只抄了成交量；150 元改成了相除。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1289,9 +1289,9 @@ export const economicsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$160",
-      "\\$140",
+      "\\$150",
       "\\$10",
-      "\\$150"
+      "\\$140"
     ],
     "correctIndex": 0,
     "explanation": "社會成本 = 私人成本 + 外部成本 = 150 + 10 = 160 元。當存在外部成本時，廠商只按私人成本決策，產量高於社會最適水平，造成無謂損失，這就是負外部性引致的市場失靈。陷阱：140 元把外部成本減去；150 元只計私人成本，正是廠商本身的視角；10 元只計外部成本。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1325,8 +1325,8 @@ export const economicsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$12",
       "\\$480",
-      "\\$40",
-      "\\$19,200"
+      "\\$19,200",
+      "\\$40"
     ],
     "correctIndex": 0,
     "explanation": "平均成本 = 總成本 ÷ 產量 = 480 ÷ 40 = 12 元。平均成本與邊際成本不同：前者是總成本攤分到每一單位，後者是多生產一單位所【增加】的成本；只有當邊際成本低於平均成本時，平均成本才會下降。陷阱：480 元是總成本；19,200 元改成了相乘；40 元只抄了產量。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",

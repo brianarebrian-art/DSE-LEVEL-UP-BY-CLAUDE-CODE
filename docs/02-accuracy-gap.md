@@ -10,6 +10,15 @@
 
 **核心裁決：** 「平台答對率低過考評局」**唔等於**「題目已經夠難／已經難 10%」。更常見解釋係缺陷令學生無謂失分。缺陷題**唔進入**加難隊列。
 
+## 數量化（P‑value）
+
+正式定義、欄位、`delta_p`／`ratio_p`、目標 `ratio_p≈0.9`、n≥30 過濾：  
+→ [`docs/26-pvalue-accuracy-metrics.md`](./26-pvalue-accuracy-metrics.md)  
+→ Cursor 規則 [`.cursor/rules/pvalue-accuracy.mdc`](../.cursor/rules/pvalue-accuracy.mdc)  
+→ 聚合腳本 `scripts/qbank/pipeline/compute-pvalue-gap.mts`（無輸入時報告 `UNKNOWN_NO_INPUT`）
+
+注意：\(\Delta P\) 係**百分點**差；「難 10%」對應相對比值約 0.9，**唔係** −10 個百分點。
+
 ## 資料可得性
 
 | 來源 | 狀態 |

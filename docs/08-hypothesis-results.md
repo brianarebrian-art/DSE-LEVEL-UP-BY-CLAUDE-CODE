@@ -18,5 +18,6 @@
 - 缺陷題 → `REJECTED`／withdraw 候選；**唔進** `CURSOR_REWRITE`
 - 清潔題 → 可標 `DSE_PLUS_10` **意圖**（草稿）；實測難 10% 非本階段承諾
 - 真難估計 → 只用已過缺陷閘題 + 公開 HKEAA 統計；否則維持 `CALIBRATION_INSUFFICIENT`
+- 數量化：`delta_p`／`ratio_p`（目標 ≈0.9）見 [`docs/26-pvalue-accuracy-metrics.md`](./26-pvalue-accuracy-metrics.md)；現況聚合 **UNKNOWN**（無生產 n≥30 + 官方 P）
 
-證據檔：`docs/gap-defect-scan-results.json`
+證據檔：`docs/gap-defect-scan-results.json` · `docs/pvalue-gap-report.json`

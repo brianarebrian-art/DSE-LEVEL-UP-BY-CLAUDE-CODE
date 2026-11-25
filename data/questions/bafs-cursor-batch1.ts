@@ -29,8 +29,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "shareholders have limited liability up to their capital",
-      "it pays no tax at all",
       "no registration is required",
+      "it pays no tax at all",
       "decisions are always faster"
     ],
     "correctIndex": 0,
@@ -99,9 +99,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "setting goals and devising ways to achieve them",
-      "dismissing staff",
       "assigning daily tasks only",
-      "reviewing past accounts only"
+      "reviewing past accounts only",
+      "dismissing staff"
     ],
     "correctIndex": 0,
     "explanation": "計劃確立目標並規劃資源與步驟，是其他管理職能的基礎。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -134,8 +134,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "builds identity and loyalty, allowing a price premium",
-      "always adds cost with no return",
       "has nothing to do with sales",
+      "always adds cost with no return",
       "is merely a logo image"
     ],
     "correctIndex": 0,
@@ -169,9 +169,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "attracts applicants, while selection chooses the most suitable from them",
-      "is training staff",
+      "is dismissing staff",
       "is paying salaries",
-      "is dismissing staff"
+      "is training staff"
     ],
     "correctIndex": 0,
     "explanation": "招聘擴大應徵人才庫；甄選經面試／測試挑選合適人選。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -204,8 +204,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$3 : 1$",
-      "$4 : 1$",
       "$2 : 1$",
+      "$4 : 1$",
       "$0.33 : 1$"
     ],
     "correctIndex": 0,
@@ -239,9 +239,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$1.5 : 1$",
-      "$0.5 : 1$",
+      "$2.5 : 1$",
       "$0.67 : 1$",
-      "$2.5 : 1$"
+      "$0.5 : 1$"
     ],
     "correctIndex": 0,
     "explanation": "流動比率 $=\\frac{6000}{4000}=1.5:1$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -274,9 +274,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$2 : 1$",
-      "$0.67 : 1$",
+      "$2.67 : 1$",
       "$3.33 : 1$",
-      "$2.67 : 1$"
+      "$0.67 : 1$"
     ],
     "correctIndex": 0,
     "explanation": "速動比率 $=\\frac{8000-2000}{3000}=2:1$（剔除流動性較低的存貨）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -309,9 +309,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "assets, liabilities and equity at a point in time",
-      "staff attendance",
       "total sales over a period",
-      "market share"
+      "market share",
+      "staff attendance"
     ],
     "correctIndex": 0,
     "explanation": "資產負債表是某時點的財務狀況快照，須符合會計等式。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -344,8 +344,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$1800$",
-      "$180$",
       "$600$",
+      "$180$",
       "$13800$"
     ],
     "correctIndex": 0,
@@ -379,9 +379,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "$10000$",
-      "$12000$",
+      "$8333.33$",
       "$20000$",
-      "$8333.33$"
+      "$12000$"
     ],
     "correctIndex": 0,
     "explanation": "每年折舊 $=\\frac{60000-10000}{5}=10000$。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -449,9 +449,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "accumulate interest, making the debt hard to clear for a long time",
-      "boost the credit score to the maximum",
       "clear the balance immediately",
-      "incur no interest"
+      "incur no interest",
+      "boost the credit score to the maximum"
     ],
     "correctIndex": 0,
     "explanation": "只還最低額令未付餘額持續以高息滾存，債務拖延且總成本大增。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -484,8 +484,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "averages the cost, reducing the risk of buying all at a peak",
-      "guarantees a monthly profit",
       "carries no risk",
+      "guarantees a monthly profit",
       "always beats the market"
     ],
     "correctIndex": 0,
@@ -554,9 +554,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$70",
-      "\\$3.33",
       "\\$130",
-      "-\\$70"
+      "-\\$70",
+      "\\$3.33"
     ],
     "correctIndex": 0,
     "explanation": "淨利 = 毛利 − 費用 = 100 − 30 = 70 元。陷阱：130 元加了費用（應該減）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -589,8 +589,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$200",
-      "\\$5",
       "-\\$200",
+      "\\$5",
       "\\$300"
     ],
     "correctIndex": 0,
@@ -624,9 +624,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "25%",
-      "75%",
       "400%",
-      "0.25%"
+      "0.25%",
+      "75%"
     ],
     "correctIndex": 0,
     "explanation": "毛利率 = 毛利 / 銷貨 × 100% = 160/640 × 100% = 25%。陷阱：75% 是成本率；400% 分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -660,8 +660,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$1800",
       "\\$28800",
-      "\\$2200",
-      "\\$2000"
+      "\\$2000",
+      "\\$2200"
     ],
     "correctIndex": 0,
     "explanation": "直線折舊 = (成本 − 殘值) / 年限 = (8000 − 800) / 4 = 1800 元。陷阱：2000 元漏了減殘值。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -694,9 +694,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$108",
-      "\\$72",
+      "\\$110",
       "\\$18",
-      "\\$110"
+      "\\$72"
     ],
     "correctIndex": 0,
     "explanation": "售價 = 成本 × (1 + 加成%) = 90 × (1 + 20%) = 108 元。陷阱：110 元直接加了 20（並非 20%）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -764,8 +764,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$1210",
-      "\\$200",
       "\\$1200",
+      "\\$200",
       "\\$100"
     ],
     "correctIndex": 0,
@@ -799,8 +799,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$4410",
-      "\\$200",
       "\\$400",
+      "\\$200",
       "\\$4400"
     ],
     "correctIndex": 0,
@@ -905,8 +905,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$55,125",
       "\\$5,125",
-      "\\$55,000",
-      "\\$5,000"
+      "\\$5,000",
+      "\\$55,000"
     ],
     "correctIndex": 0,
     "explanation": "複利本利和 $= P(1 + r)^{t} = 50,000 \\times 1.05^{2} = 55,125$ 元。陷阱：55,000 元用了單利公式；5,125 元是【利息】而非本利和，題目問的是到期總額；5,000 元是單利的利息。留意公式中的指數 2 正是複利與單利的分別所在：複利是連乘，單利是連加。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -939,8 +939,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$10,800",
-      "\\$12,000",
       "\\$54,000",
+      "\\$12,000",
       "\\$1,200"
     ],
     "correctIndex": 0,
@@ -975,8 +975,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$18,000",
       "\\$20,000",
-      "\\$2,000",
-      "\\$90,000"
+      "\\$90,000",
+      "\\$2,000"
     ],
     "correctIndex": 0,
     "explanation": "直線法每年折舊 = (成本 − 殘值) ÷ 可使用年期。殘值 = 100,000 × 10% = 10,000 元，故每年折舊 = (100,000 − 10,000) ÷ 5 = 18,000 元。陷阱：20,000 元漏了扣除殘值；2,000 元只把殘值攤分；90,000 元是可折舊總額，尚未除以年期。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1010,8 +1010,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$105,000",
       "\\$90,000",
-      "\\$45,000",
-      "\\$127,500"
+      "\\$127,500",
+      "\\$45,000"
     ],
     "correctIndex": 0,
     "explanation": "每年折舊 = (150,000 − 15,000) ÷ 6 = 22,500 元，2 年的累計折舊 = 22,500 × 2 = 45,000 元。帳面淨值 = 成本 − 累計折舊 = 150,000 − 45,000 = 105,000 元。陷阱：45,000 元是累計折舊本身；127,500 元只扣了一年；90,000 元把殘值重複扣除一次（殘值已包含在帳面淨值之內）。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1045,8 +1045,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "\\$8,000",
       "\\$20,000",
-      "\\$10,000",
-      "\\$18,000"
+      "\\$18,000",
+      "\\$10,000"
     ],
     "correctIndex": 0,
     "explanation": "減值餘額法以【帳面淨值】而非成本為計算基礎。第一年折舊 = 50,000 × 20% = 10,000 元，年末帳面淨值 = 40,000 元；第二年折舊 = 40,000 × 20% = 8,000 元。陷阱：10,000 元是第一年的折舊，誤以為兩年相同（那是直線法的特徵）；18,000 元是兩年的累計折舊；20,000 元把成本乘以兩倍稅率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1079,8 +1079,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$50,000",
-      "\\$150,000",
       "\\$200,000",
+      "\\$150,000",
       "\\$100,000"
     ],
     "correctIndex": 0,
@@ -1114,9 +1114,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "\\$50,000",
-      "-\\$10,000",
+      "\\$10,000",
       "-\\$20,000",
-      "\\$10,000"
+      "-\\$10,000"
     ],
     "correctIndex": 0,
     "explanation": "出售損益 = 售價 − 帳面淨值。帳面淨值 = 成本 − 累計折舊 = 80,000 − 70,000 = 10,000 元，故損益 = 60,000 − 10,000 = 50,000 元（收益）。陷阱：-20,000 元用了原成本而非帳面淨值，忽略了資產已折舊多年；10,000 元只是帳面淨值；-10,000 元把累計折舊當成了帳面淨值。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1219,9 +1219,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "1.5 : 1",
-      "0.5 : 1",
       "12,500",
-      "0.67 : 1"
+      "0.67 : 1",
+      "0.5 : 1"
     ],
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 37,500 ÷ 25,000 = 1.5，即 1.5 : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：0.67 : 1 把分子分母倒轉；0.5 : 1 用了營運資金而非流動資產作分子；12,500 是營運資金的【金額】，並非比率。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1254,8 +1254,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "1.5 : 1",
-      "0.5 : 1",
       "25,000",
+      "0.5 : 1",
       "0.67 : 1"
     ],
     "correctIndex": 0,
@@ -1290,8 +1290,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     "optionsEn": [
       "1.6 : 1",
       "2 : 1",
-      "0.63 : 1",
-      "0.4 : 1"
+      "0.4 : 1",
+      "0.63 : 1"
     ],
     "correctIndex": 0,
     "explanation": "速動比率 = (流動資產 − 存貨) ÷ 流動負債 = (60,000 − 12,000) ÷ 30,000 = 1.6，即 1.6 : 1。剔除存貨是因為存貨變現最慢，未必能即時用以償還短期債務。陷阱：2 : 1 是流動比率，未剔除存貨；0.4 : 1 只用了存貨；0.63 : 1 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1324,9 +1324,9 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "1.2 : 1",
+      "0.83 : 1",
       "0.8 : 1",
-      "2 : 1",
-      "0.83 : 1"
+      "2 : 1"
     ],
     "correctIndex": 0,
     "explanation": "速動比率 = (流動資產 − 存貨) ÷ 流動負債 = (100,000 − 40,000) ÷ 50,000 = 1.2，即 1.2 : 1。剔除存貨是因為存貨變現最慢，未必能即時用以償還短期債務。陷阱：2 : 1 是流動比率，未剔除存貨；0.8 : 1 只用了存貨；0.83 : 1 把分子分母倒轉。\n\n升級干擾設計：保留原正確選項文本；其餘選項為互斥概念／常見迷思，並要求同時滿足題幹兩重條件。此為 DSE_PLUS_10 意圖草稿，非實測難 10%。",
@@ -1359,8 +1359,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "25%",
-      "400%",
       "75%",
+      "400%",
       "33.3%"
     ],
     "correctIndex": 0,
@@ -1394,8 +1394,8 @@ export const bafsCursorBatch1Questions: Question[] = [
     ],
     "optionsEn": [
       "60%",
-      "166.7%",
       "150%",
+      "166.7%",
       "40%"
     ],
     "correctIndex": 0,

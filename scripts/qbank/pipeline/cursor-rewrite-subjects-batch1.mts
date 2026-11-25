@@ -48,33 +48,42 @@ function stripEmoji(s: string): string {
   return s.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').trim()
 }
 
-function normalizeOptions(
-  correct: string,
-  distractors: string[],
+/**
+ * Rebuild options with correct at index 0; keep zh/en identity by shared source indices.
+ * Never shuffle optionsEn independently of options.
+ */
+function reorderWithCorrectFirst(
+  optsZh: string[],
+  optsEn: string[] | undefined,
+  correctIndex: number,
   rand: () => number,
-): string[] {
-  const cleaned = distractors
-    .map((d) => d.trim())
-    .filter((d) => d && d !== correct)
-  const uniq = [...new Set(cleaned)]
-  // Pad with clearly wrong but non-duplicate placeholders if needed
-  let i = 0
-  while (uniq.length < 3) {
-    uniq.push(`（干擾項 ${String.fromCharCode(65 + i)}：與正確概念互斥）`)
-    i++
-  }
-  // Prefer similar length distractors to reduce length cueing
-  const targetLen = correct.length
-  uniq.sort(
-    (a, b) => Math.abs(a.length - targetLen) - Math.abs(b.length - targetLen),
+): { options: string[]; optionsEn: string[] } | null {
+  if (optsZh.length < 4 || correctIndex < 0 || correctIndex >= optsZh.length) return null
+  const correctZh = optsZh[correctIndex]
+  const distractorIdx = optsZh
+    .map((_, i) => i)
+    .filter((i) => i !== correctIndex && optsZh[i] && optsZh[i] !== correctZh)
+  // Prefer similar-length distractors
+  distractorIdx.sort(
+    (a, b) =>
+      Math.abs(optsZh[a].length - correctZh.length) -
+      Math.abs(optsZh[b].length - correctZh.length),
   )
-  const three = uniq.slice(0, 3)
-  // Light shuffle of distractors only
-  for (let k = three.length - 1; k > 0; k--) {
-    const j = Math.floor(rand() * (k + 1))
-    ;[three[k], three[j]] = [three[j], three[k]]
+  const picked = distractorIdx.slice(0, 3)
+  while (picked.length < 3) {
+    // Should not happen for valid MC; abort rather than invent unpaired EN text
+    return null
   }
-  return [correct, ...three]
+  for (let k = picked.length - 1; k > 0; k--) {
+    const j = Math.floor(rand() * (k + 1))
+    ;[picked[k], picked[j]] = [picked[j], picked[k]]
+  }
+  const order = [correctIndex, ...picked]
+  const options = order.map((i) => optsZh[i])
+  if (new Set(options).size !== 4) return null
+  const en = optsEn && optsEn.length === optsZh.length ? optsEn : optsZh
+  const optionsEn = order.map((i) => en[i] || optsZh[i])
+  return { options, optionsEn }
 }
 
 function upgradeStem(content: string, subject: string): { zh: string; en: string } {
@@ -151,11 +160,14 @@ for (const subject of SUBJECTS) {
       failedGate++
       continue
     }
-    const correct = opts[ci]
-    const distractors = opts.filter((_, idx) => idx !== ci)
     const rand = mulberry32(20261126 + subject.length * 1000 + i * 31)
-    const newOpts = normalizeOptions(correct, distractors, rand)
-    if (new Set(newOpts).size !== 4) {
+    const reordered = reorderWithCorrectFirst(
+      opts,
+      Array.isArray(src.optionsEn) ? (src.optionsEn as string[]) : undefined,
+      ci,
+      rand,
+    )
+    if (!reordered) {
       failedGate++
       allLedger.push({
         id: `${subject}_cr_b1_${sid}`,
@@ -181,16 +193,8 @@ for (const subject of SUBJECTS) {
       id: `${subject}_cr_b1_${sid}`,
       content: stem.zh,
       contentEn: stemEn.en,
-      options: newOpts,
-      optionsEn:
-        Array.isArray(src.optionsEn) && (src.optionsEn as string[]).length === 4
-          ? (() => {
-              const oe = src.optionsEn as string[]
-              const cEn = oe[ci] || correct
-              const dEn = oe.filter((_, idx) => idx !== ci)
-              return normalizeOptions(cEn, dEn, mulberry32(99 + i))
-            })()
-          : newOpts,
+      options: reordered.options,
+      optionsEn: reordered.optionsEn,
       correctIndex: 0,
       explanation: `${expl}\n\n${trapNote}`,
       explanationEn: `${src.explanationEn || expl}\n\nUpgraded distractors preserve the source correct option; other options are mutually exclusive misconceptions. DSE_PLUS_10 intent draft — not empirically proven +10%.`,

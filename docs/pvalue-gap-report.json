@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-11-25T18:00:21.457Z",
+  "timezoneNote": "Machine UTC; report for Asia/Hong_Kong founder review",
+  "definitions": {
+    "P": "correct / valid_attempts in [0,1]; larger = easier",
+    "delta_p": "P_DLU - P_HKEAA (percentage points when ×100)",
+    "ratio_p": "P_DLU / P_HKEAA; intent ≈ 0.9 for +10% relative difficulty",
+    "min_sample": 30,
+    "anomaly_delta_lt": -0.3
+  },
+  "caveats": [
+    "Platform self-selected students ≠ territory-wide HKEAA cohort",
+    "Observational only — not absolute item difficulty",
+    "D4: store P numbers + topic metadata only; never paste HKEAA stems",
+    "Do not claim empirical +10% until formal_n and ratio evidence exist"
+  ],
+  "status": "UNKNOWN_NO_INPUT",
+  "input_n": 0,
+  "aggregate": {
+    "formal_n": 0,
+    "mean_delta_p": null,
+    "mean_ratio_p": null,
+    "target_ratio": 0.9,
+    "bySubject": {},
+    "anomalies": []
+  },
+  "items": [],
+  "report_template_zh": "現階段無法計算正式聚合：缺生產作答或官方／推定 P，或全部 n<30。標 UNKNOWN。"
+}
