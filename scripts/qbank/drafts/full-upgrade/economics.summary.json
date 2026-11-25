@@ -3,5 +3,7 @@
   "upgraded": 1061,
   "rejected": 0,
   "mc": 947,
-  "written": 114
+  "written": 114,
+  "df_pass": 1061,
+  "df_fail": 0
 }

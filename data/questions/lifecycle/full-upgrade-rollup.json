@@ -1,11 +1,16 @@
 {
-  "generatedAt": "2026-11-25T18:10:14.488Z",
+  "generatedAt": "2026-11-25T18:21:07.537Z",
   "expectedLive": 26428,
   "processed": 26428,
   "upgraded_or_minimal": 26428,
   "adversarial_or_param_ok": 26428,
   "minimal_gate_soft": 0,
+  "df_plus10_pass": 26428,
+  "df_plus10_fail": 0,
+  "sigma_pre": 0.275,
+  "min_delta_df": 0.11,
   "claimEmpiricalPlus10": false,
+  "claimStructuralPlus10": true,
   "wiredViaOverlay": true,
   "released": 0,
   "bySubject": {
@@ -14,175 +19,225 @@
       "upgraded": 1633,
       "rejected": 0,
       "mc": 1603,
-      "written": 30
+      "written": 30,
+      "df_pass": 1633,
+      "df_fail": 0
     },
     "m1": {
       "total": 898,
       "upgraded": 898,
       "rejected": 0,
       "mc": 881,
-      "written": 17
+      "written": 17,
+      "df_pass": 898,
+      "df_fail": 0
     },
     "m2": {
       "total": 983,
       "upgraded": 983,
       "rejected": 0,
       "mc": 966,
-      "written": 17
+      "written": 17,
+      "df_pass": 983,
+      "df_fail": 0
     },
     "physics": {
       "total": 1120,
       "upgraded": 1120,
       "rejected": 0,
       "mc": 1046,
-      "written": 74
+      "written": 74,
+      "df_pass": 1120,
+      "df_fail": 0
     },
     "chemistry": {
       "total": 979,
       "upgraded": 979,
       "rejected": 0,
       "mc": 920,
-      "written": 59
+      "written": 59,
+      "df_pass": 979,
+      "df_fail": 0
     },
     "biology": {
       "total": 1112,
       "upgraded": 1112,
       "rejected": 0,
       "mc": 1030,
-      "written": 82
+      "written": 82,
+      "df_pass": 1112,
+      "df_fail": 0
     },
     "english": {
       "total": 1051,
       "upgraded": 1051,
       "rejected": 0,
       "mc": 1036,
-      "written": 15
+      "written": 15,
+      "df_pass": 1051,
+      "df_fail": 0
     },
     "ict": {
       "total": 1111,
       "upgraded": 1111,
       "rejected": 0,
       "mc": 1001,
-      "written": 110
+      "written": 110,
+      "df_pass": 1111,
+      "df_fail": 0
     },
     "chinese": {
       "total": 1105,
       "upgraded": 1105,
       "rejected": 0,
       "mc": 977,
-      "written": 128
+      "written": 128,
+      "df_pass": 1105,
+      "df_fail": 0
     },
     "bafs": {
       "total": 990,
       "upgraded": 990,
       "rejected": 0,
       "mc": 875,
-      "written": 115
+      "written": 115,
+      "df_pass": 990,
+      "df_fail": 0
     },
     "economics": {
       "total": 1061,
       "upgraded": 1061,
       "rejected": 0,
       "mc": 947,
-      "written": 114
+      "written": 114,
+      "df_pass": 1061,
+      "df_fail": 0
     },
     "geography": {
       "total": 1108,
       "upgraded": 1108,
       "rejected": 0,
       "mc": 998,
-      "written": 110
+      "written": 110,
+      "df_pass": 1108,
+      "df_fail": 0
     },
     "history": {
       "total": 1089,
       "upgraded": 1089,
       "rejected": 0,
       "mc": 1051,
-      "written": 38
+      "written": 38,
+      "df_pass": 1089,
+      "df_fail": 0
     },
     "ths": {
       "total": 1021,
       "upgraded": 1021,
       "rejected": 0,
       "mc": 1008,
-      "written": 13
+      "written": 13,
+      "df_pass": 1021,
+      "df_fail": 0
     },
     "music": {
       "total": 1027,
       "upgraded": 1027,
       "rejected": 0,
       "mc": 1014,
-      "written": 13
+      "written": 13,
+      "df_pass": 1027,
+      "df_fail": 0
     },
     "pe": {
       "total": 1032,
       "upgraded": 1032,
       "rejected": 0,
       "mc": 1019,
-      "written": 13
+      "written": 13,
+      "df_pass": 1032,
+      "df_fail": 0
     },
     "csd": {
       "total": 984,
       "upgraded": 984,
       "rejected": 0,
       "mc": 971,
-      "written": 13
+      "written": 13,
+      "df_pass": 984,
+      "df_fail": 0
     },
     "chinese-history": {
       "total": 1087,
       "upgraded": 1087,
       "rejected": 0,
       "mc": 1074,
-      "written": 13
+      "written": 13,
+      "df_pass": 1087,
+      "df_fail": 0
     },
     "chinese-literature": {
       "total": 1055,
       "upgraded": 1055,
       "rejected": 0,
       "mc": 1042,
-      "written": 13
+      "written": 13,
+      "df_pass": 1055,
+      "df_fail": 0
     },
     "english-literature": {
       "total": 1027,
       "upgraded": 1027,
       "rejected": 0,
       "mc": 1014,
-      "written": 13
+      "written": 13,
+      "df_pass": 1027,
+      "df_fail": 0
     },
     "visual-arts": {
       "total": 1013,
       "upgraded": 1013,
       "rejected": 0,
       "mc": 1000,
-      "written": 13
+      "written": 13,
+      "df_pass": 1013,
+      "df_fail": 0
     },
     "ethics-religious": {
       "total": 866,
       "upgraded": 866,
       "rejected": 0,
       "mc": 857,
-      "written": 9
+      "written": 9,
+      "df_pass": 866,
+      "df_fail": 0
     },
     "technology-living": {
       "total": 1033,
       "upgraded": 1033,
       "rejected": 0,
       "mc": 1020,
-      "written": 13
+      "written": 13,
+      "df_pass": 1033,
+      "df_fail": 0
     },
     "design-tech": {
       "total": 1022,
       "upgraded": 1022,
       "rejected": 0,
       "mc": 1009,
-      "written": 13
+      "written": 13,
+      "df_pass": 1022,
+      "df_fail": 0
     },
     "health-management": {
       "total": 1021,
       "upgraded": 1021,
       "rejected": 0,
       "mc": 1008,
-      "written": 13
+      "written": 13,
+      "df_pass": 1021,
+      "df_fail": 0
     }
   }
 }

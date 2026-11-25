@@ -60,6 +60,12 @@ async function applyFullUpgradeOverlay(
   }
 }
 
+export type LoadSubjectOptions = {
+  keepMachineRestored?: boolean
+  /** When true, skip full-bank upgrade overlays (baseline for DF / +10% proof). */
+  skipUpgradeOverlay?: boolean
+}
+
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
 // The eager barrel in ./index.ts statically imports ALL 25 banks. That is fine on
 // the SERVER (subject pages are RSC — server-only, never shipped to the browser),
@@ -417,9 +423,12 @@ const reviewedLoaders: Record<string, Loader[]> = {
  */
 export async function loadSubjectQuestions(
   subjectId: string,
-  options?: { keepMachineRestored?: boolean },
+  options?: LoadSubjectOptions,
 ): Promise<AnyQuestion[]> {
   if (!loaders[subjectId] && !autoLoaders[subjectId] && !reviewedLoaders[subjectId]) return []
+
+  const maybeOverlay = async (qs: AnyQuestion[]) =>
+    options?.skipUpgradeOverlay ? qs : applyFullUpgradeOverlay(subjectId, qs)
 
   // ① 瀏覽器直連 Supabase（2026-09-05）。節省的是 Vercel Edge Request ——
   //    題目流量由 Vercel 移至 Supabase；而回訪者連題目流量亦不產生
@@ -435,11 +444,7 @@ export async function loadSubjectQuestions(
   // Withheld topics are dropped on both paths (hidden-topics.ts), in case an older
   // cloud copy still carries them.
   if (cloud?.length) {
-    return withoutWithheld(
-      subjectId,
-      await applyFullUpgradeOverlay(subjectId, cloud),
-      options,
-    )
+    return withoutWithheld(subjectId, await maybeOverlay(cloud), options)
   }
 
   // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：
@@ -461,11 +466,7 @@ export async function loadSubjectQuestions(
   // map only downloads on this fallback path; the cloud copy already carries them.
   const { DIFFICULTY_OVERRIDES } = await import('./difficulty-overrides.generated')
   const withDiff = applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId])
-  return withoutWithheld(
-    subjectId,
-    await applyFullUpgradeOverlay(subjectId, withDiff),
-    options,
-  )
+  return withoutWithheld(subjectId, await maybeOverlay(withDiff), options)
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */

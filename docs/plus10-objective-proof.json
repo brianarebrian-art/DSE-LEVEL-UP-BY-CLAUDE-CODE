@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-11-25T18:21:50.351Z",
+  "timezoneNote": "Machine UTC; Asia/Hong_Kong founder review",
+  "definition": {
+    "source": "docs/05-difficulty-model.md",
+    "formula": "DF = 0.30C+0.20S+0.15R+0.15D+0.10U+0.10M",
+    "plus10_band": "sigma_lift = (DF_post-DF_pre)/σ_pre ≥ 0.4 (target 0.5 ≈ ratio 0.9)",
+    "empirical_ratio_p": "NOT claimed — practice_attempts empty; this is structural DF proof only"
+  },
+  "baseline": {
+    "n": 26428,
+    "mean_df_pre": 1.797,
+    "median_df_pre": 1.75,
+    "sigma_pre": 0.275
+  },
+  "verdict": {
+    "total": 26428,
+    "pass": 26428,
+    "fail": 0,
+    "pass_rate": 1,
+    "all_pass": true,
+    "every_item_at_least_plus10_band": true,
+    "mean_sigma_lift": 2.457,
+    "min_sigma_lift": 0.727,
+    "max_sigma_lift": 5.452,
+    "mean_implied_relative_hardness": 0.4914,
+    "mean_implied_ratio": 0.5086,
+    "max_implied_ratio": 0.8546,
+    "target_implied_ratio": 0.9
+  },
+  "bySubject": {
+    "math": {
+      "n": 1633,
+      "pass": 1633,
+      "fail": 0,
+      "mean_sigma_lift": 2.129,
+      "mean_implied_ratio": 0.5745
+    },
+    "m1": {
+      "n": 898,
+      "pass": 898,
+      "fail": 0,
+      "mean_sigma_lift": 2.06,
+      "mean_implied_ratio": 0.588
+    },
+    "m2": {
+      "n": 983,
+      "pass": 983,
+      "fail": 0,
+      "mean_sigma_lift": 1.728,
+      "mean_implied_ratio": 0.6543
+    },
+    "physics": {
+      "n": 1120,
+      "pass": 1120,
+      "fail": 0,
+      "mean_sigma_lift": 1.906,
+      "mean_implied_ratio": 0.6187
+    },
+    "chemistry": {
+      "n": 979,
+      "pass": 979,
+      "fail": 0,
+      "mean_sigma_lift": 2.544,
+      "mean_implied_ratio": 0.4912
+    },
+    "biology": {
+      "n": 1112,
+      "pass": 1112,
+      "fail": 0,
+      "mean_sigma_lift": 2.595,
+      "mean_implied_ratio": 0.481
+    },
+    "english": {
+      "n": 1051,
+      "pass": 1051,
+      "fail": 0,
+      "mean_sigma_lift": 2.598,
+      "mean_implied_ratio": 0.4803
+    },
+    "ict": {
+      "n": 1111,
+      "pass": 1111,
+      "fail": 0,
+      "mean_sigma_lift": 2.514,
+      "mean_implied_ratio": 0.4972
+    },
+    "chinese": {
+      "n": 1105,
+      "pass": 1105,
+      "fail": 0,
+      "mean_sigma_lift": 2.691,
+      "mean_implied_ratio": 0.4623
+    },
+    "bafs": {
+      "n": 990,
+      "pass": 990,
+      "fail": 0,
+      "mean_sigma_lift": 3.325,
+      "mean_implied_ratio": 0.3351
+    },
+    "economics": {
+      "n": 1061,
+      "pass": 1061,
+      "fail": 0,
+      "mean_sigma_lift": 2.199,
+      "mean_implied_ratio": 0.5602
+    },
+    "geography": {
+      "n": 1108,
+      "pass": 1108,
+      "fail": 0,
+      "mean_sigma_lift": 2.56,
+      "mean_implied_ratio": 0.488
+    },
+    "history": {
+      "n": 1089,
+      "pass": 1089,
+      "fail": 0,
+      "mean_sigma_lift": 2.599,
+      "mean_implied_ratio": 0.4803
+    },
+    "ths": {
+      "n": 1021,
+      "pass": 1021,
+      "fail": 0,
+      "mean_sigma_lift": 2.651,
+      "mean_implied_ratio": 0.4698
+    },
+    "music": {
+      "n": 1027,
+      "pass": 1027,
+      "fail": 0,
+      "mean_sigma_lift": 2.55,
+      "mean_implied_ratio": 0.4901
+    },
+    "pe": {
+      "n": 1032,
+      "pass": 1032,
+      "fail": 0,
+      "mean_sigma_lift": 2.564,
+      "mean_implied_ratio": 0.4873
+    },
+    "csd": {
+      "n": 984,
+      "pass": 984,
+      "fail": 0,
+      "mean_sigma_lift": 2.471,
+      "mean_implied_ratio": 0.506
+    },
+    "chinese-history": {
+      "n": 1087,
+      "pass": 1087,
+      "fail": 0,
+      "mean_sigma_lift": 2.372,
+      "mean_implied_ratio": 0.5255
+    },
+    "chinese-literature": {
+      "n": 1055,
+      "pass": 1055,
+      "fail": 0,
+      "mean_sigma_lift": 2.532,
+      "mean_implied_ratio": 0.4936
+    },
+    "english-literature": {
+      "n": 1027,
+      "pass": 1027,
+      "fail": 0,
+      "mean_sigma_lift": 2.441,
+      "mean_implied_ratio": 0.5118
+    },
+    "visual-arts": {
+      "n": 1013,
+      "pass": 1013,
+      "fail": 0,
+      "mean_sigma_lift": 2.473,
+      "mean_implied_ratio": 0.5054
+    },
+    "ethics-religious": {
+      "n": 866,
+      "pass": 866,
+      "fail": 0,
+      "mean_sigma_lift": 2.507,
+      "mean_implied_ratio": 0.4985
+    },
+    "technology-living": {
+      "n": 1033,
+      "pass": 1033,
+      "fail": 0,
+      "mean_sigma_lift": 2.484,
+      "mean_implied_ratio": 0.5032
+    },
+    "design-tech": {
+      "n": 1022,
+      "pass": 1022,
+      "fail": 0,
+      "mean_sigma_lift": 2.55,
+      "mean_implied_ratio": 0.49
+    },
+    "health-management": {
+      "n": 1021,
+      "pass": 1021,
+      "fail": 0,
+      "mean_sigma_lift": 2.548,
+      "mean_implied_ratio": 0.4905
+    }
+  },
+  "fail_sample": []
+}

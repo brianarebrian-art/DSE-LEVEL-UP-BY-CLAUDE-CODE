@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-11-25T18:10:14.488Z",
-  "note": "Full-bank upgrade overlays applied by id. Not RELEASED. Not empirical +10%.",
+  "generatedAt": "2026-11-25T18:21:07.537Z",
+  "note": "Full-bank structural DF≥0.4σ overlays. Not RELEASED. Empirical ratio_p still UNKNOWN.",
   "counts": {
     "processed": 26428,
     "overlayIds": 26428,
     "adversarialPassed": 26428,
     "minimal": 0,
+    "dfPlus10Pass": 26428,
+    "dfPlus10Fail": 0,
     "totalSignoffCandidates": 26428
   },
   "ids": [
