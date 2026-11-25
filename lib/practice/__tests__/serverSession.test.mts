@@ -1,11 +1,16 @@
 import assert from 'node:assert/strict'
-import { describe, it } from 'node:test'
+import { describe, it, before } from 'node:test'
 import type { MCQuestion } from '../../../data/questions/types.ts'
 import {
   assertNoAnswerLeak,
   buildSession,
+  decodeSession,
   gradeSession,
 } from '../serverSession.ts'
+
+before(() => {
+  process.env.PRACTICE_SESSION_HMAC_SECRET = 'test-secret-at-least-32-characters-long!!'
+})
 
 const sample: MCQuestion = {
   id: 't_mc_1',
@@ -28,12 +33,25 @@ const sample: MCQuestion = {
   marks: 1,
 }
 
+const sample2: MCQuestion = {
+  ...sample,
+  id: 't_mc_2',
+  options: ['a', 'b', 'c', 'd'],
+  optionsEn: ['a', 'b', 'c', 'd'],
+  correctIndex: 2,
+}
+
 describe('serverSession', () => {
-  it('public session items do not leak answer keys', () => {
-    const { token, publicItems } = buildSession('math', [sample, { ...sample, id: 't_mc_2', options: ['a', 'b', 'c', 'd'], correctIndex: 2 }], 2)
+  it('public session items and token do not leak answer keys', () => {
+    const { token, publicItems } = buildSession('math', [sample, sample2], 2)
     assert.ok(token.includes('.'))
-    const leaks = assertNoAnswerLeak({ items: publicItems })
+    const leaks = assertNoAnswerLeak({ token, items: publicItems })
     assert.deepEqual(leaks, [])
+    const payload = decodeSession(token)
+    assert.ok(payload)
+    assert.equal(payload!.v, 2)
+    assert.ok(Array.isArray(payload!.itemIds))
+    assert.equal('items' in payload!, false)
     for (const item of publicItems) {
       assert.equal('correctShuffledIndex' in item, false)
       assert.equal('correctIndex' in item, false)
@@ -41,18 +59,44 @@ describe('serverSession', () => {
     }
   })
 
-  it('grades against shuffled indices', () => {
-    const { token, publicItems } = buildSession('math', [sample], 1)
-    const item = publicItems[0]
-    // Find which displayed option equals stored correct text "5"
-    const chosenIndex = item.options.indexOf('5')
-    assert.ok(chosenIndex >= 0)
-    const g = gradeSession(token, [{ id: item.id, chosenIndex }])
+  it('grades against shuffled indices with fixed session total', () => {
+    const bank = [sample, sample2]
+    const { token, publicItems } = buildSession('math', bank, 2)
+    assert.equal(publicItems.length, 2)
+    const answers = publicItems.map((item) => {
+      // correct zh text: sample correct is options[correctIndex] in bank
+      const bankQ = bank.find((q) => q.id === item.id)!
+      const correctText = bankQ.options[bankQ.correctIndex]
+      return { id: item.id, chosenIndex: item.options.indexOf(correctText) }
+    })
+    const g = gradeSession(token, answers, bank)
     assert.equal(g.ok, true)
     if (g.ok) {
+      assert.equal(g.score, 2)
+      assert.equal(g.total, 2)
+    }
+  })
+
+  it('does not inflate score via duplicate ids; missing counts as wrong', () => {
+    const bank = [sample, sample2]
+    const { token, publicItems } = buildSession('math', bank, 2)
+    const first = publicItems[0]
+    const bankQ = bank.find((q) => q.id === first.id)!
+    const correctText = bankQ.options[bankQ.correctIndex]
+    const chosenIndex = first.options.indexOf(correctText)
+    const g = gradeSession(
+      token,
+      [
+        { id: first.id, chosenIndex },
+        { id: first.id, chosenIndex },
+        { id: first.id, chosenIndex },
+      ],
+      bank,
+    )
+    assert.equal(g.ok, true)
+    if (g.ok) {
+      assert.equal(g.total, 2)
       assert.equal(g.score, 1)
-      assert.equal(g.total, 1)
-      assert.equal(g.details[0].correct, true)
     }
   })
 })

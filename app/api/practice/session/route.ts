@@ -9,19 +9,31 @@ import {
   buildSession,
   isPilotSubject,
   serverGradeEnabled,
+  serverGradeReady,
 } from '@/lib/practice/serverSession'
 
 export const dynamic = 'force-dynamic'
 
 /**
  * POST /api/practice/session
- * Feature flag: PRACTICE_SERVER_GRADE=1
- * Charter 2B C1 — DRAFT; default off until charter signed.
+ * Feature flag: PRACTICE_SERVER_GRADE=1 + PRACTICE_SESSION_HMAC_SECRET (≥32 chars)
  */
 export async function POST(request: Request) {
   if (!serverGradeEnabled()) {
     return NextResponse.json(
-      { error: 'server_grade_disabled', hint: 'Set PRACTICE_SERVER_GRADE=1 after charter 2B sign-off' },
+      {
+        error: 'server_grade_disabled',
+        hint: 'Set PRACTICE_SERVER_GRADE=1 after charter 2B sign-off',
+      },
+      { status: 503 },
+    )
+  }
+  if (!serverGradeReady()) {
+    return NextResponse.json(
+      {
+        error: 'hmac_secret_required',
+        hint: 'Set PRACTICE_SESSION_HMAC_SECRET to a random string ≥32 characters',
+      },
       { status: 503 },
     )
   }
@@ -60,12 +72,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'empty_bank' }, { status: 404 })
   }
 
-  const { token, publicItems, sessionId } = buildSession(subjectId, mc, size)
+  let built: ReturnType<typeof buildSession>
+  try {
+    built = buildSession(subjectId, mc, size)
+  } catch {
+    return NextResponse.json({ error: 'session_build_failed' }, { status: 500 })
+  }
+
   const body = {
-    sessionId,
+    sessionId: built.sessionId,
     subjectId,
-    token,
-    items: publicItems,
+    token: built.token,
+    items: built.publicItems,
     disclaimer:
       'DSE Level Up 非官方練習卷。答案鍵不在本回應內。題目未經註冊教師審定。',
   }

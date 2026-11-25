@@ -54,12 +54,12 @@ export function adversarialCheck(q: AnyQ): CheckResult {
   const warnings = [...base.warnings]
   const id = base.id
 
-  const stem = String(q.content ?? '')
-  if (/以上皆是|以上皆非|all of the above|none of the above/i.test(stem)) {
-    warnings.push('all_of_the_above_pattern')
-  }
   if (q.type === 'mc') {
     const opts = (q.options as string[]) || []
+    const banned = /以上皆是|以上皆非|all of the above|none of the above/i
+    if (opts.some((o) => banned.test(o))) {
+      warnings.push('all_of_the_above_pattern')
+    }
     const lengths = opts.map((o) => o.length)
     if (lengths.length === 4) {
       const max = Math.max(...lengths)
