@@ -97,6 +97,19 @@ describe('serverSession', () => {
     if (g.ok) {
       assert.equal(g.total, 2)
       assert.equal(g.score, 1)
+      const unanswered = g.details.find((d) => !d.answered)
+      assert.ok(unanswered)
+      assert.equal('correctIndex' in unanswered!, false)
+      const answered = g.details.find((d) => d.answered)
+      assert.ok(answered && typeof answered.correctIndex === 'number')
     }
+  })
+
+  it('rejects empty answers and does not leak keys', () => {
+    const bank = [sample, sample2]
+    const { token } = buildSession('math', bank, 2)
+    const g = gradeSession(token, [], bank)
+    assert.equal(g.ok, false)
+    if (!g.ok) assert.equal(g.error, 'empty_answers')
   })
 })
