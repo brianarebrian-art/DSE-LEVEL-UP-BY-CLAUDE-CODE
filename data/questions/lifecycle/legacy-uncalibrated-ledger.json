@@ -1,0 +1,134 @@
+{
+  "summary": {
+    "generatedAt": "2026-11-25T17:28:27.181Z",
+    "pilotCount": 500,
+    "legacyCount": 25928,
+    "expectedTotal": 26428,
+    "note": "Student banks unchanged; status is ledger-only until promote + RELEASED gate",
+    "legacySample": [
+      {
+        "id": "math_quad_1",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_2",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_3",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_4",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_5",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_6",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_7",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_8",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_9",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_10",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_11",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_quad_12",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_1",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_2",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_3",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_4",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_5",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_6",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_7",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      },
+      {
+        "id": "math_prob_8",
+        "subject": "math",
+        "review_status": "LEGACY_UNCALIBRATED",
+        "reason": "outside_30d_pilot_scope_1B"
+      }
+    ]
+  },
+  "reason": "outside_30d_pilot_scope_1B",
+  "review_status": "LEGACY_UNCALIBRATED",
+  "idsFile": "data/questions/lifecycle/legacy-uncalibrated-ids.tsv"
+}

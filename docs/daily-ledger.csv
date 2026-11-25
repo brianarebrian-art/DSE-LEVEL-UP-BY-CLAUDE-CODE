@@ -1,0 +1,2 @@
+date,generated,blind_passed,adversarial_passed,human_checked,released,retired,human_check_quota_used,human_check_backlog,items_with_30_responses,note
+2026-11-26,500,0,500,0,0,0,0,50,0,deterministic pilot; ai_blind skipped

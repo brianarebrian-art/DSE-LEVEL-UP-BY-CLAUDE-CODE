@@ -1,0 +1,1262 @@
+{
+  "generatedAt": "2026-11-25T17:26:43.320Z",
+  "n": 50,
+  "adversarial_passed": 50,
+  "rejected": 0,
+  "ai_blind": "SKIPPED_NO_LLM",
+  "rollbackNote": "dry-run writes no student-visible banks; delete this JSON to discard",
+  "results": [
+    {
+      "id": "math_quad_1",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_2",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_3",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_4",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_5",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_6",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_7",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_8",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_9",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "math_quad_10",
+      "subject": "math",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_1",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_2",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_3",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_4",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_5",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_6",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_7",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_fma_8",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_vuat_9",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "phy_vuat_10",
+      "subject": "physics",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_nmM_1",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_nmM_2",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_nmM_3",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_nmM_4",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_nmM_5",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_mnM_6",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_mnM_7",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_mnM_8",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_mnM_9",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "chem_mnM_10",
+      "subject": "chemistry",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_1",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_2",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_3",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_4",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_5",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_6",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_8",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_10",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_11",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bio_cells_12",
+      "subject": "biology",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_1",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_2",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_3",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_4",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_5",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_6",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_7",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_8",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_9",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    },
+    {
+      "id": "bafs_env_10",
+      "subject": "bafs",
+      "final": "ADVERSARIAL_PASSED",
+      "ai_blind": "SKIPPED_NO_LLM",
+      "warnings": []
+    }
+  ],
+  "audits": [
+    {
+      "itemId": "math_quad_1",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_1",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_2",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_2",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_3",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_3",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_4",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_4",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_5",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_5",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_6",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_6",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_7",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_7",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_8",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_8",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_9",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_9",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "math_quad_10",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "math_quad_10",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_1",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_1",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_2",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_2",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_3",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_3",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_4",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_4",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_5",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_5",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_6",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_6",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_7",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_7",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_fma_8",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_fma_8",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_vuat_9",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_vuat_9",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "phy_vuat_10",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "phy_vuat_10",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_nmM_1",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_nmM_1",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_nmM_2",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_nmM_2",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_nmM_3",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_nmM_3",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_nmM_4",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_nmM_4",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_nmM_5",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_nmM_5",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_mnM_6",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_mnM_6",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_mnM_7",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_mnM_7",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_mnM_8",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_mnM_8",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_mnM_9",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_mnM_9",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "chem_mnM_10",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "chem_mnM_10",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_1",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_1",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_2",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_2",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_3",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_3",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_4",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_4",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_5",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_5",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_6",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_6",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_8",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_8",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_10",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_10",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_11",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_11",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bio_cells_12",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bio_cells_12",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_1",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_1",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_2",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_2",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_3",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_3",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_4",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_4",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_5",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_5",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_6",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_6",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_7",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_7",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_8",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_8",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_9",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_9",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    },
+    {
+      "itemId": "bafs_env_10",
+      "from": "DRAFT",
+      "to": "PARAM_CHECKED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "param-check start"
+    },
+    {
+      "itemId": "bafs_env_10",
+      "from": "PARAM_CHECKED",
+      "to": "ADVERSARIAL_PASSED",
+      "actor": "pipeline:dry-run",
+      "at": "2026-11-25T17:26:43.320Z",
+      "version": 1,
+      "reason": "deterministic_adversarial_ok; ai_blind=SKIPPED_NO_LLM"
+    }
+  ]
+}
