@@ -59,6 +59,21 @@ const src = new Map(files.map((f) => [f, readFileSync(join(ROOT, f), 'utf8')]))
 for (const f of ['proxy.ts', 'auth.ts', 'instrumentation.ts', 'next.config.ts']) {
   if (existsSync(join(ROOT, f))) src.set(f, readFileSync(join(ROOT, f), 'utf8'))
 }
+
+// npm scripts are real callers (for example the question-bank map). They are
+// importers only; a script file is not required to be imported by the website.
+function addScriptImporters(dir) {
+  if (!existsSync(join(ROOT, dir))) return
+  for (const e of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+    const rel = `${dir}/${e.name}`
+    if (e.isDirectory()) {
+      if (e.name !== 'node_modules' && e.name !== '__tests__') addScriptImporters(rel)
+      continue
+    }
+    if (/\.(mts|mjs|ts|tsx)$/.test(e.name)) src.set(rel, readFileSync(join(ROOT, rel), 'utf8'))
+  }
+}
+addScriptImporters('scripts')
 const findings = []
 
 // ── ① components/ ──────────────────────────────────────────────────────────
@@ -83,6 +98,7 @@ for (const rel of files.filter((f) => f.startsWith('lib/'))) {
     if (other === rel) continue
     if (new RegExp(`@/lib/${short}(['"\`/]|$)`, 'm').test(code)) used++
     else if (new RegExp(`from '\\.\\.?/[^']*${leaf}(\\.ts)?'`).test(code)) used++
+    else if (code.includes(`lib/${short}.ts`) || code.includes(`lib/${short}'`) || code.includes(`lib/${short}"`)) used++
   }
   if (used === 0) findings.push([rel, '模組冇被任何地方 import'])
 }

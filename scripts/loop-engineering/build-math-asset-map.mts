@@ -40,6 +40,13 @@ const { buildAssetMap } = await mod<{
 const { buildWeek12DryRun } = await mod<{
   buildWeek12DryRun: () => unknown
 }>('../../lib/loop-engineering/dry-run.ts')
+const { loadStoredPrompt } = await mod<{
+  loadStoredPrompt: (key: 'upgrade' | 'aiReview' | 'twoPersonReview') => string
+}>('../../lib/loop-engineering/prompts.ts')
+
+for (const key of ['upgrade', 'aiReview', 'twoPersonReview'] as const) {
+  if (loadStoredPrompt(key).trim().length < 80) throw new Error(`已存放提示太短：${key}`)
+}
 
 const items = await loadSubjectQuestions('math')
 const map = buildAssetMap(items, RUBRIC_VERSION)
