@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { loadBank } from '@/lib/practice/bankCache'
 import { buildTopicNote } from '@/lib/notes/notes'
+import { noteCount } from '@/lib/practice/noteCount'
 import { SUBJECT_TOPICS } from '@/data/questions/summary.generated'
 import type { ReverseLogEntry } from '@/lib/reverseLog'
 import type { TopicStatEntry } from '@/lib/topicStats'
@@ -40,8 +41,8 @@ export async function POST(request: Request) {
   if (!topic) return NextResponse.json({ error: 'unknown_topic' }, { status: 404 })
 
   const mistakes = normalizeMistakes(read.value?.mistakes, topicId, topic.zh)
-  const attempted = finiteCount(read.value?.attempted)
-  const wrong = finiteCount(read.value?.wrong)
+  const attempted = noteCount(read.value?.attempted)
+  const wrong = noteCount(read.value?.wrong)
   const stat =
     attempted === null
       ? undefined
@@ -50,11 +51,6 @@ export async function POST(request: Request) {
   const bank = await loadBank(subjectId)
   const note = buildTopicNote(topic.id, topic.zh, topic.emoji, bank, mistakes, stat)
   return NextResponse.json({ note }, { headers: { 'cache-control': 'no-store' } })
-}
-
-function finiteCount(value: unknown): number | null {
-  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 100000) return null
-  return Math.floor(value)
 }
 
 function normalizeMistakes(value: unknown, topicId: string, topicZh: string): ReverseLogEntry[] {

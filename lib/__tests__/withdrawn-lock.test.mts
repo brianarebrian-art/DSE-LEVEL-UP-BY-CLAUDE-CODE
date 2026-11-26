@@ -75,9 +75,10 @@ test('no student-facing code reads the unfiltered bank', () => {
 test('practice, "just one question", recommendations and printable papers all use the filtered loader', () => {
   // size=1 and the review/recommendation links all land on /practice, whose pool comes
   // from PracticeGate; printable papers come from Paper Warrior.
-  const filtered = /\bload(Subject(MC)?Questions|QuestionsByTopic|WrittenQuestions)\b/
-  assert.match(read('app/practice/PracticeGate.tsx'), filtered)
-  assert.match(read('app/paper-warrior/PaperWarriorClient.tsx'), filtered)
+  assert.match(read('app/practice/PracticeGate.tsx'), /\/api\/practice\/catalog/)
+  assert.match(read('app/paper-warrior/PaperWarriorClient.tsx'), /\/api\/paper\/build/)
+  assert.match(read('app/api/practice/catalog/route.ts'), /loadMcBank|loadWrittenBank/)
+  assert.match(read('lib/practice/bankCache.ts'), /loadSubjectQuestions\(subjectId\)/)
   // …and each of those helpers is built on the filtered loadSubjectQuestions.
   const load = read('data/questions/load.ts')
   assert.match(load, /loadSubjectMCQuestions[\s\S]*?return \(await loadSubjectQuestions\(subjectId\)\)/)

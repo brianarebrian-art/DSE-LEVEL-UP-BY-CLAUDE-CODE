@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 import type { MCQuestion } from '../../data/questions/types.ts'
+import { noteCount } from '../practice/noteCount.ts'
 import { projectPaperMc, toPublicMc, toStem, checkMc } from '../practice/publicQuestion.ts'
 import { conceptPreview } from '../practice/conceptPreview.ts'
 import { assertNoAnswerLeak } from '../practice/serverSession.ts'
@@ -85,10 +86,19 @@ test('bookmark stems and concept previews do not carry an answer index', () => {
   assert.match(hit[0].explanation, /125/)
 })
 
+test('partial written credit stays a half, not a full mark', () => {
+  assert.equal(noteCount(0.5), 0.5)
+  assert.equal(noteCount(1), 1)
+  assert.equal(noteCount(-1), null)
+})
+
 test('questions-only toggle drops the previous paper, and notes clear on topic change', () => {
   const paper = readFileSync(new URL('../../app/paper-warrior/PaperWarriorClient.tsx', import.meta.url), 'utf8')
-  const checkbox = paper.slice(paper.indexOf('setWithExplain(e.target.checked)'), paper.indexOf('setWithExplain(e.target.checked)') + 180)
+  const at = paper.indexOf('setWithExplain(e.target.checked)')
+  const checkbox = paper.slice(at - 80, at + 180)
+  assert.match(checkbox, /requestSeq\.current \+= 1/)
   assert.match(checkbox, /setPaper\(null\)/)
+  assert.match(paper, /seq !== requestSeq\.current/)
   assert.match(checkbox, /setRevealCode\(false\)/)
   assert.match(paper, /\} catch \{[\s\S]*setPaper\(null\)[\s\S]*setBuildError\(true\)/)
   const notes = readFileSync(new URL('../../app/notes/[subject]/NotesSubjectClient.tsx', import.meta.url), 'utf8')

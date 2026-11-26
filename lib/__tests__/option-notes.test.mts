@@ -111,6 +111,6 @@ test('every question with optionNotes: one note per option, no positional wordin
 
 test('the practice screen keeps option identity and renders the notes', () => {
   const src = read('app/practice/PracticeSession.tsx')
-  assert.match(src, /shuffledOptions: displayOptions\(q\)/)
+  assert.match(src, /shuffledOptions: displayOptions\(stored\)/)
   assert.equal((src.match(/<OptionNotes/g) ?? []).length, 2, 'both the right- and wrong-answer branches')
 })

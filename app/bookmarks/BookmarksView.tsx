@@ -41,12 +41,14 @@ export default function BookmarksView() {
   const en = locale === 'en'
 
   const [rows, setRows] = useState<Resolved[] | null>(null)
+  const [loadError, setLoadError] = useState(false)
  const [renaming, setRenaming] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
   const load = async () => {
     const bms = getBookmarks()
     if (!bms.length) {
+      setLoadError(false)
       setRows([])
       return
     }
@@ -54,7 +56,9 @@ export default function BookmarksView() {
     const bySubject = new Map<string, Bookmark[]>()
     for (const b of bms) bySubject.set(b.subjectId, [...(bySubject.get(b.subjectId) ?? []), b])
 
-    const banks = await Promise.all(
+    let banks: Array<readonly [string, Map<string, AnyQuestion>]>
+    try {
+      banks = await Promise.all(
       [...bySubject.entries()].map(async ([sid, group]) => {
         const ids = group.map((b) => b.questionId)
         const found = new Map<string, AnyQuestion>()
@@ -64,14 +68,19 @@ export default function BookmarksView() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ subjectId: sid, ids: ids.slice(i, i + 60) }),
           })
-          if (!res.ok) continue
+          if (!res.ok) throw new Error('bookmarks')
           const body = (await res.json()) as { questions?: AnyQuestion[] }
           for (const q of body.questions ?? []) found.set(q.id, q)
         }
         return [sid, found] as const
       }),
-    )
+      )
+    } catch {
+      setLoadError(true)
+      return
+    }
     const lookup = new Map(banks)
+    setLoadError(false)
     setRows(bms.map((bm) => ({ bm, q: lookup.get(bm.subjectId)?.get(bm.questionId) ?? null })))
   }
 
@@ -121,7 +130,18 @@ export default function BookmarksView() {
             : '未登入就只留喺呢部裝置。唔計數、唔排名 —— 淨係你想留低嗰啲題。'}
         </p>
 
-        {rows === null && <p className="text-sm text-ink-muted">{en ? 'Loading…' : '載入中⋯'}</p>}
+        {loadError && (
+          <p role="status" className="mb-4 text-sm text-ink-muted">
+            {en
+              ? 'Saved questions could not be loaded just now. They are still saved — try again.'
+              : '收藏暫時讀唔到。題目仍然留住，可以再試一次。'}
+            <button type="button" onClick={() => void load()} className="ml-2 min-h-11 text-accent underline underline-offset-2">
+              {en ? 'Try again' : '再試'}
+            </button>
+          </p>
+        )}
+
+        {rows === null && !loadError && <p className="text-sm text-ink-muted">{en ? 'Loading…' : '載入中⋯'}</p>}
 
         {rows?.length === 0 && (
           <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center flex flex-col items-center">

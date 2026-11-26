@@ -95,8 +95,9 @@ test('B1: the dashboard shows a full rest page on a rest day, before any task or
 // ── C1 (a): a bank that fails to load says so instead of spinning forever ────
 test('C1: both bank loads have a catch that leads to an error screen', () => {
   const gate = read('app/practice/PracticeGate.tsx')
-  assert.match(gate, /loadWrittenQuestions\(subjectId\)\.then\([^\n]*\)\.catch\(fail\)/)
-  assert.match(gate, /loadSubjectMCQuestions\(subjectId\)\.then\([^\n]*\)\.catch\(fail\)/)
+  assert.match(gate, /kind = long \? 'written' : 'mc'/)
+  assert.match(gate, /\/api\/practice\/catalog\?subject=/)
+  assert.match(gate, /\.catch\(fail\)/)
   assert.match(gate, /if \(loadFailed\) return <BankLoadError subjectId=\{subjectId\} \/>/)
   assert.match(gate, /呢科未存喺部機/)
 })

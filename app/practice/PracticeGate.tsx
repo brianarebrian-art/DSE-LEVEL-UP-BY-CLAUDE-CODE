@@ -185,6 +185,12 @@ export default function PracticeGate({
     () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
     [writtenBank, subjectId, topicFilter, selKey],
   )
+  // Map once per bank. A fresh array on every render makes LongPracticeSession
+  // reshuffle and wipe an answer the student is still writing.
+  const writtenForSession = useMemo(
+    () => (scopedWritten ? scopedWritten.map(withheldWritten) : null),
+    [scopedWritten],
+  )
 
   // Wait for auth before gating — avoids a flash of the runner then the wall.
   if (isAuthUiEnabled() && authStatus === 'loading') return <Loading kind={long ? undefined : 'mc'} />
@@ -203,7 +209,7 @@ export default function PracticeGate({
     return (
       <LongPracticeSession
         key={subjectId + '|' + (topicFilter ?? '') + '|long'}
-        bank={scopedWritten.map(withheldWritten)}
+        bank={writtenForSession ?? []}
         subjectId={subjectId}
         topicFilter={topicFilter}
       />

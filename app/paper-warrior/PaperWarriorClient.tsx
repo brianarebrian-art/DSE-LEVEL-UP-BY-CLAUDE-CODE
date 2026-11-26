@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Printer, FileText, RefreshCw, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
@@ -70,6 +70,7 @@ export default function PaperWarriorClient() {
   }, [subject])
 
   const [busy, setBusy] = useState(false)
+  const requestSeq = useRef(0)
 
   const subjectMeta = activeSubjects.find((s) => s.id === subject)
 
@@ -77,6 +78,7 @@ export default function PaperWarriorClient() {
   // seed 喺 await 之前先攞 —— 攞完先 await 嘅話，連撳兩次可能撞同一個 seed。
   const generate = useCallback(async () => {
     if (busy) return
+    const seq = ++requestSeq.current
     setBusy(true)
     setBuildError(false)
     try {
@@ -87,16 +89,19 @@ export default function PaperWarriorClient() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ subject, topic, size, seed, written: wanted, withExplain }),
       })
+      if (seq !== requestSeq.current) return
       if (!res.ok) {
         setPaper(null)
         setBuildError(true)
         return
       }
       const body = (await res.json()) as PaperView
+      if (seq !== requestSeq.current) return
       setRevealCode(false)
       setPaper(body.items?.length ? body : null)
       if (!body.items?.length) setBuildError(true)
     } catch {
+      if (seq !== requestSeq.current) return
       setPaper(null)
       setRevealCode(false)
       setBuildError(true)
@@ -223,6 +228,7 @@ export default function PaperWarriorClient() {
               type="checkbox"
               checked={withExplain}
               onChange={(e) => {
+                requestSeq.current += 1
                 setWithExplain(e.target.checked)
                 setPaper(null)
                 setRevealCode(false)
