@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, BookmarkX, FolderPen, Check, X } from 'lucide-react'
 import Illustration from '@/src/components/ui/Illustration'
@@ -42,13 +42,15 @@ export default function BookmarksView() {
 
   const [rows, setRows] = useState<Resolved[] | null>(null)
   const [loadError, setLoadError] = useState(false)
+  const loadSeq = useRef(0)
  const [renaming, setRenaming] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
   const load = async () => {
+    const seq = ++loadSeq.current
+    setLoadError(false)
     const bms = getBookmarks()
     if (!bms.length) {
-      setLoadError(false)
       setRows([])
       return
     }
@@ -76,11 +78,12 @@ export default function BookmarksView() {
       }),
       )
     } catch {
+      if (seq !== loadSeq.current) return
       setLoadError(true)
       return
     }
+    if (seq !== loadSeq.current) return
     const lookup = new Map(banks)
-    setLoadError(false)
     setRows(bms.map((bm) => ({ bm, q: lookup.get(bm.subjectId)?.get(bm.questionId) ?? null })))
   }
 
@@ -102,15 +105,14 @@ export default function BookmarksView() {
   }, [rows])
 
   const drop = (b: Bookmark) => {
+    // removeBookmark 會派 dse-bookmarks，監聽器負責重新載入，避免同一改動開兩次請求。
     removeBookmark(b.subjectId, b.questionId)
-    void load()
   }
 
   const commitRename = (from: string) => {
     renameFolder(from, draft)
     setRenaming(null)
     setDraft('')
-    void load()
   }
 
   return (

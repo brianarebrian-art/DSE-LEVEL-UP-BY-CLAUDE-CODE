@@ -104,6 +104,9 @@ test('questions-only toggle drops the previous paper, and notes clear on topic c
   const notes = readFileSync(new URL('../../app/notes/[subject]/NotesSubjectClient.tsx', import.meta.url), 'utf8')
   assert.match(notes, /setNote\(null\)/)
   assert.match(notes, /noteState === 'ready' && note && note\.yourMistakes/)
+  const bookmarks = readFileSync(new URL('../../app/bookmarks/BookmarksView.tsx', import.meta.url), 'utf8')
+  assert.match(bookmarks, /seq !== loadSeq\.current/)
+  assert.doesNotMatch(bookmarks, /removeBookmark\([\s\S]{0,80}void load\(\)/)
 })
 
 test('practice and paper clients do not import the question banks', () => {
