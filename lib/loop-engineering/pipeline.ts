@@ -164,8 +164,16 @@ export function createDraft(input: {
 
 export function moveToAiReview(record: PipelineRecord, at: string): PipelineRecord {
   assertTransition(record, 'loop3_ai_first_review')
+  const from = record.status
+  record.aiReview = null
   record.status = 'loop3_ai_first_review'
-  record.events.push({ at, from: 'loop2_draft', to: 'loop3_ai_first_review', ok: true, reasonZh: '送交 AI 初審。' })
+  record.events.push({
+    at,
+    from,
+    to: 'loop3_ai_first_review',
+    ok: true,
+    reasonZh: '送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。',
+  })
   return record
 }
 
@@ -232,12 +240,13 @@ export function applyTwoPersonReview(record: PipelineRecord, review: TwoPersonRe
     })
   } else {
     record.status = 'loop2_draft'
+    record.aiReview = null
     record.events.push({
       at,
       from: 'loop4_two_person_review',
       to: 'loop2_draft',
       ok: true,
-      reasonZh: '兩人覆核不通過，退回 Loop 2。',
+      reasonZh: '兩人覆核不通過，退回 Loop 2。先前的 AI 初審不再有效，須重新初審。',
     })
   }
   assertRecordClaims(record)

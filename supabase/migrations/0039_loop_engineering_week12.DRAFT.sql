@@ -62,9 +62,11 @@ create table if not exists public.loop_eng_pipeline_items (
   constraint ck_loop_eng_status check (
     status in ('loop2_draft', 'loop3_ai_first_review', 'loop4_two_person_review', 'preview')
   ),
+  -- CHECK treats NULL as success, so a plain "=" would let a missing
+  -- ai_decision through. IS NOT DISTINCT FROM is false when the column is null.
   constraint ck_loop_eng_ai_gate check (
     status in ('loop2_draft', 'loop3_ai_first_review')
-    or ai_decision = 'pass_to_human'
+    or ai_decision is not distinct from 'pass_to_human'
   ),
   constraint ck_loop_eng_preview_label check (
     status <> 'preview'

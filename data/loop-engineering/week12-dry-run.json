@@ -73,7 +73,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:11:00+08:00",
@@ -170,7 +170,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:12:00+08:00",
@@ -267,7 +267,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:13:00+08:00",
@@ -364,7 +364,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:14:00+08:00",
@@ -461,7 +461,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:15:00+08:00",
@@ -558,7 +558,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:16:00+08:00",
@@ -613,21 +613,7 @@
       },
       "proposedComposite": 12,
       "formulaMetByProposedScores": false,
-      "aiReview": {
-        "decision": "pass_to_human",
-        "results": {
-          "correctness": "通過",
-          "solvability": "通過",
-          "syllabus": "通過",
-          "clarity": "通過",
-          "trap": "通過",
-          "explanation": "通過",
-          "difficulty_engineering": "通過",
-          "originality": "通過",
-          "disclosure": "通過"
-        },
-        "noteZh": "初審只見有一個可教的分母混淆，故先通過；送交人手覆核時請特別看大於 1 的選項是否降低鑑別。"
-      },
+      "aiReview": null,
       "twoPersonReview": {
         "reviewerA": "dry-run-scaffold-a",
         "reviewerB": "dry-run-scaffold-b",
@@ -662,7 +648,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:17:00+08:00",
@@ -683,7 +669,7 @@
           "from": "loop4_two_person_review",
           "to": "loop2_draft",
           "ok": true,
-          "reasonZh": "兩人覆核不通過，退回 Loop 2。"
+          "reasonZh": "兩人覆核不通過，退回 Loop 2。先前的 AI 初審不再有效，須重新初審。"
         }
       ]
     },
@@ -743,7 +729,7 @@
           "from": "loop2_draft",
           "to": "loop3_ai_first_review",
           "ok": true,
-          "reasonZh": "送交 AI 初審。"
+          "reasonZh": "送交 AI 初審。進入本輪初審後，先前的通過結果不再有效。"
         },
         {
           "at": "2026-11-26T22:18:00+08:00",

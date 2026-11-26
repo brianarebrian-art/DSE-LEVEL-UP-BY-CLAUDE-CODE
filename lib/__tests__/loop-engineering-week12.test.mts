@@ -20,6 +20,7 @@ import {
 import {
   PipelineGateError,
   applyAiReview,
+  applyTwoPersonReview,
   attemptLoop5,
   createDraft,
   decideAiReview,
@@ -143,6 +144,48 @@ test('AI 初審未通過就不能進入人手覆核', () => {
   assert.throws(() => moveToTwoPersonReview(record, '2026-11-26T22:02:00+08:00'), PipelineGateError)
 })
 
+test('人手退回後再入 Loop 3，舊的 AI 通過不能直接進入人手覆核', () => {
+  const proposed = { reasoning: 4, stepIntegration: 3, trapQuality: 3, expression: 2, transfer: 3 }
+  const record = createDraft({
+    draftId: 'gate-restale',
+    sourceQuestionId: 'src',
+    baselineProfileId: 'p2_mc',
+    proposed,
+  })
+  moveToAiReview(record, '2026-11-26T22:10:00+08:00')
+  applyAiReview(record, decideAiReview({ ...AI_PASS }, '初審通過。'), '2026-11-26T22:11:00+08:00')
+  moveToTwoPersonReview(record, '2026-11-26T22:12:00+08:00')
+  applyTwoPersonReview(
+    record,
+    {
+      reviewerA: 'dry-run-scaffold-a',
+      reviewerB: 'dry-run-scaffold-b',
+      signoffKind: 'scaffold_not_subject_teacher',
+      independentReviewers: false,
+      checks: {
+        clarity: true,
+        answerConsistent: true,
+        syllabus: true,
+        explanation: true,
+        trap: false,
+        formulaNotOnlyArithmetic: true,
+        originality: true,
+      },
+      conclusion: 'rework',
+      noteZh: '陷阱未夠公平，退回重寫。',
+    },
+    '2026-11-26T22:13:00+08:00',
+  )
+  assert.equal(record.status, 'loop2_draft')
+  assert.equal(record.aiReview, null)
+  moveToAiReview(record, '2026-11-26T22:14:00+08:00')
+  assert.equal(record.aiReview, null)
+  assert.throws(() => moveToTwoPersonReview(record, '2026-11-26T22:15:00+08:00'), PipelineGateError)
+  applyAiReview(record, decideAiReview({ ...AI_PASS }, '重寫後再初審。'), '2026-11-26T22:16:00+08:00')
+  moveToTwoPersonReview(record, '2026-11-26T22:17:00+08:00')
+  assert.equal(record.status, 'loop4_two_person_review')
+})
+
 test('正確性無法判斷亦不能進入人手覆核', () => {
   const review = decideAiReview({ ...AI_PASS, correctness: '無法判斷' }, '計算未能核對。')
   assert.equal(review.decision, 'rework')
@@ -201,6 +244,7 @@ test('資料庫草稿不上正式庫，也不碰題庫版本表', () => {
   assert.match(sql, /uses_student_answers = false/)
   assert.match(sql, /verified_dse_plus_10 = false/)
   assert.match(sql, /未經 HKDSE 學科教師審核/)
+  assert.match(sql, /ai_decision is not distinct from 'pass_to_human'/)
   assert.doesNotMatch(sql, /loop5_user_testing/)
   assert.doesNotMatch(sql, /alter table public\.question_bank_versions/i)
   assert.doesNotMatch(sql, /insert into public\.questions/i)
@@ -230,8 +274,9 @@ test('八條試跑草稿留在未發佈預覽或退回，沒有已驗證達標',
   assert.equal(blocked?.aiReview?.decision, 'rework')
   assert.equal(blocked?.twoPersonReview, null)
   const human = bundle.records.find((record) => record.draftId === 'loop-w12-007')
-  assert.equal(human?.aiReview?.decision, 'pass_to_human')
+  assert.equal(human?.aiReview, null)
   assert.equal(human?.twoPersonReview?.conclusion, 'rework')
+  assert.ok(human?.events.some((event) => event.to === 'loop4_two_person_review' && event.ok))
   const tracked = bundle.records.find((record) => record.draftId === 'loop-w12-006')
   assert.equal(tracked?.status, 'preview')
   assert.ok(tracked?.events.some((event) => event.to === 'loop5_user_testing' && event.ok === false))
