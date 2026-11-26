@@ -14,8 +14,8 @@ const { loadSubjectQuestions } = await mod<{
   loadSubjectQuestions: (id: string) => Promise<Array<Record<string, unknown>>>
 }>('../../data/questions/load.ts')
 
-const { RUBRIC_VERSION } = await mod<{ RUBRIC_VERSION: string }>('../../lib/loop-engineering/rubric.ts')
-const { buildAssetMap } = await mod<{
+const { RUBRIC_VERSION } = await import('../../lib/loop-engineering/rubric.ts')
+const { buildAssetMap } = await import('../../lib/loop-engineering/asset-map.ts') as {
   buildAssetMap: (items: Array<Record<string, unknown>>, version: string) => {
     rubricVersion: string
     generatedFor: string
@@ -35,14 +35,14 @@ const { buildAssetMap } = await mod<{
     rows: unknown[]
     pilot: unknown[]
   }
-}>('../../lib/loop-engineering/asset-map.ts')
+}
 
-const { buildWeek12DryRun } = await mod<{
+const { buildWeek12DryRun } = await import('../../lib/loop-engineering/dry-run.ts') as {
   buildWeek12DryRun: () => unknown
-}>('../../lib/loop-engineering/dry-run.ts')
-const { loadStoredPrompt } = await mod<{
+}
+const { loadStoredPrompt } = await import('../../lib/loop-engineering/prompts.ts') as {
   loadStoredPrompt: (key: 'upgrade' | 'aiReview' | 'twoPersonReview') => string
-}>('../../lib/loop-engineering/prompts.ts')
+}
 
 for (const key of ['upgrade', 'aiReview', 'twoPersonReview'] as const) {
   if (loadStoredPrompt(key).trim().length < 80) throw new Error(`已存放提示太短：${key}`)

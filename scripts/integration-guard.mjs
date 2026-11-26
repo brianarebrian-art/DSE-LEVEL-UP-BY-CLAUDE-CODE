@@ -60,8 +60,10 @@ for (const f of ['proxy.ts', 'auth.ts', 'instrumentation.ts', 'next.config.ts'])
   if (existsSync(join(ROOT, f))) src.set(f, readFileSync(join(ROOT, f), 'utf8'))
 }
 
-// npm scripts are real callers (for example the question-bank map). They are
-// importers only; a script file is not required to be imported by the website.
+// npm scripts may import a lib module. They are NOT website navigation:
+// keep them out of `src`, or a script that mentions href: '/sensei' would
+// make that route look linked.
+const scriptImporters = new Map()
 function addScriptImporters(dir) {
   if (!existsSync(join(ROOT, dir))) return
   for (const e of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
@@ -70,10 +72,39 @@ function addScriptImporters(dir) {
       if (e.name !== 'node_modules' && e.name !== '__tests__') addScriptImporters(rel)
       continue
     }
-    if (/\.(mts|mjs|ts|tsx)$/.test(e.name)) src.set(rel, readFileSync(join(ROOT, rel), 'utf8'))
+    if (/\.(mts|mjs|ts|tsx)$/.test(e.name)) scriptImporters.set(rel, readFileSync(join(ROOT, rel), 'utf8'))
   }
 }
 addScriptImporters('scripts')
+
+function stripComments(s) {
+  return s.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/[^\n]*/g, '$1')
+}
+
+function escapeRe(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+/** True only for an import specifier, not a comment or a bare path string. */
+function moduleImportedBy(code, short, leaf) {
+  const bare = stripComments(code)
+  const spec = escapeRe(short)
+  const leafRe = escapeRe(leaf)
+  if (new RegExp(`@/lib/${spec}(['"\`/]|$)`, 'm').test(bare)) return true
+  if (new RegExp(`(?:from\\s+|import\\s*\\(\\s*)['"\`][^'"\`]*\\/lib\\/${spec}(?:\\.tsx?)?['"\`]`).test(bare)) return true
+  if (new RegExp(`from\\s+['"]\\.\\.?\\/[^'"]*${leafRe}(?:\\.tsx?)?['"]`).test(bare)) return true
+  return false
+}
+
+const importSelfCheck = [
+  [moduleImportedBy("// from '../../lib/not-a-module.ts'", 'not-a-module', 'not-a-module'), false],
+  [moduleImportedBy("await import('../../lib/loop-engineering/asset-map.ts')", 'loop-engineering/asset-map', 'asset-map'), true],
+  [moduleImportedBy("const p = '../../lib/loop-engineering/asset-map.ts'", 'loop-engineering/asset-map', 'asset-map'), false],
+]
+if (importSelfCheck.some(([got, want]) => got !== want)) {
+  console.error('integration-guard import matcher failed its self-check')
+  process.exit(1)
+}
 const findings = []
 
 // ── ① components/ ──────────────────────────────────────────────────────────
@@ -96,9 +127,12 @@ for (const rel of files.filter((f) => f.startsWith('lib/'))) {
   let used = 0
   for (const [other, code] of src) {
     if (other === rel) continue
-    if (new RegExp(`@/lib/${short}(['"\`/]|$)`, 'm').test(code)) used++
-    else if (new RegExp(`from '\\.\\.?/[^']*${leaf}(\\.ts)?'`).test(code)) used++
-    else if (code.includes(`lib/${short}.ts`) || code.includes(`lib/${short}'`) || code.includes(`lib/${short}"`)) used++
+    if (moduleImportedBy(code, short, leaf)) used++
+  }
+  if (used === 0) {
+    for (const code of scriptImporters.values()) {
+      if (moduleImportedBy(code, short, leaf)) used++
+    }
   }
   if (used === 0) findings.push([rel, '模組冇被任何地方 import'])
 }
