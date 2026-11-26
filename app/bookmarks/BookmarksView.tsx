@@ -10,7 +10,6 @@ import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
 import { paperText } from '@/lib/localePreference'
 import { getSubject } from '@/data/subjects'
-import { loadSubjectQuestions } from '@/data/questions/load'
 import { isPendingReview, isWithdrawn, withdrawnReason } from '@/data/questions/hidden-topics'
 import { isMachineRestored } from '@/data/questions/machine-restored-ids'
 import type { AnyQuestion } from '@/data/questions/types'
@@ -56,9 +55,20 @@ export default function BookmarksView() {
     for (const b of bms) bySubject.set(b.subjectId, [...(bySubject.get(b.subjectId) ?? []), b])
 
     const banks = await Promise.all(
-      [...bySubject.keys()].map(async (sid) => {
-        const qs = await loadSubjectQuestions(sid)
-        return [sid, new Map(qs.map((q) => [q.id, q]))] as const
+      [...bySubject.entries()].map(async ([sid, group]) => {
+        const ids = group.map((b) => b.questionId)
+        const found = new Map<string, AnyQuestion>()
+        for (let i = 0; i < ids.length; i += 60) {
+          const res = await fetch('/api/questions/bundle', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ subjectId: sid, ids: ids.slice(i, i + 60) }),
+          })
+          if (!res.ok) continue
+          const body = (await res.json()) as { questions?: AnyQuestion[] }
+          for (const q of body.questions ?? []) found.set(q.id, q)
+        }
+        return [sid, found] as const
       }),
     )
     const lookup = new Map(banks)

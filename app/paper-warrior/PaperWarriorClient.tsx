@@ -12,25 +12,24 @@ import { subjects } from '@/data/subjects'
 // 兩者都唔行 barrel：barrel 靜態 import 齊 25 科，喺呢個 client 檔會將
 // 全部題庫 build 入瀏覽器 —— 為咗一份試卷落 25 科（2026-09-05 實測）。
 import { SUBJECT_SUMMARY, SUBJECT_TOPICS } from '@/data/questions/summary.generated'
-import {
-  loadSubjectMCQuestions,
-  loadQuestionsByTopic,
-  loadWrittenQuestions,
-} from '@/data/questions/load'
-import type { WrittenQuestion } from '@/data/questions/types'
+import type { PublicPaperMc, PublicWritten } from '@/lib/practice/publicQuestion'
 import QRCode from '@/components/QRCode'
 import {
   answerSheetUrl,
-  buildPaper,
-  buildWrittenSection,
-  encodePaperCode,
   newSeed,
   WRITTEN_SIZES,
   LETTERS,
   PAPER_SIZES,
-  type PaperItem,
   type PaperSpec,
 } from '@/lib/paper/paper'
+
+type PaperView = {
+  spec: PaperSpec
+  code: string
+  withExplain: boolean
+  items: PublicPaperMc[]
+  writtenItems: PublicWritten[]
+}
 
 // 紙筆戰士 —— 揀範圍 → 生成 A4 卷 → window.print()。
 // 用瀏覽器原生打印（零新 dependency、零成本），配合 globals.css 既有 @media print
@@ -48,9 +47,9 @@ export default function PaperWarriorClient() {
  const [size, setSize] = useState<number>(20)
  const [written, setWritten] = useState<number>(0)
  const [withExplain, setWithExplain] = useState(false)
- const [paper, setPaper] = useState<
-    { spec: PaperSpec; items: PaperItem[]; writtenItems: WrittenQuestion[] } | null
-  >(null)
+ const [paper, setPaper] = useState<PaperView | null>(null)
+ const [revealCode, setRevealCode] = useState(false)
+ const [buildError, setBuildError] = useState(false)
 
   // 乙部只喺真係有書寫題嘅科目出現（現時只有中文科 26 條 long）。
   // 冇題就連個控制項都唔顯示 —— 好過畀人揀完先話「呢科冇」。
@@ -79,19 +78,28 @@ export default function PaperWarriorClient() {
   const generate = useCallback(async () => {
     if (busy) return
     setBusy(true)
+    setBuildError(false)
     try {
       const wanted = subjectHasWritten ? written : 0
-      const spec: PaperSpec = { subject, topic, size, seed: newSeed(), ...(wanted > 0 && { written: wanted }) }
-      // 甲部只取 MC：客觀分數評級嗰部分，書寫題（自評制）唔計入
-      const pool = topic ? await loadQuestionsByTopic(subject, topic) : await loadSubjectMCQuestions(subject)
-      const items = buildPaper(spec, pool)
-      // 乙部由全科書寫題抽（唔跟課題篩選 —— 長題目本身就跨課題，26 條再篩就幾乎抽唔到）
-      const writtenItems = buildWrittenSection(spec, wanted > 0 ? await loadWrittenQuestions(subject) : [])
-      setPaper(items.length > 0 ? { spec, items, writtenItems } : null)
+      const seed = newSeed()
+      const res = await fetch('/api/paper/build', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ subject, topic, size, seed, written: wanted, withExplain }),
+      })
+      if (!res.ok) {
+        setPaper(null)
+        setBuildError(true)
+        return
+      }
+      const body = (await res.json()) as PaperView
+      setRevealCode(false)
+      setPaper(body.items?.length ? body : null)
+      if (!body.items?.length) setBuildError(true)
     } finally {
       setBusy(false)
     }
-  }, [subject, topic, size, written, subjectHasWritten, busy])
+  }, [subject, topic, size, written, subjectHasWritten, busy, withExplain])
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -249,19 +257,54 @@ export default function PaperWarriorClient() {
                   `${paper.items.length} questions ready. In the print dialog choose “Save as PDF” for a file.`,
                 )}
               </p>
- <p className="mt-1">
+ {paper.withExplain ? (
+              <p className="mt-1">
                 {tr('做完紙筆之後，去 ', 'When you have finished on paper, go to ')}
-                <Link href={`/answer-sheet?p=${encodePaperCode(paper.spec)}`} className="font-medium underline underline-offset-2">
+                <Link href={`/answer-sheet?p=${encodeURIComponent(paper.code)}`} className="font-medium underline underline-offset-2">
                   {tr('對答案頁', 'the answer sheet')}
                 </Link>
                 {tr('（卷號已印喺張紙下面，任何裝置都開得返同一份）。', ' (the paper code is printed at the bottom — it reopens the same paper on any device).')}
               </p>
+            ) : !revealCode ? (
+              <div className="mt-2">
+                <button
+                  type="button"
+                  onClick={() => setRevealCode(true)}
+                  className="min-h-11 rounded-lg border border-accent/40 px-3 text-sm font-medium text-accent-strong hover:bg-surface-raised"
+                >
+                  {tr('我做完了，顯示對答案連結', 'I have finished — show the answer link')}
+                </button>
+                <p className="mt-1 text-xs text-ink-muted">
+                  {tr(
+                    '未做完就不用按。這張純題目卷不印 QR，也不印卷號。',
+                    'Do not press this until you have finished. This questions-only paper prints neither a QR code nor a paper code.',
+                  )}
+                </p>
+              </div>
+            ) : (
+              <div className="mt-2">
+                <p>
+                  {tr(
+                    '對答案頁會再問一次你是否做完，然後才顯示答案。',
+                    'The answer sheet asks once more before it shows any answers.',
+                  )}
+                </p>
+                <p className="mt-1">
+                  <Link href={`/answer-sheet?p=${encodeURIComponent(paper.code)}`} className="font-medium underline underline-offset-2">
+                    {tr('對答案頁', 'Answer sheet')}
+                  </Link>
+                  <span className="ml-2 tracking-wider">{paper.code}</span>
+                </p>
+              </div>
+            )}
  </div>
           )}
 
           {paper === null && (
-            <p className="mt-4 text-xs text-ink-muted">
-              {tr('撳「生成試卷」就會即刻喺下面出現預覽。', 'Press “Generate paper” and a preview appears below.')}
+            <p className="mt-4 text-xs text-ink-muted" role={buildError ? 'status' : undefined}>
+              {buildError
+                ? tr('這次未能生成試卷。可以再按一次。', 'The paper could not be built this time. You can try again.')
+                : tr('撳「生成試卷」就會即刻喺下面出現預覽。', 'Press “Generate paper” and a preview appears below.')}
             </p>
  )}
  </div>
@@ -280,7 +323,7 @@ export default function PaperWarriorClient() {
               {tr('題數', 'Questions')}：{paper.items.length}
               {' ｜ '}
               {tr('模式', 'Mode')}：
-              {withExplain ? tr('連解析', 'With explanations') : tr('純題目', 'Questions only')}
+              {paper.withExplain ? tr('連解析', 'With explanations') : tr('純題目', 'Questions only')}
             </p>
  <p className="mt-0.5 text-xs text-ink-soft">
               {tr('姓名', 'Name')}：____________________　{tr('日期', 'Date')}：____________________
@@ -289,9 +332,9 @@ export default function PaperWarriorClient() {
 
  <ol className="space-y-5">
             {paper.items.map((item, i) => (
- <li key={item.question.id} className="paper-q break-inside-avoid">
+ <li key={item.id} className="paper-q break-inside-avoid">
  <div className="text-sm font-medium leading-relaxed">
-                  {i + 1}. <MathText>{paperText(subject, item.question.content, item.question.contentEn)}</MathText>
+                  {i + 1}. <MathText>{paperText(subject, item.content, item.contentEn)}</MathText>
  </div>
  <ul className="mt-1.5 space-y-1 pl-5">
                   {item.options.map((opt, oi) => (
@@ -310,17 +353,16 @@ export default function PaperWarriorClient() {
  ))}
  </p>
 
-                {withExplain && (
+                {paper.withExplain && item.answerIndex !== undefined && (
                   <div className="mt-2 ml-5 border-l-2 border-accent/40 pl-3 text-xs leading-relaxed text-ink-soft">
  <p>
  <span className="font-medium text-accent-strong">{tr('答案', 'Answer')}：</span>
-                      {/* 引選項內容，唔淨係引字母 —— 對答案時唔會撈亂 */}
                       <MathText>{paperText(subject, item.options[item.answerIndex], item.optionsEn[item.answerIndex])}</MathText>
  </p>
  <p className="mt-1">
  <span className="font-medium text-accent-strong">{tr('解析', 'Why')}：</span>
  <MathText>
-                        {paperText(subject, item.question.explanation, item.question.explanationEn)}
+                        {paperText(subject, item.explanation, item.explanationEn)}
                       </MathText>
  </p>
  </div>
@@ -369,28 +411,37 @@ export default function PaperWarriorClient() {
 
           {/* print-keep：呢個係卷面自己嘅頁腳，唔係網站頁腳。冇呢個 class 就會被
               print CSS 嘅 `footer` 規則一併隱藏，連卷號同免責聲明都印唔到。 */}
-          <footer className="print-keep mt-6 flex items-start gap-4 border-t border-line-strong pt-3 text-xs text-ink-soft">
-            {/* QR：掃一次就開對答案頁並自動填卷號，唔使人手抄 `~` 分隔符（手機鍵盤
-                要切兩次符號版先打到）。內容只係公開卷號深連結，冇任何個人資料。 */}
-            <QRCode value={answerSheetUrl(paper.spec)} size={84} className="shrink-0 rounded" />
- <div className="min-w-0">
- <p className="font-medium">
-              {tr('卷號', 'Paper code')}：<span className="tracking-wider">{encodePaperCode(paper.spec)}</span>
- </p>
- <p className="mt-0.5">
-              {tr(
-                '做完想對答案：掃左邊個 QR 碼就會即刻開對答案頁；冇相機都得，喺 DSE Level Up 開「列印練習卷 → 對答案」，打返上面個卷號一樣重開到同一份卷。',
-                'To check your answers: scan the QR code on the left to open the answer sheet directly. No camera? Open “Printable practice set → Answer sheet” on DSE Level Up and enter the paper code above.',
-              )}
-            </p>
- <p className="mt-1.5 text-ink-muted">
+          <footer className="print-keep mt-6 border-t border-line-strong pt-3 text-xs text-ink-soft">
+            {paper.withExplain ? (
+              <div className="flex items-start gap-4">
+                <QRCode value={answerSheetUrl(paper.spec)} size={84} className="shrink-0 rounded" />
+                <div className="min-w-0">
+                  <p className="font-medium">
+                    {tr('卷號', 'Paper code')}：<span className="tracking-wider">{paper.code}</span>
+                  </p>
+                  <p className="mt-0.5">
+                    {tr(
+                      '這份卷已印上答案。掃左邊的 QR 可在另一部裝置開啟對答案頁；該頁會先請你確認已經做完。',
+                      'This paper already includes answers. Scan the QR code to open the answer sheet on another device. That page asks you to confirm you have finished.',
+                    )}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <p className="font-medium">
+                {tr(
+                  '純題目卷。本頁不印 QR，也不印卷號，避免做卷途中掃到完整答案。',
+                  'Questions only. This page prints no QR code and no paper code, so the full key cannot be opened mid-paper.',
+                )}
+              </p>
+            )}
+            <p className="mt-1.5 text-ink-muted">
               {tr(
                 '本平台試題為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。',
                 'Questions are independently rewritten and are not HKEAA official exam papers.',
               )}
             </p>
- </div>
- </footer>
+          </footer>
  </article>
       )}
 

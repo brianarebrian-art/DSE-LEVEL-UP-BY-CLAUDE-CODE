@@ -12,11 +12,9 @@ import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { getSubject } from '@/data/subjects'
 import { SUBJECT_SUMMARY, SUBJECT_TOPICS } from '@/data/questions/summary.generated'
-import { loadSubjectQuestions } from '@/data/questions/load'
-import type { AnyQuestion } from '@/data/questions'
 import { getReverseLog, type ReverseLogEntry } from '@/lib/reverseLog'
 import { getTopicStats, type TopicStatEntry } from '@/lib/topicStats'
-import { buildTopicNote, accuracy, type TopicNote } from '@/lib/notes/notes'
+import { accuracy, type TopicNote } from '@/lib/notes/notes'
 import { getSubjectStudyNotes, type StudyNote } from '@/lib/notes/studyNotes'
 import { practiceTopicPath, practiceTopicUrl } from '@/lib/notes/practiceLink'
 import { topicExplainerSrc } from '@/data/notes/explainers'
@@ -38,7 +36,8 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
   const meta = getSubject(subjectId)
   const topics = useMemo(() => SUBJECT_TOPICS[subjectId] ?? [], [subjectId])
   const questionCount = SUBJECT_SUMMARY[subjectId]?.total ?? 0
-  const [questions, setQuestions] = useState<AnyQuestion[]>([])
+  const [note, setNote] = useState<TopicNote | null>(null)
+  const [noteState, setNoteState] = useState<'loading' | 'ready' | 'empty'>('loading')
 
   const [selected, setSelected] = useState<string>('')
   const [log, setLog] = useState<ReverseLogEntry[]>([])
@@ -49,12 +48,6 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
     setLog(getReverseLog())
     setStats(getTopicStats())
   }, [])
-
-  useEffect(() => {
-    let alive = true
-    loadSubjectQuestions(subjectId).then((qs) => { if (alive) setQuestions(qs) })
-    return () => { alive = false }
-  }, [subjectId])
 
   useEffect(() => {
     let alive = true
@@ -72,13 +65,41 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
     setSelected((prev) => (prev === next ? prev : next))
   }, [params, topics, initialTopic, pathname, subjectId])
 
-  const note: TopicNote | null = useMemo(() => {
+  useEffect(() => {
     const t = topics.find((x) => x.id === selected)
-    if (!t) return null
-    if (questions.length === 0) return null
+    if (!t) return
+    let alive = true
+    setNoteState('loading')
     const stat = stats.find((s) => s.subjectId === subjectId && s.topic === t.id)
-    return buildTopicNote(t.id, en ? (t.en ?? t.zh) : t.zh, t.emoji, questions, log, stat)
-  }, [topics, selected, stats, subjectId, questions, log, en])
+    const mistakes = log
+      .filter((e) => e.topicId === t.id || e.topic === t.zh || e.topic === (t.en ?? t.zh))
+      .slice(0, 40)
+      .map((e) => ({ questionId: e.questionId, topic: e.topic, topicId: e.topicId, cause: e.cause, ts: e.ts }))
+    fetch('/api/notes/topic', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        subjectId,
+        topicId: t.id,
+        mistakes,
+        attempted: stat?.total,
+        wrong: stat?.wrong,
+      }),
+    })
+      .then(async (res) => {
+        if (!res.ok) throw new Error('notes')
+        const body = (await res.json()) as { note?: TopicNote }
+        if (!alive) return
+        setNote(body.note ?? null)
+        setNoteState(body.note ? 'ready' : 'empty')
+      })
+      .catch(() => {
+        if (!alive) return
+        setNote(null)
+        setNoteState('empty')
+      })
+    return () => { alive = false }
+  }, [topics, selected, stats, subjectId, log])
 
   const study = selected ? (studyByTopic[selected] ?? null) : null
 
@@ -312,7 +333,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
 
       {!study && !note && (
         <p className="rounded-2xl border border-line bg-surface-raised p-8 text-center text-sm text-ink-muted">
-          {questions.length === 0
+          {noteState === 'loading'
             ? tr('載入筆記中…', 'Loading notes…')
             : tr('呢科暫時未有課題資料。', 'No topic data for this subject yet.')}
         </p>

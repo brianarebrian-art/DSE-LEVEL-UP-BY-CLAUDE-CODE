@@ -320,7 +320,7 @@ const logQs: Question[] = [
     [['$1$', '$1$'], ['$\\log 7$', '$\\log 7$'], ['$\\log 3$', '$\\log 3$'], ['$10$', '$10$']],
     ['$\\log 2 + \\log 5 = \\log(2 \\times 5) = \\log 10 = 1$。',
       '$\\log 2 + \\log 5 = \\log(2 \\times 5) = \\log 10 = 1$.']),
-  q('math_log_4', T.logarithms, FW.transform, 'medium', 2020, 1,
+  q('math_log_4', T.logarithms, FW.transform, 'easy', 2020, 1,
     ['求 $\\log_3 81$ 的值。', 'Find the value of $\\log_3 81$.'],
     [['$4$', '$4$'], ['$3$', '$3$'], ['$27$', '$27$'], ['$9$', '$9$']],
     ['$3^4 = 81$，故值為 $4$。', '$3^4 = 81$, so the value is $4$.']),
@@ -332,11 +332,11 @@ const logQs: Question[] = [
     ['化簡 $\\log 100 - \\log 10$（以 10 為底）。', 'Simplify $\\log 100 - \\log 10$ (base 10).'],
     [['$1$', '$1$'], ['$10$', '$10$'], ['$\\log 90$', '$\\log 90$'], ['$2$', '$2$']],
     ['$\\log\\frac{100}{10} = \\log 10 = 1$。', '$\\log\\frac{100}{10} = \\log 10 = 1$.']),
-  q('math_log_7', T.logarithms, FW.transform, 'medium', 2021, 1,
+  q('math_log_7', T.logarithms, FW.transform, 'easy', 2021, 1,
     ['解方程 $2^x = 16$。', 'Solve $2^x = 16$.'],
     [['$x = 4$', '$x = 4$'], ['$x = 8$', '$x = 8$'], ['$x = 2$', '$x = 2$'], ['$x = 16$', '$x = 16$']],
     ['$16 = 2^4$，故 $x = 4$。', '$16 = 2^4$, so $x = 4$.']),
-  q('math_log_8', T.logarithms, FW.transform, 'medium', 2019, 1,
+  q('math_log_8', T.logarithms, FW.transform, 'easy', 2019, 1,
     ['求 $\\log_5 1$ 的值。', 'Find the value of $\\log_5 1$.'],
     [['$0$', '$0$'], ['$1$', '$1$'], ['$5$', '$5$'], ['未定義', 'undefined']],
     ['$5^0 = 1$，故 $\\log_5 1 = 0$。', '$5^0 = 1$, so $\\log_5 1 = 0$.']),
@@ -378,10 +378,10 @@ function gpTerm(n: number, a: number, r: number, k: number, year: number, diff: 
       `$a_n = a\\,r^{n-1} = ${a}\\times${r}^{${k - 1}} = ${ans}$.`])
 }
 const seqQs: Question[] = [
-  apTerm(1, 3, 4, 10, 2023, 'easy'), apTerm(2, 5, 3, 8, 2022, 'easy'), apTerm(3, 2, 5, 12, 2021, 'medium'),
-  apTerm(4, 7, -2, 9, 2020, 'medium'), apTerm(5, -4, 6, 7, 2023, 'medium'), apTerm(6, 1, 7, 11, 2019, 'medium'),
-  gpTerm(1, 2, 3, 4, 2022, 'medium'), gpTerm(2, 3, 2, 5, 2021, 'medium'), gpTerm(3, 1, 5, 4, 2020, 'easy'),
-  gpTerm(4, 5, 2, 4, 2023, 'medium'), gpTerm(5, 2, 4, 3, 2022, 'medium'),
+  apTerm(1, 3, 4, 10, 2023, 'easy'), apTerm(2, 5, 3, 8, 2022, 'easy'), apTerm(3, 2, 5, 12, 2021, 'easy'),
+  apTerm(4, 7, -2, 9, 2020, 'easy'), apTerm(5, -4, 6, 7, 2023, 'easy'), apTerm(6, 1, 7, 11, 2019, 'easy'),
+  gpTerm(1, 2, 3, 4, 2022, 'easy'), gpTerm(2, 3, 2, 5, 2021, 'easy'), gpTerm(3, 1, 5, 4, 2020, 'easy'),
+  gpTerm(4, 5, 2, 4, 2023, 'easy'), gpTerm(5, 2, 4, 3, 2022, 'easy'),
 ]
 
 // ── Topic 9: Percentages & interest (code-built) ─────────────────────────────

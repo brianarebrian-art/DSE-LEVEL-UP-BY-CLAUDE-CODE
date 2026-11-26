@@ -6,42 +6,47 @@
 // 所以呢一頁刻意冇：完成度百分比、解鎖動畫、成就彈窗、稀有度標籤。
 // 撳節點出嘅係【該篇嘅題目同解析】—— 係學習材料，唔係分數。
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Network, Sparkles } from 'lucide-react'
 import ConceptNet from '@/components/ConceptNet'
 import MathText from '@/components/MathText'
 import { useLocale } from '@/lib/i18n'
-import { textsInQuestion, type ConceptNode } from '@/lib/conceptNet'
-import { loadSubjectQuestions } from '@/data/questions/load'
-import type { AnyQuestion, MCQuestion } from '@/data/questions'
+import type { ConceptNode } from '@/lib/conceptNet'
 
-/** 每篇最多列幾多條 —— 一次過鋪成一版係資訊過載，本身就係壓力源。 */
-const PREVIEW_LIMIT = 4
+type PreviewItem = { id: string; content: string; explanation: string }
 
 export default function ConceptNetView() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [selected, setSelected] = useState<ConceptNode | null>(null)
- const [bank, setBank] = useState<AnyQuestion[]>([])
+  const [related, setRelated] = useState<PreviewItem[]>([])
+  const [previewState, setPreviewState] = useState<'idle' | 'loading' | 'ready'>('idle')
 
-  // 題庫喺客戶端攞：呢一頁 noindex，唔需要 SSR 出題目內容。
-  //
-  // 2026-09-05：由 barrel 嘅 getSubjectQuestions 改成 load.ts 嘅 lazy loader。
-  // barrel 靜態 import 齊 25 科 —— 呢一頁只用中文，卻要成個題庫先開得到。
+  // The full Chinese bank stays on the server. Opening a text asks for at most four previews.
   useEffect(() => {
+    if (!selected) {
+      setRelated([])
+      setPreviewState('idle')
+      return
+    }
     let alive = true
-    loadSubjectQuestions('chinese').then((qs) => { if (alive) setBank(qs) })
+    setPreviewState('loading')
+    fetch(`/api/concept-net/preview?text=${encodeURIComponent(selected.id)}`)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('concept')
+        const body = (await res.json()) as { items?: PreviewItem[] }
+        if (!alive) return
+        setRelated(body.items ?? [])
+        setPreviewState('ready')
+      })
+      .catch(() => {
+        if (!alive) return
+        setRelated([])
+        setPreviewState('ready')
+      })
     return () => { alive = false }
-  }, [])
-
-  const related = useMemo(() => {
-    if (!selected) return []
-    return bank
-      .filter((q): q is MCQuestion => q.type === 'mc') // 書寫題冇即時解析，呢個預覽只列 MC
-      .filter((q) => textsInQuestion(q.content, q.topicZh).includes(selected.id))
- .slice(0, PREVIEW_LIMIT)
- }, [selected, bank])
+  }, [selected])
 
  return (
  <main className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
@@ -88,7 +93,9 @@ export default function ConceptNetView() {
                 : '等待發現'}
           </p>
 
-          {related.length === 0 ? (
+          {previewState === 'loading' ? (
+            <p className="text-sm text-ink-muted">{en ? 'Loading this text…' : '載入呢篇…'}</p>
+          ) : related.length === 0 ? (
             <p className="text-sm text-ink-muted">
               {en
                 ? 'No questions on this text are live yet.'

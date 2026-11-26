@@ -7,6 +7,8 @@ import ExplanationBody from '@/components/ExplanationBody'
 import { useLocale } from '@/lib/i18n'
 import { practiceText } from '@/lib/localePreference'
 import type { TextQuestion } from '@/data/questions/types'
+import { fetchWrittenKey } from '@/lib/practice/checkClient'
+import type { WrittenKeyResult } from '@/lib/practice/publicQuestion'
 
 // 文字題 — a short free-text answer. HONESTY RULE: we never claim to auto-grade. After
 // the student submits, we reveal the reference answer and they self-mark. The result is
@@ -36,6 +38,13 @@ export default function TextQuestionCard({
  const [value, setValue] = useState('')
  const [submitted, setSubmitted] = useState(false)
  const [marked, setMarked] = useState<'correct' | 'wrong' | null>(null)
+ const [opening, setOpening] = useState(false)
+ const [openError, setOpenError] = useState<string | null>(null)
+ const [key, setKey] = useState<WrittenKeyResult | null>(
+   q.referenceAnswer
+     ? { referenceAnswer: q.referenceAnswer, referenceAnswerEn: q.referenceAnswerEn, explanation: q.explanation, explanationEn: q.explanationEn }
+     : null,
+ )
 
   const mark = (a: 'correct' | 'wrong') => {
     if (marked) return
@@ -72,12 +81,33 @@ export default function TextQuestionCard({
             className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink-soft placeholder:text-ink-muted resize-none"
           />
  <button
-            onClick={() => value.trim() && setSubmitted(true)}
-            disabled={!value.trim()}
+            onClick={() => {
+              if (!value.trim() || opening) return
+              if (key) {
+                setSubmitted(true)
+                return
+              }
+              setOpening(true)
+              setOpenError(null)
+              void fetchWrittenKey(q.subject, q.id, value)
+                .then((revealed) => {
+                  setKey(revealed)
+                  setSubmitted(true)
+                })
+                .catch(() => {
+                  setOpenError(en
+                    ? 'The reference answer could not be loaded. Your answer is still here — try again.'
+                    : '參考答案暫時載入唔到。你嘅答案仲在，可以再提交。')
+                })
+                .finally(() => setOpening(false))
+            }}
+            disabled={!value.trim() || opening}
+            aria-busy={opening}
             className="mt-3 w-full min-h-11 bg-accent-strong hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-on-accent font-bold py-3 rounded-xl transition-colors"
           >
-            {en ? 'Submit' : '提交'}
+            {opening ? (en ? 'Loading the reference answer…' : '載入參考答案…') : (en ? 'Submit' : '提交')}
           </button>
+          {openError && <p role="status" className="mt-2 text-sm text-ink-muted">{openError}</p>}
  </>
  ) : (
  <>
@@ -91,13 +121,13 @@ export default function TextQuestionCard({
           <div className="rounded-xl border border-accent/30 bg-surface-sunken px-4 py-3 mb-3">
  <div className="text-xs text-accent font-bold mb-1">{en ? 'Reference answer' : '參考答案'}</div>
  <div className="text-sm text-ink-soft leading-relaxed whitespace-pre-line">
- <MathText>{practiceText(q.subject, q.referenceAnswer, q.referenceAnswerEn, locale)}</MathText>
+ <MathText>{practiceText(q.subject, key?.referenceAnswer ?? '', key?.referenceAnswerEn, locale)}</MathText>
  </div>
  </div>
 
-          {q.explanation && (
+          {(key?.explanation || q.explanation) && (
             <div className="text-sm text-ink-muted leading-relaxed mb-4 whitespace-pre-line">
- <ExplanationBody text={practiceText(q.subject, q.explanation, q.explanationEn, locale)} />
+ <ExplanationBody text={practiceText(q.subject, key?.explanation ?? q.explanation, key?.explanationEn ?? q.explanationEn, locale)} />
  </div>
           )}
 

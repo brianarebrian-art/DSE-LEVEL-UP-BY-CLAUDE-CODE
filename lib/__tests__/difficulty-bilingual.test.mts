@@ -18,8 +18,10 @@ const { DIFFICULTY_TIERS } = await import('../difficulty.ts')
 test('easy／medium 兩種語言都要有標籤，hard 兩種語言都唔顯示', () => {
   assert.equal(DIFFICULTY_TIERS.easy.label, '基礎')
   assert.equal(DIFFICULTY_TIERS.easy.labelEn, 'Foundation')
-  assert.equal(DIFFICULTY_TIERS.medium.label, '進階')
-  assert.equal(DIFFICULTY_TIERS.medium.labelEn, 'Advanced')
+  assert.equal(DIFFICULTY_TIERS.medium.label, '普通')
+  assert.equal(DIFFICULTY_TIERS.medium.labelEn, 'Intermediate')
+  assert.notEqual(DIFFICULTY_TIERS.medium.labelEn, 'Advanced')
+  assert.notEqual(DIFFICULTY_TIERS.easy.labelEn, 'Advanced')
   // 最難嗰層刻意冇徽章 —— 難度由題目本身感受得到，唔使宣告。
   // 兩種語言必須一致噉樣冇，唔可以淨係中文冇。
   assert.equal(DIFFICULTY_TIERS.hard.label, null)

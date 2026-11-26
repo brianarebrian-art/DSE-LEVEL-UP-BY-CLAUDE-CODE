@@ -6,9 +6,13 @@ import type { Difficulty } from '@/data/questions'
 // the single source that maps each key to its (minimal) on-screen label.
 //
 //   easy   → 基礎 / Foundation
-//   medium → 進階 / Advanced
+//   medium → 普通 / Intermediate
 //   hard   → (no label) — the hardest core is felt through the question itself,
 //            not announced. `label: null` ⇒ DifficultyBadge renders nothing.
+//
+// 2026-11-26: medium must not say 進階 / Advanced. That word belongs to the
+// top of the 3:5:2 mix (拔尖). Calling the middle tier Advanced marked
+// single-step formula items as if they were the hard paper.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface DifficultyTier {
@@ -37,8 +41,8 @@ export const DIFFICULTY_TIERS: Record<Difficulty, DifficultyTier> = {
     badgeClass: 'text-ink-muted bg-surface-sunken border-line-strong',
   },
   medium: {
-    label: '進階',
-    labelEn: 'Advanced',
+    label: '普通',
+    labelEn: 'Intermediate',
     badgeClass: 'text-gold bg-gold/10 border-gold/30',
   },
   hard: {

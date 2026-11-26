@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Brain } from 'lucide-react'
 import CauseMark from '@/components/marks/CauseMark'
+import { writtenSnippet } from '@/lib/practice/checkClient'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
@@ -145,7 +146,7 @@ export default function LongPracticeSession({
       topicId: q.topic,
       cause,
       selected: tr('（書寫題自評）', '(written self-assessment)'),
-      correct: q.referenceAnswer.slice(0, 120),
+      correct: (q.referenceAnswer || writtenSnippet(q.id) || '（提交後對照參考答案）').slice(0, 120),
       ts: nowMs(),
       difficulty: q.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
     })

@@ -80,6 +80,19 @@ export function apiRouteClass(pathname: string): ApiRouteClass {
   if (isAuthSensitivePath(pathname)) return 'auth'
   if (pathname === '/api/report' || pathname === '/api/feedback' || pathname === '/api/feedback-general') return 'report'
   if (pathname === '/api/practice-count') return 'count'
+  // Per-answer grading and paper build sit with sync: a shared school IP
+  // must be able to check a class set without falling into the 60/min general bucket.
+  if (
+    pathname === '/api/practice/catalog' ||
+    pathname === '/api/practice/check' ||
+    pathname === '/api/paper/build' ||
+    pathname === '/api/paper/key' ||
+    pathname === '/api/questions/bundle' ||
+    pathname === '/api/notes/topic' ||
+    pathname === '/api/concept-net/preview'
+  ) {
+    return 'sync'
+  }
   if (
     pathname === '/api/progress' ||
     pathname === '/api/sync/session' ||

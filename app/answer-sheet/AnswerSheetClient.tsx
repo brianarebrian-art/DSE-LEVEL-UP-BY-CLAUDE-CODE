@@ -12,23 +12,21 @@ import MathText from '@/components/MathText'
 import ExplanationBody from '@/components/ExplanationBody'
 import { isGenericMarkingScale, isGenericWritingGuide } from '@/lib/genericWritingGuide'
 import { subjects } from '@/data/subjects'
-// 答題卡由卷號重建試卷，只需要卷號指名嗰一科。改行 load.ts 逐科 lazy loader ——
-// 原本行 barrel，即係為咗重建一份卷而將全 25 科題庫 build 入瀏覽器
-// （2026-09-05 生產站實測）。
-import { loadSubjectMCQuestions, loadQuestionsByTopic, loadWrittenQuestions } from '@/data/questions/load'
+// The key is loaded from the server after the student confirms they have finished.
+// The browser bundle for this page does not include the question banks.
 import type { SelfAssessment, WrittenQuestion } from '@/data/questions/types'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { recordAttempt } from '@/lib/progress'
 import { recordTopicOutcomes } from '@/lib/topicStats'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
-import { buildPaper, buildWrittenSection, decodePaperCode, type PaperItem, type PaperSpec } from '@/lib/paper/paper'
+import { decodePaperCode, type PaperItem, type PaperSpec } from '@/lib/paper/paper'
 
 // 紙筆對答案 —— 一入嚟就係一份【答案紙】。
 //
 // 2026-08-14 改版：原本要逐題撳返你喺紙上揀咗邊個字母，先至肯揭答案。做完紙筆
 // 再喺電話上重輸二十次 A/B/C/D，係一重冇必要嘅苦工 —— 學生手上已經有張紙，
-// 佢要嘅係一份對照表。所以而家開卷即出全部正確答案 + 解析，學生對住張紙自己剔。
+// 2026-11-26: the page does not show answers until the student confirms they have finished.
 //
 // 代價講清楚：舊流程「先自報、後揭曉」順帶擋住咗「睇完答案先話自己啱」。而家
 // 呢層冇咗，自評屬誠信制。呢個係可以接受嘅 —— 成績只入自己部機、冇人比較、
@@ -95,39 +93,49 @@ export default function AnswerSheetClient() {
       setPaper(null)
       return
     }
-    // 只取 MC：答題卡係客觀批改流程，書寫題（自評制）唔屬於呢個入口
     setBusy(true)
-    const pool = spec.topic
-      ? await loadQuestionsByTopic(spec.subject, spec.topic)
-      : await loadSubjectMCQuestions(spec.subject)
-    const items = buildPaper(spec, pool)
-    if (items.length === 0) {
+    setError(false)
+    try {
+      const res = await fetch('/api/paper/key', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ code: raw.trim() }),
+      })
+      if (!res.ok) {
+        setError(true)
+        setPaper(null)
+        return
+      }
+      const body = (await res.json()) as {
+        spec: PaperSpec
+        items: PaperItem[]
+        writtenItems: WrittenQuestion[]
+      }
+      if (!body.items?.length) {
+        setError(true)
+        setPaper(null)
+        return
+      }
+      setMarks({})
+      setCauses({})
+      setWrittenLevels({})
+      setScoreInput('')
+      setMinutesInput('')
+      setSaved(null)
+      setPaper({ spec: body.spec, items: body.items, writtenItems: body.writtenItems ?? [] })
+    } catch {
       setError(true)
       setPaper(null)
+    } finally {
       setBusy(false)
-      return
     }
-    setError(false)
-    setMarks({})
-    setCauses({})
-    setWrittenLevels({})
-    setScoreInput('')
-    setMinutesInput('')
-    setSaved(null)
-    // 乙部：卷號第 5 段有幾多就重建幾多（冇第 5 段即 0，舊卷號行為不變）
-    const writtenItems = buildWrittenSection(spec, spec.written ? await loadWrittenQuestions(spec.subject) : [])
-    setPaper({ spec, items, writtenItems })
-    setBusy(false)
   }, [])
 
-  // 由 URL ?p= 自動開卷（紙上印咗 QR 同卷號）
+  // Prefill from ?p= but do not fetch the key until the student confirms.
   useEffect(() => {
     const p = params.get('p')
-    if (p) {
-      setCode(p)
-      load(p)
-    }
-  }, [params, load])
+    if (p) setCode(p)
+  }, [params])
 
   const subjectMeta = subjects.find((s) => s.id === paper?.spec.subject)
 
@@ -261,8 +269,8 @@ export default function AnswerSheetClient() {
         </h1>
  <p className="mt-1 text-sm text-ink-muted">
           {tr(
-            '掃張紙下面個 QR，或者打返個卷號，就會即刻出晒全部正確答案。',
-            'Scan the QR at the bottom of your sheet, or type the paper code, to see every correct answer straight away.',
+            '確認你已經做完，先會顯示正確答案同解析。未做完可以留低卷號，遲啲再嚟。',
+            'Answers and explanations appear after you confirm that you have finished. You can keep the code and come back later.',
           )}
         </p>
  </header>
@@ -285,13 +293,13 @@ export default function AnswerSheetClient() {
               aria-busy={busy}
               className="min-h-11 rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-60"
             >
-              {busy ? tr('開緊…', 'Opening…') : tr('開卷', 'Open')}
+              {busy ? tr('載入答案…', 'Loading answers…') : tr('我做完了，顯示答案', 'I have finished — show answers')}
             </button>
  </div>
  </label>
         {error && (
           <p className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong">
-            {tr('搵唔到呢個卷號。再對一對張紙下面嗰行字？', "That code didn't match a paper — could you double-check the line at the bottom of your sheet?")}
+            {tr('搵唔到呢個卷號。再對一對卷號？', 'That code did not match a paper. Check it and try again.')}
           </p>
         )}
         {!paper && !error && (
