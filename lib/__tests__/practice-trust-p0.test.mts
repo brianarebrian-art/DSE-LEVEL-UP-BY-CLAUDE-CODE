@@ -85,6 +85,17 @@ test('bookmark stems and concept previews do not carry an answer index', () => {
   assert.match(hit[0].explanation, /125/)
 })
 
+test('questions-only toggle drops the previous paper, and notes clear on topic change', () => {
+  const paper = readFileSync(new URL('../../app/paper-warrior/PaperWarriorClient.tsx', import.meta.url), 'utf8')
+  const checkbox = paper.slice(paper.indexOf('setWithExplain(e.target.checked)'), paper.indexOf('setWithExplain(e.target.checked)') + 180)
+  assert.match(checkbox, /setPaper\(null\)/)
+  assert.match(checkbox, /setRevealCode\(false\)/)
+  assert.match(paper, /\} catch \{[\s\S]*setPaper\(null\)[\s\S]*setBuildError\(true\)/)
+  const notes = readFileSync(new URL('../../app/notes/[subject]/NotesSubjectClient.tsx', import.meta.url), 'utf8')
+  assert.match(notes, /setNote\(null\)/)
+  assert.match(notes, /noteState === 'ready' && note && note\.yourMistakes/)
+})
+
 test('practice and paper clients do not import the question banks', () => {
   const files = [
     'app/practice/PracticeGate.tsx',

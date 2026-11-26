@@ -96,6 +96,10 @@ export default function PaperWarriorClient() {
       setRevealCode(false)
       setPaper(body.items?.length ? body : null)
       if (!body.items?.length) setBuildError(true)
+    } catch {
+      setPaper(null)
+      setRevealCode(false)
+      setBuildError(true)
     } finally {
       setBusy(false)
     }
@@ -218,7 +222,12 @@ export default function PaperWarriorClient() {
  <input
               type="checkbox"
               checked={withExplain}
-              onChange={(e) => setWithExplain(e.target.checked)}
+              onChange={(e) => {
+                setWithExplain(e.target.checked)
+                setPaper(null)
+                setRevealCode(false)
+                setBuildError(false)
+              }}
  className="h-4 w-4 accent-accent-strong"
  />
  <span className="text-sm text-ink-soft">

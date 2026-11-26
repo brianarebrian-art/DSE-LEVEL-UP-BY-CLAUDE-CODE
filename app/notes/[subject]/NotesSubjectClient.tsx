@@ -69,6 +69,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
     const t = topics.find((x) => x.id === selected)
     if (!t) return
     let alive = true
+    setNote(null)
     setNoteState('loading')
     const stat = stats.find((s) => s.subjectId === subjectId && s.topic === t.id)
     const mistakes = log
@@ -235,7 +236,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
           )}
 
           {/* 個人化數字（有題庫數據時） */}
-          {note && (
+          {noteState === 'ready' && note && (
             <section className="rounded-2xl border border-line bg-surface-raised p-4">
               <h3 className="text-sm font-medium text-ink">
                 {tr('題庫與你的進度', 'Bank & your progress')}
@@ -263,7 +264,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
             </section>
           )}
 
-          {note && note.yourMistakes.length > 0 && (
+          {noteState === 'ready' && note && note.yourMistakes.length > 0 && (
             <section className="rounded-2xl border border-line bg-surface-raised p-4">
               <h3 className="flex items-center gap-1.5 text-sm font-medium text-ink">
                 <Lightbulb size={15} className="text-gold" aria-hidden="true" />
@@ -288,7 +289,7 @@ function Inner({ subjectId, initialTopic }: { subjectId: string; initialTopic?: 
             </section>
           )}
 
-          {note && note.traps.length > 0 && (
+          {noteState === 'ready' && note && note.traps.length > 0 && (
             <section className="rounded-2xl border border-line bg-surface-raised p-4">
               <h3 className="flex items-center gap-1.5 text-sm font-medium text-ink">
                 <BookOpen size={15} className="text-violet" aria-hidden="true" />
