@@ -1,0 +1,117 @@
+{
+  "verifiedDsePlus10": false,
+  "items": [
+    {
+      "id": "math_fl_ns04",
+      "subject": "math",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": "p2_mc",
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "mb_n1_5_2",
+      "subject": "math",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": "p2_mc",
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "en_gr_1",
+      "subject": "english",
+      "topic": "grammar",
+      "topicZh": "Grammar",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "en_gr_2",
+      "subject": "english",
+      "topic": "grammar",
+      "topicZh": "Grammar",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "zh_ch_106",
+      "subject": "chinese",
+      "topic": "chars_errors",
+      "topicZh": "字音字形與病句",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "zh_ch_110",
+      "subject": "chinese",
+      "topic": "chars_errors",
+      "topicZh": "字音字形與病句",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "zh_ch_112",
+      "subject": "chinese",
+      "topic": "chars_errors",
+      "topicZh": "字音字形與病句",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    },
+    {
+      "id": "zh_ch_120",
+      "subject": "chinese",
+      "topic": "chars_errors",
+      "topicZh": "字音字形與病句",
+      "itemType": "mc",
+      "marks": 1,
+      "grade": "C",
+      "gradeReasons": [
+        "duplicate_stem"
+      ],
+      "baselineProfileId": null,
+      "verifiedDsePlus10": false
+    }
+  ]
+}

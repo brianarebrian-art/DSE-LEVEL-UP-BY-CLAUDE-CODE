@@ -52,28 +52,12 @@ const items = await loadSubjectQuestions('math')
 const map = buildAssetMap(items, RUBRIC_VERSION)
 const dryRun = buildWeek12DryRun()
 
-const mapPath = 'data/loop-engineering/math-compulsory-asset-map.json'
 const pilotPath = 'data/loop-engineering/math-compulsory-pilot-scores.json'
 const dryPath = 'data/loop-engineering/week12-dry-run.json'
 const summaryPath = 'docs/loop-engineering/math-asset-map-summary.md'
 
-for (const path of [mapPath, pilotPath, dryPath, summaryPath]) mkdirSync(dirname(path), { recursive: true })
+for (const path of [pilotPath, dryPath, summaryPath]) mkdirSync(dirname(path), { recursive: true })
 
-writeFileSync(
-  mapPath,
-  JSON.stringify(
-    {
-      rubricVersion: map.rubricVersion,
-      generatedFor: map.generatedFor,
-      itemCount: map.itemCount,
-      scoringNoteZh: map.scoringNoteZh,
-      summary: map.summary,
-      rows: map.rows,
-    },
-    null,
-    2,
-  ) + '\n',
-)
 writeFileSync(
   pilotPath,
   JSON.stringify(
@@ -95,7 +79,7 @@ writeFileSync(summaryPath, renderSummary(map.summary, map.itemCount, map.pilotCo
 
 console.log(`在練必修數學 ${map.itemCount} 題；試點 ${map.pilotCount} 題。`)
 console.log(`C 級客觀缺陷 ${map.summary.abc.C}；未評 A/B ${map.summary.abc.unscored}。`)
-console.log(`已寫入 ${mapPath}`)
+console.log('逐題查閱請用 npm run loop:query。試點分數不是分級。')
 
 function renderSummary(
   summary: {
@@ -122,7 +106,7 @@ function renderSummary(
     : '| （沒有） | 0 |'
   return `# 必修數學在練題資產地圖摘要
 
-由 \`npm run loop:math-map\` 從倉庫題庫生成。這是欄位完整度與基準剖面，不是考評局統計，也不是已驗證的難度提升。
+由 \`npm run loop:math-map\` 從倉庫題庫生成。逐題查閱用 \`npm run loop:query\`，不要把題幹寫進倉庫。分級只有客觀缺陷 C 與尚未人手評分的 unscored。試點的 A／B 是規則代理，不是分級。這不是考評局統計，也不是已驗證的難度提升。
 
 在練題 ${itemCount} 條。試點評分 ${pilotCount} 條，使用 \`ruleset_proxy_v1\`，須人工確認。
 

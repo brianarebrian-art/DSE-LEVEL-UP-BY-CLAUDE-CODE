@@ -1,0 +1,332 @@
+{
+  "gradeValues": [
+    "C",
+    "unscored"
+  ],
+  "noteZh": "分級只標客觀缺陷 C，其餘是 unscored。這不是人手 A／B，也不是已驗證的難度提升，更不是考評局統計。基準剖面目前只為必修數學而設。",
+  "subjects": [
+    {
+      "subject": "bafs",
+      "itemCount": 990,
+      "byType": {
+        "mc": 875,
+        "long": 113,
+        "text": 2
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 990
+      }
+    },
+    {
+      "subject": "biology",
+      "itemCount": 1112,
+      "byType": {
+        "text": 4,
+        "long": 78,
+        "mc": 1030
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1112
+      }
+    },
+    {
+      "subject": "chemistry",
+      "itemCount": 979,
+      "byType": {
+        "mc": 920,
+        "long": 55,
+        "text": 4
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 979
+      }
+    },
+    {
+      "subject": "chinese",
+      "itemCount": 1105,
+      "byType": {
+        "mc": 977,
+        "long": 112,
+        "text": 16
+      },
+      "byGrade": {
+        "C": 4,
+        "unscored": 1101
+      }
+    },
+    {
+      "subject": "chinese-history",
+      "itemCount": 1087,
+      "byType": {
+        "mc": 1074,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1087
+      }
+    },
+    {
+      "subject": "chinese-literature",
+      "itemCount": 1055,
+      "byType": {
+        "mc": 1042,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1055
+      }
+    },
+    {
+      "subject": "csd",
+      "itemCount": 984,
+      "byType": {
+        "text": 10,
+        "long": 3,
+        "mc": 971
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 984
+      }
+    },
+    {
+      "subject": "design-tech",
+      "itemCount": 1022,
+      "byType": {
+        "text": 10,
+        "mc": 1009,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1022
+      }
+    },
+    {
+      "subject": "economics",
+      "itemCount": 1061,
+      "byType": {
+        "mc": 947,
+        "long": 110,
+        "text": 4
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1061
+      }
+    },
+    {
+      "subject": "english",
+      "itemCount": 1051,
+      "byType": {
+        "mc": 1036,
+        "long": 6,
+        "text": 9
+      },
+      "byGrade": {
+        "C": 2,
+        "unscored": 1049
+      }
+    },
+    {
+      "subject": "english-literature",
+      "itemCount": 1027,
+      "byType": {
+        "mc": 1014,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1027
+      }
+    },
+    {
+      "subject": "ethics-religious",
+      "itemCount": 866,
+      "byType": {
+        "mc": 857,
+        "text": 6,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 866
+      }
+    },
+    {
+      "subject": "geography",
+      "itemCount": 1108,
+      "byType": {
+        "mc": 998,
+        "long": 108,
+        "text": 2
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1108
+      }
+    },
+    {
+      "subject": "health-management",
+      "itemCount": 1021,
+      "byType": {
+        "mc": 1008,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1021
+      }
+    },
+    {
+      "subject": "history",
+      "itemCount": 1089,
+      "byType": {
+        "mc": 1051,
+        "long": 38
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1089
+      }
+    },
+    {
+      "subject": "ict",
+      "itemCount": 1111,
+      "byType": {
+        "long": 108,
+        "text": 2,
+        "mc": 1001
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1111
+      }
+    },
+    {
+      "subject": "m1",
+      "itemCount": 898,
+      "byType": {
+        "mc": 881,
+        "text": 11,
+        "long": 6
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 898
+      }
+    },
+    {
+      "subject": "m2",
+      "itemCount": 983,
+      "byType": {
+        "mc": 966,
+        "text": 11,
+        "long": 6
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 983
+      }
+    },
+    {
+      "subject": "math",
+      "itemCount": 1633,
+      "byType": {
+        "mc": 1603,
+        "long": 30
+      },
+      "byGrade": {
+        "C": 2,
+        "unscored": 1631
+      }
+    },
+    {
+      "subject": "music",
+      "itemCount": 1027,
+      "byType": {
+        "mc": 1014,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1027
+      }
+    },
+    {
+      "subject": "pe",
+      "itemCount": 1032,
+      "byType": {
+        "mc": 1019,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1032
+      }
+    },
+    {
+      "subject": "physics",
+      "itemCount": 1120,
+      "byType": {
+        "mc": 1046,
+        "long": 70,
+        "text": 4
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1120
+      }
+    },
+    {
+      "subject": "technology-living",
+      "itemCount": 1033,
+      "byType": {
+        "mc": 1020,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1033
+      }
+    },
+    {
+      "subject": "ths",
+      "itemCount": 1021,
+      "byType": {
+        "mc": 1008,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1021
+      }
+    },
+    {
+      "subject": "visual-arts",
+      "itemCount": 1013,
+      "byType": {
+        "mc": 1000,
+        "text": 10,
+        "long": 3
+      },
+      "byGrade": {
+        "C": 0,
+        "unscored": 1013
+      }
+    }
+  ]
+}

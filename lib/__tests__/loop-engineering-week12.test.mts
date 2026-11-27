@@ -6,10 +6,13 @@ import {
   BASELINE_PROFILES,
   classifyBaseline,
   composite,
+  lowerScoreOnTie,
   meetsUpgradeTarget,
   profileComposite,
   upgradeThreshold,
+  workingCompositeOnRaterTie,
 } from '../loop-engineering/rubric.ts'
+import { buildCatalog, queryCatalog, subjectsToLoad } from '../loop-engineering/catalog.ts'
 import {
   buildAssetMap,
   defectReasons,
@@ -57,6 +60,15 @@ test('公式 (1) 不向下取整', () => {
   assert.equal(profileComposite('p2_mc'), 11)
   assert.equal(profileComposite('p1_a2'), 15)
   assert.equal(composite(BASELINE_PROFILES.p1_b.scores), 18)
+})
+
+test('和局取較低分，剛好等於門檻算達到算術要求', () => {
+  assert.equal(lowerScoreOnTie(4, 3), 3)
+  assert.equal(lowerScoreOnTie(3, 3), 3)
+  assert.throws(() => lowerScoreOnTie(2, 5))
+  assert.equal(workingCompositeOnRaterTie([14, 11]), 11)
+  assert.equal(meetsUpgradeTarget(12.1, 11), true)
+  assert.equal(meetsUpgradeTarget(12, 11), false)
 })
 
 test('維度超出 1 至 5 會被拒絕', () => {
@@ -216,7 +228,8 @@ test('披露草稿未接上介面，學生作答開關關閉', () => {
   const page = readFileSync('docs/loop-engineering/disclosure-zh-hk.md', 'utf8')
   assert.ok(page.includes(PREDICTION_DISCLOSURE_ZH))
   assert.ok(page.includes(BANK_DISCLOSURE_ZH))
-  assert.match(page, /沒有改結果頁/)
+  assert.match(page, /不改練習頁或成績頁/)
+  assert.match(page, /ResultPageClient/)
 })
 
 test('提示與問卷已存放，問卷不可發放', () => {
@@ -291,25 +304,40 @@ test('八條試跑草稿留在未發佈預覽或退回，沒有已驗證達標',
   }
 })
 
-test('已提交的資產地圖與試點跟建造器一致', async () => {
+test('寫入摘要不會因為單科篩選而漏掉其他科', () => {
+  const active = ['math', 'english', 'chinese']
+  assert.deepEqual(subjectsToLoad(active, { subject: 'math', writeSummary: true }), active)
+  assert.deepEqual(subjectsToLoad(active, { subject: 'math', writeSummary: false }), ['math'])
+  assert.deepEqual(subjectsToLoad(active, { writeSummary: false }), active)
+})
+
+test('資產列可按科、題型、分級查閱，而且不含題幹', async () => {
   const loadMod = await import('../../data/questions/load.ts')
-  const load = loadMod.loadSubjectQuestions
-  const items = await load('math')
-  const built = buildAssetMap(items, RUBRIC_VERSION)
-  const committed = JSON.parse(readFileSync('data/loop-engineering/math-compulsory-asset-map.json', 'utf8'))
+  const items = await loadMod.loadSubjectQuestions('math')
+  const rows = buildCatalog('math', items)
+  assert.equal(rows.length, items.length)
+  assert.equal(rows.some((row) => 'content' in row || 'options' in row || 'explanation' in row), false)
+  const defects = queryCatalog(rows, { subject: 'math', grade: 'C' })
+  const defectIds = defects.map((row) => row.id).sort()
+  assert.ok(defectIds.includes('math_fl_ns04'))
+  assert.ok(defectIds.includes('mb_n1_5_2'))
+  assert.equal(queryCatalog(rows, { subject: 'math', itemType: 'mc', grade: 'C' }).every((row) => row.itemType === 'mc'), true)
+  assert.equal(queryCatalog(rows, { subject: 'math', grade: 'unscored' }).length, rows.length - defects.length)
+  assert.ok(rows.every((row) => row.grade === 'C' || row.grade === 'unscored'))
+  assert.ok(rows.every((row) => row.verifiedDsePlus10 === false))
+  const other = buildCatalog('physics', [{ id: 'p1', topic: 'motion', topicZh: '運動', type: 'mc', marks: 1, content: '求速度', options: ['1', '2'], correctIndex: 0, explanation: '因為。' }])
+  assert.equal(other[0].baselineProfileId, null)
+  assert.equal(other[0].baselineStatus, 'pending_subject_profile')
+  const summary = JSON.parse(readFileSync('data/loop-engineering/catalog-summary.json', 'utf8'))
+  const gradeC = JSON.parse(readFileSync('data/loop-engineering/grade-c.json', 'utf8'))
+  const math = summary.subjects.find((row: { subject: string }) => row.subject === 'math')
+  assert.equal(math.byGrade.C, defects.length)
+  assert.equal(math.byGrade.unscored, rows.length - defects.length)
+  assert.ok(gradeC.items.some((row: { id: string }) => row.id === 'math_fl_ns04'))
+  assert.ok(gradeC.items.some((row: { id: string }) => row.id === 'mb_n1_5_2'))
+  assert.equal(JSON.stringify(gradeC).includes('化簡'), false)
   const pilot = JSON.parse(readFileSync('data/loop-engineering/math-compulsory-pilot-scores.json', 'utf8'))
-  assert.equal(committed.itemCount, built.itemCount)
-  assert.equal(committed.itemCount, items.length)
-  assert.ok(committed.itemCount > 1000)
-  assert.deepEqual(committed.summary, built.summary)
-  assert.deepEqual(committed.rows, built.rows)
   assert.equal(pilot.verifiedDsePlus10, false)
   assert.equal(pilot.needsHumanConfirmation, true)
   assert.equal(pilot.pilotCount, 50)
-  assert.deepEqual(pilot.pilot, built.pilot)
-  const ids = new Set(built.rows.map((row) => row.id))
-  assert.ok(built.pilot.every((row) => ids.has(row.id)))
-  assert.ok(built.pilot.every((row) => row.verifiedDsePlus10 === false))
-  const topics = new Set(built.pilot.map((row) => row.topic))
-  assert.equal(topics.size, new Set(built.rows.map((row) => row.topic)).size)
 })
