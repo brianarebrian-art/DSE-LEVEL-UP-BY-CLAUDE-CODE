@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { LoopDisclosurePreview } from '@/components/loop/LoopDisclosurePreview'
+import { isLoopDisclosureRouteHidden } from '@/lib/loop-engineering/disclosure'
 import { completeSeoMetadata } from '@/lib/seo'
 
 // 披露文案預覽。正式環境回 404，不進入學生練習或成績頁。
@@ -11,8 +12,6 @@ export const metadata = completeSeoMetadata({
 }, '/dev/loop-disclosure')
 
 export default function LoopDisclosurePage() {
-  if (process.env.VERCEL_ENV === 'production' || (process.env.VERCEL_ENV == null && process.env.NODE_ENV === 'production')) {
-    notFound()
-  }
+  if (isLoopDisclosureRouteHidden()) notFound()
   return <LoopDisclosurePreview />
 }

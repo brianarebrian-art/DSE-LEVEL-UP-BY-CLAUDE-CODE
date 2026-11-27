@@ -1,10 +1,26 @@
-# Loop Engineering 第 1–2 星期
+# Loop Engineering
+
+## 第 3–4 星期定稿（2026-11-27）
+
+量表、審核流程、披露文案與抽樣範圍已定稿。這不是已驗證的「DSE+10%」。批量重構屬第 5–8 星期，本星期不開始，也不上正式站。
+
+| 交付 | 位置 |
+|---|---|
+| 五維量表定稿 | `docs/loop-engineering/rubric-zh-hk.md`、`lib/loop-engineering/rubric.ts` |
+| 審核流程定稿 | `docs/loop-engineering/review-process-zh-hk.md` |
+| 升級 Prompt、AI 初審 Prompt、兩人覆核精簡表 | `docs/loop-engineering/prompts/` |
+| 披露文案定稿 | `docs/loop-engineering/disclosure-zh-hk.md`、`lib/loop-engineering/disclosure.ts` |
+| 抽樣範圍書面紀錄 | `docs/loop-engineering/week34-sample-scope-zh-hk.md` |
+
+抽樣範圍是必修數學、200 至 500 條升級草稿，只留預覽。覆核是兩人批次覆核，不是資深 HKDSE 學科教師雙審。細節以抽樣範圍紀錄為準，不要收窄成單一題量。
+
+## 第 1–2 星期
 
 日期：2026-11-26 至 2026-12-09（香港時間）。
 
-本目錄只做基礎與一次管線試跑。不改寫數百題，不上正式站，不套用本輪的資料庫草稿，也不啟動學生實測。
+本目錄先做基礎與一次管線試跑。不改寫數百題，不上正式站，不套用本輪的資料庫草稿，也不啟動學生實測。
 
-12 星期的可執行範圍是資產地圖、可覆核的難度標準，以及「AI 初審 → 兩人批次覆核 → 預覽」。全庫已驗證的難度提升不是這次承諾。200 至 500 條抽樣升級留在其後的星期。
+12 星期的可執行範圍是資產地圖、可覆核的難度標準，以及「AI 初審 → 兩人批次覆核 → 預覽」。全庫已驗證的難度提升不是這次承諾。抽樣範圍已於 2026-11-27 書面確認；批量重構仍屬第 5–8 星期。
 
 ## 本輪有什麼
 
@@ -18,7 +34,7 @@
 | 管線狀態與硬閘 | `lib/loop-engineering/pipeline.ts` |
 | 升級提示、AI 初審提示、兩人覆核表 | `docs/loop-engineering/prompts/` |
 | 專家表與實測問卷 | 已存放，專家表未啟用；問卷狀態是「待批准」 |
-| 披露文案草稿 | `docs/loop-engineering/disclosure-zh-hk.md` |
+| 披露文案定稿 | `docs/loop-engineering/disclosure-zh-hk.md` |
 | 8 條未發佈試跑草稿 | `data/loop-engineering/week12-dry-run.json` |
 | 資料表草稿 | `supabase/migrations/0039_loop_engineering_week12.DRAFT.sql` |
 
