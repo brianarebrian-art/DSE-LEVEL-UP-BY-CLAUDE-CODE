@@ -40,6 +40,8 @@ const nextConfig: NextConfig = {
     // SENSEI 知識卡草稿一併 include —— 唔加嘅話 Vercel 上 /admin 只會見到
     // 題目批次，卡片隊列會靜靜地空白（本地開發正常，所以最易走漏）。
     '/admin': ['./scripts/qbank/drafts/*.json', './data/sensei/*/drafts/*.json'],
+    // 預覽頁以靜態 import 讀草稿。一併列入追蹤，避免 Vercel 只打包函式而漏掉 JSON。
+    '/dev/loop-week58': ['./data/loop-engineering/week58-drafts.json'],
   },
   // RFC 9116 §3: the canonical file lives under /.well-known/; the legacy top-level path may
   // redirect to it. Without this, scanners that only try /security.txt get a 404 (audit #7).

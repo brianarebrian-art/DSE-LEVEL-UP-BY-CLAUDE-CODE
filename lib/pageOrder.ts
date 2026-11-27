@@ -53,6 +53,7 @@ export const EXCLUDED: Record<string, string> = {
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
   '/dev/loop-disclosure': '披露文案預覽，正式環境回 404，不屬學生導航',
+  '/dev/loop-week58': '第 5–8 星期升級草稿預覽，正式環境回 404，不進入學生練習',
   '/sentry-example-page': '開發時確認 Sentry。production 回 404，不屬於學生導航',
 
   // 流程中途，有自己嘅去向
