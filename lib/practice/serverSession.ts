@@ -205,6 +205,14 @@ export function buildSession(
   }
 }
 
+export type GradeDetail = {
+  id: string
+  correct: boolean
+  /** Only present when the client submitted an answer for this id. */
+  correctIndex?: number
+  answered: boolean
+}
+
 export function gradeSession(
   token: string,
   answers: Array<{ id: string; chosenIndex: number }>,
@@ -213,8 +221,12 @@ export function gradeSession(
   ok: true
   score: number
   total: number
-  details: Array<{ id: string; correct: boolean; correctIndex: number }>
+  details: GradeDetail[]
+  answeredIds: string[]
 } | { ok: false; error: string } {
+  if (!Array.isArray(answers) || answers.length === 0) {
+    return { ok: false, error: 'empty_answers' }
+  }
   const session = decodeSession(token)
   if (!session) return { ok: false, error: 'invalid_or_expired_session' }
   if (session.subjectId && bank.length === 0) {
@@ -230,19 +242,27 @@ export function gradeSession(
   }
 
   let score = 0
-  const details: Array<{ id: string; correct: boolean; correctIndex: number }> = []
+  const details: GradeDetail[] = []
+  const answeredIds: string[] = []
   for (const row of replayed) {
     const pick = chosen.get(row.q.id)
-    const correct =
-      typeof pick === 'number' && pick === row.correctShuffledIndex
+    const answered = typeof pick === 'number'
+    const correct = answered && pick === row.correctShuffledIndex
     if (correct) score++
-    details.push({
-      id: row.q.id,
-      correct,
-      correctIndex: row.correctShuffledIndex,
-    })
+    if (answered) {
+      answeredIds.push(row.q.id)
+      details.push({
+        id: row.q.id,
+        correct,
+        correctIndex: row.correctShuffledIndex,
+        answered: true,
+      })
+    } else {
+      // Unanswered: count as wrong for score/total, but do NOT leak the key.
+      details.push({ id: row.q.id, correct: false, answered: false })
+    }
   }
-  return { ok: true, score, total: replayed.length, details }
+  return { ok: true, score, total: replayed.length, details, answeredIds }
 }
 
 /** Keys that must never appear in pre-grade API JSON (including inside token payload). */

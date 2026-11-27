@@ -35,8 +35,17 @@ test('the topic list does not show them', () => {
 
 test('the client loader filters both the cloud and the static path', () => {
   const src = readFileSync('data/questions/load.ts', 'utf8')
-  assert.match(src, /if \(cloud\?\.length\) return withoutWithheld\(subjectId, cloud, options\)/)
-  assert.match(src, /return withoutWithheld\(subjectId, applyDifficultyOverrides\(all, DIFFICULTY_OVERRIDES\[subjectId\]\), options\)/)
+  // Both cloud and static paths must still pass through withoutWithheld (overlay may wrap first).
+  assert.match(
+    src,
+    /if \(cloud\?\.length\) \{\s*return withoutWithheld\(subjectId,/,
+  )
+  assert.match(src, /applyDifficultyOverrides\(all, DIFFICULTY_OVERRIDES\[subjectId\]\)/)
+  assert.equal(
+    (src.match(/return withoutWithheld\(subjectId,/g) ?? []).length,
+    2,
+    'cloud and static paths both filter',
+  )
   // Practice MC uses the default filter. Only the regrade key may keep machine-restored items.
   assert.match(src, /return \(await loadSubjectQuestions\(subjectId\)\)\.filter/)
   assert.match(src, /loadSubjectQuestions\(subjectId, \{ keepMachineRestored: true \}\)/)
