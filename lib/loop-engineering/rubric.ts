@@ -1,12 +1,16 @@
 /**
- * Loop Engineering 五維難度量表（第 1–2 星期操作版）。
+ * Loop Engineering 五維難度量表。
+ * 2026-11-27 定稿。計分數字仍是 loop-engineering-w1-2026-11-26，錨點、剖面與公式沒有改。
  * 只供審核與腳本使用，不要由學生頁面引入。
  *
+ * 這是平台自編量表，不是考評局標準。
  * 綜合分滿分 25。升級門檻是公式 (1)：升級後綜合分 ≥ 基準綜合分 × 1.10。
- * 達標與否只是量表算術，不是「已驗證比文憑試難 10%」。
+ * 算術達標不是「已達」或「已驗證 DSE+10%」。難度宣稱維持未驗證。
  */
 
 export const RUBRIC_VERSION = 'loop-engineering-w1-2026-11-26'
+export const RUBRIC_STATUS = 'final' as const
+export const RUBRIC_FINALIZED_ON = '2026-11-27'
 export const UPGRADE_FACTOR = 1.1
 export const COMPOSITE_MAX = 25
 

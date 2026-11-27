@@ -225,7 +225,7 @@ export function applyTwoPersonReview(record: PipelineRecord, review: TwoPersonRe
     throw new PipelineGateError('兩人覆核須留下兩個覆核欄位')
   }
   if (review.signoffKind !== 'scaffold_not_subject_teacher' || review.independentReviewers !== false) {
-    throw new PipelineGateError('第 1–2 星期的覆核只能標成非正式教師的骨架簽署')
+    throw new PipelineGateError('兩人覆核只能標成非正式學科教師的批次覆核，不得標成教師雙審')
   }
   record.twoPersonReview = review
   if (review.conclusion === 'keep_preview') {
@@ -293,7 +293,7 @@ function assertPreviewReady(record: PipelineRecord): void {
     throw new PipelineGateError('預覽題必須標明未經 HKDSE 學科教師審核')
   }
   if (record.published || record.releaseChannel !== 'unpublished_preview') {
-    throw new PipelineGateError('第 1–2 星期的預覽題不得發佈')
+    throw new PipelineGateError('預覽題不得發佈到正式站')
   }
   if (BASELINE_PROFILES[record.baselineProfileId].scores.reasoning < 1) {
     throw new PipelineGateError('基準剖面無效')
