@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, BookmarkX, FolderPen, Check, X } from 'lucide-react'
 import Illustration from '@/src/components/ui/Illustration'
@@ -10,7 +10,6 @@ import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
 import { paperText } from '@/lib/localePreference'
 import { getSubject } from '@/data/subjects'
-import { loadSubjectQuestions } from '@/data/questions/load'
 import { isPendingReview, isWithdrawn, withdrawnReason } from '@/data/questions/hidden-topics'
 import { isMachineRestored } from '@/data/questions/machine-restored-ids'
 import type { AnyQuestion } from '@/data/questions/types'
@@ -42,10 +41,14 @@ export default function BookmarksView() {
   const en = locale === 'en'
 
   const [rows, setRows] = useState<Resolved[] | null>(null)
+  const [loadError, setLoadError] = useState(false)
+  const loadSeq = useRef(0)
  const [renaming, setRenaming] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
   const load = async () => {
+    const seq = ++loadSeq.current
+    setLoadError(false)
     const bms = getBookmarks()
     if (!bms.length) {
       setRows([])
@@ -55,12 +58,31 @@ export default function BookmarksView() {
     const bySubject = new Map<string, Bookmark[]>()
     for (const b of bms) bySubject.set(b.subjectId, [...(bySubject.get(b.subjectId) ?? []), b])
 
-    const banks = await Promise.all(
-      [...bySubject.keys()].map(async (sid) => {
-        const qs = await loadSubjectQuestions(sid)
-        return [sid, new Map(qs.map((q) => [q.id, q]))] as const
+    let banks: Array<readonly [string, Map<string, AnyQuestion>]>
+    try {
+      banks = await Promise.all(
+      [...bySubject.entries()].map(async ([sid, group]) => {
+        const ids = group.map((b) => b.questionId)
+        const found = new Map<string, AnyQuestion>()
+        for (let i = 0; i < ids.length; i += 60) {
+          const res = await fetch('/api/questions/bundle', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ subjectId: sid, ids: ids.slice(i, i + 60) }),
+          })
+          if (!res.ok) throw new Error('bookmarks')
+          const body = (await res.json()) as { questions?: AnyQuestion[] }
+          for (const q of body.questions ?? []) found.set(q.id, q)
+        }
+        return [sid, found] as const
       }),
-    )
+      )
+    } catch {
+      if (seq !== loadSeq.current) return
+      setLoadError(true)
+      return
+    }
+    if (seq !== loadSeq.current) return
     const lookup = new Map(banks)
     setRows(bms.map((bm) => ({ bm, q: lookup.get(bm.subjectId)?.get(bm.questionId) ?? null })))
   }
@@ -83,15 +105,14 @@ export default function BookmarksView() {
   }, [rows])
 
   const drop = (b: Bookmark) => {
+    // removeBookmark 會派 dse-bookmarks，監聽器負責重新載入，避免同一改動開兩次請求。
     removeBookmark(b.subjectId, b.questionId)
-    void load()
   }
 
   const commitRename = (from: string) => {
     renameFolder(from, draft)
     setRenaming(null)
     setDraft('')
-    void load()
   }
 
   return (
@@ -111,7 +132,18 @@ export default function BookmarksView() {
             : '未登入就只留喺呢部裝置。唔計數、唔排名 —— 淨係你想留低嗰啲題。'}
         </p>
 
-        {rows === null && <p className="text-sm text-ink-muted">{en ? 'Loading…' : '載入中⋯'}</p>}
+        {loadError && (
+          <p role="status" className="mb-4 text-sm text-ink-muted">
+            {en
+              ? 'Saved questions could not be loaded just now. They are still saved — try again.'
+              : '收藏暫時讀唔到。題目仍然留住，可以再試一次。'}
+            <button type="button" onClick={() => void load()} className="ml-2 min-h-11 text-accent underline underline-offset-2">
+              {en ? 'Try again' : '再試'}
+            </button>
+          </p>
+        )}
+
+        {rows === null && !loadError && <p className="text-sm text-ink-muted">{en ? 'Loading…' : '載入中⋯'}</p>}
 
         {rows?.length === 0 && (
           <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center flex flex-col items-center">

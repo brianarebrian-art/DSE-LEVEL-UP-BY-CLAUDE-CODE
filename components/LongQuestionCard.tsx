@@ -10,6 +10,8 @@ import StepHints from '@/components/StepHints'
 import { useLocale } from '@/lib/i18n'
 import { practiceText } from '@/lib/localePreference'
 import type { LongQuestion, SelfAssessment } from '@/data/questions/types'
+import { fetchWrittenKey } from '@/lib/practice/checkClient'
+import type { WrittenKeyResult } from '@/lib/practice/publicQuestion'
 
 // 長題目 — multi-line structured working with optional live KaTeX preview. Same HONESTY
 // rule: no auto-grading. After submit we reveal the model answer + marking scheme
@@ -50,6 +52,20 @@ export default function LongQuestionCard({
   const [showWhy, setShowWhy] = useState(false)
   // 自我檢查清單（LOOP 33）：只幫學生對照，不儲存、不計分、不影響下面的自評。
   const [checks, setChecks] = useState<Record<string, boolean>>({})
+  const [opening, setOpening] = useState(false)
+  const [openError, setOpenError] = useState<string | null>(null)
+  const [key, setKey] = useState<WrittenKeyResult | null>(
+    q.referenceAnswer
+      ? {
+          referenceAnswer: q.referenceAnswer,
+          referenceAnswerEn: q.referenceAnswerEn,
+          markingScheme: q.markingScheme,
+          markingSchemeEn: q.markingSchemeEn,
+          explanation: q.explanation,
+          explanationEn: q.explanationEn,
+        }
+      : null,
+  )
 
   const pick = (l: Level) => {
     if (level) return
@@ -109,12 +125,33 @@ export default function LongQuestionCard({
  </div>
  )}
  <button
-            onClick={() => value.trim() && setSubmitted(true)}
-            disabled={!value.trim()}
+            onClick={() => {
+              if (!value.trim() || opening) return
+              if (key) {
+                setSubmitted(true)
+                return
+              }
+              setOpening(true)
+              setOpenError(null)
+              void fetchWrittenKey(q.subject, q.id, value)
+                .then((revealed) => {
+                  setKey(revealed)
+                  setSubmitted(true)
+                })
+                .catch(() => {
+                  setOpenError(en
+                    ? 'The model answer could not be loaded. Your writing is still here — try again.'
+                    : '參考答案暫時載入唔到。你寫低嘅步驟仲在，可以再提交。')
+                })
+                .finally(() => setOpening(false))
+            }}
+            disabled={!value.trim() || opening}
+            aria-busy={opening}
             className="mt-3 w-full min-h-11 bg-accent-strong hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-on-accent font-bold py-3 rounded-xl transition-colors"
           >
-            {en ? 'Submit' : '提交'}
+            {opening ? (en ? 'Loading the model answer…' : '載入參考答案…') : (en ? 'Submit' : '提交')}
           </button>
+          {openError && <p role="status" className="mt-2 text-sm text-ink-muted">{openError}</p>}
  </>
  ) : (
  <>
@@ -133,19 +170,19 @@ export default function LongQuestionCard({
  </button>
           {showAnswer && (
             <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <MathText>{practiceText(q.subject, q.referenceAnswer, q.referenceAnswerEn, locale)}</MathText>
+ <MathText>{practiceText(q.subject, key?.referenceAnswer ?? '', key?.referenceAnswerEn, locale)}</MathText>
  </div>
           )}
 
           {/* Marking scheme (collapsible) */}
-          {q.markingScheme && (
+          {(key?.markingScheme || q.markingScheme) && (
             <>
  <button
                 onClick={() => setShowScheme((s) => !s)}
  className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
  >
  <span className="text-xs text-ink-soft font-bold">
-                  {isGenericMarkingScale(practiceText(q.subject, q.markingScheme, q.markingSchemeEn, locale))
+                  {isGenericMarkingScale(practiceText(q.subject, key?.markingScheme ?? q.markingScheme, key?.markingSchemeEn ?? q.markingSchemeEn, locale))
                     ? (en ? 'Shared practice scale (not a mark scheme for this question)' : '各題共用嘅練習尺度（唔係呢題嘅評卷參考）')
                     : (en ? 'Marking scheme / step marks' : '評分準則 / 步驟分')}
                 </span>
@@ -153,21 +190,21 @@ export default function LongQuestionCard({
  </button>
               {showScheme && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <MathText>{practiceText(q.subject, q.markingScheme, q.markingSchemeEn, locale)}</MathText>
+ <MathText>{practiceText(q.subject, key?.markingScheme ?? q.markingScheme, key?.markingSchemeEn ?? q.markingSchemeEn, locale)}</MathText>
  </div>
  )}
  </>
           )}
 
           {/* 解題思路（collapsible）—— 同評分準則分開：準則答「點畀分」，思路答「點解要咁諗」。 */}
-          {q.explanation && (
+          {(key?.explanation || q.explanation) && (
             <>
  <button
                 onClick={() => setShowWhy((s) => !s)}
  className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
  >
  <span className="text-xs text-ink-soft font-bold">
-                  {isGenericWritingGuide(practiceText(q.subject, q.explanation, q.explanationEn, locale))
+                  {isGenericWritingGuide(practiceText(q.subject, key?.explanation ?? q.explanation, key?.explanationEn ?? q.explanationEn, locale))
                     ? (en ? 'Shared self-check note' : '通用自評方向')
                     : (en ? 'How to think about it' : '解題思路')}
                 </span>
@@ -175,7 +212,7 @@ export default function LongQuestionCard({
  </button>
               {showWhy && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
- <ExplanationBody text={practiceText(q.subject, q.explanation, q.explanationEn, locale)} />
+ <ExplanationBody text={practiceText(q.subject, key?.explanation ?? q.explanation ?? '', key?.explanationEn ?? q.explanationEn, locale)} />
  </div>
  )}
  </>

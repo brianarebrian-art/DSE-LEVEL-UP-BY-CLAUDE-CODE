@@ -27,7 +27,10 @@ import StagedExplanation from '@/components/StagedExplanation'
 import OptionNotes from '@/components/OptionNotes'
 import { displayOptions, type DisplayOption } from '@/lib/optionNotes'
 import { FOCUS_LIGHT_KEY } from '@/components/GlobalA11y'
-import type { Question, Difficulty } from '@/data/questions'
+import type { Difficulty, Question } from '@/data/questions'
+import type { PublicMc, McCheckResult } from '@/lib/practice/publicQuestion'
+import { notesInSeenOrder } from '@/lib/practice/publicQuestion'
+import { fetchMcCheck } from '@/lib/practice/checkClient'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
@@ -97,15 +100,37 @@ type PreparedOption = DisplayOption
 // language-independent value (never an index, and unaffected by the toggle).
 type PreparedQuestion = Question & { shuffledOptions: PreparedOption[]; correctZh: string }
 
-function prepareQuestion(q: Question): PreparedQuestion {
-  return { ...q, shuffledOptions: displayOptions(q), correctZh: q.options[q.correctIndex] }
+function prepareQuestion(q: PublicMc): PreparedQuestion {
+  // Allowlist. Catalog fields are copied one by one so a leaked key cannot ride along.
+  const stored: Question = {
+    id: q.id,
+    type: 'mc',
+    subject: q.subject,
+    topic: q.topic,
+    topicZh: q.topicZh,
+    topicEn: q.topicEn,
+    framework: q.framework,
+    frameworkZh: q.frameworkZh,
+    frameworkEn: q.frameworkEn,
+    frameworkEmoji: q.frameworkEmoji,
+    difficulty: q.difficulty,
+    year: q.year,
+    content: q.content,
+    contentEn: q.contentEn,
+    options: q.options,
+    optionsEn: q.optionsEn,
+    correctIndex: -1,
+    explanation: '',
+    marks: q.marks,
+  }
+  return { ...stored, shuffledOptions: displayOptions(stored), correctZh: '' }
 }
 
 // 3:5:2 draw lives in lib/sessionSample.ts (same ratios, plus a family skip so
 // one template with the numbers swapped does not fill the session).
 
 function buildPool(
-  bank: Question[],
+  bank: PublicMc[],
   subjectId: string,
   topicFilter: string | null,
   sessionSize: number,
@@ -117,7 +142,7 @@ function buildPool(
   // (Superseded the old 拔尖 hard-only serving so every tier surfaces per the mandate.)
   const base = scoped
 
-  let ordered: Question[]
+  let ordered: PublicMc[]
   if (mode === 'weakness') {
     // Repair worksheet: surface the user's weakest topics (lowest win-rate) first,
     // padded by the rest so a 20-Q run can still fill. Stratification below is
@@ -220,7 +245,7 @@ function buildConceptRows(qs: PreparedQuestion[], ans: AnswerState[]) {
 const optionLetters = ['A', 'B', 'C', 'D']
 
 interface SessionProps {
-  bank: Question[]
+  bank: PublicMc[]
   subjectId: string
   topicFilter: string | null
   sessionSize: number
@@ -278,6 +303,10 @@ export default function PracticeSession({
   const resumedRef = useRef(false)
   const startCounted = useRef(false)
   const [answerState, setAnswerState] = useState<AnswerState>(null)
+  /** Server grade for the question on screen. Empty until Check succeeds. */
+  const [reveal, setReveal] = useState<McCheckResult | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [checkNote, setCheckNote] = useState<string | null>(null)
   /** Picked, not yet checked. Reveal waits for 「檢查」. */
   const [pendingZh, setPendingZh] = useState<string | null>(null)
   /** First question whose explanation opened the optional sync line. */
@@ -393,6 +422,9 @@ export default function PracticeSession({
 
   const currentQ = questions[current]
   const totalQ = questions.length
+  const correctText = reveal?.correctText ?? ''
+  const shownNotes = currentQ ? notesInSeenOrder(reveal?.optionNotes, currentQ.shuffledOptions) : []
+  const shownCorrectId = currentQ?.shuffledOptions.find((o) => o.zh === correctText)?.optionId ?? -1
   // 2026-09-09：「下一題」原本會喺反思鎖期間扣住（要答啱追問題 ＋ 等夠 30 秒）。
   // 鎖已剷除，所以永遠唔扣 —— 學生揀完錯因即刻睇得到解析，撳得到下一題。
 
@@ -440,57 +472,59 @@ export default function PracticeSession({
 
   const selectOption = useCallback(
     (zh: string, idx: number) => {
-      if (answerState !== null || !currentQ) return
-      const isCorrect = zh === currentQ.correctZh
-      setAnswerState({ selectedZh: zh, isCorrect })
-      setPickedCause(null)
-      setWishOpen(false)
-      setHackOpen(false)
-      setFlashIdx(idx)
-      if (flashTimer.current) clearTimeout(flashTimer.current)
-      flashTimer.current = setTimeout(() => setFlashIdx(null), 200)
+      if (answerState !== null || !currentQ || checking) return
+      setChecking(true)
+      setCheckNote(null)
+      void fetchMcCheck(subjectId, currentQ.id, zh)
+        .then((graded) => {
+          const isCorrect = graded.correct
+          setReveal(graded)
+          setAnswerState({ selectedZh: zh, isCorrect })
+          setPickedCause(null)
+          setWishOpen(false)
+          setHackOpen(false)
+          setFlashIdx(idx)
+          if (flashTimer.current) clearTimeout(flashTimer.current)
+          flashTimer.current = setTimeout(() => setFlashIdx(null), 200)
 
-      // 「再試一次」之後再揀：畫面可以重答，但進度／錯題 log 只記首次。
-      const alreadyLogged = loggedIdsRef.current.has(currentQ.id)
-      if (alreadyLogged) return
-      loggedIdsRef.current.add(currentQ.id)
-      setFirstAnswer({ selectedZh: zh, isCorrect })
-
-      // 第 3 週 · 引擎五：更新連續狀態。刻意冇任何 UI 反映呢個數 ——
-      // 「你連續答啱 3 題」睇落係鼓勵，但佢同時令中斷嗰下變成一件事，
-      // 憲章第 7 條唔准出現咁樣嘅懲罰性回饋。所以連續數永遠唔顯示。
-      setStreak((prev) => advanceStreak(prev, isCorrect))
-      // 第 1 週 · 引擎一：答對輕柔「叮」聲。設定預設關閉，playCorrectChime 內部
-      // 自行檢查，關閉時直接 return。答錯【刻意不設任何音效】——
-      // 用聲音標示答錯等於把錯誤變成一個可聽見的判決，違反憲章第 7 條。
-      if (isCorrect) playCorrectChime()
-      // Wrong answers feed due reviews, topic nudges and recommendations (founders' reply 7a,
-      // 2026-10-04). Until 2026-10-02 this was written by the cause card; no cause is asked now.
-      // Only what the student picked is kept (charter §16.E constraint 5).
-      else
-        logReverseError({
-          subjectId,
-          questionId: currentQ.id,
-          topic: currentQ.topicZh,
-          topicEn: currentQ.topicEn,
-          topicId: currentQ.topic,
-          selected: zh,
-          correct: currentQ.correctZh,
-          ts: Date.now(),
-          difficulty: currentQ.difficulty,
+          const alreadyLogged = loggedIdsRef.current.has(currentQ.id)
+          if (alreadyLogged) return
+          loggedIdsRef.current.add(currentQ.id)
+          setFirstAnswer({ selectedZh: zh, isCorrect })
+          setStreak((prev) => advanceStreak(prev, isCorrect))
+          if (isCorrect) playCorrectChime()
+          else
+            logReverseError({
+              subjectId,
+              questionId: currentQ.id,
+              topic: currentQ.topicZh,
+              topicEn: currentQ.topicEn,
+              topicId: currentQ.topic,
+              selected: zh,
+              correct: graded.correctText,
+              ts: Date.now(),
+              difficulty: currentQ.difficulty,
+            })
+          recordSpectrumAnswer(currentQ.difficulty, isCorrect)
         })
-      // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
-      recordSpectrumAnswer(currentQ.difficulty, isCorrect)
+        .catch(() => {
+          setCheckNote(
+            locale === 'en'
+              ? 'The answer could not be checked just now. Your choice is still selected — tap Check again.'
+              : '而家對唔到答案。你揀嘅選項仲在，可以再撳檢查。',
+          )
+        })
+        .finally(() => setChecking(false))
     },
-    [answerState, currentQ, subjectId]
+    [answerState, currentQ, subjectId, checking, locale],
   )
 
   const confirmPending = useCallback(() => {
-    if (!currentQ || answerState !== null || !pendingZh) return
+    if (!currentQ || answerState !== null || !pendingZh || checking) return
     const idx = currentQ.shuffledOptions.findIndex((o) => o.zh === pendingZh)
     if (idx < 0) return
     selectOption(pendingZh, idx)
-  }, [currentQ, answerState, pendingZh, selectOption])
+  }, [currentQ, answerState, pendingZh, selectOption, checking])
 
   const next = useCallback(() => {
     const scored = firstAnswer ?? answerState
@@ -499,6 +533,8 @@ export default function PracticeSession({
     setAnswerState(null)
     setFirstAnswer(null)
     setPendingZh(null)
+    setReveal(null)
+    setCheckNote(null)
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -659,6 +695,8 @@ export default function PracticeSession({
   const retryCurrent = useCallback(() => {
     if (answerState === null) return
     setAnswerState(null)
+    setReveal(null)
+    setCheckNote(null)
     setPendingZh(null)
     setFlashIdx(null)
     setPickedCause(null)
@@ -802,7 +840,7 @@ export default function PracticeSession({
     const byId = new Map(bank.map((q) => [q.id, q]))
     const restored = resumeOffer.questionIds
       .map((id) => byId.get(id))
-      .filter((q): q is Question => Boolean(q))
+      .filter((q): q is PublicMc => Boolean(q))
     if (restored.length !== resumeOffer.questionIds.length) {
       // The bank changed under us — start clean rather than resume a mismatched set.
       clearActiveSession()
@@ -822,7 +860,14 @@ export default function PracticeSession({
       setAnswerState(onThis)
       setFirstAnswer(onThis)
       const qid = prepared[at]?.id
-      if (qid) loggedIdsRef.current.add(qid)
+      if (qid) {
+        loggedIdsRef.current.add(qid)
+        void fetchMcCheck(subjectId, qid, onThis.selectedZh)
+          .then((graded) => setReveal(graded))
+          .catch(() => setCheckNote(locale === 'en'
+            ? 'The explanation could not be loaded again. Your saved result is still here.'
+            : '解析暫時載入唔到。已儲存嘅結果仲在。'))
+      }
     } else {
       setAnswers(savedAnswers)
       setAnswerState(null)
@@ -832,7 +877,7 @@ export default function PracticeSession({
     setCurrent(at)
     setStartTime(Date.now() - resumeOffer.elapsed * 1000)
     setResumeOffer(null)
-  }, [resumeOffer, bank])
+  }, [resumeOffer, bank, subjectId, locale])
 
   // Returning from Google sign-in (?resume=1) stays on this same 10-question attempt.
   const autoResume = useRef(false)
@@ -1153,7 +1198,7 @@ export default function PracticeSession({
             data-practice-options
           >
             {currentQ.shuffledOptions.map((opt, idx) => {
-              const isCorrectOpt = opt.zh === currentQ.correctZh
+              const isCorrectOpt = correctText !== '' && opt.zh === correctText
               const isPending = answerState === null && pendingZh === opt.zh
               const isSelected = answerState !== null && opt.zh === answerState.selectedZh
               const isSelectedWrong = isSelected && !answerState.isCorrect
@@ -1190,7 +1235,7 @@ export default function PracticeSession({
                   aria-pressed={isSelected || isPending}
                   aria-disabled={answerState !== null}
                   onClick={() => {
-                    if (answerState !== null) return
+                    if (answerState !== null || checking) return
                     setPendingZh(opt.zh)
                   }}
                   className={`practice-option ml-press relative w-full min-h-14 sm:min-h-12 text-left flex items-center gap-3 border rounded-[var(--radius-control)] px-4 py-3 transition-[colors,transform,opacity,box-shadow] duration-100 ${style}${flash}`}
@@ -1256,8 +1301,8 @@ export default function PracticeSession({
                 <p className="mb-3 text-base font-medium leading-relaxed text-ink">
                   <MathText>
                     {tr(
-                      `你選擇了「${answerState.selectedZh}」。正確答案是「${currentQ.correctZh}」。`,
-                      `You chose “${currentQ.shuffledOptions.find((o) => o.zh === answerState.selectedZh)?.en || answerState.selectedZh}”. The answer is “${currentQ.shuffledOptions.find((o) => o.zh === currentQ.correctZh)?.en || currentQ.correctZh}”.`,
+                      `你選擇了「${answerState.selectedZh}」。正確答案是「${correctText}」。`,
+                      `You chose “${currentQ.shuffledOptions.find((o) => o.zh === answerState.selectedZh)?.en || answerState.selectedZh}”. The answer is “${currentQ.shuffledOptions.find((o) => o.zh === correctText)?.en || correctText}”.`,
                     )}
                   </MathText>
                 </p>
@@ -1274,13 +1319,13 @@ export default function PracticeSession({
  <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
  <div className="min-w-0 flex-1">
  <StagedExplanation
-                          text={practiceText(subjectId, currentQ.explanation, currentQ.explanationEn, locale)}
-                          steps={locale === 'en' && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
+                          text={practiceText(subjectId, reveal?.explanation ?? '', reveal?.explanationEn, locale)}
+                          steps={locale === 'en' && reveal?.stepsEn?.length ? reveal.stepsEn : reveal?.steps}
                         />
  <OptionNotes
-                          notes={currentQ.optionNotes}
+                          notes={shownNotes}
                           options={currentQ.shuffledOptions}
-                          correctId={currentQ.correctIndex}
+                          correctId={shownCorrectId}
                           selectedZh={answerState.selectedZh}
                           subjectId={subjectId}
                         />
@@ -1299,8 +1344,8 @@ export default function PracticeSession({
  </div>
  <div className="border-t border-warning/15 pt-3">
  <StagedExplanation
-                        text={practiceText(subjectId, currentQ.explanation, currentQ.explanationEn, locale)}
-                        steps={locale === 'en' && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
+                        text={practiceText(subjectId, reveal?.explanation ?? '', reveal?.explanationEn, locale)}
+                        steps={locale === 'en' && reveal?.stepsEn?.length ? reveal.stepsEn : reveal?.steps}
                         label={
                           <span className="text-warning text-xs font-medium mr-1">
                             {tr('正解思路：', 'Reasoning: ')}
@@ -1308,9 +1353,9 @@ export default function PracticeSession({
  }
  />
  <OptionNotes
-                        notes={currentQ.optionNotes}
+                        notes={shownNotes}
                         options={currentQ.shuffledOptions}
-                        correctId={currentQ.correctIndex}
+                        correctId={shownCorrectId}
                         selectedZh={answerState.selectedZh}
                         subjectId={subjectId}
                       />
@@ -1359,7 +1404,7 @@ export default function PracticeSession({
                 )}
 
                 {/* Path B — 名師速解 / MC Hack。Wave 2：可選、預設收合，唔同正解搶位。 */}
-                {currentQ.mcHack && (
+                {reveal?.mcHack && (
                   <div className="rounded-2xl mb-4 border bg-violet/[0.08] border-violet/30">
  <button
                       type="button"
@@ -1386,7 +1431,7 @@ export default function PracticeSession({
                           )}
                         </p>
  <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
- <MathText>{practiceText(subjectId, currentQ.mcHack, currentQ.mcHackEn, locale)}</MathText>
+ <MathText>{practiceText(subjectId, reveal?.mcHack, reveal?.mcHackEn, locale)}</MathText>
  </div>
  </div>
  )}
@@ -1475,12 +1520,16 @@ export default function PracticeSession({
             <button
               type="button"
               onClick={confirmPending}
-              disabled={pendingZh === null}
-              aria-disabled={pendingZh === null}
+              disabled={pendingZh === null || checking}
+              aria-disabled={pendingZh === null || checking}
+              aria-busy={checking}
               className="practice-next-btn"
             >
-              {tr('檢查', 'Check')}
+              {checking ? tr('對緊…', 'Checking…') : tr('檢查', 'Check')}
             </button>
+            {checkNote && (
+              <p role="status" className="mt-2 text-sm text-ink-muted">{checkNote}</p>
+            )}
           </div>
         )}
         {answerState !== null && (

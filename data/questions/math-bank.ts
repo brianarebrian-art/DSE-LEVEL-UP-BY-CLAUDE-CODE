@@ -163,11 +163,13 @@ for (let b = -6; b <= 6; b++) {
 }
 
 // M2 — Arithmetic sequence: nth term  T_n = a + (n−1)d
+// Single substitution of the defining formula. Tagged easy (2026-11-26) so the
+// family rule cannot promote it to medium, which the badge used to call Advanced.
 for (let a = 1; a <= 8; a++) {
   for (let d = 2; d <= 6; d++) {
     for (const nn of [6, 8, 10, 12]) {
       const Tn = a + (nn - 1) * d
-      add(`mb_m2_${a}_${d}_${nn}`, T.arithSeq, FW.algebra, 'medium',
+      add(`mb_m2_${a}_${d}_${nn}`, T.arithSeq, FW.algebra, 'easy',
         [`一等差數列首項為 $${a}$，公差為 $${d}$。求第 $${nn}$ 項。`,
          `An arithmetic sequence has first term $${a}$ and common difference $${d}$. Find the $${nn}$th term.`],
         [n(`$${Tn}$`), n(`$${a + nn * d}$`), n(`$${a * nn}$`), n(`$${nn * d}$`)],
@@ -182,7 +184,7 @@ for (let a = 1; a <= 4; a++) {
   for (const r of [2, 3]) {
     for (const nn of [4, 5, 6]) {
       const Tn = a * Math.pow(r, nn - 1)
-      add(`mb_m3_${a}_${r}_${nn}`, T.geoSeq, FW.algebra, 'medium',
+      add(`mb_m3_${a}_${r}_${nn}`, T.geoSeq, FW.algebra, 'easy',
         [`一等比數列首項為 $${a}$，公比為 $${r}$。求第 $${nn}$ 項。`,
          `A geometric sequence has first term $${a}$ and common ratio $${r}$. Find the $${nn}$th term.`],
         [n(`$${Tn}$`), n(`$${a * Math.pow(r, nn)}$`), n(`$${a * r * (nn - 1)}$`), n(`$${a * nn * r}$`)],
@@ -233,6 +235,7 @@ for (let dx = 1; dx <= 4; dx++) {
 }
 
 // M7 — Evaluate a logarithm  log_b(bᵏ) = k
+// Same one-step definition as the hand-written log_2 8 item. Tagged easy.
 // (b,k) pairs already covered by hand-written questions in math.ts are skipped:
 // math_log_1 = log₂8, math_log_2 = log₁₀1000, math_log_4 = log₃81. Those carry a
 // year tag and a curated explanation, so the generated twin is the one to drop —
@@ -244,7 +247,7 @@ for (const b of [2, 3, 5, 10]) {
   for (let k = 2; k <= 5; k++) {
     if (M7_COVERED_BY_MATH_TS.has(`${b}_${k}`)) continue
     const N = Math.pow(b, k)
-    add(`mb_m7_${b}_${k}`, T.logs, FW.algebra, 'medium',
+    add(`mb_m7_${b}_${k}`, T.logs, FW.algebra, 'easy',
       [`求 $\\log_{${b}} ${N}$ 的值。`, `Evaluate $\\log_{${b}} ${N}$.`],
       [n(`$${k}$`), n(`$${b}$`), n(`$${N / b}$`), n(`$${k * b}$`)],
       [`$${N} = ${b}^{${k}}$，故 $\\log_{${b}} ${N} = ${k}$。陷阱：$${N / b}$ 是 $${b}^{${k - 1}}$；$${b}$ 誤答成底數。`,

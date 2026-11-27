@@ -1,3 +1,7 @@
+// Client components must not import this module. The dynamic bank imports
+// below become public /_next/static chunks as soon as any client file imports
+// loadSubjectQuestions. Practice, paper, notes, bookmarks and the concept map
+// read through server routes instead.
 import { loadFromCloud } from '@/lib/questionCloud'
 import { BANK_VERSION } from './bank-versions.generated'
 import { applyDifficultyOverrides } from './family'

@@ -14,7 +14,7 @@ import AnswerSheetClient from './AnswerSheetClient'
 
 export const metadata = completeSeoMetadata({
   title: '紙筆對答案 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
-  description: '以列印練習卷的 QR 碼或卷號重開答案紙，對照正確答案、解析並自行記錄紙筆練習結果。', // i18n-exempt: zh-Hant fixed search metadata
+  description: '確認做完列印練習卷後，以卷號開啟答案紙，對照正確答案、解析並自行記錄紙筆練習結果。', // i18n-exempt: zh-Hant fixed search metadata
 }, '/answer-sheet')
 
 export default function AnswerSheetPage() {
@@ -23,11 +23,11 @@ export default function AnswerSheetPage() {
       <div className="sr-only">
         {/* 2026-10-01（R2-11）：原本係 h1，同頁面本身的 h1 重複（全頁兩個 h1）。 */}
         <p>紙筆對答案 · Paper answer sheet{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</p>
-        <p>掃描列印練習卷上的 QR 碼，或輸入卷號，系統會以同一組亂數重建完全相同的試卷，並即時顯示全卷正確答案與解析。你可對照紙上答案逐題自行批改，就答錯的題目自我診斷錯因（概念盲區、審題陷阱、運算粗心），並將成績存入個人進度與錯因雷達。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
+        <p>輸入卷號後，先確認已經做完，系統才重建該卷並顯示正確答案與解析。純題目卷不會印出 QR 或卷號。你可對照紙上答案逐題自行批改，就答錯的題目自我診斷錯因，並將成績存入個人進度。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
         <p>
-          Scan the QR code on a printed practice set, or enter its paper code, to rebuild the identical
-          paper and see every correct answer and explanation immediately. Mark your paper against it, log the
-          cause of each mistake, and save the result to your progress. Not affiliated with the HKEAA.
+          Enter the paper code and confirm that you have finished. Only then does the page rebuild that paper
+          and show the answers and explanations. A questions-only paper does not print a QR code or a paper code.
+          Not affiliated with the HKEAA.
         </p>
       </div>
 

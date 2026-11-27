@@ -52,7 +52,7 @@ test('revealed copy does not scold', () => {
 
 test('checking is a separate step: the bar stays disabled until an option is picked', () => {
   assert.match(session, /className="practice-check-bar"/)
-  assert.match(session, /disabled=\{pendingZh === null\}/)
+  assert.match(session, /disabled=\{pendingZh === null \|\| checking\}/)
   assert.match(session, /tr\('檢查', 'Check'\)/)
   assert.match(session, /setPendingZh\(opt\.zh\)/)
   assert.doesNotMatch(session, /上一題/)

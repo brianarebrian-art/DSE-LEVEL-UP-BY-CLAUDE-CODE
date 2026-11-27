@@ -9,8 +9,7 @@ import { loadAttempts } from '@/lib/progress'
 import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { isAuthUiEnabled, mayStartGuestPractice } from '@/lib/guestPracticeQuota'
-import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
-import type { MCQuestion, WrittenQuestion } from '@/data/questions'
+import { withheldWritten, type PublicMc, type PublicWritten } from '@/lib/practice/publicQuestion'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import { A11yButton } from '@/components/A11yPanel'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
@@ -144,8 +143,8 @@ export default function PracticeGate({
 
   // The subject's question bank, lazily fetched as its own chunk.
   // 兩條路各自只攞自己嗰種題 —— MC runner 讀 options／correctIndex，攞錯會即時爆。
-  const [mcBank, setMcBank] = useState<MCQuestion[] | null>(null)
-  const [writtenBank, setWrittenBank] = useState<WrittenQuestion[] | null>(null)
+  const [mcBank, setMcBank] = useState<PublicMc[] | null>(null)
+  const [writtenBank, setWrittenBank] = useState<PublicWritten[] | null>(null)
   const [loadFailed, setLoadFailed] = useState(false)
 
   const guestBlocked =
@@ -158,11 +157,16 @@ export default function PracticeGate({
     let alive = true
     setLoadFailed(false)
     const fail = () => { if (alive) setLoadFailed(true) }
-    if (long) {
-      loadWrittenQuestions(subjectId).then((qs) => { if (alive) setWrittenBank(qs) }).catch(fail)
-    } else {
-      loadSubjectMCQuestions(subjectId).then((qs) => { if (alive) setMcBank(qs) }).catch(fail)
-    }
+    const kind = long ? 'written' : 'mc'
+    fetch(`/api/practice/catalog?subject=${encodeURIComponent(subjectId)}&kind=${kind}`)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('catalog')
+        const body = (await res.json()) as { questions?: PublicMc[] | PublicWritten[] }
+        if (!alive) return
+        if (long) setWrittenBank((body.questions ?? []) as PublicWritten[])
+        else setMcBank((body.questions ?? []) as PublicMc[])
+      })
+      .catch(fail)
     return () => {
       alive = false
     }
@@ -180,6 +184,12 @@ export default function PracticeGate({
   const scopedWritten = useMemo(
     () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
     [writtenBank, subjectId, topicFilter, selKey],
+  )
+  // Map once per bank. A fresh array on every render makes LongPracticeSession
+  // reshuffle and wipe an answer the student is still writing.
+  const writtenForSession = useMemo(
+    () => (scopedWritten ? scopedWritten.map(withheldWritten) : null),
+    [scopedWritten],
   )
 
   // Wait for auth before gating — avoids a flash of the runner then the wall.
@@ -199,7 +209,7 @@ export default function PracticeGate({
     return (
       <LongPracticeSession
         key={subjectId + '|' + (topicFilter ?? '') + '|long'}
-        bank={scopedWritten}
+        bank={writtenForSession ?? []}
         subjectId={subjectId}
         topicFilter={topicFilter}
       />
