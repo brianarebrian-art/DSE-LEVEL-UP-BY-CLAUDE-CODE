@@ -58,7 +58,11 @@ npm run loop:query -- --subject math --type mc --grade C
 npm run loop:query -- --subject math --grade unscored --count
 ```
 
-分級只有 `C`（客觀缺陷）和 `unscored`（尚未人手評 A／B）。`math_fl_ns04` 與 `mb_n1_5_2` 留在 C 級清單，本分支不收起、不改寫。其他科可以查，但基準剖面仍標為待該科大綱讀法，不借用數學的卷別剖面，也不捏造考評局統計。約 50 題的五維分留在試點檔，不得當成公式 (1) 已驗證。
+`npm run loop:query` 的分級只有 `C`（客觀缺陷）和 `unscored`（尚未人手評 A／B）。`math_fl_ns04` 與 `mb_n1_5_2` 留在 C 級清單，不在這裡收起、不改寫。其他科可以查，但基準剖面仍標為待該科大綱讀法，不借用數學的卷別剖面，也不捏造考評局統計。約 50 題的五維分留在試點檔，不得當成公式 (1) 已驗證，也不得當成下面首輪分級的輸入。
+
+## 首輪 A／B／C（未經驗證）
+
+`npm run loop:first-pass-abc` 會為全部在練題寫下一輪 A／B／C。方法、版本與限制見 `docs/loop-engineering/first-pass-abc-zh-hk.md`。這輪沒有改練習池。預覽頁 `/dev/first-pass-grades` 在正式環境回 404。
 
 ## 試跑怎麼讀
 

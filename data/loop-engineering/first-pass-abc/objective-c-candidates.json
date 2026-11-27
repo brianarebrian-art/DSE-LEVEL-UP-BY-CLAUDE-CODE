@@ -1,0 +1,68 @@
+{
+  "methodVersion": "first-pass-abc-v1",
+  "unverified": true,
+  "teacherReviewed": false,
+  "appliedToStudentPool": false,
+  "noteZh": "只列 id、科目與原因碼。沒有題幹。這些候選沒有從練習池移除。",
+  "knownConfirmedWithdrawalPair": [
+    {
+      "id": "math_fl_ns04",
+      "subject": "math",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "mb_n1_5_2",
+      "subject": "math",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    }
+  ],
+  "alreadyInLoopGradeCInventory": [
+    {
+      "id": "zh_ch_106",
+      "subject": "chinese",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "zh_ch_110",
+      "subject": "chinese",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "zh_ch_112",
+      "subject": "chinese",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "zh_ch_120",
+      "subject": "chinese",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "en_gr_1",
+      "subject": "english",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    },
+    {
+      "id": "en_gr_2",
+      "subject": "english",
+      "reasonCodes": [
+        "duplicate_stem"
+      ]
+    }
+  ],
+  "newlyFound": []
+}

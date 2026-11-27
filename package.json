@@ -33,6 +33,7 @@
     "baseline": "tsx scripts/qbank/baseline.mts",
     "loop:math-map": "tsx scripts/loop-engineering/build-math-asset-map.mts",
     "loop:query": "tsx scripts/loop-engineering/query-catalog.mts",
+    "loop:first-pass-abc": "tsx scripts/loop-engineering/build-first-pass-abc.mts",
     "qbank:sync": "tsx scripts/qbank/sync-questions.mts",
     "qbank:sync:check": "tsx scripts/qbank/sync-questions.mts --check",
     "qbank:verify-en-fix": "node scripts/qbank/verify-en-fix.mjs",
