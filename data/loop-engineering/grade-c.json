@@ -2,34 +2,6 @@
   "verifiedDsePlus10": false,
   "items": [
     {
-      "id": "math_fl_ns04",
-      "subject": "math",
-      "topic": "number_systems",
-      "topicZh": "數系",
-      "itemType": "mc",
-      "marks": 1,
-      "grade": "C",
-      "gradeReasons": [
-        "duplicate_stem"
-      ],
-      "baselineProfileId": "p2_mc",
-      "verifiedDsePlus10": false
-    },
-    {
-      "id": "mb_n1_5_2",
-      "subject": "math",
-      "topic": "number_systems",
-      "topicZh": "數系",
-      "itemType": "mc",
-      "marks": 1,
-      "grade": "C",
-      "gradeReasons": [
-        "duplicate_stem"
-      ],
-      "baselineProfileId": "p2_mc",
-      "verifiedDsePlus10": false
-    },
-    {
       "id": "en_gr_1",
       "subject": "english",
       "topic": "grammar",

@@ -264,6 +264,10 @@ export default function BookmarksView() {
                           ? en
                             ? 'This question only tested memorising a name or definition, so it has been replaced by a new question that asks you to apply the idea. You can practise the new one in this topic.'
                             : '呢條題淨係考背名稱或者定義，已經換咗一條要你運用概念嘅新題。練返呢個課題就會見到新題。'
+                          : withdrawnReason(bm.subjectId, bm.questionId) === 'DUPLICATE_STEM'
+                          ? en
+                            ? 'This question has been withdrawn because it duplicates another practice item. Your bookmark stays.'
+                            : '呢條題暫時收起咗，因為同另一條練習題重複。收藏會保留。'
                           : en
                             ? 'This question has been withdrawn because an error was found in it. Your bookmark stays; the question comes back here once it is fixed.'
                             : '呢條題暫時收起咗，因為發現有錯，要修正。收藏會保留，修好之後會喺度自動出返。'}

@@ -2377,6 +2377,14 @@
     "math_log_11": {
       "date": "2026-10-09",
       "reason": "PURE_RECALL"
+    },
+    "math_fl_ns04": {
+      "date": "2026-11-27",
+      "reason": "DUPLICATE_STEM"
+    },
+    "mb_n1_5_2": {
+      "date": "2026-11-27",
+      "reason": "DUPLICATE_STEM"
     }
   },
   "m2": {
