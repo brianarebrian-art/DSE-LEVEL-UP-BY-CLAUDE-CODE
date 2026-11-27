@@ -9,7 +9,7 @@
 | 重跑 | `npm run loop:first-pass-abc` |
 | 只核對 | `npm run loop:first-pass-abc -- --check` |
 
-這不是考評局統計，不是已驗證的難度提升，也不是約 50 題 `ruleset_proxy_v1` 試點的核實分級。試點檔不是本方法的輸入。不確定應標 A 還是 B 時，標 B。
+這不是官方考試統計，不是已驗證的難度提升，也不是約 50 題 `ruleset_proxy_v1` 試點的核實分級。試點檔不是本方法的輸入。不確定應標 A 還是 B 時，標 B。
 
 ## 在練題集
 
@@ -17,7 +17,7 @@
 
 腳本會把這個集合的 id 與 `getSubjectQuestions` 的已發布題逐科比對，題數必須等於 `TOTAL_QUESTIONS`。對不上就失敗，不另造一個總數。
 
-本提交的在練題是 **26428** 條、**25** 科，與公開練習總數相同。
+本提交的在練題是 **26426** 條、**25** 科，與公開練習總數相同。`math_fl_ns04` 與 `mb_n1_5_2` 已由另一變更收起，不在在練題集。
 
 ## 規則
 
@@ -25,7 +25,7 @@
 
 ### 客觀 C
 
-以下任一項成立就標 C。原因碼可以多於一個。這些是候選，不是收起。
+以下任一項成立就標 C。原因碼可以多於一個。在練題裡的這些是候選，不是收起。
 
 | 原因碼 | 條件 |
 |---|---|
@@ -44,9 +44,9 @@
 
 不把題庫裡的 `easy`／`medium`／`hard` 當成「太易」。不借用數學卷別剖面去判其他科超綱。不判斷答案在學科上對不對。
 
-`math_fl_ns04` 與 `mb_n1_5_2` 仍是 `duplicate_stem`。收起這兩條不在本分支做。
+`math_fl_ns04` 與 `mb_n1_5_2` 仍是已確認的 `duplicate_stem`。它們已由另一變更寫入 `withdrawn.json`，本方法只核對還原紀錄，不重複收起。
 
-相對既有 `data/loop-engineering/grade-c.json`，今次沒有新的客觀 C。該清單裡另外 6 條也是 `duplicate_stem`，同樣不收起：
+相對既有 `data/loop-engineering/grade-c.json`，今次沒有新的客觀 C。該清單裡仍在練的 6 條也是 `duplicate_stem`，本輪同樣不收起：
 
 | 科目 | id |
 |---|---|
@@ -76,10 +76,10 @@ A 只表示「代理落在接近典型要求的區間」。它不是出示給學
 |---|---:|
 | A | 240 |
 | B | 26180 |
-| C | 8 |
+| C | 6 |
 | 未能分級 | 0 |
 
-A 的 240 條全部在必修數學。B 當中，24789 條是其他科目的 `pending_subject_baseline`，1381 條是數學低於區間，10 條是數學高於區間。C 的 8 條全部是 `duplicate_stem`。分科數字在 `data/loop-engineering/first-pass-abc/summary.json`。
+A 的 240 條全部在必修數學。B 當中，24789 條是其他科目的 `pending_subject_baseline`，1381 條是數學低於區間，10 條是數學高於區間。C 的 6 條全部是 `duplicate_stem`，仍在練。分科數字在 `data/loop-engineering/first-pass-abc/summary.json`。
 
 ## 產出
 
@@ -88,15 +88,15 @@ A 的 240 條全部在必修數學。B 當中，24789 條是其他科目的 `pen
 | 檔案 | 內容 |
 |---|---|
 | `data/loop-engineering/first-pass-abc/summary.json` | 題數、分科、原因碼次數 |
-| `data/loop-engineering/first-pass-abc/grades/<科目>.json` | 該科每一條 |
-| `data/loop-engineering/first-pass-abc/objective-c-candidates.json` | 客觀 C 的 id、科目、原因碼 |
+| `data/loop-engineering/first-pass-abc/grades/<科目>.json` | 該科每一條在練題 |
+| `data/loop-engineering/first-pass-abc/objective-c-candidates.json` | 客觀 C 的 id、科目、原因碼；含已收起的兩條紀錄 |
 | `data/loop-engineering/first-pass-abc/unable.json` | 未能分級的列；本提交是空陣列 |
 
 預覽頁是 `/dev/first-pass-grades`。`VERCEL_ENV=production` 回 404。沒有 `VERCEL_ENV` 而 `NODE_ENV=production` 也回 404。`VERCEL_ENV=preview` 不回 404。頁面不進入學生導航。
 
 ## 本方法不會做的事
 
-- 不按 B 或 C 隱藏、收起或下架。
+- 不按 B 或本輪在練的客觀 C 隱藏、收起或下架。
 - 不改 `loadSubjectQuestions`、練習抽題、目錄或批改。
 - 不套用資料庫草稿，不改 `questions` 或 `question_bank_versions`。
 - 不同步雲端缺少的 64 條，不刪雲端多出的 107 條。

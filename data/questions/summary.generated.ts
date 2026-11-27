@@ -21,8 +21,8 @@ export interface SubjectSummary {
 
 export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
   "math": {
-    "total": 1633,
-    "mc": 1603,
+    "total": 1631,
+    "mc": 1601,
     "written": 30,
     "topics": 25
   },
@@ -380,8 +380,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "基礎運算",
       "frameworkEn": "Foundation Computation",
       "emoji": "🧮",
-      "count": 44,
-      "mcCount": 44,
+      "count": 42,
+      "mcCount": 42,
       "writtenCount": 0
     },
     {
@@ -3483,7 +3483,7 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
-export const TOTAL_QUESTIONS = 26428
+export const TOTAL_QUESTIONS = 26426
 
 /**
  * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，五項相加等於 totalAuthored。
@@ -3493,15 +3493,16 @@ export const TOTAL_QUESTIONS = 26428
  */
 export const CONTENT_STATS = {
   "totalAuthored": 27448,
-  "published": 26428,
-  "withdrawn": 616,
+  "published": 26426,
+  "withdrawn": 618,
   "withheldTopic": 219,
   "pendingReview": 13,
   "machineRestored": 172
 } as const
 
 /**
- * 因發現錯誤而收起的題數（首頁使用）。不包括以 PURE_RECALL 收起的題目：那些題目並無錯誤，
- * 已逐條由情境應用題取代（創辦人回覆 49a–55a）。
+ * 因發現錯誤而收起的題數（首頁使用）。不包括兩類並非答案錯誤的收起：
+ * PURE_RECALL（已逐條由情境應用題取代，創辦人回覆 49a–55a）與 DUPLICATE_STEM
+ * （題幹重複的客觀 C 級題，題目仍在倉庫）。透明度頁仍列出全部收起。
  */
 export const WITHDRAWN_FOR_FAULT = 461

@@ -29,6 +29,28 @@ const prior = JSON.parse(readFileSync('data/loop-engineering/grade-c.json', 'utf
   items: Array<{ id: string; subject: string }>
 }
 const priorGradeCKeys = prior.items.map((item) => `${item.subject}\t${item.id}`)
+const withdrawn = JSON.parse(readFileSync('data/questions/withdrawn.json', 'utf8')) as Record<
+  string,
+  Record<string, { reason?: string }>
+>
+const archive = JSON.parse(readFileSync(firstPass.KNOWN_CONFIRMED_C_ARCHIVE, 'utf8')) as {
+  withdrawReason?: string
+  items: Array<{ id: string; subject: string; gradeReasons?: string[] }>
+}
+if (archive.withdrawReason !== firstPass.KNOWN_CONFIRMED_C_WITHDRAW_REASON) {
+  throw new Error('known C archive withdraw reason drifted')
+}
+const archiveKeys = new Set(archive.items.map((item) => `${item.subject}\t${item.id}`))
+const knownWithdrawnConfirmed = firstPass.KNOWN_CONFIRMED_C.map((item) => {
+  const entry = withdrawn[item.subject]?.[item.id]
+  if (!entry || entry.reason !== firstPass.KNOWN_CONFIRMED_C_WITHDRAW_REASON) {
+    throw new Error(`known C is not withdrawn as ${firstPass.KNOWN_CONFIRMED_C_WITHDRAW_REASON}: ${item.subject}/${item.id}`)
+  }
+  if (!archiveKeys.has(`${item.subject}\t${item.id}`)) {
+    throw new Error(`known C missing from archive: ${item.subject}/${item.id}`)
+  }
+  return { id: item.id, subject: item.subject, reasonCodes: ['duplicate_stem'] }
+})
 
 const active = subjects
   .filter((subject) => subject.isActive)
@@ -69,6 +91,7 @@ const summary = firstPass.buildFirstPassSummary({
   reasonCounts,
   objectiveC,
   priorGradeCKeys,
+  knownWithdrawnConfirmed,
 })
 if (unable.length !== summary.byGrade.unable) {
   throw new Error(`unable rows ${unable.length} do not match the summary`)
@@ -100,11 +123,14 @@ console.log(`A ${summary.byGrade.A}`)
 console.log(`B ${summary.byGrade.B}`)
 console.log(`C ${summary.byGrade.C}`)
 console.log(`未能分級 ${summary.byGrade.unable}`)
-console.log(`已知確認 C ${summary.objectiveC.knownConfirmedWithdrawalPair.length}`)
-console.log(`既有客觀 C 清單（該兩條以外） ${summary.objectiveC.alreadyInLoopGradeCInventory.length}`)
+console.log(`已知確認並已收起 C ${summary.objectiveC.knownConfirmedWithdrawalPair.length}`)
+console.log(`既有客觀 C 清單（仍在練） ${summary.objectiveC.alreadyInLoopGradeCInventory.length}`)
 console.log(`今次新發現的客觀 C ${summary.objectiveC.newlyFound.length}`)
+for (const row of summary.objectiveC.knownConfirmedWithdrawalPair) {
+  console.log(['withdrawn', row.subject, row.id, row.reasonCodes.join('|')].join('\t'))
+}
 for (const row of [...summary.objectiveC.alreadyInLoopGradeCInventory, ...summary.objectiveC.newlyFound]) {
-  console.log([row.subject, row.id, row.reasonCodes.join('|')].join('\t'))
+  console.log(['served', row.subject, row.id, row.reasonCodes.join('|')].join('\t'))
 }
 if (checkOnly) console.log('已核對，沒有改寫。')
 

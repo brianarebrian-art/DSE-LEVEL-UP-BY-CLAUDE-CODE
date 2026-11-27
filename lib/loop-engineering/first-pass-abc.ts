@@ -70,12 +70,15 @@ export const FIRST_PASS_LABELS = {
   unable: '未能分級',
   reasons: '原因碼',
   reasonCounts: '原因碼次數',
-  knownPair: '已決定另行處理、本頁不收起的兩條',
-  inventoried: '既有客觀 C 清單，本輪不收起',
+  knownPair: '已確認並已由另一變更收起的兩條（不在在練題）',
+  inventoried: '既有客觀 C 清單，仍在練、本輪不收起',
   newlyFound: '今次新發現的客觀 C',
   none: '0 條',
   proxyNote: 'A 只出現在必修數學，而且只代表規則代理落在接近典型要求的區間。其他科目沒有該科基準剖面，不標 A。',
 } as const
+
+export const KNOWN_CONFIRMED_C_ARCHIVE = 'data/questions/archive/objective-c-math-2026-11-27.json'
+export const KNOWN_CONFIRMED_C_WITHDRAW_REASON = 'DUPLICATE_STEM'
 
 export type FirstPassGrade = 'A' | 'B' | 'C'
 export type FirstPassRecordGrade = FirstPassGrade | 'unable'
@@ -268,6 +271,7 @@ export function buildFirstPassSummary(input: {
   reasonCounts: Record<string, number>
   objectiveC: readonly FirstPassCandidate[]
   priorGradeCKeys: readonly string[]
+  knownWithdrawnConfirmed: readonly FirstPassCandidate[]
 }): FirstPassSummary {
   const byGrade = { A: 0, B: 0, C: 0, unable: 0 }
   for (const subject of input.bySubject) {
@@ -282,24 +286,33 @@ export function buildFirstPassSummary(input: {
 
   const keyOf = (row: { subject: string; id: string }) => `${row.subject}\t${row.id}`
   const objectiveKeys = new Set(input.objectiveC.map(keyOf))
-  for (const known of KNOWN_CONFIRMED_C) {
-    const row = input.objectiveC.find((candidate) => candidate.id === known.id && candidate.subject === known.subject)
+  const known = new Set(KNOWN_CONFIRMED_C.map(keyOf))
+  for (const knownItem of KNOWN_CONFIRMED_C) {
+    if (objectiveKeys.has(keyOf(knownItem))) {
+      throw new Error(`known withdrawn C is still in the served objective-C list: ${knownItem.subject}/${knownItem.id}`)
+    }
+  }
+  if (input.knownWithdrawnConfirmed.length !== KNOWN_CONFIRMED_C.length) {
+    throw new Error('known withdrawn C pair is incomplete')
+  }
+  for (const knownItem of KNOWN_CONFIRMED_C) {
+    const row = input.knownWithdrawnConfirmed.find(
+      (candidate) => candidate.id === knownItem.id && candidate.subject === knownItem.subject,
+    )
     if (!row?.reasonCodes.includes('duplicate_stem')) {
-      throw new Error(`known objective C was not reproduced: ${known.subject}/${known.id}`)
+      throw new Error(`known withdrawn C was not confirmed: ${knownItem.subject}/${knownItem.id}`)
     }
   }
   for (const prior of input.priorGradeCKeys) {
+    if (known.has(prior)) continue
     if (!objectiveKeys.has(prior)) throw new Error(`loop grade-c id was not reproduced: ${prior.replace('\t', '/')}`)
   }
 
   const prior = new Set(input.priorGradeCKeys)
-  const known = new Set(KNOWN_CONFIRMED_C.map(keyOf))
   const sortCandidates = (rows: FirstPassCandidate[]) =>
     rows.sort((a, b) => a.subject.localeCompare(b.subject, 'en') || a.id.localeCompare(b.id, 'en'))
 
-  const knownConfirmedWithdrawalPair = sortCandidates(
-    input.objectiveC.filter((row) => known.has(keyOf(row))).map(candidateOnly),
-  )
+  const knownConfirmedWithdrawalPair = sortCandidates(input.knownWithdrawnConfirmed.map(candidateOnly))
   const alreadyInLoopGradeCInventory = sortCandidates(
     input.objectiveC.filter((row) => !known.has(keyOf(row)) && prior.has(keyOf(row))).map(candidateOnly),
   )

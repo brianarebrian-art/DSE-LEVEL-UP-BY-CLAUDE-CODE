@@ -39,6 +39,28 @@ export const WITHDRAW_CODES: Readonly<Record<string, string>> = {
   // so these never come back. The sentence is the one the founders chose (55a).
   PURE_RECALL:
     '題目只需背誦名稱、定義或年份即可作答，不符合本平台重理解、重推理的方向；已由情境應用題取代。',
+  // 2026-11-27 founder preview. Two confirmed objective-C compulsory-maths items
+  // whose stems duplicate each other. Not an answer fault. The source questions
+  // stay in the repo; only student-facing reads drop them. See
+  // data/questions/archive/objective-c-math-2026-11-27.json.
+  DUPLICATE_STEM:
+    '題幹與另一條練習題重複。題目仍留在倉庫，只從學生練習收起；不是答案錯誤，也不計入「發現有錯」。',
+}
+
+/**
+ * Withdrawals that take a question out of student practice without being an answer fault.
+ * Homepage WITHDRAWN_FOR_FAULT omits these. The homepage sentence must name every
+ * code here. It must not describe the whole non-fault remainder as pure recall.
+ * PURE_RECALL was replaced by applied items. DUPLICATE_STEM is a confirmed
+ * objective-C duplicate, not a wrong answer.
+ */
+export const WITHDRAWN_NOT_A_FAULT: ReadonlySet<string> = new Set([
+  'PURE_RECALL',
+  'DUPLICATE_STEM',
+])
+
+export function countsAsWithdrawnFault(reason: string | null): boolean {
+  return reason != null && !WITHDRAWN_NOT_A_FAULT.has(reason)
 }
 
 // Pending review (2026-09-30, UX loop 20; Yuna's hardening loop prompt §3): a question

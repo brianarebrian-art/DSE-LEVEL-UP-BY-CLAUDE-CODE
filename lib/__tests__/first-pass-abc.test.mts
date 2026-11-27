@@ -111,8 +111,8 @@ test('分級檔覆蓋彙總，而且沒有題幹欄位', () => {
   assert.equal(summary.appliedToStudentPool, false)
   assert.equal(summary.disclaimerZh, FIRST_PASS_DISCLAIMER_ZH)
   assert.equal(summary.servedSet.definitionZh, SERVED_SET_DEFINITION_ZH)
-  assert.equal(summary.servedSet.itemCount, 26428)
-  assert.equal(summary.byGrade.A + summary.byGrade.B + summary.byGrade.C + summary.byGrade.unable, 26428)
+  assert.equal(summary.servedSet.itemCount, 26426)
+  assert.equal(summary.byGrade.A + summary.byGrade.B + summary.byGrade.C + summary.byGrade.unable, 26426)
   assert.equal(unable.itemCount, summary.byGrade.unable)
   assert.equal(unable.items.length, summary.byGrade.unable)
 
@@ -151,17 +151,22 @@ test('分級檔覆蓋彙總，而且沒有題幹欄位', () => {
     assert.equal(tally.unable, subject.unable)
   }
   assert.equal(covered, summary.servedSet.itemCount)
+  assert.equal(seen.has('math\tmath_fl_ns04'), false)
+  assert.equal(seen.has('math\tmb_n1_5_2'), false)
 
-  const listed = [
-    ...candidates.knownConfirmedWithdrawalPair,
+  const servedListed = [
     ...candidates.alreadyInLoopGradeCInventory,
     ...candidates.newlyFound,
   ]
-  assert.equal(listed.length, summary.objectiveC.total)
+  assert.equal(servedListed.length, summary.objectiveC.total)
   assert.equal(summary.objectiveC.newlyFound.length, 0)
-  for (const row of listed) {
+  for (const row of servedListed) {
     assert.deepEqual(Object.keys(row), ['id', 'subject', 'reasonCodes'])
     assert.equal(seen.has(`${row.subject}\t${row.id}`), true)
+  }
+  for (const row of candidates.knownConfirmedWithdrawalPair) {
+    assert.deepEqual(Object.keys(row), ['id', 'subject', 'reasonCodes'])
+    assert.equal(seen.has(`${row.subject}\t${row.id}`), false)
   }
   assert.equal(JSON.stringify(candidates).includes('化簡'), false)
   assert.deepEqual(
@@ -188,7 +193,7 @@ test('試點裡高於區間的 A 在首輪改標 B，而且腳本不讀試點檔
   assert.equal(source.includes('ruleset_proxy_v1'), false)
 })
 
-test('學生載入器仍送出未套用分級的題，包括已標 C 的題', async () => {
+test('學生載入器仍送出未套用分級的題；已收起的兩條不在在練池', async () => {
   const allow = new Set([
     'lib/loop-engineering/first-pass-abc.ts',
     'app/dev/first-pass-grades/page.tsx',
@@ -203,17 +208,17 @@ test('學生載入器仍送出未套用分級的題，包括已標 C 的題', as
   }
   assert.deepEqual(hits, [])
 
-  const withdrawn = JSON.parse(read('data/questions/withdrawn.json')) as Record<string, Record<string, unknown>>
-  for (const id of ['math_fl_ns04', 'mb_n1_5_2', 'en_gr_1', 'zh_ch_106']) {
-    const subject = id.startsWith('en_') ? 'english' : id.startsWith('zh_') ? 'chinese' : 'math'
-    assert.equal(withdrawn[subject]?.[id], undefined, id)
-  }
+  const withdrawn = JSON.parse(read('data/questions/withdrawn.json')) as Record<string, Record<string, { reason?: string }>>
+  assert.equal(withdrawn.math?.math_fl_ns04?.reason, 'DUPLICATE_STEM')
+  assert.equal(withdrawn.math?.mb_n1_5_2?.reason, 'DUPLICATE_STEM')
+  assert.equal(withdrawn.english?.en_gr_1, undefined)
+  assert.equal(withdrawn.chinese?.zh_ch_106, undefined)
 
   const { loadSubjectQuestions } = await import('../../data/questions/load.ts')
   const math = await loadSubjectQuestions('math')
   const mathIds = new Set(math.map((item) => item.id))
-  assert.equal(mathIds.has('math_fl_ns04'), true)
-  assert.equal(mathIds.has('mb_n1_5_2'), true)
+  assert.equal(mathIds.has('math_fl_ns04'), false)
+  assert.equal(mathIds.has('mb_n1_5_2'), false)
   const graded = JSON.parse(read('data/loop-engineering/first-pass-abc/grades/math.json')) as Array<{ id: string; grade: string }>
   const stillServedB = graded.find((row) => row.grade === 'B' && mathIds.has(row.id))
   assert.ok(stillServedB)

@@ -286,17 +286,6 @@
     "methodVersion": "first-pass-abc-v1"
   },
   {
-    "id": "math_fl_ns04",
-    "subject": "math",
-    "itemType": "mc",
-    "topic": "number_systems",
-    "grade": "C",
-    "reasonCodes": [
-      "duplicate_stem"
-    ],
-    "methodVersion": "first-pass-abc-v1"
-  },
-  {
     "id": "math_fl_ns05",
     "subject": "math",
     "itemType": "mc",
@@ -11337,17 +11326,6 @@
     "grade": "B",
     "reasonCodes": [
       "below_typical_demand_proxy"
-    ],
-    "methodVersion": "first-pass-abc-v1"
-  },
-  {
-    "id": "mb_n1_5_2",
-    "subject": "math",
-    "itemType": "mc",
-    "topic": "number_systems",
-    "grade": "C",
-    "reasonCodes": [
-      "duplicate_stem"
     ],
     "methodVersion": "first-pass-abc-v1"
   },

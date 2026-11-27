@@ -8,14 +8,14 @@
   "pilotFileUsed": false,
   "appliedToStudentPool": false,
   "servedSet": {
-    "itemCount": 26428,
+    "itemCount": 26426,
     "subjectCount": 25,
     "definitionZh": "在練題是所有 isActive 科目經 loadSubjectQuestions 在伺服器路徑取出的題目：靜態題庫合併機器閘與實名批次，套用難度覆寫與全庫升級 overlay，再以 withoutWithheld 只留下 published。不讀雲端鏡像，不補雲端缺少的題，也不刪雲端多出的題。題數必須與 TOTAL_QUESTIONS 相同。"
   },
   "byGrade": {
     "A": 240,
     "B": 26180,
-    "C": 8,
+    "C": 6,
     "unable": 0
   },
   "bySubject": [
@@ -165,10 +165,10 @@
     },
     {
       "subject": "math",
-      "itemCount": 1633,
+      "itemCount": 1631,
       "A": 240,
       "B": 1391,
-      "C": 2,
+      "C": 0,
       "unable": 0
     },
     {
@@ -224,11 +224,11 @@
     "above_close_band_unverified": 10,
     "below_typical_demand_proxy": 1381,
     "close_to_typical_demand_proxy": 240,
-    "duplicate_stem": 8,
+    "duplicate_stem": 6,
     "pending_subject_baseline": 24789
   },
   "objectiveC": {
-    "total": 8,
+    "total": 6,
     "knownConfirmedWithdrawalPair": [
       {
         "id": "math_fl_ns04",
