@@ -78,6 +78,15 @@ export function toCatalogRow(subject: string, item: MapSourceItem, duplicate: bo
   }
 }
 
+/** 寫入摘要時必須載入全部在練科目，篩選只影響查詢輸出。 */
+export function subjectsToLoad(
+  active: readonly string[],
+  options: { subject?: string; writeSummary: boolean },
+): string[] {
+  if (options.writeSummary) return [...active]
+  return options.subject ? [options.subject] : [...active]
+}
+
 export function queryCatalog(rows: CatalogRow[], query: CatalogQuery): CatalogRow[] {
   return rows.filter((row) => {
     if (query.subject && row.subject !== query.subject) return false

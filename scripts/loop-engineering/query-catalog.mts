@@ -49,7 +49,10 @@ if (grade && grade !== 'C' && grade !== 'unscored') {
 }
 
 const active = subjects.filter((item) => item.isActive).map((item) => item.id)
-const wanted = subject ? [subject] : active
+const wanted = catalog.subjectsToLoad(active, { subject, writeSummary })
+if (writeSummary && (subject || itemType || grade)) {
+  console.error('寫入摘要一律覆蓋全部在練科目。科、題型、分級只篩選這次的查詢輸出。')
+}
 const rows: Row[] = []
 for (const id of wanted) {
   const items = await loadSubjectQuestions(id)

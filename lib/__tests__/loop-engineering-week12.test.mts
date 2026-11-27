@@ -12,7 +12,7 @@ import {
   upgradeThreshold,
   workingCompositeOnRaterTie,
 } from '../loop-engineering/rubric.ts'
-import { buildCatalog, queryCatalog } from '../loop-engineering/catalog.ts'
+import { buildCatalog, queryCatalog, subjectsToLoad } from '../loop-engineering/catalog.ts'
 import {
   buildAssetMap,
   defectReasons,
@@ -302,6 +302,13 @@ test('八條試跑草稿留在未發佈預覽或退回，沒有已驗證達標',
     assert.equal(record.twoPersonReview?.signoffKind, 'scaffold_not_subject_teacher')
     assert.equal(record.twoPersonReview?.independentReviewers, false)
   }
+})
+
+test('寫入摘要不會因為單科篩選而漏掉其他科', () => {
+  const active = ['math', 'english', 'chinese']
+  assert.deepEqual(subjectsToLoad(active, { subject: 'math', writeSummary: true }), active)
+  assert.deepEqual(subjectsToLoad(active, { subject: 'math', writeSummary: false }), ['math'])
+  assert.deepEqual(subjectsToLoad(active, { writeSummary: false }), active)
 })
 
 test('資產列可按科、題型、分級查閱，而且不含題幹', async () => {
