@@ -1,0 +1,1710 @@
+{
+  "rubricVersion": "loop-engineering-w1-2026-11-26",
+  "scorer": "ruleset_proxy_v1",
+  "needsHumanConfirmation": true,
+  "verifiedDsePlus10": false,
+  "scoringNoteZh": "全庫只計算欄位完整度、基準剖面與客觀 C 級缺陷。約 50 題的現況五維分是規則代理，須人工確認，不是已驗證的難度提升，也不是考評局統計。",
+  "pilotCount": 50,
+  "pilot": [
+    {
+      "id": "math_long_b1_03",
+      "topic": "arithmetic_sequence",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_10",
+      "topic": "arithmetic_sequence",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_08",
+      "topic": "circles",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 5,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 4,
+          "transfer": 2
+        },
+        "composite": 18,
+        "trace": [
+          "推理層級 5：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 4：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_11",
+      "topic": "circles",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 5,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 4,
+          "transfer": 2
+        },
+        "composite": 18,
+        "trace": [
+          "推理層級 5：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 4：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_long_b1_05",
+      "topic": "coordinate_geometry",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_15",
+      "topic": "coordinate_geometry",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_18",
+      "topic": "geometric_sequence",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "baselineComposite": 18,
+      "upgradeThreshold": 19.8,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_01",
+      "topic": "indices",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 15,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_long_b1_09",
+      "topic": "logarithms",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 4,
+          "transfer": 2
+        },
+        "composite": 17,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 4：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_17",
+      "topic": "logarithms",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "baselineComposite": 18,
+      "upgradeThreshold": 19.8,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_02",
+      "topic": "percentage",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_04",
+      "topic": "percentage",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 3
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 3：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_20",
+      "topic": "permutation_combination",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "baselineComposite": 18,
+      "upgradeThreshold": 19.8,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_06",
+      "topic": "polygons",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_04",
+      "topic": "polynomials",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 15,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_03",
+      "topic": "polynomials",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_05",
+      "topic": "polynomials",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_long_b1_10",
+      "topic": "probability",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 5,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 4,
+          "transfer": 2
+        },
+        "composite": 18,
+        "trace": [
+          "推理層級 5：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 4：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_13",
+      "topic": "probability",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_01",
+      "topic": "quadratic_equations",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 15,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_16",
+      "topic": "quadratic_equations",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "baselineComposite": 18,
+      "upgradeThreshold": 19.8,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 14,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_02",
+      "topic": "sequences",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 15,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": true,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "proxy_at_or_above_formula_not_verified"
+      ]
+    },
+    {
+      "id": "math_p1_08",
+      "topic": "similar_solids",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 3,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_07",
+      "topic": "statistics",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 4,
+          "transfer": 2
+        },
+        "composite": 15,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 4：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_07",
+      "topic": "statistics",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a1",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_12",
+      "topic": "statistics",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 16,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_19",
+      "topic": "trig_3d",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_b",
+      "baselineComposite": 18,
+      "upgradeThreshold": 19.8,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_long_b1_06",
+      "topic": "trigonometry",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 3,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 13,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 3：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_09",
+      "topic": "trigonometry",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 4,
+          "trapQuality": 1,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 12,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 1：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_p1_14",
+      "topic": "variation",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "baselineComposite": 15,
+      "upgradeThreshold": 16.5,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 4,
+          "stepIntegration": 4,
+          "trapQuality": 3,
+          "expression": 3,
+          "transfer": 2
+        },
+        "composite": 16,
+        "trace": [
+          "推理層級 4：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 4：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 3：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_fl_ap01",
+      "topic": "approximation",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_048",
+      "topic": "arithmetic_sequence",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_circle_1",
+      "topic": "circles",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 3,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 11,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_coord_d_1",
+      "topic": "coordinate_geometry",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_med_b1_0001",
+      "topic": "factors_multiples",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_func_1",
+      "topic": "functions",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_med_b1_0059",
+      "topic": "geometric_sequence",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 10,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_045",
+      "topic": "indices",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 10,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_ineq_1",
+      "topic": "inequalities",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 3,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 7,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "mb_e2_2_1_2",
+      "topic": "linear_functions",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 3,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 11,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_locus_1",
+      "topic": "locus",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 2,
+          "stepIntegration": 1,
+          "trapQuality": 3,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 9,
+        "trace": [
+          "推理層級 2：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 3：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_044",
+      "topic": "logarithms",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_fl_ns01",
+      "topic": "number_systems",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_035",
+      "topic": "percentage",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 10,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_med_b1_0042",
+      "topic": "permutation_combination",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 10,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_fl_pg01",
+      "topic": "polygons",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_058",
+      "topic": "polynomials",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_096",
+      "topic": "probability",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    },
+    {
+      "id": "math_imp_041",
+      "topic": "quadratic_equations",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 3,
+          "stepIntegration": 2,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 2
+        },
+        "composite": 10,
+        "trace": [
+          "推理層級 3：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 2：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 2：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "A",
+      "abcReasons": [
+        "close_to_typical_demand"
+      ]
+    },
+    {
+      "id": "math_seq_ap_1",
+      "topic": "sequences",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "baselineComposite": 11,
+      "upgradeThreshold": 12.1,
+      "currentProxy": {
+        "scores": {
+          "reasoning": 1,
+          "stepIntegration": 1,
+          "trapQuality": 2,
+          "expression": 1,
+          "transfer": 1
+        },
+        "composite": 6,
+        "trace": [
+          "推理層級 1：按條件句、分題數與是否要求解釋計，不是人手覆核",
+          "步驟整合 1：按分題與「由此」計",
+          "陷阱質量 2：選擇題結構只計到 2；解析提及常見混淆才計到 3 或以上",
+          "表達／論證 1：選擇題預設只要答案",
+          "遷移 1：短題幹且無條件句計 1；自帶生活情境詞計 3"
+        ],
+        "scorer": "ruleset_proxy_v1",
+        "needsHumanConfirmation": true
+      },
+      "formulaMetByProxy": false,
+      "verifiedDsePlus10": false,
+      "abcGrade": "B",
+      "abcReasons": [
+        "below_typical_demand"
+      ]
+    }
+  ]
+}

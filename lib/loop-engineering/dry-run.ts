@@ -1,0 +1,267 @@
+/**
+ * 第 1–2 星期管線試跑：8 條必修數學升級草稿，全部未發佈。
+ * 分數由本輪試跑填寫，用來證明閘門；不是已驗證的難度提升。
+ */
+import { type AiCheck, type AiMark, type PipelineRecord, applyAiReview, applyTwoPersonReview, attemptLoop5, createDraft, decideAiReview, moveToAiReview, moveToTwoPersonReview } from './pipeline.ts'
+import { type DimensionScores } from './rubric.ts'
+
+const PASS = Object.fromEntries(
+  (['correctness', 'solvability', 'syllabus', 'clarity', 'trap', 'explanation', 'difficulty_engineering', 'originality', 'disclosure'] as AiCheck[]).map((key) => [key, '通過']),
+) as Record<AiCheck, AiMark>
+
+const PREVIEW_CHECKS = {
+  clarity: true,
+  answerConsistent: true,
+  syllabus: true,
+  explanation: true,
+  trap: true,
+  formulaNotOnlyArithmetic: true,
+  originality: true,
+}
+
+interface DraftSpec {
+  draftId: string
+  sourceQuestionId: string
+  topicZh: string
+  baselineProfileId: 'p2_mc' | 'p1_a1'
+  proposed: DimensionScores
+  ai: Record<AiCheck, AiMark>
+  aiNote: string
+  twoPerson: null | {
+    checks: typeof PREVIEW_CHECKS
+    conclusion: 'keep_preview' | 'rework'
+    noteZh: string
+  }
+  upgrade: {
+    gistZh: string
+    content: string
+    options?: string[]
+    correctIndex?: number
+    referenceAnswer?: string
+    explanation: string
+  }
+}
+
+const DRAFTS: DraftSpec[] = [
+  {
+    draftId: 'loop-w12-001',
+    sourceQuestionId: 'mb2_pb1_25',
+    topicZh: '概率',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 3, stepIntegration: 3, trapQuality: 4, expression: 2, transfer: 3 },
+    ai: PASS,
+    aiNote: '比較放回與不放回，答案唯一，陷阱可從定義排除。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。兩欄不是獨立學科教師。' },
+    upgrade: {
+      gistZh: '由單次抽球改為比較兩種抽法，學生須分別計算再判斷大小，而不是只背「有利除以總數」。',
+      content: '袋中有 2 個紅球與 5 個藍球。甲每次抽出一球後放回，再抽第二次。乙不放回地連續抽兩球。下列哪一項正確？',
+      options: [
+        '甲抽得兩顆紅球的概率較乙大',
+        '乙抽得兩顆紅球的概率較甲大',
+        '兩人抽得兩顆紅球的概率相等',
+        '乙的抽法不能用分數表示，因為第二次的總數改變了',
+      ],
+      correctIndex: 0,
+      explanation:
+        '甲每次抽中紅球的概率都是 2/7，兩次獨立，所以概率是 (2/7)×(2/7)=4/49。乙第一次是 2/7，第二次在餘下 6 個球中只剩 1 個紅球，所以是 (2/7)×(1/6)=1/21。通分後 4/49=12/147，1/21=7/147，故甲較大。常見混淆是把不放回當成「不能計算」，或把兩次概率相加。可遷移的做法是先分清有沒有放回，再決定第二次的分母。',
+    },
+  },
+  {
+    draftId: 'loop-w12-002',
+    sourceQuestionId: 'mb_e3_300_25',
+    topicZh: '百分數與利率',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 3, stepIntegration: 3, trapQuality: 4, expression: 1, transfer: 3 },
+    ai: PASS,
+    aiNote: '連續百分變化的底數不同，不是把兩個百分數相減。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。計算已覆核。' },
+    upgrade: {
+      gistZh: '由單一次加價，改為先加價再折扣，而且折扣作用在標價而不是成本。',
+      content: '書展中，一本書的成本是 $240。攤位先把標價定為成本加 20%，最後一日再以標價的八折出售。相對成本，結果是？',
+      options: ['虧蝕 4%', '不賺不蝕', '獲利 4%', '虧蝕 20%'],
+      correctIndex: 0,
+      explanation:
+        '標價 = 240×1.2 = 288。售價 = 288×0.8 = 230.4。差額 = 240−230.4 = 9.6，佔成本 9.6/240 = 4%，所以是虧蝕 4%。「20% 減 20%」會得到不賺不蝕，因為兩次變化的底數不同。把八折直接乘在成本上會得到虧蝕 20%。可遷移的做法是每次只對上一步的金額做變化，最後才與成本比較。',
+    },
+  },
+  {
+    draftId: 'loop-w12-003',
+    sourceQuestionId: 'mb2_sq1_52_5',
+    topicZh: '數列',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 3, stepIntegration: 3, trapQuality: 3, expression: 1, transfer: 3 },
+    ai: PASS,
+    aiNote: '須先把首項與公差寫成通項，而不是把 n 直接代入一個未核對的式。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。通項已用第 1 項核對。' },
+    upgrade: {
+      gistZh: '由把給定通項代入 n，改為自行由首項與公差寫出通項，並放到書架層數的新情境。',
+      content: '書架由頂層起，第 1 層放 7 本書，其後每一層都少 3 本。以代數式表示第 n 層的書本數（只在該式為正時，該層才放得下書）。',
+      options: ['$10-3n$', '$7-3n$', '$7+3n$', '$10+3n$'],
+      correctIndex: 0,
+      explanation:
+        '這是首項 7、公差 −3 的等差數列。通項 = 7+(n−1)(−3) = 10−3n。第 1 層代回得 7，與題幹相符。$7-3n$ 把 n 當成已經減過一次；$7+3n$ 與 $10+3n$ 把「少 3 本」的方向弄反。可遷移的做法是先寫 a+(n−1)d，再代 n=1 核對首項。',
+    },
+  },
+  {
+    draftId: 'loop-w12-004',
+    sourceQuestionId: 'math_stat_6',
+    topicZh: '統計',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 3, stepIntegration: 2, trapQuality: 4, expression: 2, transfer: 3 },
+    ai: PASS,
+    aiNote: '須同時判斷中位數與平均數，並說明極端值的影響，不是只背偶數項公式。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。中位數與平均數已覆核。' },
+    upgrade: {
+      gistZh: '由直接問中位數，改為在有極端值的數據中判斷哪一句同時講對中位數與它同平均數的分別。',
+      content: '六個數據為 2、4、4、6、8、30。下列哪一項正確？',
+      options: [
+        '中位數是 5，而且比平均數較少受 30 拉高',
+        '中位數是 4',
+        '中位數是 9',
+        '平均數是 5',
+      ],
+      correctIndex: 0,
+      explanation:
+        '數據已按大小排列，項數是偶數，中位數是中間兩數的平均：(4+6)/2 = 5。平均數 = (2+4+4+6+8+30)/6 = 9。30 進入總和，所以把平均數拉高；它只站在序列末端，不改變中間兩個位置。選 4 是只取了中間偏左的一數；選 9 或把平均數說成 5，是把兩個統計量對調。可遷移的做法是先排好序再找中間位置，極端值要另看它有沒有進入所問的那個統計量。',
+    },
+  },
+  {
+    draftId: 'loop-w12-005',
+    sourceQuestionId: 'mb3_cr1_75',
+    topicZh: '圓的幾何特性',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 4, stepIntegration: 3, trapQuality: 4, expression: 2, transfer: 3 },
+    ai: PASS,
+    aiNote: '學生須選對圓心角，並排除半圓與圓內接四邊形兩條不適用的定理。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。同弧倍角關係已覆核。' },
+    upgrade: {
+      gistZh: '由只問圓心角是圓周角的兩倍，改為要判斷半圓定理看的是圓周角所對的弦。∠ABC 所對的是 AC，不是 AB。',
+      content: 'O 為圓心，A、B、C 在圓周上，∠ABC = 42°，且它所對的弧是 AC。AC 不是直徑，題中亦沒有圓內接四邊形。下列哪一項正確？',
+      options: [
+        '同弧 AC 所對的圓心角是 84°；∠ABC 不是半圓上的圓周角，也不能用對角互補',
+        '同弧所對的圓心角是 42°，因為兩角相等',
+        '同弧所對的圓心角是 21°，因為圓心角是圓周角的一半',
+        '同弧所對的圓心角是 90°，因為圓周角一定在半圓上',
+      ],
+      correctIndex: 0,
+      explanation:
+        '同弧所對的圓心角是圓周角的兩倍，所以 ∠AOC = 2×42° = 84°。半圓上的圓周角定理看的是該圓周角所對的弦：∠ABC 所對的是 AC。若 AC 是直徑，∠ABC 應為 90°。題幹寫明 AC 不是直徑，角又是 42°，因此不能用這條定理。AB 是否為直徑，並不決定這個角是不是半圓上的圓周角。題中沒有四邊形，也不能把 180°−42° 當成對角。可遷移的做法是先確認圓周角所對的弦，再檢查該弦是不是直徑。',
+    },
+  },
+  {
+    draftId: 'loop-w12-006',
+    sourceQuestionId: 'math_long_b1_01',
+    topicZh: '二次方程',
+    baselineProfileId: 'p1_a1',
+    proposed: { reasoning: 3, stepIntegration: 3, trapQuality: 3, expression: 3, transfer: 2 },
+    ai: PASS,
+    aiNote: '4 分題內先反求參數，再說明判別式，沒有加長純計算。',
+    twoPerson: { checks: PREVIEW_CHECKS, conclusion: 'keep_preview', noteZh: '試跑骨架簽署。k=6 與判別式已覆核。' },
+    upgrade: {
+      gistZh: '由已知整數係數後求兩根平方和，改為已知兩根平方和，反求未知常數，並說明根是實數。分值仍是 4 分。',
+      content:
+        '（4 分，自編練習；分值帶對應公開評核大綱中卷一甲部(1) 的淺易傳統題，不是官方試題。）\n\n已知二次方程 $x^2-5x+k=0$ 的兩根為 $\\alpha$ 與 $\\beta$，且 $\\alpha^2+\\beta^2=13$。\n(a) 求 $k$。（2 分）\n(b) 由此寫出該方程，並解釋為何兩根都是實數。（2 分）',
+      referenceAnswer: '(a) $k=6$\n(b) $x^2-5x+6=0$；判別式 $25-24=1>0$，所以有兩個相異實根。',
+      explanation:
+        '(a) 由係數知 α+β=5、αβ=k。α²+β²=(α+β)²−2αβ=25−2k=13，所以 k=6。(b) 方程是 x²−5x+6=0。判別式 = 25−4×6 = 1 > 0，故兩根為實數。常見錯誤是把平方和寫成 (α+β)²+2αβ，或求出 k 後不再檢查判別式。可遷移的做法是：根與係數先改寫成和與積，再用恆等式把目標式變成和與積，最後用判別式確認實根。',
+    },
+  },
+  {
+    draftId: 'loop-w12-007',
+    sourceQuestionId: 'mb2_pb1_25',
+    topicZh: '概率',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 3, stepIntegration: 2, trapQuality: 4, expression: 1, transfer: 2 },
+    ai: PASS,
+    aiNote: '初審只見有一個可教的分母混淆，故先通過；送交人手覆核時請特別看大於 1 的選項是否降低鑑別。',
+    twoPerson: {
+      checks: { ...PREVIEW_CHECKS, trap: false, formulaNotOnlyArithmetic: false },
+      conclusion: 'rework',
+      noteZh: '大於 1 的選項過於容易排除，題目仍是一步古典概率。請改為比較兩種抽法，不要靠不可能的數值充數。',
+    },
+    upgrade: {
+      gistZh: '這份草稿故意幾乎保留原題，只加一個大於 1 的選項，用來測試人手覆核會否退回。',
+      content: '袋中有 2 個紅球與 5 個藍球。隨機抽出一球，抽得紅球的概率是多少？',
+      options: ['$\\frac{2}{7}$', '$\\frac{2}{5}$', '$\\frac{5}{7}$', '$\\frac{7}{2}$'],
+      correctIndex: 0,
+      explanation: '有利結果 2 個，總數 7 個，概率是 2/7。2/5 用錯分母，5/7 是藍球，7/2 大於 1。',
+    },
+  },
+  {
+    draftId: 'loop-w12-008',
+    sourceQuestionId: 'mb3_ix1_242',
+    topicZh: '指數',
+    baselineProfileId: 'p2_mc',
+    proposed: { reasoning: 4, stepIntegration: 4, trapQuality: 3, expression: 1, transfer: 2 },
+    ai: {
+      ...PASS,
+      trap: '不通過',
+      difficulty_engineering: '不通過',
+    },
+    aiNote: '只把指數改大，仍是同底數相加。擬評的推理與步驟分沒有對應的新判斷，不得進入人手覆核。',
+    twoPerson: null,
+    upgrade: {
+      gistZh: '這份草稿故意只加大數字，用來測試 AI 初審會否擋住「只加運算量」。',
+      content: '化簡 $2^{48}\\times 2^{36}$，答案以 2 的冪表示。',
+      options: ['$2^{84}$', '$2^{12}$', '$2^{1728}$', '$2^{84}\\times 2$'],
+      correctIndex: 0,
+      explanation: '同底數相乘，指數相加：48+36=84。其餘選項是相減或把指數相乘。',
+    },
+  },
+]
+
+export interface DryRunBundle {
+  labelZh: string
+  records: PipelineRecord[]
+  upgrades: Array<DraftSpec['upgrade'] & { draftId: string; sourceQuestionId: string; topicZh: string }>
+  loop5Attempt: { draftId: string; ok: false; label: '待批准' }
+}
+
+export function buildWeek12DryRun(): DryRunBundle {
+  const records = DRAFTS.map((draft, index) => runDraft(draft, index))
+  const loop5Target = records.find((record) => record.draftId === 'loop-w12-006')
+  if (!loop5Target) throw new Error('缺少試跑題 loop-w12-006')
+  const loop5 = attemptLoop5(loop5Target, '2026-11-26T22:40:00+08:00')
+  return {
+    labelZh: '第 1–2 星期管線試跑。全部未發佈，難度未驗證，未經 HKDSE 學科教師審核。',
+    records,
+    upgrades: DRAFTS.map((draft) => ({
+      draftId: draft.draftId,
+      sourceQuestionId: draft.sourceQuestionId,
+      topicZh: draft.topicZh,
+      ...draft.upgrade,
+    })),
+    loop5Attempt: { draftId: loop5Target.draftId, ok: loop5.ok, label: loop5.label },
+  }
+}
+
+function runDraft(draft: DraftSpec, index: number): PipelineRecord {
+  const at = (minute: number) => `2026-11-26T22:${String(minute).padStart(2, '0')}:00+08:00`
+  const base = 10 + index
+  const record = createDraft({
+    draftId: draft.draftId,
+    sourceQuestionId: draft.sourceQuestionId,
+    baselineProfileId: draft.baselineProfileId,
+    proposed: draft.proposed,
+    at: at(base),
+  })
+  moveToAiReview(record, at(base))
+  applyAiReview(record, decideAiReview(draft.ai, draft.aiNote), at(base + 1))
+  if (draft.ai && record.aiReview?.decision === 'pass_to_human' && draft.twoPerson) {
+    moveToTwoPersonReview(record, at(base + 2))
+    applyTwoPersonReview(
+      record,
+      {
+        reviewerA: 'dry-run-scaffold-a',
+        reviewerB: 'dry-run-scaffold-b',
+        signoffKind: 'scaffold_not_subject_teacher',
+        independentReviewers: false,
+        checks: draft.twoPerson.checks,
+        conclusion: draft.twoPerson.conclusion,
+        noteZh: draft.twoPerson.noteZh,
+      },
+      at(base + 3),
+    )
+  }
+  return record
+}
