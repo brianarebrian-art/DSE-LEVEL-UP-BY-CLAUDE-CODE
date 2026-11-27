@@ -54,6 +54,10 @@ function reasonLabel(code: string, en: boolean): string {
       return en
         ? 'Could be answered by recalling a name, definition or year alone, which does not fit this site’s focus on understanding and reasoning; replaced by an applied question'
         : '題目只需背誦名稱、定義或年份即可作答，不符合本平台重理解、重推理的方向；已由情境應用題取代'
+    case 'DUPLICATE_STEM':
+      return en
+        ? 'The stem duplicates another practice item, so it is left out of student practice. The question is kept in storage and this is not an answer error'
+        : '題幹與另一條練習題重複，已從學生練習收起。題目仍留在倉庫，這不是答案錯誤'
     default:
       return en ? 'A fault was found in the question' : '題目發現有錯'
   }

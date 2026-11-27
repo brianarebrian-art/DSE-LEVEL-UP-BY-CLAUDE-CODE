@@ -1,0 +1,29 @@
+{
+  "purpose": "還原紀錄。兩條題的原文仍在題庫來源檔，沒有刪除，此檔不含題幹。",
+  "decidedOn": "2026-11-27",
+  "decisionZh": "創辦人決定在預覽只收起兩條已確認客觀 C 級必修數學題。未評分題維持可練。這不是 Loop Engineering 驗收，也不是已驗證的 DSE+10%。",
+  "studentFacing": false,
+  "appliedToProductionDatabase": false,
+  "withdrawFile": "data/questions/withdrawn.json",
+  "withdrawReason": "DUPLICATE_STEM",
+  "restore": "npx tsx scripts/qbank/withdraw.mts --subject math --id <id> --undo，然後 npm run gen:summary。不要對正式資料庫執行 sync-questions --push，除非另有批准。",
+  "items": [
+    {
+      "id": "math_fl_ns04",
+      "subject": "math",
+      "topic": "number_systems",
+      "grade": "C",
+      "gradeReasons": ["duplicate_stem"],
+      "source": "data/questions/math-floor-batch1.ts"
+    },
+    {
+      "id": "mb_n1_5_2",
+      "subject": "math",
+      "topic": "number_systems",
+      "grade": "C",
+      "gradeReasons": ["duplicate_stem"],
+      "source": "data/questions/math-bank.ts",
+      "sourceNote": "母模板以 mb_n1_${a}_${b} 產生編號。此條是 a=5、b=2 的輸出。來源迴圈未改，收起只寫入 withdrawn.json。"
+    }
+  ]
+}

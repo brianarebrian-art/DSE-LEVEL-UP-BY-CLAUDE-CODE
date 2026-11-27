@@ -82,7 +82,7 @@ if (writeSummary) {
       {
         gradeValues: ['C', 'unscored'],
         noteZh:
-          '分級只標客觀缺陷 C，其餘是 unscored。這不是人手 A／B，也不是已驗證的難度提升，更不是考評局統計。基準剖面目前只為必修數學而設。',
+          '分級只標客觀缺陷 C，其餘是 unscored。這不是人手 A／B，也不是已驗證的難度提升，更不是考評局統計。基準剖面目前只為必修數學而設。2026-11-27 預覽已從學生練習收起必修數學 math_fl_ns04 與 mb_n1_5_2（題幹重複）；它們不在這份在練清單，題目仍在倉庫。',
         subjects: summary,
       },
       null,

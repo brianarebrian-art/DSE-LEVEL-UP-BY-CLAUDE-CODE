@@ -40,8 +40,9 @@ const { subjects } = await import(join(ROOT, 'data/subjects.ts')) as {
   subjects: { id: string; isActive?: boolean }[]
 }
 
-const { contentStatus, withdrawnReason } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
+const { contentStatus, countsAsWithdrawnFault, withdrawnReason } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
   contentStatus: (subjectId: string, q: { id: string; topic: string }) => 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review' | 'machine_restored'
+  countsAsWithdrawnFault: (reason: string | null) => boolean
   withdrawnReason: (subjectId: string, id: string) => string | null
 }
 const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
@@ -94,13 +95,13 @@ if (stats.published !== total) {
   throw new Error(`published (${stats.published}) differs from the practice pool (${total})`)
 }
 
-// The homepage says how many questions were withdrawn because a fault was found. Questions
-// withdrawn as PURE_RECALL (founders' replies 49a–55a) had no fault: each was replaced by an
-// applied question, so they are left out of that sentence. /transparency lists them separately.
+// The homepage says how many questions were withdrawn because a fault was found.
+// countsAsWithdrawnFault leaves out PURE_RECALL (replaced, not wrong) and DUPLICATE_STEM
+// (objective duplicate, not a wrong answer). /transparency still lists every withdrawal.
 let withdrawnForFault = 0
 for (const s of active) {
   for (const q of idx.getSubjectQuestionsRaw(s.id)) {
-    if (contentStatus(s.id, q) === 'withdrawn' && withdrawnReason(s.id, q.id) !== 'PURE_RECALL') withdrawnForFault++
+    if (contentStatus(s.id, q) === 'withdrawn' && countsAsWithdrawnFault(withdrawnReason(s.id, q.id))) withdrawnForFault++
   }
 }
 
@@ -144,8 +145,9 @@ export const TOTAL_QUESTIONS = ${total}
 export const CONTENT_STATS = ${JSON.stringify(stats, null, 2)} as const
 
 /**
- * 因發現錯誤而收起的題數（首頁使用）。不包括以 PURE_RECALL 收起的題目：那些題目並無錯誤，
- * 已逐條由情境應用題取代（創辦人回覆 49a–55a）。
+ * 因發現錯誤而收起的題數（首頁使用）。不包括兩類並非答案錯誤的收起：
+ * PURE_RECALL（已逐條由情境應用題取代，創辦人回覆 49a–55a）與 DUPLICATE_STEM
+ * （題幹重複的客觀 C 級題，題目仍在倉庫）。透明度頁仍列出全部收起。
  */
 export const WITHDRAWN_FOR_FAULT = ${withdrawnForFault}
 `

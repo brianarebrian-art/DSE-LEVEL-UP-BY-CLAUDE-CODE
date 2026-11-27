@@ -29,6 +29,9 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // withdrawn total is CONTENT_STATS.withdrawn. WITHDRAWN_FOR_FAULT is only the fault subset.
   assert.match(home, /題目經自動檢查上線，未經註冊教師審定。練習中 \$\{CONTENT_STATS\.published\.toLocaleString\(\)\} 條，已收起 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條/)
   assert.match(home, /其中 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條係發現有錯/)
+  assert.match(home, /其餘不是答案錯誤，包括已換走的純背誦題，以及題幹重複而收起的題/)
+  assert.match(home, /the rest are not answer errors, including pure-recall items that were replaced and duplicate stems that were withdrawn/)
+  assert.doesNotMatch(home, /其餘係純背誦題，已經換走|the rest were pure recall and have been replaced/)
   // Link 可跨行；prefetch={false} 可夾喺 href 同 className 之間。
   assert.match(
     home,

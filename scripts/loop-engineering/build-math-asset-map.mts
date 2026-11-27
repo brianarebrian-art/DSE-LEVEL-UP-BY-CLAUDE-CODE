@@ -110,6 +110,8 @@ function renderSummary(
 
 在練題 ${itemCount} 條。試點評分 ${pilotCount} 條，使用 \`ruleset_proxy_v1\`，須人工確認。
 
+2026-11-27 預覽已從學生練習收起兩條已確認客觀 C 級題：\`math_fl_ns04\`、\`mb_n1_5_2\`（題幹重複）。兩條不在上表，題目仍在倉庫。其餘未評分題仍在練習。試點 A／B 不是上線分級。
+
 ## 題型
 
 | 題型 | 題數 |
