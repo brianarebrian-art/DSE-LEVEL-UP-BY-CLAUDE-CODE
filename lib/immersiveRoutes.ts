@@ -24,6 +24,8 @@ export const IMMERSIVE_ROUTES = [
   '/answer-sheet',
   // Founder OS 自帶完整 Shell；唔好再疊學生 Navbar／Sidebar／底欄。
   '/founder',
+  // 用戶研究自帶工作台。正式環境由 isResearchRouteHidden 回 404，唔入學生導覽。
+  '/research',
 ] as const
 
 /** pathname 係咪落喺全螢幕任務模式（同一前綴嘅子路由一齊計）。 */

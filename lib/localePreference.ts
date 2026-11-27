@@ -78,6 +78,7 @@ export function showsStudentLanguageControl(pathname: string | null | undefined)
   if (!pathname) return false
   if (isUnder(pathname, '/admin')) return false
   if (isUnder(pathname, '/founder')) return false
+  if (isUnder(pathname, '/research')) return false
   return true
 }
 

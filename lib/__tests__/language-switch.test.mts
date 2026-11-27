@@ -75,6 +75,8 @@ test('創辦人與管理頁不顯示學生語言按鈕；練習頁不加整頁�
   assert.equal(showsStudentLanguageControl('/founder/ops'), false)
   assert.equal(showsStudentLanguageControl('/admin'), false)
   assert.equal(showsStudentLanguageControl('/admin/quality'), false)
+  assert.equal(showsStudentLanguageControl('/research'), false)
+  assert.equal(showsStudentLanguageControl('/research/admin'), false)
   assert.equal(showsStudentLanguageControl(null), false)
   assert.equal(immersiveLanguageOffset('/practice'), false)
   assert.equal(immersiveLanguageOffset('/relax'), true)
