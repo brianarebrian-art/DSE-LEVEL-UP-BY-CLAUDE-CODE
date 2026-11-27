@@ -49,8 +49,10 @@ export const WITHDRAW_CODES: Readonly<Record<string, string>> = {
 
 /**
  * Withdrawals that take a question out of student practice without being an answer fault.
- * Homepage WITHDRAWN_FOR_FAULT omits these. PURE_RECALL was replaced by applied items.
- * DUPLICATE_STEM is a confirmed objective-C duplicate, not a wrong answer.
+ * Homepage WITHDRAWN_FOR_FAULT omits these. The homepage sentence must name every
+ * code here. It must not describe the whole non-fault remainder as pure recall.
+ * PURE_RECALL was replaced by applied items. DUPLICATE_STEM is a confirmed
+ * objective-C duplicate, not a wrong answer.
  */
 export const WITHDRAWN_NOT_A_FAULT: ReadonlySet<string> = new Set([
   'PURE_RECALL',
