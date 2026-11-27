@@ -30,6 +30,15 @@ DSE Level Up 是一個為香港中學文憑試（DSE）考生而設的免費溫�
 
 題目由校友與 AI 協作編寫；AI 可協助起草及分類，內容經自動檢查後發布，尚未全部經註冊教師逐題審定。網站會標示覆核狀態，發現錯誤可回報，團隊會按情況修正或收起題目。題目是原創平行改寫，並非 HKEAA 官方試題。
 
+## 產品規格及審核文件
+
+- [產品規格](./docs/PRODUCT_SPEC.md)：現有 MVP 使用者流程、邊界和下一個證據門檻。
+- [研究摘要](./docs/RESEARCH.md)：HKEAA 框架、考試報告及同類平台桌面研究；不是用戶調查。
+- [假設及待驗證問題](./docs/ASSUMPTIONS.md)：區分創辦人決定、產品假設及尚未證實的需求。
+- [題目編寫與難度校準標準](./docs/QUESTION_STANDARD.md)：內容覆核、版權來源及「低 10 個百分點」所需證據。
+- [資料模型及邊界](./docs/DATA_MODEL.md)：現行題型、同步白名單和未批准的校準資料提案。
+- [測試計劃](./docs/TEST_PLAN.md)、[校準試點路線圖](./docs/ROADMAP.md)、[部署清單](./docs/DEPLOYMENT.md)、[決策記錄](./docs/DECISIONS.md)、[變更記錄](./docs/CHANGELOG.md)。
+
 ## 快速開始
 
 ### 使用網站

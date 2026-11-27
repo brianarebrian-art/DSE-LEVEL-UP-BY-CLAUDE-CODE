@@ -9,9 +9,9 @@ import {
 } from './localePreference'
 
 export {
+  defaultLocale,
   interfaceLanguageAnnouncement,
   immersiveLanguageOffset,
-  localeFromBrowserLanguage,
   LOCALE_STORAGE_KEY,
   parseStoredLocale,
   resolveLocale,
@@ -55,17 +55,14 @@ function writeStored(next: Locale) {
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // Always start at 'zh' so the server-rendered HTML and the first client render
-  // match (no hydration mismatch). A previously saved choice, or the browser
-  // language when nothing valid is stored, is applied after mount.
+  // Start in the Hong Kong audience's primary language so server and first client render match.
   const [locale, setLocaleState] = useState<Locale>('zh')
   const [announcement, setAnnouncement] = useState('')
   const userActed = useRef(false)
 
   useEffect(() => {
-    // 不寫 localStorage。未選擇時只在這次瀏覽套用瀏覽器語言。
-    const next = resolveLocale(readStoredRaw(), navigator.language)
-    setLocaleState(next)
+    // Do not persist a default. Only a student's explicit language choice is saved.
+    setLocaleState(resolveLocale(readStoredRaw()))
   }, [])
 
   // <html lang> 一定要跟住介面語言轉（WCAG 3.1.1，A 級）。
