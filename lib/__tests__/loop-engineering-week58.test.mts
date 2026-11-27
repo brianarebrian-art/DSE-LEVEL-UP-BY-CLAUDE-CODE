@@ -57,6 +57,9 @@ test('手算抽樣與求解器一致', () => {
   assert.equal(similar?.correctText, '結果是：表面面積比是 4:9')
   const order = solveWeek58('order_or_not', { slot: 0, setting: 0, n: 5, ordered: 0 })
   assert.equal(order?.correctText, '結果是：不計次序，共 10 種')
+  assert.equal(order?.partC.includes('再除以 2'), false)
+  const ordered = solveWeek58('order_or_not', { slot: 1, setting: 0, n: 7, ordered: 1 })
+  assert.match(ordered?.partC ?? '', /再除以 2/)
 })
 
 test('軟項無法判斷不得寫成通過，也不單獨回爐', () => {
@@ -158,6 +161,8 @@ test('預覽路由在 production 404，練習頁不掛草稿', () => {
   assert.match(load, /options\?\.skipUpgradeOverlay \? qs : applyFullUpgradeOverlay/)
   assert.match(bank, /loadSubjectQuestions\(subjectId\)/)
   assert.doesNotMatch(bank, /skipUpgradeOverlay/)
+  assert.match(readFileSync('lib/loop-engineering/week58-batch.ts', 'utf8'), /week58-drafts\.json/)
+  assert.match(readFileSync('next.config.ts', 'utf8'), /week58-drafts\.json/)
   assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /\/dev\/loop-week58/)
   assert.match(readFileSync('scripts/integration-guard.mjs', 'utf8'), /\/dev\/loop-week58/)
   assert.equal(readFileSync('data/questions/overlays/math.json', 'utf8').includes('loop-w58-'), false)

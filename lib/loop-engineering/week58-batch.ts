@@ -2,7 +2,7 @@
  * 把抽樣列變成未發佈草稿，並跑 Loop 3。
  * 不寫入練習題庫，不進入 Loop 4 的已簽署狀態，不進入 Loop 5。
  */
-import { readFileSync } from 'node:fs'
+import week58Drafts from '../../data/loop-engineering/week58-drafts.json'
 import { RUBRIC_VERSION } from './rubric.ts'
 import { LOOP5_BLOCKED_LABEL_ZH } from './disclosure.ts'
 import { type SampleCandidate, WEEK58_AUTHORIZED_MAX, WEEK58_AUTHORIZED_MIN, WEEK58_AUTHORIZED_ON, WEEK58_FIRST_BATCH } from './week58-scope.ts'
@@ -172,12 +172,12 @@ export function toPreviewModel(bundle: Week58Bundle): Week58PreviewModel {
   }
 }
 
-export function loadWeek58Bundle(path = 'data/loop-engineering/week58-drafts.json'): Week58Bundle {
-  return JSON.parse(readFileSync(path, 'utf8')) as Week58Bundle
+export function loadWeek58Bundle(): Week58Bundle {
+  return week58Drafts as unknown as Week58Bundle
 }
 
-export function loadWeek58PreviewModel(path = 'data/loop-engineering/week58-drafts.json'): Week58PreviewModel {
-  return toPreviewModel(loadWeek58Bundle(path))
+export function loadWeek58PreviewModel(): Week58PreviewModel {
+  return toPreviewModel(loadWeek58Bundle())
 }
 
 export const WEEK58_BATCH_SIZE = WEEK58_FIRST_BATCH
