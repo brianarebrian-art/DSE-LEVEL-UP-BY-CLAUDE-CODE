@@ -11,7 +11,8 @@
 | 交付 | 位置 |
 |---|---|
 | 五維量表與公式 (1) | `docs/loop-engineering/rubric-zh-hk.md`、`lib/loop-engineering/rubric.ts` |
-| 必修數學在練題資產地圖 | `data/loop-engineering/math-compulsory-asset-map.json` |
+| 可查閱資產列 | `npm run loop:query -- --subject math --type mc --grade C` |
+| 精簡摘要與 C 級清單 | `data/loop-engineering/catalog-summary.json`、`data/loop-engineering/grade-c.json` |
 | 約 50 題規則代理評分 | `data/loop-engineering/math-compulsory-pilot-scores.json` |
 | 重跑腳本 | `npm run loop:math-map` |
 | 管線狀態與硬閘 | `lib/loop-engineering/pipeline.ts` |
@@ -33,7 +34,15 @@ Loop 5 不寫進可儲存狀態。任何進入真實學生實測的嘗試都回�
 
 地圖覆蓋 `loadSubjectQuestions('math')` 的在練題，也就是學生現時會見到的必修數學自編題。已收起、待覆核與未恢復的題不在此池。雲端缺少的 64 條與雲端多出的 107 條都沒有同步或刪除。`question_bank_versions` 沒有改動。
 
-每題有課題、題型、分值、題幹／選項／答案／解析／圖的完整度，以及由卷別與分值帶推出的基準剖面。沒有客觀缺陷的題，A／B 維持 `unscored`。約 50 題的五維分是規則代理，摘要會寫明須人工確認。
+查閱不把題幹寫進倉庫：
+
+```
+npm run loop:query -- --write-summary
+npm run loop:query -- --subject math --type mc --grade C
+npm run loop:query -- --subject math --grade unscored --count
+```
+
+分級只有 `C`（客觀缺陷）和 `unscored`（尚未人手評 A／B）。`math_fl_ns04` 與 `mb_n1_5_2` 留在 C 級清單，本分支不收起、不改寫。其他科可以查，但基準剖面仍標為待該科大綱讀法，不借用數學的卷別剖面，也不捏造考評局統計。約 50 題的五維分留在試點檔，不得當成公式 (1) 已驗證。
 
 ## 試跑怎麼讀
 

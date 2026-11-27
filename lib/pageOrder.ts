@@ -52,6 +52,7 @@ export const EXCLUDED: Record<string, string> = {
   '/calm-demo': '僅 development 可用的 UI 示範，production／preview 回 404，不屬學生導航',
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
+  '/dev/loop-disclosure': '披露文案預覽，正式環境回 404，不屬學生導航',
   '/sentry-example-page': '開發時確認 Sentry。production 回 404，不屬於學生導航',
 
   // 流程中途，有自己嘅去向

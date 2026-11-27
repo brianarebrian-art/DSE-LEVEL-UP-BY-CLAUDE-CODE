@@ -113,6 +113,26 @@ export function meetsUpgradeTarget(upgradeComposite: number, baselineComposite: 
   return upgradeComposite >= upgradeThreshold(baselineComposite)
 }
 
+/**
+ * 和局：同一維度若相鄰兩個整數都說得通，取較低分。
+ * 不相鄰的分歧不是和局，必須重評，不能在這裡折中。
+ */
+export function lowerScoreOnTie(a: number, b: number): number {
+  if (!Number.isInteger(a) || !Number.isInteger(b) || a < 1 || a > 5 || b < 1 || b > 5) {
+    throw new Error('和局只接受 1 至 5 的整數')
+  }
+  if (Math.abs(a - b) > 1) throw new Error('和局只適用於相鄰分數，較大差距要重評')
+  return Math.min(a, b)
+}
+
+/** 兩人綜合分不一致時，不取平均、不取較高分。工作分是較低的那份，直到第三人仲裁。 */
+export function workingCompositeOnRaterTie(composites: number[]): number {
+  if (composites.length < 2 || composites.some((value) => !Number.isFinite(value))) {
+    throw new Error('和局至少要有兩份綜合分')
+  }
+  return Math.min(...composites)
+}
+
 export function profileComposite(profileId: BaselineProfileId): number {
   return composite(BASELINE_PROFILES[profileId].scores)
 }
