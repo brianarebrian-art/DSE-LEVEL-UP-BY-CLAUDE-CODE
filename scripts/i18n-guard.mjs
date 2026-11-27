@@ -9,7 +9,7 @@
  * 用法：node scripts/i18n-guard.mjs
  * 退出碼：發現漏譯 = 1（可用作 CI／qa 閘）；乾淨 = 0。
  *
- * 偵測範圍：app/ + components/ 下所有 .tsx（略過 founder/：創辦人內部中文單語）。
+ * 偵測範圍：app/ + components/ 下所有 .tsx（略過 founder/ 同 research/：內部中文單語）。
  * 會先剝走註解（大量中文註解係正常，唔算漏譯）。
  * 一行 CJK 若含以下任一翻譯訊號即當「已配對」而略過：
  *   en 三元、tr(、locale、? '…'、: '…'、'en'、t.（字典取值）。
@@ -22,7 +22,9 @@ import path from 'node:path'
 const ROOTS = ['app', 'components']
 // Founder OS（app/founder、components/founder）係創辦人內部指揮台，中文單語設計，
 // 同 /admin 一樣唔跟學生端 locale；page-metadata 亦批量豁免 founder 子頁。唔當漏譯。
-const SKIP_PATH = /(^|[/\\])founder([/\\]|$)/
+// 用戶研究（app/research、components/research）規格係繁體中文（香港），
+// 工作台同填卷都唔跟學生語言掣。唔當漏譯。
+const SKIP_PATH = /(^|[/\\])(founder|research)([/\\]|$)/
 // CJK 統一表意文字 + 擴展A + CJK標點（、。「」）+ 全形標點／字母（！？，：）
 const CJK = /[㐀-鿿　-〿！-｠￠-￮]/
 // 視窗（該行 + 前兩行）內若出現以下任一，代表 CJK 已同英文配對（跟 locale 切換），略過。
