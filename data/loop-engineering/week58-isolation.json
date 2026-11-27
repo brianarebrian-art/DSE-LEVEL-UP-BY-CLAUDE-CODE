@@ -1,0 +1,16 @@
+{
+  "verifiedDsePlus10": false,
+  "practiceLoaderAppliesOverlayByDefault": true,
+  "evidenceZh": "loadSubjectQuestions 預設呼叫 applyFullUpgradeOverlay。loadBank 沒有傳 skipUpgradeOverlay。練習 catalog 與 check 使用 loadBank。第 5–8 星期草稿不在 overlay，也不在題庫 loader。",
+  "baselineAndOverlayIdSetsMatch": true,
+  "publishedBaselineCount": 1633,
+  "overlayChangesSampleStemHash": true,
+  "sampleSourceId": "math_long_b1_01",
+  "baselineContentSha256": "bb2379e6aaf0febf6ac11ca387da240e6e04f9f46222c90085baedac08bb4328",
+  "overlaidContentSha256": "8a8063ebcd750a85608c447909255ef4e77ede59751c5cf5a16b2714eb725933",
+  "week58DraftIdsInMathOverlay": 0,
+  "draftIdPrefix": "loop-w58-",
+  "draftStore": "data/loop-engineering/week58-drafts.json",
+  "previewRoute": "/dev/loop-week58",
+  "productionPreviewRoute": "404 when VERCEL_ENV=production"
+}

@@ -1,0 +1,1955 @@
+{
+  "authorizedOn": "2026-11-27",
+  "subject": "math",
+  "authorizedRange": {
+    "min": 200,
+    "max": 500
+  },
+  "firstBatchCount": 200,
+  "rangeNotNarrowed": true,
+  "noteZh": "已確認範圍仍是必修數學 200 至 500 條升級草稿。這是範圍內的第一批 200 條，不是把範圍收窄成 200。草稿未發佈，難度未驗證，兩人覆核未開始。",
+  "protectedSourceIds": [
+    "math_fl_ns04",
+    "mb_n1_5_2"
+  ],
+  "selectionZh": "先取全部合格書寫題，再按課題代號輪流取選擇題。分級用略過 overlay 的在練題。",
+  "byTopic": [
+    {
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "count": 7
+    },
+    {
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "count": 9
+    },
+    {
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "count": 9
+    },
+    {
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "count": 9
+    },
+    {
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "count": 7
+    },
+    {
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "count": 7
+    },
+    {
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "count": 8
+    },
+    {
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "count": 8
+    },
+    {
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "count": 7
+    },
+    {
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "count": 7
+    },
+    {
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "count": 7
+    },
+    {
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "count": 9
+    },
+    {
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "count": 7
+    },
+    {
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "count": 9
+    },
+    {
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "count": 8
+    },
+    {
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "count": 8
+    },
+    {
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "count": 10
+    },
+    {
+      "topic": "probability",
+      "topicZh": "概率",
+      "count": 9
+    },
+    {
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "count": 9
+    },
+    {
+      "topic": "sequences",
+      "topicZh": "數列",
+      "count": 8
+    },
+    {
+      "topic": "similar_solids",
+      "topicZh": "相似立體",
+      "count": 7
+    },
+    {
+      "topic": "statistics",
+      "topicZh": "統計",
+      "count": 9
+    },
+    {
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "count": 7
+    },
+    {
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "count": 8
+    },
+    {
+      "topic": "variation",
+      "topicZh": "變分",
+      "count": 7
+    }
+  ],
+  "byType": {
+    "long": 30,
+    "mc": 170
+  },
+  "byProfile": {
+    "p1_a1": 8,
+    "p1_a2": 17,
+    "p1_b": 5,
+    "p2_mc": 170
+  },
+  "ids": [
+    {
+      "id": "math_long_b1_01",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_02",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_03",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_04",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_05",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_06",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_07",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_08",
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_09",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_long_b1_10",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_01",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_02",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "long",
+      "marks": 4,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_03",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_04",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_05",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_06",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_07",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a1",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_08",
+      "topic": "similar_solids",
+      "topicZh": "相似立體",
+      "itemType": "long",
+      "marks": 5,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_09",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_10",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_11",
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_12",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_13",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "long",
+      "marks": 6,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_14",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_15",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_a2",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_16",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_17",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_18",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_19",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "long",
+      "marks": 7,
+      "baselineProfileId": "p1_b",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_p1_20",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "long",
+      "marks": 8,
+      "baselineProfileId": "p1_b",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap01",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_048",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列求項",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_circle_1",
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_d_1",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0001",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_1",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0059",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_045",
+      "topic": "indices",
+      "topicZh": "指數方程系統",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_1",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_1_2",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_locus_1",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_044",
+      "topic": "logarithms",
+      "topicZh": "對數化簡",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns01",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_035",
+      "topic": "percentage",
+      "topicZh": "複合百分數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0042",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg01",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_058",
+      "topic": "polynomials",
+      "topicZh": "因式分解",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_096",
+      "topic": "probability",
+      "topicZh": "幾何概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_041",
+      "topic": "quadratic_equations",
+      "topicZh": "一元二次方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_1",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss01",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_086",
+      "topic": "statistics",
+      "topicZh": "中位數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0076",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_072",
+      "topic": "trigonometry",
+      "topicZh": "餘弦定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va01",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap02",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_2_10",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_circle_2",
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_d_2",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0002",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_10",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0060",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math-cu-05",
+      "topic": "indices",
+      "topicZh": "跨課題（指數・折舊應用）",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_10",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_1_4",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_locus_2",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_060",
+      "topic": "logarithms",
+      "topicZh": "複合對數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns02",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_1",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0043",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg02",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_1_1",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0066",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_042",
+      "topic": "quadratic_equations",
+      "topicZh": "根與係數關係",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_2",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss02",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_098",
+      "topic": "statistics",
+      "topicZh": "平均數方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0077",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_trig_3",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va02",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap03",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_2_12",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_circle_3",
+      "topic": "circles",
+      "topicZh": "圓的幾何特性",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_d_3",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0003",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_2",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0061",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e1_2_3",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_11",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_1_5",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb2_lc1_11_28",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_log_1",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns03",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_2",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0044",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg03",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_1_2",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0067",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_052",
+      "topic": "quadratic_equations",
+      "topicZh": "二次函數極值",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_3",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss03",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_100",
+      "topic": "statistics",
+      "topicZh": "加權平均數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0078",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_trig_4",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va03",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap04",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_2_6",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_061",
+      "topic": "circles",
+      "topicZh": "圓周角定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_d_4",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0004",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_3",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0062",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e1_2_4",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_2",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_3_2",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb2_lc1_11_46",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_log_10",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns05",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_3",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0045",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg04",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_1_3",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0068",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_quad_1",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_4",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss04",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0013",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0079",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_trig_7",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va04",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap05",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_2_8",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_063",
+      "topic": "circles",
+      "topicZh": "圓的切線長度",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_m_1",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0005",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_4",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0063",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e1_2_5",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_3",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_3_3",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb2_lc1_11_62",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_log_2",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns06",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_4",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0046",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg05",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_2_1",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0069",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_quad_10",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_5",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss05",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0014",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_trig3d_1",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math-cu-04",
+      "topic": "trigonometry",
+      "topicZh": "跨課題（三角學・高度與距離）",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va05",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap06",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_3_10",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_066",
+      "topic": "circles",
+      "topicZh": "三角形內切圓",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_m_2",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0006",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_5",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0064",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e1_2_6",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_4",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_3_4",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb2_lc1_12_28",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_log_3",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns07",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_5",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0047",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg06",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_2_2",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0070",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_quad_11",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_ap_6",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ss06",
+      "topic": "similar_solids",
+      "topicZh": "相似形與相似立體",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0015",
+      "topic": "statistics",
+      "topicZh": "統計",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_trig3d_2",
+      "topic": "trig_3d",
+      "topicZh": "三維三角學",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mathh_tr_3",
+      "topic": "trigonometry",
+      "topicZh": "三角函數",
+      "itemType": "mc",
+      "marks": 3,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_va06",
+      "topic": "variation",
+      "topicZh": "變分",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ap07",
+      "topic": "approximation",
+      "topicZh": "近似與誤差",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m2_1_3_12",
+      "topic": "arithmetic_sequence",
+      "topicZh": "等差數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_imp_082",
+      "topic": "circles",
+      "topicZh": "相交弦定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_coord_m_3",
+      "topic": "coordinate_geometry",
+      "topicZh": "坐標幾何",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0007",
+      "topic": "factors_multiples",
+      "topicZh": "因數與倍數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_func_6",
+      "topic": "functions",
+      "topicZh": "函數與建模",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0065",
+      "topic": "geometric_sequence",
+      "topicZh": "等比數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e1_3_2",
+      "topic": "indices",
+      "topicZh": "指數定律",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_ineq_5",
+      "topic": "inequalities",
+      "topicZh": "不等式",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_e2_2_3_5",
+      "topic": "linear_functions",
+      "topicZh": "一次函數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb2_lc1_12_46",
+      "topic": "locus",
+      "topicZh": "軌跡與坐標",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_log_4",
+      "topic": "logarithms",
+      "topicZh": "對數與指數",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_ns08",
+      "topic": "number_systems",
+      "topicZh": "數系",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_pct_6",
+      "topic": "percentage",
+      "topicZh": "百分數與利率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0048",
+      "topic": "permutation_combination",
+      "topicZh": "排列與組合",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_fl_pg07",
+      "topic": "polygons",
+      "topicZh": "多邊形與角",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "mb_m8_1_2_3",
+      "topic": "polynomials",
+      "topicZh": "餘式與因式定理",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_med_b1_0071",
+      "topic": "probability",
+      "topicZh": "概率",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_quad_12",
+      "topic": "quadratic_equations",
+      "topicZh": "二次方程",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    },
+    {
+      "id": "math_seq_gp_1",
+      "topic": "sequences",
+      "topicZh": "數列",
+      "itemType": "mc",
+      "marks": 1,
+      "baselineProfileId": "p2_mc",
+      "grade": "unscored"
+    }
+  ]
+}

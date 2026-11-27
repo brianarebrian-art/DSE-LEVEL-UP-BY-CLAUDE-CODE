@@ -29,6 +29,7 @@ const ALLOW_UNLINKED = {
   '/dev/answer-cards': '開發用預覽頁，唔屬於學生流程',
   '/dev/long-session': '開發用預覽頁，唔屬於學生流程',
   '/dev/loop-disclosure': '披露文案預覽，正式環境回 404，唔屬於學生流程',
+  '/dev/loop-week58': '第 5–8 星期升級草稿預覽，正式環境回 404，唔屬於學生流程',
   '/sign-in-error': '登入失敗時由 OAuth／callback 重新導向入嚟，唔應該有站內連結',
   '/sentry-example-page': '開發時確認 Sentry 收到錯誤。production 直接 notFound，不應出現在學生導覽',
 }
